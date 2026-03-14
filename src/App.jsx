@@ -133,7 +133,7 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} THRJTech. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} THRJTech. All rights reserved.123</p>
         </div>
       </footer>
     </div>
