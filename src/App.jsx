@@ -9,6 +9,13 @@ function App() {
           <span className="logo">THRJ<span className="logo-accent">Tech</span></span>
           <nav className="nav">
             <a href="https://thrjtech.com" className="nav-link">Home</a>
+            <div className="dropdown">
+              <button className="dropbtn">Tools ▾</button>
+              <div className="dropdown-content">
+                <a href="https://pdf-compressor.thrjtech.com">PDF Compressor</a>
+                <a href="https://pdf-merger.thrjtech.com">PDF Merger</a>
+              </div>
+            </div>
           </nav>
         </div>
       </header>
@@ -87,7 +94,7 @@ function App() {
             <div className="screenshots-grid">
               <figure className="screenshot-item">
                 <img
-                  src="/screenshots/pdf-compressor-01.png"
+                  src="/screenshots/compressor/pdf-compressor-01.png"
                   alt="Step 1 — Drag and drop your PDF file onto the upload area"
                   className="screenshot-img"
                   loading="lazy"
@@ -97,7 +104,7 @@ function App() {
               </figure>
               <figure className="screenshot-item">
                 <img
-                  src="/screenshots/pdf-compressor-02.png"
+                  src="/screenshots/compressor/pdf-compressor-02.png"
                   alt="Step 2 — File selected, ready to compress"
                   className="screenshot-img"
                   loading="lazy"
@@ -107,7 +114,7 @@ function App() {
               </figure>
               <figure className="screenshot-item">
                 <img
-                  src="/screenshots/pdf-compressor-03.png"
+                  src="/screenshots/compressor/pdf-compressor-03.png"
                   alt="Step 3 — File uploading to R2 storage with a progress bar"
                   className="screenshot-img"
                   loading="lazy"
@@ -117,7 +124,7 @@ function App() {
               </figure>
               <figure className="screenshot-item">
                 <img
-                  src="/screenshots/pdf-compressor-04.png"
+                  src="/screenshots/compressor/pdf-compressor-04.png"
                   alt="Step 4 — Compression complete, download your file"
                   className="screenshot-img"
                   loading="lazy"
