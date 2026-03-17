@@ -18,7 +18,6 @@ const cards = [
     features: [
       'Compress PDFs up to 90% smaller',
       'Adjustable compression levels (low, medium, high)',
-      'Works entirely in the browser — your files never leave your device',
       'Supports multi-page PDFs of any size',
       '100% free, no sign-up needed',
     ],
@@ -63,9 +62,9 @@ const cards = [
     features: [
       'Merge unlimited PDFs for free',
       'Reorder files before merging',
-      'Works entirely in the browser — your files never leave your device',
       'No watermarks, no sign-up needed',
       'Fast, secure, and privacy-friendly',
+      'Automatically compresses merged file to reduce size (Optional)',
     ],
     screenshots: [
       {
@@ -98,6 +97,7 @@ function RotatingCards() {
   const [direction, setDirection] = useState(1); // 1 for left, -1 for right
   const [isSliding, setIsSliding] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [modalImg, setModalImg] = useState(null);
   const timeoutRef = useRef();
 
   // Auto-rotate every 5 seconds, but pause when hovered
@@ -105,7 +105,7 @@ function RotatingCards() {
     if (isHovered) return;
     timeoutRef.current = setTimeout(() => {
       slideTo((active + 1) % cards.length, 1);
-    }, 5000);
+    }, 7000);
     return () => clearTimeout(timeoutRef.current);
     // eslint-disable-next-line
   }, [active, isHovered]);
@@ -126,6 +126,14 @@ function RotatingCards() {
     if (i !== active) {
       slideTo(i, i > active ? 1 : -1);
     }
+  };
+
+  // Modal dialog for screenshot
+  const handleScreenshotClick = (src, alt) => {
+    setModalImg({ src, alt });
+  };
+  const handleModalClose = () => {
+    setModalImg(null);
   };
 
   // Render a card (no fade)
@@ -156,6 +164,8 @@ function RotatingCards() {
                   alt={s.alt}
                   className="screenshot-img"
                   loading="lazy"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => handleScreenshotClick(s.src, s.alt)}
                   onError={e => { e.currentTarget.classList.add('screenshot-missing') }}
                 />
                 <figcaption>{s.caption}</figcaption>
@@ -198,35 +208,44 @@ function RotatingCards() {
           />
         ))}
       </div>
-    <div className="rotator-slider true-slide">
-      <div
-        className="rotator-slide-track"
-        style={{
-          display: 'flex',
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-          position: 'relative',
-        }}
-      >
+      <div className="rotator-slider true-slide">
         <div
+          className="rotator-slide-track"
           style={{
             display: 'flex',
-            flexDirection: 'row',
-            width: `${cardsToShow.length * 100}%`,
+            width: '100%',
             height: '100%',
-            transform: `translateX(${slideIndex * 100}%)`,
-            transition: isSliding ? 'transform 0.7s cubic-bezier(0.4,0,0.2,1)' : 'none',
+            overflow: 'hidden',
+            position: 'relative',
           }}
         >
-          {cardsToShow.map((idx, i) => (
-            <div key={i + '-' + idx} style={{ width: '100%', flexShrink: 0, height: '100%' }}>
-              {renderCard(idx)}
-            </div>
-          ))}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: `${cardsToShow.length * 100}%`,
+              height: '100%',
+              transform: `translateX(${slideIndex * 100}%)`,
+              transition: isSliding ? 'transform 0.7s cubic-bezier(0.4,0,0.2,1)' : 'none',
+            }}
+          >
+            {cardsToShow.map((idx, i) => (
+              <div key={i + '-' + idx} style={{ width: '100%', flexShrink: 0, height: '100%' }}>
+                {renderCard(idx)}
+              </div>
+            ))}
+          </div>
         </div>
+        {/* Modal dialog for screenshot */}
+        {modalImg && (
+          <div className="screenshot-modal-overlay" onClick={handleModalClose}>
+            <div className="screenshot-modal-content" onClick={e => e.stopPropagation()}>
+              <button className="screenshot-modal-close" onClick={handleModalClose} aria-label="Close screenshot">&#10005;</button>
+              <img src={modalImg.src} alt={modalImg.alt} className="screenshot-modal-img" />
+            </div>
+          </div>
+        )}
       </div>
-    </div>
     </div>
   );
 }
