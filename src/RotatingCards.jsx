@@ -1,0 +1,235 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const cards = [
+  {
+    key: 'compressor',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="12" y1="18" x2="12" y2="12"/>
+        <line x1="9" y1="15" x2="15" y2="15"/>
+      </svg>
+    ),
+    title: 'PDF Compressor',
+    link: 'https://pdf-compressor.thrjtech.com',
+    btn: 'Open PDF Compressor',
+    description: 'Shrink your PDF files without sacrificing quality. Upload a document and download a smaller version in seconds — no account required, no watermarks.',
+    features: [
+      'Compress PDFs up to 90% smaller',
+      'Adjustable compression levels (low, medium, high)',
+      'Works entirely in the browser — your files never leave your device',
+      'Supports multi-page PDFs of any size',
+      '100% free, no sign-up needed',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/compressor/pdf-compressor-01.png',
+        alt: 'Step 1 — Drag and drop your PDF file onto the upload area',
+        caption: '1. Drag & drop or browse for your PDF',
+      },
+      {
+        src: '/screenshots/compressor/pdf-compressor-02.png',
+        alt: 'Step 2 — File selected, ready to compress',
+        caption: '2. Review the file, then hit Compress PDF',
+      },
+      {
+        src: '/screenshots/compressor/pdf-compressor-03.png',
+        alt: 'Step 3 — File uploading to R2 storage with a progress bar',
+        caption: '3. Securely uploads & compresses in seconds',
+      },
+      {
+        src: '/screenshots/compressor/pdf-compressor-04.png',
+        alt: 'Step 4 — Compression complete, download your file',
+        caption: '4. Download your compressed PDF',
+      },
+    ],
+  },
+  {
+    key: 'merger',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+        <path d="M7.5 7.5L16.5 16.5"/>
+      </svg>
+    ),
+    title: 'PDF Merger',
+    link: 'https://pdf-merger.thrjtech.com',
+    btn: 'Open PDF Merger',
+    description: 'Combine multiple PDF files into a single document in seconds. Drag, drop, and merge — no account required, no watermarks.',
+    features: [
+      'Merge unlimited PDFs for free',
+      'Reorder files before merging',
+      'Works entirely in the browser — your files never leave your device',
+      'No watermarks, no sign-up needed',
+      'Fast, secure, and privacy-friendly',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/merger/merger-001.png',
+        alt: 'Step 1 — Drag and drop your PDF files onto the upload area',
+        caption: '1. Drag & drop or browse for your PDFs',
+      },
+      {
+        src: '/screenshots/merger/merger-002.png',
+        alt: 'Step 2 — Arrange the order of your files',
+        caption: '2. Arrange the order of your files',
+      },
+      {
+        src: '/screenshots/merger/merger-003.png',
+        alt: 'Step 3 — Click Merge PDF to combine files',
+        caption: '3. Click Merge PDF to combine files',
+      },
+      {
+        src: '/screenshots/merger/merger-004.png',
+        alt: 'Step 4 — Download your merged PDF',
+        caption: '4. Download your merged PDF',
+      },
+    ],
+  },
+];
+
+function RotatingCards() {
+  const [active, setActive] = useState(0);
+  const [next, setNext] = useState(null); // index of next card for animation
+  const [direction, setDirection] = useState(1); // 1 for left, -1 for right
+  const [isSliding, setIsSliding] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const timeoutRef = useRef();
+
+  // Auto-rotate every 5 seconds, but pause when hovered
+  useEffect(() => {
+    if (isHovered) return;
+    timeoutRef.current = setTimeout(() => {
+      slideTo((active + 1) % cards.length, 1);
+    }, 5000);
+    return () => clearTimeout(timeoutRef.current);
+    // eslint-disable-next-line
+  }, [active, isHovered]);
+
+  function slideTo(idx, dir) {
+    if (idx === active || isSliding) return;
+    setDirection(dir);
+    setNext(idx);
+    setIsSliding(true);
+    setTimeout(() => {
+      setActive(idx);
+      setNext(null);
+      setIsSliding(false);
+    }, 700); // match CSS (0.7s)
+  }
+
+  const handleDotClick = (i) => {
+    if (i !== active) {
+      slideTo(i, i > active ? 1 : -1);
+    }
+  };
+
+  // Render a card (no fade)
+  const renderCard = (idx) => {
+    const card = cards[idx];
+    return (
+      <div className="rotator-card" key={card.key}>
+        <div className="tool-card">
+          <div className="tool-icon" aria-hidden="true">{card.icon}</div>
+          <div className="tool-content">
+            <h3 className="tool-title">{card.title}</h3>
+            <a href={card.link} className="btn btn-primary">{card.btn}</a>
+            <p className="tool-description">{card.description}</p>
+            <ul className="feature-list">
+              {card.features.map((f, i) => (
+                <li key={i}><span className="feature-check" aria-hidden="true">✓</span>{f}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="screenshots-section">
+          <h3 className="screenshots-heading">How it works</h3>
+          <div className="screenshots-grid">
+            {card.screenshots.map((s, i) => (
+              <figure className="screenshot-item" key={i}>
+                <img
+                  src={s.src}
+                  alt={s.alt}
+                  className="screenshot-img"
+                  loading="lazy"
+                  onError={e => { e.currentTarget.classList.add('screenshot-missing') }}
+                />
+                <figcaption>{s.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Flex row sliding track for both cards
+  let cardsToShow = [active];
+  let slideIndex = 0;
+  let fadeTypes = [null];
+  if (next !== null) {
+    if (direction === 1) {
+      cardsToShow = [active, next];
+      fadeTypes = [isSliding ? 'out' : null, isSliding ? 'in' : null];
+      slideIndex = isSliding ? -1 : 0;
+    } else {
+      cardsToShow = [next, active];
+      fadeTypes = [isSliding ? 'in' : null, isSliding ? 'out' : null];
+      slideIndex = isSliding ? 0 : -1;
+    }
+  }
+
+  return (
+    <div className="rotator"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="rotator-controls">
+        {cards.map((c, i) => (
+          <button
+            key={c.key}
+            className={i === active ? 'rotator-dot active' : 'rotator-dot'}
+            aria-label={c.title}
+            onClick={() => handleDotClick(i)}
+          />
+        ))}
+      </div>
+    <div className="rotator-slider true-slide">
+      <div
+        className="rotator-slide-track"
+        style={{
+          display: 'flex',
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          position: 'relative',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: `${cardsToShow.length * 100}%`,
+            height: '100%',
+            transform: `translateX(${slideIndex * 100}%)`,
+            transition: isSliding ? 'transform 0.7s cubic-bezier(0.4,0,0.2,1)' : 'none',
+          }}
+        >
+          {cardsToShow.map((idx, i) => (
+            <div key={i + '-' + idx} style={{ width: '100%', flexShrink: 0, height: '100%' }}>
+              {renderCard(idx)}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    </div>
+  );
+}
+
+export default RotatingCards;
+ 

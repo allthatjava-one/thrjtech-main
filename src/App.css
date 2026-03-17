@@ -1,3 +1,59 @@
+/* ── Rotator Slide Animation ───────────────────── */
+.rotator-slider.true-slide {
+.rotator-slider.true-slide {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  height: 420px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+.rotator-card {
+  width: 100%;
+  min-width: 100%;
+  background: none;
+}
+}
+.rotator-slide-track {
+  display: flex;
+  width: 200%;
+  will-change: transform;
+}
+.rotator-card {
+  width: 100%;
+  min-width: 100%;
+  background: none;
+}
+/* ── Rotator ────────────────────────────────────── */
+.rotator {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rotator-controls {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+.rotator-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  background: var(--color-bg);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  outline: none;
+}
+.rotator-dot.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
 /* ── Dropdown Menu ─────────────────────────────── */
 .dropdown {
   position: relative;
