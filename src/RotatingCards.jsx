@@ -18,7 +18,6 @@ const cards = [
     features: [
       'Compress PDFs up to 90% smaller',
       'Adjustable compression levels (low, medium, high)',
-      'Works entirely in the browser — your files never leave your device',
       'Supports multi-page PDFs of any size',
       '100% free, no sign-up needed',
     ],
@@ -63,9 +62,9 @@ const cards = [
     features: [
       'Merge unlimited PDFs for free',
       'Reorder files before merging',
-      'Works entirely in the browser — your files never leave your device',
       'No watermarks, no sign-up needed',
       'Fast, secure, and privacy-friendly',
+      'Automatically compresses merged file to reduce size (Optional)',
     ],
     screenshots: [
       {
