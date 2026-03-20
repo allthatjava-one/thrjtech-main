@@ -13,10 +13,9 @@ function App() {
   const [formStartTime, setFormStartTime] = useState(Date.now())
 
   useEffect(() => {
-    const ins = document.querySelector('ins.adsbygoogle')
-    if (ins && ins.getAttribute('data-adsbygoogle-status') !== 'done') {
+    try {
       (window.adsbygoogle = window.adsbygoogle || []).push({})
-    }
+    } catch (e) {}
   }, [])
 
   const handleOpenAbout = () => {
