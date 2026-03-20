@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import AboutUsModal from './components/AboutUsModal'
@@ -11,6 +11,12 @@ function App() {
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [submitError, setSubmitError] = useState(false)
   const [formStartTime, setFormStartTime] = useState(Date.now())
+
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({})
+    } catch (e) {}
+  }, [])
 
   const handleOpenAbout = () => {
     setFormStartTime(Date.now())
@@ -84,6 +90,10 @@ function App() {
 
         {/* Main content - End */}
       </main>
+      {/* THRJ Tech Ads */}
+      <ins className="adsbygoogle" style={{ display: 'block' }} 
+        data-ad-client="ca-pub-1683577108258942" data-ad-slot="9546355200" 
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
       <Footer />
     </>
   )
