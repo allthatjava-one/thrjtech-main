@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect, useRef } from 'react';
+import './RotatingCards.css';
 
 const cards = [
   {
