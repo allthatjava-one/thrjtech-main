@@ -15,19 +15,43 @@
   --color-text: #e2e8f0;
   --color-muted: #8892a4;
   --color-check: #34d399;
+  --color-error: #ff6b6b;
+  --color-error-bg: #2a1520;
+  --color-success: #34d399;
   --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --radius: 12px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 html {
-  scroll-behavior: smooth;
-}
-
-body {
   font-family: var(--font-sans);
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
   min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
 }
