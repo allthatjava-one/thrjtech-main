@@ -1,0 +1,375 @@
+/* ── Page shell ──────────────────────────────────────── */
+.pdf-compressor-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.pdf-compressor-page .container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.pdf-compressor-page .main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.pdf-compressor-page .main .container {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.pdf-compressor-page .card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e6f0;
+  padding: 2.5rem 2.5rem 2rem;
+  max-width: 560px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Hero Section ────────────────────────────────────── */
+.pdf-compressor-page .hero-section {
+  text-align: center;
+  padding-bottom: 0.25rem;
+}
+
+.pdf-compressor-page .hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1e1e2e;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pdf-compressor-page .hero-tagline {
+  font-size: 1rem;
+  color: #4b5563;
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.pdf-compressor-page .hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pdf-compressor-page .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6366f1;
+  background: #eef0ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Drop Zone ───────────────────────────────────────── */
+.pdf-compressor-page .drop-zone {
+  border: 2px dashed #c7d0e8;
+  border-radius: 14px;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  background: #f8f9ff;
+  min-height: 200px;
+}
+
+.pdf-compressor-page .drop-zone:hover,
+.pdf-compressor-page .drop-zone.dragging {
+  border-color: #6366f1;
+  background: #eef0ff;
+}
+
+.pdf-compressor-page .drop-zone.has-file {
+  cursor: default;
+  border-style: solid;
+  border-color: #6366f1;
+  background: #f5f6ff;
+}
+
+.pdf-compressor-page .file-input {
+  display: none;
+}
+
+.pdf-compressor-page .drop-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.pdf-compressor-page .drop-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.pdf-compressor-page .drop-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.pdf-compressor-page .drop-sub {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* ── File Info ───────────────────────────────────────── */
+.pdf-compressor-page .file-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.pdf-compressor-page .file-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.pdf-compressor-page .file-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.pdf-compressor-page .file-name {
+  font-weight: 600;
+  color: #1e1e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-compressor-page .file-size {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.pdf-compressor-page .remove-btn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-compressor-page .remove-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.pdf-compressor-page .btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  font-family: inherit;
+}
+
+.pdf-compressor-page .btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.pdf-compressor-page .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.pdf-compressor-page .btn-outline {
+  background: transparent;
+  color: #6366f1;
+  border: 2px solid #6366f1;
+}
+
+.pdf-compressor-page .btn-outline:hover {
+  background: #eef0ff;
+}
+
+.pdf-compressor-page .btn-ghost {
+  background: transparent;
+  color: #6b7280;
+}
+
+.pdf-compressor-page .btn-ghost:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.pdf-compressor-page .compress-btn,
+.pdf-compressor-page .download-btn {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+}
+
+/* ── Progress ────────────────────────────────────────── */
+.pdf-compressor-page .progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pdf-compressor-page .progress-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6366f1;
+}
+
+.pdf-compressor-page .progress-bar {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pdf-compressor-page .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* ── Result Section ──────────────────────────────────── */
+.pdf-compressor-page .result-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.pdf-compressor-page .result-icon {
+  font-size: 2.5rem;
+}
+
+.pdf-compressor-page .result-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e1e2e;
+}
+
+.pdf-compressor-page .size-comparison {
+  display: flex;
+  flex-direction: column;
+  background: #f8f9ff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  gap: 0.2rem;
+}
+
+.pdf-compressor-page .size-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: baseline;
+}
+
+.pdf-compressor-page .size-row--spacer {
+  height: 0.75rem;
+}
+
+.pdf-compressor-page .size-col-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pdf-compressor-page .size-col-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-compressor-page .size-col-value--compressed {
+  color: #059669;
+}
+
+/* ── Error ───────────────────────────────────────────── */
+.pdf-compressor-page .error-msg {
+  font-size: 0.875rem;
+  color: #ef4444;
+  background: #fee2e2;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+}
+
+/* ── Note ────────────────────────────────────────────── */
+.pdf-compressor-page .note {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  line-height: 1.55;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.pdf-compressor-page .note-icon {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .pdf-compressor-page .card {
+    padding: 1.4rem;
+  }
+
+  .pdf-compressor-page .drop-zone {
+    padding: 1.25rem 0.75rem;
+  }
+}
