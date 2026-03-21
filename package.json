@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "pages:dev": "wrangler pages dev --proxy 5173 -- vite --port 5173",
+    "pages:dev": "wrangler pages dev --port 8789 --proxy 5173 -- vite --port 5173",
     "build": "vite build",
     "preview": "vite preview"
   },
