@@ -3,3 +3,6 @@ compatibility_date = "2026-03-14"
 
 [assets]
 directory = "./dist"
+
+# Run `npm run pages:dev` locally — wrangler wraps Vite and serves functions/
+# Access the app at http://localhost:8788 (not 5173) during pages:dev

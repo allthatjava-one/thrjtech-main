@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 export default function Navbar({ onAboutClick }) {
@@ -19,11 +20,11 @@ export default function Navbar({ onAboutClick }) {
   return (
     <header className="header">
       <div className="header-inner">
-        <a href="https://thrjtech.com" className="logo">
+        <Link to="/" className="logo">
           THRJ<span className="logo-accent">Tech</span>
-        </a>
+        </Link>
         <nav className="nav">
-          <a href="https://thrjtech.com" className="nav-link">Home</a>
+          <Link to="/" className="nav-link">Home</Link>
           <div className="dropdown" ref={toolsRef}>
             <button
               className={`dropbtn${toolsOpen ? ' open' : ''}`}
@@ -35,9 +36,15 @@ export default function Navbar({ onAboutClick }) {
             </button>
             {toolsOpen && (
               <div className="dropdown-content">
-                <a href="https://pdf-compressor.thrjtech.com" onClick={() => setToolsOpen(false)}>PDF Compressor</a>
-                <a href="https://pdf-merger.thrjtech.com" onClick={() => setToolsOpen(false)}>PDF Merger</a>
-                <a href="https://json-formatter.thrjtech.com" onClick={() => setToolsOpen(false)}>JSON Formatter</a>
+                <div className="dropdown-group">
+                  <div className="dropdown-group-title">PDF</div>
+                  <Link to="/pdf-compressor" onClick={() => setToolsOpen(false)}>PDF Compressor</Link>
+                  <Link to="/pdf-merger" onClick={() => setToolsOpen(false)}>PDF Merger</Link>
+                </div>
+                <div className="dropdown-group">
+                  <div className="dropdown-group-title">Text</div>
+                  <Link to="/json-formatter" onClick={() => setToolsOpen(false)}>JSON Formatter</Link>
+                </div>
               </div>
             )}
           </div>

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './RotatingCards.css';
 
 const cards = [
@@ -14,7 +15,7 @@ const cards = [
       </svg>
     ),
     title: 'PDF Compressor',
-    link: 'https://pdf-compressor.thrjtech.com',
+    link: '/pdf-compressor',
     btn: 'Open PDF Compressor',
     description: 'Shrink your PDF files without sacrificing quality. Upload a document and download a smaller version in seconds — no account required, no watermarks.',
     features: [
@@ -58,7 +59,7 @@ const cards = [
       </svg>
     ),
     title: 'PDF Merger',
-    link: 'https://pdf-merger.thrjtech.com',
+    link: '/pdf-merger',
     btn: 'Open PDF Merger',
     description: 'Combine multiple PDF files into a single document in seconds. Drag, drop, and merge — no account required, no watermarks.',
     features: [
@@ -147,7 +148,7 @@ function RotatingCards() {
           <div className="tool-icon" aria-hidden="true">{card.icon}</div>
           <div className="tool-content">
             <h3 className="tool-title">{card.title}</h3>
-            <a href={card.link} className="btn btn-primary">{card.btn}</a>
+            <Link to={card.link} className="btn btn-primary">{card.btn}</Link>
             <p className="tool-description">{card.description}</p>
             <ul className="feature-list">
               {card.features.map((f, i) => (

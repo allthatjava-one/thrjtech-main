@@ -1,0 +1,279 @@
+/* ── Section wrapper ─────────────────────────────────────────── */
+.formatter-section {
+  flex: 1;
+  padding: 2.5rem 0 3rem;
+}
+
+.jf-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.jf-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.jf-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.jf-hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.jf-hero-subtitle {
+  color: var(--color-muted);
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.jf-hero-subtitle strong {
+  color: var(--color-text);
+}
+
+/* ── Instructions card ───────────────────────────────────────── */
+.jf-instructions-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.jf-instructions-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+
+.jf-instructions-list {
+  padding-left: 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.jf-instructions-list li {
+  line-height: 1.5;
+}
+
+.jf-instructions-list strong {
+  color: var(--color-text);
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  font-size: 0.8em;
+  font-family: var(--font-sans);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text);
+}
+
+/* ── Side-by-side panels ─────────────────────────────────────── */
+.jf-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* ── Individual panel ────────────────────────────────────────── */
+.jf-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.jf-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.jf-panel-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-muted);
+}
+
+/* ── Textarea ────────────────────────────────────────────────── */
+.jf-json-textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 340px;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: 'Consolas', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  resize: vertical;
+  outline: none;
+  transition: background 0.15s;
+}
+
+.jf-json-textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 0.6;
+}
+
+.jf-json-textarea:focus {
+  background: rgba(79, 142, 247, 0.04);
+}
+
+.jf-json-textarea.has-error {
+  background: rgba(255, 107, 107, 0.05);
+}
+
+/* ── Error message ───────────────────────────────────────────── */
+.jf-error-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background: var(--color-error-bg);
+  border-bottom: 1px solid rgba(255, 107, 107, 0.25);
+  color: var(--color-error);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.jf-error-icon {
+  flex-shrink: 0;
+  font-size: 1em;
+  margin-top: 1px;
+}
+
+/* ── Panel actions ───────────────────────────────────────────── */
+.jf-panel-actions {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Output pre ──────────────────────────────────────────────── */
+.jf-json-output {
+  flex: 1;
+  padding: 1rem;
+  margin: 0;
+  min-height: 340px;
+  font-family: 'Consolas', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-y: auto;
+}
+
+.jf-json-output.empty {
+  color: var(--color-muted);
+  opacity: 0.5;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.jf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.jf-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.jf-btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.jf-btn-primary:not(:disabled):hover {
+  background: var(--color-primary-hover);
+}
+
+.jf-btn-ghost {
+  background: transparent;
+  color: var(--color-muted);
+  border-color: var(--color-border);
+}
+
+.jf-btn-ghost:not(:disabled):hover {
+  color: var(--color-text);
+  border-color: var(--color-muted);
+}
+
+.jf-btn-ghost.copied {
+  color: var(--color-check);
+  border-color: var(--color-check);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .jf-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .jf-hero-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formatter-section {
+    padding: 1.5rem 0 2rem;
+  }
+
+  .jf-json-textarea,
+  .jf-json-output {
+    min-height: 260px;
+  }
+}

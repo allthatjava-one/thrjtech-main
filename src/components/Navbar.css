@@ -1,3 +1,26 @@
+.dropdown-group a {
+  padding-left: 2.5rem !important;
+}
+/* ── Dropdown Grouping ───────────────────────────────────── */
+.dropdown-group {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-group + .dropdown-group {
+  border-top: 1px solid var(--color-border);
+  margin-top: 0.2rem;
+}
+
+.dropdown-group-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 0.5rem 1rem 0.2rem 1rem;
+  background: none;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
 /* ── Header ────────────────────────────────────────────────── */
 .header {
   background: var(--color-surface);
