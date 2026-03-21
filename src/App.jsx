@@ -11,10 +11,6 @@ import JsonFormatterPage from './tools/json-formatter/JsonFormatterPage'
 
 function HomePage() {
   const [aboutOpen, setAboutOpen] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
-  const [submitError, setSubmitError] = useState(false)
-  const [formStartTime, setFormStartTime] = useState(Date.now())
 
   useEffect(() => {
     try {
@@ -22,43 +18,8 @@ function HomePage() {
     } catch (e) {}
   }, [])
 
-  const handleOpenAbout = () => {
-    setFormStartTime(Date.now())
-    setAboutOpen(true)
-  }
-
-  const handleCloseAbout = () => {
-    setAboutOpen(false)
-    setSubmitSuccess(false)
-    setSubmitError(false)
-  }
-
-  const handleContactSubmit = async ({ email, message, honeypot, formStartTime: submittedTime }) => {
-    // Spam protection: block if honeypot filled or form submitted too quickly (< 3s)
-    if (honeypot || Date.now() - (submittedTime ?? formStartTime) < 3000) {
-      setSubmitError(true)
-      return
-    }
-    setSubmitting(true)
-    setSubmitSuccess(false)
-    setSubmitError(false)
-    try {
-      const res = await fetch('https://formspree.io/f/mgonpdvz', {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, message }),
-      })
-      if (res.ok) {
-        setSubmitSuccess(true)
-      } else {
-        setSubmitError(true)
-      }
-    } catch {
-      setSubmitError(true)
-    } finally {
-      setSubmitting(false)
-    }
-  }
+  const handleOpenAbout = () => setAboutOpen(true)
+  const handleCloseAbout = () => setAboutOpen(false)
 
   return (
     <>
@@ -66,10 +27,6 @@ function HomePage() {
       <AboutUsModal
         open={aboutOpen}
         onClose={handleCloseAbout}
-        onSubmit={(data) => handleContactSubmit({ ...data, formStartTime })}
-        submitting={submitting}
-        submitSuccess={submitSuccess}
-        submitError={submitError}
       />
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         {/* Main content - Start */}
