@@ -1,14 +1,51 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './AboutUsModal.css'
 
-const AboutUsModal = ({ open, onClose, onSubmit, submitting, submitSuccess, submitError }) => {
+const AboutUsModal = ({ open, onClose }) => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [honeypot, setHoneypot] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
+  const [formStartTime, setFormStartTime] = useState(Date.now())
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (open) {
+      setFormStartTime(Date.now())
+      setSubmitSuccess(false)
+      setSubmitError(false)
+      setEmail('')
+      setMessage('')
+      setHoneypot('')
+    }
+  }, [open])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (onSubmit) onSubmit({ email, message, honeypot })
+    if (honeypot || Date.now() - formStartTime < 3000) {
+      setSubmitError(true)
+      return
+    }
+    setSubmitting(true)
+    setSubmitSuccess(false)
+    setSubmitError(false)
+    try {
+      const res = await fetch('https://formspree.io/f/mgonpdvz', {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, message }),
+      })
+      if (res.ok) {
+        setSubmitSuccess(true)
+      } else {
+        setSubmitError(true)
+      }
+    } catch {
+      setSubmitError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (!open) return null
