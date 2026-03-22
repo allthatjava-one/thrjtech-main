@@ -1,3 +1,18 @@
+.dropdown-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  min-width: 420px;
+  padding: 1rem 1.2rem 1rem 1.2rem;
+  box-sizing: border-box;
+}
+.dropdown-col {
+  flex: 1 1 0;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
 .dropdown-group a {
   padding-left: 2.5rem !important;
 }
@@ -118,6 +133,7 @@
   color: var(--color-muted);
   text-decoration: none;
   transition: background 0.12s, color 0.12s;
+  white-space: nowrap;
 }
 
 .dropdown-content a:hover {

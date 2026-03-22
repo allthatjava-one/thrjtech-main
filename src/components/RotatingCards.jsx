@@ -48,6 +48,7 @@ const cards = [
       },
     ],
   },
+  // ...existing cards...
   // PDF Merger
   {
     key: 'merger',
@@ -136,6 +137,49 @@ const cards = [
         src: '/screenshots/json-formatter/JSON_formatter004.png',
         alt: 'Step 4 — Download or copy the beautified JSON',
         caption: '4. Download or copy the beautified JSON',
+      },
+    ],
+  },
+  // Watermarker
+  {
+    key: 'watermarker',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <rect x="3" y="3" width="18" height="18" rx="4"/>
+        <path d="M8 12h8M12 8v8"/>
+      </svg>
+    ),
+    title: 'Image Watermarker',
+    link: '/watermarker',
+    btn: 'Open Watermarker',
+    description: 'Add a text or logo watermark to your images in seconds. Drag, drop, and download — all in your browser, no account required.',
+    features: [
+      'Add text or logo as watermark',
+      'Preview before downloading',
+      'Drag & drop image upload',
+      'No watermarks or sign-up needed',
+      'Works with PNG, JPG, and more',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/watermarker/watermarker001.png',
+        alt: 'Step 1 — Drag and drop your image onto the upload area',
+        caption: '1. Drag & drop or browse for your image',
+      },
+      {
+        src: '/screenshots/watermarker/watermarker002.png',
+        alt: 'Step 2 — Enter watermark text or upload logo',
+        caption: '2. Enter watermark text or upload logo',
+      },
+      {
+        src: '/screenshots/watermarker/watermarker003.png',
+        alt: 'Step 3 — Preview the watermarked image',
+        caption: '3. Preview the watermarked image',
+      },
+      {
+        src: '/screenshots/watermarker/watermarker004.png',
+        alt: 'Step 4 — Download your watermarked image',
+        caption: '4. Download your watermarked image',
       },
     ],
   },
