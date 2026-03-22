@@ -208,13 +208,6 @@
   border: none;
 }
 
-/* (moved to RotatingCards.css) */
-  list-style: none;
-  margin-top: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
 
 .feature-list li {
   font-size: 0.92rem;
