@@ -9,7 +9,8 @@ import PdfCompressorPage from './tools/pdf-compressor/PdfCompressorPage'
 import PdfMergerPage from './tools/pdf-merger/PdfMergerPage'
 import JsonFormatterPage from './tools/json-formatter/JsonFormatterPage'
 
-import WatermarkerPage from './tools/watermarker/WatermarkerPage'
+import WatermarkerPage from './tools/image-watermarker/WatermarkerPage'
+import ImageResizerPage from './tools/image-resizer';
 
 function HomePage() {
   const [aboutOpen, setAboutOpen] = useState(false)
@@ -70,7 +71,8 @@ export default function App() {
         <Route path="/pdf-compressor" element={<PdfCompressorPage />} />
         <Route path="/pdf-merger" element={<PdfMergerPage />} />
         <Route path="/json-formatter" element={<JsonFormatterPage />} />
-        <Route path="/watermarker" element={<WatermarkerPage />} />
+        <Route path="/image-watermarker" element={<WatermarkerPage />} />
+        <Route path="/image-resizer" element={<ImageResizerPage />} />
       </Routes>
     </BrowserRouter>
   )
