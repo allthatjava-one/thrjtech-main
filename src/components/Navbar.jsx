@@ -5,9 +5,11 @@ import AboutUsModal from './AboutUsModal';
 import './Navbar.css';
 
 
+
 export default function Navbar() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const toolsRef = useRef(null);
 
   // Close dropdown when clicking outside
@@ -27,8 +29,13 @@ export default function Navbar() {
         <Link to="/" className="logo">
           THRJ<span className="logo-accent">Tech</span>
         </Link>
-        <nav className="nav">
-          <Link to="/" className="nav-link">Home</Link>
+        <button className="hamburger" aria-label="Open menu" onClick={() => setMobileMenuOpen((v) => !v)}>
+          <span className="hamburger-bar"></span>
+          <span className="hamburger-bar"></span>
+          <span className="hamburger-bar"></span>
+        </button>
+        <nav className={`nav${mobileMenuOpen ? ' nav-mobile-open' : ''}`}>
+          <Link to="/" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Home</Link>
           <div className="dropdown" ref={toolsRef}>
             <button
               className={`dropbtn${toolsOpen ? ' open' : ''}`}
@@ -43,27 +50,27 @@ export default function Navbar() {
                 <div className="dropdown-col">
                   <div className="dropdown-group">
                     <div className="dropdown-group-title">PDF</div>
-                    <Link to="/pdf-compressor" onClick={() => setToolsOpen(false)}>PDF Compressor</Link>
-                    <Link to="/pdf-merger" onClick={() => setToolsOpen(false)}>PDF Merger</Link>
+                    <Link to="/pdf-compressor" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>PDF Compressor</Link>
+                    <Link to="/pdf-merger" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>PDF Merger</Link>
                   </div>
                 </div>
                 <div className="dropdown-col">
                   <div className="dropdown-group">
                     <div className="dropdown-group-title">Text</div>
-                    <Link to="/json-formatter" onClick={() => setToolsOpen(false)}>JSON Formatter</Link>
+                    <Link to="/json-formatter" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>JSON Formatter</Link>
                   </div>
                 </div>
                 <div className="dropdown-col">
                   <div className="dropdown-group">
                     <div className="dropdown-group-title">Image</div>
-                    <Link to="/watermarker" onClick={() => setToolsOpen(false)}>Watermarker</Link>
+                    <Link to="/watermarker" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Watermarker</Link>
                   </div>
                 </div>
               </div>
             )}
           </div>
           <div className="dropdown">
-            <button className="dropbtn" onClick={() => setAboutOpen(true)}>About Us</button>
+            <button className="dropbtn" onClick={() => { setAboutOpen(true); setMobileMenuOpen(false); }}>About Us</button>
           </div>
         </nav>
         <AboutUsModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
