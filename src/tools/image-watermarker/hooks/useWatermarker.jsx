@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
 
-export function useWatermarker() {
-  const [mainImage, setMainImage] = useState(null)
+export function useWatermarker(initialImage) {
+  const [mainImage, setMainImage] = useState(initialImage || null)
   const [watermarkType, setWatermarkType] = useState('text') // 'text' or 'logo'
   const [watermarkText, setWatermarkText] = useState('')
   const [logoFile, setLogoFile] = useState(null)

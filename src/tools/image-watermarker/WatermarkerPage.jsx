@@ -1,4 +1,6 @@
+
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useWatermarker } from './hooks/useWatermarker.jsx'
 import { WatermarkerView } from './WatermarkerView'
 
@@ -7,9 +9,9 @@ import Footer from '../../components/Footer';
 import './Watermarker.css';
 
 export default function WatermarkerPage() {
-
-  const props = useWatermarker();
-
+  const location = useLocation();
+  const stateImage = location.state && location.state.mainImage;
+  const props = useWatermarker(stateImage);
   return (
     <div className="watermarker-page">
       <Navbar />
