@@ -13,21 +13,38 @@ export default function JsonFormatter() {
   const [output, setOutput] = useState('')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+  const [errorLine, setErrorLine] = useState(null)
 
   const handleFormat = useCallback(() => {
     const trimmed = input.trim()
     if (!trimmed) {
       setError('Please enter some JSON to format.')
       setOutput('')
+      setErrorLine(null)
       return
     }
     try {
       const formatted = formatJson(trimmed)
       setOutput(formatted)
       setError('')
+      setErrorLine(null)
     } catch (e) {
-      setError(`Invalid JSON: ${e.message}`)
       setOutput('')
+      // Try to extract line number from error message
+      let line = null
+      const match = e.message.match(/at position (\d+)/i)
+      if (match) {
+        // Convert char position to line number
+        const pos = parseInt(match[1], 10)
+        const upToErr = trimmed.slice(0, pos)
+        line = upToErr.split(/\r?\n/).length
+      } else {
+        // Try to match 'line X column Y' (for some browsers)
+        const match2 = e.message.match(/line (\d+)/i)
+        if (match2) line = parseInt(match2[1], 10)
+      }
+      setError(`Invalid JSON: ${e.message}`)
+      setErrorLine(line)
     }
   }, [input])
 
@@ -36,6 +53,7 @@ export default function JsonFormatter() {
     setOutput('')
     setError('')
     setCopied(false)
+    setErrorLine(null)
   }
 
   const handleCopy = async () => {
@@ -118,10 +136,14 @@ export default function JsonFormatter() {
               aria-label="JSON input"
               aria-describedby={error ? 'json-error' : undefined}
             />
+            {/* Notify section for JSON errors */}
             {error && (
               <div id="json-error" className="jf-error-msg" role="alert">
                 <span className="jf-error-icon" aria-hidden="true">⚠</span>
                 {error}
+                {errorLine && (
+                  <div className="jf-error-line">Problem detected near line <strong>{errorLine}</strong>.</div>
+                )}
               </div>
             )}
             <div className="jf-panel-actions">
@@ -130,7 +152,7 @@ export default function JsonFormatter() {
                 onClick={handleFormat}
                 disabled={!input.trim()}
               >
-                Format JSON
+                Validate and Format JSON
               </button>
             </div>
           </div>
