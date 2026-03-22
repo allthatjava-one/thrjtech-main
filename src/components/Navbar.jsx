@@ -63,7 +63,7 @@ export default function Navbar() {
                 <div className="dropdown-col">
                   <div className="dropdown-group">
                     <div className="dropdown-group-title">Image</div>
-                    <Link to="/watermarker" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Watermarker</Link>
+                    <Link to="/image-watermarker" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Watermarker</Link>
                   </div>
                 </div>
               </div>

@@ -140,9 +140,9 @@ const cards = [
       },
     ],
   },
-  // Watermarker
+  // Image Watermarker
   {
-    key: 'watermarker',
+    key: 'image-watermarker',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <rect x="3" y="3" width="18" height="18" rx="4"/>
@@ -150,8 +150,8 @@ const cards = [
       </svg>
     ),
     title: 'Image Watermarker',
-    link: '/watermarker',
-    btn: 'Open Watermarker',
+    link: '/image-watermarker',
+    btn: 'Open Image Watermarker',
     description: 'Add a text or logo watermark to your images in seconds. Drag, drop, and download — all in your browser, no account required.',
     features: [
       'Add text or logo as watermark',

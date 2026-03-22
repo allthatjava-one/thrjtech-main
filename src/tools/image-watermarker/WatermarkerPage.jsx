@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useWatermarker } from './hooks/useWatermarker'
+import { useWatermarker } from './hooks/useWatermarker.jsx'
 import { WatermarkerView } from './WatermarkerView'
 
 import Navbar from '../../components/Navbar';
