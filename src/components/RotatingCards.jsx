@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './RotatingCards.css';
 
 const cards = [
+  // PDF Compressor
   {
     key: 'compressor',
     icon: (
@@ -47,6 +48,7 @@ const cards = [
       },
     ],
   },
+  // PDF Merger
   {
     key: 'merger',
     icon: (
@@ -89,6 +91,51 @@ const cards = [
         src: '/screenshots/merger/merger-004.png',
         alt: 'Step 4 — Download your merged PDF',
         caption: '4. Download your merged PDF',
+      },
+    ],
+  },
+  // JSON Formatter
+  {
+    key: 'json-formatter',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+        <path d="M8 8h8M8 16h8"/>
+      </svg>
+    ),
+    title: 'JSON Formatter',
+    link: '/json-formatter',
+    btn: 'Open JSON Formatter',
+    description: 'Quickly validate, format, and beautify your JSON data. Instantly see errors, get readable output, and copy or download the result.',
+    features: [
+      'Validate and format JSON instantly',
+      'Paste, upload, or drag & drop JSON files',
+      'Highlights errors with line numbers',
+      'Download or copy formatted output',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/json-formatter/JSON_formatter001.png',
+        alt: 'Step 1 — Paste or upload your JSON data',
+        caption: '1. Paste or upload your JSON data',
+      },
+      {
+        src: '/screenshots/json-formatter/JSON_formatter002.png',
+        alt: 'Step 2 — Click Validate and Format JSON',
+        caption: '2. Click Validate and Format JSON',
+      },
+      {
+        src: '/screenshots/json-formatter/JSON_formatter003.png',
+        alt: 'Step 3 — Instantly see errors with line numbers if your JSON is invalid',
+        caption: '3. Instantly see errors with line numbers if your JSON is invalid',
+      },
+      {
+        src: '/screenshots/json-formatter/JSON_formatter004.png',
+        alt: 'Step 4 — Download or copy the beautified JSON',
+        caption: '4. Download or copy the beautified JSON',
       },
     ],
   },
