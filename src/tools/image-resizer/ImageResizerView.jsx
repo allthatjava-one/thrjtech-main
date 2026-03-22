@@ -227,7 +227,7 @@ export function ImageResizerView({
             }}
           >
             <span style={{ fontWeight: 600, color: '#222', fontSize: '1.08rem', marginBottom: 0, textAlign: 'left', flex: 1, display: 'block', alignSelf: 'center' }}>
-              Would you like to put watermark on the resized image?
+              Would you like to put private watermark on the resized image?
             </span>
             <button
               className="resize-btn"

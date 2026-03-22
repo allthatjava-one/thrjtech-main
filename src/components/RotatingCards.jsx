@@ -183,6 +183,50 @@ const cards = [
       },
     ],
   },
+
+  // Image Resizer (new last card)
+  {
+    key: 'image-resizer',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <rect x="3" y="3" width="18" height="18" rx="4"/>
+        <path d="M8 8h8M8 16h8M8 12h8"/>
+      </svg>
+    ),
+    title: 'Image Resizer',
+    link: '/image-resizer',
+    btn: 'Open Image Resizer',
+    description: 'Resize your images by percentage or by custom dimensions. Fast, privacy-friendly, and works entirely in your browser — no uploads, no accounts, no watermarks.',
+    features: [
+      'Resize by percentage or dimensions',
+      'Maintains aspect ratio (optional)',
+      'Works with PNG, JPG, and more',
+      'No watermarks, no sign-up needed',
+      'Preview before downloading',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/resizer/Image-resizer001.png',
+        alt: 'Step 1 — Drag and drop your image onto the upload area',
+        caption: '1. Drag & drop or browse for your image',
+      },
+      {
+        src: '/screenshots/resizer/Image-resizer002.png',
+        alt: 'Step 2 — Choose resize mode and set dimensions',
+        caption: '2. Choose resize mode and set dimensions',
+      },
+      {
+        src: '/screenshots/resizer/Image-resizer003.png',
+        alt: 'Step 3 — Preview the resized image',
+        caption: '3. Preview the resized image',
+      },
+      {
+        src: '/screenshots/resizer/Image-resizer004.png',
+        alt: 'Step 4 — Download your resized image',
+        caption: '4. Download your resized image',
+      },
+    ],
+  },
 ];
 
 function RotatingCards() {
