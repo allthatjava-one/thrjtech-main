@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useImageCollage from "./hooks/useImageCollage";
 import ImageFileList from "./ImageFileList";
@@ -42,6 +42,8 @@ const ImageCollageView = ({
     handleFileChange,
     handleCollage,
     isDragging,
+    expectedWidth,
+    expectedHeight,
     canCollage,
     downloading,
     handleDownload,
@@ -58,6 +60,15 @@ const ImageCollageView = ({
     fileInputRef,
     collageUrl,
   });
+
+  // Sync totalWidth/totalHeight to the computed collage size whenever it changes
+  useEffect(() => {
+    if (images.length > 0) {
+      setTotalWidth(expectedWidth);
+      setTotalHeight(expectedHeight);
+      if (expectedHeight > 0) ratioRef.current = expectedWidth / expectedHeight;
+    }
+  }, [expectedWidth, expectedHeight]);
 
   const handleTotalWidthChange = val => {
     if (!Number.isFinite(val) || val <= 0) return;
