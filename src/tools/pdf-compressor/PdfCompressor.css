@@ -85,19 +85,11 @@
 }
 
 /* ── Drop Zone ───────────────────────────────────────── */
-  border: 2px dashed #c7d0e8;
-  border-radius: 14px;
-  padding: 2.5rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.2s, background 0.2s;
-  background: #f8f9ff;
-  min-height: 200px;
-}
 
 .pdf-compressor-page .drop-zone {
-  border: 2px dashed #c7d0e8;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #c7d0e8;
   border-radius: 14px;
   padding: 2.5rem 1.5rem;
   width: 100%;
