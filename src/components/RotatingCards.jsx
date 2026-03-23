@@ -227,6 +227,52 @@ const cards = [
       },
     ],
   },
+
+  // Image Collage
+  {
+    key: 'image-collage',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <rect x="3" y="3" width="8" height="8" rx="1.5"/>
+        <rect x="13" y="3" width="8" height="8" rx="1.5"/>
+        <rect x="3" y="13" width="8" height="8" rx="1.5"/>
+        <rect x="13" y="13" width="8" height="8" rx="1.5"/>
+      </svg>
+    ),
+    title: 'Image Collage',
+    link: '/image-collage',
+    btn: 'Open Image Collage',
+    description: 'Arrange multiple images into a clean grid collage instantly. Drag, drop, reorder, and download — all in your browser, no account required, no watermarks.',
+    features: [
+      'Combine multiple images into a grid collage',
+      'Drag & drop to upload and reorder images',
+      'Auto-expands grid to fit all your images',
+      'Set custom output width and height',
+      'No watermarks, no sign-up needed',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/collage/image-collage001.png',
+        alt: 'Step 1 — Drag and drop your images onto the upload area',
+        caption: '1. Drag & drop or browse for your images',
+      },
+      {
+        src: '/screenshots/collage/image-collage002.png',
+        alt: 'Step 2 — Reorder images and set grid columns and rows',
+        caption: '2. Arrange images and set the grid layout',
+      },
+      {
+        src: '/screenshots/collage/image-collage003.png',
+        alt: 'Step 3 — Preview the collage',
+        caption: '3. Preview your collage instantly',
+      },
+      {
+        src: '/screenshots/collage/image-collage004.png',
+        alt: 'Step 4 — Download your finished collage',
+        caption: '4. Download your finished collage',
+      },
+    ],
+  },
 ];
 
 function RotatingCards() {

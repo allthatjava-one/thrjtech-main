@@ -11,6 +11,7 @@ import JsonFormatterPage from './tools/json-formatter/JsonFormatterPage'
 
 import WatermarkerPage from './tools/image-watermarker/WatermarkerPage'
 import ImageResizerPage from './tools/image-resizer';
+import ImageCollagePage from './tools/image-collage';
 
 function HomePage() {
   const [aboutOpen, setAboutOpen] = useState(false)
@@ -73,6 +74,7 @@ export default function App() {
         <Route path="/json-formatter" element={<JsonFormatterPage />} />
         <Route path="/image-watermarker" element={<WatermarkerPage />} />
         <Route path="/image-resizer" element={<ImageResizerPage />} />
+        <Route path="/image-collage" element={<ImageCollagePage />} />
       </Routes>
     </BrowserRouter>
   )

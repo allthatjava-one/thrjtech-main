@@ -65,6 +65,7 @@ export default function Navbar() {
                     <div className="dropdown-group-title">Image</div>
                     <Link to="/image-resizer" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Resize</Link>
                     <Link to="/image-watermarker" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Watermark</Link>
+                    <Link to="/image-collage" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Collage</Link>
                   </div>
                 </div>
               </div>
