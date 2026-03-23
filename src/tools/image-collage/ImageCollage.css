@@ -1,0 +1,223 @@
+/* ── File List in Drop Zone ── */
+.image-file-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.image-file-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f3f4f6;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+  position: relative;
+  min-width: 70px;
+  max-width: 90px;
+}
+.image-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 0.3rem;
+  background: #fff;
+}
+.image-file-actions {
+  display: flex;
+  gap: 0.2rem;
+}
+.image-file-actions button {
+  background: #e0e7ff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #3730a3;
+  transition: background 0.15s;
+}
+.image-file-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.image-file-actions button[title="Remove"] {
+  color: #dc2626;
+  background: #fee2e2;
+}
+/* ── Page shell ─────────────────────────────── */
+.image-collage-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.image-collage-page .container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.image-collage-page .card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e2e6f0;
+  padding: 2.5rem 2.5rem 2rem;
+  max-width: 560px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #6366f1;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.drop-zone {
+  border: 2px dashed #a0aec0;
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background: #fff;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.drop-zone.dragging {
+  border-color: #3182ce;
+  background: #ebf8ff;
+}
+
+.collage-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.collage-options label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #374151;
+}
+.collage-options input {
+  margin-top: 0.2rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  width: 70px;
+}
+.expected-size {
+  font-size: 0.95rem;
+  color: #6366f1;
+  font-weight: 600;
+}
+.collage-btn {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 0 auto 1rem auto;
+  display: block;
+  transition: background 0.2s;
+}
+.collage-btn:disabled {
+  background: #c7d2fe;
+  cursor: not-allowed;
+}
+.collage-preview-outer {
+  margin-top: 2.5rem;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (min-width: 601px) {
+  .collage-preview-outer {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .collage-preview-outer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+.collage-preview {
+  text-align: center;
+  background: #18181b;
+  border-radius: 14px;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .collage-preview {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+.collage-preview img {
+  max-width: 100%;
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid #e2e6f0;
+  background: #fff;
+  box-shadow: 0 2px 16px 0 #0004;
+  padding: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.download-btn {
+  margin-top: 1rem;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.download-btn:disabled {
+  background: #a7f3d0;
+  cursor: not-allowed;
+}
+@media (max-width: 600px) {
+  .image-collage-page .card {
+    padding: 1.2rem 0.5rem 1rem;
+  }
+  .drop-zone {
+    padding: 1.2rem 0.5rem;
+    font-size: 0.98rem;
+  }
+  .collage-options input {
+    width: 50px;
+  }
+}
