@@ -69,16 +69,26 @@
   border: 2px dashed #a0aec0;
   border-radius: 8px;
   padding: 2rem 1rem;
-  width: 320px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   text-align: center;
   background: #fff;
   margin-bottom: 1.5rem;
   cursor: pointer;
   transition: border-color 0.2s;
 }
+
 .drop-zone.dragging {
   border-color: #3182ce;
   background: #ebf8ff;
+}
+
+@media (max-width: 600px) {
+  .drop-zone {
+    padding: 1.2rem 0.5rem;
+    font-size: 0.98rem;
+  }
 }
 
 .preview-image {
