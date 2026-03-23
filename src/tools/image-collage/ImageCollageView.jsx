@@ -108,6 +108,8 @@ const ImageCollageView = ({
 
   return (
     <>
+      <h2 className="hero-title">Image Collage</h2>
+      <p className="hero-tagline">Combine multiple images into a beautiful grid collage.</p>
       <div
         className={`drop-zone${isDragging ? " dragging" : ""}`}
         onDrop={handleDrop}
