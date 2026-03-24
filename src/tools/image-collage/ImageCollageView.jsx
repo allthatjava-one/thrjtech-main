@@ -110,9 +110,11 @@ const ImageCollageView = ({
   const [previewUrls, setPreviewUrls] = useState([]);
   const [previewMeta, setPreviewMeta] = useState([]);
   const [offsets, setOffsets] = useState([]);
+  const [scales, setScales] = useState([]);
   const previewRef = useRef(null);
   const [previewScale, setPreviewScale] = useState(1);
   const previewWrapperRef = useRef(null);
+  const previewOverlayRef = useRef(null);
 
   // Build preview URLs and reset offsets when images change
   useEffect(() => {
@@ -120,6 +122,7 @@ const ImageCollageView = ({
     const urls = images.map(f => URL.createObjectURL(f));
     setPreviewUrls(urls);
     setOffsets(images.map(() => ({ x: 0, y: 0 })));
+    setScales(images.map(() => 1));
     // load natural sizes for exact cover calculations
     Promise.all(
       urls.map(
@@ -157,6 +160,135 @@ const ImageCollageView = ({
 
   // Drag state
   const dragRef = useRef({ active: -1, startX: 0, startY: 0, startOffset: { x: 0, y: 0 } });
+  // Pinch state for touch two-finger zoom
+  const pinchRef = useRef({ pointers: new Map(), active: false, startDist: 0, idx: -1, startScale: 1, startOffsets: { x: 0, y: 0 }, meta: null, cell: null });
+
+  // Handle pointerdown on preview wrapper to support pinch gestures
+  const handlePreviewPointerDown = e => {
+    try { previewRef.current && previewRef.current.setPointerCapture?.(e.pointerId); } catch (err) {}
+    const pmap = pinchRef.current.pointers;
+    pmap.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pmap.size === 2 && !pinchRef.current.active) {
+      // begin pinch
+      const iter = pmap.values();
+      const p1 = iter.next().value;
+      const p2 = iter.next().value;
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      const midX = (p1.x + p2.x) / 2;
+      const midY = (p1.y + p2.y) / 2;
+      // find image element under midpoint
+      const el = document.elementFromPoint(midX, midY);
+      if (!el) return;
+      const imgEl = el.closest && el.closest('img[data-idx]') ? el.closest('img[data-idx]') : (el.dataset && el.dataset.idx ? el : null);
+      let idx = null;
+      if (imgEl && imgEl.getAttribute) {
+        idx = Number(imgEl.getAttribute('data-idx'));
+      } else if (el && el.dataset && typeof el.dataset.idx !== 'undefined') {
+        idx = Number(el.dataset.idx);
+      }
+      if (idx == null || Number.isNaN(idx) || !images[idx]) return;
+      pinchRef.current.active = true;
+      pinchRef.current.startDist = dist;
+      pinchRef.current.idx = idx;
+      pinchRef.current.startScale = scales[idx] || 1;
+      pinchRef.current.meta = previewMeta[idx] || { w: 1, h: 1 };
+      pinchRef.current.cell = {
+        left: Math.floor((idx % columns) * (width + 10) + 10),
+        top: Math.floor(Math.floor(idx / columns) * (height + 10) + 10),
+        w: width,
+        h: height,
+      };
+      const off = offsets[idx] || { x: 0, y: 0 };
+      pinchRef.current.startOffsets = { x: off.x, y: off.y };
+      window.addEventListener('pointermove', handlePreviewPointerMove);
+      window.addEventListener('pointerup', handlePreviewPointerUp);
+    }
+  };
+
+  const handlePreviewPointerMove = e => {
+    const pmap = pinchRef.current.pointers;
+    if (!pmap.has(e.pointerId)) return;
+    pmap.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (!pinchRef.current.active) return;
+    // compute new distance between the two pointers
+    const vals = Array.from(pmap.values());
+    if (vals.length < 2) return;
+    const p1 = vals[0];
+    const p2 = vals[1];
+    const dx = p2.x - p1.x;
+    const dy = p2.y - p1.y;
+    const dist = Math.hypot(dx, dy) || 1;
+    const scaleFactor = dist / (pinchRef.current.startDist || 1);
+    const newScaleRaw = pinchRef.current.startScale * scaleFactor;
+    const newScale = Math.max(0.5, Math.min(4.0, newScaleRaw));
+
+    const midX = (p1.x + p2.x) / 2;
+    const midY = (p1.y + p2.y) / 2;
+    const idx = pinchRef.current.idx;
+    const meta = pinchRef.current.meta || { w: 1, h: 1 };
+    const cell = pinchRef.current.cell;
+
+    // compute base cover sizes
+    const imgRatio = meta.w / meta.h;
+    const cellRatio = cell.w / cell.h;
+    let drawW0, drawH0;
+    if (imgRatio > cellRatio) {
+      drawH0 = cell.h;
+      drawW0 = cell.h * imgRatio;
+    } else {
+      drawW0 = cell.w;
+      drawH0 = cell.w / imgRatio;
+    }
+
+    const prevScale = pinchRef.current.startScale;
+    const drawW_old = drawW0 * prevScale;
+    const drawH_old = drawH0 * prevScale;
+    const drawW_new = drawW0 * newScale;
+    const drawH_new = drawH0 * newScale;
+
+    // convert midpoint to canvas-space relative to image
+    const imgEl = document.elementFromPoint(midX, midY)?.closest?.call(document.elementFromPoint(midX, midY), 'img[data-idx]') || null;
+    const imgRect = imgEl ? imgEl.getBoundingClientRect() : { left: midX, top: midY };
+    const px = (midX - imgRect.left) / previewScale;
+    const py = (midY - imgRect.top) / previewScale;
+
+    const baseOffsetX_old = cell.left - (drawW_old - cell.w) / 2;
+    const baseOffsetY_old = cell.top - (drawH_old - cell.h) / 2;
+    const baseOffsetX_new = cell.left - (drawW_new - cell.w) / 2;
+    const baseOffsetY_new = cell.top - (drawH_new - cell.h) / 2;
+
+    const off = pinchRef.current.startOffsets || { x: 0, y: 0 };
+    const focal_canvas_x = baseOffsetX_old + off.x + px;
+    const focal_canvas_y = baseOffsetY_old + off.y + py;
+
+    const uX = drawW_old !== 0 ? px / drawW_old : 0.5;
+    const uY = drawH_old !== 0 ? py / drawH_old : 0.5;
+    const f_new_x = uX * drawW_new;
+    const f_new_y = uY * drawH_new;
+
+    const newOffX = Math.round(focal_canvas_x - baseOffsetX_new - f_new_x);
+    const newOffY = Math.round(focal_canvas_y - baseOffsetY_new - f_new_y);
+
+    const nextOffsets = offsets.slice();
+    nextOffsets[idx] = { x: newOffX, y: newOffY };
+    const nextScales = scales.slice();
+    nextScales[idx] = newScale;
+    setOffsets(nextOffsets);
+    setScales(nextScales);
+  };
+
+  const handlePreviewPointerUp = e => {
+    const pmap = pinchRef.current.pointers;
+    pmap.delete(e.pointerId);
+    if (pmap.size < 2 && pinchRef.current.active) {
+      pinchRef.current.active = false;
+      pinchRef.current.idx = -1;
+      window.removeEventListener('pointermove', handlePreviewPointerMove);
+      window.removeEventListener('pointerup', handlePreviewPointerUp);
+    }
+  };
 
   const onPointerDown = (e, idx, imgDisplayScale = 1) => {
     e.preventDefault();
@@ -193,10 +325,126 @@ const ImageCollageView = ({
     window.addEventListener("pointerup", onUp);
   };
 
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  const onImageWheel = (e, idx, meta, off, cellW, cellH, cellLeft, cellTop) => {
+    if (!e.altKey) return; // Alt+wheel to zoom
+    e.preventDefault();
+    const prevScale = (scales[idx] || 1);
+    const factor = e.deltaY < 0 ? 1.06 : 0.94;
+    let newScale = clamp(prevScale * factor, 0.5, 4.0);
+    if (Math.abs(newScale - prevScale) < 0.0001) return;
+
+    // compute base cover sizes (without scale)
+    const imgRatio = (meta && meta.w && meta.h) ? meta.w / meta.h : 1;
+    const cellRatio = cellW / cellH;
+    let drawW0, drawH0;
+    if (imgRatio > cellRatio) {
+      drawH0 = cellH;
+      drawW0 = cellH * imgRatio;
+    } else {
+      drawW0 = cellW;
+      drawH0 = cellW / imgRatio;
+    }
+    const drawW_old = drawW0 * prevScale;
+    const drawH_old = drawH0 * prevScale;
+    const drawW_new = drawW0 * newScale;
+    const drawH_new = drawH0 * newScale;
+
+    // image element rect and pointer position relative to image
+    const imgEl = e.currentTarget;
+    const imgRect = imgEl.getBoundingClientRect();
+    const px = (e.clientX - imgRect.left) / previewScale; // canvas pixels
+    const py = (e.clientY - imgRect.top) / previewScale;
+
+    // base offsets in canvas coords
+    const baseOffsetX_old = cellLeft - (drawW_old - cellW) / 2;
+    const baseOffsetY_old = cellTop - (drawH_old - cellH) / 2;
+    const baseOffsetX_new = cellLeft - (drawW_new - cellW) / 2;
+    const baseOffsetY_new = cellTop - (drawH_new - cellH) / 2;
+
+    const offX = off ? off.x || 0 : 0;
+    const offY = off ? off.y || 0 : 0;
+
+    const focal_canvas = baseOffsetX_old + offX + px;
+    const focal_canvas_y = baseOffsetY_old + offY + py;
+
+    const uX = drawW_old !== 0 ? px / drawW_old : 0.5;
+    const uY = drawH_old !== 0 ? py / drawH_old : 0.5;
+    const f_new_x = uX * drawW_new;
+    const f_new_y = uY * drawH_new;
+
+    const newOffX = Math.round(focal_canvas - baseOffsetX_new - f_new_x);
+    const newOffY = Math.round(focal_canvas_y - baseOffsetY_new - f_new_y);
+
+    const nextOffsets = offsets.slice();
+    nextOffsets[idx] = { x: newOffX, y: newOffY };
+    const nextScales = scales.slice();
+    nextScales[idx] = newScale;
+    setOffsets(nextOffsets);
+    setScales(nextScales);
+  };
+
+  const handlePreviewWheel = e => {
+    // When Alt is pressed for image zoom, prevent the preview container from scrolling
+    if (e.altKey || (pinchRef.current && pinchRef.current.active)) {
+      e.preventDefault();
+    }
+  };
+
+  // Attach a non-passive native wheel listener on the preview element so we can
+  // reliably call preventDefault() (some browsers attach passive wheel listeners
+  // which ignore preventDefault in React handlers).
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    const handler = e => {
+      if (e.altKey || (pinchRef.current && pinchRef.current.active)) {
+        e.preventDefault();
+      }
+    };
+    el.addEventListener('wheel', handler, { passive: false });
+    return () => el.removeEventListener('wheel', handler);
+    // previewRef intentionally not in deps to avoid reattaching frequently
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Also attach a capture-phase listener on the overlay so we reliably
+  // intercept wheel events before the browser scrolls the container (Chrome)
+  useEffect(() => {
+    const el = previewOverlayRef.current;
+    if (!el) return;
+    const handler = e => {
+      if (e.altKey || (pinchRef.current && pinchRef.current.active)) {
+        e.preventDefault();
+      }
+    };
+    el.addEventListener('wheel', handler, { passive: false, capture: true });
+    return () => el.removeEventListener('wheel', handler, { capture: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Fallback: listen on the document at capture phase to ensure we can
+  // prevent wheel-driven scrolling in Chrome even if other listeners intervene.
+  useEffect(() => {
+    const docHandler = e => {
+      if (!showPreview) return;
+      if (e.altKey || (pinchRef.current && pinchRef.current.active)) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('wheel', docHandler, { passive: false, capture: true });
+    return () => document.removeEventListener('wheel', docHandler, { capture: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showPreview]);
+
   const handleResetOffset = idx => {
     const n = offsets.slice();
     n[idx] = { x: 0, y: 0 };
     setOffsets(n);
+    const s = scales.slice();
+    s[idx] = 1;
+    setScales(s);
   };
 
   const onCollageAndPreview = async () => {
@@ -206,7 +454,7 @@ const ImageCollageView = ({
       return;
     }
     // finalize using offsets
-    await handleCollage(totalWidth, totalHeight, offsets);
+    await handleCollage(totalWidth, totalHeight, offsets, scales);
     setShowPreview(false);
   };
 
@@ -441,7 +689,8 @@ const ImageCollageView = ({
             zIndex: 1000,
             padding: 20,
           }}
-          onClick={() => setShowPreview(false)}
+            onClick={() => setShowPreview(false)}
+            ref={previewOverlayRef}
         >
           <div
             style={{
@@ -454,11 +703,11 @@ const ImageCollageView = ({
             }}
             onClick={e => e.stopPropagation()}
           >
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 8 }}>
-              <strong style={{ color: '#222' }}>Preview (drag images to reposition)</strong>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+              <div style={{ color: '#222', fontWeight: 600 }}>Preview</div>
               <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
-                <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); }} className="collage-btn">Reset Positions</button>
-                <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets); setShowPreview(false); }} className="collage-btn">Finalize Collage</button>
+                <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); setScales(images.map(()=>1)); }} className="collage-btn">Reset Positions</button>
+                <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets, scales); setShowPreview(false); }} className="collage-btn">Finalize Collage</button>
                 <button
                   onClick={() => setShowPreview(false)}
                   className="collage-btn"
@@ -468,9 +717,15 @@ const ImageCollageView = ({
                 </button>
               </div>
             </div>
+            <div style={{ color: '#444', fontSize: '0.95rem', lineHeight: '1.35', marginBottom: 8 }}>
+              <div>- Drag images to reposition</div>
+              <div>- Hold Alt + scroll to zoom (desktop). Use two-finger pinch to zoom on touch.</div>
+            </div>
 
             <div
               ref={previewRef}
+              onPointerDown={handlePreviewPointerDown}
+              onWheel={handlePreviewWheel}
               style={{
                 width: expectedWidth,
                 height: expectedHeight,
@@ -498,14 +753,17 @@ const ImageCollageView = ({
                 // compute exact cover sizing based on natural size
                 const imgRatio = meta.w / meta.h;
                 const cellRatio = cellW / cellH;
-                let drawW, drawH;
+                let drawW0, drawH0;
                 if (imgRatio > cellRatio) {
-                  drawH = cellH;
-                  drawW = cellH * imgRatio;
+                  drawH0 = cellH;
+                  drawW0 = cellH * imgRatio;
                 } else {
-                  drawW = cellW;
-                  drawH = cellW / imgRatio;
+                  drawW0 = cellW;
+                  drawH0 = cellW / imgRatio;
                 }
+                const scale = (scales && scales[idx]) || 1;
+                const drawW = Math.round(drawW0 * scale);
+                const drawH = Math.round(drawH0 * scale);
 
                 return (
                   <div
@@ -530,7 +788,8 @@ const ImageCollageView = ({
                         data-idx={idx}
                         alt={file.name}
                         draggable={false}
-                        onPointerDown={e => onPointerDown(e, idx, previewScale)}
+                            onPointerDown={e => onPointerDown(e, idx, previewScale)}
+                            onWheel={e => onImageWheel(e, idx, meta, off, cellW, cellH, left, top)}
                         style={{
                           position: 'absolute',
                           left: off.x + (cellW - drawW) / 2,

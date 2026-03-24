@@ -65,7 +65,8 @@ function useImageCollage({
   };
 
   // offsets: optional array of {x,y} per image to shift the drawn image inside its cell
-  const handleCollage = async (targetWidth, targetHeight, offsets = []) => {
+  // scales: optional array of per-image scale multipliers applied on top of the cover sizing
+  const handleCollage = async (targetWidth, targetHeight, offsets = [], scales = []) => {
     if (!canCollage) return;
     const canvas = document.createElement("canvas");
     canvas.width = expectedWidth;
@@ -86,15 +87,18 @@ function useImageCollage({
           const cellH = height;
           const imgRatio = img.width / img.height;
           const cellRatio = cellW / cellH;
-          let drawW, drawH;
-          // Use cover mode: scale to fill cell, clip overflow
+          let drawW0, drawH0;
+          // Use cover mode: scale to fill cell, clip overflow (base sizes)
           if (imgRatio > cellRatio) {
-            drawH = cellH;
-            drawW = cellH * imgRatio;
+            drawH0 = cellH;
+            drawW0 = cellH * imgRatio;
           } else {
-            drawW = cellW;
-            drawH = cellW / imgRatio;
+            drawW0 = cellW;
+            drawH0 = cellW / imgRatio;
           }
+          const scale = (scales && scales[idx]) || 1;
+          const drawW = Math.round(drawW0 * scale);
+          const drawH = Math.round(drawH0 * scale);
           const baseOffsetX = cellX - (drawW - cellW) / 2;
           const baseOffsetY = cellY - (drawH - cellH) / 2;
           const extra = offsets[idx] || { x: 0, y: 0 };
