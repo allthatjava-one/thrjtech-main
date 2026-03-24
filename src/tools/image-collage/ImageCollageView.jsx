@@ -116,6 +116,9 @@ const ImageCollageView = ({
   const [previewScale, setPreviewScale] = useState(1);
   const previewWrapperRef = useRef(null);
   const previewOverlayRef = useRef(null);
+  const [previewBtnStyle, setPreviewBtnStyle] = useState({ padding: '0.55rem 0.9rem', fontSize: '1rem', minWidth: 64 });
+  const previewHeaderRef = useRef(null);
+  const previewInfoRef = useRef(null);
 
   // Build preview URLs and reset offsets when images change
   useEffect(() => {
@@ -169,10 +172,21 @@ const ImageCollageView = ({
       const wrap = previewWrapperRef.current;
       if (!wrap) return setPreviewScale(1);
       const rect = wrap.getBoundingClientRect();
+      const headerH = previewHeaderRef.current ? previewHeaderRef.current.getBoundingClientRect().height : 0;
+      const infoH = previewInfoRef.current ? previewInfoRef.current.getBoundingClientRect().height : 0;
+      const paddingY = 24; // wrapper padding + gaps
       const availW = rect.width;
-      const availH = rect.height;
+      const availH = Math.max(1, rect.height - headerH - infoH - paddingY);
       const scale = Math.min(availW / Math.max(1, expectedWidth), availH / Math.max(1, expectedHeight), 1);
       setPreviewScale(scale);
+      // responsive button sizing based on available width
+      if (availW < 360) {
+        setPreviewBtnStyle({ padding: '0.35rem 0.5rem', fontSize: '0.85rem', minWidth: 48 });
+      } else if (availW < 420) {
+        setPreviewBtnStyle({ padding: '0.4rem 0.6rem', fontSize: '0.9rem', minWidth: 56 });
+      } else {
+        setPreviewBtnStyle({ padding: '0.55rem 0.9rem', fontSize: '1rem', minWidth: 64 });
+      }
     };
     compute();
     window.addEventListener('resize', compute);
@@ -715,6 +729,7 @@ const ImageCollageView = ({
             ref={previewOverlayRef}
         >
           <div
+            ref={previewWrapperRef}
             style={{
               background: '#fff',
               borderRadius: 8,
@@ -725,21 +740,33 @@ const ImageCollageView = ({
             }}
             onClick={e => e.stopPropagation()}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+            <div ref={previewHeaderRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, zIndex: 2 }}>
               <div style={{ color: '#222', fontWeight: 600 }}>Preview</div>
               <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
-                <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); setScales(images.map(()=>1)); }} className="collage-btn">Reset Positions</button>
-                <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets, scales); setShowPreview(false); }} className="collage-btn">Finalize Collage</button>
+                <button
+                  onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); setScales(images.map(()=>1)); }}
+                  className="collage-btn"
+                  style={{ ...previewBtnStyle }}
+                >
+                  Reset Positions
+                </button>
+                <button
+                  onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets, scales); setShowPreview(false); }}
+                  className="collage-btn"
+                  style={{ ...previewBtnStyle }}
+                >
+                  Finalize Collage
+                </button>
                 <button
                   onClick={() => setShowPreview(false)}
                   className="collage-btn"
-                  style={{ marginLeft: 8, background: '#ff6b6b', borderColor: '#ff6b6b', color: '#fff' }}
+                  style={{ ...previewBtnStyle, marginLeft: 8, background: '#ff6b6b', borderColor: '#ff6b6b', color: '#fff' }}
                 >
                   Close
                 </button>
               </div>
             </div>
-            <div style={{ color: '#444', fontSize: '0.95rem', lineHeight: '1.35', marginBottom: 8 }}>
+            <div ref={previewInfoRef} style={{ color: '#444', fontSize: '0.95rem', lineHeight: '1.35', marginBottom: 8 }}>
               <div>- Drag images to reposition</div>
               <div>- Hold Alt + scroll to zoom (desktop). Use two-finger pinch to zoom on touch.</div>
             </div>
@@ -749,18 +776,34 @@ const ImageCollageView = ({
               onPointerDown={handlePreviewPointerDown}
               onWheel={handlePreviewWheel}
               style={{
-                width: expectedWidth,
-                height: expectedHeight,
+                width: '100%',
+                height: '100%',
                 maxWidth: '86vw',
                 maxHeight: '70vh',
                 overflow: 'auto',
                 position: 'relative',
                 background: '#f6f7fb',
                 border: '1px solid #e6e9f2',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                paddingTop: 8,
               }}
             >
-              {/* Render grid cells */}
-              {Array.from({ length: rows * columns }).map((_, idx) => {
+              {/* inner scaled surface so large collages shrink to fit mobile screens */}
+              <div
+                style={{
+                  width: expectedWidth,
+                  height: expectedHeight,
+                  transform: `scale(${previewScale})`,
+                  transformOrigin: 'top left',
+                  position: 'relative',
+                  boxSizing: 'border-box',
+                  marginTop: 0,
+                }}
+              >
+                {/* Render grid cells */}
+                {Array.from({ length: rows * columns }).map((_, idx) => {
                 const col = idx % columns;
                 const row = Math.floor(idx / columns);
                 const cellW = width;
@@ -845,6 +888,7 @@ const ImageCollageView = ({
                   </div>
                 );
               })}
+              </div>
             </div>
           </div>
         </div>
