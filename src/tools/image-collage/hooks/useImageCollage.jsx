@@ -64,7 +64,8 @@ function useImageCollage({
     if (setRows && newRows !== rows) setRows(newRows);
   };
 
-  const handleCollage = async (targetWidth, targetHeight) => {
+  // offsets: optional array of {x,y} per image to shift the drawn image inside its cell
+  const handleCollage = async (targetWidth, targetHeight, offsets = []) => {
     if (!canCollage) return;
     const canvas = document.createElement("canvas");
     canvas.width = expectedWidth;
@@ -75,32 +76,44 @@ function useImageCollage({
     let idx = 0;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
-        if (idx >= images.length) continue; // leave blank
-        const file = images[idx++];
+        if (idx >= images.length) { idx++; continue; } // leave blank
+        const file = images[idx];
         const img = await loadImage(file);
-        const cellX = OUTER_PADDING_X + c * (width + PADDING);
-        const cellY = OUTER_PADDING_Y + r * (height + PADDING);
-        const cellW = width;
-        const cellH = height;
-        const imgRatio = img.width / img.height;
-        const cellRatio = cellW / cellH;
-        let drawW, drawH;
-        // Use cover mode: scale to fill cell, clip overflow — no letterbox whitespace
-        if (imgRatio > cellRatio) {
-          drawH = cellH;
-          drawW = cellH * imgRatio;
-        } else {
-          drawW = cellW;
-          drawH = cellW / imgRatio;
+        try {
+          const cellX = OUTER_PADDING_X + c * (width + PADDING);
+          const cellY = OUTER_PADDING_Y + r * (height + PADDING);
+          const cellW = width;
+          const cellH = height;
+          const imgRatio = img.width / img.height;
+          const cellRatio = cellW / cellH;
+          let drawW, drawH;
+          // Use cover mode: scale to fill cell, clip overflow
+          if (imgRatio > cellRatio) {
+            drawH = cellH;
+            drawW = cellH * imgRatio;
+          } else {
+            drawW = cellW;
+            drawH = cellW / imgRatio;
+          }
+          const baseOffsetX = cellX - (drawW - cellW) / 2;
+          const baseOffsetY = cellY - (drawH - cellH) / 2;
+          const extra = offsets[idx] || { x: 0, y: 0 };
+          const offsetX = baseOffsetX + extra.x;
+          const offsetY = baseOffsetY + extra.y;
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(cellX, cellY, cellW, cellH);
+          ctx.clip();
+          ctx.drawImage(img, offsetX, offsetY, drawW, drawH);
+          ctx.restore();
+        } finally {
+          try {
+            if (img && typeof img.src === "string" && img.src.startsWith("blob:")) {
+              URL.revokeObjectURL(img.src);
+            }
+          } catch (e) {}
         }
-        const offsetX = cellX - (drawW - cellW) / 2;
-        const offsetY = cellY - (drawH - cellH) / 2;
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(cellX, cellY, cellW, cellH);
-        ctx.clip();
-        ctx.drawImage(img, offsetX, offsetY, drawW, drawH);
-        ctx.restore();
+        idx++;
       }
     }
     // If a target total size is provided and differs from the base expected size, scale the result
