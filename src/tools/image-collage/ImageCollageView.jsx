@@ -109,6 +109,7 @@ const ImageCollageView = ({
   const [showPreview, setShowPreview] = useState(false);
   const [previewUrls, setPreviewUrls] = useState([]);
   const [previewMeta, setPreviewMeta] = useState([]);
+  const [previewErrors, setPreviewErrors] = useState([]);
   const [offsets, setOffsets] = useState([]);
   const [scales, setScales] = useState([]);
   const previewRef = useRef(null);
@@ -118,9 +119,12 @@ const ImageCollageView = ({
 
   // Build preview URLs and reset offsets when images change
   useEffect(() => {
-    previewUrls.forEach(u => URL.revokeObjectURL(u));
+    previewUrls.forEach(u => {
+      try { if (u && typeof u === 'string' && u.startsWith('blob:')) URL.revokeObjectURL(u); } catch (e) {}
+    });
     const urls = images.map(f => URL.createObjectURL(f));
     setPreviewUrls(urls);
+    setPreviewErrors(images.map(() => false));
     setOffsets(images.map(() => ({ x: 0, y: 0 })));
     setScales(images.map(() => 1));
     // load natural sizes for exact cover calculations
@@ -136,9 +140,27 @@ const ImageCollageView = ({
       )
     ).then(meta => setPreviewMeta(meta));
 
-    return () => urls.forEach(u => URL.revokeObjectURL(u));
+    return () => urls.forEach(u => { try { if (u && typeof u === 'string' && u.startsWith('blob:')) URL.revokeObjectURL(u); } catch (e) {} });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
+
+  const tryPreviewDataUrl = idx => {
+    const file = images[idx];
+    if (!file) {
+      const arr = previewErrors.slice(); arr[idx] = true; setPreviewErrors(arr); return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const arr = previewUrls.slice();
+      arr[idx] = reader.result;
+      setPreviewUrls(arr);
+      const errs = previewErrors.slice(); errs[idx] = false; setPreviewErrors(errs);
+    };
+    reader.onerror = () => {
+      const errs = previewErrors.slice(); errs[idx] = true; setPreviewErrors(errs);
+    };
+    reader.readAsDataURL(file);
+  };
 
   // compute a scale so the preview content fits the available wrapper (or 1)
   useEffect(() => {
@@ -782,26 +804,44 @@ const ImageCollageView = ({
                       justifyContent: 'center',
                     }}
                   >
-                    {file && url && (
-                      <img
-                        src={url}
-                        data-idx={idx}
-                        alt={file.name}
-                        draggable={false}
+                        {file && url && !previewErrors[idx] && (
+                          <img
+                            src={url}
+                            data-idx={idx}
+                            alt={file.name}
+                            draggable={false}
                             onPointerDown={e => onPointerDown(e, idx, previewScale)}
                             onWheel={e => onImageWheel(e, idx, meta, off, cellW, cellH, left, top)}
-                        style={{
-                          position: 'absolute',
-                          left: off.x + (cellW - drawW) / 2,
-                          top: off.y + (cellH - drawH) / 2,
-                          width: drawW,
-                          height: drawH,
-                          cursor: 'grab',
-                          userSelect: 'none',
-                          touchAction: 'none',
-                        }}
-                      />
-                    )}
+                            onError={() => tryPreviewDataUrl(idx)}
+                            style={{
+                              position: 'absolute',
+                              left: off.x + (cellW - drawW) / 2,
+                              top: off.y + (cellH - drawH) / 2,
+                              width: drawW,
+                              height: drawH,
+                              cursor: 'grab',
+                              userSelect: 'none',
+                              touchAction: 'none',
+                            }}
+                          />
+                        )}
+                        {file && (!url || previewErrors[idx]) && (
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#666',
+                              fontSize: 12,
+                              padding: 6,
+                              textAlign: 'center',
+                            }}
+                          >
+                            Preview not available for this image
+                          </div>
+                        )}
                   </div>
                 );
               })}
