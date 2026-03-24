@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import AboutUsModal from './components/AboutUsModal'
 import RotatingCards from './components/RotatingCards'
 import PdfCompressorPage from './tools/pdf-compressor/PdfCompressorPage'
 import PdfMergerPage from './tools/pdf-merger/PdfMergerPage'
@@ -14,7 +13,6 @@ import ImageResizerPage from './tools/image-resizer';
 import ImageCollagePage from './tools/image-collage';
 
 function HomePage() {
-  const [aboutOpen, setAboutOpen] = useState(false)
 
   useEffect(() => {
     try {
@@ -22,16 +20,9 @@ function HomePage() {
     } catch (e) {}
   }, [])
 
-  const handleOpenAbout = () => setAboutOpen(true)
-  const handleCloseAbout = () => setAboutOpen(false)
-
   return (
     <>
-      <Navbar onAboutClick={handleOpenAbout} />
-      <AboutUsModal
-        open={aboutOpen}
-        onClose={handleCloseAbout}
-      />
+      <Navbar />
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         {/* Main content - Start */}
 
