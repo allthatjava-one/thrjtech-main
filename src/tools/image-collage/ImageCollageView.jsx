@@ -104,7 +104,111 @@ const ImageCollageView = ({
     setImages(newImages);
   };
 
+  // preview and draggable offsets
   const [showDialog, setShowDialog] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
+  const [previewUrls, setPreviewUrls] = useState([]);
+  const [previewMeta, setPreviewMeta] = useState([]);
+  const [offsets, setOffsets] = useState([]);
+  const previewRef = useRef(null);
+  const [previewScale, setPreviewScale] = useState(1);
+  const previewWrapperRef = useRef(null);
+
+  // Build preview URLs and reset offsets when images change
+  useEffect(() => {
+    previewUrls.forEach(u => URL.revokeObjectURL(u));
+    const urls = images.map(f => URL.createObjectURL(f));
+    setPreviewUrls(urls);
+    setOffsets(images.map(() => ({ x: 0, y: 0 })));
+    // load natural sizes for exact cover calculations
+    Promise.all(
+      urls.map(
+        u =>
+          new Promise(resolve => {
+            const img = new window.Image();
+            img.onload = () => resolve({ w: img.naturalWidth, h: img.naturalHeight });
+            img.onerror = () => resolve({ w: 1, h: 1 });
+            img.src = u;
+          })
+      )
+    ).then(meta => setPreviewMeta(meta));
+
+    return () => urls.forEach(u => URL.revokeObjectURL(u));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images]);
+
+  // compute a scale so the preview content fits the available wrapper (or 1)
+  useEffect(() => {
+    if (!showPreview) return;
+    const compute = () => {
+      const wrap = previewWrapperRef.current;
+      if (!wrap) return setPreviewScale(1);
+      const rect = wrap.getBoundingClientRect();
+      const availW = rect.width;
+      const availH = rect.height;
+      const scale = Math.min(availW / Math.max(1, expectedWidth), availH / Math.max(1, expectedHeight), 1);
+      setPreviewScale(scale);
+    };
+    compute();
+    window.addEventListener('resize', compute);
+    return () => window.removeEventListener('resize', compute);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showPreview, expectedWidth, expectedHeight]);
+
+  // Drag state
+  const dragRef = useRef({ active: -1, startX: 0, startY: 0, startOffset: { x: 0, y: 0 } });
+
+  const onPointerDown = (e, idx, imgDisplayScale = 1) => {
+    e.preventDefault();
+    const p = offsets[idx] || { x: 0, y: 0 };
+    dragRef.current = {
+      active: idx,
+      startX: e.clientX,
+      startY: e.clientY,
+      startOffset: { x: p.x, y: p.y },
+      scale: imgDisplayScale || 1,
+    };
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+
+    const onMove = ev => {
+      const dX = ev.clientX - dragRef.current.startX;
+      const dY = ev.clientY - dragRef.current.startY;
+      // convert pointer delta to canvas pixels (preview scale = 1 unless scaled)
+      const newOffsets = offsets.slice();
+      newOffsets[dragRef.current.active] = {
+        x: Math.round(dragRef.current.startOffset.x + dX / dragRef.current.scale),
+        y: Math.round(dragRef.current.startOffset.y + dY / dragRef.current.scale),
+      };
+      setOffsets(newOffsets);
+    };
+
+    const onUp = ev => {
+      try { e.currentTarget.releasePointerCapture?.(e.pointerId); } catch (err) {}
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      dragRef.current.active = -1;
+    };
+
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  };
+
+  const handleResetOffset = idx => {
+    const n = offsets.slice();
+    n[idx] = { x: 0, y: 0 };
+    setOffsets(n);
+  };
+
+  const onCollageAndPreview = async () => {
+    if (!canCollage) return;
+    if (!showPreview) {
+      setShowPreview(true);
+      return;
+    }
+    // finalize using offsets
+    await handleCollage(totalWidth, totalHeight, offsets);
+    setShowPreview(false);
+  };
 
   return (
     <>
@@ -130,7 +234,7 @@ const ImageCollageView = ({
           Drag &amp; drop images here, or click to add. The grid will expand as needed.
         </span>
         {images.length > 0 && (
-          <ImageFileList images={images} onMove={handleMove} onRemove={handleRemove} />
+          <ImageFileList images={images} onMove={handleMove} onRemove={handleRemove} onReset={handleResetOffset} />
         )}
       </div>
       <div className="collage-options">
@@ -214,10 +318,10 @@ const ImageCollageView = ({
       </div>
       <button
         className="collage-btn"
-        onClick={() => handleCollage(totalWidth, totalHeight)}
+        onClick={onCollageAndPreview}
         disabled={!canCollage}
       >
-        Collage
+        Collage and Preview
       </button>
       {collageUrl && (
         <>
@@ -321,6 +425,132 @@ const ImageCollageView = ({
           )}
         </>
       )}
+
+      {showPreview && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0,0,0,0.7)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: 20,
+          }}
+          onClick={() => setShowPreview(false)}
+        >
+          <div
+            style={{
+              background: '#fff',
+              borderRadius: 8,
+              padding: 12,
+              maxWidth: '95vw',
+              maxHeight: '95vh',
+              overflow: 'auto',
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 8 }}>
+              <strong>Preview (drag images to reposition)</strong>
+              <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+                <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); }} className="collage-btn">Reset Positions</button>
+                <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets); setShowPreview(false); }} className="collage-btn">Finalize Collage</button>
+                <button
+                  onClick={() => setShowPreview(false)}
+                  className="collage-btn"
+                  style={{ marginLeft: 8, background: '#ff6b6b', borderColor: '#ff6b6b', color: '#fff' }}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+
+            <div
+              ref={previewRef}
+              style={{
+                width: expectedWidth,
+                height: expectedHeight,
+                maxWidth: '86vw',
+                maxHeight: '70vh',
+                overflow: 'auto',
+                position: 'relative',
+                background: '#f6f7fb',
+                border: '1px solid #e6e9f2',
+              }}
+            >
+              {/* Render grid cells */}
+              {Array.from({ length: rows * columns }).map((_, idx) => {
+                const col = idx % columns;
+                const row = Math.floor(idx / columns);
+                const cellW = width;
+                const cellH = height;
+                const left = col * (cellW + 10) + 10; // matches PADDING logic in hook (10)
+                const top = row * (cellH + 10) + 10;
+                const file = images[idx];
+                const url = previewUrls[idx];
+                const meta = previewMeta[idx] || { w: 1, h: 1 };
+                const off = offsets[idx] || { x: 0, y: 0 };
+
+                // compute exact cover sizing based on natural size
+                const imgRatio = meta.w / meta.h;
+                const cellRatio = cellW / cellH;
+                let drawW, drawH;
+                if (imgRatio > cellRatio) {
+                  drawH = cellH;
+                  drawW = cellH * imgRatio;
+                } else {
+                  drawW = cellW;
+                  drawH = cellW / imgRatio;
+                }
+
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      position: 'absolute',
+                      left,
+                      top,
+                      width: cellW,
+                      height: cellH,
+                      overflow: 'hidden',
+                      background: '#fff',
+                      border: '1px solid #ddd',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    {file && url && (
+                      <img
+                        src={url}
+                        data-idx={idx}
+                        alt={file.name}
+                        draggable={false}
+                        onPointerDown={e => onPointerDown(e, idx, previewScale)}
+                        style={{
+                          position: 'absolute',
+                          left: off.x + (cellW - drawW) / 2,
+                          top: off.y + (cellH - drawH) / 2,
+                          width: drawW,
+                          height: drawH,
+                          cursor: 'grab',
+                          userSelect: 'none',
+                          touchAction: 'none',
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
     </>
   );
 };

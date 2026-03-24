@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 
-export default function ImageFileList({ images, onMove, onRemove }) {
+export default function ImageFileList({ images, onMove, onRemove, onReset }) {
   const [urls, setUrls] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function ImageFileList({ images, onMove, onRemove }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
-  return (
+    return (
     <div className="image-file-list">
       {images.map((file, idx) => (
         <div className="image-file-item" key={file.name + file.size}>
@@ -41,6 +41,13 @@ export default function ImageFileList({ images, onMove, onRemove }) {
               title="Move Right"
             >
               ▶
+            </button>
+            <button
+              type="button"
+              onClick={e => { e.stopPropagation(); onReset && onReset(idx); }}
+              title="Reset Position"
+            >
+              Reset
             </button>
             <button
               type="button"
