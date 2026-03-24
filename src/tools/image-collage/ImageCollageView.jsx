@@ -455,7 +455,7 @@ const ImageCollageView = ({
             onClick={e => e.stopPropagation()}
           >
             <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 8 }}>
-              <strong>Preview (drag images to reposition)</strong>
+              <strong style={{ color: '#222' }}>Preview (drag images to reposition)</strong>
               <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
                 <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); }} className="collage-btn">Reset Positions</button>
                 <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets); setShowPreview(false); }} className="collage-btn">Finalize Collage</button>
