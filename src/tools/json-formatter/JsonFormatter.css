@@ -13,7 +13,7 @@
 /* ── Hero ────────────────────────────────────────────────────── */
 .jf-hero {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.25rem; /* reduced to match other pages' hero spacing */
 }
 
 .jf-tool-icon {
@@ -42,7 +42,7 @@
 }
 
 .jf-hero-subtitle {
-  color: var(--color-muted);
+  color: #4b5563; /* match other feature taglines */
   font-size: 1rem;
   max-width: 560px;
   margin: 0 auto;
@@ -276,4 +276,67 @@ kbd {
   .jf-json-output {
     min-height: 260px;
   }
+}
+
+/* Tool details (collapsible) */
+.tool-details {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #4b5563;
+}
+.tool-details summary {
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 0;
+  margin: 0 auto 0; /* ensure it's directly under the subtitle */
+  text-align: center;
+  position: relative;
+}
+.tool-details summary::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.5rem;
+  transition: transform 0.18s ease;
+}
+.tool-details[open] summary::after {
+  transform: rotate(180deg);
+}
+.tool-details summary::-webkit-details-marker { display: none; }
+.tool-details summary::marker { display: none; }
+.tool-details > div {
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+  color: #4b5563;
+}
+
+/* Card wrapper to match other tool pages */
+.jf-container .card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e6f0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Ensure Details matches the hero subtitle color inside the card */
+.jf-container .card .jf-hero-subtitle,
+.jf-container .card .tool-details,
+.jf-container .card .tool-details summary,
+.jf-container .card .tool-details > div {
+  color: #4b5563;
+}
+
+/* When Details is opened, wrap its content in a rounded card-like box */
+.jf-container .card .tool-details[open] > div {
+  background: #f8f9ff; /* subtle surface color */
+  border: 1px solid #e2e6f0;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
 }

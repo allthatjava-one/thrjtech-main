@@ -93,6 +93,15 @@
   text-align: center;
 }
 
+/* tighten hero spacing to match Image Resizer */
+.image-collage-page .hero-title {
+  margin: 0 0 0.5rem; /* match ImageResizer */
+}
+
+.image-collage-page .hero-tagline {
+  margin: 0 0 0.75rem; /* tightened to reduce extra gap */
+}
+
 .drop-zone {
   border: 2px dashed #a0aec0;
   border-radius: 8px;
@@ -229,4 +238,48 @@
   .collage-options input {
     width: 50px;
   }
+}
+
+/* Tool details (collapsible) */
+.tool-details {
+  margin-top: 0.25rem; /* tightened spacing above details */
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #4b5563; /* match pdf compressor hero-tagline */
+}
+.tool-details summary {
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4b5563; /* match pdf compressor hero-tagline */
+  padding: 0;
+  margin: 0;
+  text-align: center; /* center the summary text */
+  position: relative;
+}
+.tool-details summary::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.5rem;
+  transition: transform 0.18s ease;
+}
+.tool-details[open] summary::after {
+  transform: rotate(180deg);
+}
+.tool-details summary::-webkit-details-marker { display: none; }
+.tool-details summary::marker { display: none; }
+.tool-details > div {
+  margin-top: 0.25rem;
+  padding-left: 0.25rem;
+  color: #4b5563;
+}
+
+/* When Details is opened, wrap its content in a rounded box */
+.image-collage-page .card .tool-details[open] > div {
+  background: #f8f9ff;
+  border: 1px solid #e2e6f0;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }

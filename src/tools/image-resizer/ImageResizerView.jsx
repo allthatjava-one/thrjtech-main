@@ -54,7 +54,26 @@ export function ImageResizerView({
   return (
     <div className="image-resizer-view">
       <h2 className="hero-title">Image Resizer</h2>
-      <p className="hero-tagline">Resize your image by percentage or dimensions.</p>
+      <p className="hero-tagline">Resize your image to any size by percentage or exact pixel dimensions. Lock the aspect ratio to prevent distortion, then download your result instantly.</p>
+      <details className="tool-details tool-details--match">
+        <summary>Details</summary>
+        <div>
+          <h3>What it does</h3>
+          <p>Scales images up or down using percentage or explicit dimensions and outputs a downloadable file.</p>
+
+          <h3>How it works</h3>
+          <p>Performs client-side scaling on an offscreen canvas so files never leave your browser.</p>
+
+          <h3>Use cases</h3>
+          <p>Make assets web-friendly, prepare thumbnails, or resize before watermarking or upload.</p>
+
+          <h3>Comparison</h3>
+          <p>Quicker and more private than cloud re-sizers, but with fewer advanced editing features than full editors.</p>
+
+          <h3>FAQs</h3>
+          <p>Q: Can I keep aspect ratio? A: Yes — enable the aspect lock to preserve proportions.</p>
+        </div>
+      </details>
       <div
         className={`drop-zone${isDragging ? ' dragging' : ''}`}
         onDrop={handleDrop}

@@ -89,15 +89,34 @@ export default function JsonFormatter() {
   return (
     <section className="formatter-section">
       <div className="jf-container">
+        <div className="card">
 
         {/* Hero */}
         <div className="jf-hero">
           <div className="jf-tool-icon" aria-hidden="true">{'{}'}</div>
           <h1 className="jf-hero-title">JSON Formatter</h1>
           <p className="jf-hero-subtitle">
-            Paste your JSON below, click <strong>Format</strong>, and get
-            clean, readable output instantly — no sign-up required.
+            Paste your JSON below, click <strong>Format</strong>, and get clean, readable output instantly — no sign-up required. Invalid JSON is caught and reported with the line number so you can fix errors quickly.
           </p>
+          <details className="tool-details">
+            <summary>Details</summary>
+            <div>
+              <h3>What it does</h3>
+              <p>Formats and validates JSON, producing indented, human-readable output.</p>
+
+              <h3>How it works</h3>
+              <p>Parses the input in the browser using the native JSON parser and re-serializes it with indentation.</p>
+
+              <h3>Use cases</h3>
+              <p>Clean up API responses, share readable snippets, or debug JSON structures during development.</p>
+
+              <h3>Comparison</h3>
+              <p>Lightweight and instant compared to IDE formatters; no installation required.</p>
+
+              <h3>FAQs</h3>
+              <p>Q: Will it fix invalid JSON? A: It reports errors and indicates the likely line, but you must correct the input.</p>
+            </div>
+          </details>
         </div>
 
         {/* How to use */}
@@ -179,6 +198,7 @@ export default function JsonFormatter() {
             </pre>
           </div>
 
+        </div>
         </div>
       </div>
     </section>

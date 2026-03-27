@@ -25,8 +25,27 @@ export function PdfCompressorView({
               <div className="hero-section">
                 <h1 className="hero-title">Drop and Go.</h1>
                 <p className="hero-tagline">
-                  Your PDF will be compressed in no time — privately and securely.
-                </p>
+                    Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, and download the smaller result.
+                  </p>
+                  <details className="tool-details">
+                    <summary>Details</summary>
+                    <div>
+                      <h3>What it does</h3>
+                      <p>Compresses PDF files to reduce storage and transfer size while aiming to preserve visual quality.</p>
+
+                      <h3>How it works</h3>
+                      <p>Runs a compression routine on the serverless backend, optimizing images and streams before returning the result.</p>
+
+                      <h3>Use cases</h3>
+                      <p>Reduce upload bandwidth, speed document sharing, or shrink archives for storage.</p>
+
+                      <h3>Comparison</h3>
+                      <p>Faster and simpler than installing local tools for occasional use; server-side compression may offer better results for large files.</p>
+
+                      <h3>FAQs</h3>
+                      <p>Q: Is my file private? A: Files are processed temporarily and auto-deleted per the app policy.</p>
+                    </div>
+                  </details>
                 <div className="hero-badges">
                   <span className="hero-badge">⚡ Instant</span>
                   <span className="hero-badge">🔒 Secure</span>
