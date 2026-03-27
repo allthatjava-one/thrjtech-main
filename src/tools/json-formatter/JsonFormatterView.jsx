@@ -8,7 +8,7 @@ function formatJson(raw) {
   return JSON.stringify(parsed, null, INDENT)
 }
 
-export default function JsonFormatter() {
+export default function JsonFormatterView() {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [error, setError] = useState('')
@@ -141,6 +141,13 @@ export default function JsonFormatter() {
                     <h3>JSON in pretty format</h3>
                     <ul>
                       <li>"Pretty" JSON adds line breaks and indentation so nested objects and arrays are easy to scan. This improves debugging, code reviews, and documentation. The formatter preserves keys and values while only changing whitespace and ordering as allowed by the JSON spec.</li>
+                    </ul>
+
+                    <h3>Useful when</h3>
+                    <ul>
+                      <li>need to debug or inspect JSON data.</li>
+                      <li>want to improve readability for code reviews or documentation.</li>
+                      <li>preparing JSON for configuration files or API requests.</li>
                     </ul>
 
                     <h3>FAQs</h3>

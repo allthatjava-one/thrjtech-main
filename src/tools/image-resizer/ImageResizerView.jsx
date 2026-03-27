@@ -100,6 +100,13 @@ export function ImageResizerView({
                   <li>For best results, don't upscale more than 2x the original dimensions. When preparing assets for web, prefer downscaling to reduce file size and loading time. Use the aspect lock to avoid unwanted distortion.</li>
                 </ul>
 
+                <h3>Useful when</h3>
+                <ul>
+                  <li>need to resize images for web or print.</li>
+                  <li>want to maintain aspect ratio while changing dimensions.</li>
+                  <li>preparing images for specific display requirements or file size constraints.</li>
+                </ul>
+
                 <h3>FAQs</h3>
                 <ul>
                   <li><strong>Q:</strong> Can I keep aspect ratio? <strong>A:</strong> Yes — enable the aspect lock to preserve proportions while changing one dimension.</li>

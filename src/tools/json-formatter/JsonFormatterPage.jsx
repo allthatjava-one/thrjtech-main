@@ -1,5 +1,5 @@
 
-import JsonFormatter from './JsonFormatter';
+import JsonFormatterView from './JsonFormatterView';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
@@ -8,7 +8,7 @@ export default function JsonFormatterPage() {
     <>
       <Navbar />
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <JsonFormatter />
+        <JsonFormatterView />
       </main>
       <Footer />
     </>
