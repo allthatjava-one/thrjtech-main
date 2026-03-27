@@ -1,4 +1,5 @@
 import { formatSize } from './utils/formatSize'
+import { useState } from 'react'
 
 export function PdfMergerView({
   files,
@@ -27,6 +28,7 @@ export function PdfMergerView({
   compress,
   setCompress,
 }) {
+  const [openPanel, setOpenPanel] = useState('')
   return (
     <>
       {status !== 'done' && (
@@ -36,25 +38,77 @@ export function PdfMergerView({
             <p className="hero-tagline">
               Combine multiple PDF files into a single document in seconds. Upload your files, drag to reorder them, then merge and download the result.
             </p>
-            <details className="tool-details">
-              <summary>Details</summary>
-              <div>
-                <h3>What it does</h3>
-                <p>Merges multiple PDFs into a single document, preserving page order and basic metadata.</p>
-
-                <h3>How it works</h3>
-                <p>Uploads are combined on the backend and returned as a single merged file for download.</p>
-
-                <h3>Use cases</h3>
-                <p>Combine reports, split contracts into single files, or assemble multi-part documents for distribution.</p>
-
-                <h3>Comparison</h3>
-                <p>Simpler and faster than manual desktop merging for ad-hoc tasks; lacks advanced editing features.</p>
-
-                <h3>FAQs</h3>
-                <p>Q: Can I reorder pages? A: You can reorder whole files before merging; page-level reordering is not supported.</p>
+            <div className="details-row" data-open={openPanel}>
+              <div className="details-controls">
+                <button
+                  className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
+                  onClick={() => setOpenPanel(prev => (prev === 'details' ? '' : 'details'))}
+                  aria-expanded={openPanel === 'details'}
+                  type="button"
+                >
+                  Details
+                </button>
+                <button
+                  className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
+                  onClick={() => setOpenPanel(prev => (prev === 'howitworks' ? '' : 'howitworks'))}
+                  aria-expanded={openPanel === 'howitworks'}
+                  type="button"
+                >
+                  How it works
+                </button>
               </div>
-            </details>
+
+              {openPanel && (
+                <div className="shared-collapse">
+                  {openPanel === 'details' && (
+                    <div className="details-content">
+                      <h3>What it does</h3>
+                      <ul>
+                        <li>Merges multiple PDFs into a single document, preserving page order and basic metadata.</li>
+                      </ul>
+
+                      <h3>Use cases</h3>
+                      <ul>
+                        <li>Combine reports, split contracts into single files, or assemble multi-part documents for distribution.</li>
+                      </ul>
+
+                      <h3>Comparison</h3>
+                      <ul>
+                        <li>Simpler and faster than manual desktop merging for ad-hoc tasks; lacks advanced editing features.</li>
+                      </ul>
+
+                      <h3>FAQs</h3>
+                      <ul>
+                        <li><strong>Q:</strong> Can I reorder pages? <strong>A:</strong> You can reorder whole files before merging; page-level reordering is not supported.</li>
+                      </ul>
+                    </div>
+                  )}
+
+                  {openPanel === 'howitworks' && (
+                    <div className="howitworks-content">
+                      <ol style={{ margin: 0, paddingLeft: '1rem' }}>
+                        <li style={{ marginBottom: '0.75rem' }}>
+                          <img src="/screenshots/merger/merger-001.png" alt="Step 1" className="how-img" />
+                          <p>Upload the PDF files you want to merge.</p>
+                        </li>
+                        <li style={{ marginBottom: '0.75rem' }}>
+                          <img src="/screenshots/merger/merger-002.png" alt="Step 2" className="how-img" />
+                          <p>Drag to reorder files to set the merge order.</p>
+                        </li>
+                        <li style={{ marginBottom: '0.75rem' }}>
+                          <img src="/screenshots/merger/merger-003.png" alt="Step 3" className="how-img" />
+                          <p>Click Merge to send files to the backend merging process.</p>
+                        </li>
+                        <li>
+                          <img src="/screenshots/merger/merger-004.png" alt="Step 4" className="how-img" />
+                          <p>Download the merged PDF when processing completes.</p>
+                        </li>
+                      </ol>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
             <div className="hero-badges">
               <span className="hero-badge">⚡ Fast</span>
               <span className="hero-badge">🔒 Secure</span>

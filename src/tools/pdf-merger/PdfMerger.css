@@ -155,6 +155,127 @@
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }
 
+/* Place Details and How it works side-by-side where space allows */
+.details-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+.details-row .tool-details {
+  flex: 1 1 300px;
+  min-width: 240px;
+  max-width: 48%;
+  box-sizing: border-box;
+}
+/* allow flex children to shrink below their content's min-width */
+.details-row .tool-details {
+  min-width: 0;
+}
+@media (max-width: 740px) {
+  .details-row .tool-details {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+.how-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #e2e6f0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.details-row .tool-details img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure collapsible content fills its column */
+.details-row .tool-details > div {
+  width: 100%;
+  box-sizing: border-box;
+}
+.details-row .tool-details[open] > div {
+  width: 100%;
+  max-height: 46vh;
+  overflow: auto;
+}
+.details-row[data-open="details"] .tool-details {
+  flex-basis: 100% !important;
+  max-width: 100% !important;
+}
+.details-row[data-open="details"] .tool-details.tool-howitworks {
+  display: none !important;
+}
+.details-row[data-open="howitworks"] .tool-details {
+  display: none !important;
+}
+.details-row[data-open="howitworks"] .tool-details.tool-howitworks {
+  display: block !important;
+  flex-basis: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Button-controlled shared collapse styles (match compressor) */
+.pdf-merger-page .details-controls {
+  display: block;
+  margin-top: 1rem;
+}
+.pdf-merger-page .tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 0.5rem 0 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: inherit;
+  display: inline;
+  line-height: inherit;
+}
+.pdf-merger-page .tab-btn::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.25rem;
+  transition: transform 0.18s ease;
+  font-size: 0.85em;
+}
+.pdf-merger-page .tab-btn.active::after { transform: rotate(180deg); }
+.pdf-merger-page .details-controls .tab-btn {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  height: auto !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+.pdf-merger-page .details-controls .tab-btn:focus { outline: none !important; text-decoration: underline !important; }
+.pdf-merger-page .details-controls .tab-btn,
+.pdf-merger-page .details-controls .tab-btn.active { color: #374151 !important; }
+
+.pdf-merger-page .shared-collapse {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  border: 1px solid #e2e6f0;
+  padding: 0.75rem;
+  max-height: none;
+  overflow: visible;
+}
+.pdf-merger-page .details-content,
+.pdf-merger-page .howitworks-content { color: #374151 !important; opacity: 1 !important; text-align: left !important; }
+.pdf-merger-page .details-content ul,
+.pdf-merger-page .howitworks-content ul { margin: 0.5rem 0 0 1.25rem; padding-left: 1.25rem; }
+.pdf-merger-page .details-content p,
+.pdf-merger-page .howitworks-content p { text-align: left !important; }
+
 .pdf-merger-page .drop-zone:hover,
 .pdf-merger-page .drop-zone.dragging {
   border-color: #6366f1;

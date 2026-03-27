@@ -22,29 +22,82 @@ export function WatermarkerView({
   handleWatermark,
 }) {
   const [previewOpen, setPreviewOpen] = useState(false)
+  const [openPanel, setOpenPanel] = useState('')
   return (
     <div className="watermarker-view">
       <h2 className="hero-title">Image Watermarker</h2>
       <p className="hero-tagline">Protect your images by adding a custom text or logo watermark. Adjust the position and style to fit your needs, then download the watermarked result instantly.</p>
-      <details className="tool-details">
-        <summary>Details</summary>
-        <div>
-          <h3>What it does</h3>
-          <p>Applies text or logo watermarks to images with placement and style options.</p>
-
-          <h3>How it works</h3>
-          <p>Draws the watermark onto an offscreen canvas and exports the result as a new image file.</p>
-
-          <h3>Use cases</h3>
-          <p>Add branding, copyright notices, or subtle stamps before sharing or publishing images.</p>
-
-          <h3>Comparison</h3>
-          <p>Faster for single-image watermarking than heavy desktop tools; no persistent uploads required.</p>
-
-          <h3>FAQs</h3>
-          <p>Q: Can I use a logo? A: Yes — upload a PNG/SVG logo file to apply as a watermark.</p>
+      <div className="details-row" data-open={openPanel}>
+        <div className="details-controls">
+          <button
+            className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
+            onClick={() => setOpenPanel(prev => (prev === 'details' ? '' : 'details'))}
+            aria-expanded={openPanel === 'details'}
+            type="button"
+          >
+            Details
+          </button>
+          <button
+            className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
+            onClick={() => setOpenPanel(prev => (prev === 'howitworks' ? '' : 'howitworks'))}
+            aria-expanded={openPanel === 'howitworks'}
+            type="button"
+          >
+            How it works
+          </button>
         </div>
-      </details>
+
+        {openPanel && (
+          <div className="shared-collapse">
+            {openPanel === 'details' && (
+              <div className="details-content">
+                <h3>What it does</h3>
+                <ul>
+                  <li>Applies text or logo watermarks to images with placement and style options.</li>
+                </ul>
+
+                <h3>Use cases</h3>
+                <ul>
+                  <li>Add branding, copyright notices, or subtle stamps before sharing or publishing images.</li>
+                </ul>
+
+                <h3>Comparison</h3>
+                <ul>
+                  <li>Faster for single-image watermarking than heavy desktop tools; no persistent uploads required.</li>
+                </ul>
+
+                <h3>FAQs</h3>
+                <ul>
+                  <li><strong>Q:</strong> Can I use a logo? <strong>A:</strong> Yes — upload a PNG/SVG logo file to apply as a watermark.</li>
+                </ul>
+              </div>
+            )}
+
+            {openPanel === 'howitworks' && (
+              <div className="howitworks-content">
+                <ol style={{ margin: 0, paddingLeft: '1rem' }}>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/watermarker/watermarker001.png" alt="Step 1" className="how-img" />
+                    <p>Import an image to watermark via drag & drop or file select.</p>
+                  </li>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/watermarker/watermarker002.png" alt="Step 2" className="how-img" />
+                    <p>Choose text or logo watermark and adjust position, size, and opacity.</p>
+                  </li>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/watermarker/watermarker003.png" alt="Step 3" className="how-img" />
+                    <p>Apply the watermark preview and fine-tune placement.</p>
+                  </li>
+                  <li>
+                    <img src="/screenshots/watermarker/watermarker004.png" alt="Step 4" className="how-img" />
+                    <p>Export and download the watermarked image.</p>
+                  </li>
+                </ol>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
       <div
         className={`drop-zone${isDragging ? ' dragging' : ''}`}
         onDrop={handleDrop}

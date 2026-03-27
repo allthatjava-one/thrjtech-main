@@ -107,6 +107,7 @@ const ImageCollageView = ({
   // preview and draggable offsets
   const [showDialog, setShowDialog] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [openPanel, setOpenPanel] = useState('');
   const [previewUrls, setPreviewUrls] = useState([]);
   const [previewMeta, setPreviewMeta] = useState([]);
   const [previewErrors, setPreviewErrors] = useState([]);
@@ -428,25 +429,77 @@ const ImageCollageView = ({
     <>
       <h2 className="hero-title">Image Collage</h2>
       <p className="hero-tagline">Combine multiple images into a beautiful grid collage. Arrange your photos in custom rows and columns, adjust the canvas size, and download the final image with one click.</p>
-      <details className="tool-details">
-        <summary>Details</summary>
-        <div>
-          <h3>What it does</h3>
-          <p>Creates a tiled collage from selected images with configurable rows, columns, and canvas size.</p>
-
-          <h3>How it works</h3>
-          <p>Uploads images in the browser, lays them out on an offscreen canvas, and generates a downloadable image.</p>
-
-          <h3>Use cases</h3>
-          <p>Quick photo collages for social posts, event montages, or combined previews for sharing.</p>
-
-          <h3>Comparison</h3>
-          <p>Faster for small to medium batches than heavy desktop editors; simpler but less feature-rich than specialized collage apps.</p>
-
-          <h3>FAQs</h3>
-          <p>Q: How many images? A: Works best with a few to a few dozen images depending on your browser memory.</p>
+      <div className="details-row" data-open={openPanel}>
+        <div className="details-controls">
+          <button
+            className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
+            onClick={() => setOpenPanel(prev => (prev === 'details' ? '' : 'details'))}
+            aria-expanded={openPanel === 'details'}
+            type="button"
+          >
+            Details
+          </button>
+          <button
+            className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
+            onClick={() => setOpenPanel(prev => (prev === 'howitworks' ? '' : 'howitworks'))}
+            aria-expanded={openPanel === 'howitworks'}
+            type="button"
+          >
+            How it works
+          </button>
         </div>
-      </details>
+
+        {openPanel && (
+          <div className="shared-collapse">
+            {openPanel === 'details' && (
+              <div className="details-content">
+                <h3>What it does</h3>
+                <ul>
+                  <li>Creates a tiled collage from selected images with configurable rows, columns, and canvas size.</li>
+                </ul>
+
+                <h3>Use cases</h3>
+                <ul>
+                  <li>Quick photo collages for social posts, event montages, or combined previews for sharing.</li>
+                </ul>
+
+                <h3>Comparison</h3>
+                <ul>
+                  <li>Faster for small to medium batches than heavy desktop editors; simpler but less feature-rich than specialized collage apps.</li>
+                </ul>
+
+                <h3>FAQs</h3>
+                <ul>
+                  <li><strong>Q:</strong> How many images? <strong>A:</strong> Works best with a few to a few dozen images depending on your browser memory.</li>
+                </ul>
+              </div>
+            )}
+
+            {openPanel === 'howitworks' && (
+              <div className="howitworks-content">
+                <ol style={{ margin: 0, paddingLeft: '1rem' }}>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/collage/image-collage001.png" alt="Step 1" className="how-img" />
+                    <p>Add images via drag & drop or the file browser.</p>
+                  </li>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/collage/image-collage002.png" alt="Step 2" className="how-img" />
+                    <p>Adjust rows, columns, and spacing to arrange the grid.</p>
+                  </li>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/collage/image-collage003.png" alt="Step 3" className="how-img" />
+                    <p>Preview the collage and reposition images if needed.</p>
+                  </li>
+                  <li>
+                    <img src="/screenshots/collage/image-collage004.png" alt="Step 4" className="how-img" />
+                    <p>Generate and download the final collaged image.</p>
+                  </li>
+                </ol>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       <div
         className={`drop-zone${isDragging ? " dragging" : ""}`}
