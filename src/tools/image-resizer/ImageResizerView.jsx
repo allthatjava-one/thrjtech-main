@@ -80,24 +80,32 @@ export function ImageResizerView({
           <div className="shared-collapse">
             {openPanel === 'details' && (
               <div className="details-content">
-                <h3>What it does</h3>
+                <h3>What is Image Resizer</h3>
                 <ul>
-                  <li>Scales images up or down using percentage or explicit dimensions and outputs a downloadable file.</li>
+                  <li>The Image Resizer lets you change an image's dimensions either by a percentage scale or by specifying exact width and height in pixels. It runs client-side and provides a downloadable resized image.</li>
                 </ul>
 
-                <h3>Use cases</h3>
+                <h3>How the image resizer works</h3>
                 <ul>
-                  <li>Make assets web-friendly, prepare thumbnails, or resize before watermarking or upload.</li>
+                  <li>The tool decodes the source image in the browser, draws it onto an offscreen canvas at the requested dimensions, and then exports the canvas content as a new image file. This approach keeps processing local to your device and avoids uploading the image to a remote server.</li>
                 </ul>
 
-                <h3>Comparison</h3>
+                <h3>How is image quality affected by changing size</h3>
                 <ul>
-                  <li>Quicker and more private than cloud re-sizers, but with fewer advanced editing features than full editors.</li>
+                  <li>Downscaling (making smaller) typically preserves visual quality but may lose fine detail and reduce file size. Upscaling (making larger) cannot add real detail and may produce a softer or pixelated result depending on the original resolution and the scaling factor. Some algorithms produce better results for upscaling, but the browser's canvas scaling is subject to its built-in interpolation.</li>
+                </ul>
+
+                <h3>Practical tips</h3>
+                <ul>
+                  <li>For best results, don't upscale more than 2x the original dimensions. When preparing assets for web, prefer downscaling to reduce file size and loading time. Use the aspect lock to avoid unwanted distortion.</li>
                 </ul>
 
                 <h3>FAQs</h3>
                 <ul>
-                  <li><strong>Q:</strong> Can I keep aspect ratio? <strong>A:</strong> Yes — enable the aspect lock to preserve proportions.</li>
+                  <li><strong>Q:</strong> Can I keep aspect ratio? <strong>A:</strong> Yes — enable the aspect lock to preserve proportions while changing one dimension.</li>
+                  <li><strong>Q:</strong> Does resizing happen on my device? <strong>A:</strong> Yes — the resizing runs in your browser using an offscreen canvas, so images are not uploaded unless you explicitly send them.</li>
+                  <li><strong>Q:</strong> Will the file size always decrease when shrinking an image? <strong>A:</strong> Usually, but not always—file size depends on image format and compression. Converting formats or changing compression settings also affects size.</li>
+                  <li><strong>Q:</strong> Can I batch resize multiple images? <strong>A:</strong> This tool is focused on single-image operations. For large batches, consider using a dedicated batch tool or script.</li>
                 </ul>
               </div>
             )}
