@@ -24,6 +24,7 @@ export function ImageResizerView({
   handleResize,
 }) {
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [openPanel, setOpenPanel] = useState('');
   const [linked, setLinked] = useState(true);
   const originalWidth = useRef(null);
   const originalHeight = useRef(null);
@@ -55,25 +56,77 @@ export function ImageResizerView({
     <div className="image-resizer-view">
       <h2 className="hero-title">Image Resizer</h2>
       <p className="hero-tagline">Resize your image to any size by percentage or exact pixel dimensions. Lock the aspect ratio to prevent distortion, then download your result instantly.</p>
-      <details className="tool-details tool-details--match">
-        <summary>Details</summary>
-        <div>
-          <h3>What it does</h3>
-          <p>Scales images up or down using percentage or explicit dimensions and outputs a downloadable file.</p>
-
-          <h3>How it works</h3>
-          <p>Performs client-side scaling on an offscreen canvas so files never leave your browser.</p>
-
-          <h3>Use cases</h3>
-          <p>Make assets web-friendly, prepare thumbnails, or resize before watermarking or upload.</p>
-
-          <h3>Comparison</h3>
-          <p>Quicker and more private than cloud re-sizers, but with fewer advanced editing features than full editors.</p>
-
-          <h3>FAQs</h3>
-          <p>Q: Can I keep aspect ratio? A: Yes — enable the aspect lock to preserve proportions.</p>
+      <div className="details-row" data-open={openPanel}>
+        <div className="details-controls">
+          <button
+            className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
+            onClick={() => setOpenPanel(prev => (prev === 'details' ? '' : 'details'))}
+            aria-expanded={openPanel === 'details'}
+            type="button"
+          >
+            Details
+          </button>
+          <button
+            className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
+            onClick={() => setOpenPanel(prev => (prev === 'howitworks' ? '' : 'howitworks'))}
+            aria-expanded={openPanel === 'howitworks'}
+            type="button"
+          >
+            How it works
+          </button>
         </div>
-      </details>
+
+        {openPanel && (
+          <div className="shared-collapse">
+            {openPanel === 'details' && (
+              <div className="details-content">
+                <h3>What it does</h3>
+                <ul>
+                  <li>Scales images up or down using percentage or explicit dimensions and outputs a downloadable file.</li>
+                </ul>
+
+                <h3>Use cases</h3>
+                <ul>
+                  <li>Make assets web-friendly, prepare thumbnails, or resize before watermarking or upload.</li>
+                </ul>
+
+                <h3>Comparison</h3>
+                <ul>
+                  <li>Quicker and more private than cloud re-sizers, but with fewer advanced editing features than full editors.</li>
+                </ul>
+
+                <h3>FAQs</h3>
+                <ul>
+                  <li><strong>Q:</strong> Can I keep aspect ratio? <strong>A:</strong> Yes — enable the aspect lock to preserve proportions.</li>
+                </ul>
+              </div>
+            )}
+
+            {openPanel === 'howitworks' && (
+              <div className="howitworks-content">
+                <ol style={{ margin: 0, paddingLeft: '1rem' }}>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/resizer/Image-resizer001.png" alt="Step 1" className="how-img" />
+                    <p>Choose a source image by drag & drop or browsing.</p>
+                  </li>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/resizer/Image-resizer002.png" alt="Step 2" className="how-img" />
+                    <p>Select percentage or explicit width/height and lock the aspect ratio if needed.</p>
+                  </li>
+                  <li style={{ marginBottom: '0.75rem' }}>
+                    <img src="/screenshots/resizer/Image-resizer003.png" alt="Step 3" className="how-img" />
+                    <p>Click Resize to run client-side scaling and produce the output file.</p>
+                  </li>
+                  <li>
+                    <img src="/screenshots/resizer/Image-resizer004.png" alt="Step 4" className="how-img" />
+                    <p>Preview and download the resized image.</p>
+                  </li>
+                </ol>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
       <div
         className={`drop-zone${isDragging ? ' dragging' : ''}`}
         onDrop={handleDrop}

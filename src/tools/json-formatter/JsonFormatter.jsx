@@ -14,6 +14,7 @@ export default function JsonFormatter() {
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
   const [errorLine, setErrorLine] = useState(null)
+  const [openPanel, setOpenPanel] = useState('')
 
   const handleFormat = useCallback(() => {
     const trimmed = input.trim()
@@ -98,25 +99,77 @@ export default function JsonFormatter() {
           <p className="jf-hero-subtitle">
             Paste your JSON below, click <strong>Format</strong>, and get clean, readable output instantly — no sign-up required. Invalid JSON is caught and reported with the line number so you can fix errors quickly.
           </p>
-          <details className="tool-details">
-            <summary>Details</summary>
-            <div>
-              <h3>What it does</h3>
-              <p>Formats and validates JSON, producing indented, human-readable output.</p>
-
-              <h3>How it works</h3>
-              <p>Parses the input in the browser using the native JSON parser and re-serializes it with indentation.</p>
-
-              <h3>Use cases</h3>
-              <p>Clean up API responses, share readable snippets, or debug JSON structures during development.</p>
-
-              <h3>Comparison</h3>
-              <p>Lightweight and instant compared to IDE formatters; no installation required.</p>
-
-              <h3>FAQs</h3>
-              <p>Q: Will it fix invalid JSON? A: It reports errors and indicates the likely line, but you must correct the input.</p>
+          <div className="details-row" data-open={openPanel}>
+            <div className="details-controls">
+              <button
+                className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
+                onClick={() => setOpenPanel(prev => (prev === 'details' ? '' : 'details'))}
+                aria-expanded={openPanel === 'details'}
+                type="button"
+              >
+                Details
+              </button>
+              <button
+                className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
+                onClick={() => setOpenPanel(prev => (prev === 'howitworks' ? '' : 'howitworks'))}
+                aria-expanded={openPanel === 'howitworks'}
+                type="button"
+              >
+                How it works
+              </button>
             </div>
-          </details>
+
+            {openPanel && (
+              <div className="shared-collapse">
+                {openPanel === 'details' && (
+                  <div className="details-content">
+                    <h3>What it does</h3>
+                    <ul>
+                      <li>Formats and validates JSON, producing indented, human-readable output.</li>
+                    </ul>
+
+                    <h3>Use cases</h3>
+                    <ul>
+                      <li>Clean up API responses, share readable snippets, or debug JSON structures during development.</li>
+                    </ul>
+
+                    <h3>Comparison</h3>
+                    <ul>
+                      <li>Lightweight and instant compared to IDE formatters; no installation required.</li>
+                    </ul>
+
+                    <h3>FAQs</h3>
+                    <ul>
+                      <li><strong>Q:</strong> Will it fix invalid JSON? <strong>A:</strong> It reports errors and indicates the likely line, but you must correct the input.</li>
+                    </ul>
+                  </div>
+                )}
+
+                {openPanel === 'howitworks' && (
+                  <div className="howitworks-content">
+                    <ol style={{ margin: 0, paddingLeft: '1rem' }}>
+                      <li style={{ marginBottom: '0.75rem' }}>
+                        <img src="/screenshots/json-formatter/JSON_formatter001.png" alt="Step 1" className="how-img" />
+                        <p>Paste or type raw JSON into the input panel.</p>
+                      </li>
+                      <li style={{ marginBottom: '0.75rem' }}>
+                        <img src="/screenshots/json-formatter/JSON_formatter002.png" alt="Step 2" className="how-img" />
+                        <p>Click Validate & Format (or press Ctrl+Enter) to run the parser.</p>
+                      </li>
+                      <li style={{ marginBottom: '0.75rem' }}>
+                        <img src="/screenshots/json-formatter/JSON_formatter003.png" alt="Step 3" className="how-img" />
+                        <p>Review formatted output and copy or download as needed.</p>
+                      </li>
+                      <li>
+                        <img src="/screenshots/json-formatter/JSON_formatter004.png" alt="Step 4" className="how-img" />
+                        <p>Fix any parse errors indicated by the error panel and reformat.</p>
+                      </li>
+                    </ol>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* How to use */}

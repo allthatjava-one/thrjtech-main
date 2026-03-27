@@ -55,3 +55,9 @@ button {
   cursor: pointer;
   font-family: var(--font-sans);
 }
+
+/* Ensure shared collapsible area expands to fit content and doesn't show scrollbars */
+.shared-collapse {
+  max-height: none !important;
+  overflow: visible !important;
+}

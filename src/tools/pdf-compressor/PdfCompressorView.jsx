@@ -1,4 +1,5 @@
 import { formatSize } from './utils/formatSize'
+import { useState } from 'react'
 
 export function PdfCompressorView({
   file,
@@ -18,6 +19,12 @@ export function PdfCompressorView({
   handleCompress,
   handleReset,
 }) {
+  const [openPanel, setOpenPanel] = useState('')
+
+  const togglePanel = (panel) => {
+    setOpenPanel((prev) => (prev === panel ? '' : panel))
+  }
+
   return (
     <>
           {status !== 'done' && (
@@ -27,25 +34,80 @@ export function PdfCompressorView({
                 <p className="hero-tagline">
                     Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, and download the smaller result.
                   </p>
-                  <details className="tool-details">
-                    <summary>Details</summary>
-                    <div>
-                      <h3>What it does</h3>
-                      <p>Compresses PDF files to reduce storage and transfer size while aiming to preserve visual quality.</p>
+                  <div className="details-controls">
+                    <button
+                      className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
+                      onClick={() => togglePanel('details')}
+                      aria-expanded={openPanel === 'details'}
+                      type="button"
+                    >
+                      Details
+                    </button>
+                    <button
+                      className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
+                      onClick={() => togglePanel('howitworks')}
+                      aria-expanded={openPanel === 'howitworks'}
+                      type="button"
+                    >
+                      How it works
+                    </button>
+                  </div>
+                  {openPanel && (
+                    <div className="shared-collapse">
+                      {openPanel === 'details' && (
+                        <div className="tool-details-open">
+                          <h3>What it does</h3>
+                          <ul>
+                            <li>Compresses PDFs by optimizing embedded images and streams.</li>
+                            <li>Reduces file size while preserving text and structural metadata when possible.</li>
+                            <li>Produces a smaller, downloadable PDF suitable for sharing and storage.</li>
+                          </ul>
 
-                      <h3>How it works</h3>
-                      <p>Runs a compression routine on the serverless backend, optimizing images and streams before returning the result.</p>
+                          <h3>Use cases</h3>
+                          <ul>
+                            <li>Make large reports faster to upload and download.</li>
+                            <li>Reduce archive size for backups.</li>
+                            <li>Prepare documents for email or web publishing.</li>
+                          </ul>
 
-                      <h3>Use cases</h3>
-                      <p>Reduce upload bandwidth, speed document sharing, or shrink archives for storage.</p>
+                          <h3>Comparison</h3>
+                          <ul>
+                            <li>Quick and easy — no local software required.</li>
+                            <li>Server-side processing may be more consistent for large or complex PDFs.</li>
+                            <li>Not a full editor — for advanced edits use desktop tools.</li>
+                          </ul>
 
-                      <h3>Comparison</h3>
-                      <p>Faster and simpler than installing local tools for occasional use; server-side compression may offer better results for large files.</p>
+                          <h3>FAQs</h3>
+                          <ul>
+                            <li><strong>Q:</strong> Is my file private? <strong>A:</strong> Files are processed temporarily and auto-deleted per the app policy.</li>
+                          </ul>
+                        </div>
+                      )}
 
-                      <h3>FAQs</h3>
-                      <p>Q: Is my file private? A: Files are processed temporarily and auto-deleted per the app policy.</p>
+                      {openPanel === 'howitworks' && (
+                        <div className="tool-howitworks-open">
+                          <ol style={{ margin: 0, paddingLeft: '1rem' }}>
+                            <li style={{ marginBottom: '0.75rem' }}>
+                              <img src="/screenshots/compressor/pdf-compressor-01.png" alt="Step 1" className="how-img" />
+                              <p>Upload a PDF using drag & drop or the browse button.</p>
+                            </li>
+                            <li style={{ marginBottom: '0.75rem' }}>
+                              <img src="/screenshots/compressor/pdf-compressor-02.png" alt="Step 2" className="how-img" />
+                              <p>The file is sent to the serverless compressor which optimizes embedded images and streams.</p>
+                            </li>
+                            <li style={{ marginBottom: '0.75rem' }}>
+                              <img src="/screenshots/compressor/pdf-compressor-03.png" alt="Step 3" className="how-img" />
+                              <p>Compression progress is shown and the compressed file becomes available for download.</p>
+                            </li>
+                            <li>
+                              <img src="/screenshots/compressor/pdf-compressor-04.png" alt="Step 4" className="how-img" />
+                              <p>Download the compressed PDF before it is removed from temporary storage.</p>
+                            </li>
+                          </ol>
+                        </div>
+                      )}
                     </div>
-                  </details>
+                  )}
                 <div className="hero-badges">
                   <span className="hero-badge">⚡ Instant</span>
                   <span className="hero-badge">🔒 Secure</span>
