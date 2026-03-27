@@ -83,11 +83,11 @@ export function PdfCompressorView({
                                 <li>Produces a smaller, downloadable PDF suitable for sharing and storage.</li>
                               </ul>
 
-                              <h3>Use cases</h3>
+                              <h3>Useful when</h3>
                               <ul>
-                                <li>Make large reports faster to upload and download.</li>
-                                <li>Reduce archive size for backups.</li>
-                                <li>Prepare documents for email or web publishing.</li>
+                                <li>need to send PDF file but the file size is over email attachment limits.</li>
+                                <li>save disk space.</li>
+                                <li>prepare documents for email or web publishing.</li>
                               </ul>
 
                               <h3>Comparison</h3>

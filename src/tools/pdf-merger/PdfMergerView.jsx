@@ -87,9 +87,11 @@ export function PdfMergerView({
                         <li>Merges multiple PDFs into a single document, preserving page order and basic metadata.</li>
                       </ul>
 
-                      <h3>Use cases</h3>
+                      <h3>Useful when</h3>
                       <ul>
-                        <li>Combine reports, split contracts into single files, or assemble multi-part documents for distribution.</li>
+                        <li>need to send multiple PDF files as a single document.</li>
+                        <li>want to simplify document management by combining related files.</li>
+                        <li>preparing documents for printing or archiving.</li>
                       </ul>
 
                       <h3>Comparison</h3>

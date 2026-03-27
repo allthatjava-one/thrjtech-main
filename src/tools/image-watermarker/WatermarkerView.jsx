@@ -71,6 +71,13 @@ export function WatermarkerView({
                   <li>Use semi-transparent watermarks for subtlety, and place them where cropping is unlikely (corners or tiled across the image for stronger protection). For logos, use PNG/SVG to preserve transparency.</li>
                 </ul>
 
+                <h3>Useful when</h3>
+                <ul>
+                  <li>need to protect your images with a visible watermark.</li>
+                  <li>want to maintain control over watermark placement, size, and opacity.</li>
+                  <li>preparing images for sharing online or for branding purposes.</li>
+                </ul>
+
                 <h3>FAQs</h3>
                 <ul>
                   <li><strong>Q:</strong> Can I use a logo? <strong>A:</strong> Yes — upload a PNG or SVG logo to apply as a watermark; transparent backgrounds are supported when the source graphic includes them.</li>

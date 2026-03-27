@@ -473,6 +473,14 @@ const ImageCollageView = ({
                   <li>Each cell supports repositioning and zoom (pan/scale) so you can focus on a specific area of an image. Use the preview controls to fine-tune each image's placement before finalizing the collage.</li>
                 </ul>
 
+                <h3>Useful when</h3>
+                <ul>
+                  <li>need to create a visually appealing collage from multiple images.</li>
+                  <li>want to maintain control over individual image placement and scaling.</li>
+                  <li>preparing images for social media posts, presentations, or marketing materials.</li>
+                </ul>
+
+
                 <h3>FAQs</h3>
                 <ul>
                   <li><strong>Q:</strong> How many images can I use? <strong>A:</strong> The tool works best for small to medium batches; very large numbers may strain browser memory or performance.</li>
