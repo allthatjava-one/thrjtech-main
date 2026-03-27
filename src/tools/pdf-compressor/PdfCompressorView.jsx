@@ -56,31 +56,55 @@ export function PdfCompressorView({
                     <div className="shared-collapse">
                       {openPanel === 'details' && (
                         <div className="tool-details-open">
-                          <h3>What it does</h3>
-                          <ul>
-                            <li>Compresses PDFs by optimizing embedded images and streams.</li>
-                            <li>Reduces file size while preserving text and structural metadata when possible.</li>
-                            <li>Produces a smaller, downloadable PDF suitable for sharing and storage.</li>
-                          </ul>
+                              <h3>What is PDF compression</h3>
+                              <ul>
+                                <li>PDF compression reduces the file size of a PDF by optimizing and re-encoding its contents — primarily images, embedded fonts, and stream objects — without changing the document's visible pages.</li>
+                              </ul>
 
-                          <h3>Use cases</h3>
-                          <ul>
-                            <li>Make large reports faster to upload and download.</li>
-                            <li>Reduce archive size for backups.</li>
-                            <li>Prepare documents for email or web publishing.</li>
-                          </ul>
+                              <h3>How does compression work</h3>
+                              <ul>
+                                <li>Compression tools analyze the PDF structure and apply techniques such as re-encoding images at a lower quality or using more efficient encodings, removing unused objects, and optimizing internal streams. Some approaches perform lossless optimizations (no visual change), while others apply lossy image recompression to shrink size further.</li>
+                              </ul>
 
-                          <h3>Comparison</h3>
-                          <ul>
-                            <li>Quick and easy — no local software required.</li>
-                            <li>Server-side processing may be more consistent for large or complex PDFs.</li>
-                            <li>Not a full editor — for advanced edits use desktop tools.</li>
-                          </ul>
+                              <h3>When to compress PDFs</h3>
+                              <ul>
+                                <li>Compress when you need faster uploads/downloads, to save storage or to share documents by email or web where smaller files improve delivery. Avoid recompressing files that require exact archival fidelity or where every visual pixel must be preserved.</li>
+                              </ul>
 
-                          <h3>FAQs</h3>
-                          <ul>
-                            <li><strong>Q:</strong> Is my file private? <strong>A:</strong> Files are processed temporarily and auto-deleted per the app policy.</li>
-                          </ul>
+                              <h3>Trade-Off (quality vs size)</h3>
+                              <ul>
+                                <li>Higher compression typically reduces image quality or discards some non-critical data; choose settings based on your tolerance for quality loss. Lossless compression preserves visual fidelity but offers smaller size reductions than lossy approaches.</li>
+                              </ul>
+
+                              <h3>What it does</h3>
+                              <ul>
+                                <li>Compresses PDFs by optimizing embedded images and streams.</li>
+                                <li>Reduces file size while preserving text and structural metadata when possible.</li>
+                                <li>Produces a smaller, downloadable PDF suitable for sharing and storage.</li>
+                              </ul>
+
+                              <h3>Use cases</h3>
+                              <ul>
+                                <li>Make large reports faster to upload and download.</li>
+                                <li>Reduce archive size for backups.</li>
+                                <li>Prepare documents for email or web publishing.</li>
+                              </ul>
+
+                              <h3>Comparison</h3>
+                              <ul>
+                                <li>Quick and easy — no local software required.</li>
+                                <li>Server-side processing may be more consistent for large or complex PDFs.</li>
+                                <li>Not a full editor — for advanced edits use desktop tools.</li>
+                              </ul>
+
+                              <h3>FAQs</h3>
+                              <ul>
+                                <li><strong>Q:</strong> Is my file private? <strong>A:</strong> Files are processed temporarily and auto-deleted per the app policy.</li>
+                                <li><strong>Q:</strong> Will compression change my text or layout? <strong>A:</strong> Text and vector content are generally preserved; compression focuses on images and streams, so layout and searchable text should remain intact.</li>
+                                <li><strong>Q:</strong> Can I control the compression level? <strong>A:</strong> This tool applies automatic optimizations. Some services offer selectable quality/size presets in advanced modes.</li>
+                                <li><strong>Q:</strong> What file types are supported? <strong>A:</strong> This tool accepts PDF files only — other document formats should be converted to PDF first.</li>
+                                <li><strong>Q:</strong> How does compression affect scanned PDFs or OCR? <strong>A:</strong> Scanned PDFs are image-heavy; compression reduces image fidelity to save space. OCRed text embedded as text is preserved, but image-based text may lose clarity if heavily compressed.</li>
+                              </ul>
                         </div>
                       )}
 

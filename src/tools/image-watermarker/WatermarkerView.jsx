@@ -51,24 +51,33 @@ export function WatermarkerView({
           <div className="shared-collapse">
             {openPanel === 'details' && (
               <div className="details-content">
-                <h3>What it does</h3>
+                <h3>What is Image watermarker</h3>
                 <ul>
-                  <li>Applies text or logo watermarks to images with placement and style options.</li>
+                  <li>An Image Watermarker adds a visible text or logo overlay to an image to indicate ownership, branding, or provenance. It supports positioning, scale, opacity, and simple styling so you can make the watermark subtle or prominent.</li>
                 </ul>
 
-                <h3>Use cases</h3>
+                <h3>How the image watermarker works</h3>
                 <ul>
-                  <li>Add branding, copyright notices, or subtle stamps before sharing or publishing images.</li>
+                  <li>The tool loads your source image into the browser, composes the watermark (text or uploaded logo) onto an offscreen canvas at the chosen position and opacity, and then exports the composite as a new image file for download. All processing is done client-side unless you explicitly upload or share the result.</li>
                 </ul>
 
-                <h3>Comparison</h3>
+                <h3>The benefit of watermarking</h3>
                 <ul>
-                  <li>Faster for single-image watermarking than heavy desktop tools; no persistent uploads required.</li>
+                  <li>Watermarks deter casual reuse, increase brand visibility when images are shared, and provide a visible ownership cue that can help trace content back to its source. They are not a complete copyright protection, but they reduce unauthorized redistribution in many common scenarios.</li>
+                </ul>
+
+                <h3>Practical tips</h3>
+                <ul>
+                  <li>Use semi-transparent watermarks for subtlety, and place them where cropping is unlikely (corners or tiled across the image for stronger protection). For logos, use PNG/SVG to preserve transparency.</li>
                 </ul>
 
                 <h3>FAQs</h3>
                 <ul>
-                  <li><strong>Q:</strong> Can I use a logo? <strong>A:</strong> Yes — upload a PNG/SVG logo file to apply as a watermark.</li>
+                  <li><strong>Q:</strong> Can I use a logo? <strong>A:</strong> Yes — upload a PNG or SVG logo to apply as a watermark; transparent backgrounds are supported when the source graphic includes them.</li>
+                  <li><strong>Q:</strong> Will this change my original image? <strong>A:</strong> No — the tool creates a new watermarked file and does not overwrite your original file unless you choose to replace it locally.</li>
+                  <li><strong>Q:</strong> Does the image leave my browser? <strong>A:</strong> No — watermarking runs in your browser and does not upload the original image by default. If you use a share or cloud-save feature, that may transmit the file.</li>
+                  <li><strong>Q:</strong> Can I control opacity, size, and position? <strong>A:</strong> Yes — use the controls to adjust the watermark's opacity, scale, and placement to suit your needs.</li>
+                  <li><strong>Q:</strong> Does watermarking work with all image formats? <strong>A:</strong> Common web formats (JPEG, PNG, WebP) are supported. For formats with special features (animated GIF/PNG), results may vary and animation frames are not preserved by single-frame export.</li>
                 </ul>
               </div>
             )}

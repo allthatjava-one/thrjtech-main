@@ -62,6 +62,26 @@ export function PdfMergerView({
                 <div className="shared-collapse">
                   {openPanel === 'details' && (
                     <div className="details-content">
+                      <h3>How PDF merge works</h3>
+                      <ul>
+                        <li>PDF merge combines the pages from multiple PDF files into a single output document. The tool concatenates page streams in the selected order and rebuilds the document's internal indices so the result behaves like one continuous PDF.</li>
+                      </ul>
+
+                      <h3>How merged PDF size will be</h3>
+                      <ul>
+                        <li>Merged size depends on the input files: combining many small PDFs may produce a file roughly equal to the sum of inputs, while redundant resources (like duplicate embedded fonts or identical images) may be deduplicated in some implementations. Image-heavy PDFs add most to the final size.</li>
+                      </ul>
+
+                      <h3>When to merge PDFs</h3>
+                      <ul>
+                        <li>Merge when you need a single document for distribution, printing, or archiving — for example combining chapters, reports, or multi-part forms into one file to simplify sharing and navigation.</li>
+                      </ul>
+
+                      <h3>Why it works better in online tools</h3>
+                      <ul>
+                        <li>Online tools can offload CPU- and memory-intensive processing to server-side environments, handle larger batches reliably, and provide consistent binaries and libraries for PDF processing that may not be available or convenient on every client device.</li>
+                      </ul>
+
                       <h3>What it does</h3>
                       <ul>
                         <li>Merges multiple PDFs into a single document, preserving page order and basic metadata.</li>
@@ -80,6 +100,10 @@ export function PdfMergerView({
                       <h3>FAQs</h3>
                       <ul>
                         <li><strong>Q:</strong> Can I reorder pages? <strong>A:</strong> You can reorder whole files before merging; page-level reordering is not supported.</li>
+                        <li><strong>Q:</strong> Are my files private? <strong>A:</strong> Files are processed temporarily and removed according to the app's retention policy; avoid uploading highly sensitive documents if you require stricter controls.</li>
+                        <li><strong>Q:</strong> What are the file limits? <strong>A:</strong> Upload and processing limits depend on the service; very large files or very large batches may be truncated or rejected — split them beforehand if needed.</li>
+                        <li><strong>Q:</strong> Will merging change content? <strong>A:</strong> Merging preserves page content and order; it does not alter page pixels or text unless a separate optimization step runs afterwards.</li>
+                        <li><strong>Q:</strong> Can I merge password-protected PDFs? <strong>A:</strong> Password-protected files cannot be processed unless unlocked first — provide an unlocked copy or remove protection locally before uploading.</li>
                       </ul>
                     </div>
                   )}

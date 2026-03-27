@@ -123,24 +123,33 @@ export default function JsonFormatter() {
               <div className="shared-collapse">
                 {openPanel === 'details' && (
                   <div className="details-content">
-                    <h3>What it does</h3>
+                    <h3>What is JSON</h3>
                     <ul>
-                      <li>Formats and validates JSON, producing indented, human-readable output.</li>
+                      <li>JSON (JavaScript Object Notation) is a lightweight, text-based format for representing structured data using key/value pairs and arrays. It's widely used for APIs, configuration, and data interchange because it's easy for humans and machines to read and write.</li>
                     </ul>
 
-                    <h3>Use cases</h3>
+                    <h3>When to use JSON</h3>
                     <ul>
-                      <li>Clean up API responses, share readable snippets, or debug JSON structures during development.</li>
+                      <li>Use JSON when you need to serialize structured data for network transfer (APIs), store configuration or settings, or exchange data between services and applications. It's a good choice when interoperability and human readability matter.</li>
                     </ul>
 
-                    <h3>Comparison</h3>
+                    <h3>How the JSON formatter works</h3>
                     <ul>
-                      <li>Lightweight and instant compared to IDE formatters; no installation required.</li>
+                      <li>The formatter parses your input with a JSON parser. If parsing succeeds, it re-serializes the data with a consistent indentation (2 spaces by default) to produce readable, pretty-printed output. If parsing fails, the tool reports the parse error and attempts to show the approximate line where the problem occurred.</li>
+                    </ul>
+
+                    <h3>JSON in pretty format</h3>
+                    <ul>
+                      <li>"Pretty" JSON adds line breaks and indentation so nested objects and arrays are easy to scan. This improves debugging, code reviews, and documentation. The formatter preserves keys and values while only changing whitespace and ordering as allowed by the JSON spec.</li>
                     </ul>
 
                     <h3>FAQs</h3>
                     <ul>
-                      <li><strong>Q:</strong> Will it fix invalid JSON? <strong>A:</strong> It reports errors and indicates the likely line, but you must correct the input.</li>
+                      <li><strong>Q:</strong> Will it fix invalid JSON? <strong>A:</strong> No — it reports errors and indicates the likely line, but you must correct the input to valid JSON before it can be formatted.</li>
+                      <li><strong>Q:</strong> Can I minify JSON (remove all whitespace)? <strong>A:</strong> This tool focuses on pretty-printing. To minify, remove whitespace or use a dedicated minifier; many editors and online tools can do that by serializing without indentation.</li>
+                      <li><strong>Q:</strong> Does my data leave my browser? <strong>A:</strong> The formatter runs in your browser and does not upload your input to a remote server (unless you explicitly use a feature that sends data). Check the network panel if you're unsure.</li>
+                      <li><strong>Q:</strong> Does it support JSON with comments or trailing commas? <strong>A:</strong> Standard JSON does not allow comments or trailing commas. Inputs containing them will usually cause a parse error. Remove comments or use a tool that supports relaxed JSON if needed.</li>
+                      <li><strong>Q:</strong> Are there size limits? <strong>A:</strong> Very large inputs may be slow or hit browser memory limits; if you work with massive files, consider processing them in a dedicated environment or splitting them into smaller chunks.</li>
                     </ul>
                   </div>
                 )}

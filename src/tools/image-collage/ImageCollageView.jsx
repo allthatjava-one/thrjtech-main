@@ -453,24 +453,32 @@ const ImageCollageView = ({
           <div className="shared-collapse">
             {openPanel === 'details' && (
               <div className="details-content">
-                <h3>What it does</h3>
+                <h3>What is Collage</h3>
                 <ul>
-                  <li>Creates a tiled collage from selected images with configurable rows, columns, and canvas size.</li>
+                  <li>A collage combines multiple images into a single tiled layout on a shared canvas. You can control rows, columns, spacing, and final canvas dimensions to create social posts, montages, or previews.</li>
                 </ul>
 
-                <h3>Use cases</h3>
+                <h3>How the collage works</h3>
                 <ul>
-                  <li>Quick photo collages for social posts, event montages, or combined previews for sharing.</li>
+                  <li>The tool arranges selected images into a grid based on your rows and columns, computes each cell's placement, and draws images onto an offscreen canvas using any user-provided offsets and scaling. The final canvas is exported as a single image file for download.</li>
                 </ul>
 
-                <h3>Comparison</h3>
+                <h3>Benefit of collage</h3>
                 <ul>
-                  <li>Faster for small to medium batches than heavy desktop editors; simpler but less feature-rich than specialized collage apps.</li>
+                  <li>Collages let you present multiple photos together as a single image for easier sharing, consistent presentation, and reduced upload complexity. They also save recipients from opening multiple files and help create visually compelling layouts quickly.</li>
+                </ul>
+
+                <h3>Focus on individual image</h3>
+                <ul>
+                  <li>Each cell supports repositioning and zoom (pan/scale) so you can focus on a specific area of an image. Use the preview controls to fine-tune each image's placement before finalizing the collage.</li>
                 </ul>
 
                 <h3>FAQs</h3>
                 <ul>
-                  <li><strong>Q:</strong> How many images? <strong>A:</strong> Works best with a few to a few dozen images depending on your browser memory.</li>
+                  <li><strong>Q:</strong> How many images can I use? <strong>A:</strong> The tool works best for small to medium batches; very large numbers may strain browser memory or performance.</li>
+                  <li><strong>Q:</strong> Will image quality be preserved? <strong>A:</strong> The final image quality depends on your chosen canvas size and the originals' resolution—downsizing preserves clarity, while excessive upscaling may soften images.</li>
+                  <li><strong>Q:</strong> Can I reorder or remove images? <strong>A:</strong> Yes — use the file list to move images or remove them before generating the collage.</li>
+                  <li><strong>Q:</strong> Does this run in my browser? <strong>A:</strong> Yes — collage assembly is performed client-side; images are not uploaded unless you explicitly use a sharing feature.</li>
                 </ul>
               </div>
             )}
