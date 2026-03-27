@@ -427,7 +427,26 @@ const ImageCollageView = ({
   return (
     <>
       <h2 className="hero-title">Image Collage</h2>
-      <p className="hero-tagline">Combine multiple images into a beautiful grid collage.</p>
+      <p className="hero-tagline">Combine multiple images into a beautiful grid collage. Arrange your photos in custom rows and columns, adjust the canvas size, and download the final image with one click.</p>
+      <details className="tool-details">
+        <summary>Details</summary>
+        <div>
+          <h3>What it does</h3>
+          <p>Creates a tiled collage from selected images with configurable rows, columns, and canvas size.</p>
+
+          <h3>How it works</h3>
+          <p>Uploads images in the browser, lays them out on an offscreen canvas, and generates a downloadable image.</p>
+
+          <h3>Use cases</h3>
+          <p>Quick photo collages for social posts, event montages, or combined previews for sharing.</p>
+
+          <h3>Comparison</h3>
+          <p>Faster for small to medium batches than heavy desktop editors; simpler but less feature-rich than specialized collage apps.</p>
+
+          <h3>FAQs</h3>
+          <p>Q: How many images? A: Works best with a few to a few dozen images depending on your browser memory.</p>
+        </div>
+      </details>
 
       <div
         className={`drop-zone${isDragging ? " dragging" : ""}`}

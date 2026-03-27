@@ -386,3 +386,48 @@
     padding: 1.25rem 0.75rem;
   }
 }
+
+/* Tool details (collapsible) */
+.tool-details {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #4b5563;
+}
+.tool-details summary {
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  position: relative;
+}
+.tool-details summary::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.5rem;
+  transition: transform 0.18s ease;
+}
+.tool-details[open] summary::after {
+  transform: rotate(180deg);
+}
+.tool-details summary::-webkit-details-marker { display: none; }
+.tool-details summary::marker { display: none; }
+.tool-details > div {
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+  color: #4b5563;
+}
+
+/* When Details is opened, wrap its content in a rounded box */
+.pdf-compressor-page .card .tool-details[open] > div,
+.pdf-compressor-page .tool-details[open] > div {
+  background: #f8f9ff;
+  border: 1px solid #e2e6f0;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+}

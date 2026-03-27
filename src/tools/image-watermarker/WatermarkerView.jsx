@@ -25,7 +25,26 @@ export function WatermarkerView({
   return (
     <div className="watermarker-view">
       <h2 className="hero-title">Image Watermarker</h2>
-      <p className="hero-tagline">Add a text or logo watermark to your image easily.</p>
+      <p className="hero-tagline">Protect your images by adding a custom text or logo watermark. Adjust the position and style to fit your needs, then download the watermarked result instantly.</p>
+      <details className="tool-details">
+        <summary>Details</summary>
+        <div>
+          <h3>What it does</h3>
+          <p>Applies text or logo watermarks to images with placement and style options.</p>
+
+          <h3>How it works</h3>
+          <p>Draws the watermark onto an offscreen canvas and exports the result as a new image file.</p>
+
+          <h3>Use cases</h3>
+          <p>Add branding, copyright notices, or subtle stamps before sharing or publishing images.</p>
+
+          <h3>Comparison</h3>
+          <p>Faster for single-image watermarking than heavy desktop tools; no persistent uploads required.</p>
+
+          <h3>FAQs</h3>
+          <p>Q: Can I use a logo? A: Yes — upload a PNG/SVG logo file to apply as a watermark.</p>
+        </div>
+      </details>
       <div
         className={`drop-zone${isDragging ? ' dragging' : ''}`}
         onDrop={handleDrop}

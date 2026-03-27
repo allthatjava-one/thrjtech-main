@@ -34,8 +34,27 @@ export function PdfMergerView({
           <div className="hero-section">
             <h1 className="hero-title">Drop and Merge.</h1>
             <p className="hero-tagline">
-              Upload multiple PDFs, reorder them, and merge in seconds.
+              Combine multiple PDF files into a single document in seconds. Upload your files, drag to reorder them, then merge and download the result.
             </p>
+            <details className="tool-details">
+              <summary>Details</summary>
+              <div>
+                <h3>What it does</h3>
+                <p>Merges multiple PDFs into a single document, preserving page order and basic metadata.</p>
+
+                <h3>How it works</h3>
+                <p>Uploads are combined on the backend and returned as a single merged file for download.</p>
+
+                <h3>Use cases</h3>
+                <p>Combine reports, split contracts into single files, or assemble multi-part documents for distribution.</p>
+
+                <h3>Comparison</h3>
+                <p>Simpler and faster than manual desktop merging for ad-hoc tasks; lacks advanced editing features.</p>
+
+                <h3>FAQs</h3>
+                <p>Q: Can I reorder pages? A: You can reorder whole files before merging; page-level reordering is not supported.</p>
+              </div>
+            </details>
             <div className="hero-badges">
               <span className="hero-badge">⚡ Fast</span>
               <span className="hero-badge">🔒 Secure</span>
