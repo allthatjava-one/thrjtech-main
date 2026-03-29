@@ -52,6 +52,7 @@ export default function Navbar() {
                     <div className="dropdown-group-title">PDF</div>
                     <Link to="/pdf-compressor" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>PDF Compressor</Link>
                     <Link to="/pdf-merger" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>PDF Merger</Link>
+                    <Link to="/pdf-converter" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>PDF Converter</Link>
                   </div>
                 </div>
                 <div className="dropdown-col">

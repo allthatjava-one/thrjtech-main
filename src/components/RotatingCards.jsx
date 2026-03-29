@@ -48,7 +48,6 @@ const cards = [
       },
     ],
   },
-  // ...existing cards...
   // PDF Merger
   {
     key: 'merger',
@@ -92,6 +91,52 @@ const cards = [
         src: '/screenshots/merger/merger-004.png',
         alt: 'Step 4 — Download your merged PDF',
         caption: '4. Download your merged PDF',
+      },
+    ],
+  },
+  // PDF Converter
+  {
+    key: 'converter',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <path d="M12 2v6" />
+        <path d="M12 22v-6" />
+        <path d="M4 12h16" />
+        <path d="M7 7l-3 3 3 3" />
+        <path d="M17 7l3 3-3 3" />
+      </svg>
+    ),
+    title: 'PDF Converter',
+    link: '/pdf-converter',
+    btn: 'Open PDF Converter',
+    description: 'Convert PDF pages into JPG or PNG images quickly — upload, choose format, and download the results without signing up.',
+    features: [
+      'Convert PDF to JPG or PNG',
+      'Fast, single-click conversions',
+      'Preview and download converted images',
+      'Temporary storage with automatic cleanup',
+      'No account or watermarks',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/converter/PDF-converter001.png',
+        alt: 'Step 1 — Drag and drop your PDF file onto the upload area',
+        caption: '1. Drag & drop or browse for your PDF',
+      },
+      {
+        src: '/screenshots/converter/PDF-converter002.png',
+        alt: 'Step 2 — Select output format',
+        caption: '2. Choose JPG or PNG',
+      },
+      {
+        src: '/screenshots/converter/PDF-converter003.png',
+        alt: 'Step 3 — Conversion progress and preview',
+        caption: '3. Start conversion and watch progress',
+      },
+      {
+        src: '/screenshots/converter/PDF-converter004.png',
+        alt: 'Step 4 — Download your converted images',
+        caption: '4. Download converted images to your device',
       },
     ],
   },

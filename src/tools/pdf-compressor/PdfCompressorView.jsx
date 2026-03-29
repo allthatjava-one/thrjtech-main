@@ -30,8 +30,9 @@ export function PdfCompressorView({
           {status !== 'done' && (
             <>
               <div className="hero-section">
-                <h1 className="hero-title">Drop and Go.</h1>
+                <h1 className="hero-title">PDF Compressor</h1>
                 <p className="hero-tagline">
+                    Just Drop and Go - 
                     Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, and download the smaller result.
                   </p>
                   <div className="details-controls">

@@ -11,6 +11,7 @@ export async function onRequestPost(context) {
       R2_PDF_BUCKET_NAME,
       PDF_COMPRESSOR_BACKEND_URL,
       PDF_MERGER_BACKEND_URL,
+      PDF_CONVERTER_BACKEND_URL,
     } = context.env
 
     if (!R2_ENDPOINT_URL || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY || !R2_PDF_BUCKET_NAME) {
@@ -49,6 +50,7 @@ export async function onRequestPost(context) {
         key,
         pdfCompressorBackendUrl: PDF_COMPRESSOR_BACKEND_URL || '',
         pdfMergerBackendUrl: PDF_MERGER_BACKEND_URL || '',
+        pdfConverterBackendUrl: PDF_CONVERTER_BACKEND_URL || '',
       }),
       {
         headers: { 'Content-Type': 'application/json' },

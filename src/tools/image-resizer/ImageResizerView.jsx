@@ -207,6 +207,7 @@ export function ImageResizerView({
         </label>
       </div>
       {resizeMode === 'percentage' && (
+        <label className="resize-input-percent">
         <input
           type="number"
           className="resize-input"
@@ -216,6 +217,8 @@ export function ImageResizerView({
           max={500}
           onChange={e => setPercentage(e.target.value)}
         />
+        %
+        </label>
       )}
       {resizeMode === 'dimensions' && (
         <div className="dimension-inputs" style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>

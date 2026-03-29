@@ -153,6 +153,7 @@
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1rem;
+  color: #6b7280;
 }
 .watermark-input {
   width: 100%;

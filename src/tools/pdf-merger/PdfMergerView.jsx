@@ -34,9 +34,9 @@ export function PdfMergerView({
       {status !== 'done' && (
         <>
           <div className="hero-section">
-            <h1 className="hero-title">Drop and Merge.</h1>
+            <h1 className="hero-title">PDF Merger</h1>
             <p className="hero-tagline">
-              Combine multiple PDF files into a single document in seconds. Upload your files, drag to reorder them, then merge and download the result.
+              Drop and Merge - Combine multiple PDF files into a single document in seconds. Upload your files, drag to reorder them, then merge and download the result.
             </p>
             <div className="details-row" data-open={openPanel}>
               <div className="details-controls">

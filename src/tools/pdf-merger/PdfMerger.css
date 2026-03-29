@@ -40,7 +40,7 @@
 
 /* ── Hero Section ────────────────────────────────────── */
 .pdf-merger-page .hero-section {
-  text-align: center;
+  text-align: left;
   padding-bottom: 0.25rem;
 }
 
@@ -54,6 +54,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-align: left;
 }
 
 .pdf-merger-page .hero-tagline {
@@ -92,6 +93,7 @@
   border-color: #c7d0e8;
   border-radius: 14px;
   padding: 2.5rem 1.5rem;
+  margin-bottom: 0;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -483,7 +485,7 @@
   color: #6b7280;
   cursor: pointer;
   user-select: none;
-  margin-top: 0.75rem;
+  margin-top: 0;
 }
 
 .pdf-merger-page .compress-option input[type='checkbox'] {
@@ -651,6 +653,7 @@
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 0.75rem 1rem;
+  margin-top: 1.25rem;
   line-height: 1.55;
   display: flex;
   gap: 0.5rem;
