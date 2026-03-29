@@ -1,15 +1,15 @@
 import { useState, useRef, useCallback } from 'react'
 import { uploadToR2 } from '../../../services/r2Service'
 
-export function usePdfCompressor() {
+export function usePdfConverter() {
   const [file, setFile] = useState(null)
-  const [status, setStatus] = useState('idle') // idle | uploading | compressing | done | error
+  const [status, setStatus] = useState('idle') // idle | uploading | converting | done | error
   const [progress, setProgress] = useState(0)
   const [originalSize, setOriginalSize] = useState(0)
-  const [compressedSize, setCompressedSize] = useState(0)
   const [downloadUrl, setDownloadUrl] = useState('')
   const [downloadName, setDownloadName] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
+  const [convertType, setConvertType] = useState('jpg')
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef(null)
 
@@ -46,31 +46,31 @@ export function usePdfCompressor() {
     handleFile(e.target.files[0])
   }
 
-  const handleCompress = async () => {
+  const handleConvert = async () => {
     if (!file) return
     try {
       setStatus('uploading')
       setProgress(20)
       setErrorMsg('')
 
-      const { key: objectKey, pdfCompressorBackendUrl } = await uploadToR2(file, 'pdf-compressor')
+      const { key: objectKey, pdfConverterBackendUrl } = await uploadToR2(file, 'pdf-converter')
 
       setProgress(60)
-      setStatus('compressing')
+      setStatus('converting')
 
-      const backendUrl = pdfCompressorBackendUrl || import.meta.env.VITE_PDF_COMPRESSOR_BACKEND_URL
+      const backendUrl = pdfConverterBackendUrl || import.meta.env.VITE_PDF_CONVERTER_BACKEND_URL
       if (!backendUrl) {
-        throw new Error('PDF compressor backend URL is not configured.')
+        throw new Error('PDF converter backend URL is not configured.')
       }
 
       const response = await fetch(backendUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ objectKey: objectKey }),
+        body: JSON.stringify({ objectKey, convertType }),
       })
 
       if (!response.ok) {
-        throw new Error(`Compression failed: ${response.status} ${response.statusText}`)
+        throw new Error(`Conversion failed: ${response.status} ${response.statusText}`)
       }
 
       const { presignedUrl } = await response.json()
@@ -80,21 +80,63 @@ export function usePdfCompressor() {
 
       const downloadResponse = await fetch(presignedUrl)
       if (!downloadResponse.ok) {
-        throw new Error(`Failed to fetch compressed file: ${downloadResponse.status} ${downloadResponse.statusText}`)
+        throw new Error(`Failed to fetch converted file: ${downloadResponse.status} ${downloadResponse.statusText}`)
       }
+
       const blob = await downloadResponse.blob()
       const blobUrl = URL.createObjectURL(blob)
-      const name = file.name.replace(/\.pdf$/i, '_compressed.pdf')
+
+      // Determine result filename (prefer Content-Disposition, then presignedUrl)
+      let resultFilename = ''
+      const contentDisp = downloadResponse.headers.get('Content-Disposition')
+      if (contentDisp) {
+        const fnStarMatch = contentDisp.match(/filename\*=(?:UTF-8'')?([^;\n\r]+)/i)
+        const fnMatch = contentDisp.match(/filename=(?:"?)([^";]+)(?:"?)/i)
+        if (fnStarMatch && fnStarMatch[1]) {
+          try {
+            resultFilename = decodeURIComponent(fnStarMatch[1])
+          } catch (e) {
+            resultFilename = fnStarMatch[1]
+          }
+        } else if (fnMatch && fnMatch[1]) {
+          resultFilename = fnMatch[1]
+        }
+      }
+
+      if (!resultFilename) {
+        try {
+          const urlPath = new URL(presignedUrl).pathname
+          const lastSeg = urlPath.split('/').filter(Boolean).pop() || ''
+          resultFilename = decodeURIComponent(lastSeg)
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      // Extract extension from resultFilename if present
+      let ext = ''
+      if (resultFilename) {
+        const m = resultFilename.match(/\.([a-zA-Z0-9]{1,8})(?:\?.*)?$/)
+        if (m && m[1]) ext = m[1].toLowerCase()
+      }
+
+      // Build final download name: original base + _converted + (extracted ext or fallback)
+      const originalBase = file.name.replace(/\.pdf$/i, '')
+      let finalName = originalBase + '_converted'
+      if (ext) {
+        finalName += `.${ext}`
+      } else if (convertType) {
+        finalName += `.${convertType}`
+      }
 
       setDownloadUrl(blobUrl)
-      setDownloadName(name)
-      setCompressedSize(blob.size)
+      setDownloadName(finalName)
       setProgress(100)
       setStatus('done')
 
       const a = document.createElement('a')
       a.href = blobUrl
-      a.download = name
+      a.download = finalName
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
@@ -110,7 +152,6 @@ export function usePdfCompressor() {
     setStatus('idle')
     setProgress(0)
     setOriginalSize(0)
-    setCompressedSize(0)
     setDownloadUrl('')
     setDownloadName('')
     setErrorMsg('')
@@ -122,17 +163,18 @@ export function usePdfCompressor() {
     status,
     progress,
     originalSize,
-    compressedSize,
     downloadUrl,
     downloadName,
     errorMsg,
+    convertType,
+    setConvertType,
     isDragging,
     fileInputRef,
     handleDrop,
     handleDragOver,
     handleDragLeave,
     handleFileInput,
-    handleCompress,
+    handleConvert,
     handleReset,
   }
 }

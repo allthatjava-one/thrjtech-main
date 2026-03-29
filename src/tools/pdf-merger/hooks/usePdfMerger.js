@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState, useCallback } from 'react'
-import { uploadToR2 } from '../services/r2Service'
+import { uploadToR2 } from '../../../services/r2Service'
 
 function makeFileEntry(file) {
   const randomPart = Math.random().toString(36).slice(2, 8)
@@ -139,7 +139,7 @@ export function usePdfMerger() {
 
       for (let index = 0; index < files.length; index += 1) {
         const currentFile = files[index].file
-        const { key, pdfMergerBackendUrl } = await uploadToR2(currentFile)
+        const { key, pdfMergerBackendUrl } = await uploadToR2(currentFile, 'pdf-merger')
         objectKeys.push(key)
 
         if (!backendUrlFromUpload && pdfMergerBackendUrl) {
