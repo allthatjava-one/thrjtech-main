@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import RotatingCards from './components/RotatingCards'
+import Seo from './components/Seo'
 import PdfCompressorPage from './tools/pdf-compressor/PdfCompressorPage'
 import PdfMergerPage from './tools/pdf-merger/PdfMergerPage'
 import PdfConverterPage from './tools/pdf-converter/PdfConverterPage'
@@ -23,6 +24,7 @@ function HomePage() {
 
   return (
     <>
+      <Seo title="THRJ — Free Online Tools" description="Free, fast, privacy-friendly online utilities (image, PDF, and JSON tools) that run in your browser." />
       <Navbar />
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         {/* Main content - Start */}
@@ -61,13 +63,13 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/pdf-compressor" element={<PdfCompressorPage />} />
-        <Route path="/pdf-merger" element={<PdfMergerPage />} />
-        <Route path="/pdf-converter" element={<PdfConverterPage />} />
-        <Route path="/json-formatter" element={<JsonFormatterPage />} />
-        <Route path="/image-watermarker" element={<WatermarkerPage />} />
-        <Route path="/image-resizer" element={<ImageResizerPage />} />
-        <Route path="/image-collage" element={<ImageCollagePage />} />
+        <Route path="/pdf-compressor" element={<><Seo title="PDF Compressor — THRJ" description="Compress PDF files online for free with THRJ's fast, in-browser PDF compressor." /><PdfCompressorPage /></>} />
+        <Route path="/pdf-merger" element={<><Seo title="PDF Merger — THRJ" description="Merge multiple PDF files into one quickly and securely in your browser." /><PdfMergerPage /></>} />
+        <Route path="/pdf-converter" element={<><Seo title="PDF Converter — THRJ" description="Convert PDF document to image file — fast, free, and private." /><PdfConverterPage /></>} />
+        <Route path="/json-formatter" element={<><Seo title="JSON Formatter — THRJ" description="Format and beautify JSON online with an easy-to-use JSON formatter." /><JsonFormatterPage /></>} />
+        <Route path="/image-watermarker" element={<><Seo title="Image Watermarker — THRJ" description="Add watermarks to images quickly in your browser — no uploads required." /><WatermarkerPage /></>} />
+        <Route path="/image-resizer" element={<><Seo title="Image Resizer — THRJ" description="Resize images online with an easy, privacy-friendly image resizer." /><ImageResizerPage /></>} />
+        <Route path="/image-collage" element={<><Seo title="Image Collage Maker — THRJ" description="Create image collages online with an intuitive collage maker." /><ImageCollagePage /></>} />
       </Routes>
     </BrowserRouter>
   )
