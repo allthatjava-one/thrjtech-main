@@ -27,6 +27,7 @@ export default function CustomSelect({ value, onChange, options = [] }) {
         onClick={() => setOpen((o) => !o)}
       >
         <span className="custom-select-value">{value.toUpperCase()}</span>
+        <span className="custom-select-caret" aria-hidden="true">▾</span>
       </button>
 
       {open && (
