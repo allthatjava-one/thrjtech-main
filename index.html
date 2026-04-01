@@ -8,6 +8,8 @@
       function gtag(){dataLayer.push(arguments);} 
       gtag('js', new Date());
       gtag('config', 'G-ZZG4PHYYJB', { send_page_view: false });
+      // Send an explicit initial pageview for SPA initial load
+      gtag('event', 'page_view', { page_path: window.location.pathname + window.location.search });
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1683577108258942"
      crossorigin="anonymous"></script>
