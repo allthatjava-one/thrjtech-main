@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import RotatingCards from './components/RotatingCards'
 import Seo from './components/Seo'
+import GtagRouteTracker from './components/GtagRouteTracker'
 import PdfCompressorPage from './tools/pdf-compressor/PdfCompressorPage'
 import PdfMergerPage from './tools/pdf-merger/PdfMergerPage'
 import PdfConverterPage from './tools/pdf-converter/PdfConverterPage'
@@ -61,6 +62,7 @@ function HomePage() {
 export default function App() {
   return (
     <BrowserRouter>
+      <GtagRouteTracker />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/pdf-compressor" element={<><Seo title="PDF Compressor — THRJ" description="Compress PDF files online for free with THRJ's fast, in-browser PDF compressor." /><PdfCompressorPage /></>} />
