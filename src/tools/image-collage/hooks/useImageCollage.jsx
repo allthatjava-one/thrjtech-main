@@ -66,13 +66,13 @@ function useImageCollage({
 
   // offsets: optional array of {x,y} per image to shift the drawn image inside its cell
   // scales: optional array of per-image scale multipliers applied on top of the cover sizing
-  const handleCollage = async (targetWidth, targetHeight, offsets = [], scales = []) => {
+  const handleCollage = async (targetWidth, targetHeight, offsets = [], scales = [], bgColor = '#ffffff') => {
     if (!canCollage) return;
     const canvas = document.createElement("canvas");
     canvas.width = expectedWidth;
     canvas.height = expectedHeight;
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = bgColor || "#fff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     let idx = 0;
     for (let r = 0; r < rows; r++) {
@@ -127,7 +127,7 @@ function useImageCollage({
       out.width = targetWidth;
       out.height = targetHeight;
       const outCtx = out.getContext("2d");
-      outCtx.fillStyle = "#fff";
+      outCtx.fillStyle = bgColor || "#fff";
       outCtx.fillRect(0, 0, out.width, out.height);
       // Scale to fit while preserving aspect ratio, center the result
       const scale = Math.min(targetWidth / canvas.width, targetHeight / canvas.height);
