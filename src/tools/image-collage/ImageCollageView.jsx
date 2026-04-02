@@ -123,6 +123,8 @@ const ImageCollageView = ({
   const [previewBtnStyle, setPreviewBtnStyle] = useState({ padding: '0.55rem 0.9rem', fontSize: '1rem', minWidth: 64 });
   const previewHeaderRef = useRef(null);
   const previewInfoRef = useRef(null);
+  const [bgColor, setBgColor] = useState('#ffffff');
+  // (reverted) no background color picker — keep default white preview frame
 
   // Build preview URLs and reset offsets when images change
   useEffect(() => {
@@ -180,14 +182,17 @@ const ImageCollageView = ({
       if (rect.width < 10 || rect.height < 10) return; // not painted yet
       const availW = Math.max(1, rect.width - 2);
       const availH = Math.max(1, rect.height - 2);
-      const gapCandidate = 6;
-      setPreviewGap(gapCandidate);
-      const contentW = columns * width + (columns + 1) * gapCandidate;
-      const contentH = rows * height + (rows + 1) * gapCandidate;
+      // Simpler, fixed-gap preview: match earlier behavior using a
+      // consistent inner gap (previewGap) and a fixed outer border.
+      const borderPx = 6;
+      const gap = previewGap ?? 10;
+      const contentW = columns * width + (columns + 1) * gap;
+      const contentH = rows * height + (rows + 1) * gap;
       const scaleFit = Math.min(availW / Math.max(1, contentW), availH / Math.max(1, contentH), 1);
       setPreviewScale(scaleFit);
       setPreviewContentSize({ w: contentW, h: contentH });
-      setPreviewScaledSize({ w: Math.max(1, Math.round(contentW * scaleFit)), h: Math.max(1, Math.round(contentH * scaleFit)) });
+      // keep fractional scaled sizes
+      setPreviewScaledSize({ w: Math.max(1, contentW * scaleFit), h: Math.max(1, contentH * scaleFit) });
       // responsive button sizing based on wrapper width
       const wrapEl = previewWrapperRef.current;
       const wrapW = wrapEl ? wrapEl.getBoundingClientRect().width : availW;
@@ -217,7 +222,7 @@ const ImageCollageView = ({
       try { cancelAnimationFrame(rafId); } catch (e) {}
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showPreview, expectedWidth, expectedHeight]);
+  }, [showPreview, expectedWidth, expectedHeight, rows, columns, width, height, previewGap]);
 
   // Unified per-cell pointer handling: 1 finger = drag, 2 fingers on same cell = pinch zoom.
   // Using React's own onPointerDown/Move/Up with setPointerCapture avoids window-listener
@@ -581,6 +586,10 @@ const ImageCollageView = ({
         </div>
       </div>
 
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, background: '#eef4ff', border: '1px solid #b8d0f7', borderRadius: 8, padding: '0.55rem 0.85rem', marginBottom: 8, fontSize: '0.92rem', color: '#2d5fa6' }}>
+        <span style={{ fontSize: '1rem', flexShrink: 0 }}>ℹ️</span>
+        <span>You can change the collage border color and thickness in the preview screen.</span>
+      </div>
       <button className="collage-btn" onClick={onCollageAndPreview} disabled={!canCollage}>Collage and Preview</button>
 
       {collageUrl && (
@@ -607,59 +616,73 @@ const ImageCollageView = ({
           <div ref={previewWrapperRef} style={{ background: '#fff', borderRadius: 8, padding: 12, width: 'min(95vw, 880px)', maxWidth: '95vw', height: '90vh', maxHeight: '90vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }} onClick={e => e.stopPropagation()}>
             <div ref={previewHeaderRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, zIndex: 2 }}>
               <div style={{ color: '#222', fontWeight: 600 }}>Preview</div>
-              <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
-                <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); setScales(images.map(()=>1)); }} className="collage-btn" style={{ ...previewBtnStyle }}>Reset Positions</button>
-                <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets, scales); setShowPreview(false); }} className="collage-btn" style={{ ...previewBtnStyle }}>Finalize Collage</button>
+              <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
+                <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); setScales(images.map(()=>1)); setBgColor('#ffffff'); setPreviewGap(10); }} className="collage-btn" style={{ ...previewBtnStyle }}>Reset</button>
+                <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets, scales, bgColor); setShowPreview(false); }} className="collage-btn" style={{ ...previewBtnStyle }}>Finalize Collage</button>
                 <button onClick={() => setShowPreview(false)} className="collage-btn" style={{ ...previewBtnStyle, marginLeft: 8, background: '#ff6b6b', borderColor: '#ff6b6b', color: '#fff' }}>Close</button>
               </div>
             </div>
 
             <div ref={previewInfoRef} style={{ color: '#444', fontSize: '0.95rem', lineHeight: '1.35', marginBottom: 8 }}>
-              <div>- Drag images to reposition</div>
+              <div>- Drag images to reposition, click on Border color to change it</div>
               <div>- Hold Alt + scroll to zoom (desktop). Use two-finger pinch to zoom on touch.</div>
+              
+                <label style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#333', fontWeight: 500 }}>
+                  Border color:
+                  <input type="color" value={bgColor} onChange={e => setBgColor(e.target.value)} style={{ width: 42, height: 28, padding: 0, border: 'none', background: 'none' }} />
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#333', fontWeight: 500 }}>
+                  Border thickness:
+                  <input type="range" min={0} max={100} value={previewGap} onChange={e => setPreviewGap(Number(e.target.value))} style={{ width: 90, cursor: 'pointer', accentColor: '#4f8ef7' }} />
+                  <span style={{ minWidth: 24, textAlign: 'right', fontSize: '0.9rem' }}>{previewGap}</span>
+                </label>
             </div>
 
-            <div ref={previewRef} onWheel={handlePreviewWheel} style={{ flex: 1, minHeight: 0, width: '100%', overflow: 'auto', position: 'relative', background: '#f6f7fb', border: '1px solid #e6e9f2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ width: previewScaledSize.w, height: previewScaledSize.h, position: 'relative', boxSizing: 'border-box', marginTop: 0, overflow: 'hidden' }}>
-                <div style={{ width: previewContentSize.w || expectedWidth, height: previewContentSize.h || expectedHeight, transform: `scale(${previewScale})`, transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, boxSizing: 'border-box' }}>
-                  {/* Render grid cells */}
-                  {Array.from({ length: rows * columns }).map((_, idx) => {
-                    const col = idx % columns;
-                    const row = Math.floor(idx / columns);
-                    const cellW = width;
-                    const cellH = height;
-                    const gap = typeof previewGap === 'number' ? previewGap : (previewScale < 0.8 ? 6 : 10);
-                    const left = col * (cellW + gap) + gap;
-                    const top = row * (cellH + gap) + gap;
-                    const file = images[idx];
-                    const url = previewUrls[idx];
-                    const meta = previewMeta[idx] || { w: 1, h: 1 };
-                    const off = offsets[idx] || { x: 0, y: 0 };
+            <div ref={previewRef} onWheel={handlePreviewWheel} style={{ flex: 1, minHeight: 0, width: '100%', overflow: 'auto', position: 'relative', background: '#e8eaf2', border: '1px solid #d8dbe8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              {/* CSS padding on frame-wrapper creates equal border on ALL 4 sides without
+                  any transform / subpixel issues. Overflow clip sits on a separate wrapper. */}
+              <div style={{ padding: 6, flexShrink: 0, lineHeight: 0 }}>
+                <div style={{ width: Math.floor(previewScaledSize.w), height: Math.floor(previewScaledSize.h), overflow: 'hidden', position: 'relative' }}>
+                  <div style={{ width: previewContentSize.w || expectedWidth, height: previewContentSize.h || expectedHeight, transform: `scale(${previewScale})`, transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, boxSizing: 'border-box', background: bgColor }}>
+                    {/* Render grid cells */}
+                    {Array.from({ length: rows * columns }).map((_, idx) => {
+                      const col = idx % columns;
+                      const row = Math.floor(idx / columns);
+                      const cellW = width;
+                      const cellH = height;
+                      const gap = typeof previewGap === 'number' ? previewGap : 10;
+                      const left = col * (cellW + gap) + gap;
+                      const top = row * (cellH + gap) + gap;
+                      const file = images[idx];
+                      const url = previewUrls[idx];
+                      const meta = previewMeta[idx] || { w: 1, h: 1 };
+                      const off = offsets[idx] || { x: 0, y: 0 };
 
-                    const imgRatio = meta.w / meta.h;
-                    const cellRatio = cellW / cellH;
-                    let drawW0, drawH0;
-                    if (imgRatio > cellRatio) {
-                      drawH0 = cellH;
-                      drawW0 = cellH * imgRatio;
-                    } else {
-                      drawW0 = cellW;
-                      drawH0 = cellW / imgRatio;
-                    }
-                    const scale = (scales && scales[idx]) || 1;
-                    const drawW = Math.round(drawW0 * scale);
-                    const drawH = Math.round(drawH0 * scale);
+                      const imgRatio = meta.w / meta.h;
+                      const cellRatio = cellW / cellH;
+                      let drawW0, drawH0;
+                      if (imgRatio > cellRatio) {
+                        drawH0 = cellH;
+                        drawW0 = cellH * imgRatio;
+                      } else {
+                        drawW0 = cellW;
+                        drawH0 = cellW / imgRatio;
+                      }
+                      const scale = (scales && scales[idx]) || 1;
+                      const drawW = Math.round(drawW0 * scale);
+                      const drawH = Math.round(drawH0 * scale);
 
-                    return (
-                      <div key={idx} style={{ position: 'absolute', left, top, width: cellW, height: cellH, overflow: 'hidden', background: '#fff', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', touchAction: 'none' }} onPointerDown={e => onCellPointerDown(e, idx, cellW, cellH, left, top, meta)} onPointerMove={e => onCellPointerMove(e, idx)} onPointerUp={e => onCellPointerUp(e, idx)} onPointerCancel={e => onCellPointerUp(e, idx)} onWheel={e => onImageWheel(e, idx, meta, off, cellW, cellH, left, top)}>
-                        {file && url && !previewErrors[idx] ? (
-                          <img src={url} data-idx={idx} alt={file.name} draggable={false} onError={() => tryPreviewDataUrl(idx)} style={{ position: 'absolute', left: off.x + (cellW - drawW) / 2, top: off.y + (cellH - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }} />
-                        ) : file ? (
-                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: 12, padding: 6, textAlign: 'center' }}>Preview not available for this image</div>
-                        ) : null}
-                      </div>
-                    );
-                  })}
+                      return (
+                        <div key={idx} style={{ position: 'absolute', left, top, width: cellW, height: cellH, overflow: 'hidden', background: bgColor, display: 'flex', alignItems: 'center', justifyContent: 'center', touchAction: 'none' }} onPointerDown={e => onCellPointerDown(e, idx, cellW, cellH, left, top, meta)} onPointerMove={e => onCellPointerMove(e, idx)} onPointerUp={e => onCellPointerUp(e, idx)} onPointerCancel={e => onCellPointerUp(e, idx)} onWheel={e => onImageWheel(e, idx, meta, off, cellW, cellH, left, top)}>
+                          {file && url && !previewErrors[idx] ? (
+                            <img src={url} data-idx={idx} alt={file.name} draggable={false} onError={() => tryPreviewDataUrl(idx)} style={{ position: 'absolute', left: off.x + (cellW - drawW) / 2, top: off.y + (cellH - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }} />
+                          ) : file ? (
+                            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: 12, padding: 6, textAlign: 'center' }}>Preview not available for this image</div>
+                          ) : null}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
