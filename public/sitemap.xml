@@ -10,43 +10,43 @@
 
   <!-- Tool pages (update paths as needed) -->
   <url>
-    <loc>https://thrjtech.com/tools/image-resizer</loc>
+    <loc>https://thrjtech.com/image-resizer</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thrjtech.com/tools/image-watermarker</loc>
+    <loc>https://thrjtech.com/image-watermarker</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thrjtech.com/tools/image-collage</loc>
+    <loc>https://thrjtech.com/image-collage</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thrjtech.com/tools/pdf-compressor</loc>
+    <loc>https://thrjtech.com/pdf-compressor</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thrjtech.com/tools/pdf-converter</loc>
+    <loc>https://thrjtech.com/pdf-converter</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thrjtech.com/tools/pdf-merger</loc>
+    <loc>https://thrjtech.com/pdf-merger</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thrjtech.com/tools/json-formatter</loc>
+    <loc>https://thrjtech.com/json-formatter</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
