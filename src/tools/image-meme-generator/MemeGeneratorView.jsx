@@ -8,10 +8,13 @@ export default function MemeGeneratorView() {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageObj, setImageObj] = useState(null);
   // Layers: multiple text layers with position, size and color
-  const [layers, setLayers] = useState([
-    { id: 'layer-1', text: 'TOP TEXT', x: 0.05, y: 0.08, fontSize: 48, color: '#ffffff' },
-    { id: 'layer-2', text: 'BOTTOM TEXT', x: 0.05, y: 0.92, fontSize: 48, color: '#ffffff' }
-  ]);
+  const [layers, setLayers] = useState(() => {
+    const defaultFont = (typeof window !== 'undefined' && window.innerWidth <= 480) ? 28 : 48;
+    return [
+      { id: 'layer-1', text: 'TOP TEXT', x: 0.05, y: 0.08, fontSize: defaultFont, color: '#ffffff' },
+      { id: 'layer-2', text: 'BOTTOM TEXT', x: 0.05, y: 0.92, fontSize: defaultFont, color: '#ffffff' }
+    ];
+  });
   const [selectedLayerId, setSelectedLayerId] = useState(layers[0]?.id || null);
 
   // Image pan / zoom
@@ -30,6 +33,11 @@ export default function MemeGeneratorView() {
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
   useEffect(() => { imgTransformRef.current = imgTransform; }, [imgTransform]);
 
+  // Prevent touch scrolling while dragging/panning
+  function preventTouchScroll(e) {
+    e.preventDefault();
+  }
+
   useEffect(() => {
     if (!imageSrc) return;
     const img = new Image();
@@ -41,6 +49,22 @@ export default function MemeGeneratorView() {
     };
     img.src = imageSrc;
   }, [imageSrc]);
+
+  // If the user clicks/taps outside the preview area, ensure touch scrolling is re-enabled
+  useEffect(() => {
+    const onGlobalPointerDown = (ev) => {
+      try {
+        const tgt = ev.target;
+        if (!previewRef.current) return;
+        if (!previewRef.current.contains(tgt)) {
+          // remove any lingering touchmove blocker so page can scroll
+          window.removeEventListener('touchmove', preventTouchScroll, { passive: false });
+        }
+      } catch (err) {}
+    };
+    window.addEventListener('pointerdown', onGlobalPointerDown);
+    return () => window.removeEventListener('pointerdown', onGlobalPointerDown);
+  }, []);
 
   useEffect(() => {
     drawCanvas();
@@ -109,8 +133,14 @@ export default function MemeGeneratorView() {
   // Image pan: pointerDown on preview (text overlays stopPropagation so only bare canvas reaches here)
   function handlePreviewPointerDown(e) {
     if (!imageObj) return;
+    // ignore pointerdown when it originates from a text overlay (lets selection/drag on text work)
+    try {
+      if (e.target && e.target.closest && e.target.closest('.draggable-text')) return;
+    } catch (err) {}
     if (e.button !== 0) return;
     e.preventDefault();
+    // prevent page scroll while panning with touch
+    window.addEventListener('touchmove', preventTouchScroll, { passive: false });
     imgPanning.current = {
       startX: e.clientX,
       startY: e.clientY,
@@ -136,6 +166,7 @@ export default function MemeGeneratorView() {
     if (moved) { wasDraggingRef.current = true; setTimeout(() => { wasDraggingRef.current = false; }, 0); }
     imgPanning.current = null;
     window.removeEventListener('pointermove', onImgPanMove);
+    window.removeEventListener('touchmove', preventTouchScroll, { passive: false });
   }
 
   function handleDragOver(e) {
@@ -271,38 +302,61 @@ export default function MemeGeneratorView() {
 
   // Drag handlers for overlay text elements (layer id stored in dragging.current)
   function startDrag(e, layerId) {
-    e.preventDefault();
+    // Allow text selection by delaying activation of drag until pointer moves
     e.stopPropagation();
     setSelectedLayerId(layerId);
     const rect = previewRef.current.getBoundingClientRect();
-    dragging.current = { layerId, rect };
-    wasDraggingRef.current = true;
-    // try to capture pointer to the overlay element so moves stay with it
-    try { e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
-    // capture pointer events on window
+    // Capture the layer's current normalized position so we can move by delta, not jump to cursor
+    const layer = layers.find(l => l.id === layerId);
+    const origX = layer ? layer.x : 0;
+    const origY = layer ? layer.y : 0;
+    dragging.current = { layerId, rect, startX: e.clientX, startY: e.clientY, origX, origY, active: false };
+    // attach move/up listeners; we'll only update position after threshold is exceeded
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp, { once: true });
+    // prevent page scrolling on touch while dragging an overlay
+    window.addEventListener('touchmove', preventTouchScroll, { passive: false });
   }
 
   function onPointerMove(ev) {
     if (!dragging.current) return;
-    const { layerId, rect } = dragging.current;
-    const x = (ev.clientX - rect.left) / rect.width;
-    const y = (ev.clientY - rect.top) / rect.height;
+    const d = dragging.current;
+    const dx = ev.clientX - d.startX;
+    const dy = ev.clientY - d.startY;
+    // only begin dragging after small movement threshold to allow text selection
+    if (!d.active) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      d.active = true;
+      // mark that a drag actually happened to suppress click
+      wasDraggingRef.current = true;
+    }
+    const { layerId, rect, origX, origY } = d;
+    // Move by delta from the drag start so the text doesn't jump to the cursor
+    const x = origX + dx / rect.width;
+    const y = origY + dy / rect.height;
     const clamp = (v) => Math.max(0, Math.min(1, v));
     setLayers((prev) => prev.map((l) => (l.id === layerId ? { ...l, x: clamp(x), y: clamp(y) } : l)));
   }
 
   function onPointerUp() {
+    // if drag did not become active, don't treat this as a drag (allows clicks/selections)
+    const didDrag = dragging.current && dragging.current.active;
     dragging.current = null;
     window.removeEventListener("pointermove", onPointerMove);
+    window.removeEventListener('touchmove', preventTouchScroll, { passive: false });
     // defer clearing so the click event that fires right after pointerup still sees wasDraggingRef.current = true
-    setTimeout(() => { wasDraggingRef.current = false; }, 0);
+    if (didDrag) {
+      setTimeout(() => { wasDraggingRef.current = false; }, 0);
+    } else {
+      // ensure selection/clicks behave normally
+      wasDraggingRef.current = false;
+    }
   }
 
   function addLayer() {
     const id = `layer-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-    const newLayer = { id, text: 'New Text', x: 0.05, y: 0.5, fontSize: 48, color: '#ffffff' };
+    const defaultFont = (typeof window !== 'undefined' && window.innerWidth <= 480) ? 28 : 48;
+    const newLayer = { id, text: 'New Text', x: 0.05, y: 0.5, fontSize: defaultFont, color: '#ffffff' };
     setLayers((prev) => [...prev, newLayer]);
     setSelectedLayerId(id);
   }
@@ -492,9 +546,7 @@ export default function MemeGeneratorView() {
         {!imageObj && (
           <div className="preview-placeholder">Click or drop image here to upload</div>
         )}
-        {imageObj && (
-          <div className="preview-hint">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
-        )}
+        {/* moved preview hint below the preview container so it doesn't overlap the image */}
         <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFile} style={{ display: 'none' }} />
 
         {/* Draggable overlay previews (HTML) to allow interactive positioning */}
@@ -509,6 +561,9 @@ export default function MemeGeneratorView() {
           </div>
         ))}
       </div>
+      {imageObj && (
+        <div className="preview-hint-below">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
+      )}
     </div>
     </>
   );
