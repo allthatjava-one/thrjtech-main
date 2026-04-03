@@ -14,6 +14,7 @@ import JsonFormatterPage from './tools/json-formatter/JsonFormatterPage'
 import WatermarkerPage from './tools/image-watermarker/WatermarkerPage'
 import ImageResizerPage from './tools/image-resizer';
 import ImageCollagePage from './tools/image-collage';
+import ImageMemeGeneratorPage from './tools/image-meme-generator';
 
 function HomePage() {
 
@@ -72,6 +73,7 @@ export default function App() {
         <Route path="/image-watermarker" element={<><Seo title="Image Watermarker — THRJ" description="Add watermarks to images quickly in your browser — no uploads required." /><WatermarkerPage /></>} />
         <Route path="/image-resizer" element={<><Seo title="Image Resizer — THRJ" description="Resize images online with an easy, privacy-friendly image resizer." /><ImageResizerPage /></>} />
         <Route path="/image-collage" element={<><Seo title="Image Collage Maker — THRJ" description="Create image collages online with an intuitive collage maker." /><ImageCollagePage /></>} />
+        <Route path="/image-meme-generator" element={<><Seo title="Meme Generator — THRJ" description="Create and download custom memes using the in-browser meme generator." /><ImageMemeGeneratorPage /></>} />
       </Routes>
     </BrowserRouter>
   )

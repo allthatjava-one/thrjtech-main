@@ -1,4 +1,4 @@
-This is a story about updating a collage feature.
+[DONE] This is a story about updating a collage feature.
 
 ## UI Change
 - Have a file dropzone for users to upload images.
