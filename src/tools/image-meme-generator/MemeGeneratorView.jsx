@@ -112,6 +112,10 @@ export default function MemeGeneratorView() {
   // Image pan: pointerDown on preview (text overlays stopPropagation so only bare canvas reaches here)
   function handlePreviewPointerDown(e) {
     if (!imageObj) return;
+    // ignore pointerdown when it originates from a text overlay (lets selection/drag on text work)
+    try {
+      if (e.target && e.target.closest && e.target.closest('.draggable-text')) return;
+    } catch (err) {}
     if (e.button !== 0) return;
     e.preventDefault();
     imgPanning.current = {
