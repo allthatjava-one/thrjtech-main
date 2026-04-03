@@ -33,6 +33,11 @@ export default function MemeGeneratorView() {
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
   useEffect(() => { imgTransformRef.current = imgTransform; }, [imgTransform]);
 
+  // Prevent touch scrolling while dragging/panning
+  function preventTouchScroll(e) {
+    e.preventDefault();
+  }
+
   useEffect(() => {
     if (!imageSrc) return;
     const img = new Image();
@@ -118,6 +123,8 @@ export default function MemeGeneratorView() {
     } catch (err) {}
     if (e.button !== 0) return;
     e.preventDefault();
+    // prevent page scroll while panning with touch
+    window.addEventListener('touchmove', preventTouchScroll, { passive: false });
     imgPanning.current = {
       startX: e.clientX,
       startY: e.clientY,
@@ -143,6 +150,7 @@ export default function MemeGeneratorView() {
     if (moved) { wasDraggingRef.current = true; setTimeout(() => { wasDraggingRef.current = false; }, 0); }
     imgPanning.current = null;
     window.removeEventListener('pointermove', onImgPanMove);
+    window.removeEventListener('touchmove', preventTouchScroll, { passive: false });
   }
 
   function handleDragOver(e) {
@@ -290,6 +298,8 @@ export default function MemeGeneratorView() {
     // attach move/up listeners; we'll only update position after threshold is exceeded
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp, { once: true });
+    // prevent page scrolling on touch while dragging an overlay
+    window.addEventListener('touchmove', preventTouchScroll, { passive: false });
   }
 
   function onPointerMove(ev) {
@@ -317,6 +327,7 @@ export default function MemeGeneratorView() {
     const didDrag = dragging.current && dragging.current.active;
     dragging.current = null;
     window.removeEventListener("pointermove", onPointerMove);
+    window.removeEventListener('touchmove', preventTouchScroll, { passive: false });
     // defer clearing so the click event that fires right after pointerup still sees wasDraggingRef.current = true
     if (didDrag) {
       setTimeout(() => { wasDraggingRef.current = false; }, 0);
