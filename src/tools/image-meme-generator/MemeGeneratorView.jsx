@@ -50,6 +50,22 @@ export default function MemeGeneratorView() {
     img.src = imageSrc;
   }, [imageSrc]);
 
+  // If the user clicks/taps outside the preview area, ensure touch scrolling is re-enabled
+  useEffect(() => {
+    const onGlobalPointerDown = (ev) => {
+      try {
+        const tgt = ev.target;
+        if (!previewRef.current) return;
+        if (!previewRef.current.contains(tgt)) {
+          // remove any lingering touchmove blocker so page can scroll
+          window.removeEventListener('touchmove', preventTouchScroll, { passive: false });
+        }
+      } catch (err) {}
+    };
+    window.addEventListener('pointerdown', onGlobalPointerDown);
+    return () => window.removeEventListener('pointerdown', onGlobalPointerDown);
+  }, []);
+
   useEffect(() => {
     drawCanvas();
   }, [imageObj, layers, imgTransform]);
