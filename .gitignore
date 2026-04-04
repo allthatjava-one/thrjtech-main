@@ -1,6 +1,7 @@
 dist/
 node_modules/
 .wrangler/
+.vscode/
 
 .env
 .dev.vars
