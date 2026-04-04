@@ -15,10 +15,11 @@ const BLOGS = [
     slug: 'pdf-merger-guide',
     title: 'PDF Merger Guide',
     description: 'How to combine multiple PDF files quickly and privately using THRJ\'s PDF Merger.',
-    thumbnail: 'https://thrjtech.com/screenshots/merger/merger-001.png'
+    thumbnail: 'https://thrjtech.com/screenshots/merger/merger-002.png'
   }
 ]
 
+const DEFAULT_THUMB = '/default-thumb.svg'
 
 export default function BlogsListPage() {
   return (
@@ -56,7 +57,8 @@ export default function BlogsListPage() {
                             aria-label={`Read blog: ${b.title}`}
                           >
                             <img
-                              src={b.thumbnail || 'https://via.placeholder.com/120x80?text=Blog'}
+                              src={b.thumbnail || DEFAULT_THUMB}
+                              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_THUMB }}
                               alt={`Thumbnail for ${b.title}`}
                               style={{ width: 120, height: 80, objectFit: 'cover', borderRadius: 6, flex: '0 0 auto' }}
                             />

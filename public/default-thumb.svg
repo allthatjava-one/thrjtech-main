@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="80" viewBox="0 0 120 80" role="img" aria-label="Default blog thumbnail">
+  <rect rx="8" ry="8" width="120" height="80" fill="#f3f4f6" />
+  <g transform="translate(12,12)" fill="#9ca3af">
+    <rect width="28" height="20" rx="2" ry="2" fill="#e5e7eb" />
+    <path d="M24 0 L28 4 L24 4 Z" fill="#d1d5db" />
+    <rect x="0" y="24" width="64" height="4" rx="1" ry="1" fill="#e5e7eb" />
+    <rect x="0" y="32" width="48" height="4" rx="1" ry="1" fill="#e5e7eb" />
+  </g>
+  <text x="86" y="50" font-family="Inter, Arial, sans-serif" font-size="14" fill="#6b7280" text-anchor="middle">Blog</text>
+</svg>
