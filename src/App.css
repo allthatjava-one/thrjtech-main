@@ -134,11 +134,51 @@
 
 /* ── Hero ─────────────────────────────────────────── */
 .hero {
-  background: linear-gradient(135deg, #12151f 0%, #1a1d2e 100%);
-  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  /* keep a fallback gradient for very small screens */
+  background: linear-gradient(135deg, rgba(8,10,18,0.72) 0%, rgba(16,18,30,0.6) 100%);
+  border-bottom: none;
   padding: 5rem 1.25rem 4rem;
   text-align: center;
+  overflow: visible;
 }
+
+/* Centered background image limited to the main container width so it doesn't exceed NavBar boundaries */
+.hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  /* match container horizontal padding (1.25rem each side -> 2.5rem total) */
+  width: calc(100% - 2.5rem);
+  max-width: calc(860px - 2.5rem); /* container max-width minus horizontal padding */
+  background-image: url('/Main_Background_70per.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Gradient overlay above the image to improve text contrast */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: calc(100% - 2.5rem);
+  max-width: calc(860px - 2.5rem); /* match container minus padding */
+  background: linear-gradient(135deg, rgba(8,10,18,0.72) 0%, rgba(16,18,30,0.6) 100%);
+  z-index: 1;
+  pointer-events: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-inner { position: relative; z-index: 2; }
 
 .hero-inner {
   max-width: 620px;
@@ -167,7 +207,7 @@
 /* ── Tools Section ────────────────────────────────── */
 .tools-section {
   flex: 1;
-  padding: 3.5rem 0 4rem;
+  padding: 1.5rem 0 4rem;
 }
 
 .section-heading {

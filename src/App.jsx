@@ -46,7 +46,7 @@ function HomePage() {
         {/* Tools Section */}
         <div className="tools-section">
           <div className="container">
-            <h2 className="section-heading">Available Tools</h2>
+            {/* <h2 className="section-heading">Available Tools</h2> */}
             <RotatingCards />
           </div>
         </div>
