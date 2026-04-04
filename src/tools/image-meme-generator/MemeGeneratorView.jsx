@@ -8,14 +8,17 @@ export default function MemeGeneratorView() {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageObj, setImageObj] = useState(null);
   // Layers: multiple text layers with position, size and color
-  const [layers, setLayers] = useState(() => {
+  const initialLayers = (() => {
     const defaultFont = (typeof window !== 'undefined' && window.innerWidth <= 480) ? 28 : 48;
     return [
       { id: 'layer-1', text: '', placeholder: 'Top Text', x: 0.05, y: 0.08, fontSize: defaultFont, color: '#ffffff' },
       { id: 'layer-2', text: '', placeholder: 'Bottom Text', x: 0.05, y: 0.92, fontSize: defaultFont, color: '#ffffff' }
     ];
-  });
-  const [selectedLayerId, setSelectedLayerId] = useState(layers[0]?.id || null);
+  })();
+  const [layers, setLayers] = useState(initialLayers);
+  // start with no selected layer so image zoom (Alt+Scroll / pinch) works immediately
+  const [selectedLayerId, setSelectedLayerId] = useState(null);
+  const initialStateRef = useRef({ layers: initialLayers, imgTransform: { offsetX: 0, offsetY: 0, scale: 1 }, imageSrc: null, selectedLayerId: null });
   const selectedLayerIdRef = useRef(selectedLayerId);
 
   // Image pan / zoom
@@ -34,6 +37,32 @@ export default function MemeGeneratorView() {
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
   useEffect(() => { imgTransformRef.current = imgTransform; }, [imgTransform]);
   useEffect(() => { selectedLayerIdRef.current = selectedLayerId; }, [selectedLayerId]);
+
+  // helper to check if user made changes compared to initial snapshot
+  const hasChanges = () => {
+    try {
+      const curr = JSON.stringify({ layers, imgTransform, imageSrc, selectedLayerId });
+      const initial = JSON.stringify(initialStateRef.current);
+      return curr !== initial;
+    } catch (err) {
+      return false;
+    }
+  };
+
+  function handleReset() {
+    const init = initialStateRef.current;
+    // Reset only position and fontSize for existing layers; keep user text and colors
+    setLayers((prev) => prev.map(curr => {
+      const orig = (init.layers || []).find(l => l.id === curr.id);
+      if (!orig) return curr;
+      return { ...curr, x: orig.x ?? curr.x, y: orig.y ?? curr.y, fontSize: orig.fontSize ?? curr.fontSize };
+    }));
+    // Reset image transform (pan/zoom) to initial
+    setImgTransform({ ...init.imgTransform });
+    imgTransformRef.current = { ...init.imgTransform };
+    // Keep imageSrc and imageObj unchanged (do not reset uploaded image)
+    // Keep selectedLayerId as-is so user focus remains
+  }
 
   // Prevent touch scrolling while dragging/panning
   function preventTouchScroll(e) {
@@ -76,21 +105,36 @@ export default function MemeGeneratorView() {
   useEffect(() => {
     const preview = previewRef.current;
     if (!preview) return;
+    const isOverDraggable = (x, y) => {
+      try {
+        const el = document.elementFromPoint(x, y);
+        return el && el.closest && el.closest('.draggable-text');
+      } catch (err) { return false; }
+    };
+
     const onWheel = (e) => {
       if (!e.altKey) return;
       e.preventDefault();
-      // If a text layer is selected, change its font size. Otherwise, adjust image zoom.
       const fontFactor = e.deltaY < 0 ? 1.05 : 0.95;
       const imgFactor = e.deltaY < 0 ? 1.1 : 0.9;
-      const selId = selectedLayerIdRef.current;
-      if (selId) {
-        setLayers(prev => prev.map(l => {
-          if (l.id !== selId) return l;
-          const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * fontFactor)));
-          return { ...l, fontSize: nextSize };
-        }));
-        return;
+      const overDraggable = isOverDraggable(e.clientX, e.clientY);
+      if (overDraggable) {
+        // adjust font size of the layer under the pointer if present
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const layerEl = el && el.closest ? el.closest('.draggable-text') : null;
+        const selId = layerEl ? (layerEl.dataset && layerEl.dataset.layerId) || selectedLayerIdRef.current : selectedLayerIdRef.current;
+        // if no specific layer id available, fall back to selectedLayerIdRef
+        const targetId = selId || selectedLayerIdRef.current;
+        if (targetId) {
+          setLayers(prev => prev.map(l => {
+            if (l.id !== targetId) return l;
+            const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * fontFactor)));
+            return { ...l, fontSize: nextSize };
+          }));
+          return;
+        }
       }
+      // Otherwise, zoom the image
       if (!imageObjRef.current) return;
       setImgTransform(prev => {
         const next = { ...prev, scale: Math.max(0.1, Math.min(10, prev.scale * imgFactor)) };
@@ -104,7 +148,10 @@ export default function MemeGeneratorView() {
     const onTouchStart = (e) => {
       if (e.touches.length === 2) {
         lastDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-        pinchModeRef.current = selectedLayerIdRef.current ? 'font' : 'image';
+        // decide based on midpoint whether pinch is over a draggable text overlay
+        const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        pinchModeRef.current = isOverDraggable(midX, midY) ? 'font' : 'image';
       }
     };
     const onTouchMove = (e) => {
@@ -112,13 +159,20 @@ export default function MemeGeneratorView() {
         e.preventDefault();
         const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
         const ratio = dist / lastDist;
-        if (pinchModeRef.current === 'font' && selectedLayerIdRef.current) {
-          const selId = selectedLayerIdRef.current;
-          setLayers(prev => prev.map(l => {
-            if (l.id !== selId) return l;
-            const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * ratio)));
-            return { ...l, fontSize: nextSize };
-          }));
+        if (pinchModeRef.current === 'font') {
+          // try to find a layer under the midpoint
+          const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+          const el = document.elementFromPoint(midX, midY);
+          const layerEl = el && el.closest ? el.closest('.draggable-text') : null;
+          const targetId = layerEl ? (layerEl.dataset && layerEl.dataset.layerId) || selectedLayerIdRef.current : selectedLayerIdRef.current;
+          if (targetId) {
+            setLayers(prev => prev.map(l => {
+              if (l.id !== targetId) return l;
+              const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * ratio)));
+              return { ...l, fontSize: nextSize };
+            }));
+          }
         } else {
           // image zoom
           setImgTransform(prev => {
@@ -563,9 +617,12 @@ export default function MemeGeneratorView() {
         )}
         <div className="control-row buttons">
           {imageObj && (
-            <button className="btn" onClick={() => fileInputRef.current?.click()}>Change Image</button>
+            <button className="btn" onClick={() => fileInputRef.current?.click()}>Image...</button>
           )}
-          <button className="btn primary" onClick={handleDownload}>Download Meme</button>
+          {hasChanges() && (
+            <button className="btn" onClick={handleReset}>Reset</button>
+          )}
+          <button className="btn primary" onClick={handleDownload}>Download</button>
         </div>
       </div>
       <div
@@ -588,6 +645,7 @@ export default function MemeGeneratorView() {
         {layers.map((layer) => (
           <div
             key={layer.id}
+            data-layer-id={layer.id}
             className={`draggable-text layer-overlay ${layer.id === selectedLayerId ? 'selected' : ''}`}
             style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${layer.fontSize}px`, lineHeight: `${Math.round((layer.fontSize + 6) * 0.82)}px`, color: layer.color, whiteSpace: 'pre' }}
             onPointerDown={(e) => startDrag(e, layer.id)}

@@ -184,6 +184,13 @@
     align-items: stretch;
     gap: 6px;
   }
+  /* Keep the Layers header (label + add button) on a single row on small screens */
+  .meme-controls .control-row.layers-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
   .meme-controls label {
     min-width: 0;
     text-align: left;
