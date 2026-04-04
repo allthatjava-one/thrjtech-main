@@ -11,11 +11,12 @@ export default function MemeGeneratorView() {
   const [layers, setLayers] = useState(() => {
     const defaultFont = (typeof window !== 'undefined' && window.innerWidth <= 480) ? 28 : 48;
     return [
-      { id: 'layer-1', text: 'TOP TEXT', x: 0.05, y: 0.08, fontSize: defaultFont, color: '#ffffff' },
-      { id: 'layer-2', text: 'BOTTOM TEXT', x: 0.05, y: 0.92, fontSize: defaultFont, color: '#ffffff' }
+      { id: 'layer-1', text: '', placeholder: 'Top Text', x: 0.05, y: 0.08, fontSize: defaultFont, color: '#ffffff' },
+      { id: 'layer-2', text: '', placeholder: 'Bottom Text', x: 0.05, y: 0.92, fontSize: defaultFont, color: '#ffffff' }
     ];
   });
   const [selectedLayerId, setSelectedLayerId] = useState(layers[0]?.id || null);
+  const selectedLayerIdRef = useRef(selectedLayerId);
 
   // Image pan / zoom
   const [imgTransform, setImgTransform] = useState({ offsetX: 0, offsetY: 0, scale: 1 });
@@ -32,6 +33,7 @@ export default function MemeGeneratorView() {
   // Keep refs in sync with state
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
   useEffect(() => { imgTransformRef.current = imgTransform; }, [imgTransform]);
+  useEffect(() => { selectedLayerIdRef.current = selectedLayerId; }, [selectedLayerId]);
 
   // Prevent touch scrolling while dragging/panning
   function preventTouchScroll(e) {
@@ -75,35 +77,60 @@ export default function MemeGeneratorView() {
     const preview = previewRef.current;
     if (!preview) return;
     const onWheel = (e) => {
-      if (!imageObjRef.current) return;
       if (!e.altKey) return;
       e.preventDefault();
-      const factor = e.deltaY < 0 ? 1.1 : 0.9;
+      // If a text layer is selected, change its font size. Otherwise, adjust image zoom.
+      const fontFactor = e.deltaY < 0 ? 1.05 : 0.95;
+      const imgFactor = e.deltaY < 0 ? 1.1 : 0.9;
+      const selId = selectedLayerIdRef.current;
+      if (selId) {
+        setLayers(prev => prev.map(l => {
+          if (l.id !== selId) return l;
+          const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * fontFactor)));
+          return { ...l, fontSize: nextSize };
+        }));
+        return;
+      }
+      if (!imageObjRef.current) return;
       setImgTransform(prev => {
-        const next = { ...prev, scale: Math.max(0.1, Math.min(10, prev.scale * factor)) };
+        const next = { ...prev, scale: Math.max(0.1, Math.min(10, prev.scale * imgFactor)) };
         imgTransformRef.current = next;
         return next;
       });
     };
+
     let lastDist = null;
+    const pinchModeRef = { current: null };
     const onTouchStart = (e) => {
-      if (e.touches.length === 2)
+      if (e.touches.length === 2) {
         lastDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        pinchModeRef.current = selectedLayerIdRef.current ? 'font' : 'image';
+      }
     };
     const onTouchMove = (e) => {
       if (e.touches.length === 2 && lastDist !== null) {
         e.preventDefault();
         const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
         const ratio = dist / lastDist;
-        setImgTransform(prev => {
-          const next = { ...prev, scale: Math.max(0.1, Math.min(10, prev.scale * ratio)) };
-          imgTransformRef.current = next;
-          return next;
-        });
+        if (pinchModeRef.current === 'font' && selectedLayerIdRef.current) {
+          const selId = selectedLayerIdRef.current;
+          setLayers(prev => prev.map(l => {
+            if (l.id !== selId) return l;
+            const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * ratio)));
+            return { ...l, fontSize: nextSize };
+          }));
+        } else {
+          // image zoom
+          setImgTransform(prev => {
+            const next = { ...prev, scale: Math.max(0.1, Math.min(10, prev.scale * ratio)) };
+            imgTransformRef.current = next;
+            return next;
+          });
+        }
         lastDist = dist;
       }
     };
-    const onTouchEnd = (e) => { if (e.touches.length < 2) lastDist = null; };
+    const onTouchEnd = (e) => { if (e.touches.length < 2) { lastDist = null; pinchModeRef.current = null; } };
     preview.addEventListener('wheel', onWheel, { passive: false });
     preview.addEventListener('touchstart', onTouchStart, { passive: false });
     preview.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -356,7 +383,7 @@ export default function MemeGeneratorView() {
   function addLayer() {
     const id = `layer-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     const defaultFont = (typeof window !== 'undefined' && window.innerWidth <= 480) ? 28 : 48;
-    const newLayer = { id, text: 'New Text', x: 0.05, y: 0.5, fontSize: defaultFont, color: '#ffffff' };
+    const newLayer = { id, text: '', placeholder: 'New Text', x: 0.05, y: 0.5, fontSize: defaultFont, color: '#ffffff' };
     setLayers((prev) => [...prev, newLayer]);
     setSelectedLayerId(id);
   }
@@ -473,6 +500,14 @@ export default function MemeGeneratorView() {
               <textarea
                 className="layer-textarea"
                 value={layer.text}
+                placeholder={layer.placeholder || ''}
+                onFocus={(e) => {
+                  // if the layer value matches the placeholder (from older data), clear it on first focus
+                  const ph = layer.placeholder || '';
+                  if (layer.text && (layer.text === ph || layer.text === ph.toUpperCase() || layer.text === ph.toLowerCase())) {
+                    updateLayer(layer.id, { text: '' });
+                  }
+                }}
                 onChange={(e) => updateLayer(layer.id, { text: e.target.value })}
                 onKeyDown={(e) => {
                   e.stopPropagation();
@@ -557,7 +592,7 @@ export default function MemeGeneratorView() {
             style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${layer.fontSize}px`, lineHeight: `${Math.round((layer.fontSize + 6) * 0.82)}px`, color: layer.color, whiteSpace: 'pre' }}
             onPointerDown={(e) => startDrag(e, layer.id)}
           >
-            {layer.text}
+            {layer.text || (layer.placeholder || '').toUpperCase()}
           </div>
         ))}
       </div>
