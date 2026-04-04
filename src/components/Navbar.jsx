@@ -73,6 +73,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
+          <Link to="/blogs" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
           <div className="dropdown">
             <button className="dropbtn" onClick={() => { setAboutOpen(true); setMobileMenuOpen(false); }}>About Us</button>
           </div>

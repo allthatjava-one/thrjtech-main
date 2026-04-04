@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import RotatingCards from './components/RotatingCards'
-import Seo from './components/Seo'
-import GtagRouteTracker from './components/GtagRouteTracker'
+import Seo from './services/Seo'
+import GtagRouteTracker from './services/GtagRouteTracker'
 import PdfCompressorPage from './tools/pdf-compressor/PdfCompressorPage'
 import PdfMergerPage from './tools/pdf-merger/PdfMergerPage'
 import PdfConverterPage from './tools/pdf-converter/PdfConverterPage'
@@ -15,6 +15,8 @@ import WatermarkerPage from './tools/image-watermarker/WatermarkerPage'
 import ImageResizerPage from './tools/image-resizer';
 import ImageCollagePage from './tools/image-collage';
 import ImageMemeGeneratorPage from './tools/image-meme-generator';
+import BlogsListPage from './components/BlogsListPage';
+import BlogPage from './components/BlogPage';
 
 function HomePage() {
 
@@ -74,6 +76,8 @@ export default function App() {
         <Route path="/image-resizer" element={<><Seo title="Image Resizer — THRJ" description="Resize images online with an easy, privacy-friendly image resizer." /><ImageResizerPage /></>} />
         <Route path="/image-collage" element={<><Seo title="Image Collage Maker — THRJ" description="Create image collages online with an intuitive collage maker." /><ImageCollagePage /></>} />
         <Route path="/image-meme-generator" element={<><Seo title="Meme Generator — THRJ" description="Create and download custom memes using the in-browser meme generator." /><ImageMemeGeneratorPage /></>} />
+        <Route path="/blogs" element={<><Seo title="Blog — THRJ" description="THRJ blog" /><BlogsListPage /></>} />
+        <Route path="/blogs/:slug" element={<><Seo title="Blog post — THRJ" description="Blog post" /><BlogPage /></>} />
       </Routes>
     </BrowserRouter>
   )
