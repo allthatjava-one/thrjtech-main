@@ -17,6 +17,13 @@ const BLOGS = [
     description: 'How to combine multiple PDF files quickly and privately using THRJ\'s PDF Merger.',
     thumbnail: 'https://thrjtech.com/screenshots/merger/merger-002.png'
   }
+  ,
+  {
+    slug: 'image-crop-guide',
+    title: 'Image Crop Guide',
+    description: 'How to crop images quickly using THRJ\'s Image Crop tool.',
+    thumbnail: '/screenshots/crop/crop_001.png'
+  }
 ]
 
 const DEFAULT_THUMB = '/default-thumb.svg'
