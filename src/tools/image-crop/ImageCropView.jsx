@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cropper from 'react-easy-crop';
 import '../image-resizer/ImageResizer.css';
 
@@ -30,16 +31,27 @@ export function ImageCropView(props) {
     handleReset,
   } = props;
 
+  const navigate = useNavigate();
+
   const [localAspect, setLocalAspect] = useState(aspect || undefined);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [processing, setProcessing] = useState(false);
+  const [hasCropEdited, setHasCropEdited] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
   const cropContainerRef = useRef(null);
   const [cropperHeight, setCropperHeight] = useState(520);
 
   const onCropCompleteInternal = useCallback((croppedArea, croppedAreaPixels) => {
+    setHasCropEdited(true);
     onCropComplete(croppedArea, croppedAreaPixels);
   }, [onCropComplete]);
+
+  // Mark as edited whenever any crop parameter changes so actions enable immediately
+  useEffect(() => {
+    if (!imageSrc) return;
+    if (!hasCropEdited) setHasCropEdited(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [crop, zoom, rotation, flipH, flipV, localAspect]);
 
   const download = async () => {
     setProcessing(true);
@@ -47,11 +59,72 @@ export function ImageCropView(props) {
     setProcessing(false);
   };
 
+  // Wait for `outputUrl` prop to become available (polling) after calling handleDownload
+  const waitForOutputUrl = (timeout = 3000) => new Promise((resolve, reject) => {
+    const start = Date.now();
+    const iv = setInterval(() => {
+      if (outputUrl) {
+        clearInterval(iv);
+        resolve(outputUrl);
+      } else if (Date.now() - start > timeout) {
+        clearInterval(iv);
+        reject(new Error('timeout'));
+      }
+    }, 100);
+  });
+
+  // Trigger download: ensure outputUrl is generated then download
+  const triggerDownload = async () => {
+    setProcessing(true);
+    try {
+      if (!outputUrl) {
+        await handleDownload();
+        await waitForOutputUrl(3000);
+      }
+      if (!outputUrl) {
+        // fallback: try one last time
+        // nothing we can do
+      }
+      const link = document.createElement('a');
+      link.href = outputUrl;
+      link.download = imageSrc ? 'cropped.png' : 'cropped.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      // ignore
+    }
+    setProcessing(false);
+  };
+
+  const handleSendToMeme = async () => {
+    setProcessing(true);
+    try {
+      if (!outputUrl) {
+        await handleDownload();
+        await waitForOutputUrl(3000);
+      }
+      if (!outputUrl) return;
+      const resp = await fetch(outputUrl);
+      const blob = await resp.blob();
+      const file = new File([blob], 'cropped.png', { type: blob.type || 'image/png' });
+      navigate('/image-meme-generator', { state: { mainImage: file } });
+    } catch (err) {
+      // ignore
+    }
+    setProcessing(false);
+  };
+
   const handleWheel = (e) => {
     if (!e.altKey) return;
     e.preventDefault();
-    const delta = -e.deltaY / 500;
-    setZoom((z) => Math.min(3, Math.max(1, Number((z + delta).toFixed(2)))));
+    // make wheel more responsive: scale delta and apply two-decimal rounding
+    const delta = -e.deltaY / 300;
+    setZoom((z) => {
+      const next = z + delta;
+      const rounded = Math.round(next * 100) / 100;
+      return Math.min(3, Math.max(0.5, rounded));
+    });
   };
 
   // Adjust cropper height to match the ORIGINAL image's natural ratio.
@@ -74,6 +147,25 @@ export function ImageCropView(props) {
     ro.observe(el);
     return () => ro.disconnect();
   }, [naturalAspect]);
+
+  // Attach a capture-phase, non-passive wheel listener so Alt+Scroll is
+  // handled even when nested components (like the Cropper) stop or
+  // consume the React onWheel event.
+  useEffect(() => {
+    const el = cropContainerRef.current;
+    if (!el) return;
+    const listener = (e) => {
+      try {
+        // forward to our handler
+        handleWheel(e);
+      } catch (err) {
+        // ignore
+      }
+    };
+    el.addEventListener('wheel', listener, { passive: false, capture: true });
+    return () => el.removeEventListener('wheel', listener, { capture: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cropContainerRef.current]);
 
   return (
     <div className="image-crop-view">
@@ -174,6 +266,8 @@ export function ImageCropView(props) {
         )}
       </div>
 
+      {/* send-to-meme box moved to bottom of main content (rendered later) */}
+
       <div className="crop-area">
         <div
           className="drop-zone crop-drop"
@@ -202,6 +296,7 @@ export function ImageCropView(props) {
                 onCropComplete={onCropCompleteInternal}
                 cropShape="rect"
                 showGrid
+                minZoom={0.5}
                 restrictPosition={false}
               />
             </div>
@@ -217,7 +312,7 @@ export function ImageCropView(props) {
           </div>
           <div className="control-row">
             <label>Zoom</label>
-            <input type="range" min="1" max="3" step="0.01" value={zoom} onChange={e => setZoom(Number(e.target.value))} />
+            <input type="range" min="0.5" max="3" step="0.01" value={zoom} onChange={e => setZoom(Number(e.target.value))} />
           </div>
           <div className="control-row">
             <label>Rotation</label>
@@ -252,23 +347,17 @@ export function ImageCropView(props) {
 
           <div style={{ marginTop: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
             <button className="resize-btn" onClick={async () => { await download(); setPreviewOpen(true); }} disabled={processing || !imageSrc}>{processing ? 'Processing...' : 'Preview'}</button>
-            <button className="resize-btn reset-btn" onClick={() => { handleReset(); setPreviewOpen(false); }} disabled={!imageSrc} style={{ marginLeft: 8 }}>Reset</button>
+            <button className="resize-btn reset-btn" onClick={() => { handleReset(); setPreviewOpen(false); setHasCropEdited(false); }} disabled={!imageSrc} style={{ marginLeft: 8 }}>Reset</button>
             <button
               className={`download-btn ${!outputUrl ? 'disabled' : ''}`}
-              onClick={(e) => {
-                if (!outputUrl) return;
-                const link = document.createElement('a');
-                link.href = outputUrl;
-                link.download = imageSrc ? 'cropped.png' : 'cropped.png';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-              disabled={!outputUrl}
+              onClick={triggerDownload}
+              disabled={!(outputUrl || hasCropEdited)}
             >
               Download
             </button>
           </div>
+
+          {/* Moved below so this control spans the main content area */}
 
           {previewOpen && outputUrl && (
             <div className="image-popup-overlay" onClick={() => setPreviewOpen(false)}>
@@ -280,6 +369,20 @@ export function ImageCropView(props) {
           )}
         </div>
       </div>
+
+      {/* Bottom action block: appears only after a crop output is generated */}
+      {(outputUrl || hasCropEdited) && (
+        <div className="send-action">
+          <span className="send-text">Would you like to put a text on cropped image?</span>
+          <button
+            className="send-btn"
+            onClick={handleSendToMeme}
+            disabled={!(outputUrl || hasCropEdited)}
+          >
+            Send to Meme Generator
+          </button>
+        </div>
+      )}
     </div>
   );
 }

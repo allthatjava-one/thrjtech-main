@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./MemeGenerator.css";
 
-export default function MemeGeneratorView() {
+export default function MemeGeneratorView({ initialFile }) {
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
@@ -80,6 +80,18 @@ export default function MemeGeneratorView() {
     };
     img.src = imageSrc;
   }, [imageSrc]);
+
+  // If a File was passed via router state, load it as dataURL
+  useEffect(() => {
+    if (!initialFile) return;
+    try {
+      const reader = new FileReader();
+      reader.onload = (ev) => setImageSrc(ev.target.result);
+      reader.readAsDataURL(initialFile);
+    } catch (err) {
+      // ignore
+    }
+  }, [initialFile]);
 
   // If the user clicks/taps outside the preview area, ensure touch scrolling is re-enabled
   useEffect(() => {
