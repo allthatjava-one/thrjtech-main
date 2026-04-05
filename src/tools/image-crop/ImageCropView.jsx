@@ -77,16 +77,14 @@ export function ImageCropView(props) {
   const triggerDownload = async () => {
     setProcessing(true);
     try {
-      if (!outputUrl) {
-        await handleDownload();
-        await waitForOutputUrl(3000);
+      let url = outputUrl;
+      if (!url) {
+        const res = await handleDownload();
+        url = res && res.url ? res.url : outputUrl;
       }
-      if (!outputUrl) {
-        // fallback: try one last time
-        // nothing we can do
-      }
+      if (!url) return;
       const link = document.createElement('a');
-      link.href = outputUrl;
+      link.href = url;
       link.download = imageSrc ? 'cropped.png' : 'cropped.png';
       document.body.appendChild(link);
       link.click();
@@ -100,12 +98,13 @@ export function ImageCropView(props) {
   const handleSendToMeme = async () => {
     setProcessing(true);
     try {
-      if (!outputUrl) {
-        await handleDownload();
-        await waitForOutputUrl(3000);
+      let url = outputUrl;
+      if (!url) {
+        const res = await handleDownload();
+        url = res && res.url ? res.url : outputUrl;
       }
-      if (!outputUrl) return;
-      const resp = await fetch(outputUrl);
+      if (!url) return;
+      const resp = await fetch(url);
       const blob = await resp.blob();
       const file = new File([blob], 'cropped.png', { type: blob.type || 'image/png' });
       navigate('/image-meme-generator', { state: { mainImage: file } });
