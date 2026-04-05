@@ -30,7 +30,7 @@
   border-radius: 20px;
   border: 1px solid #e2e6f0;
   padding: 2.5rem 2.5rem 2rem;
-  max-width: 560px;
+  max-width: 860px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -738,5 +738,24 @@
   }
   .pdf-converter-page .convert-select-wrap {
     margin-left: 0;
+  }
+}
+
+/* Mobile: remove horizontal padding so the card fills the full screen width */
+@media (max-width: 740px) {
+  .pdf-converter-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .pdf-converter-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .pdf-converter-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

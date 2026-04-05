@@ -373,8 +373,8 @@ function RotatingCards() {
         <div className="tool-card">
           <div className="tool-icon" aria-hidden="true">{card.icon}</div>
           <div className="tool-content">
-            <h3 className="tool-title">{card.title}</h3>
-            <Link to={card.link} className="btn btn-primary">{card.btn}</Link>
+            <h3 className="tool-title"><Link to={card.link}>{card.title}</Link></h3>
+            {/* <Link to={card.link} className="btn btn-primary">{card.btn}</Link> */}
             <p className="tool-description">{card.description}</p>
             <ul className="feature-list">
               {card.features.map((f, i) => (

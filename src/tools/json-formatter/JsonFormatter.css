@@ -461,3 +461,22 @@ kbd {
 .jf-container .howitworks-content ul { margin: 0.5rem 0 0 1.25rem; padding-left: 1.25rem; }
 .jf-container .details-content p,
 .jf-container .howitworks-content p { text-align: left !important; }
+
+/* Mobile: remove horizontal padding so content fills the full screen width */
+@media (max-width: 740px) {
+  .formatter-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .jf-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .jf-container .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

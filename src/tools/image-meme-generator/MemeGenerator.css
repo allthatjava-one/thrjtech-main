@@ -184,6 +184,13 @@
     align-items: stretch;
     gap: 6px;
   }
+  /* Keep the Layers header (label + add button) on a single row on small screens */
+  .meme-controls .control-row.layers-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
   .meme-controls label {
     min-width: 0;
     text-align: left;
@@ -264,4 +271,23 @@
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 1rem;
+}
+
+/* Mobile: remove horizontal padding so the card fills the full screen width */
+@media (max-width: 740px) {
+  .meme-generator-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .meme-generator-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .meme-generator-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

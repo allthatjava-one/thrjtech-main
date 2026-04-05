@@ -31,7 +31,7 @@
   border-radius: 20px;
   border: 1px solid #e2e6f0;
   padding: 2.5rem 2.5rem 2rem;
-  max-width: 560px;
+  max-width: 860px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -423,4 +423,23 @@
 .details-content p,
 .howitworks-content p {
   text-align: left !important;
+}
+
+/* Mobile: remove horizontal padding so the card fills the full screen width */
+@media (max-width: 740px) {
+  .image-resizer-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .image-resizer-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .image-resizer-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
