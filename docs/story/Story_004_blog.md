@@ -1,4 +1,4 @@
-I want to add blog about how the user can use this tool to create memes. I will write the blog in markdown format and save it as Story_004_blog.md in the docs/story directory. The blog will include step-by-step instructions on how to use the meme generator, along with tips and examples for creating popular meme formats. I will also include screenshots of the tool in action to help users understand the process better.
+[DONE] I want to add blog about how the user can use this tool to create memes. I will write the blog in markdown format and save it as Story_004_blog.md in the docs/story directory. The blog will include step-by-step instructions on how to use the meme generator, along with tips and examples for creating popular meme formats. I will also include screenshots of the tool in action to help users understand the process better.
 
 ## Technical Details
 - The main blog page should be placed in the `src/blog` directory

@@ -67,6 +67,7 @@ export default function Navbar() {
                     <Link to="/image-resizer" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Resize</Link>
                     <Link to="/image-watermarker" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Watermark</Link>
                       <Link to="/image-collage" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Collage</Link>
+                      <Link to="/image-crop" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Crop</Link>
                       <Link to="/image-meme-generator" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Meme Generator</Link>
                   </div>
                 </div>
