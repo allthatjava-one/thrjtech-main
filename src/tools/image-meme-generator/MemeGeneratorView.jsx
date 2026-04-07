@@ -497,10 +497,8 @@ export default function MemeGeneratorView({ initialFile }) {
           </button>
         </div>
 
-        {openPanel && (
-          <div className="shared-collapse">
-            {openPanel === 'details' && (
-              <div className="details-content">
+        <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is a Meme Generator</h3>
                 <ul>
                   <li>A meme generator lets you add custom text overlays to any image to create humorous or expressive memes. You can position, style, and resize the text freely before exporting the final image.</li>
@@ -524,10 +522,8 @@ export default function MemeGeneratorView({ initialFile }) {
                   <li><strong>Q:</strong> What image formats are supported? <strong>A:</strong> Any image format your browser supports (JPEG, PNG, WebP, GIF, etc.).</li>
                 </ul>
               </div>
-            )}
 
-            {openPanel === 'howitworks' && (
-              <div className="howitworks-content">
+            <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/meme-generator/meme-generator001.png" alt="Step 1" className="how-img" />
@@ -547,9 +543,7 @@ export default function MemeGeneratorView({ initialFile }) {
                   </li>
                 </ol>
               </div>
-            )}
           </div>
-        )}
       </div>
     <div className="meme-generator">
       <div className="meme-controls">

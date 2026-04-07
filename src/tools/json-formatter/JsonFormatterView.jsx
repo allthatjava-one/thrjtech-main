@@ -119,10 +119,8 @@ export default function JsonFormatterView() {
               </button>
             </div>
 
-            {openPanel && (
-              <div className="shared-collapse">
-                {openPanel === 'details' && (
-                  <div className="details-content">
+            <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+                <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                     <h3>What is JSON</h3>
                     <ul>
                       <li>JSON (JavaScript Object Notation) is a lightweight, text-based format for representing structured data using key/value pairs and arrays. It's widely used for APIs, configuration, and data interchange because it's easy for humans and machines to read and write.</li>
@@ -159,10 +157,8 @@ export default function JsonFormatterView() {
                       <li><strong>Q:</strong> Are there size limits? <strong>A:</strong> Very large inputs may be slow or hit browser memory limits; if you work with massive files, consider processing them in a dedicated environment or splitting them into smaller chunks.</li>
                     </ul>
                   </div>
-                )}
 
-                {openPanel === 'howitworks' && (
-                  <div className="howitworks-content">
+                <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                     <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                       <li style={{ marginBottom: '0.75rem' }}>
                         <img src="/screenshots/json-formatter/JSON_formatter001.png" alt="Step 1" className="how-img" />
@@ -182,9 +178,7 @@ export default function JsonFormatterView() {
                       </li>
                     </ol>
                   </div>
-                )}
-              </div>
-            )}
+            </div>
           </div>
         </div>
 

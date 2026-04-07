@@ -61,3 +61,10 @@ button {
   max-height: none !important;
   overflow: visible !important;
 }
+
+/* Visually hide collapsed panels while keeping content in DOM for crawlers */
+.panel-hidden {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+}
