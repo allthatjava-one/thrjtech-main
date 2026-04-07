@@ -76,10 +76,8 @@ export function ImageResizerView({
           </button>
         </div>
 
-        {openPanel && (
-          <div className="shared-collapse">
-            {openPanel === 'details' && (
-              <div className="details-content">
+        <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is Image Resizer</h3>
                 <ul>
                   <li>The Image Resizer lets you change an image's dimensions either by a percentage scale or by specifying exact width and height in pixels. It runs client-side and provides a downloadable resized image.</li>
@@ -115,10 +113,8 @@ export function ImageResizerView({
                   <li><strong>Q:</strong> Can I batch resize multiple images? <strong>A:</strong> This tool is focused on single-image operations. For large batches, consider using a dedicated batch tool or script.</li>
                 </ul>
               </div>
-            )}
 
-            {openPanel === 'howitworks' && (
-              <div className="howitworks-content">
+            <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/resizer/Image-resizer001.png" alt="Step 1" className="how-img" />
@@ -138,9 +134,7 @@ export function ImageResizerView({
                   </li>
                 </ol>
               </div>
-            )}
           </div>
-        )}
       </div>
       <div
         className={`drop-zone${isDragging ? ' dragging' : ''}`}

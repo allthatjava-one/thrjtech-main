@@ -47,10 +47,8 @@ export function WatermarkerView({
           </button>
         </div>
 
-        {openPanel && (
-          <div className="shared-collapse">
-            {openPanel === 'details' && (
-              <div className="details-content">
+        <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is Image watermarker</h3>
                 <ul>
                   <li>An Image Watermarker adds a visible text or logo overlay to an image to indicate ownership, branding, or provenance. It supports positioning, scale, opacity, and simple styling so you can make the watermark subtle or prominent.</li>
@@ -87,10 +85,8 @@ export function WatermarkerView({
                   <li><strong>Q:</strong> Does watermarking work with all image formats? <strong>A:</strong> Common web formats (JPEG, PNG, WebP) are supported. For formats with special features (animated GIF/PNG), results may vary and animation frames are not preserved by single-frame export.</li>
                 </ul>
               </div>
-            )}
 
-            {openPanel === 'howitworks' && (
-              <div className="howitworks-content">
+            <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/watermarker/watermarker001.png" alt="Step 1" className="how-img" />
@@ -110,9 +106,7 @@ export function WatermarkerView({
                   </li>
                 </ol>
               </div>
-            )}
           </div>
-        )}
       </div>
       <div
         className={`drop-zone${isDragging ? ' dragging' : ''}`}

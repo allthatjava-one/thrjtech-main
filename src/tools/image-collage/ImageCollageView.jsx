@@ -454,10 +454,8 @@ const ImageCollageView = ({
           </button>
         </div>
 
-        {openPanel && (
-          <div className="shared-collapse">
-            {openPanel === 'details' && (
-              <div className="details-content">
+        <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is Collage</h3>
                 <ul>
                   <li>A collage combines multiple images into a single tiled layout on a shared canvas. You can control rows, columns, spacing, and final canvas dimensions to create social posts, montages, or previews.</li>
@@ -494,10 +492,8 @@ const ImageCollageView = ({
                   <li><strong>Q:</strong> Does this run in my browser? <strong>A:</strong> Yes — collage assembly is performed client-side; images are not uploaded unless you explicitly use a sharing feature.</li>
                 </ul>
               </div>
-            )}
 
-            {openPanel === 'howitworks' && (
-              <div className="howitworks-content">
+            <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/collage/image-collage001.png" alt="Step 1" className="how-img" />
@@ -517,9 +513,7 @@ const ImageCollageView = ({
                   </li>
                 </ol>
               </div>
-            )}
           </div>
-        )}
       </div>
 
       <div
