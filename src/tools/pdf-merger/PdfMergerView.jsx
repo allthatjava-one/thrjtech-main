@@ -61,23 +61,30 @@ export function PdfMergerView({
               <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
                   <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                       <h3>How PDF merge works</h3>
-                      <ul>
-                        <li>PDF merge combines the pages from multiple PDF files into a single output document. The tool concatenates page streams in the selected order and rebuilds the document's internal indices so the result behaves like one continuous PDF.</li>
-                      </ul>
+                      <p>
+                        PDF merging concatenates the pages from multiple source files into a single target document. The merger assembles page streams in the
+                        specified order and rebuilds the document cross-reference tables and indices so the resulting PDF behaves as one continuous file when
+                        opened in viewers. Merging typically preserves page content, annotations, and basic metadata but does not perform deep content edits.
+                      </p>
 
-                      <h3>How merged PDF size will be</h3>
-                      <ul>
-                        <li>Merged size depends on the input files: combining many small PDFs may produce a file roughly equal to the sum of inputs, while redundant resources (like duplicate embedded fonts or identical images) may be deduplicated in some implementations. Image-heavy PDFs add most to the final size.</li>
-                      </ul>
+                      <h3>How merged size is determined</h3>
+                      <p>
+                        The final size is influenced primarily by the input files' contents: image-heavy PDFs contribute most bytes, while text-only files
+                        add comparatively little. Some merge implementations deduplicate identical embedded resources (for example, repeated fonts or images),
+                        which can reduce the overall size relative to a naïve concatenation. However, deduplication is not guaranteed across all tools.
+                      </p>
 
-                      <h3>When to merge PDFs</h3>
-                      <ul>
-                        <li>Merge when you need a single document for distribution, printing, or archiving — for example combining chapters, reports, or multi-part forms into one file to simplify sharing and navigation.</li>
-                      </ul>
+                      <h3>Why use an online merger</h3>
+                      <p>
+                        Online merging offloads CPU- and memory-intensive operations to server-side environments, enabling reliable processing of larger
+                        batches than many client devices can handle. It also centralizes consistent PDF libraries so behavior is predictable across platforms.
+                      </p>
 
-                      <h3>Why it works better in online tools</h3>
+                      <h3>Best practices</h3>
                       <ul>
-                        <li>Online tools can offload CPU- and memory-intensive processing to server-side environments, handle larger batches reliably, and provide consistent binaries and libraries for PDF processing that may not be available or convenient on every client device.</li>
+                        <li>Order your files before merging; the sequence determines the page order in the final document.</li>
+                        <li>Remove or replace password protection before merging, as encrypted files cannot be concatenated without unlocking.</li>
+                        <li>For print-ready output, review the merged PDF for consistent page sizes and color spaces before distributing to printers.</li>
                       </ul>
 
                       <h3>What it does</h3>
@@ -96,6 +103,12 @@ export function PdfMergerView({
                       <ul>
                         <li>Simpler and faster than manual desktop merging for ad-hoc tasks; lacks advanced editing features.</li>
                       </ul>
+
+                      <h3>Privacy & retention</h3>
+                      <p>
+                        Uploaded files are handled temporarily and removed according to the service's retention policy. Avoid uploading highly sensitive
+                        documents unless your organization’s policy allows external processing.
+                      </p>
 
                       <h3>FAQs</h3>
                       <ul>

@@ -57,8 +57,32 @@ export function PdfConverterView({
             <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
                 <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
                     <h3>What is PDF conversion</h3>
+                    <p>
+                      PDF conversion transforms pages or entire PDF documents into raster image formats (for example, JPG or PNG) or other target
+                      representations. This is useful when you need fixed visual snapshots of pages for thumbnails, image embedding, or compatibility with
+                      systems that do not render PDFs natively. In this application the conversion is performed server-side: your PDF is uploaded to a
+                      short-lived conversion service which returns the generated images for immediate download.
+                    </p>
+
+                    <h3>When to convert</h3>
+                    <p>
+                      Convert PDFs when you require static images for use in documents, websites, or social media, or when recipients may not have a PDF
+                      viewer. Converting is also helpful for creating thumbnails, generating previews for galleries, or extracting visual assets for
+                      presentations and slide decks.
+                    </p>
+
+                    <h3>How conversion behaves</h3>
+                    <p>
+                      The conversion process rasterizes PDF pages at a chosen resolution and image format. Vector artwork and text are flattened into
+                      pixels, so the output is a pixel-perfect representation of the page at the selected size. This ensures consistent display across
+                      platforms but means that searchable text and selectable vectors are lost in the converted image.
+                    </p>
+
+                    <h3>Quality and performance</h3>
                     <ul>
-                      <li>Convert PDFs into image formats (JPG, PNG) or apply lightweight visual transformations. This tool uploads your PDF to a backend conversion service which processes the file and returns the converted output for download.</li>
+                      <li>Resolution: Higher DPI produces sharper images at the cost of larger file sizes and longer processing times.</li>
+                      <li>Format: PNG preserves lossless quality and alpha; JPG produces smaller files with configurable quality tradeoffs.</li>
+                      <li>Processing time: Conversion speed depends on file size and backend load; expect seconds to a minute for typical documents.</li>
                     </ul>
 
                     <h4>Benefits of conversion</h4>
@@ -66,6 +90,19 @@ export function PdfConverterView({
                       <li>Produce standard image files for easy viewing and sharing.</li>
                       <li>Create thumbnails or previews for websites and apps.</li>
                       <li>Improve compatibility when recipients don't have a PDF viewer.</li>
+                    </ul>
+
+                    <h3>Privacy & retention</h3>
+                    <p>
+                      Uploaded files are stored temporarily on a conversion backend and removed according to the service's retention policy. If you are
+                      handling sensitive content, prefer local conversion tools that do not transmit data off your device.
+                    </p>
+
+                    <h3>Practical tips</h3>
+                    <ul>
+                      <li>Use PNG for images that require lossless fidelity or transparency.</li>
+                      <li>Use JPG for photographic pages when smaller file size is more important than absolute fidelity.</li>
+                      <li>For multi-page documents, consider converting only the pages you need to minimize processing and download size.</li>
                     </ul>
 
                     <h4>Useful when</h4>
