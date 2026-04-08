@@ -96,7 +96,7 @@ export function ImageResizerView({
                 <h3>Quality, interpolation and tradeoffs</h3>
                 <ul>
                   <li>Downscaling: preserves perceived quality and reduces bytes; suitable for thumbnails and web delivery.</li>
-                  <li>Upscaling: limited by source resolution—avoid excessive upscaling (e.g., >2x) to prevent pixelation.</li>
+                  <li>Upscaling: limited by source resolution—avoid excessive upscaling (e.g., &gt;2x) to prevent pixelation.</li>
                   <li>Interpolation: browsers use built-in resampling; results vary by engine—specialized algorithms often produce better upscaling quality.</li>
                 </ul>
 

@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import AboutUsModal from './AboutUsModal';
+import ContactUs from './ContactUs';
 import './Navbar.css';
 
 
@@ -76,10 +76,10 @@ export default function Navbar() {
           </div>
           <Link to="/blogs" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
           <div className="dropdown">
-            <button className="dropbtn" onClick={() => { setAboutOpen(true); setMobileMenuOpen(false); }}>About Us</button>
+            <button className="dropbtn" onClick={() => { setAboutOpen(true); setMobileMenuOpen(false); }}>Contact Us</button>
           </div>
         </nav>
-        <AboutUsModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
+        <ContactUs open={aboutOpen} onClose={() => setAboutOpen(false)} />
       </div>
     </header>
   );
