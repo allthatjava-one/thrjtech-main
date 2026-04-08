@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import './AboutUsModal.css'
+import './ContactUs.css'
 
-const AboutUsModal = ({ open, onClose }) => {
+const ContactUs = ({ open, onClose }) => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [honeypot, setHoneypot] = useState('')
@@ -54,13 +54,14 @@ const AboutUsModal = ({ open, onClose }) => {
     <div className="aboutus-modal-overlay" onClick={onClose}>
       <div className="aboutus-modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="aboutus-modal-close" onClick={onClose} aria-label="Close">&times;</button>
-        <h2>About Us</h2>
         <div className="aboutus-section">
+          <h3>Contact Us</h3>
           <p>
-            We are a reliable, free online software service company dedicated to making your digital
-            life easier. Our mission is to provide fast, privacy-friendly, and user-centric tools
-            that empower everyone to work smarter. We believe in transparency, simplicity, and
-            putting our users first. Thank you for trusting us!
+            We love hearing from our users — your feedback is what drives us to keep improving.
+            Whether you've spotted a bug, have a feature request, or just want to share your
+            experience, we genuinely want to know. Drop us a message using the form below and
+            we'll get back to you as soon as possible. Every message is read by a real person,
+            and we do our best to respond promptly. Thank you for taking the time to reach out!
             <span style={{ display: 'block', textAlign: 'right', marginTop: '0.5em' }}>
               - The THRJTech Team
             </span>
@@ -68,7 +69,6 @@ const AboutUsModal = ({ open, onClose }) => {
         </div>
         <hr style={{ margin: '1.5rem 0' }} />
         <div className="contactus-section">
-          <h3>Contact Us</h3>
           <form onSubmit={handleSubmit} className="contactus-form" autoComplete="off">
             {/* Honeypot — hidden from real users, traps bots */}
             <div style={{ display: 'none' }}>
@@ -121,4 +121,4 @@ const AboutUsModal = ({ open, onClose }) => {
   )
 }
 
-export default AboutUsModal
+export default ContactUs
