@@ -23,14 +23,22 @@ function naiveMarkdownToHtml(md) {
 export default function BlogPage() {
   const { slug } = useParams()
   const [content, setContent] = useState(null)
+  const [title, setTitle] = useState(null)
+  const [error, setError] = useState(null)
+
 
   useEffect(() => {
-    const path = `/blogs/${slug}.md`
-    fetch(path).then(async (r) => {
-      if (!r.ok) { setContent('<p>Blog not found.</p>'); return }
-      const text = await r.text()
-      setContent(naiveMarkdownToHtml(text))
-    }).catch(() => setContent('<p>Failed to load blog.</p>'))
+    const url = `/api/blogs/${slug}`
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error(`Blog not found (${res.status})`)
+        return res.json()
+      })
+      .then(data => {
+        setTitle(data.title)
+        setContent(naiveMarkdownToHtml(data.content))
+      })
+      .catch(err => setError(err.message))
   }, [slug])
 
   return (
@@ -42,7 +50,13 @@ export default function BlogPage() {
             <Link to="/blogs">← Back to Blog</Link>
           </div>
           <article className="card">
-            <div dangerouslySetInnerHTML={{ __html: content || '<p>Loading…</p>' }} />
+            {error
+              ? <p style={{ color: '#dc2626' }}>Error: {error}</p>
+              : <>
+                  {title && <h1>{title}</h1>}
+                  <div dangerouslySetInnerHTML={{ __html: content || '<p>Loading…</p>' }} />
+                </>
+            }
           </article>
         </div>
       </main>
