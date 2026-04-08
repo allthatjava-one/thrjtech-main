@@ -55,25 +55,44 @@ export function PdfCompressorView({
                   </div>
                   <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
                       <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
-                              <h3>What is PDF compression</h3>
-                              <ul>
-                                <li>PDF compression reduces the file size of a PDF by optimizing and re-encoding its contents — primarily images, embedded fonts, and stream objects — without changing the document's visible pages.</li>
-                              </ul>
+                                  <h3>What is PDF compression</h3>
+                                  <p>
+                                    PDF compression is the process of reducing the storage footprint of a PDF file by optimizing and re-encoding its internal
+                                    resources — principally images, embedded fonts, and stream objects — while aiming to preserve the document's visible appearance.
+                                    Compression helps when you need faster transfers, lower storage costs, or to meet attachment limits without having to manually edit
+                                    or recreate the document in external applications.
+                                  </p>
 
-                              <h3>How does compression work</h3>
-                              <ul>
-                                <li>Compression tools analyze the PDF structure and apply techniques such as re-encoding images at a lower quality or using more efficient encodings, removing unused objects, and optimizing internal streams. Some approaches perform lossless optimizations (no visual change), while others apply lossy image recompression to shrink size further.</li>
-                              </ul>
+                                  <h3>How compression works</h3>
+                                  <p>
+                                    Under the hood, a compressor inspects the PDF's object tree, identifies large embedded binaries (for example, raster images and
+                                    redundant font subsets), and rewrites those resources with more efficient encodings. There are two broad strategies: lossless
+                                    optimizations (which repackage streams and remove unused objects without altering pixel data) and lossy image recompression
+                                    (which reduces image fidelity in exchange for significant size savings). Good compressors select the least-destructive option based on
+                                    the content type and configured quality targets.
+                                  </p>
 
-                              <h3>When to compress PDFs</h3>
-                              <ul>
-                                <li>Compress when you need faster uploads/downloads, to save storage or to share documents by email or web where smaller files improve delivery. Avoid recompressing files that require exact archival fidelity or where every visual pixel must be preserved.</li>
-                              </ul>
+                                  <h3>Design tradeoffs</h3>
+                                  <ul>
+                                    <li>
+                                      Quality vs. Size: Aggressive, lossy recompression reduces bytes but can visibly affect photographs and scanned documents. For
+                                      archival or print-ready assets prefer conservative, lossless steps; for web delivery, more aggressive settings often make sense.
+                                    </li>
+                                    <li>
+                                      Speed and Resource Use: Compression of large, image-heavy PDFs is CPU- and memory-intensive — server-side processing can provide
+                                      more consistent performance for very large files than client-only approaches.
+                                    </li>
+                                    <li>
+                                      Predictability: Different PDF producers embed resources differently; results vary depending on how the original was generated.
+                                    </li>
+                                  </ul>
 
-                              <h3>Trade-Off (quality vs size)</h3>
-                              <ul>
-                                <li>Higher compression typically reduces image quality or discards some non-critical data; choose settings based on your tolerance for quality loss. Lossless compression preserves visual fidelity but offers smaller size reductions than lossy approaches.</li>
-                              </ul>
+                                  <h3>Practical recommendations</h3>
+                                  <ul>
+                                    <li>Prefer lossless steps when exact visual fidelity is required (legal, regulated, or archival content).</li>
+                                    <li>For scanned or photographic PDFs, try a mild lossy recompression first and review the output visually before further reductions.</li>
+                                    <li>Keep a copy of the original file until you confirm the compressed output meets your needs.</li>
+                                  </ul>
 
                               <h3>What it does</h3>
                               <ul>
@@ -96,15 +115,28 @@ export function PdfCompressorView({
                                 <li>Not a full editor — for advanced edits use desktop tools.</li>
                               </ul>
 
-                              <h3>FAQs</h3>
-                              <ul>
-                                <li><strong>Q:</strong> Is my file private? <strong>A:</strong> Files are processed temporarily and auto-deleted per the app policy.</li>
-                                <li><strong>Q:</strong> Will compression change my text or layout? <strong>A:</strong> Text and vector content are generally preserved; compression focuses on images and streams, so layout and searchable text should remain intact.</li>
-                                <li><strong>Q:</strong> Can I control the compression level? <strong>A:</strong> This tool applies automatic optimizations. Some services offer selectable quality/size presets in advanced modes.</li>
-                                <li><strong>Q:</strong> What file types are supported? <strong>A:</strong> This tool accepts PDF files only — other document formats should be converted to PDF first.</li>
-                                <li><strong>Q:</strong> How does compression affect scanned PDFs or OCR? <strong>A:</strong> Scanned PDFs are image-heavy; compression reduces image fidelity to save space. OCRed text embedded as text is preserved, but image-based text may lose clarity if heavily compressed.</li>
-                              </ul>
-                        </div>
+                              <h3>Privacy & retention</h3>
+                              <p>
+                                Uploaded files are processed on short-lived infrastructure and removed according to the app's retention policy. If you are handling
+                                highly sensitive documents, prefer local desktop tools or an on-prem solution that matches your compliance requirements.
+                              </p>
+
+                              <h3>When to use PDF compression</h3>
+                              <p>
+                                Use compression when you want to optimize documents for email, website publishing, or to save storage. Compression is particularly
+                                valuable for scanned documents, photo-heavy reports, or any content where embedded images dominate file size.
+                              </p>
+
+                                  <h3>FAQs</h3>
+                                  <ul>
+                                    <li><strong>Q:</strong> Is my file private? <strong>A:</strong> Files are processed temporarily and auto-deleted according to the app's policy.</li>
+                                    <li><strong>Q:</strong> Will compression change layout or searchable text? <strong>A:</strong> No — compression focuses on images and streams while
+                                      preserving textual content and layout in most cases.</li>
+                                    <li><strong>Q:</strong> Can I control compression level? <strong>A:</strong> This interface applies automatic heuristics; advanced presets are available
+                                      in pro or expert modes in other tools.</li>
+                                    <li><strong>Q:</strong> What if the result looks worse? <strong>A:</strong> Keep the original and retry with milder settings or use lossless-only options.</li>
+                                  </ul>
+                            </div>
 
                         <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
                           <ol style={{ margin: 0, paddingLeft: '1rem' }}>

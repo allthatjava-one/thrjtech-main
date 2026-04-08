@@ -191,29 +191,37 @@ export function ImageCropView(props) {
           </button>
         </div>
 
-        <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is Image Crop</h3>
+                <p>
+                  The Image Crop tool provides an interactive way to select and export a rectangular portion of an image. It offers zoom, rotation,
+                  and flip controls, aspect ratio presets for common targets (social, profile, banners), and a preview step so you can confirm the crop
+                  before downloading. All transformation and export operations are performed in your browser using an offscreen canvas; your original file
+                  does not leave your device unless you explicitly share or upload it.
+                </p>
+
+                <h3>How cropping works</h3>
+                <p>
+                  After loading an image the editor displays a resizable crop overlay. You can drag the overlay to reposition it, resize using handles,
+                  or pick one of the provided aspect ratios for exact output dimensions. Zooming and rotation let you refine framing; flips mirror the
+                  image horizontally or vertically. When you click Preview or Download the selected region is rendered to an offscreen canvas with any
+                  transforms applied, and the result is exported as a PNG file for immediate download.
+                </p>
+
+                <h3>Presets and precision</h3>
                 <ul>
-                  <li>The Image Crop tool lets you select any rectangular region of an image, apply zoom, rotation, and flip transformations, and export only the cropped portion. All processing runs entirely in your browser — your image is never uploaded to a server.</li>
+                  <li><strong>1:1 (Profile)</strong> — Ideal for avatars and profile photos.</li>
+                  <li><strong>16:9 (Widescreen)</strong> — Useful for video thumbnails, banners, and widescreen presentations.</li>
+                  <li><strong>4:5 (Portrait)</strong> — A common format for social feeds and portrait-oriented content.</li>
+                  <li><strong>Free</strong> — No constraints; crop to any dimensions you need.</li>
                 </ul>
 
-                <h3>How the image crop works</h3>
+                <h3>Practical tips</h3>
                 <ul>
-                  <li>After you load an image, an interactive crop overlay lets you drag and resize the selection area. When you click Preview or Download, the selected region is rendered onto an offscreen canvas (with rotation and flip applied) and exported as a PNG file.</li>
-                </ul>
-
-                <h3>Aspect ratio presets</h3>
-                <ul>
-                  <li><strong>1:1 (Profile)</strong> — Square crop for profile pictures and avatars.</li>
-                  <li><strong>16:9 (YouTube)</strong> — Widescreen format for video thumbnails and banners.</li>
-                  <li><strong>4:5 (Instagram)</strong> — Portrait format optimised for Instagram posts.</li>
-                  <li><strong>Free</strong> — No constraint; drag the corners to any shape you like.</li>
-                </ul>
-
-                <h3>Zoom and rotation</h3>
-                <ul>
-                  <li>Use the Zoom slider or hold <strong>Alt&nbsp;+&nbsp;scroll</strong> to zoom the image inside the crop window. Use the rotation buttons to rotate in 90° steps, or enter a custom angle. The flip controls mirror the image horizontally or vertically before the crop is applied.</li>
+                  <li>Use the aspect-lock to keep exact proportions when resizing the crop area.</li>
+                  <li>For pixel-perfect exports, set the desired output resolution after choosing the crop area, then preview at 100% if possible.</li>
+                  <li>If you need to crop many images the same way, note the preset values so you can repeat the process consistently.</li>
                 </ul>
 
                 <h3>Useful when</h3>
@@ -223,6 +231,12 @@ export function ImageCropView(props) {
                   <li>cropping a screenshot to a specific region for docs or presentations.</li>
                   <li>quickly re-framing a photo without opening a desktop image editor.</li>
                 </ul>
+                
+                <h3>Accessibility & privacy</h3>
+                <p>
+                  Controls are keyboard accessible and sized for touch interaction; the preview dialog helps users of all devices confirm changes. Because
+                  cropping is performed locally, your images remain private unless you choose to upload them as part of a sharing workflow.
+                </p>
 
                 <h3>FAQs</h3>
                 <ul>

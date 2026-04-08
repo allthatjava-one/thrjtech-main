@@ -50,23 +50,32 @@ export function WatermarkerView({
         <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is Image watermarker</h3>
-                <ul>
-                  <li>An Image Watermarker adds a visible text or logo overlay to an image to indicate ownership, branding, or provenance. It supports positioning, scale, opacity, and simple styling so you can make the watermark subtle or prominent.</li>
-                </ul>
+                <p>
+                  An Image Watermarker applies a visible overlay—either text or a logo—onto an image to indicate ownership, branding, or provenance.
+                  The tool supports placement, scaling, opacity adjustments, and simple styling so you can make the watermark subtle or clearly visible
+                  depending on your goals. Watermarking is intended as a deterrent for casual reuse and a visual cue pointing back to the original
+                  creator or source.
+                </p>
 
-                <h3>How the image watermarker works</h3>
-                <ul>
-                  <li>The tool loads your source image into the browser, composes the watermark (text or uploaded logo) onto an offscreen canvas at the chosen position and opacity, and then exports the composite as a new image file for download. All processing is done client-side unless you explicitly upload or share the result.</li>
-                </ul>
+                <h3>How watermarking works</h3>
+                <p>
+                  After selecting a source image you can choose a text watermark or upload a logo. The editor renders the watermark on an offscreen
+                  canvas at the chosen position and opacity, and then exports the composite as a new image file for download. Processing is performed
+                  locally in the browser by default; nothing is uploaded unless you explicitly use a sharing or cloud-save feature.
+                </p>
 
-                <h3>The benefit of watermarking</h3>
+                <h3>Choosing the right watermark</h3>
                 <ul>
-                  <li>Watermarks deter casual reuse, increase brand visibility when images are shared, and provide a visible ownership cue that can help trace content back to its source. They are not a complete copyright protection, but they reduce unauthorized redistribution in many common scenarios.</li>
+                  <li>Semi-transparent text is a good balance for branding without overwhelming the image.</li>
+                  <li>Logos (PNG/SVG) keep transparency and provide a cleaner brand mark—use vector or high-resolution PNG logos where possible.</li>
+                  <li>Consider placement: corners are less likely to be cropped, while tiled or full-frame watermarks offer stronger protection but impact aesthetics.</li>
                 </ul>
 
                 <h3>Practical tips</h3>
                 <ul>
-                  <li>Use semi-transparent watermarks for subtlety, and place them where cropping is unlikely (corners or tiled across the image for stronger protection). For logos, use PNG/SVG to preserve transparency.</li>
+                  <li>Use lower opacity and smaller scale for a subtle brand mark; increase opacity and size for stronger visible protection.</li>
+                  <li>For batch use, standardize watermark position and size to ensure consistent branding across images.</li>
+                  <li>Preview at actual export size to confirm legibility and visual balance before downloading.</li>
                 </ul>
 
                 <h3>Useful when</h3>
@@ -75,6 +84,13 @@ export function WatermarkerView({
                   <li>want to maintain control over watermark placement, size, and opacity.</li>
                   <li>preparing images for sharing online or for branding purposes.</li>
                 </ul>
+
+                <h3>Privacy, retention and limitations</h3>
+                <p>
+                  Because watermarking runs in your browser, your images remain on your device unless you explicitly upload them. Note that visible
+                  watermarks deter casual reuse but are not a foolproof copyright protection; determined actors can remove or crop them. Animated images
+                  will be flattened to a single frame during export.
+                </p>
 
                 <h3>FAQs</h3>
                 <ul>

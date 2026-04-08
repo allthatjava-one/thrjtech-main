@@ -53,7 +53,6 @@ export default function BlogPage() {
             {error
               ? <p style={{ color: '#dc2626' }}>Error: {error}</p>
               : <>
-                  {title && <h1>{title}</h1>}
                   <div dangerouslySetInnerHTML={{ __html: content || '<p>Loading…</p>' }} />
                 </>
             }
