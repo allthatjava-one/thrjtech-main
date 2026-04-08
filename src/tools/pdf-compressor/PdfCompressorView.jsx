@@ -53,10 +53,8 @@ export function PdfCompressorView({
                       How it works
                     </button>
                   </div>
-                  {openPanel && (
-                    <div className="shared-collapse">
-                      {openPanel === 'details' && (
-                        <div className="tool-details-open">
+                  <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+                      <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
                               <h3>What is PDF compression</h3>
                               <ul>
                                 <li>PDF compression reduces the file size of a PDF by optimizing and re-encoding its contents — primarily images, embedded fonts, and stream objects — without changing the document's visible pages.</li>
@@ -107,10 +105,8 @@ export function PdfCompressorView({
                                 <li><strong>Q:</strong> How does compression affect scanned PDFs or OCR? <strong>A:</strong> Scanned PDFs are image-heavy; compression reduces image fidelity to save space. OCRed text embedded as text is preserved, but image-based text may lose clarity if heavily compressed.</li>
                               </ul>
                         </div>
-                      )}
 
-                      {openPanel === 'howitworks' && (
-                        <div className="tool-howitworks-open">
+                        <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
                           <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                             <li style={{ marginBottom: '0.75rem' }}>
                               <img src="/screenshots/compressor/pdf-compressor-01.png" alt="Step 1" className="how-img" />
@@ -130,9 +126,7 @@ export function PdfCompressorView({
                             </li>
                           </ol>
                         </div>
-                      )}
-                    </div>
-                  )}
+                  </div>
                 <div className="hero-badges">
                   <span className="hero-badge">⚡ Instant</span>
                   <span className="hero-badge">🔒 Secure</span>

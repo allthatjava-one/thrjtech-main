@@ -191,10 +191,8 @@ export function ImageCropView(props) {
           </button>
         </div>
 
-        {openPanel && (
-          <div className="shared-collapse">
-            {openPanel === 'details' && (
-              <div className="details-content">
+        <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is Image Crop</h3>
                 <ul>
                   <li>The Image Crop tool lets you select any rectangular region of an image, apply zoom, rotation, and flip transformations, and export only the cropped portion. All processing runs entirely in your browser — your image is never uploaded to a server.</li>
@@ -234,10 +232,8 @@ export function ImageCropView(props) {
                   <li><strong>Q:</strong> Why does the download button stay greyed out? <strong>A:</strong> Click Preview first to generate a cropped image, then the Download button becomes active.</li>
                 </ul>
               </div>
-            )}
 
-            {openPanel === 'howitworks' && (
-              <div className="howitworks-content">
+            <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/crop/crop_001.png" alt="Step 1" className="how-img" />
@@ -260,9 +256,7 @@ export function ImageCropView(props) {
                   </li>
                 </ol>
               </div>
-            )}
           </div>
-        )}
       </div>
 
       {/* send-to-meme box moved to bottom of main content (rendered later) */}

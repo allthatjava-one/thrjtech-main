@@ -54,10 +54,8 @@ export function PdfConverterView({
               </button>
             </div>
 
-            {openPanel && (
-              <div className="shared-collapse">
-                {openPanel === 'details' && (
-                  <div className="tool-details-open">
+            <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+                <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
                     <h3>What is PDF conversion</h3>
                     <ul>
                       <li>Convert PDFs into image formats (JPG, PNG) or apply lightweight visual transformations. This tool uploads your PDF to a backend conversion service which processes the file and returns the converted output for download.</li>
@@ -90,10 +88,8 @@ export function PdfConverterView({
                         <li><strong>Q:</strong>What other conversions are supported other than JPG and PNG? <strong>A:</strong>This tool currently supports converting PDFs to JPG and PNG formats only. Soon we will provide Searchable PDF and other formats such as Word and Text as well.</li>
                       </ul>
                   </div>
-                )}
 
-                {openPanel === 'howitworks' && (
-                  <div className="tool-howitworks-open">
+                <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
                     <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                       <li style={{ marginBottom: '0.75rem' }}>
                         <img src="/screenshots/converter/PDF-converter001.png" alt="Upload PDF" className="how-img" />
@@ -116,9 +112,7 @@ export function PdfConverterView({
                       </li>
                     </ol>
                   </div>
-                )}
-              </div>
-            )}
+            </div>
 
             <div className="hero-badges">
               <span className="hero-badge">⚡ Instant</span>

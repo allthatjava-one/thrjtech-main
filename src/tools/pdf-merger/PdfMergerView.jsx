@@ -58,10 +58,8 @@ export function PdfMergerView({
                 </button>
               </div>
 
-              {openPanel && (
-                <div className="shared-collapse">
-                  {openPanel === 'details' && (
-                    <div className="details-content">
+              <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+                  <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                       <h3>How PDF merge works</h3>
                       <ul>
                         <li>PDF merge combines the pages from multiple PDF files into a single output document. The tool concatenates page streams in the selected order and rebuilds the document's internal indices so the result behaves like one continuous PDF.</li>
@@ -107,11 +105,9 @@ export function PdfMergerView({
                         <li><strong>Q:</strong> Will merging change content? <strong>A:</strong> Merging preserves page content and order; it does not alter page pixels or text unless a separate optimization step runs afterwards.</li>
                         <li><strong>Q:</strong> Can I merge password-protected PDFs? <strong>A:</strong> Password-protected files cannot be processed unless unlocked first — provide an unlocked copy or remove protection locally before uploading.</li>
                       </ul>
-                    </div>
-                  )}
+                  </div>
 
-                  {openPanel === 'howitworks' && (
-                    <div className="howitworks-content">
+                  <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                       <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                         <li style={{ marginBottom: '0.75rem' }}>
                           <img src="/screenshots/merger/merger-001.png" alt="Step 1" className="how-img" />
@@ -130,10 +126,8 @@ export function PdfMergerView({
                           <p>Download the merged PDF when processing completes.</p>
                         </li>
                       </ol>
-                    </div>
-                  )}
+                  </div>
                 </div>
-              )}
             </div>
             <div className="hero-badges">
               <span className="hero-badge">⚡ Fast</span>
