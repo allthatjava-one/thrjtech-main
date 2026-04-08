@@ -497,23 +497,42 @@ export default function MemeGeneratorView({ initialFile }) {
           </button>
         </div>
 
-        <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                 <h3>What is a Meme Generator</h3>
+                <p>
+                  A meme generator is a lightweight creative editor that lets you place text overlays on images to produce humorous, informative, or
+                  expressive graphics quickly. It supports multiple text layers, free positioning, font sizing, color selection, and simple export
+                  controls so you can craft a share-ready image in seconds. All composition happens within your browser—no external upload is required
+                  unless you explicitly share or save to a remote service.
+                </p>
+
+                <h3>How the generator works</h3>
+                <p>
+                  Upload or drop an image into the canvas area, then add one or more text layers using the controls. Each layer can be positioned by
+                  dragging, resized via the advanced controls, and styled with a color picker. The preview area reflects changes in real time. When you
+                  export, the app merges the text onto the image on an offscreen canvas and creates a downloadable PNG that preserves your layout and
+                  styling choices.
+                </p>
+
+                <h3>Why use a browser-based tool</h3>
+                <p>
+                  Browser-based meme editors are instant and accessible: they don't require installations, run offline once loaded, and keep your images
+                  local to your device. This makes them convenient for casual creation on phones, tablets, and desktops alike.
+                </p>
+
+                <h3>Tips for better memes</h3>
                 <ul>
-                  <li>A meme generator lets you add custom text overlays to any image to create humorous or expressive memes. You can position, style, and resize the text freely before exporting the final image.</li>
+                  <li>Use short, punchy captions and capitalize text for classic meme styles.</li>
+                  <li>Keep good contrast between text and background; add stroke or shadow if needed for readability.</li>
+                  <li>Use multiple layers for complex layouts—title, subtitle, or small annotations all work well.</li>
                 </ul>
 
-                <h3>How the meme generator works</h3>
-                <ul>
-                  <li>Upload an image via drag &amp; drop or the file browser. Add one or more text layers and drag them to your desired position on the canvas. Adjust font size, color, and other styling options, then click Download to save the finished meme.</li>
-                </ul>
-
-                <h3>Benefits</h3>
-                <ul>
-                  <li>Create shareable memes instantly without needing design software. All processing happens in your browser — no uploads to external servers.</li>
-                  <li>Multiple text layers let you add both a top caption and a bottom punchline, or any number of custom labels.</li>
-                </ul>
+                <h3>Accessibility & privacy</h3>
+                <p>
+                  Controls are designed with accessibility in mind (large targets, keyboard support). Since composition occurs locally, your images are
+                  not transmitted off your device by default — they only leave the browser if you choose to upload or share them.
+                </p>
 
                 <h3>FAQs</h3>
                 <ul>
