@@ -95,6 +95,12 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 
 ![Crop tool screenshot](/screenshots/crop/crop_001.png)
 
+## Video walkthrough
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+	<iframe src="https://www.youtube.com/embed/obf1Bh2xsLw" title="Image Crop walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+</div>
+
 ## Quick Steps
 
 1. Open the Image Crop tool from the main menu (Tools → Image Crop) or visit `/image-crop`.
@@ -109,6 +115,9 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 
 ![Load image](/screenshots/crop/crop_001.png)
 
+- Click the crop area or drag an image file onto it to load.
+- The image appears inside the crop window with a draggable selection box.
+
 2. Choose aspect & select region
 
 ![Select region](/screenshots/crop/crop_002.png)
@@ -119,6 +128,10 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 3. Zoom, rotate, flip
 
 ![Zoom rotate flip](/screenshots/crop/crop_003.png)
+
+- Use the Zoom slider or hold Alt + scroll to zoom the image inside the crop window.
+- Use the rotate buttons to rotate in 90° steps or enter a custom angle if available.
+- Use the Flip controls to mirror horizontally or vertically.
 
 4. Preview & download
 
@@ -132,6 +145,7 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 - All processing runs in your browser — your image is not uploaded to our servers.
 - Supported image formats: any format your browser supports (JPEG, PNG, WebP, GIF, etc.). Output is PNG.
 - If the Download button is disabled, click Preview first to generate the output.
+- Use presets (Instagram, YouTube, Profile) for common target sizes.
 
 ---
 Published by THRJ Tech'
