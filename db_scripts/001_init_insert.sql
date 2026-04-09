@@ -1,7 +1,7 @@
 INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
 (
   'meme-generator-guide',
-  'Meme Generator Guide',
+  'How to create a meme with Meme Generator',
   'Step-by-step guide and tips for creating memes with THRJ''s Meme Generator.',
   'https://thrjtech.com/screenshots/meme-generator/meme-generator004.png',
   '# Meme Generator Guide
@@ -41,7 +41,7 @@ Published by THRJ Tech'
 ),
 (
   'pdf-merger-guide',
-  'PDF Merger Guide',
+  'Guide to merge multiple PDF files',
   'How to combine multiple PDF files quickly and privately using THRJ''s PDF Merger.',
   'https://thrjtech.com/screenshots/merger/merger-002.png',
   '# PDF Merger — How it works
@@ -86,7 +86,7 @@ Published by THRJ Tech'
 ),
 (
   'image-crop-guide',
-  'Image Crop Guide',
+  'When you need to crop your images',
   'How to crop images quickly using THRJ''s Image Crop tool.',
   '/screenshots/crop/crop_001.png',
   '# Image Crop Guide
