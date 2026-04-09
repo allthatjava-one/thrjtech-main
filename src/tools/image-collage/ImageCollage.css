@@ -101,7 +101,7 @@
   margin: 0 0 0.75rem; /* tightened to reduce extra gap */
 }
 
-.drop-zone {
+.image-collage-page .drop-zone {
   border: 2px dashed #a0aec0;
   border-radius: 8px;
   padding: 2rem 1rem;
@@ -114,7 +114,7 @@
   cursor: pointer;
   transition: border-color 0.2s;
 }
-.drop-zone.dragging {
+.image-collage-page .drop-zone.dragging {
   border-color: #3182ce;
   background: #ebf8ff;
 }
@@ -148,14 +148,17 @@
   background: #6366f1;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.7rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
   cursor: pointer;
   margin: 0 auto 1rem auto;
-  display: block;
-  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  transition: var(--btn-transition);
 }
 .collage-btn:disabled {
   background: #c7d2fe;
@@ -210,27 +213,28 @@
   margin-left: auto;
   margin-right: auto;
 }
-.download-btn {
+.image-collage-page .download-btn {
   margin-top: 1rem;
   background: #10b981;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
   cursor: pointer;
-  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  transition: var(--btn-transition);
 }
-.download-btn:disabled {
+.image-collage-page .download-btn:disabled {
   background: #a7f3d0;
   cursor: not-allowed;
 }
 @media (max-width: 600px) {
-  .image-collage-page .card {
-    padding: 1.2rem 0.5rem 1rem;
-  }
-  .drop-zone {
+  .image-collage-page .drop-zone {
     padding: 1.2rem 0.5rem;
     font-size: 0.98rem;
   }
@@ -239,39 +243,7 @@
   }
 }
 
-/* Tool details (collapsible) */
-.tool-details {
-  margin-top: 0.25rem; /* tightened spacing above details */
-  margin-bottom: 1rem;
-  text-align: left;
-  color: #4b5563; /* match pdf compressor hero-tagline */
-}
-.tool-details summary {
-  display: block;
-  cursor: pointer;
-  font-weight: 600;
-  color: #4b5563; /* match pdf compressor hero-tagline */
-  padding: 0;
-  margin: 0;
-  text-align: center; /* center the summary text */
-  position: relative;
-}
-.tool-details summary::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform 0.18s ease;
-}
-.tool-details[open] summary::after {
-  transform: rotate(180deg);
-}
-.tool-details summary::-webkit-details-marker { display: none; }
-.tool-details summary::marker { display: none; }
-.tool-details > div {
-  margin-top: 0.25rem;
-  padding-left: 0.25rem;
-  color: #4b5563;
-}
+/* tool-details / details-row / how-img are in image-tools-shared.css */
 
 /* When Details is opened, wrap its content in a rounded box */
 .image-collage-page .card .tool-details[open] > div {
@@ -283,71 +255,7 @@
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }
 
-/* Place Details and How it works side-by-side where space allows */
-.details-row {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
-}
-.details-row .tool-details {
-  flex: 1 1 300px;
-  min-width: 240px;
-  max-width: 48%;
-  box-sizing: border-box;
-}
-/* allow flex children to shrink below their content's min-width */
-.details-row .tool-details {
-  min-width: 0;
-}
-@media (max-width: 740px) {
-  .details-row .tool-details {
-    max-width: 100%;
-    flex-basis: 100%;
-  }
-}
-.how-img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #e2e6f0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.details-row .tool-details img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Ensure collapsible content fills its column */
-.details-row .tool-details > div {
-  width: 100%;
-  box-sizing: border-box;
-}
-.details-row .tool-details[open] > div {
-  width: 100%;
-  max-height: 46vh;
-  overflow: auto;
-}
-.details-row[data-open="details"] .tool-details {
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
-.details-row[data-open="details"] .tool-details.tool-howitworks {
-  display: none !important;
-}
-.details-row[data-open="howitworks"] .tool-details {
-  display: none !important;
-}
-.details-row[data-open="howitworks"] .tool-details.tool-howitworks {
-  display: block !important;
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
+/* details-row / how-img are in image-tools-shared.css */
 
 /* Shared collapse controls to match compressor design */
 .image-collage-page .details-controls {

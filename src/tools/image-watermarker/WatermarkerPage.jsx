@@ -6,6 +6,7 @@ import { WatermarkerView } from './WatermarkerView'
 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import '../image-tools-shared.css';
 import './Watermarker.css';
 
 export default function WatermarkerPage() {

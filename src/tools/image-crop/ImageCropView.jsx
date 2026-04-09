@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cropper from 'react-easy-crop';
-import '../image-resizer/ImageResizer.css';
 
 export function ImageCropView(props) {
   const {

@@ -1,5 +1,6 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import '../image-tools-shared.css';
 import './ImageCrop.css';
 import { useImageCrop } from './hooks/useImageCrop';
 import { ImageCropView } from './ImageCropView';

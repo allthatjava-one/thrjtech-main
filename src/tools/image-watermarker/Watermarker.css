@@ -39,26 +39,18 @@
 }
 
 /* ── Hero Section ───────────────────────────────────────────── */
-.hero-title {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #1e1e2e;
+/* hero-title / hero-tagline are in image-tools-shared.css */
+.watermarker-page .hero-title {
   margin: 0 0 0.5rem;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* color override: watermarker keeps same gradient */
 }
 
-.hero-tagline {
-  font-size: 1rem;
-  color: #6b7280;
+.watermarker-page .hero-tagline {
   margin-bottom: 1.5rem;
 }
 
 /* ── Drop Zone ──────────────────────────────────────────────── */
-.drop-zone {
+.watermarker-page .drop-zone {
   border: 2px dashed #a5b4fc;
   border-radius: 12px;
   padding: 2rem 1rem;
@@ -71,33 +63,33 @@
   margin-bottom: 1rem;
   transition: border-color 0.2s, background 0.2s;
 }
-.drop-zone.dragging {
+.watermarker-page .drop-zone.dragging {
   border-color: #6366f1;
   background: #eef2ff;
 }
 @media (max-width: 600px) {
-  .drop-zone {
+  .watermarker-page .drop-zone {
     padding: 1.2rem 0.5rem;
     font-size: 0.98rem;
   }
 }
-.preview-image {
+.watermarker-page .preview-image {
   max-width: 100%;
   max-height: 200px;
   margin-bottom: 0.5rem;
   border-radius: 8px;
 }
 
-.clickable {
+.watermarker-page .clickable {
   cursor: pointer;
   transition: box-shadow 0.2s;
 }
-.clickable:hover {
+.watermarker-page .clickable:hover {
   box-shadow: 0 0 0 2px #6366f1;
 }
 
 /* ── Image Popup Dialog ─────────────────────────────── */
-.image-popup-overlay {
+.watermarker-page .image-popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -109,53 +101,61 @@
   justify-content: center;
   z-index: 1000;
 }
-.image-popup-dialog {
+.watermarker-page .image-popup-dialog {
   position: relative;
   background: #fff;
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 8px 32px rgba(30,41,59,0.18);
-  max-width: 90vw;
-  max-height: 90vh;
+  width: 95vw;
+  height: 93vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
 }
-.image-popup-img {
-  max-width: 80vw;
-  max-height: 70vh;
+.watermarker-page .image-popup-img {
+  max-width: 100%;
+  max-height: calc(93vh - 6rem);
+  width: auto;
+  height: auto;
   border-radius: 8px;
+  object-fit: contain;
 }
-.close-popup-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: #6366f1;
-  color: #fff;
-  border: none;
+.watermarker-page .close-popup-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #111111;
+  color: #ffffff;
+  border: 2px solid rgba(255,255,255,0.5);
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.5rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(30,41,59,0.12);
-  transition: background 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  transition: transform 0.12s ease;
+  z-index: 2000;
+  line-height: 1;
 }
-.close-popup-btn:hover {
-  background: #4f46e5;
+.watermarker-page .close-popup-btn:hover {
+  transform: scale(1.08);
 }
 
-/* ── Watermark Options ─────────────────────────────────────── */
-.watermark-options {
+.watermarker-page .watermark-options {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1rem;
   color: #6b7280;
 }
-.watermark-input {
+.watermarker-page .watermark-input {
   width: 100%;
   padding: 0.5rem 0.75rem;
   border: 1px solid #e2e6f0;
@@ -164,86 +164,54 @@
   margin-bottom: 1rem;
 }
 
-.watermark-btn {
+.watermarker-page .watermark-btn {
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
   cursor: pointer;
   margin-bottom: 1rem;
-  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  transition: var(--btn-transition);
 }
-.watermark-btn:disabled {
+.watermarker-page .watermark-btn:disabled {
   background: #a5b4fc;
   cursor: not-allowed;
 }
 
-.error-msg {
+.watermarker-page .error-msg {
   color: #ef4444;
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.output-section {
-  text-align: center;
-}
-.output-image {
-  max-width: 100%;
-  max-height: 200px;
-  margin-bottom: 0.5rem;
-  border-radius: 8px;
-}
-.download-btn {
-  display: inline-block;
+/* output-section removed — download is now inside the popup */
+.watermarker-page .download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #6366f1;
   color: #fff;
-  padding: 0.5rem 1.25rem;
-  border-radius: 8px;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: var(--btn-font-weight);
+  font-size: var(--btn-font-size);
+  font-family: inherit;
   margin-top: 0.5rem;
-  transition: background 0.2s;
+  transition: var(--btn-transition);
 }
-.download-btn:hover {
+.watermarker-page .download-btn:hover {
   background: #4f46e5;
 }
 
-/* Tool details (collapsible) */
-.tool-details {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  color: #6b7280; /* match this page's .hero-tagline */
-}
-.tool-details summary {
-  display: block;
-  cursor: pointer;
-  font-weight: 600;
-  color: #6b7280; /* match this page's .hero-tagline */
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  position: relative;
-}
-.tool-details summary::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform 0.18s ease;
-}
-.tool-details[open] summary::after {
-  transform: rotate(180deg);
-}
-.tool-details summary::-webkit-details-marker { display: none; }
-.tool-details summary::marker { display: none; }
-.tool-details > div {
-  margin-top: 0.5rem;
-  padding-left: 0.25rem;
-  color: #6b7280;
-}
+/* tool-details / details-row / how-img are in image-tools-shared.css */
 
 /* When Details is opened, wrap its content in a rounded box */
 .watermarker-page .card .tool-details[open] > div,
@@ -256,71 +224,7 @@
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }
 
-/* Place Details and How it works side-by-side where space allows */
-.details-row {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
-}
-.details-row .tool-details {
-  flex: 1 1 300px;
-  min-width: 240px;
-  max-width: 48%;
-  box-sizing: border-box;
-}
-/* allow flex children to shrink below their content's min-width */
-.details-row .tool-details {
-  min-width: 0;
-}
-@media (max-width: 740px) {
-  .details-row .tool-details {
-    max-width: 100%;
-    flex-basis: 100%;
-  }
-}
-.how-img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #e2e6f0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.details-row .tool-details img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Ensure collapsible content fills its column */
-.details-row .tool-details > div {
-  width: 100%;
-  box-sizing: border-box;
-}
-.details-row .tool-details[open] > div {
-  width: 100%;
-  max-height: 46vh;
-  overflow: auto;
-}
-.details-row[data-open="details"] .tool-details {
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
-.details-row[data-open="details"] .tool-details.tool-howitworks {
-  display: none !important;
-}
-.details-row[data-open="howitworks"] .tool-details {
-  display: none !important;
-}
-.details-row[data-open="howitworks"] .tool-details.tool-howitworks {
-  display: block !important;
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
+/* details-row / how-img are in image-tools-shared.css */
 
 /* Button-controlled shared collapse (consistent with compressor styles) */
 .watermarker-page .details-controls {
