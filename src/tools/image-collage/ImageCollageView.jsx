@@ -581,7 +581,7 @@ const ImageCollageView = ({
           style={{ display: "none" }}
           onChange={handleFileChange}
         />
-        <span>Drag &amp; drop images here, or click to add. The grid will expand as needed.</span>
+        <span className="hero-tagline">Drag &amp; drop images here, or click to add. The grid will expand as needed.</span>
         {images.length > 0 && (
           <ImageFileList images={images} onMove={handleMove} onRemove={handleRemove} onReset={handleResetOffset} />
         )}
