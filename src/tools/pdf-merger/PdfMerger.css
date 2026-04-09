@@ -160,7 +160,6 @@
 /* Place Details and How it works side-by-side where space allows */
 .pdf-merger-page .details-row {
   display: flex;
-  /* gap: 1rem; */
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
