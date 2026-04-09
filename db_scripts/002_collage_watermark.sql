@@ -1,7 +1,7 @@
 INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
 (
   'image-collage-guide',
-  'Image Collage Guide',
+  'Want beautifully collaged images?',
   'A short walkthrough for using the Image Collage tool on THRJ.',
   'https://thrjtech.com/screenshots/collage/image-collage004.png',
   '# Image Collage Guide
@@ -61,7 +61,7 @@ Published by THRJ Tech.'
 INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
 (
   'image-watermark-guide',
-  'Image Watermark Guide',
+  'Let''s put a watermark on your images',
   'A short walkthrough for using the Image Watermarker tool on THRJ.',
   'https://thrjtech.com/screenshots/watermarker/watermarker001.png',
   '# Image Watermark Guide

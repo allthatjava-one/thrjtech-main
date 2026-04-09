@@ -1,7 +1,7 @@
 INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
 (
   'meme-generator-guide',
-  'Meme Generator Guide',
+  'How to create a meme with Meme Generator',
   'Step-by-step guide and tips for creating memes with THRJ''s Meme Generator.',
   'https://thrjtech.com/screenshots/meme-generator/meme-generator004.png',
   '# Meme Generator Guide
@@ -41,7 +41,7 @@ Published by THRJ Tech'
 ),
 (
   'pdf-merger-guide',
-  'PDF Merger Guide',
+  'Guide to merge multiple PDF files',
   'How to combine multiple PDF files quickly and privately using THRJ''s PDF Merger.',
   'https://thrjtech.com/screenshots/merger/merger-002.png',
   '# PDF Merger — How it works
@@ -86,7 +86,7 @@ Published by THRJ Tech'
 ),
 (
   'image-crop-guide',
-  'Image Crop Guide',
+  'When you need to crop your images',
   'How to crop images quickly using THRJ''s Image Crop tool.',
   '/screenshots/crop/crop_001.png',
   '# Image Crop Guide
@@ -94,6 +94,12 @@ Published by THRJ Tech'
 A short walkthrough for using the Image Crop tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots.
 
 ![Crop tool screenshot](/screenshots/crop/crop_001.png)
+
+## Video walkthrough
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+	<iframe src="https://www.youtube.com/embed/obf1Bh2xsLw" title="Image Crop walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+</div>
 
 ## Quick Steps
 
@@ -109,6 +115,9 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 
 ![Load image](/screenshots/crop/crop_001.png)
 
+- Click the crop area or drag an image file onto it to load.
+- The image appears inside the crop window with a draggable selection box.
+
 2. Choose aspect & select region
 
 ![Select region](/screenshots/crop/crop_002.png)
@@ -119,6 +128,10 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 3. Zoom, rotate, flip
 
 ![Zoom rotate flip](/screenshots/crop/crop_003.png)
+
+- Use the Zoom slider or hold Alt + scroll to zoom the image inside the crop window.
+- Use the rotate buttons to rotate in 90° steps or enter a custom angle if available.
+- Use the Flip controls to mirror horizontally or vertically.
 
 4. Preview & download
 
@@ -132,6 +145,7 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 - All processing runs in your browser — your image is not uploaded to our servers.
 - Supported image formats: any format your browser supports (JPEG, PNG, WebP, GIF, etc.). Output is PNG.
 - If the Download button is disabled, click Preview first to generate the output.
+- Use presets (Instagram, YouTube, Profile) for common target sizes.
 
 ---
 Published by THRJ Tech'
