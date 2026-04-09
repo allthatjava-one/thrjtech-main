@@ -52,14 +52,16 @@ export default function Footer() {
             processing happens locally on your device — your files never leave your browser. For
             features that do require server-side processing (such as PDF compression or merging),
             files are handled on short-lived infrastructure and deleted automatically within 30 minutes.
-            We do not store, sell, or share your data.
+            We do not store, sell, or share your data. For more information on how we and our partners 
+            handle data, please see our full Privacy Policy.
           </p>
 
           <h3>Always Free</h3>
           <p>
             All of our tools are completely free to use with no hidden costs, no sign-up required,
-            and no usage limits. We sustain the service through non-intrusive advertising so we can
-            keep everything free for everyone.
+            and no usage limits. We sustain the service through transparent, non-intrusive advertising
+            partnerships (including Google AdSense), which allows us to keep our tools free and accessible
+            to the global community without compromising user experience.
           </p>
 
           <h3>Get in Touch</h3>
@@ -97,9 +99,9 @@ export default function Footer() {
           <p>
             We use Google AdSense to display advertisements on this site. Google, as a third-party
             vendor, uses cookies (including the DoubleClick cookie) to serve ads based on your prior
-            visits to this website and other sites on the internet. These cookies allow Google and its
-            partners to serve ads to you based on your visit to our site and/or other sites on the
-            internet.
+            visits to this website and other sites on the internet. Google's use of advertising cookies 
+            enables it and its partners to serve ads to our users based on their visit to thjrtech.com 
+            and/or other sites on the Internet.
           </p>
           <p>
             You may opt out of personalised advertising by visiting{' '}
@@ -121,11 +123,38 @@ export default function Footer() {
             control cookie preferences through your browser settings or the opt-out links above.
           </p>
 
+          <h3>User Consent</h3>
+          <p>
+            We use a Consent Management Platform (CMP) to obtain and record user consent where
+            required by local laws (for example GDPR or CCPA). The CMP presents choices about cookie
+            usage and personalised advertising to visitors in applicable regions; we respect those
+            choices and limit data processing accordingly. You can review or change your consent
+            preferences via the site's privacy controls or your browser settings. Opting out may
+            prevent personalised ads but does not affect the core functionality of the tools.
+            For users in the European Economic Area (EEA) and the UK, we use a Google-certified
+            Consent Management Platform to manage user preferences and comply with the IAB
+            Transparency and Consent Framework.
+          </p>
+
           <h3>Data We Collect</h3>
           <p>
             We do not collect, store, or share any personally identifiable information. Usage analytics
             (if enabled) are anonymised and aggregated. Files you process with our tools remain on your
-            device and are not transmitted to us.
+            device and are not transmitted to us. Files uploaded for server-side processing (such as PDF merging)
+            are processed in memory, are never viewed by humans, and are permanently deleted from our
+            servers automatically within 30 minutes of processing. We do not maintain backups or logs
+            of the contents of these files.
+          </p>
+
+          <h3>Google Analytics</h3>
+          <p>
+            We use Google Analytics (GA4) to collect anonymised usage data such as page views,
+            events, and performance metrics to help improve the website and our tools. We do not
+            collect personal identifiers through Analytics; where available we enable IP
+            anonymisation to minimise identifiability. Analytics data is processed by Google under
+            their policies and may be subject to international transfer. Our CMP respects users'
+            consent choices, and you may opt out of analytics tracking via the CMP or by using
+            browser-level controls (for example, the Google Analytics opt-out add-on).
           </p>
 
           <h3>Third-Party Links</h3>
@@ -134,10 +163,18 @@ export default function Footer() {
             practices or content of those sites.
           </p>
 
+          <p>California Privacy Rights (CCPA/CPRA)</p>
+          <p>
+            If you are a California resident, you have the right to opt-out of the 'sale' or 'sharing'
+            of your personal information. We do not sell your personal data; however, our use of
+            advertising cookies may be considered 'sharing' under California law. You may
+            exercise your right to opt-out via the ad settings links provided above.
+          </p>
+
           <h3>Contact</h3>
           <p>
             If you have any questions about this Privacy Policy, please reach out via the contact
-            information provided on this site.
+            information provided on this site at privacy@thjrtech.com
           </p>
         </div>
       </div>
