@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export function WatermarkerView({
   mainImage,
@@ -23,6 +23,11 @@ export function WatermarkerView({
 }) {
   const [previewOpen, setPreviewOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
+
+  // Auto-open popup once the watermarked result is ready
+  useEffect(() => {
+    if (outputUrl) setPreviewOpen(true)
+  }, [outputUrl])
   return (
     <div className="watermarker-view">
       <h2 className="hero-title">Image Watermarker</h2>
@@ -154,16 +159,31 @@ export function WatermarkerView({
         />
       </div>
       {/* Preview popup dialog */}
-      {previewOpen && (mainImage || outputUrl) && (
+      {previewOpen && outputUrl && (
         <div className="image-popup-overlay" onClick={() => setPreviewOpen(false)}>
-          <div className="image-popup-dialog" onClick={e => e.stopPropagation()}>
+          <div
+            className="image-popup-dialog"
+            onClick={e => e.stopPropagation()}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
             <img
-              src={outputUrl ? outputUrl : URL.createObjectURL(mainImage)}
-              alt="Preview"
+              src={outputUrl}
+              alt="Watermarked preview"
               className="image-popup-img"
+              style={{
+                position: 'static',
+                top: 'unset',
+                left: 'unset',
+                transform: 'none',
+                maxWidth: '100%',
+                maxHeight: 'calc(93vh - 6rem)',
+                width: 'auto',
+                height: 'auto',
+                objectFit: 'contain',
+              }}
             />
-            <button className="close-popup-btn" onClick={() => setPreviewOpen(false)}>&times;</button>
           </div>
+          <button className="close-popup-btn" onClick={() => setPreviewOpen(false)}>&times;</button>
         </div>
       )}
       <div className="watermark-options">
@@ -204,28 +224,19 @@ export function WatermarkerView({
           onChange={handleLogoInput}
         />
       )}
-      <button
-        className="watermark-btn"
-        onClick={handleWatermark}
-        disabled={status === 'processing' || !mainImage || (watermarkType === 'logo' && !logoFile) || (watermarkType === 'text' && !watermarkText)}
-      >
-        {status === 'processing' ? 'Processing...' : 'Add Watermark'}
-      </button>
+      <div className="watermark-actions">
+        <button
+          className="watermark-btn"
+          onClick={handleWatermark}
+          disabled={status === 'processing' || !mainImage || (watermarkType === 'logo' && !logoFile) || (watermarkType === 'text' && !watermarkText)}
+        >
+          {status === 'processing' ? 'Processing...' : 'Preview'}
+        </button>
+        {outputUrl && (
+          <a href={outputUrl} download={outputName} className="download-btn" style={{ marginLeft: '0.6rem' }}>Download</a>
+        )}
+      </div>
       {errorMsg && <div className="error-msg">{errorMsg}</div>}
-      {outputUrl && (
-        <div className="output-section">
-          <img
-            src={outputUrl}
-            alt="Watermarked"
-            className="output-image clickable"
-            style={{ cursor: 'pointer' }}
-            onClick={() => setPreviewOpen(true)}
-          />
-          <div style={{ marginTop: '0.5rem' }}>
-            <a href={outputUrl} download={outputName} className="download-btn">Download Watermarked Image</a>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

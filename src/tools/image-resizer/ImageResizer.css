@@ -45,26 +45,11 @@
 }
 
 
-.hero-title {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #1e1e2e;
-  margin: 0 0 0.5rem;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-
-.hero-tagline {
-  font-size: 1rem;
-  color: #6b7280;
+.image-resizer-view .hero-tagline {
   margin-bottom: 1.5rem;
 }
 
-.drop-zone {
+.image-resizer-view .drop-zone {
   border: 2px dashed #a0aec0;
   border-radius: 8px;
   padding: 2rem 1rem;
@@ -73,357 +58,160 @@
   box-sizing: border-box;
   text-align: center;
   background: #fff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
   transition: border-color 0.2s;
+  overflow: hidden;
+  position: relative;
 }
 
-.drop-zone.dragging {
+.image-resizer-view .drop-zone.has-image {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  cursor: default;
+}
+
+.image-resizer-view .drop-zone.dragging {
   border-color: #3182ce;
   background: #ebf8ff;
 }
 
 @media (max-width: 600px) {
-  .drop-zone {
+  .image-resizer-view .drop-zone {
     padding: 1.2rem 0.5rem;
     font-size: 0.98rem;
   }
 }
 
-.preview-image {
-  max-width: 180px;
-  max-height: 180px;
+.image-resizer-view .preview-image {
+  max-width: 220px;
+  max-height: 220px;
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: block;
 }
 
-.resize-options {
+.image-resizer-view .drop-zone-hint {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 0;
+  right: 0;
+  font-size: 0.72rem;
+  color: #9ca3af;
+  pointer-events: none;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.image-resizer-view .resize-options {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.resize-options label {
+.image-resizer-view .resize-options label {
   color: #6b7280;
   font-weight: 500;
 }
 
-.resize-input {
+.image-resizer-view .resize-input {
   margin: 0.5rem;
   padding: 0.5rem;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
   width: 120px;
 }
-.resize-input-percent {
+.image-resizer-view .resize-input-percent {
   color: #6b7280;
 }
-.dimension-inputs {
+.image-resizer-view .dimension-inputs {
   display: flex;
   gap: 0.5rem;
 }
 
-.resize-btn {
-  background: #3182ce;
+.image-resizer-view .resize-btn, .image-resizer-view .download-btn {
   color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
   cursor: pointer;
   margin-bottom: 1rem;
-  transition: background 0.2s;
+  transition: var(--btn-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  text-decoration: none;
+  font-family: inherit;
 }
-.resize-btn:disabled {
+.image-resizer-view .resize-btn {
+  background: #3182ce;
+}
+.image-resizer-view .resize-btn:disabled {
   background: #a0aec0;
   cursor: not-allowed;
 }
 
-.error-msg {
+.image-resizer-view .error-msg {
   color: #e53e3e;
   margin-bottom: 1rem;
 }
 
-.output-section {
+.image-resizer-view .output-section {
   margin-top: 1.5rem;
   text-align: center;
+  width: 100%;
 }
-.output-image {
+.image-resizer-view .output-image {
   max-width: 220px;
   max-height: 220px;
   border-radius: 6px;
   margin-bottom: 0.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
-.download-btn {
-  display: inline-block;
-  background: #38a169;
-  color: #fff;
-  padding: 0.5rem 1.2rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 500;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
+
+.image-resizer-view .action-row {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
 }
-.download-btn:hover {
+.image-resizer-view .action-row .resize-btn,
+.image-resizer-view .action-row .download-btn {
+  flex: 0 0 auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+.image-resizer-view .download-btn {
+  background: #38a169;
+}
+.image-resizer-view .download-btn:hover:not(:disabled) {
   background: #2f855a;
 }
-
-.image-popup-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.image-popup-dialog {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.image-popup-img {
-  max-width: 80vw;
-  max-height: 70vh;
-  border-radius: 6px;
-}
-.close-popup-btn {
-  background: #e53e3e;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  align-self: flex-end;
+.image-resizer-view .download-btn:disabled,
+.image-resizer-view .download-btn.disabled {
+  background: #a7f3d0;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-/* Tool details (collapsible) */
- .tool-details {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  color: #6b7280; /* match this page's .hero-tagline */
- }
- .tool-details summary {
-  display: block;
-  cursor: pointer;
-  font-weight: 600;
-  color: #6b7280; /* match this page's .hero-tagline */
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  position: relative;
-}
-.tool-details summary::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform 0.18s ease;
-}
-.tool-details[open] summary::after {
-  transform: rotate(180deg);
-}
-.tool-details summary::-webkit-details-marker { display: none; }
-.tool-details summary::marker { display: none; }
- .tool-details > div {
-  margin-top: 0.5rem;
-  padding-left: 0.25rem;
-  color: #6b7280;
- }
+/* popup styles are in image-tools-shared.css */
 
-/* When Details is opened, wrap its content in a rounded box */
-.image-resizer-page .card .tool-details[open] > div,
-.image-resizer-view .tool-details[open] > div {
-  background: #f8f9ff;
-  border: 1px solid #e2e6f0;
-  border-radius: 12px;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-}
+/* tool-details styles are in image-tools-shared.css */
 
-/* Place Details and How it works side-by-side where space allows */
-.details-row {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
-}
-.details-row .tool-details {
-  flex: 1 1 300px;
-  min-width: 240px;
-  max-width: 48%;
-  box-sizing: border-box;
-}
-/* allow flex children to shrink below their content's min-width */
-.details-row .tool-details {
-  min-width: 0;
-}
-@media (max-width: 740px) {
-  .details-row .tool-details {
-    max-width: 100%;
-    flex-basis: 100%;
-  }
-}
-.how-img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #e2e6f0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.details-row .tool-details img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+/* details-row / how-img styles are in image-tools-shared.css */
 
-/* Ensure collapsible content fills its column */
-.details-row .tool-details > div {
-  width: 100%;
-  box-sizing: border-box;
-}
-.details-row .tool-details[open] > div {
-  width: 100%;
-  max-height: 46vh;
-  overflow: auto;
-}
-.details-row[data-open="details"] .tool-details {
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
-.details-row[data-open="details"] .tool-details.tool-howitworks {
-  display: none !important;
-}
-.details-row[data-open="howitworks"] .tool-details {
-  display: none !important;
-}
-.details-row[data-open="howitworks"] .tool-details.tool-howitworks {
-  display: block !important;
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
-
-/* Variant: match page description (hero-tagline) color and left alignment */
- .tool-details--match {
-  color: #6b7280; /* match this page's .hero-tagline */
-  align-self: stretch; /* left-align within the centered card */
-}
-.tool-details--match summary {
-  color: #6b7280;
-  text-align: center;
-}
-.tool-details--match > div {
-  color: #6b7280;
-}
-
-/* Button-controlled shared collapse (copied from PdfCompressor styles) */
-.details-controls {
-  display: block;
-  margin-top: 1rem;
-}
-
-.details-buttons {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.tab-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 0.5rem 0 0;
-  cursor: pointer;
-  font-weight: 600;
-  color: inherit;
-  display: inline;
-  line-height: inherit;
-}
-
-.tab-btn:focus {
-  outline: none;
-  text-decoration: underline;
-}
-
-.tab-btn::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.25rem;
-  transition: transform 0.18s ease;
-  font-size: 0.85em;
-  color: currentColor;
-}
-
-.tab-btn.active::after {
-  transform: rotate(180deg);
-}
-
-.image-resizer-page .details-controls .tab-btn {
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  min-width: 0 !important;
-  height: auto !important;
-  box-shadow: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-.image-resizer-page .details-controls .tab-btn:focus {
-  outline: none !important;
-  text-decoration: underline !important;
-}
-
-.image-resizer-page .details-controls .tab-btn,
-.image-resizer-page .details-controls .tab-btn.active {
-  color: #374151 !important;
-}
-
-.shared-collapse {
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-  border: 1px solid #e2e6f0;
-  padding: 0.75rem;
-  max-height: none;
-  overflow: visible;
-}
-
-.details-content,
-.howitworks-content {
-  color: #374151 !important;
-  opacity: 1 !important;
-  text-align: left !important;
-}
-
-.details-content ul,
-.howitworks-content ul {
-  margin: 0.5rem 0 0 1.25rem;
-  padding-left: 1.25rem;
-}
-
-.details-content p,
-.howitworks-content p {
-  text-align: left !important;
-}
+/* tab-btn / shared-collapse / details-content styles are in image-tools-shared.css */
 
 /* Mobile: remove horizontal padding so the card fills the full screen width */
 @media (max-width: 740px) {

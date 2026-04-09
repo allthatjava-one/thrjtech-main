@@ -2,6 +2,7 @@ import { useImageResizer } from './hooks/useImageResizer.jsx';
 import { ImageResizerView } from './ImageResizerView';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import '../image-tools-shared.css';
 import './ImageResizer.css';
 
 export default function ImageResizerPage() {

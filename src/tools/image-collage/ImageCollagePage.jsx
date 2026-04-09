@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ImageCollageView from "./ImageCollageView";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import '../image-tools-shared.css';
 import "./ImageCollage.css";
 
 export default function ImageCollagePage() {

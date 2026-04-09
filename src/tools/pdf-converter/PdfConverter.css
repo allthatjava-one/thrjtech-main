@@ -209,17 +209,21 @@
 }
 
 .pdf-converter-page .btn {
-  display: inline-block;
-  padding: 0.65rem 1.5rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  transition: var(--btn-transition);
   border: none;
   text-decoration: none;
   text-align: center;
   font-family: inherit;
+  box-sizing: border-box;
+  line-height: 1;
 }
 
 .pdf-converter-page .btn-primary {
@@ -382,13 +386,14 @@
   }
 }
 
-.tool-details {
+/* Tool details (collapsible) */
+.pdf-converter-page .tool-details {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   text-align: left;
   color: #4b5563;
 }
-.tool-details summary {
+.pdf-converter-page .tool-details summary {
   display: block;
   cursor: pointer;
   font-weight: 600;
@@ -398,18 +403,18 @@
   text-align: center;
   position: relative;
 }
-.tool-details summary::after {
+.pdf-converter-page .tool-details summary::after {
   content: "▾";
   display: inline-block;
   margin-left: 0.5rem;
   transition: transform 0.18s ease;
 }
-.tool-details[open] summary::after {
+.pdf-converter-page .tool-details[open] summary::after {
   transform: rotate(180deg);
 }
-.tool-details summary::-webkit-details-marker { display: none; }
-.tool-details summary::marker { display: none; }
-.tool-details > div {
+.pdf-converter-page .tool-details summary::-webkit-details-marker { display: none; }
+.pdf-converter-page .tool-details summary::marker { display: none; }
+.pdf-converter-page .tool-details > div {
   margin-top: 0.5rem;
   padding-left: 0.25rem;
   color: #4b5563;
@@ -425,7 +430,7 @@
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }
 
-.details-row {
+.pdf-converter-page .details-row {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -434,22 +439,22 @@
   width: 100%;
   box-sizing: border-box;
 }
-.details-row .tool-details {
+.pdf-converter-page .details-row .tool-details {
   flex: 1 1 300px;
   min-width: 240px;
   max-width: 48%;
   box-sizing: border-box;
 }
-.details-row .tool-details {
+.pdf-converter-page .details-row .tool-details {
   min-width: 0;
 }
 @media (max-width: 740px) {
-  .details-row .tool-details {
+  .pdf-converter-page .details-row .tool-details {
     max-width: 100%;
     flex-basis: 100%;
   }
 }
-.how-img {
+.pdf-converter-page .how-img {
   width: 100%;
   border-radius: 8px;
   border: 1px solid #e2e6f0;
@@ -457,64 +462,64 @@
   display: block;
   margin-bottom: 0.5rem;
 }
-.details-row .tool-details img {
+.pdf-converter-page .details-row .tool-details img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-.details-row .tool-details > div {
+.pdf-converter-page .details-row .tool-details > div {
   width: 100%;
   box-sizing: border-box;
 }
-.details-row .tool-details[open] > div {
+.pdf-converter-page .details-row .tool-details[open] > div {
   width: 100%;
   max-height: 46vh;
   overflow: auto;
 }
-.details-row .tool-details {
+.pdf-converter-page .details-row .tool-details {
   flex: 1 1 48%;
   max-width: 48%;
   box-sizing: border-box;
 }
 @media (max-width: 740px) {
-  .details-row .tool-details {
+  .pdf-converter-page .details-row .tool-details {
     max-width: 100%;
     flex-basis: 100%;
   }
 }
 
-.details-row[data-open="details"] .tool-details[open],
-.details-row[data-open="howitworks"] .tool-details[open] {
+.pdf-converter-page .details-row[data-open="details"] .tool-details[open],
+.pdf-converter-page .details-row[data-open="howitworks"] .tool-details[open] {
   flex: 1 1 60%;
   max-width: 60%;
 }
-.details-row[data-open="details"] .tool-details:not([open]),
-.details-row[data-open="howitworks"] .tool-details:not([open]) {
+.pdf-converter-page .details-row[data-open="details"] .tool-details:not([open]),
+.pdf-converter-page .details-row[data-open="howitworks"] .tool-details:not([open]) {
   flex: 1 1 38%;
   max-width: 38%;
 }
 
-.details-row[data-open="details"] .tool-details.tool-howitworks > div,
-.details-row[data-open="howitworks"] .tool-details:not(.tool-howitworks) > div {
+.pdf-converter-page .details-row[data-open="details"] .tool-details.tool-howitworks > div,
+.pdf-converter-page .details-row[data-open="howitworks"] .tool-details:not(.tool-howitworks) > div {
   max-height: 0 !important;
   overflow: hidden !important;
   padding: 0 !important;
   margin-top: 0 !important;
 }
 
-.details-controls {
+.pdf-converter-page .details-controls {
   display: block;
   margin-top: 1rem;
 }
 
-.details-buttons {
+.pdf-converter-page .details-buttons {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
-.tab-btn {
+.pdf-converter-page .tab-btn {
   background: transparent;
   border: none;
   padding: 0;
@@ -526,12 +531,12 @@
   line-height: inherit;
 }
 
-.tab-btn:focus {
+.pdf-converter-page .tab-btn:focus {
   outline: none;
   text-decoration: underline;
 }
 
-.tab-btn::after {
+.pdf-converter-page .tab-btn::after {
   content: "▾";
   display: inline-block;
   margin-left: 0.25rem;
@@ -562,15 +567,15 @@
   color: #374151 !important;
 }
 
-.tab-btn.active {
+.pdf-converter-page .tab-btn.active {
   color: #374151;
 }
 
-.tab-btn.active::after {
+.pdf-converter-page .tab-btn.active::after {
   transform: rotate(180deg);
 }
 
-.shared-collapse {
+.pdf-converter-page .shared-collapse {
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
   border: 1px solid #e2e6f0;
@@ -596,32 +601,32 @@
   opacity: 1 !important;
 }
 
-.details-content,
-.howitworks-content {
+.pdf-converter-page .details-content,
+.pdf-converter-page .howitworks-content {
   color: #374151 !important;
   opacity: 1 !important;
 }
 
-.details-content,
-.howitworks-content,
-.tool-details-open,
-.tool-howitworks-open,
-.shared-collapse {
+.pdf-converter-page .details-content,
+.pdf-converter-page .howitworks-content,
+.pdf-converter-page .tool-details-open,
+.pdf-converter-page .tool-howitworks-open,
+.pdf-converter-page .shared-collapse {
   text-align: left !important;
 }
 
-.details-content ul,
-.howitworks-content ul,
-.tool-details-open ul,
-.tool-howitworks-open ul {
+.pdf-converter-page .details-content ul,
+.pdf-converter-page .howitworks-content ul,
+.pdf-converter-page .tool-details-open ul,
+.pdf-converter-page .tool-howitworks-open ul {
   margin: 0.5rem 0 0 1.25rem;
   padding-left: 1.25rem;
 }
 
-.details-content p,
-.howitworks-content p,
-.tool-details-open p,
-.tool-howitworks-open p {
+.pdf-converter-page .details-content p,
+.pdf-converter-page .howitworks-content p,
+.pdf-converter-page .tool-details-open p,
+.pdf-converter-page .tool-howitworks-open p {
   text-align: left !important;
 }
 
