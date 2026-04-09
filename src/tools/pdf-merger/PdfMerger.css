@@ -160,7 +160,7 @@
 /* Place Details and How it works side-by-side where space allows */
 .pdf-merger-page .details-row {
   display: flex;
-  gap: 1rem;
+  /* gap: 1rem; */
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
@@ -226,7 +226,6 @@
 /* Button-controlled shared collapse styles (match compressor) */
 .pdf-merger-page .details-controls {
   display: block;
-  margin-top: 1rem;
 }
 .pdf-merger-page .tab-btn {
   background: transparent;

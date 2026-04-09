@@ -1,6 +1,3 @@
-.image-crop-view {
-  padding: 1rem 1rem 2rem;
-}
 .image-crop-page {
   display: flex;
   flex-direction: column;
@@ -44,10 +41,11 @@
   min-height: 200px;
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  border: 1.5px dashed #e2e6f0;
+  border: 2px dashed #a0aec0;
   border-radius: 8px;
-  background: #fff;
+  background: #f8fafc;
   position: relative;
   overflow: hidden;
 }

@@ -229,7 +229,6 @@
 /* Button-controlled shared collapse (consistent with compressor styles) */
 .watermarker-page .details-controls {
   display: block;
-  margin-top: 1rem;
 }
 .watermarker-page .tab-btn {
   background: transparent;
