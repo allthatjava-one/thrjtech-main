@@ -28,17 +28,158 @@ export function ImageResizerView({
   const [linked, setLinked] = useState(true);
   const originalWidth = useRef(null);
   const originalHeight = useRef(null);
-  // Set original dimensions when image loads
+  const [previewZoom, setPreviewZoomState] = useState(1);
+  const previewZoomRef = useRef(1);
+  const dropZoneRef = useRef(null);
+  const [popupPan, setPopupPan] = useState({ x: 0, y: 0 });
+  const [popupDragging, setPopupDragging] = useState(false);
+  const popupPanRef = useRef({ x: 0, y: 0 });
+  const popupDragRef = useRef({ active: false, startX: 0, startY: 0, startPanX: 0, startPanY: 0 });
+  const popupDialogRef = useRef(null);
+  const [popupImgSize, setPopupImgSize] = useState({ w: null, h: null });
+  // Set original dimensions when image loads; populate inputs and reset zoom
   React.useEffect(() => {
     if (mainImage) {
       const img = new window.Image();
       img.onload = () => {
         originalWidth.current = img.width;
         originalHeight.current = img.height;
+        setWidth(img.width.toString());
+        setHeight(img.height.toString());
+        previewZoomRef.current = 1;
+        setPreviewZoomState(1);
+        setResizeMode('dimensions');
       };
       img.src = URL.createObjectURL(mainImage);
     }
   }, [mainImage]);
+
+  // Alt+Scroll and pinch-zoom on the drop zone preview
+  React.useEffect(() => {
+    const el = dropZoneRef.current;
+    if (!el) return;
+    let lastDist = null;
+
+    const applyZoom = (next) => {
+      previewZoomRef.current = next;
+      setPreviewZoomState(next);
+      if (originalWidth.current && originalHeight.current) {
+        setWidth(Math.round(originalWidth.current * next).toString());
+        setHeight(Math.round(originalHeight.current * next).toString());
+      }
+    };
+
+    const onWheel = (e) => {
+      if (!e.altKey) return;
+      e.preventDefault();
+      const factor = e.deltaY < 0 ? 1.1 : 0.9;
+      applyZoom(Math.max(0.1, Math.min(10, previewZoomRef.current * factor)));
+    };
+
+    const onTouchStart = (e) => {
+      if (e.touches.length === 2) {
+        lastDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      }
+    };
+
+    const onTouchMove = (e) => {
+      if (e.touches.length === 2 && lastDist !== null) {
+        e.preventDefault();
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        applyZoom(Math.max(0.1, Math.min(10, previewZoomRef.current * (dist / lastDist))));
+        lastDist = dist;
+      }
+    };
+
+    const onTouchEnd = () => { lastDist = null; };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    el.addEventListener('touchstart', onTouchStart, { passive: false });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    el.addEventListener('touchend', onTouchEnd);
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [setWidth, setHeight]);
+
+  // Auto-open popup when a resized output is ready
+  React.useEffect(() => {
+    if (outputUrl) {
+      setPopupImgSize({ w: null, h: null });
+      setPreviewOpen(true);
+    }
+  }, [outputUrl]);
+
+  // Reset pan and attach mouse+touch drag listeners while popup is open
+  React.useEffect(() => {
+    if (!previewOpen) return;
+    setPopupPan({ x: 0, y: 0 });
+    popupPanRef.current = { x: 0, y: 0 };
+
+    const onMouseMove = (e) => {
+      if (!popupDragRef.current.active) return;
+      const newPan = {
+        x: popupDragRef.current.startPanX + (e.clientX - popupDragRef.current.startX),
+        y: popupDragRef.current.startPanY + (e.clientY - popupDragRef.current.startY),
+      };
+      popupPanRef.current = newPan;
+      setPopupPan(newPan);
+    };
+    const onMouseUp = () => {
+      if (popupDragRef.current.active) {
+        popupDragRef.current.active = false;
+        setPopupDragging(false);
+      }
+    };
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    const el = popupDialogRef.current;
+    let touchStartX = 0, touchStartY = 0, touchStartPanX = 0, touchStartPanY = 0;
+    const onTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartPanX = popupPanRef.current.x;
+        touchStartPanY = popupPanRef.current.y;
+      }
+    };
+    const onTouchMove = (e) => {
+      if (e.touches.length !== 1) return;
+      e.preventDefault();
+      const newPan = {
+        x: touchStartPanX + (e.touches[0].clientX - touchStartX),
+        y: touchStartPanY + (e.touches[0].clientY - touchStartY),
+      };
+      popupPanRef.current = newPan;
+      setPopupPan(newPan);
+    };
+    const onTouchEnd = () => {};
+    if (el) {
+      el.addEventListener('touchstart', onTouchStart, { passive: true });
+      el.addEventListener('touchmove', onTouchMove, { passive: false });
+      el.addEventListener('touchend', onTouchEnd);
+    }
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+      if (el) {
+        el.removeEventListener('touchstart', onTouchStart);
+        el.removeEventListener('touchmove', onTouchMove);
+        el.removeEventListener('touchend', onTouchEnd);
+      }
+    };
+  }, [previewOpen]);
+
   const navigate = useNavigate();
   const [sendStatus, setSendStatus] = useState('idle');
   const handleSendToWatermark = async () => {
@@ -147,18 +288,25 @@ export function ImageResizerView({
           </div>
       </div>
       <div
-        className={`drop-zone${isDragging ? ' dragging' : ''}`}
+        ref={dropZoneRef}
+        className={`drop-zone${isDragging ? ' dragging' : ''}${mainImage ? ' has-image' : ''}`}
+        style={{ overflow: 'hidden', position: 'relative' }}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onClick={() => fileInputRef.current && fileInputRef.current.click()}
+        onClick={() => !mainImage && fileInputRef.current && fileInputRef.current.click()}
       >
         {mainImage ? (
           <img
             src={URL.createObjectURL(mainImage)}
             alt="Main"
             className="preview-image clickable"
-            style={{ cursor: 'pointer' }}
+            style={{
+              cursor: 'pointer',
+              transform: `scale(${previewZoom})`,
+              transformOrigin: 'center center',
+              transition: 'transform 0.08s ease',
+            }}
             onClick={e => {
               e.stopPropagation();
               setPreviewOpen(true);
@@ -174,18 +322,58 @@ export function ImageResizerView({
           ref={fileInputRef}
           onChange={handleFileInput}
         />
+        {mainImage && (
+          <div className="drop-zone-hint">Alt+Scroll to zoom · Pinch on mobile · {Math.round(previewZoom * 100)}%</div>
+        )}
       </div>
       {/* Preview popup dialog */}
       {previewOpen && (mainImage || outputUrl) && (
         <div className="image-popup-overlay" onClick={() => setPreviewOpen(false)}>
-          <div className="image-popup-dialog" onClick={e => e.stopPropagation()}>
+          <div
+            ref={popupDialogRef}
+            className="image-popup-dialog"
+            onClick={e => e.stopPropagation()}
+            onMouseDown={e => {
+              e.stopPropagation();
+              popupDragRef.current = {
+                active: true,
+                startX: e.clientX,
+                startY: e.clientY,
+                startPanX: popupPanRef.current.x,
+                startPanY: popupPanRef.current.y,
+              };
+              setPopupDragging(true);
+            }}
+            style={{
+              cursor: popupDragging ? 'grabbing' : 'grab',
+              position: 'relative',
+              overflow: 'hidden',
+              display: 'block',
+            }}
+          >
             <img
               src={outputUrl ? outputUrl : URL.createObjectURL(mainImage)}
               alt="Preview"
               className="image-popup-img"
+              onLoad={e => setPopupImgSize({ w: e.target.naturalWidth, h: e.target.naturalHeight })}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: popupImgSize.w != null ? `${popupImgSize.w}px` : 'auto',
+                height: popupImgSize.h != null ? `${popupImgSize.h}px` : 'auto',
+                maxWidth: 'none',
+                maxHeight: 'none',
+                flexShrink: 0,
+                transform: `translate(calc(-50% + ${popupPan.x}px), calc(-50% + ${popupPan.y}px))`,
+                pointerEvents: 'none',
+                userSelect: 'none',
+                display: 'block',
+              }}
+              draggable={false}
             />
-            <button className="close-popup-btn" onClick={() => setPreviewOpen(false)}>&times;</button>
           </div>
+          <button className="close-popup-btn" onClick={() => setPreviewOpen(false)}>&times;</button>
         </div>
       )}
       <div className="resize-options">
@@ -288,26 +476,45 @@ export function ImageResizerView({
           />
         </div>
       )}
-      <button
-        className="resize-btn"
-        onClick={handleResize}
-        disabled={status === 'processing' || !mainImage || (resizeMode === 'dimensions' && (!width || !height))}
-      >
-        {status === 'processing' ? 'Processing...' : 'Resize Image'}
-      </button>
+      <div className="action-row">
+        <button
+          className="resize-btn"
+          onClick={handleResize}
+          disabled={status === 'processing' || !mainImage || (resizeMode === 'dimensions' && (!width || !height))}
+        >
+          {status === 'processing' ? 'Processing...' : 'Preview'}
+        </button>
+
+        <button
+          type="button"
+          className={`download-btn${!outputUrl ? ' disabled' : ''}`}
+          disabled={!outputUrl}
+          onClick={() => {
+            if (!outputUrl) return;
+            try {
+              const link = document.createElement('a');
+              link.href = outputUrl;
+              link.download = outputName || '';
+              document.body.appendChild(link);
+              link.click();
+              link.remove();
+            } catch (e) {
+              window.open(outputUrl, '_blank', 'noopener');
+            }
+          }}
+        >
+          Download
+        </button>
+      </div>
+
       {errorMsg && <div className="error-msg">{errorMsg}</div>}
       {outputUrl && (
         <div className="output-section">
-          <img
-            src={outputUrl}
-            alt="Resized"
-            className="output-image clickable"
-            style={{ cursor: 'pointer' }}
-            onClick={() => setPreviewOpen(true)}
-          />
           <div
             style={{
               marginTop: '1.5rem',
+              width: '100%',
+              boxSizing: 'border-box',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -325,7 +532,6 @@ export function ImageResizerView({
             </span>
             <button
               className="resize-btn"
-              style={{ minWidth: 64, padding: '0.35rem 1.1rem', fontSize: '0.98rem', marginLeft: 12, alignSelf: 'center', marginTop: 0, marginBottom: 0 }}
               onClick={handleSendToWatermark}
               disabled={sendStatus === 'processing'}
             >
@@ -335,9 +541,6 @@ export function ImageResizerView({
           {sendStatus === 'error' && (
             <div className="error-msg" style={{ marginTop: 8 }}>Failed to send image to watermark tool.</div>
           )}
-          <div style={{ marginTop: '0.5rem' }}>
-            <a href={outputUrl} download={outputName} className="download-btn">Download Resized Image</a>
-          </div>
         </div>
       )}
     </div>

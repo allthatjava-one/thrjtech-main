@@ -21,6 +21,13 @@
   --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --radius: 12px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+
+  /* ── Button design tokens ─────────────────────────── */
+  --btn-padding: 0.65rem 1.4rem;
+  --btn-radius: 10px;
+  --btn-font-size: 0.95rem;
+  --btn-font-weight: 600;
+  --btn-transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
 }
 
 html {

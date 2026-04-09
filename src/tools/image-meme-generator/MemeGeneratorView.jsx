@@ -32,6 +32,8 @@ export default function MemeGeneratorView({ initialFile }) {
   const [isFileDragging, setIsFileDragging] = useState(false);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   // Keep refs in sync with state
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
@@ -371,6 +373,19 @@ export default function MemeGeneratorView({ initialFile }) {
     }
   }
 
+  function handlePreview() {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    drawCanvas();
+    const ctx = canvas.getContext('2d');
+    const rect = previewRef.current.getBoundingClientRect();
+    drawTextToCanvas(ctx, rect.width, rect.height);
+    const url = canvas.toDataURL('image/png');
+    setPreviewUrl(url);
+    setPreviewOpen(true);
+    drawCanvas();
+  }
+
   function handleDownload() {
     // Draw text onto canvas for export, then restore image-only preview
     const canvas = canvasRef.current;
@@ -647,6 +662,9 @@ export default function MemeGeneratorView({ initialFile }) {
           {hasChanges() && (
             <button className="btn" onClick={handleReset}>Reset</button>
           )}
+          {imageObj && (
+            <button className="btn" onClick={handlePreview}>Preview</button>
+          )}
           <button className="btn primary" onClick={handleDownload}>Download</button>
         </div>
       </div>
@@ -683,6 +701,14 @@ export default function MemeGeneratorView({ initialFile }) {
         <div className="preview-hint-below">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
       )}
     </div>
+    {previewOpen && previewUrl && (
+      <div className="meme-popup-overlay" onClick={() => setPreviewOpen(false)}>
+        <div className="meme-popup-dialog" onClick={e => e.stopPropagation()}>
+          <img src={previewUrl} alt="Meme preview" className="meme-popup-img" />
+          <button className="meme-popup-close" onClick={() => setPreviewOpen(false)}>&times;</button>
+        </div>
+      </div>
+    )}
     </>
   );
 }

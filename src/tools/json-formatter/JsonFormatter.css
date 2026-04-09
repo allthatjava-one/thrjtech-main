@@ -215,12 +215,12 @@ kbd {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 1rem;
-  border-radius: 6px;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
   border: 1px solid transparent;
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  transition: var(--btn-transition);
   white-space: nowrap;
   cursor: pointer;
   font-family: inherit;
@@ -279,13 +279,13 @@ kbd {
 }
 
 /* Tool details (collapsible) */
-.tool-details {
+.jf-container .tool-details {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   text-align: left;
   color: #4b5563;
 }
-.tool-details summary {
+.jf-container .tool-details summary {
   display: block;
   cursor: pointer;
   font-weight: 600;
@@ -295,18 +295,18 @@ kbd {
   text-align: center;
   position: relative;
 }
-.tool-details summary::after {
+.jf-container .tool-details summary::after {
   content: "▾";
   display: inline-block;
   margin-left: 0.5rem;
   transition: transform 0.18s ease;
 }
-.tool-details[open] summary::after {
+.jf-container .tool-details[open] summary::after {
   transform: rotate(180deg);
 }
-.tool-details summary::-webkit-details-marker { display: none; }
-.tool-details summary::marker { display: none; }
-.tool-details > div {
+.jf-container .tool-details summary::-webkit-details-marker { display: none; }
+.jf-container .tool-details summary::marker { display: none; }
+.jf-container .tool-details > div {
   margin-top: 0.5rem;
   padding-left: 0.25rem;
   color: #4b5563;
@@ -342,7 +342,7 @@ kbd {
 }
 
 /* Place Details and How it works side-by-side where space allows */
-.details-row {
+.jf-container .details-row {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -351,23 +351,23 @@ kbd {
   width: 100%;
   box-sizing: border-box;
 }
-.details-row .tool-details {
+.jf-container .details-row .tool-details {
   flex: 1 1 300px;
   min-width: 240px;
   max-width: 48%;
   box-sizing: border-box;
 }
 /* allow flex children to shrink below their content's min-width */
-.details-row .tool-details {
+.jf-container .details-row .tool-details {
   min-width: 0;
 }
 @media (max-width: 740px) {
-  .details-row .tool-details {
+  .jf-container .details-row .tool-details {
     max-width: 100%;
     flex-basis: 100%;
   }
 }
-.how-img {
+.jf-container .how-img {
   width: 100%;
   border-radius: 8px;
   border: 1px solid #e2e6f0;
@@ -375,33 +375,33 @@ kbd {
   display: block;
   margin-bottom: 0.5rem;
 }
-.details-row .tool-details img {
+.jf-container .details-row .tool-details img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
 /* Ensure collapsible content fills its column */
-.details-row .tool-details > div {
+.jf-container .details-row .tool-details > div {
   width: 100%;
   box-sizing: border-box;
 }
-.details-row .tool-details[open] > div {
+.jf-container .details-row .tool-details[open] > div {
   width: 100%;
   max-height: 46vh;
   overflow: auto;
 }
-.details-row[data-open="details"] .tool-details {
+.jf-container .details-row[data-open="details"] .tool-details {
   flex-basis: 100% !important;
   max-width: 100% !important;
 }
-.details-row[data-open="details"] .tool-details.tool-howitworks {
+.jf-container .details-row[data-open="details"] .tool-details.tool-howitworks {
   display: none !important;
 }
-.details-row[data-open="howitworks"] .tool-details {
+.jf-container .details-row[data-open="howitworks"] .tool-details {
   display: none !important;
 }
-.details-row[data-open="howitworks"] .tool-details.tool-howitworks {
+.jf-container .details-row[data-open="howitworks"] .tool-details.tool-howitworks {
   display: block !important;
   flex-basis: 100% !important;
   max-width: 100% !important;

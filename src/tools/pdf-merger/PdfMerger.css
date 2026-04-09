@@ -113,13 +113,13 @@
 }
 
 /* Tool details (collapsible) */
-.tool-details {
+.pdf-merger-page .tool-details {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   text-align: left;
   color: #4b5563;
 }
-.tool-details summary {
+.pdf-merger-page .tool-details summary {
   display: block;
   cursor: pointer;
   font-weight: 600;
@@ -129,18 +129,18 @@
   text-align: center;
   position: relative;
 }
-.tool-details summary::after {
+.pdf-merger-page .tool-details summary::after {
   content: "▾";
   display: inline-block;
   margin-left: 0.5rem;
   transition: transform 0.18s ease;
 }
-.tool-details[open] summary::after {
+.pdf-merger-page .tool-details[open] summary::after {
   transform: rotate(180deg);
 }
-.tool-details summary::-webkit-details-marker { display: none; }
-.tool-details summary::marker { display: none; }
-.tool-details > div {
+.pdf-merger-page .tool-details summary::-webkit-details-marker { display: none; }
+.pdf-merger-page .tool-details summary::marker { display: none; }
+.pdf-merger-page .tool-details > div {
   margin-top: 0.5rem;
   padding-left: 0.25rem;
   color: #4b5563;
@@ -158,7 +158,7 @@
 }
 
 /* Place Details and How it works side-by-side where space allows */
-.details-row {
+.pdf-merger-page .details-row {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -167,23 +167,23 @@
   width: 100%;
   box-sizing: border-box;
 }
-.details-row .tool-details {
+.pdf-merger-page .details-row .tool-details {
   flex: 1 1 300px;
   min-width: 240px;
   max-width: 48%;
   box-sizing: border-box;
 }
 /* allow flex children to shrink below their content's min-width */
-.details-row .tool-details {
+.pdf-merger-page .details-row .tool-details {
   min-width: 0;
 }
 @media (max-width: 740px) {
-  .details-row .tool-details {
+  .pdf-merger-page .details-row .tool-details {
     max-width: 100%;
     flex-basis: 100%;
   }
 }
-.how-img {
+.pdf-merger-page .how-img {
   width: 100%;
   border-radius: 8px;
   border: 1px solid #e2e6f0;
@@ -191,33 +191,33 @@
   display: block;
   margin-bottom: 0.5rem;
 }
-.details-row .tool-details img {
+.pdf-merger-page .details-row .tool-details img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
 /* Ensure collapsible content fills its column */
-.details-row .tool-details > div {
+.pdf-merger-page .details-row .tool-details > div {
   width: 100%;
   box-sizing: border-box;
 }
-.details-row .tool-details[open] > div {
+.pdf-merger-page .details-row .tool-details[open] > div {
   width: 100%;
   max-height: 46vh;
   overflow: auto;
 }
-.details-row[data-open="details"] .tool-details {
+.pdf-merger-page .details-row[data-open="details"] .tool-details {
   flex-basis: 100% !important;
   max-width: 100% !important;
 }
-.details-row[data-open="details"] .tool-details.tool-howitworks {
+.pdf-merger-page .details-row[data-open="details"] .tool-details.tool-howitworks {
   display: none !important;
 }
-.details-row[data-open="howitworks"] .tool-details {
+.pdf-merger-page .details-row[data-open="howitworks"] .tool-details {
   display: none !important;
 }
-.details-row[data-open="howitworks"] .tool-details.tool-howitworks {
+.pdf-merger-page .details-row[data-open="howitworks"] .tool-details.tool-howitworks {
   display: block !important;
   flex-basis: 100% !important;
   max-width: 100% !important;
@@ -497,17 +497,21 @@
 
 /* ── Buttons ─────────────────────────────────────────── */
 .pdf-merger-page .btn {
-  display: inline-block;
-  padding: 0.65rem 1.5rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  transition: var(--btn-transition);
   border: none;
   text-decoration: none;
   text-align: center;
   font-family: inherit;
+  box-sizing: border-box;
+  line-height: 1;
 }
 
 .pdf-merger-page .btn-primary {
