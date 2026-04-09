@@ -57,7 +57,6 @@ export function PdfMergerView({
                   How it works
                 </button>
               </div>
-
               <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
                   <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                       <h3>How PDF merge works</h3>

@@ -97,7 +97,7 @@ export default function JsonFormatterView() {
           <div className="jf-tool-icon" aria-hidden="true">{'{}'}</div>
           <h1 className="jf-hero-title">JSON Formatter</h1>
           <p className="jf-hero-subtitle">
-            Paste your JSON below, click <strong>Format</strong>, and get clean, readable output instantly — no sign-up required. Invalid JSON is caught and reported with the line number so you can fix errors quickly.
+            Paste your JSON below, click <b>Format</b>, and get clean, readable output instantly — no sign-up required. Invalid JSON is caught and reported with the line number so you can fix errors quickly.
           </p>
           <div className="details-row" data-open={openPanel}>
             <div className="details-controls">

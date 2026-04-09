@@ -148,7 +148,7 @@ export function WatermarkerView({
             }}
           />
         ) : (
-          <span>Drag & drop an image here, or click to select</span>
+          <span className="hero-tagline">Drag & drop an image here, or click to select</span>
         )}
         <input
           type="file"
