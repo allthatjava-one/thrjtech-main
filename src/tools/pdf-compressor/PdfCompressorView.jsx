@@ -20,6 +20,7 @@ export function PdfCompressorView({
   handleReset,
 }) {
   const [openPanel, setOpenPanel] = useState('')
+  const [qualityOption, setQualityOption] = useState('BALANCED')
 
   const togglePanel = (panel) => {
     setOpenPanel((prev) => (prev === panel ? '' : panel))
@@ -205,10 +206,25 @@ export function PdfCompressorView({
                 )}
               </div>
 
+              <div className="quality-select" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <label htmlFor="quality-option" className="hero-tagline" style={{ fontWeight: 700, margin: 0 }}>Quality</label>
+                <select
+                  id="quality-option"
+                  value={qualityOption}
+                  onChange={(e) => setQualityOption(e.target.value)}
+                  aria-label="Compression quality option"
+                  style={{ padding: '6px 8px', borderRadius: 6 }}
+                >
+                  <option value="HQ">High Quality — minimal visual loss, modest size reduction.</option>
+                  <option value="BALANCED">Balanced — good quality with significant size savings.</option>
+                  <option value="MAX">Maximum Compression — largest size reduction, some visual loss possible.</option>
+                </select>
+              </div>
+
               {errorMsg && <p className="error-msg">{errorMsg}</p>}
 
               {file && status === 'idle' && (
-                <button className="btn btn-primary compress-btn" onClick={handleCompress}>
+                <button className="btn btn-primary compress-btn" onClick={() => handleCompress(qualityOption)}>
                   Compress PDF
                 </button>
               )}
