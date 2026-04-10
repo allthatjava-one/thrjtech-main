@@ -1,6 +1,6 @@
 # Image Crop Guide
 
-A short walkthrough for using the Image Crop tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots.
+A short walkthrough for using the Image Crop tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots. [Open the Crop Image](/image-crop)
 
 ![Crop tool screenshot](/screenshots/crop/crop_001.png)
 

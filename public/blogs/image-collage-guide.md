@@ -1,6 +1,6 @@
 # Image Collage Guide
 
-A short walkthrough for using the Image Collage tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots.
+A short walkthrough for using the Image Collage tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots. [Open the Image Collage](/image-collage)
 
 ![Collage tool screenshot](/screenshots/collage/image-collage001.png)
 

@@ -9,7 +9,7 @@ import GtagRouteTracker from './services/GtagRouteTracker'
 import PdfCompressorPage from './tools/pdf-compressor/PdfCompressorPage'
 import PdfMergerPage from './tools/pdf-merger/PdfMergerPage'
 import PdfConverterPage from './tools/pdf-converter/PdfConverterPage'
-import JsonFormatterPage from './tools/json-formatter/JsonFormatterPage'
+import JsonFormatterPage from './tools/text-json-formatter/JsonFormatterPage'
 
 import WatermarkerPage from './tools/image-watermarker/WatermarkerPage'
 import ImageResizerPage from './tools/image-resizer';

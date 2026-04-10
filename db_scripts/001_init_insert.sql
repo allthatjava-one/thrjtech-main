@@ -6,7 +6,7 @@ INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
   'https://thrjtech.com/screenshots/meme-generator/meme-generator004.png',
   '# Meme Generator Guide
 
-Learn how to create shareable memes quickly using the THRJ Meme Generator. This guide walks you through uploading an image, adding and positioning text layers, and exporting your finished meme.
+Learn how to create shareable memes quickly using the THRJ Meme Generator. This guide walks you through uploading an image, adding and positioning text layers, and exporting your finished meme. [Open the Meme Generator](/image-meme-generator)
 
 ![Meme generator screenshot](/screenshots/meme-generator/meme-generator001.png)
 
@@ -46,7 +46,7 @@ Published by THRJ Tech'
   'https://thrjtech.com/screenshots/merger/merger-002.png',
   '# PDF Merger — How it works
 
-This guide explains how the **PDF Merger** tool on THRJ works and shows short screenshots demonstrating the workflow.
+This guide explains how the **PDF Merger** tool on THRJ works and shows short screenshots demonstrating the workflow. [Open the PDF Merger](/pdf-merger)
 
 ## Overview
 
@@ -91,7 +91,7 @@ Published by THRJ Tech'
   '/screenshots/crop/crop_001.png',
   '# Image Crop Guide
 
-A short walkthrough for using the Image Crop tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots.
+A short walkthrough for using the Image Crop tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots. [Open the Crop Image](/image-crop)
 
 ![Crop tool screenshot](/screenshots/crop/crop_001.png)
 

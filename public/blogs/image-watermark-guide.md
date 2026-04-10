@@ -1,6 +1,6 @@
 # Image Watermark Guide
 
-A short walkthrough for using the Image Watermarker tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots.
+A short walkthrough for using the Image Watermarker tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots. [Open the Image Watermarker](/image-watermarker)
 
 ![Watermarker tool screenshot](/screenshots/watermarker/watermarker001.png)
 
