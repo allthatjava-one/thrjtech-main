@@ -19,6 +19,12 @@ Key benefits:
 - Option to choose quality/size trade-offs
 - Simple drag & drop workflow
 
+## Video walkthrough
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+	<iframe src="https://www.youtube.com/embed/ya4VRU4PRLA?si=4s6fGdBiiuKWSIH2" title="Image Crop walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+</div>
+
 ## Quick Steps
 
 1. Open the PDF Compressor page: `/pdf-compressor`.
