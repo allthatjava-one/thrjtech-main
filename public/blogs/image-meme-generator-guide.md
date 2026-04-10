@@ -1,6 +1,6 @@
 # Meme Generator Guide
 
-A quick guide to creating memes with the Meme Generator on THRJ. This walkthrough covers adding text layers, positioning, styling, and exporting your final meme.
+A quick guide to creating memes with the Meme Generator on THRJ. This walkthrough covers adding text layers, positioning, styling, and exporting your final meme. [Open the Meme Generator](/image-meme-generator)
 
 ![Meme generator screenshot](/screenshots/meme-generator/meme-generator001.png)
 

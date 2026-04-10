@@ -1,6 +1,6 @@
 # PDF Compressor — Reduce PDF file size quickly
 
-A short guide to using the **PDF Compressor** tool on THRJ. Learn the simple workflow, tips for best results, and privacy details.
+A short guide to using the **PDF Compressor** tool on THRJ. Learn the simple workflow, tips for best results, and privacy details. [Open the PDF Compressor](/pdf-compressor)
 
 ![PDF Compressor screenshot](/screenshots/compressor/compressor-001.png)
 

@@ -1,6 +1,6 @@
 # PDF Merger — How it works
 
-This guide explains how the **PDF Merger** tool on THRJ works and shows short screenshots demonstrating the workflow.
+This guide explains how the **PDF Merger** tool on THRJ works and shows short screenshots demonstrating the workflow. [Open the PDF Merger](/pdf-merger)
 
 ## Overview
 

@@ -1,6 +1,6 @@
 # Image Resizer — Resize images quickly in your browser
 
-A short walkthrough for using the **Image Resizer** tool on THRJ. This guide covers the basic workflow, useful tips, and privacy notes so you can shrink or scale images fast.
+A short walkthrough for using the **Image Resizer** tool on THRJ. This guide covers the basic workflow, useful tips, and privacy notes so you can shrink or scale images fast. [Open the Image Resizer](/image-resizer)
 
 ![Image Resizer screenshot](/screenshots/resizer/resizer-001.png)
 

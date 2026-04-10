@@ -6,7 +6,7 @@ INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
   'https://thrjtech.com/screenshots/compressor/pdf-compressor-01.png',
   '# PDF Compressor — Reduce PDF file size quickly
 
-A short guide to using the **PDF Compressor** tool on THRJ. Learn the simple workflow, tips for best results, and privacy details.
+A short guide to using the **PDF Compressor** tool on THRJ. Learn the simple workflow, tips for best results, and privacy details. [Open the PDF Compressor](/pdf-compressor)
 
 ![PDF Compressor screenshot](/screenshots/compressor/pdf-compressor-01.png)
 
@@ -84,7 +84,7 @@ INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
   'https://thrjtech.com/screenshots/resizer/Image-resizer001.png',
   '# Image Resizer — Resize images quickly in your browser
 
-A short walkthrough for using the **Image Resizer** tool on THRJ. This guide covers the basic workflow, useful tips, and privacy notes so you can shrink or scale images fast.
+A short walkthrough for using the **Image Resizer** tool on THRJ. This guide covers the basic workflow, useful tips, and privacy notes so you can shrink or scale images fast. [Open the Image Resizer](/image-resizer)
 
 ![Image Resizer screenshot](/screenshots/resizer/Image-resizer001.png)
 
