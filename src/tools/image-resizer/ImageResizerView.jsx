@@ -273,7 +273,8 @@ export function ImageResizerView({
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/resizer/Image-resizer002.png" alt="Step 2" className="how-img" />
-                    <p>Select percentage or explicit width/height and lock the aspect ratio if needed.</p>
+                    <p>Select percentage or explicit width/height and lock the aspect ratio if needed. 
+                      You can use Alt+Scroll or Pinch to zoom on mobile in the preview. Actual size will show up on width and height fields.</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/resizer/Image-resizer003.png" alt="Step 3" className="how-img" />
