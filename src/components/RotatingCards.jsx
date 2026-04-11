@@ -318,6 +318,32 @@ const cards = [
       },
     ],
   },
+  {
+    key: 'image-converter',
+    icon: (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>),
+    title: 'Image Converter',
+    link: '/image-converter',
+    btn: 'Open Image Converter',
+    description: 'Convert images between JPG, PNG, and WebP instantly in your browser. Drop your image, choose a format, and download — no uploads, no account required.',
+    features: ['Convert between JPG, PNG, and WebP', 'Auto-detects input format', 'Transparent PNGs get white background on JPG export', '100% local — files never leave your browser'],
+    screenshots: [
+      {
+        src: '/screenshots/image-converter/image-converter-001.png',
+        alt: 'Step 1 — Drag and drop your images onto the upload area',
+        caption: '1. Drag & drop or browse for your images',
+      },
+      {
+        src: '/screenshots/image-converter/image-converter-002.png',
+        alt: 'Step 2 — Choose output format',
+        caption: '2. Choose output format (JPG, PNG, or WebP)',
+      },
+      {
+        src: '/screenshots/image-converter/image-converter-003.png',
+        alt: 'Step 3 — Preview the converted image',
+        caption: '3. Preview your converted image',
+      },
+    ],
+  },
 ];
 
 function RotatingCards() {
