@@ -1,0 +1,12 @@
+I want to add new feature that provide regular expression support for search and replace in the text editor. This will allow users to perform more complex search and replace operations using regex patterns. The feature will include a toggle option to enable or disable regex mode, and when enabled, users can input their regex patterns in the search field. The matched text should color differently to indicate that it is being matched by the regex pattern. Additionally, the replace field will also support regex patterns, allowing users to use capture groups and other regex features in their replacements. This feature will enhance the functionality of the text editor and provide users with more powerful search and replace capabilities. Also it should indicate that if the entered regex pattern is invalid, an error message will be displayed to the user, prompting them to correct their input. This will help prevent confusion and ensure that users can effectively utilize the regex support in the search and replace functionality.
+
+# Design principle
+- Should use same design pattern as `/src/tools/text-json-formatter` to implement the regex support, which will ensure consistency in the codebase and make it easier for developers to understand and maintain the code.
+- The regex support should be implemented in a modular way, allowing for easy integration with the existing search and replace functionality without causing disruptions to the current codebase.
+- The user interface for the regex support should be intuitive and user-friendly, providing clear indications of when regex mode is enabled and how to input regex patterns correctly. This will help users to easily understand and utilize the new feature without confusion.
+- The implementation should include comprehensive error handling to ensure that any invalid regex patterns are caught and appropriate error messages are displayed to the user, enhancing the overall user experience and preventing frustration.
+
+# Technical details
+- The regex support will be implemented using JavaScript's built-in `RegExp` object, which provides powerful regex capabilities for searching and replacing text.
+- The code should be place in `/src/tools/text-regex` directory, following the same structure as the existing text formatting tools.
+- The search and replace functionality will be updated to check if regex mode is enabled, and if so, it will use the `RegExp` object to perform the search and replace operations based on the user's input regex patterns.

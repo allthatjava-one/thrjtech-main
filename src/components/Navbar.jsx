@@ -59,6 +59,7 @@ export default function Navbar() {
                   <div className="dropdown-group">
                     <div className="dropdown-group-title">Text</div>
                     <Link to="/json-formatter" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>JSON Formatter</Link>
+                    <Link to="/text-regex" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Regex</Link>
                   </div>
                 </div>
                 <div className="dropdown-col">
