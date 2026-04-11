@@ -46,13 +46,53 @@
 
 
 .image-resizer-view .hero-tagline {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Tip banner ── */
+.ir-tip-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  width: 100%;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.ir-tip-text {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #1e40af;
+  min-width: 180px;
+}
+
+.ir-tip-btn {
+  flex-shrink: 0;
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--color-primary, #4f8ef7);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.ir-tip-btn:hover {
+  background: var(--color-accent, #3b6fd4);
 }
 
 .image-resizer-view .drop-zone {
   border: 2px dashed #a0aec0;
   border-radius: 8px;
-  padding: 2rem 1rem;
+  padding: 3.5rem 1rem;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -66,7 +106,7 @@
 }
 
 .image-resizer-view .drop-zone.has-image {
-  min-height: 260px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +121,7 @@
 
 @media (max-width: 600px) {
   .image-resizer-view .drop-zone {
-    padding: 1.2rem 0.5rem;
+    padding: 3rem 0.5rem;
     font-size: 0.98rem;
   }
 }
