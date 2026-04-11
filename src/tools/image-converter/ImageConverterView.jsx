@@ -159,7 +159,7 @@ export function ImageConverterView({
     <div className="ic-view">
       <h2 className="hero-title">Image Converter</h2>
       <p className="hero-tagline">
-        Convert images between JPG, PNG, WebP, AVIF, BMP, GIF, ICO, TIFF, and SVG entirely in your browser — no uploads, no account required.
+        Convert images between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely in your browser — no uploads, no account required.
       </p>
 
       {/* ── Details / How it works ── */}
@@ -217,12 +217,15 @@ export function ImageConverterView({
           <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
             <ol style={{ margin: 0, paddingLeft: '1rem' }}>
               <li style={{ marginBottom: '0.75rem' }}>
+                <img src="/screenshots/image-converter/image-converter-001.png" alt="Step 1" className="how-img" />
                 <p>Drag &amp; drop an image onto the upload area, or click it to browse for a file.</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
+                <img src="/screenshots/image-converter/image-converter-002.png" alt="Step 2" className="how-img" />
                 <p>Select your desired output format from the format buttons. The tool auto-selects a sensible default based on your input.</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
+                <img src="/screenshots/image-converter/image-converter-003.png" alt="Step 3" className="how-img" />
                 <p>Click <strong>Convert</strong> to process the image instantly in your browser.</p>
               </li>
               <li>
@@ -268,7 +271,7 @@ export function ImageConverterView({
               <polyline points="21 15 16 10 5 21"/>
             </svg>
             <span className="ic-drop-text">Drag &amp; drop an image here, or click to select</span>
-            <span className="ic-drop-hint">Supports JPG, PNG, WebP, AVIF, GIF, BMP, ICO, TIFF, SVG</span>
+            <span className="ic-drop-hint">Supports JPG, PNG, WebP, AVIF, GIF, BMP, ICO</span>
           </div>
         )}
         <input
