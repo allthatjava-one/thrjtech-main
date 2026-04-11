@@ -70,6 +70,7 @@ export default function Navbar() {
                       <Link to="/image-collage" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Collage</Link>
                       <Link to="/image-crop" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Crop</Link>
                       <Link to="/image-meme-generator" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Meme Generator</Link>
+                      <Link to="/image-converter" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>Converter</Link>
                   </div>
                 </div>
               </div>
