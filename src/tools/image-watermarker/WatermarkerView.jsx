@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 export function WatermarkerView({
   mainImage,
@@ -23,6 +23,7 @@ export function WatermarkerView({
 }) {
   const [previewOpen, setPreviewOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
+  const logoInputRef = useRef(null)
 
   // Auto-open popup once the watermarked result is ready
   useEffect(() => {
@@ -218,11 +219,26 @@ export function WatermarkerView({
         />
       )}
       {watermarkType === 'logo' && (
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleLogoInput}
-        />
+        <div className="watermark-input" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <button
+            type="button"
+            className="btn btn-outline"
+            onClick={() => logoInputRef.current && logoInputRef.current.click()}
+          >
+            Choose logo
+          </button>
+          <input
+            id="logo-input"
+            ref={logoInputRef}
+            type="file"
+            accept="image/*"
+            style={{ display: 'none' }}
+            onChange={handleLogoInput}
+          />
+          {logoFile && (
+            <span style={{ color: '#6b7280', fontSize: '0.95rem' }}>{logoFile.name}</span>
+          )}
+        </div>
       )}
       <div className="watermark-actions">
         <button
