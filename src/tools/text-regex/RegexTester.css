@@ -160,6 +160,15 @@
   flex-wrap: wrap;
 }
 
+/* Controls group: Regex + flags + Clear — always stays on one row */
+.rt-search-controls {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+}
+
 /* Replace with… toggle link */
 .rt-replace-toggle {
   background: none;
@@ -453,6 +462,10 @@
   .rt-replace-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .rt-search-controls {
+    align-self: flex-start;
   }
 
   .rt-search-input,

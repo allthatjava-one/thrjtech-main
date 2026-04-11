@@ -210,32 +210,34 @@ export default function RegexTesterView() {
                 spellCheck={false}
                 aria-label="Search pattern"
               />
-              <label
-                className={`rt-regex-toggle-label${isRegex ? ' active' : ''}`}
-                title="Toggle regular expression mode"
-              >
-                <input
-                  type="checkbox"
-                  checked={isRegex}
-                  onChange={(e) => setIsRegex(e.target.checked)}
-                />
-                Regex
-              </label>
-              {isRegex && (
-                <div className="rt-flags">
-                  <label title="Case-insensitive">
-                    <input type="checkbox" checked={flagsToggle.i} onChange={(e) => setFlagsToggle(f => ({ ...f, i: e.target.checked }))} />
-                    {' '}i
-                  </label>
-                  <label title="Multiline">
-                    <input type="checkbox" checked={flagsToggle.m} onChange={(e) => setFlagsToggle(f => ({ ...f, m: e.target.checked }))} />
-                    {' '}m
-                  </label>
-                </div>
-              )}
-              <button className="rt-btn rt-btn-ghost" onClick={clearAll} disabled={!inputText && !searchPattern}>
-                Clear
-              </button>
+              <div className="rt-search-controls">
+                <label
+                  className={`rt-regex-toggle-label${isRegex ? ' active' : ''}`}
+                  title="Toggle regular expression mode"
+                >
+                  <input
+                    type="checkbox"
+                    checked={isRegex}
+                    onChange={(e) => setIsRegex(e.target.checked)}
+                  />
+                  Regex
+                </label>
+                {isRegex && (
+                  <div className="rt-flags">
+                    <label title="Case-insensitive">
+                      <input type="checkbox" checked={flagsToggle.i} onChange={(e) => setFlagsToggle(f => ({ ...f, i: e.target.checked }))} />
+                      {' '}i
+                    </label>
+                    <label title="Multiline">
+                      <input type="checkbox" checked={flagsToggle.m} onChange={(e) => setFlagsToggle(f => ({ ...f, m: e.target.checked }))} />
+                      {' '}m
+                    </label>
+                  </div>
+                )}
+                <button className="rt-btn rt-btn-ghost" onClick={clearAll} disabled={!inputText && !searchPattern}>
+                  Clear
+                </button>
+              </div>
             </div>
             <div className="rt-below-search-row">
               {searchPattern && !regexError && (
