@@ -197,6 +197,14 @@ export function ImageResizerView({
     <div className="image-resizer-view">
       <h2 className="hero-title">Image Resizer</h2>
       <p className="hero-tagline">Resize your image to any size by percentage or exact pixel dimensions. Lock the aspect ratio to prevent distortion, then download your result instantly.</p>
+
+      <div className="ir-tip-banner">
+        <span className="ir-tip-text">Do you want your picture to fit on YouTube Thumbnail or Instagram?</span>
+        <button className="ir-tip-btn" onClick={() => navigate('/image-crop')}>
+          Try Image Crop
+        </button>
+      </div>
+
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button

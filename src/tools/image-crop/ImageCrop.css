@@ -38,7 +38,7 @@
 }
 .crop-drop {
   flex: 1 1 60%;
-  min-height: 200px;
+  min-height: 300px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -161,7 +161,7 @@
     align-items: stretch;
   }
   .crop-drop {
-    min-height: 200px;
+    min-height: 300px;
     width: 100%;
   }
   /* cropper-wrap height is controlled by inline style to preserve image ratio */
