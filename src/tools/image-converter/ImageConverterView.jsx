@@ -1,19 +1,52 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
-// ── Draggable image viewport ───────────────────────────────────────────────────
+// ── Draggable + zoomable image viewport ─────────────────────────────────────
 function DraggablePreview({ src, alt }) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(1);
   const [dragging, setDragging] = useState(false);
+  const viewportRef = useRef(null);
   const startRef = useRef(null);
-  const imgRef = useRef(null);
+  const pinchRef = useRef(null); // { startDist, startScale }
+  const scaleRef = useRef(1);
+  scaleRef.current = scale;
 
-  // Reset pan when src changes
+  // Reset pan + zoom when src changes
   const prevSrc = useRef(null);
   if (prevSrc.current !== src) {
     prevSrc.current = src;
-    // schedule reset outside render
-    Promise.resolve().then(() => setOffset({ x: 0, y: 0 }));
+    Promise.resolve().then(() => { setOffset({ x: 0, y: 0 }); setScale(1); });
   }
+
+  // Non-passive listeners for Alt+Scroll zoom and pinch zoom
+  useEffect(() => {
+    const el = viewportRef.current;
+    if (!el) return;
+
+    const pinchDist = (touches) =>
+      Math.hypot(touches[0].clientX - touches[1].clientX, touches[0].clientY - touches[1].clientY);
+
+    const onWheel = (e) => {
+      if (!e.altKey) return;
+      e.preventDefault();
+      setScale((s) => Math.min(8, Math.max(0.25, s * (e.deltaY < 0 ? 1.1 : 0.9))));
+    };
+
+    const onTouchMovePinch = (e) => {
+      if (e.touches.length === 2 && pinchRef.current) {
+        e.preventDefault();
+        const ratio = pinchDist(e.touches) / pinchRef.current.startDist;
+        setScale(Math.min(8, Math.max(0.25, pinchRef.current.startScale * ratio)));
+      }
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    el.addEventListener('touchmove', onTouchMovePinch, { passive: false });
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+      el.removeEventListener('touchmove', onTouchMovePinch);
+    };
+  }, []);
 
   const onMouseDown = useCallback((e) => {
     e.preventDefault();
@@ -23,50 +56,57 @@ function DraggablePreview({ src, alt }) {
 
   const onMouseMove = useCallback((e) => {
     if (!dragging || !startRef.current) return;
-    const dx = e.clientX - startRef.current.mx;
-    const dy = e.clientY - startRef.current.my;
-    setOffset({ x: startRef.current.ox + dx, y: startRef.current.oy + dy });
+    setOffset({ x: startRef.current.ox + (e.clientX - startRef.current.mx), y: startRef.current.oy + (e.clientY - startRef.current.my) });
   }, [dragging]);
 
   const onMouseUp = useCallback(() => setDragging(false), []);
 
   const onTouchStart = useCallback((e) => {
-    const t = e.touches[0];
-    setDragging(true);
-    startRef.current = { mx: t.clientX, my: t.clientY, ox: offset.x, oy: offset.y };
+    if (e.touches.length === 2) {
+      pinchRef.current = {
+        startDist: Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY),
+        startScale: scaleRef.current,
+      };
+      setDragging(false);
+    } else {
+      const t = e.touches[0];
+      setDragging(true);
+      startRef.current = { mx: t.clientX, my: t.clientY, ox: offset.x, oy: offset.y };
+    }
   }, [offset]);
 
   const onTouchMove = useCallback((e) => {
-    if (!dragging || !startRef.current) return;
+    if (e.touches.length !== 1 || !dragging || !startRef.current) return;
     e.preventDefault();
     const t = e.touches[0];
-    const dx = t.clientX - startRef.current.mx;
-    const dy = t.clientY - startRef.current.my;
-    setOffset({ x: startRef.current.ox + dx, y: startRef.current.oy + dy });
+    setOffset({ x: startRef.current.ox + (t.clientX - startRef.current.mx), y: startRef.current.oy + (t.clientY - startRef.current.my) });
   }, [dragging]);
 
-  const onTouchEnd = useCallback(() => setDragging(false), []);
+  const onTouchEnd = useCallback((e) => {
+    if (e.touches.length < 2) pinchRef.current = null;
+    if (e.touches.length === 0) setDragging(false);
+  }, []);
 
   return (
     <div
+      ref={viewportRef}
       className={`ic-drag-viewport${dragging ? ' dragging' : ''}`}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
     >
       <img
-        ref={imgRef}
         src={src}
         alt={alt}
         className="ic-drag-image"
-        style={{ transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px))` }}
+        style={{ transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px)) scale(${scale})` }}
         onMouseDown={onMouseDown}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         draggable={false}
       />
-      <span className="ic-drag-hint">Drag to pan</span>
+      <span className="ic-drag-hint">Alt+Scroll to zoom · Drag to pan</span>
     </div>
   );
 }
