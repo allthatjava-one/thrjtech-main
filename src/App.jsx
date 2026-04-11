@@ -81,7 +81,7 @@ export default function App() {
         <Route path="/image-collage" element={<><Seo title="Image Collage Maker — THRJ" description="Create image collages online with an intuitive collage maker." /><ImageCollagePage /></>} />
         <Route path="/image-meme-generator" element={<><Seo title="Meme Generator — THRJ" description="Create and download custom memes using the in-browser meme generator." /><ImageMemeGeneratorPage /></>} />
         <Route path="/image-crop" element={<><Seo title="Image Crop — THRJ" description="Crop images online with an intuitive, client-side cropping tool." /><ImageCropPage /></>} />
-        <Route path="/image-converter" element={<><Seo title="Image Converter — THRJ" description="Convert images between JPG, PNG, and WebP instantly in your browser." /><ImageConverterPage /></>} />
+        <Route path="/image-converter" element={<><Seo title="Image Converter — THRJ" description="Convert images between JPG, PNG, WebP and more instantly in your browser." /><ImageConverterPage /></>} />
         <Route path="/blogs" element={<><Seo title="Blog — THRJ" description="THRJ blog" /><BlogsListPage /></>} />
         <Route path="/blogs/:slug" element={<><Seo title="Blog post — THRJ" description="Blog post" /><BlogPage /></>} />
       </Routes>
