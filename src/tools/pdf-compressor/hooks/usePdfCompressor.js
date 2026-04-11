@@ -46,7 +46,7 @@ export function usePdfCompressor() {
     handleFile(e.target.files[0])
   }
 
-  const handleCompress = async () => {
+  const handleCompress = async (option = 'BALANCED') => {
     if (!file) return
     try {
       setStatus('uploading')
@@ -66,7 +66,7 @@ export function usePdfCompressor() {
       const response = await fetch(backendUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ objectKey: objectKey }),
+        body: JSON.stringify({ objectKey: objectKey, option }),
       })
 
       if (!response.ok) {
