@@ -1,0 +1,487 @@
+/* ── Section wrapper ─────────────────────────────────────────── */
+.rt-section {
+  flex: 1;
+  padding: 2.5rem 0 3rem;
+}
+
+.rt-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Card wrapper ────────────────────────────────────────────── */
+.rt-container .card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e6f0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.rt-hero {
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.rt-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: 'Consolas', 'Fira Code', monospace;
+  color: #fff;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.rt-hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.rt-hero-subtitle {
+  color: #4b5563;
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.rt-hero-subtitle strong {
+  color: var(--color-text);
+}
+
+/* ── Details / How it works — scoped to rt-container ─────────── */
+.rt-container .details-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.75rem;
+}
+
+.rt-container .details-controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.rt-container .tab-btn {
+  padding: 0.35rem 1rem;
+  border-radius: var(--btn-radius, 6px);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--btn-transition, all 0.15s);
+  font-family: inherit;
+}
+
+.rt-container .tab-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-muted);
+}
+
+.rt-container .tab-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.rt-container .shared-collapse {
+  width: 100%;
+}
+
+.rt-container .panel-hidden {
+  display: none;
+}
+
+/* ── Instructions card ───────────────────────────────────────── */
+.rt-instructions-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.rt-instructions-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+
+.rt-instructions-list {
+  padding-left: 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.rt-instructions-list li { line-height: 1.5; }
+.rt-instructions-list strong { color: var(--color-text); }
+
+/* ── Controls bar ────────────────────────────────────────────── */
+.rt-controls-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.rt-search-row,
+.rt-replace-row,
+.rt-below-search-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Controls group: Regex + flags + Clear — always stays on one row */
+.rt-search-controls {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+}
+
+/* Replace with… toggle link */
+.rt-replace-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rt-replace-toggle:hover {
+  color: var(--color-accent);
+}
+
+.rt-search-input,
+.rt-replace-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--btn-radius, 6px);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.rt-search-input:focus,
+.rt-replace-input:focus {
+  border-color: var(--color-primary);
+  background: rgba(79, 142, 247, 0.04);
+  color: #000;
+}
+
+.rt-search-input::placeholder,
+.rt-replace-input::placeholder {
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+/* Regex toggle — checkbox label */
+.rt-regex-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.rt-regex-toggle-label:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.rt-regex-toggle-label.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.rt-regex-toggle-label input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+  accent-color: #fff;
+  width: 14px;
+  height: 14px;
+}
+
+/* Flags */
+.rt-flags {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.rt-flags label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.875rem;
+  font-family: 'Consolas', 'Fira Code', monospace;
+  color: var(--color-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Actions row */
+.rt-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rt-match-badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* ── Error message ───────────────────────────────────────────── */
+.rt-error-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background: var(--color-error-bg);
+  border: 1px solid rgba(255, 107, 107, 0.25);
+  border-radius: var(--radius);
+  color: var(--color-error);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.rt-error-icon {
+  flex-shrink: 0;
+  font-size: 1em;
+  margin-top: 1px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.rt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  border: 1px solid transparent;
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  transition: var(--btn-transition);
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.rt-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rt-btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.rt-btn-primary:not(:disabled):hover {
+  background: var(--color-primary-hover);
+}
+
+.rt-btn-ghost {
+  background: transparent;
+  color: var(--color-muted);
+  border-color: var(--color-border);
+}
+
+.rt-btn-ghost:not(:disabled):hover {
+  color: var(--color-text);
+  border-color: var(--color-muted);
+}
+
+.rt-btn-ghost.copied {
+  color: var(--color-check);
+  border-color: var(--color-check);
+}
+
+/* ── Side-by-side panels ─────────────────────────────────────── */
+.rt-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* ── Individual panel ────────────────────────────────────────── */
+.rt-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.rt-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rt-panel-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-muted);
+}
+
+/* ── Textarea ────────────────────────────────────────────────── */
+.rt-textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 340px;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-family: 'Consolas', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  resize: vertical;
+  outline: none;
+  transition: background 0.15s;
+  box-sizing: border-box;
+}
+
+.rt-textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 0.6;
+}
+
+.rt-textarea:focus {
+  background: rgba(79, 142, 247, 0.04);
+}
+
+/* ── Preview output pre ──────────────────────────────────────── */
+.rt-preview-output {
+  flex: 1;
+  padding: 1rem;
+  margin: 0;
+  min-height: 340px;
+  font-family: 'Consolas', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-y: auto;
+}
+
+.rt-preview-output.empty {
+  color: var(--color-muted);
+  opacity: 0.5;
+}
+
+/* ── Match highlight ─────────────────────────────────────────── */
+.rt-match {
+  background: #fff3bf;
+  border-radius: 2px;
+  padding: 0 2px;
+  color: inherit;
+}
+
+/* ── Output panel (shown after Replace All) ──────────────────── */
+.rt-output-panel .rt-preview-output {
+  min-height: 140px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .rt-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .rt-hero-title {
+    font-size: 1.5rem;
+  }
+
+  .rt-search-row,
+  .rt-replace-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rt-search-controls {
+    align-self: flex-start;
+  }
+
+  .rt-search-input,
+  .rt-replace-input {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .rt-section {
+    padding: 1.5rem 0 2rem;
+  }
+
+  .rt-textarea,
+  .rt-preview-output {
+    min-height: 260px;
+  }
+}
+
