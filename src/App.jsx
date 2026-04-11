@@ -74,7 +74,7 @@ export default function App() {
         <Route path="/pdf-merger" element={<><Seo title="PDF Merger — THRJ" description="Merge multiple PDF files into one quickly and securely in your browser." /><PdfMergerPage /></>} />
         <Route path="/pdf-converter" element={<><Seo title="PDF Converter — THRJ" description="Convert PDF document to image file — fast, free, and private." /><PdfConverterPage /></>} />
         <Route path="/json-formatter" element={<><Seo title="JSON Formatter — THRJ" description="Format and beautify JSON online with an easy-to-use JSON formatter." /><JsonFormatterPage /></>} />
-        <Route path="/text-regex" element={<><Seo title="Regex Tester — THRJ" description="Regex search & replace tool with live match highlighting." /><RegexTesterPage /></>} />
+        <Route path="/regex-tester" element={<><Seo title="Regex Tester — THRJ" description="Regex search & replace tool with live match highlighting." /><RegexTesterPage /></>} />
         <Route path="/image-watermarker" element={<><Seo title="Image Watermarker — THRJ" description="Add watermarks to images quickly in your browser — no uploads required." /><WatermarkerPage /></>} />
         <Route path="/image-resizer" element={<><Seo title="Image Resizer — THRJ" description="Resize images online with an easy, privacy-friendly image resizer." /><ImageResizerPage /></>} />
         <Route path="/image-collage" element={<><Seo title="Image Collage Maker — THRJ" description="Create image collages online with an intuitive collage maker." /><ImageCollagePage /></>} />

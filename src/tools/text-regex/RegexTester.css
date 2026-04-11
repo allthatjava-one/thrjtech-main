@@ -115,55 +115,6 @@
   display: none;
 }
 
-.rt-container .details-content,
-.rt-container .howitworks-content {
-  background: #f8f9ff;
-  border: 1px solid #e2e6f0;
-  border-radius: 12px;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
-  color: #4b5563;
-  font-size: 0.9rem;
-  max-height: 46vh;
-  overflow: auto;
-  text-align: left;
-}
-
-.rt-container .details-content h3,
-.rt-container .howitworks-content h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin: 0.75rem 0 0.25rem;
-}
-
-.rt-container .details-content h3:first-child,
-.rt-container .howitworks-content h3:first-child {
-  margin-top: 0;
-}
-
-.rt-container .details-content ul,
-.rt-container .howitworks-content ul,
-.rt-container .howitworks-content ol {
-  padding-left: 1.25rem;
-  margin: 0;
-}
-
-.rt-container .details-content li,
-.rt-container .howitworks-content li {
-  margin-bottom: 0.35rem;
-  line-height: 1.5;
-}
-
-.rt-container .details-content code {
-  background: rgba(0,0,0,0.06);
-  padding: 0.1em 0.35em;
-  border-radius: 3px;
-  font-family: 'Consolas', 'Fira Code', monospace;
-  font-size: 0.85em;
-}
-
 /* ── Instructions card ───────────────────────────────────────── */
 .rt-instructions-card {
   background: var(--color-surface);
@@ -201,11 +152,29 @@
 }
 
 .rt-search-row,
-.rt-replace-row {
+.rt-replace-row,
+.rt-below-search-row {
   display: flex;
   gap: 0.6rem;
   align-items: center;
   flex-wrap: wrap;
+}
+
+/* Replace with… toggle link */
+.rt-replace-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rt-replace-toggle:hover {
+  color: var(--color-accent);
 }
 
 .rt-search-input,
@@ -236,16 +205,42 @@
   opacity: 0.7;
 }
 
-/* Regex toggle — ghost button with active state */
-.rt-regex-toggle {
+/* Regex toggle — checkbox label */
+.rt-regex-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   white-space: nowrap;
+  font-size: 0.875rem;
   font-family: 'Consolas', 'Fira Code', monospace;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.rt-regex-toggle.active {
-  background: var(--color-primary) !important;
-  color: #fff !important;
-  border-color: var(--color-primary) !important;
+.rt-regex-toggle-label:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.rt-regex-toggle-label.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.rt-regex-toggle-label input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+  accent-color: #fff;
+  width: 14px;
+  height: 14px;
 }
 
 /* Flags */

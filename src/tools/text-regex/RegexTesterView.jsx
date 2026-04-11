@@ -45,6 +45,7 @@ export default function RegexTesterView() {
   const [matchCount, setMatchCount]   = useState(0)
   const [copied, setCopied]           = useState(false)
   const [openPanel, setOpenPanel]     = useState('')
+  const [showReplace, setShowReplace] = useState(false)
 
   const { regex, error } = useMemo(
     () => buildRegex(searchPattern, isRegex, flagsToggle),
@@ -209,14 +210,17 @@ export default function RegexTesterView() {
                 spellCheck={false}
                 aria-label="Search pattern"
               />
-              <button
-                className={`rt-btn rt-btn-ghost rt-regex-toggle${isRegex ? ' active' : ''}`}
-                onClick={() => setIsRegex(v => !v)}
-                type="button"
+              <label
+                className={`rt-regex-toggle-label${isRegex ? ' active' : ''}`}
                 title="Toggle regular expression mode"
               >
+                <input
+                  type="checkbox"
+                  checked={isRegex}
+                  onChange={(e) => setIsRegex(e.target.checked)}
+                />
                 Regex
-              </button>
+              </label>
               {isRegex && (
                 <div className="rt-flags">
                   <label title="Case-insensitive">
@@ -229,25 +233,35 @@ export default function RegexTesterView() {
                   </label>
                 </div>
               )}
+              <button className="rt-btn rt-btn-ghost" onClick={clearAll} disabled={!inputText && !searchPattern}>
+                Clear
+              </button>
             </div>
-            <div className="rt-replace-row">
-              <input
-                className="rt-replace-input"
-                placeholder="Replacement (supports $1, $2…)"
-                value={replaceText}
-                onChange={(e) => setReplaceText(e.target.value)}
-                spellCheck={false}
-                aria-label="Replacement text"
-              />
-              <div className="rt-actions">
-                {searchPattern && !regexError && (
-                  <span className="rt-match-badge">
-                    {matchCount > 0 ? `${matchCount} match${matchCount !== 1 ? 'es' : ''}` : 'No matches'}
-                  </span>
-                )}
-                <button className="rt-btn rt-btn-ghost" onClick={clearAll} disabled={!inputText && !searchPattern}>
-                  Clear
-                </button>
+            <div className="rt-below-search-row">
+              {searchPattern && !regexError && (
+                <span className="rt-match-badge">
+                  {matchCount > 0 ? `${matchCount} match${matchCount !== 1 ? 'es' : ''}` : 'No matches'}
+                </span>
+              )}
+              <button
+                className="rt-replace-toggle"
+                type="button"
+                onClick={() => setShowReplace(v => !v)}
+              >
+                {showReplace ? '▾ Replace with…' : '▸ Replace with…'}
+              </button>
+            </div>
+            {showReplace && (
+              <div className="rt-replace-row">
+                <input
+                  className="rt-replace-input"
+                  placeholder="Replacement (supports $1, $2…)"
+                  value={replaceText}
+                  onChange={(e) => setReplaceText(e.target.value)}
+                  spellCheck={false}
+                  aria-label="Replacement text"
+                  autoFocus
+                />
                 <button
                   className="rt-btn rt-btn-primary"
                   onClick={handleReplaceAll}
@@ -256,7 +270,7 @@ export default function RegexTesterView() {
                   Replace All
                 </button>
               </div>
-            </div>
+            )}
             {regexError && (
               <div className="rt-error-msg" role="alert">
                 <span className="rt-error-icon" aria-hidden="true">⚠</span>
