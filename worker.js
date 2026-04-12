@@ -27,7 +27,9 @@ export default {
 
     if (url.pathname === '/api/blogs' && request.method === 'GET') {
       const origin = env.BLOG_ORIGIN || url.origin
-      const upstream = await fetch(env.BLOG_BACKEND_URL, { headers: { 'Accept': 'application/json', 'X-Forwarded-Origin': origin } })
+      const backendUrl = new URL(env.BLOG_BACKEND_URL)
+      url.searchParams.forEach((value, key) => backendUrl.searchParams.set(key, value))
+      const upstream = await fetch(backendUrl.toString(), { headers: { 'Accept': 'application/json', 'X-Forwarded-Origin': origin } })
       const body = await upstream.text()
       return new Response(body, {
         status: upstream.status,
