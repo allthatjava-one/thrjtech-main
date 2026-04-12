@@ -12,9 +12,10 @@ export async function onRequestPost(context) {
       PDF_COMPRESSOR_BACKEND_URL,
       PDF_MERGER_BACKEND_URL,
       PDF_CONVERTER_BACKEND_URL,
+      PDF_SPLITTER_BACKEND_URL,
     } = context.env
 
-    if (!R2_ENDPOINT_URL || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY || !R2_PDF_BUCKET_NAME) {
+    if (!R2_ENDPOINT_URL || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY || !R2_PDF_BUCKET_NAME || !PDF_SPLITTER_BACKEND_URL) {
       throw new Error('Missing required R2 environment variables')
     }
 
@@ -51,6 +52,7 @@ export async function onRequestPost(context) {
         pdfCompressorBackendUrl: PDF_COMPRESSOR_BACKEND_URL || '',
         pdfMergerBackendUrl: PDF_MERGER_BACKEND_URL || '',
         pdfConverterBackendUrl: PDF_CONVERTER_BACKEND_URL || '',
+        pdfSplitterBackendUrl: PDF_SPLITTER_BACKEND_URL || '',
       }),
       {
         headers: { 'Content-Type': 'application/json' },

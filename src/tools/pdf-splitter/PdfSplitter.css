@@ -1,0 +1,242 @@
+/* Copy of PdfCompressor styles adapted for PdfSplitter */
+.pdf-splitter-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.pdf-splitter-page .container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.pdf-splitter-page .main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.pdf-splitter-page .card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e6f0;
+  padding: 2.5rem;
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pdf-splitter-page .hero-section {
+  text-align: center;
+  padding-bottom: 0.25rem;
+}
+
+.pdf-splitter-page .hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1e1e2e;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: left;
+}
+
+.pdf-splitter-page .hero-tagline {
+  font-size: 1rem;
+  color: #4b5563;
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.drop-zone { border-width: 2px; border-style: dashed; border-color: #c7d0e8; border-radius: 14px; padding: 2.5rem 1.5rem; display:flex; align-items:center; justify-content:center; background:#f8f9ff; min-height:200px }
+.drop-zone.dragging { border-color:#6366f1; background:#eef0ff }
+.drop-zone.has-file { cursor: default; border-style: solid; border-color: #6366f1; background:#f5f6ff }
+.file-input { display:none }
+.drop-content { text-align:center; display:flex; flex-direction:column; align-items:center; gap:0.5rem; cursor:pointer }
+.drop-icon { font-size:2.5rem }
+.drop-text { font-weight:600 }
+.drop-sub { color:#9ca3af }
+
+.file-info { display:flex; align-items:center; gap:1rem }
+.file-icon { font-size:2rem }
+.file-details { flex:1; display:flex; flex-direction:column }
+.file-name { 
+  font-weight: 600;
+  color: #1e1e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.file-size { color:#6b7280 }
+.remove-btn { background:none; border:1px solid #e5e7eb; border-radius:8px; color:#9ca3af; width:32px; height:32px }
+
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:0.65rem 1.4rem; border-radius:10px; font-weight:600; cursor:pointer }
+.btn-primary { background: linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff }
+.btn-outline { background:transparent; color:#6366f1; border:2px solid #6366f1 }
+.btn-ghost { background:transparent; color:#6b7280 }
+
+.progress-section { display:flex; flex-direction:column; gap:0.5rem }
+.progress-label { color:#6366f1 }
+.progress-bar { height:8px; background:#e5e7eb; border-radius:999px }
+.progress-fill { height:100%; background:linear-gradient(90deg,#6366f1,#8b5cf6); border-radius:999px }
+
+.pdf-splitter-page .result-section { display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center }
+.pdf-splitter-page .result-icon { font-size:2.5rem }
+.pdf-splitter-page .result-title { font-size:1.25rem; font-weight:700; color:#1e1e2e }
+.pdf-splitter-page .split-results { display:flex; flex-direction:column; background:#f8f9ff; border-radius:12px; padding:1rem 1.5rem; width:100%; gap:0.2rem }
+.pdf-splitter-page .split-row { display:grid; grid-template-columns:1fr auto; gap:1.5rem; align-items:center }
+.pdf-splitter-page .split-row--spacer { height:0.75rem }
+.pdf-splitter-page .split-col-label { font-size:0.72rem; font-weight:600; color:#9ca3af; text-transform:uppercase; letter-spacing:0.06em; padding: 0 22.4px 0 22.4px }
+.pdf-splitter-page .split-col-value { font-size:0.95rem; font-weight:600; color:#374151; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.pdf-splitter-page .split-download-btn { width:auto }
+.note { font-size:0.8rem; color:#9ca3af; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; padding:0.75rem }
+
+.segments-input {
+  min-width: 220px;
+  color: inherit;
+}
+
+.segments-input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+.segments-input::-webkit-input-placeholder { color: #9ca3af }
+.segments-input:-ms-input-placeholder { color: #9ca3af }
+.segments-input::-ms-input-placeholder { color: #9ca3af }
+
+@media (max-width: 640px) {
+  .pdf-splitter-page .card { padding: 1.4rem }
+  .drop-zone { padding: 1.25rem }
+}
+
+/* ── Details & How it works panels ───────────────────── */
+.pdf-splitter-page .hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.pdf-splitter-page .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6366f1;
+  background: #eef0ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+}
+
+.pdf-splitter-page .details-controls {
+  display: block;
+  margin-top: 1rem;
+}
+
+.pdf-splitter-page .tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 0.5rem 0 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: inherit;
+  display: inline;
+  line-height: inherit;
+  font-size: 0.85em;
+}
+
+.pdf-splitter-page .tab-btn::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.25rem;
+  transition: transform 0.18s ease;
+  font-size: 0.85em;
+}
+
+.pdf-splitter-page .tab-btn.active::after {
+  transform: rotate(180deg);
+}
+
+.pdf-splitter-page .tab-btn:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.pdf-splitter-page .details-controls .tab-btn {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  height: auto !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  color: #374151 !important;
+}
+
+.pdf-splitter-page .shared-collapse {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  border: 1px solid #e2e6f0;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  overflow: visible;
+}
+
+.pdf-splitter-page .panel-hidden {
+  display: none !important;
+}
+
+.pdf-splitter-page .shared-collapse .tool-details-open,
+.pdf-splitter-page .shared-collapse .tool-howitworks-open,
+.pdf-splitter-page .shared-collapse .tool-details-open h3,
+.pdf-splitter-page .shared-collapse .tool-howitworks-open h3,
+.pdf-splitter-page .shared-collapse .tool-details-open p,
+.pdf-splitter-page .shared-collapse .tool-howitworks-open p,
+.pdf-splitter-page .shared-collapse .tool-details-open li,
+.pdf-splitter-page .shared-collapse .tool-howitworks-open li {
+  color: #374151 !important;
+  opacity: 1 !important;
+  text-align: left;
+}
+
+.pdf-splitter-page .shared-collapse .tool-details-open ul,
+.pdf-splitter-page .shared-collapse .tool-howitworks-open ul,
+.pdf-splitter-page .shared-collapse .tool-details-open ol,
+.pdf-splitter-page .shared-collapse .tool-howitworks-open ol {
+  margin: 0.5rem 0 0 1.25rem;
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 740px) {
+  .pdf-splitter-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .pdf-splitter-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .pdf-splitter-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
