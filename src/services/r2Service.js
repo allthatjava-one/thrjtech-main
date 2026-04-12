@@ -38,6 +38,9 @@ export async function uploadToR2(file, tool = 'pdf-compressor') {
   if (tool === 'pdf-converter' && body.pdfConverterBackendUrl) {
     result.pdfConverterBackendUrl = body.pdfConverterBackendUrl
   }
+  if (tool === 'pdf-splitter' && body.pdfSplitterBackendUrl) {
+    result.pdfSplitterBackendUrl = body.pdfSplitterBackendUrl
+  }
   // also include any generic backendUrl if server provides it
   if (body.backendUrl) {
     result.backendUrl = body.backendUrl
