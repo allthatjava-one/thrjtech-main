@@ -124,12 +124,15 @@ export function PdfSplitterView({
           <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
             <ol style={{ margin: 0, paddingLeft: '1rem' }}>
               <li style={{ marginBottom: '0.75rem' }}>
+                <img src="/screenshots/splitter/PDF-splitter-001.png" alt="Step 1" className="how-img" />
                 <p>Upload a PDF using drag &amp; drop or the browse button.</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
+                <img src="/screenshots/splitter/PDF-splitter-002.png" alt="Step 2" className="how-img" />
                 <p>Enter the page ranges you want (e.g. <code>1,3-5,7-10</code>) and choose <strong>Single</strong> or <strong>Multiple</strong> output.</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
+                <img src="/screenshots/splitter/PDF-splitter-003.png" alt="Step 3" className="how-img" />
                 <p>Click <strong>Split PDF</strong> — the file is uploaded to R2 storage and the splitter processes your ranges.</p>
               </li>
               <li>
