@@ -10,22 +10,38 @@ export default function BlogsListPage() {
   const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(null)
+  const [pageSize, setPageSize] = useState(null)
+  const [totalPages, setTotalPages] = useState(1)
+  const [links, setLinks] = useState({})
 
-  useEffect(() => {
-    fetch('/api/blogs')
+  const fetchBlogs = (targetPage, targetPageSize) => {
+    setLoading(true)
+    const url = targetPage && targetPageSize
+      ? `/api/blogs?page=${targetPage}&page_size=${targetPageSize}`
+      : '/api/blogs'
+    fetch(url)
       .then(res => {
         if (!res.ok) throw new Error(`Failed to load blogs (${res.status})`)
         return res.json()
       })
-      .then(data => { setBlogs(Array.isArray(data) ? data : (data.blogs ?? data.items ?? data.data ?? [])); setLoading(false) })
+      .then(data => {
+        setBlogs(data.items ?? [])
+        setPage(data.page ?? 1)
+        setPageSize(data.page_size ?? null)
+        setTotalPages(data.total_pages ?? 1)
+        setLinks(data.links ?? {})
+        setLoading(false)
+      })
       .catch(err => { setError(err.message); setLoading(false) })
-  }, [])
+  }
 
-  const perPage = 10
-  const totalPages = Math.max(1, Math.ceil(blogs.length / perPage))
-  const start = (page - 1) * perPage
-  const pageBlogs = blogs.slice(start, start + perPage)
+  useEffect(() => { fetchBlogs(null, null) }, [])
+
+  const goToPage = (n) => { if (n !== page) fetchBlogs(n, pageSize) }
+  const changePageSize = (newSize) => { fetchBlogs(1, newSize) }
+
+  const pageBlogs = blogs
 
   return (
     <div className="page">
@@ -41,8 +57,7 @@ export default function BlogsListPage() {
               <div style={{ background: '#f9fafb', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', fontWeight: 700, color: '#111827' }}>Articles</div>
               <div>
                 {pageBlogs.map((b, idx) => {
-                  const absIndex = start + idx
-                  const background = ((absIndex + 1) % 2 === 0) ? '#f8fafc' : '#e6e7eb'
+                  const background = ((idx + 1) % 2 === 0) ? '#f8fafc' : '#e6e7eb'
                   return (
                     <Link
                       to={`/blogs/${b.slug}`}
@@ -66,31 +81,38 @@ export default function BlogsListPage() {
                 })}
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: '#fff' }}>
-                  <div>
-                    <button onClick={() => setPage(1)} disabled={page === 1} style={{ marginRight: 8 }}>First</button>
-                  </div>
-                  <div style={{ display: 'flex', gap: 8 }} role="navigation" aria-label="Pagination">
+                  <div style={{ display: 'flex', gap: 4, alignItems: 'center' }} role="navigation" aria-label="Pagination">
+                    <button onClick={() => goToPage(1)} disabled={!links.prev} style={{ padding: '6px 8px', borderRadius: 4, border: '1px solid transparent', background: 'transparent', color: !links.prev ? '#9ca3af' : '#111827', cursor: !links.prev ? 'default' : 'pointer' }}>First</button>
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
                       <button
                         key={n}
-                        onClick={() => setPage(n)}
+                        onClick={() => goToPage(n)}
                         aria-current={page === n ? 'page' : undefined}
                         style={{
                           padding: '6px 8px',
                           borderRadius: 4,
                           border: page === n ? '1px solid #111827' : '1px solid transparent',
-                          background: page === n ? '#111827' : 'transparent',
-                          color: page === n ? '#fff' : '#111827',
+                          background: 'transparent',
+                          color: '#111827',
+                          fontWeight: page === n ? 700 : 400,
                           cursor: 'pointer'
                         }}
                       >
                         {n}
                       </button>
                     ))}
+                    <button onClick={() => goToPage(totalPages)} disabled={!links.next} style={{ padding: '6px 8px', borderRadius: 4, border: '1px solid transparent', background: 'transparent', color: !links.next ? '#9ca3af' : '#111827', cursor: !links.next ? 'default' : 'pointer' }}>Last</button>
                   </div>
-                  <div>
-                    <button onClick={() => setPage(totalPages)} disabled={page === totalPages}>Last</button>
-                  </div>
+                  <label style={{ fontSize: 14, color: '#6b7280', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    Per page:
+                    <select
+                      value={pageSize ?? ''}
+                      onChange={e => changePageSize(Number(e.target.value))}
+                      style={{ padding: '2px 6px', borderRadius: 4, border: '1px solid #d1d5db', fontSize: 14 }}
+                    >
+                      {[5, 10, 20].map(n => <option key={n} value={n}>{n}</option>)}
+                    </select>
+                  </label>
                 </div>
               </div>
             </div>
