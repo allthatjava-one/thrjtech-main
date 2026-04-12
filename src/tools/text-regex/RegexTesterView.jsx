@@ -171,15 +171,19 @@ export default function RegexTesterView() {
                 <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                   <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                     <li style={{ marginBottom: '0.75rem' }}>
+                      <img src="/screenshots/regex-tester/regex-tester-001.png" alt="Step 1" className="how-img" />
                       <p>Paste or type the text you want to search in the <strong>Input Text</strong> panel on the left.</p>
                     </li>
                     <li style={{ marginBottom: '0.75rem' }}>
+                      <img src="/screenshots/regex-tester/regex-tester-002.png" alt="Step 2" className="how-img" />
                       <p>Type a search pattern in the <strong>Search</strong> field. Toggle <strong>Regex</strong> to use JavaScript regex syntax, or leave it off for a plain-text search.</p>
                     </li>
                     <li style={{ marginBottom: '0.75rem' }}>
+                      <img src="/screenshots/regex-tester/regex-tester-003.png" alt="Step 3" className="how-img" />
                       <p>Matches are highlighted live in the <strong>Match Preview</strong> panel on the right. The match count updates automatically.</p>
                     </li>
                     <li>
+                      <img src="/screenshots/regex-tester/regex-tester-004.png" alt="Step 4" className="how-img" />
                       <p>Enter a replacement in the <strong>Replace</strong> field and click <strong>Replace All</strong> to see the result. Copy it from the output section that appears below.</p>
                     </li>
                   </ol>
