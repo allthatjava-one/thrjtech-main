@@ -193,6 +193,9 @@ export function PdfSplitterView({
 
             <div className="hero-tagline" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                Output to file(s):
+              </label>
+              <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
                 <input type="radio" name="output" checked={outputOption === 'ONE'} onChange={() => setOutputOption('ONE')} /> Single
               </label>
               <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
