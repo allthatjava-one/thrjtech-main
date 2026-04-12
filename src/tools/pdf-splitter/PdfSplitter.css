@@ -70,7 +70,13 @@
 .file-info { display:flex; align-items:center; gap:1rem }
 .file-icon { font-size:2rem }
 .file-details { flex:1; display:flex; flex-direction:column }
-.file-name { font-weight:600 }
+.file-name { 
+  font-weight: 600;
+  color: #1e1e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .file-size { color:#6b7280 }
 .remove-btn { background:none; border:1px solid #e5e7eb; border-radius:8px; color:#9ca3af; width:32px; height:32px }
 
@@ -84,8 +90,15 @@
 .progress-bar { height:8px; background:#e5e7eb; border-radius:999px }
 .progress-fill { height:100%; background:linear-gradient(90deg,#6366f1,#8b5cf6); border-radius:999px }
 
-.result-section { display:flex; flex-direction:column; align-items:center; gap:1rem }
-.result-title { font-size:1.25rem; font-weight:700 }
+.pdf-splitter-page .result-section { display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center }
+.pdf-splitter-page .result-icon { font-size:2.5rem }
+.pdf-splitter-page .result-title { font-size:1.25rem; font-weight:700; color:#1e1e2e }
+.pdf-splitter-page .split-results { display:flex; flex-direction:column; background:#f8f9ff; border-radius:12px; padding:1rem 1.5rem; width:100%; gap:0.2rem }
+.pdf-splitter-page .split-row { display:grid; grid-template-columns:1fr auto; gap:1.5rem; align-items:center }
+.pdf-splitter-page .split-row--spacer { height:0.75rem }
+.pdf-splitter-page .split-col-label { font-size:0.72rem; font-weight:600; color:#9ca3af; text-transform:uppercase; letter-spacing:0.06em }
+.pdf-splitter-page .split-col-value { font-size:0.95rem; font-weight:600; color:#374151; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.pdf-splitter-page .split-download-btn { width:auto }
 .note { font-size:0.8rem; color:#9ca3af; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; padding:0.75rem }
 
 .segments-input {
