@@ -25,7 +25,7 @@ export function PdfSplitterView({
   const togglePanel = (panel) => setOpenPanel((prev) => (prev === panel ? '' : panel))
   return (
     <>
-      <div className="hero-section">
+      {status !== 'done' && <div className="hero-section">
         <h1 className="hero-title">PDF Splitter</h1>
         <p className="hero-tagline">Just Drop and Go — Extract the pages you need from any PDF by entering simple page ranges (e.g. 1, 3-5, 7-10). Get each range as its own file, or merge them all into one combined PDF. No software needed — upload, split, and download in seconds.</p>
         <div className="details-controls">
@@ -143,7 +143,7 @@ export function PdfSplitterView({
           <span className="hero-badge">🔒 Secure</span>
           <span className="hero-badge">🗑️ Auto-deleted</span>
         </div>
-      </div>
+      </div>}
       {status !== 'done' && (
         <>
           <div
@@ -219,13 +219,18 @@ export function PdfSplitterView({
       {status === 'done' && (
         <div className="result-section">
           <div className="result-icon">✅</div>
-          <h2 className="result-title hero-tagline">Split Complete</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
+          <h2 className="result-title">Split Complete</h2>
+          <div className="split-results">
+            <div className="split-row">
+              <span className="split-col-label">Segment</span>
+              <span className="split-col-label">Download</span>
+            </div>
+            <div className="split-row--spacer" />
             {results.map(r => (
-              <div key={r.splitKey} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f8f9ff', padding: 8, borderRadius: 8 }}>
-                <div style={{ fontWeight: 600, color: '#6b7280' }}>File: {r.segment}</div>
+              <div key={r.splitKey} className="split-row split-row--data">
+                <span className="split-col-value">{r.segment}</span>
                 <button
-                  className="btn btn-outline"
+                  className="btn btn-primary split-download-btn"
                   type="button"
                   onClick={async (e) => {
                     e.preventDefault()
@@ -252,10 +257,7 @@ export function PdfSplitterView({
               </div>
             ))}
           </div>
-
-          <div style={{ marginTop: 12 }}>
-            <button className="btn btn-ghost" onClick={handleReset}>Split Another File</button>
-          </div>
+          <button className="btn btn-ghost" onClick={handleReset}>Split Another File</button>
         </div>
       )}
 
