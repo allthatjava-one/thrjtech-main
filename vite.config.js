@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/r2-presign': 'http://127.0.0.1:8789',
-      '/api/blogs': {
+      '^/api/blogs': {
         target: 'https://preview.api-gateway.thrjtech.com',
         // target: 'http://localhost:8788',
         changeOrigin: true,
