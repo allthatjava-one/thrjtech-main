@@ -179,7 +179,7 @@ export function PdfSplitterView({
             )}
           </div>
 
-          <div style={{ display: 'flex', gap: 12, marginTop: 12, alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 12, alignItems: 'center' }}>
             <label className="hero-tagline" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>Page Ranges:
               <input
                 aria-label="Page Ranges"
