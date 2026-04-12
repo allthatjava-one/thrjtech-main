@@ -100,7 +100,7 @@ Published by THRJ Tech'
   'image-converter-guide',
   'Image Converter — Convert images in the browser (JPG, PNG, WebP, AVIF, BMP, GIF, ICO)',
   'A short guide to the Image Converter on THRJ describing how to convert images between formats and create ICO files for favicons.',
-  'https://thrjtech.com/screenshots/image-converter/image-converter-001.png',
+  'https://thrjtech.com/screenshots/image-converter/image-converter-003.png',
   '# Image Converter — Convert images in the browser (JPG, PNG, WebP, AVIF, BMP, GIF, ICO)
 
 A short guide to the **Image Converter** on THRJ. This article explains how to convert images between formats, preserve transparency, and create ICO files for favicons. [Open the Image Converter](/image-converter)
