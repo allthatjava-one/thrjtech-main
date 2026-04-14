@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cropper from 'react-easy-crop';
@@ -168,7 +169,8 @@ export function ImageCropView(props) {
   return (
     <div className="image-crop-view">
       <h2 className="hero-title">Image Crop</h2>
-      <p className="hero-tagline">Select and crop a portion of your image. Use presets, zoom, rotate and flip tools, then preview and download.</p>
+      <p className="hero-tagline">Select and crop a portion of your image. 
+        Use presets, zoom, rotate and flip tools, then preview and download. <Link to="/blogs/image-crop-guide">Learn how to crop your image →</Link></p>
 
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">

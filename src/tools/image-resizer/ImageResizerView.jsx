@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -196,7 +197,9 @@ export function ImageResizerView({
   return (
     <div className="image-resizer-view">
       <h2 className="hero-title">Image Resizer</h2>
-      <p className="hero-tagline">Resize your image to any size by percentage or exact pixel dimensions. Lock the aspect ratio to prevent distortion, then download your result instantly.</p>
+      <p className="hero-tagline">Resize your image to any size by percentage 
+        or exact pixel dimensions. Lock the aspect ratio to prevent distortion, 
+        then download your result instantly. <Link to="/blogs/image-resizer-guide">Learn how to resize your image →</Link></p>
 
       <div className="ir-tip-banner">
         <span className="ir-tip-text">Do you want your picture to fit on YouTube Thumbnail or Instagram?</span>

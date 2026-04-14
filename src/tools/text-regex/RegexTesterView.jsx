@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import './RegexTester.css'
 
@@ -110,7 +111,8 @@ export default function RegexTesterView() {
             <h1 className="rt-hero-title">Regex Tester</h1>
             <p className="rt-hero-subtitle">
               Paste text below, enter a search pattern, and see live match highlights instantly — no sign-up required.
-              Toggle <b>Regex</b> for full JavaScript regex syntax with capture groups, or leave it off for plain-text search.
+              Toggle <b>Regex</b> for full JavaScript regex syntax with capture groups, 
+              or leave it off for plain-text search. <Link to="/blogs/regex-tester-guide">Learn how to use the Regex Tester →</Link>
             </p>
 
             {/* Collapsible Details / How it works — mirrors JsonFormatterView exactly */}

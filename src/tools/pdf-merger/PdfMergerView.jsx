@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatSize } from './utils/formatSize'
 import { useState } from 'react'
 
@@ -36,7 +37,8 @@ export function PdfMergerView({
           <div className="hero-section">
             <h1 className="hero-title">PDF Merger</h1>
             <p className="hero-tagline">
-              Drop and Merge - Combine multiple PDF files into a single document in seconds. Upload your files, drag to reorder them, then merge and download the result.
+              Drop and Merge - Combine multiple PDF files into a single document in seconds. 
+              Upload your files, drag to reorder them, then merge and download the result. <Link to="/blogs/pdf-merger-guide">Learn how to merge PDF →</Link>
             </p>
             <div className="details-row" data-open={openPanel}>
               <div className="details-controls">

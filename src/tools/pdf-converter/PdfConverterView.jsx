@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatSize } from '../pdf-compressor/utils/formatSize'
 import { useState } from 'react'
 import CustomSelect from './CustomSelect'
@@ -33,7 +34,11 @@ export function PdfConverterView({
         <>
           <div className="hero-section">
             <h1 className="hero-title">PDF Converter</h1>
-            <p className="hero-tagline">Quickly convert PDF pages into high-quality JPG or PNG images. Choose the output format, preview the converted result, and download images for sharing, thumbnails, or embedding — no account required.</p>
+            <p className="hero-tagline">Quickly convert PDF pages into high-quality JPG 
+              or PNG images. Choose the output format, preview the converted result, 
+              and download images for sharing, thumbnails, or embedding 
+              — no account required. <Link to="/blogs/pdf-converter-guide">Learn how to convert PDF →</Link>
+            </p>
 
             <div className="details-controls">
               <button

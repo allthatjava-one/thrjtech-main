@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatSize } from './utils/formatSize'
 import { useState } from 'react'
 
@@ -34,7 +35,8 @@ export function PdfCompressorView({
                 <h1 className="hero-title">PDF Compressor</h1>
                 <p className="hero-tagline">
                     Just Drop and Go - 
-                    Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, and download the smaller result.
+                    Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, 
+                    and download the smaller result. <Link to="/blogs/pdf-compressor-guide">Learn how to compress PDF →</Link>
                   </p>
                   <div className="details-controls">
                     <button
