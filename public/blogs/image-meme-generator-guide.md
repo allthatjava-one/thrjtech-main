@@ -1,13 +1,21 @@
-# Meme Generator Guide
+# Meme Generator Guide — Create and Download Custom Memes for Free
 
-A quick guide to creating memes with the Meme Generator on THRJ. This walkthrough covers adding text layers, positioning, styling, and exporting your final meme. [Open the Meme Generator](/image-meme-generator)
+A complete guide to creating memes with the Meme Generator on THRJ. This walkthrough covers uploading images, adding text layers, positioning and styling captions, and exporting your final meme — all in your browser with no sign-up required. [Open the Meme Generator](/image-meme-generator)
+  
+## Why Make Your Own Memes?
+
+Memes are one of the most effective and widely shared forms of visual communication on the internet. They work for humor, commentary, marketing, internal team communications, and social media engagement. While countless meme-sharing platforms exist, creating your own custom meme gives you full control:
+
+- **Brand-safe content**: Use your own photos, company mascots, or custom imagery that fits your brand guidelines.
+- **Topical relevance**: React to current events or industry news with a format that resonates immediately.
+- **No watermarks**: Many meme generators add their logo to exports. THRJ's tool does not — what you create is entirely yours.
+- **Privacy**: Your images stay on your device and are never uploaded to a third-party server.
+- **Custom text**: You control font size, color, placement, and all the copy — no template restrictions.
+
+Good memes combine a universally recognizable image format (or a fresh original photo) with concise, punchy text that lands immediately. The tool gets out of your way so you can focus on the creative side.
 
 ![Meme generator screenshot](/screenshots/meme-generator/meme-generator001.png)
-
-## Video walkthrough
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/obf1Bh2xsLw" title="Meme Generator walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+  
 ## Quick Steps
 
 1. Open the Meme Generator (Tools → Meme Generator) or visit `/image-meme-generator`.
@@ -15,7 +23,7 @@ A quick guide to creating memes with the Meme Generator on THRJ. This walkthroug
 3. Add text layers using the ＋ button; type your captions and drag each layer to position it on the image.
 4. Use the Advanced controls to change font size and color, and use drag handles to fine-tune placement.
 5. Click **Download** to export a PNG of your meme with the text composited onto the image.
-
+  
 ## Step-by-step with screenshots
 
 1. Upload an image
@@ -42,7 +50,7 @@ A quick guide to creating memes with the Meme Generator on THRJ. This walkthroug
 ![Download meme](/screenshots/meme-generator/meme-generator004.png)
 
 - Click **Download** to generate a PNG. The text is merged onto the image on an offscreen canvas for a single downloadable file.
-
+  
 ## Tips & FAQs
 
 - Use short, punchy captions for classic meme styles and capitalize text for emphasis.
