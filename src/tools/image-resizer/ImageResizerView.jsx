@@ -555,6 +555,195 @@ export function ImageResizerView({
           )}
         </div>
       )}
+
+      {/* ── Guide Article ── */}
+      <div className="ir-guide">
+        <div className="ir-guide-intro">
+          <h2 className="ir-guide-title">The Complete Guide to Resizing Images Without Losing Quality</h2>
+          <p className="ir-guide-lead">
+            Resizing images seems simple — until you end up with blurry, pixelated, or distorted results.
+            Whether you're uploading photos to a website, sending images by email, or optimizing for
+            performance, resizing <em>the right way</em> matters more than most people think.
+          </p>
+          <div className="ir-guide-learn-box">
+            <span className="ir-guide-learn-label">In this guide, you'll learn:</span>
+            <ul className="ir-guide-learn-list">
+              <li>How image resizing actually works</li>
+              <li>Why quality loss happens</li>
+              <li>The best ways to resize images without ruining them</li>
+              <li>Practical tips you can use immediately</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">What Does "Resizing an Image" Really Mean?</h3>
+          <p>Resizing an image means changing its dimensions — usually width and height in pixels.</p>
+          <div className="ir-guide-example-box">
+            <div className="ir-guide-example-row">
+              <span className="ir-guide-example-label">Original</span>
+              <span className="ir-guide-example-val">4000 × 3000 px</span>
+            </div>
+            <div className="ir-guide-example-arrow">↓</div>
+            <div className="ir-guide-example-row">
+              <span className="ir-guide-example-label">Resized</span>
+              <span className="ir-guide-example-val ir-guide-example-val--accent">800 × 600 px</span>
+            </div>
+          </div>
+          <p>When you shrink an image, the system must decide: <em>"Which pixels should be removed, and how should the remaining ones adjust?"</em></p>
+          <p>This process is called <strong>resampling</strong>, and it directly affects quality.</p>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">Why Do Images Lose Quality?</h3>
+          <div className="ir-guide-cards">
+            <div className="ir-guide-card">
+              <span className="ir-guide-card-num">1</span>
+              <div>
+                <strong>Pixel Loss</strong>
+                <p>When reducing size, pixels are permanently removed. If done poorly, edges become jagged and fine details disappear.</p>
+              </div>
+            </div>
+            <div className="ir-guide-card">
+              <span className="ir-guide-card-num">2</span>
+              <div>
+                <strong>Poor Resampling Method</strong>
+                <p>Not all resizing algorithms are equal. <em>Nearest Neighbor</em> is fast but blocky. <em>Bilinear</em> is smoother. <em>Bicubic</em> is best for most cases.</p>
+              </div>
+            </div>
+            <div className="ir-guide-card">
+              <span className="ir-guide-card-num">3</span>
+              <div>
+                <strong>Repeated Resizing</strong>
+                <p>Every resize discards more data. Always resize from the <strong>original image</strong>, never from a previously resized copy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">Best Practices to Resize Without Losing Quality</h3>
+          <div className="ir-guide-best-list">
+            <div className="ir-guide-best-item">
+              <span className="ir-guide-best-icon">✅</span>
+              <div>
+                <strong>Maintain Aspect Ratio</strong>
+                <p>Always keep width and height proportional. Setting 800 × 800 on a 4:3 image will stretch it — use 800 × 600 for a natural look.</p>
+              </div>
+            </div>
+            <div className="ir-guide-best-item">
+              <span className="ir-guide-best-icon">✅</span>
+              <div>
+                <strong>Resize Once</strong>
+                <p>Start with the original → resize once → save the final version. Avoid repeated edits.</p>
+              </div>
+            </div>
+            <div className="ir-guide-best-item">
+              <span className="ir-guide-best-icon">✅</span>
+              <div>
+                <strong>Choose the Right Format</strong>
+                <div className="ir-guide-format-chips">
+                  <span className="ir-guide-chip">JPEG — smaller size, slight loss</span>
+                  <span className="ir-guide-chip">PNG — higher quality, larger file</span>
+                  <span className="ir-guide-chip ir-guide-chip--accent">WebP — best balance ✨</span>
+                </div>
+              </div>
+            </div>
+            <div className="ir-guide-best-item">
+              <span className="ir-guide-best-icon">✅</span>
+              <div>
+                <strong>Avoid Over-Compression</strong>
+                <p>Compression reduces file size but can blur details and introduce artifacts. Aim for balance, not maximum compression.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">Common Use Cases</h3>
+          <div className="ir-guide-usecases">
+            <div className="ir-guide-usecase">
+              <span className="ir-guide-usecase-icon">🌐</span>
+              <strong>Website Uploads</strong>
+              <p>Resize large images (4000px → 1200px) to dramatically improve page load speed.</p>
+            </div>
+            <div className="ir-guide-usecase">
+              <span className="ir-guide-usecase-icon">📱</span>
+              <strong>Social Media</strong>
+              <p>Each platform has optimal sizes. Resizing ensures no cropping issues and better visual quality across profiles, posts, and thumbnails.</p>
+            </div>
+            <div className="ir-guide-usecase">
+              <span className="ir-guide-usecase-icon">📧</span>
+              <strong>Email Attachments</strong>
+              <p>Large images slow down sending and may be rejected. Resizing keeps files manageable and deliverable.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">Mistakes to Avoid</h3>
+          <div className="ir-guide-mistakes">
+            <div className="ir-guide-mistake">❌ Stretching images (wrong aspect ratio)</div>
+            <div className="ir-guide-mistake">❌ Saving repeatedly in JPEG</div>
+            <div className="ir-guide-mistake">❌ Using tools with poor resampling algorithms</div>
+            <div className="ir-guide-mistake">❌ Upscaling small images expecting higher quality</div>
+          </div>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">Quick Step-by-Step Guide</h3>
+          <ol className="ir-guide-steps">
+            <li>Upload your image</li>
+            <li>Choose desired width or height</li>
+            <li>Keep aspect ratio enabled</li>
+            <li>Select output format (JPEG / PNG / WebP)</li>
+            <li>Download resized image</li>
+          </ol>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">FAQ</h3>
+          <div className="ir-guide-faq">
+            <details className="ir-guide-faq-item">
+              <summary>Does resizing reduce quality?</summary>
+              <p>Yes — but if done correctly, the loss is minimal and often unnoticeable to the human eye.</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>Can I resize without losing any quality?</summary>
+              <p>Only if you're not reducing size significantly. Otherwise, some data loss is unavoidable. The key is choosing the right algorithm and format.</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>What's the best format after resizing?</summary>
+              <p><strong>Web:</strong> WebP or JPEG — <strong>High quality archival:</strong> PNG</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>Is it better to resize or compress?</summary>
+              <p>They serve different purposes. <strong>Resize</strong> changes dimensions; <strong>Compress</strong> reduces file size. Best results come from using both carefully.</p>
+            </details>
+          </div>
+        </div>
+
+        <div className="ir-guide-conclusion">
+          <h3>Conclusion</h3>
+          <p>
+            Resizing images isn't just about making them smaller — it's about doing it correctly to preserve clarity and usability.
+            By maintaining aspect ratio, resizing once from the original, and choosing the right format, you can significantly
+            improve both image quality and performance.
+          </p>
+          <a
+            href="/image-resizer"
+            className="ir-guide-cta"
+            onClick={(e) => {
+              e.preventDefault();
+              // Smooth scroll to top, then navigate
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              navigate('/image-resizer');
+            }}
+          >
+            Try the Image Resizer →
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
