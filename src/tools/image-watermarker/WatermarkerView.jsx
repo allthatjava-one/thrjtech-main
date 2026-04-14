@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React, { useState, useEffect, useRef } from 'react'
 
 export function WatermarkerView({
@@ -32,7 +33,9 @@ export function WatermarkerView({
   return (
     <div className="watermarker-view">
       <h2 className="hero-title">Image Watermarker</h2>
-      <p className="hero-tagline">Protect your images by adding a custom text or logo watermark. Adjust the position and style to fit your needs, then download the watermarked result instantly.</p>
+      <p className="hero-tagline">Protect your images by adding a custom text or logo watermark. 
+        Adjust the position and style to fit your needs, then download the watermarked 
+        result instantly. <Link to="/blogs/image-watermark-guide">Learn how to put a watermark on your image →</Link></p>
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button

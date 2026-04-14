@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatSize } from './utils/formatSize'
 import React, { useState } from 'react'
 
@@ -27,7 +28,12 @@ export function PdfSplitterView({
     <>
       {status !== 'done' && <div className="hero-section">
         <h1 className="hero-title">PDF Splitter</h1>
-        <p className="hero-tagline">Just Drop and Go — Extract the pages you need from any PDF by entering simple page ranges (e.g. 1, 3-5, 7-10). Get each range as its own file, or merge them all into one combined PDF. No software needed — upload, split, and download in seconds.</p>
+        <p className="hero-tagline">Just Drop and Go — Extract the pages you need from 
+          any PDF by entering simple page ranges (e.g. 1, 3-5, 7-10). Get each range 
+          as its own file, or merge them all into one combined PDF. 
+          No software needed — upload, split, and download 
+          in seconds.
+        </p>
         <div className="details-controls">
           <button
             className={`tab-btn${openPanel === 'details' ? ' active' : ''}`}

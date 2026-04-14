@@ -21,6 +21,10 @@ import ImageCropPage from './tools/image-crop';
 import ImageConverterPage from './tools/image-converter';
 import BlogsListPage from './components/BlogsListPage';
 import BlogPage from './components/BlogPage';
+import AboutUsPage from './components/about/AboutUsPage';
+import PrivacyPolicyPage from './components/about/PrivacyPolicyPage';
+import TermsOfServicePage from './components/about/TermsOfServicePage';
+import ContactUsPage from './components/ContactUsPage';
 
 function HomePage() {
 
@@ -86,6 +90,10 @@ export default function App() {
         <Route path="/pdf-splitter" element={<><Seo title="PDF Splitter — THRJ" description="Split PDF files into page ranges or combined outputs." /><PdfSplitterPage /></>} />
         <Route path="/blogs" element={<><Seo title="Blog — THRJ" description="THRJ blog" /><BlogsListPage /></>} />
         <Route path="/blogs/:slug" element={<><Seo title="Blog post — THRJ" description="Blog post" /><BlogPage /></>} />
+        <Route path="/about/us" element={<AboutUsPage />} />
+        <Route path="/about/policy" element={<PrivacyPolicyPage />} />
+        <Route path="/about/terms" element={<TermsOfServicePage />} />
+        <Route path="/contact-us" element={<ContactUsPage />} />
       </Routes>
     </BrowserRouter>
   )

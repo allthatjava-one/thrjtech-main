@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState, useRef, useCallback, useEffect } from 'react';
 
 // ── Draggable + zoomable image viewport ─────────────────────────────────────
@@ -159,7 +160,8 @@ export function ImageConverterView({
     <div className="ic-view">
       <h2 className="hero-title">Image Converter</h2>
       <p className="hero-tagline">
-        Convert images between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely in your browser — no uploads, no account required.
+        Convert images between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely 
+        in your browser — no uploads, no account required. <Link to="/blogs/image-converter-guide">Learn how to use the Image Converter →</Link>
       </p>
 
       {/* ── Details / How it works ── */}
