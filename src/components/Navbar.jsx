@@ -1,14 +1,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ContactUs from './ContactUs';
 import './Navbar.css';
 
 
 
 export default function Navbar() {
   const [toolsOpen, setToolsOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const toolsRef = useRef(null);
 
@@ -78,11 +76,8 @@ export default function Navbar() {
             )}
           </div>
           <Link to="/blogs" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
-          <div className="dropdown">
-            <button className="dropbtn" onClick={() => { setAboutOpen(true); setMobileMenuOpen(false); }}>Contact Us</button>
-          </div>
+          <Link to="/contact-us" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
         </nav>
-        <ContactUs open={aboutOpen} onClose={() => setAboutOpen(false)} />
       </div>
     </header>
   );

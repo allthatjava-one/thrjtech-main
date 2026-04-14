@@ -28,7 +28,8 @@
   gap: 0.5rem;
 }
 
-.footer-link-btn {
+.footer-link-btn,
+a.footer-link-btn {
   background: none;
   border: none;
   padding: 0;
@@ -39,7 +40,8 @@
   text-underline-offset: 2px;
 }
 
-.footer-link-btn:hover {
+.footer-link-btn:hover,
+a.footer-link-btn:hover {
   color: var(--color-text, #222);
 }
 

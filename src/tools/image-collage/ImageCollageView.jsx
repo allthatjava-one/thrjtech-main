@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useImageCollage from "./hooks/useImageCollage";
@@ -433,7 +434,10 @@ const ImageCollageView = ({
   return (
     <>
       <h2 className="hero-title">Image Collage</h2>
-      <p className="hero-tagline">Combine multiple images into a beautiful grid collage. Arrange your photos in custom rows and columns, adjust the canvas size, and download the final image with one click.</p>
+      <p className="hero-tagline">Combine multiple images into a beautiful grid collage.
+         Arrange your photos in custom rows and columns, adjust the canvas size, 
+         and download the final image with one click. <Link to="/blogs/image-collage-guide">Learn how to use the Image Collage →</Link>
+      </p>
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button
