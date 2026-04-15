@@ -1,3 +1,31 @@
+
+/* Watermarker guide styles - high-contrast, readable on light cards */
+.wm-guide {
+  margin: 24px 0;
+  padding: 22px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(0,0,0,0.06);
+  color: #374151; /* base dark text for readability on light card */
+}
+.wm-guide-intro { margin-bottom: 14px; }
+.wm-guide-title { font-size: 1.35rem; margin: 0 0 8px; color: #0f172a; }
+.wm-guide-lead { color: #475569; margin: 0 0 12px; line-height: 1.45; }
+.wm-guide-section { margin: 12px 0; color: #334155; }
+.wm-guide-h3 { margin: 0 0 8px; color: #0b1220; }
+.wm-guide-list, .wm-guide-steps { margin: 8px 0 0 18px; color: #475569; }
+.wm-guide-types { display: flex; gap: 12px; margin-top: 8px; }
+.wm-type { display:flex; gap:10px; align-items:flex-start; background: rgba(15,17,23,0.02); padding:10px; border-radius:8px; flex:1 }
+.wm-type-body p { margin:4px 0 0; color:#475569 }
+.wm-guide-best { margin:8px 0 0 18px; color:#475569 }
+.wm-faq-item { background: rgba(15,17,23,0.01); padding:8px; border-radius:8px; margin-top:8px; color:#475569 }
+.wm-guide-conclusion { margin-top:12px; color:#334155 }
+.wm-guide-cta { display:inline-block; margin-top:12px; padding:10px 14px; background: linear-gradient(90deg,#ff8a00,#ff5e62); color:#081426; border-radius:10px; text-decoration:none; font-weight:600 }
+
+@media (max-width: 720px) {
+  .wm-guide { padding:16px; }
+  .wm-guide-types { flex-direction:column }
+}
 /* ── Page shell ─────────────────────────────────────────────── */
 .watermarker-page {
   display: flex;

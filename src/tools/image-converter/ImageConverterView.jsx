@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useRef, useCallback, useEffect } from 'react';
+import './ImageConverter.css';
 
 // ── Draggable + zoomable image viewport ─────────────────────────────────────
 function DraggablePreview({ src, alt }) {
@@ -378,6 +379,112 @@ export function ImageConverterView({
           <DraggablePreview src={outputUrl} alt="Converted output" />
         </div>
       )}
+
+      {/* ── Guide: Why Image Formats Matter ── */}
+      <section className="ic-guide ic-guide-convert">
+        <div className="ic-guide-article">
+          <h3 className="ic-guide-title">Why Image Formats Matter (And How to Convert Images the Right Way)</h3>
+
+          <p className="ic-lead">You try to upload an image… and suddenly:</p>
+          <ul className="ic-bullet-list">
+            <li>“File format not supported”</li>
+            <li>Image won’t open on another device</li>
+            <li>File size is too large</li>
+          </ul>
+
+          <p>These issues usually come down to one thing: <strong>image format</strong>. In this guide you'll learn why formats exist, when to convert them, which format to choose, and how to convert without losing quality.</p>
+
+
+          <section className='ic-section'>
+          <h4>Why Do Image Formats Even Exist?</h4>
+          <p>Different formats exist because they serve different purposes: performance (smaller file size), quality (more detail), and compatibility (works everywhere). One format rarely fits all situations.</p>
+          </section>
+
+          <section className='ic-section'>
+          <h4>What Is Image Conversion?</h4>
+          <p>Image conversion means changing an image from one format to another (for example <em>PNG → JPG</em> or <em>HEIC → JPG</em>). The image content stays the same, but file size, quality, and compatibility can change.</p>
+          </section>
+
+          <section className='ic-section'>
+          <h4>When Do You Need to Convert Images?</h4>
+          <ol className="ic-quick-steps">
+            <li><strong>Upload Errors:</strong> Some platforms accept only specific formats.</li>
+            <li><strong>File Size Too Large:</strong> Convert heavy formats like PNG to JPG/WebP to reduce size.</li>
+            <li><strong>Device Compatibility:</strong> Convert HEIC from iPhones to JPG for wider support.</li>
+            <li><strong>Web Optimization:</strong> Modern sites prefer WebP for smaller files and faster loading.</li>
+          </ol>
+          </section>
+
+          <section className='ic-section'>
+          <h4>Most Common Image Formats (Quick Guide)</h4>
+          <div className="ic-format-grid">
+            <div className="ic-format-pill ic-pill-jpg">JPEG (JPG)<span>Best for photos — small files, no transparency</span></div>
+            <div className="ic-format-pill ic-pill-png">PNG<span>High quality, supports transparency</span></div>
+            <div className="ic-format-pill ic-pill-webp">WebP<span>Modern — smaller size with good quality</span></div>
+            <div className="ic-format-pill ic-pill-heic">HEIC<span>Used by iPhones — efficient but limited support</span></div>
+          </div>
+          </section>
+
+          <section className='ic-section'>
+          <h4>Best Practices for Converting Images</h4>
+          <ul className="ic-checklist">
+            <li>Choose format by use case — WebP for web, JPG for photos, PNG for graphics.</li>
+            <li>Avoid repeated conversions — always convert from the original.</li>
+            <li>Understand lossy vs lossless: JPG is lossy, PNG is lossless.</li>
+            <li>Balance quality and size — pick a middle ground.</li>
+            <li>Use a reliable tool that preserves quality and supports many formats.</li>
+          </ul>
+          </section>
+
+          <section className='ic-section'>
+          <h4>Common Mistakes to Avoid</h4>
+          <ul className="ic-xlist">
+            <li>Converting PNG → JPG (losing transparency)</li>
+            <li>Repeatedly converting the same file</li>
+            <li>Using the wrong format for the use case</li>
+            <li>Ignoring quality settings</li>
+            <li>Uploading huge images without optimization</li>
+          </ul>
+          </section>
+
+          <section className='ic-section'>
+          <h4>Step-by-Step: How to Convert an Image</h4>
+          <ol className="ic-steps-compact">
+            <li>Upload your image</li>
+            <li>Select output format</li>
+            <li>Adjust quality settings (if available)</li>
+            <li>Convert the image</li>
+            <li>Download the result</li>
+          </ol>
+          </section>
+
+          <p className="ic-conclusion">Image conversion isn't just technical — it's essential for compatibility, performance, and usability. By picking the right format you can avoid upload errors, improve speed, and keep good quality.</p>
+        </div>
+
+        <aside className="ic-guide-aside">
+          <div className="ic-aside-card">
+            <h5>Quick Actions</h5>
+            <p className="muted">Ready to convert? Jump straight to the tool.</p>
+            <button
+              type="button"
+              className="ic-guide-cta"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
+              Use the Image Converter Tool
+            </button>
+
+            <h6>Real-World Use Cases</h6>
+            <ul className="ic-mini-list">
+              <li>Website optimization — PNG → WebP</li>
+              <li>Social uploads — convert to supported formats</li>
+              <li>Business docs — ensure cross-system compatibility</li>
+              <li>iPhone photos — HEIC → JPG for sharing</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
     </div>
   );
 }

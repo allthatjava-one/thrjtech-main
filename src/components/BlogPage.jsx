@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import './BlogPage.css'
 
 function naiveMarkdownToHtml(md) {
   let html = md
@@ -13,8 +14,7 @@ function naiveMarkdownToHtml(md) {
     .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>')
     .replace(/\n\n+/gim, '</p><p>')
   html = '<p>' + html + '</p>'
-  // simple line breaks for single newlines
-  html = html.replace(/\n/gim, '<br/>')
+  // avoid converting all remaining newlines to <br/> which creates many empty <br> tags
   // close stray empty paragraphs
   html = html.replace(/<p>\s*<\/p>/gim, '')
   return html
@@ -42,7 +42,7 @@ export default function BlogPage() {
   }, [slug])
 
   return (
-    <div className="page">
+    <div className="page blog-post-page">
       <Navbar />
       <main className="main">
         <div className="container">
