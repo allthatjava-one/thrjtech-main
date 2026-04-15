@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import './RegexTester.css'
 
@@ -36,6 +36,7 @@ function highlightHtml(text, regex) {
 }
 
 export default function RegexTesterView() {
+  const navigate = useNavigate()
   const [inputText, setInputText]     = useState('')
   const [searchPattern, setSearchPattern] = useState('')
   const [replaceText, setReplaceText] = useState('')
@@ -336,6 +337,168 @@ export default function RegexTesterView() {
               <pre className="rt-preview-output">{outputText}</pre>
             </div>
           )}
+
+          {/* Regex guide - orange/terminal design */}
+          <div style={{ marginTop: 28, borderTop: '2px solid #ff6b2b22', paddingTop: 24, color: '#111' }}>
+            <div style={{ display: 'flex', gap: 12 }}>
+              <div style={{ flex: '0 0 56px', fontSize: 30, lineHeight: 1, fontFamily: 'monospace', fontWeight: 900, color: '#ff6b2b', letterSpacing: -1 }}>.*</div>
+              <div style={{ flex: 1 }}>
+                <h2 style={{ margin: 0, fontSize: 22 }}>How to Test and Debug Regex Quickly (Without Losing Your Mind)</h2>
+                <p style={{ marginTop: 8 }}>Regular expressions are powerful… but notoriously frustrating. You write a pattern expecting it to match perfectly — and instead it matches too much, nothing, or partially works.</p>
+                <p style={{ marginTop: 6, fontWeight: 700 }}>👉 The key to mastering regex isn't memorization — it's testing and iteration.</p>
+                <p style={{ marginTop: 8 }}>In this guide, you'll learn how to:</p>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>🧪 Test regex patterns effectively</li>
+                  <li>🐞 Debug common issues</li>
+                  <li>👁 Understand what your pattern is actually doing</li>
+                  <li>🚀 Build regex with confidence</li>
+                </ul>
+
+                <h3 style={{ marginTop: 14 }}>🔍 What Is a Regex Tester?</h3>
+                <p>A regex tester is an interactive tool that lets you write a pattern, provide sample text, and instantly see matches — turning regex from guessing into visual feedback.</p>
+
+                <h3 style={{ marginTop: 12 }}>🧠 Why Regex Feels Difficult</h3>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>😵 <strong>Compact</strong> — a small pattern can represent a lot of logic and be hard to read.</li>
+                  <li>🔄 <strong>Sensitive</strong> — one character change can break everything or completely change behavior.</li>
+                  <li>🧩 <strong>Abstract</strong> — patterns don't always "look like" what they match.</li>
+                </ul>
+
+                <h3 style={{ marginTop: 12 }}>⚡ Why You Should Always Use a Regex Tester</h3>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>👀 <strong>Instant Feedback</strong> — see matches as you type; no guessing, no running code repeatedly.</li>
+                  <li>🐞 <strong>Faster Debugging</strong> — quickly identify wrong groups, missing escapes, incorrect boundaries.</li>
+                  <li>🎯 <strong>Better Accuracy</strong> — test against real input data and edge cases.</li>
+                  <li>🚀 <strong>Faster Learning</strong> — experimentation helps you understand patterns and remember syntax naturally.</li>
+                </ul>
+
+                <h3 style={{ marginTop: 12 }}>🧪 Example: Regex in Action</h3>
+                <p>Goal: Match email addresses</p>
+                <pre style={{ background: '#1a1a2e', color: '#e94560', borderRadius: 6, padding: '10px 14px', fontSize: 13, overflowX: 'auto', marginTop: 6 }}>{'^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'}</pre>
+                <p style={{ marginTop: 8 }}>Test input: <code style={{ background: '#f3f3f3', padding: '1px 5px', borderRadius: 3 }}>test@example.com</code>, <code style={{ background: '#f3f3f3', padding: '1px 5px', borderRadius: 3 }}>invalid-email</code>, <code style={{ background: '#f3f3f3', padding: '1px 5px', borderRadius: 3 }}>hello@site</code></p>
+                <p style={{ marginTop: 6 }}>A regex tester highlights ✅ valid matches and ❌ invalid ones — making debugging much easier.</p>
+
+                <h3 style={{ marginTop: 12 }}>🛠 Common Regex Mistakes</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 }}>
+
+                  <div style={{ background: '#1a1a2e', borderRadius: 6, padding: '10px 14px', fontSize: 13 }}>
+                    <div style={{ color: '#ff6b6b', marginBottom: 4 }}>❌ Forgetting to escape characters</div>
+                    <div style={{ color: '#888', marginBottom: 2 }}>// Wrong — matches ANY character</div>
+                    <div style={{ color: '#e94560' }}>{'.'}</div>
+                    <div style={{ color: '#888', marginTop: 6, marginBottom: 2 }}>// Correct — matches literal dot</div>
+                    <div style={{ color: '#a8ff78' }}>{'\\.'}</div>
+                  </div>
+
+                  <div style={{ background: '#1a1a2e', borderRadius: 6, padding: '10px 14px', fontSize: 13 }}>
+                    <div style={{ color: '#ff6b6b', marginBottom: 4 }}>❌ Greedy matching</div>
+                    <div style={{ color: '#888', marginBottom: 2 }}>// Wrong — matches too much</div>
+                    <div style={{ color: '#e94560' }}>{'.*'}</div>
+                    <div style={{ color: '#888', marginTop: 6, marginBottom: 2 }}>// Correct — non-greedy</div>
+                    <div style={{ color: '#a8ff78' }}>{'.*?'}</div>
+                  </div>
+
+                  <div style={{ background: '#1a1a2e', borderRadius: 6, padding: '10px 14px', fontSize: 13 }}>
+                    <div style={{ color: '#ff6b6b', marginBottom: 4 }}>❌ Missing anchors</div>
+                    <div style={{ color: '#888', marginBottom: 2 }}>// Matches anywhere in string</div>
+                    <div style={{ color: '#e94560' }}>{'hello'}</div>
+                    <div style={{ color: '#888', marginTop: 6, marginBottom: 2 }}>// Correct — anchored to full string</div>
+                    <div style={{ color: '#a8ff78' }}>{'\\^hello\\$'}</div>
+                  </div>
+
+                  <div style={{ background: '#1a1a2e', borderRadius: 6, padding: '10px 14px', fontSize: 13 }}>
+                    <div style={{ color: '#ff6b6b', marginBottom: 4 }}>❌ Incorrect character classes</div>
+                    <div style={{ color: '#888', marginBottom: 2 }}>// Wrong — lowercase only</div>
+                    <div style={{ color: '#e94560' }}>{'[a-z]'}</div>
+                    <div style={{ color: '#888', marginTop: 6, marginBottom: 2 }}>// Correct — letters and digits</div>
+                    <div style={{ color: '#a8ff78' }}>{'[a-zA-Z0-9]'}</div>
+                  </div>
+
+                </div>
+
+                <h3 style={{ marginTop: 12 }}>🪜 Step-by-Step: How to Test Regex</h3>
+                <ol style={{ marginLeft: 16 }}>
+                  <li>✍️ Enter your regex pattern</li>
+                  <li>📄 Paste sample text</li>
+                  <li>👀 Observe matches</li>
+                  <li>🔧 Adjust pattern</li>
+                  <li>🔁 Repeat until correct</li>
+                </ol>
+
+                <h3 style={{ marginTop: 12 }}>🧠 Best Practices for Writing Regex</h3>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>✅ <strong>Start simple</strong> — build patterns step by step, add complexity gradually.</li>
+                  <li>✅ <strong>Test real data</strong> — use actual user input and real-world examples.</li>
+                  <li>✅ <strong>Use comments when possible</strong> — break complex regex into understandable parts.</li>
+                  <li>✅ <strong>Avoid over-optimization</strong> — readable regex beats "clever" regex.</li>
+                  <li>✅ <strong>Validate edge cases</strong> — test empty input and unexpected formats.</li>
+                </ul>
+
+                <h3 style={{ marginTop: 12 }}>🧑‍💻 Real-World Use Cases</h3>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>📧 <strong>Email Validation</strong> — check input format before submission</li>
+                  <li>🔐 <strong>Password Rules</strong> — enforce complexity requirements</li>
+                  <li>📄 <strong>Data Extraction</strong> — extract IDs, URLs, numbers from text</li>
+                  <li>📊 <strong>Log Parsing</strong> — analyze and filter system logs</li>
+                </ul>
+
+                <h3 style={{ marginTop: 12 }}>⚠️ Common Pitfalls</h3>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>❌ Writing entire regex at once</li>
+                  <li>❌ Not testing edge cases</li>
+                  <li>❌ Copy-pasting regex without understanding it</li>
+                  <li>❌ Ignoring readability</li>
+                </ul>
+
+                <h3 style={{ marginTop: 12 }}>🔍 Regex Tester vs Code Execution</h3>
+                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
+                  <thead>
+                    <tr style={{ borderBottom: '2px solid #ff6b2b33' }}>
+                      <th style={{ textAlign: 'left', padding: 6 }}>Feature</th>
+                      <th style={{ textAlign: 'left', padding: 6 }}>Regex Tester</th>
+                      <th style={{ textAlign: 'left', padding: 6 }}>Code</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style={{ padding: 6, borderBottom: '1px solid #fff0eb' }}>Speed</td><td style={{ padding: 6, borderBottom: '1px solid #fff0eb' }}>Instant</td><td style={{ padding: 6, borderBottom: '1px solid #fff0eb' }}>Slower</td></tr>
+                    <tr><td style={{ padding: 6, borderBottom: '1px solid #fff0eb' }}>Debugging</td><td style={{ padding: 6, borderBottom: '1px solid #fff0eb' }}>Visual</td><td style={{ padding: 6, borderBottom: '1px solid #fff0eb' }}>Manual</td></tr>
+                    <tr><td style={{ padding: 6 }}>Learning</td><td style={{ padding: 6 }}>Easy</td><td style={{ padding: 6 }}>Harder</td></tr>
+                  </tbody>
+                </table>
+
+                <h3 style={{ marginTop: 12 }}>🚀 Pro Tips</h3>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>🔍 Test small parts of regex first</li>
+                  <li>🧩 Break complex patterns into chunks</li>
+                  <li>⚡ Use non-greedy matching when needed</li>
+                  <li>📋 Keep sample inputs saved for reuse</li>
+                </ul>
+
+                <h3 style={{ marginTop: 12 }}>🔐 Is It Safe to Use a Regex Tester?</h3>
+                <p>Most modern tools:</p>
+                <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                  <li>✅ Run directly in your browser</li>
+                  <li>✅ Don't store input</li>
+                </ul>
+                <p style={{ marginTop: 6 }}>👉 Still avoid pasting sensitive data or production secrets.</p>
+
+                <h3 style={{ marginTop: 12 }}>❓ FAQ</h3>
+                <p><strong>Why is my regex not matching anything?</strong> Possible reasons: missing anchors, incorrect syntax, or wrong test input.</p>
+                <p><strong>Why does my regex match too much?</strong> Likely due to greedy patterns like <code style={{ background: '#f3f3f3', padding: '1px 4px', borderRadius: 3 }}>.*</code>. Try <code style={{ background: '#f3f3f3', padding: '1px 4px', borderRadius: 3 }}>.*?</code> instead.</p>
+                <p><strong>Can I learn regex without memorizing everything?</strong> Yes — practice with testing tools is the fastest way.</p>
+                <p><strong>What's the best way to improve regex skills?</strong> Build + test + iterate repeatedly.</p>
+
+                <p style={{ marginTop: 14 }}><strong>🧾 Conclusion</strong><br/>Regex doesn't have to be frustrating. With the right approach and a good tester, you can build patterns faster, debug with confidence, and truly understand what your regex is doing.</p>
+
+                <p style={{ marginTop: 12 }}>
+                  <a
+                    className="btn btn-primary"
+                    href="/regex-tester"
+                    onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/regex-tester') }}
+                  >👉 Try your regex here: Regex Tester Tool</a>
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>

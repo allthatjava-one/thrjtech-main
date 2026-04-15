@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { formatSize } from '../pdf-compressor/utils/formatSize'
 import { useState } from 'react'
 import CustomSelect from './CustomSelect'
@@ -23,6 +23,7 @@ export function PdfConverterView({
   handleReset,
 }) {
   const [openPanel, setOpenPanel] = useState('')
+  const navigate = useNavigate()
 
   const togglePanel = (panel) => {
     setOpenPanel((prev) => (prev === panel ? '' : panel))
@@ -270,6 +271,132 @@ export function PdfConverterView({
         <span className="note-icon">⚠️</span>
         Note: The converted file will be stored temporarily for a short time. Please download it within the available window.
       </div>
+
+      {/* Converter guide */}
+      <section className="converter-guide" style={{ marginTop: 28 }}>
+        <div style={{ maxWidth: 880, margin: '0 auto', padding: 18, background: 'linear-gradient(180deg,#fffdf7,#ffffff)', borderRadius: 10, border: '1px solid #f0e8cc', color: '#111' }}>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>🔄</div>
+            <div style={{ flex: 1 }}>
+              <h2 style={{ margin: 0, fontSize: 22 }}>How to Convert PDF Files Without Breaking Layout (Smart &amp; Simple Guide)</h2>
+
+              <p style={{ marginTop: 8 }}>PDFs are great for sharing — but not always for editing. You've probably experienced this: you need to edit a PDF but it's locked, want to extract text but can't, or need a Word or Excel version but formatting breaks.</p>
+              <p style={{ marginTop: 6, fontWeight: 700 }}>👉 In this guide, you'll learn how to convert PDFs safely, preserve formatting, and choose the right format for your needs.</p>
+
+              <br />
+              <h3 style={{ marginTop: 12 }}>📄 What Is a PDF Converter?</h3>
+              <p>A PDF converter is a tool that allows you to:</p>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>🔁 Convert PDF → Word, Excel, PowerPoint</li>
+                <li>🖼 Convert PDF → images (JPG, PNG)</li>
+                <li>📥 Convert files → PDF (Word, images, etc.)</li>
+              </ul>
+              <p style={{ marginTop: 6 }}>Modern tools support both directions and multiple formats, making them highly flexible. Think of it as a bridge between formats.</p>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>🤔 Why Convert PDFs?</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li><strong>✏️ Edit Content Easily</strong> — convert to Word or Excel to modify text, update data, and reuse content.</li>
+                <li><strong>📊 Extract Data</strong> — convert PDF → Excel to save time and avoid manual typing.</li>
+                <li><strong>🖼 Use Content in Other Formats</strong> — convert to image to share visuals or embed in presentations.</li>
+                <li><strong>📤 Improve Compatibility</strong> — some systems require specific file types; conversion solves this instantly.</li>
+              </ul>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>⚙️ How PDF Conversion Works</h3>
+              <p>When you convert a PDF, the system reads the file structure, identifies text, images, and layout, then rebuilds content in the new format. Good tools try to preserve layout and keep fonts and spacing intact.</p>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>🧠 Why Formatting Sometimes Breaks</h3>
+              <p>PDFs are built for display, not structure. Text may not be stored logically and layout may be "visual only" — so converters sometimes have to guess structure. This is why results vary.</p>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>✅ Best Practices for Accurate Conversion</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>🔹 <strong>Use clean source files</strong> — clear text, standard fonts, simple layout.</li>
+                <li>🔹 <strong>Choose the right output format</strong> — Word for editing, Excel for tables, JPG for sharing visuals.</li>
+                <li>🔹 <strong>Check after conversion</strong> — always review alignment, fonts, and tables.</li>
+                <li>🔹 <strong>Avoid re-converting files</strong> — each step can introduce errors; always convert from the original PDF.</li>
+                <li>🔹 <strong>Use a reliable tool</strong> — a good converter should preserve formatting and support multiple formats.</li>
+              </ul>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>🚀 Step-by-Step: Convert a PDF</h3>
+              <ol style={{ marginLeft: 16 }}>
+                <li>📤 Upload your PDF</li>
+                <li>🎯 Select output format (JPG, PNG, etc.)</li>
+                <li>⚙️ Start conversion</li>
+                <li>📥 Download the new file</li>
+              </ol>
+              <p style={{ marginTop: 6 }}>Most tools complete this in seconds.</p>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>🧩 Common Conversion Scenarios</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>📄 <strong>PDF → Word</strong> — edit documents, update text</li>
+                <li>📊 <strong>PDF → Excel</strong> — extract tables, work with data</li>
+                <li>🖼 <strong>PDF → Image</strong> — share pages visually, use in presentations</li>
+                <li>📥 <strong>Word/Image → PDF</strong> — create shareable documents, preserve formatting</li>
+              </ul>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>⚠️ Common Mistakes to Avoid</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>❌ Converting scanned PDFs without OCR</li>
+                <li>❌ Expecting perfect formatting every time</li>
+                <li>❌ Using low-quality source files</li>
+                <li>❌ Not reviewing final output</li>
+                <li>❌ Converting multiple times unnecessarily</li>
+              </ul>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>🔍 PDF Converter vs PDF Editor</h3>
+              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid #f0e8cc' }}>
+                    <th style={{ textAlign: 'left', padding: 6 }}>Feature</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>Converter</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>Editor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>Purpose</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>Change format</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>Modify content</td></tr>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>Ease of use</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>Easy</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>Moderate</td></tr>
+                  <tr><td style={{ padding: 6 }}>Best for</td><td style={{ padding: 6 }}>Flexibility</td><td style={{ padding: 6 }}>Detailed editing</td></tr>
+                </tbody>
+              </table>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>💡 Pro Tips</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>📌 Convert a small test file first</li>
+                <li>📌 Use consistent fonts in original</li>
+                <li>📌 Avoid complex layouts when possible</li>
+                <li>📌 Keep a backup of the original file</li>
+              </ul>
+              
+              <br />
+              <h3 style={{ marginTop: 10 }}>❓ FAQ</h3>
+              <p><strong>Does PDF conversion always keep formatting?</strong> Not always — but good tools preserve most layout and structure.</p>
+              <p><strong>Can I convert scanned PDFs?</strong> Yes, but you may need OCR (text recognition) for accurate results.</p>
+              <p><strong>What's the best format to convert to?</strong> Editing → Word, data → Excel, sharing → PDF/Image.</p>
+              <p><strong>Is online conversion safe?</strong> Most tools process files securely and temporarily.</p>
+              
+              <br />
+              <p style={{ marginTop: 12 }}><strong>🧾 Conclusion</strong><br/>
+              PDF conversion isn't just about changing formats — it's about unlocking your content. With the right approach, you can edit documents easily, extract useful data, and share content in any format.</p>
+
+              <p style={{ marginTop: 12 }}>
+                <a
+                  className="btn btn-primary"
+                  href="/pdf-converter"
+                  onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-converter') }}
+                >👉 Try it here: PDF Converter Tool</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
