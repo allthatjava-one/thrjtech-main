@@ -201,7 +201,6 @@
   font-size: var(--btn-font-size);
   font-weight: var(--btn-font-weight);
   cursor: pointer;
-  margin-bottom: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -213,6 +212,13 @@
   cursor: not-allowed;
 }
 
+.watermarker-page .watermark-btn--download {
+  background: #38a169;
+}
+.watermarker-page .watermark-btn--download:hover {
+  background: #2f855a;
+}
+
 .watermarker-page .error-msg {
   color: #ef4444;
   margin-bottom: 1rem;
@@ -220,6 +226,14 @@
 }
 
 /* output-section removed — download is now inside the popup */
+.watermarker-page .watermark-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
 .watermarker-page .download-btn {
   display: inline-flex;
   align-items: center;
@@ -232,7 +246,6 @@
   font-weight: var(--btn-font-weight);
   font-size: var(--btn-font-size);
   font-family: inherit;
-  margin-top: 0.5rem;
   transition: var(--btn-transition);
 }
 .watermarker-page .download-btn:hover {
