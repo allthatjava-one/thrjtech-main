@@ -296,9 +296,9 @@ export function PdfConverterView({
               <h3 style={{ marginTop: 12 }}>📄 What Is a PDF Converter?</h3>
               <p>A PDF converter is a tool that allows you to:</p>
               <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>🔁 Convert PDF → Word, Excel, PowerPoint</li>
-                <li>🖼 Convert PDF → images (JPG, PNG)</li>
-                <li>📥 Convert files → PDF (Word, images, etc.)</li>
+                <li style={{color: '#AAA'}}>🔁 Convert PDF → Word, Excel, PowerPoint</li>
+                <li >🖼 Convert PDF → images (JPG, PNG)</li>
+                <li style={{color: '#AAA'}}>📥 Convert files → PDF (Word, images, etc.)</li>
               </ul>
               <p style={{ marginTop: 6 }}>Modern tools support both directions and multiple formats, making them highly flexible. Think of it as a bridge between formats.</p>
               

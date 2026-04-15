@@ -10,6 +10,8 @@ export function WatermarkerView({
   setWatermarkText,
   logoFile,
   setLogoFile,
+  repeated,
+  setRepeated,
   outputUrl,
   outputName,
   status,
@@ -221,6 +223,14 @@ export function WatermarkerView({
             onChange={() => setWatermarkType('logo')}
           />
           Logo Watermark
+        </label>
+        <label style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={repeated}
+            onChange={e => setRepeated(e.target.checked)}
+          />
+          Repeated
         </label>
       </div>
       {watermarkType === 'text' && (
