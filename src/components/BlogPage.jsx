@@ -22,6 +22,7 @@ function naiveMarkdownToHtml(md) {
 
 export default function BlogPage() {
   const { slug } = useParams()
+  const [createdAt, setCreatedAt] = useState(null)
   const [content, setContent] = useState(null)
   const [title, setTitle] = useState(null)
   const [error, setError] = useState(null)
@@ -37,6 +38,7 @@ export default function BlogPage() {
       .then(data => {
         setTitle(data.title)
         setContent(naiveMarkdownToHtml(data.content))
+        setCreatedAt(data.createdAt)
       })
       .catch(err => setError(err.message))
   }, [slug])
@@ -56,6 +58,7 @@ export default function BlogPage() {
             <Link to="/blogs">← Back to Blog</Link>
           </div>
           <article className="card">
+            <div style={{ color: '#000000' }}>Created at: {new Date(createdAt).toLocaleString()}</div>
             {error
               ? <p style={{ color: '#dc2626' }}>Error: {error}</p>
               : <>

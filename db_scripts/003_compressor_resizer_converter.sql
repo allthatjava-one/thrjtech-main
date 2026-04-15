@@ -1,4 +1,4 @@
-INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
+INSERT INTO blogs (slug, title, description, thumbnail, content, createdAt) VALUES
 (
   'pdf-compressor-guide',
   'Shrink PDFs quickly',
@@ -73,7 +73,8 @@ Files uploaded to the service are handled with privacy in mind. Compressed files
 - Multi-page PDFs are supported â€” the whole document is compressed and returned as a single PDF.
   
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 );
 
 INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
@@ -132,7 +133,8 @@ Choose a compression/quality level if you want smaller files. Click **Resize** â
 Images uploaded for resizing are available briefly for download and then removed. If you prefer not to upload sensitive images, use the browser-only resizing option when available.
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 );
 
 INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
@@ -204,5 +206,6 @@ Files uploaded for conversion are held only briefly to allow download and then r
 - Outputs: JPG/PNG (extracted pages/images)
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 );

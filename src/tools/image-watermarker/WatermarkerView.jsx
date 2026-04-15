@@ -10,6 +10,8 @@ export function WatermarkerView({
   setWatermarkText,
   logoFile,
   setLogoFile,
+  repeated,
+  setRepeated,
   outputUrl,
   outputName,
   status,
@@ -38,6 +40,15 @@ export function WatermarkerView({
       <p className="hero-tagline">Protect your images by adding a custom text or logo watermark. 
         Adjust the position and style to fit your needs, then download the watermarked 
         result instantly. <Link to="/blogs/image-watermark-guide">Learn how to put a watermark on your image →</Link></p>
+      
+      <div className="ir-tip-banner">
+        <span className="ir-tip-text">Would you like to <b>resize</b> your image before put watermark?</span>
+        <button className="ir-tip-btn" onClick={() => navigate('/image-resizer')}>
+          Try Image Resizer
+        </button>
+      </div>
+
+
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button
@@ -213,6 +224,14 @@ export function WatermarkerView({
           />
           Logo Watermark
         </label>
+        <label style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={repeated}
+            onChange={e => setRepeated(e.target.checked)}
+          />
+          Repeated
+        </label>
       </div>
       {watermarkType === 'text' && (
         <input
@@ -254,7 +273,17 @@ export function WatermarkerView({
           {status === 'processing' ? 'Processing...' : 'Preview'}
         </button>
         {outputUrl && (
-          <a href={outputUrl} download={outputName} className="download-btn" style={{ marginLeft: '0.6rem' }}>Download</a>
+          <button
+            className="watermark-btn watermark-btn--download"
+            onClick={() => {
+              const a = document.createElement('a')
+              a.href = outputUrl
+              a.download = outputName
+              a.click()
+            }}
+          >
+            Download
+          </button>
         )}
       </div>
       {errorMsg && <div className="error-msg">{errorMsg}</div>}

@@ -10,6 +10,7 @@ export function useWatermarker(initialImage) {
   const [status, setStatus] = useState('idle') // idle | processing | done | error
   const [errorMsg, setErrorMsg] = useState('')
   const [isDragging, setIsDragging] = useState(false)
+  const [repeated, setRepeated] = useState(false)
   const fileInputRef = useRef(null)
 
   const handleMainImage = (f) => {
@@ -66,10 +67,14 @@ export function useWatermarker(initialImage) {
       const img = await loadImage(mainImage)
       let watermarkedCanvas
       if (watermarkType === 'text') {
-        watermarkedCanvas = addTextWatermark(img, watermarkText)
+        watermarkedCanvas = repeated
+          ? addTextWatermarkRepeated(img, watermarkText)
+          : addTextWatermark(img, watermarkText)
       } else if (watermarkType === 'logo' && logoFile) {
         const logoImg = await loadImage(logoFile)
-        watermarkedCanvas = addLogoWatermark(img, logoImg)
+        watermarkedCanvas = repeated
+          ? addLogoWatermarkRepeated(img, logoImg)
+          : addLogoWatermark(img, logoImg)
       } else {
         setErrorMsg('Please provide watermark text or logo.')
         setStatus('idle')
@@ -149,6 +154,58 @@ export function useWatermarker(initialImage) {
     return canvas
   }
 
+  function addTextWatermarkRepeated(img, text) {
+    const canvas = document.createElement('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+    const ctx = canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0)
+    const fontSize = Math.max(14, Math.floor(img.width / 18))
+    ctx.font = `bold ${fontSize}px sans-serif`
+    ctx.fillStyle = 'rgba(255,255,255,0.28)'
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle'
+    const textWidth = ctx.measureText(text).width
+    const gapX = textWidth + fontSize * 2.5
+    const gapY = fontSize * 3.5
+    const diagonal = Math.ceil(Math.sqrt(img.width ** 2 + img.height ** 2))
+    ctx.save()
+    ctx.translate(img.width / 2, img.height / 2)
+    ctx.rotate(-Math.PI / 6)
+    for (let y = -diagonal; y <= diagonal; y += gapY) {
+      for (let x = -diagonal; x <= diagonal; x += gapX) {
+        ctx.fillText(text, x, y)
+      }
+    }
+    ctx.restore()
+    return canvas
+  }
+
+  function addLogoWatermarkRepeated(img, logoImg) {
+    const canvas = document.createElement('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+    const ctx = canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0)
+    const logoWidth = Math.max(32, Math.floor(img.width / 6))
+    const logoHeight = Math.floor(logoImg.height * (logoWidth / logoImg.width))
+    const gapX = logoWidth * 2.2
+    const gapY = logoHeight * 2.5
+    const diagonal = Math.ceil(Math.sqrt(img.width ** 2 + img.height ** 2))
+    ctx.globalAlpha = 0.25
+    ctx.save()
+    ctx.translate(img.width / 2, img.height / 2)
+    ctx.rotate(-Math.PI / 6)
+    for (let y = -diagonal; y <= diagonal; y += gapY) {
+      for (let x = -diagonal; x <= diagonal; x += gapX) {
+        ctx.drawImage(logoImg, x - logoWidth / 2, y - logoHeight / 2, logoWidth, logoHeight)
+      }
+    }
+    ctx.restore()
+    ctx.globalAlpha = 1.0
+    return canvas
+  }
+
   return {
     mainImage,
     watermarkType,
@@ -157,6 +214,8 @@ export function useWatermarker(initialImage) {
     setWatermarkText,
     logoFile,
     setLogoFile,
+    repeated,
+    setRepeated,
     outputUrl,
     outputName,
     status,

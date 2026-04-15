@@ -113,6 +113,9 @@
   margin-bottom: 1.5rem;
   cursor: pointer;
   transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .image-collage-page .drop-zone.dragging {
   border-color: #3182ce;

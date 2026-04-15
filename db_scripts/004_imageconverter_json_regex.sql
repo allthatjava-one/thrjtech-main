@@ -1,4 +1,4 @@
-INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
+INSERT INTO blogs (slug, title, description, thumbnail, content, createdAt) VALUES
 (
   'json-formatter-guide',
   'JSON Formatter — Pretty-print, validate, and explore JSON',
@@ -53,7 +53,8 @@ Use the simple tree view to inspect objects and arrays. Collapse or expand secti
 All processing happens in your browser; nothing is uploaded to servers. If you work with sensitive data, prefer an offline editor.
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 ),
 (
   'regex-tester-guide',
@@ -94,7 +95,8 @@ Regex Tester provides a live environment to write regular expressions, test them
 All processing is local to your browser. Do not paste sensitive data if you are concerned about clipboard history.
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 ),
 (
   'image-converter-guide',
@@ -144,5 +146,6 @@ Select the target format and click **Convert**. The preview shows the converted 
 All conversion happens locally in your browser; no files are uploaded.
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 );

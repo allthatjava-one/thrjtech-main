@@ -1,4 +1,4 @@
-INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
+INSERT INTO blogs (slug, title, description, thumbnail, content, createdAt) VALUES
 (
   'meme-generator-guide',
   'How to create a meme with Meme Generator',
@@ -37,7 +37,8 @@ Learn how to create shareable memes quickly using the THRJ Meme Generator. This 
 Try creating a few variations — change font sizes and positions to get the best visual balance. When you''re happy with the result, download and share!
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 ),
 (
   'pdf-merger-guide',
@@ -82,7 +83,8 @@ PDF Merger lets you combine multiple PDF files into a single PDF quickly and pri
 The PDF Merger have merged pdf for short period of time (e.g. 30 min) before being automatically deleted from the server. This ensures your files are not stored indefinitely and helps maintain privacy. You should download the merged PDF as soon as possible after merging, as it will not be available after the expiration time.
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 ),
 (
   'image-crop-guide',
@@ -148,5 +150,6 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 - Use presets (Instagram, YouTube, Profile) for common target sizes.
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 );

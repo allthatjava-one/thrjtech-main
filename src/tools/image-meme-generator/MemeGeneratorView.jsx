@@ -549,6 +549,14 @@ export default function MemeGeneratorView({ initialFile }) {
       <p className="hero-tagline">Create fun memes by adding custom text to any image. 
         Drag text anywhere on the canvas, adjust font size and color, then download 
         your finished meme with one click. <Link to="/blogs/meme-generator-guide">Learn how to use the Meme Generator →</Link></p>
+        
+      <div className="ir-tip-banner">
+        <span className="ir-tip-text">Would you like to <b>crop</b> your image before creating a meme?</span>
+        <button className="ir-tip-btn" onClick={() => navigate('/image-resizer')}>
+          Try Image Crop
+        </button>
+      </div>
+      
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button
