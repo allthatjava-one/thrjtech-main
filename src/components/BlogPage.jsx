@@ -41,6 +41,12 @@ export default function BlogPage() {
       .catch(err => setError(err.message))
   }, [slug])
 
+  useEffect(() => {
+    const prev = document.title
+    if (title) document.title = `THRJ Blog | ${title}`
+    return () => { document.title = prev }
+  }, [title])
+
   return (
     <div className="page blog-post-page">
       <Navbar />
