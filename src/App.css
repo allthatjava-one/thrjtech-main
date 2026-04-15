@@ -302,6 +302,92 @@
 /* ── Screenshots ──────────────────────────────────── */
 /* (moved to RotatingCards.css) */
 
+/* ── Home Sections ────────────────────────────────── */
+.home-section {
+  padding: 3rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.home-section--alt {
+  background: var(--color-surface);
+}
+
+.home-section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
+}
+
+/* Popular Guides */
+.guide-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.guide-link {
+  display: block;
+  padding: 0.8rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-primary);
+  font-size: 0.93rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.guide-link:hover {
+  border-color: var(--color-primary);
+  background: rgba(79, 142, 247, 0.06);
+  text-decoration: none;
+}
+
+/* Tools Spotlight */
+.spotlight-group + .spotlight-group {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.spotlight-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.spotlight-card {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.spotlight-card:hover {
+  border-color: var(--color-primary);
+  text-decoration: none;
+}
+
+.spotlight-card-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.45rem;
+}
+
+.spotlight-card-desc {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 600px) {
   .tool-card {
@@ -312,5 +398,10 @@
 
   .hero {
     padding: 3.5rem 1.25rem 3rem;
+  }
+
+  .guide-links,
+  .spotlight-cards {
+    grid-template-columns: 1fr;
   }
 }
