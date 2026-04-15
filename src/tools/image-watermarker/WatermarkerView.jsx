@@ -273,7 +273,17 @@ export function WatermarkerView({
           {status === 'processing' ? 'Processing...' : 'Preview'}
         </button>
         {outputUrl && (
-          <a href={outputUrl} download={outputName} className="download-btn" style={{ marginLeft: '0.6rem' }}>Download</a>
+          <button
+            className="watermark-btn watermark-btn--download"
+            onClick={() => {
+              const a = document.createElement('a')
+              a.href = outputUrl
+              a.download = outputName
+              a.click()
+            }}
+          >
+            Download
+          </button>
         )}
       </div>
       {errorMsg && <div className="error-msg">{errorMsg}</div>}
