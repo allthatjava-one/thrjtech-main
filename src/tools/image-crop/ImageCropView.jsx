@@ -391,6 +391,129 @@ export function ImageCropView(props) {
           </button>
         </div>
       )}
+
+      {/* ── Guide Article for Image Crop ── */}
+      <div className="ic-guide">
+        <div className="ic-guide-intro">
+          <h2 className="ic-guide-title">How to Crop Images Perfectly (Without Losing Quality or Composition)</h2>
+          <p className="ic-guide-lead">Cropping an image is one of the simplest edits you can make — but it has a huge impact on how your image looks and communicates. Whether you're preparing images for websites, social media, or documents, cropping helps you focus on what matters, remove distractions, and fit images into required sizes.</p>
+          <div className="ic-guide-learn-box">
+            <span className="ic-guide-learn-label">In this guide, you'll learn:</span>
+            <ul className="ic-guide-learn-list">
+              <li>How image cropping works</li>
+              <li>When to use it</li>
+              <li>How to crop properly without ruining quality</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">What Is Image Cropping?</h3>
+          <p>Image cropping is the process of removing unwanted outer areas of an image to improve composition or adjust size. Instead of resizing the entire image, cropping lets you cut out unnecessary parts, focus on the subject, and change the aspect ratio.</p>
+          <p><em>Think of it as framing your image after it’s already taken.</em></p>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">Why Cropping Matters</h3>
+          <div className="ic-guide-cards">
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">1</span>
+              <div>
+                <strong>Focus on the Subject</strong>
+                <p>Cropping removes distractions and highlights the most important part of the image so the subject becomes the main focus.</p>
+              </div>
+            </div>
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">2</span>
+              <div>
+                <strong>Improve Composition</strong>
+                <p>Use cropping to balance the image, apply the rule of thirds, and create a cleaner layout.</p>
+              </div>
+            </div>
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">3</span>
+              <div>
+                <strong>Fit Platform Requirements</strong>
+                <p>Different platforms need different sizes; crop to square, vertical, or landscape to avoid distortion and cropping issues on upload.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">Cropping vs Resizing</h3>
+          <table className="ic-guide-table">
+            <thead><tr><th>Feature</th><th>Cropping</th><th>Resizing</th></tr></thead>
+            <tbody>
+              <tr><td>What it does</td><td>Removes part of image</td><td>Scales entire image</td></tr>
+              <tr><td>Keeps full content</td><td>No</td><td>Yes</td></tr>
+              <tr><td>Changes composition</td><td>Yes</td><td>No</td></tr>
+              <tr><td>Use case</td><td>Focus / framing</td><td>File size / dimensions</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Best practice:</strong> Crop first → then resize if needed.</p>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">Best Practices for Cropping</h3>
+          <div className="ic-guide-best-list">
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Keep the Subject Clear</strong><p>Ensure the main subject is centered or well-positioned and not cut awkwardly.</p></div></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Maintain Aspect Ratio</strong><p>Use fixed ratios (1:1, 16:9, 4:5) when targeting specific platforms.</p></div></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Don't Crop Too Much</strong><p>Excessive cropping reduces resolution and may make images blurry when enlarged.</p></div></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Leave Breathing Space</strong><p>Avoid tight crops—leave slight spacing around the subject for a natural look.</p></div></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Keep the Original</strong><p>Always save the original image; cropped areas cannot be recovered.</p></div></div>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">Common Mistakes to Avoid</h3>
+          <div className="ic-guide-mistakes">
+            <div className="ic-guide-mistake">❌ Cutting off important parts (faces, edges, text)</div>
+            <div className="ic-guide-mistake">❌ Cropping without purpose</div>
+            <div className="ic-guide-mistake">❌ Ignoring aspect ratio</div>
+            <div className="ic-guide-mistake">❌ Over-cropping low-resolution images</div>
+            <div className="ic-guide-mistake">❌ Using random crop sizes across platforms</div>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">Step-by-Step: How to Crop an Image</h3>
+          <ol className="ic-guide-steps">
+            <li>Upload your image</li>
+            <li>Select the area you want to keep</li>
+            <li>Adjust the crop box (drag edges)</li>
+            <li>Choose aspect ratio (optional)</li>
+            <li>Apply crop</li>
+            <li>Download the final image</li>
+          </ol>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">Real Use Cases</h3>
+          <div className="ic-guide-usecases">
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">📱</span><strong>Social Media Posts</strong><p>Crop to square or vertical to improve engagement.</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🌐</span><strong>Website Images</strong><p>Remove unnecessary space and make images consistent across pages.</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">👤</span><strong>Profile Pictures</strong><p>Crop tightly around the face and center for better visibility.</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🛍️</span><strong>Product Images</strong><p>Remove background clutter and highlight the product clearly.</p></div>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">FAQ</h3>
+          <div className="ic-guide-faq">
+            <details className="ic-guide-faq-item"><summary>Does cropping reduce image quality?</summary><p>Yes — because pixels are removed, but if done carefully the quality loss is usually not noticeable.</p></details>
+            <details className="ic-guide-faq-item"><summary>Can I undo cropping?</summary><p>Only if your tool supports non-destructive editing or you kept the original image.</p></details>
+            <details className="ic-guide-faq-item"><summary>What is the best aspect ratio?</summary><p>Depends on usage: Instagram → 1:1 or 4:5; YouTube → 16:9; Websites → varies.</p></details>
+            <details className="ic-guide-faq-item"><summary>Is cropping better than resizing?</summary><p>They serve different purposes: cropping changes composition, resizing changes dimensions.</p></details>
+          </div>
+        </div>
+
+        <div className="ic-guide-conclusion">
+          <h3>Conclusion</h3>
+          <p>Image cropping is a simple but powerful way to improve composition, highlight important content, and make images fit any platform. Use the right techniques to turn an average image into a clean, professional-looking one.</p>
+          <a href="/image-crop" className="ic-guide-cta" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-crop'); }}>Try the Image Crop Tool →</a>
+        </div>
+      </div>
     </div>
   );
 }

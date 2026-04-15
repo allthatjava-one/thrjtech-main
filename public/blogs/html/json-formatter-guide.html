@@ -1,0 +1,74 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1>JSON Formatter — Pretty-Print, Validate, and Explore JSON Online</h1>
+
+  <p>A complete guide to using the <strong>JSON Formatter</strong> tool on THRJ. This page covers the workflow, validation tips, structure exploration, and privacy notes. Whether you are a developer debugging an API response or a data analyst reviewing a JSON export, this tool helps you read and validate JSON instantly in your browser. <a href="/json-formatter">Open the JSON Formatter</a></p>
+
+  <p><img src="/screenshots/json-formatter/JSON_formatter001.png" alt="JSON Formatter screenshot" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <br>
+  <h2>Overview</h2>
+  <p>JSON Formatter helps you clean, validate, and visualize JSON instantly in your browser. It supports formatting (pretty-print), minifying, syntax validation, and a basic structure explorer.</p>
+
+  <br>
+  <h2>Quick steps</h2>
+  <ol>
+    <li>Open the JSON Formatter page: <code>/json-formatter</code>.</li>
+    <li>Paste or drop your JSON into the editor.</li>
+    <li>Click <strong>Format</strong> to pretty-print or <strong>Minify</strong> to compress.</li>
+    <li>Use <strong>Validate</strong> to check for syntax errors and line numbers.</li>
+    <li>Copy or download the result.</li>
+  </ol>
+
+  <br>
+  <h2>Step-by-step with screenshots</h2>
+
+  <h3>1. Paste or load JSON</h3>
+  <p>Paste raw JSON into the editor or drag a <code>.json</code> file onto the editor area.</p>
+  <p><img src="/screenshots/json-formatter/JSON_formatter002.png" alt="Load JSON" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <h3>2. Format &amp; validate</h3>
+  <p>Click <strong>Format</strong> to pretty-print with indentation. If there are syntax errors, the tool highlights the line and shows an error message.</p>
+  <p><img src="/screenshots/json-formatter/JSON_formatter003.png" alt="Format JSON" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <h3>3. Explore structure</h3>
+  <p>Use the simple tree view to inspect objects and arrays. Collapse or expand sections to focus on the parts you care about.</p>
+  <p><img src="/screenshots/json-formatter/JSON_formatter004.png" alt="Explore JSON" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <br>
+  <h2>Tips</h2>
+  <ul>
+    <li>Use <strong>Minify</strong> for sending JSON over networks where bandwidth matters.</li>
+    <li>For very large JSON files, paste or load in parts if your browser shows performance issues.</li>
+    <li>Keep copies of original JSON before mass edits.</li>
+  </ul>
+
+  <br>
+  <h2>Common JSON Validation Errors and How to Fix Them</h2>
+  <p>Frequent mistakes include trailing commas, single quotes instead of double quotes, unquoted keys, comments, and incorrect escape sequences. The validator points to the offending line to help you fix each issue.</p>
+
+  <br>
+  <h2>Use Cases for the JSON Formatter</h2>
+  <ul>
+    <li><strong>Debugging API responses</strong>: Paste raw responses to see structure and spot errors quickly.</li>
+    <li><strong>Validating config files</strong>: Check JSON configs (package.json, tsconfig.json) before runtime failures.</li>
+    <li><strong>Comparing JSON objects</strong>: Pretty-print both and diff to find differences easily.</li>
+    <li><strong>Cleaning exports</strong>: Normalize inconsistent spacing from DB or API dumps.</li>
+    <li><strong>Sharing readable data</strong>: Format JSON before pasting into chats or docs for clarity.</li>
+  </ul>
+
+  <br>
+  <h2>Privacy</h2>
+  <p>All processing happens in your browser; nothing is uploaded to servers. For very sensitive data consider masking or redacting values before pasting.</p>
+
+  <br>
+  <h2>Frequently Asked Questions</h2>
+  <p><strong>What is the maximum JSON size the formatter can handle?</strong> Most files up to several megabytes process instantly. Very large files (50 MB+) may be slow depending on your device.</p>
+  <p><strong>Can I load a JSON file directly?</strong> Yes — drag a <code>.json</code> file onto the editor area to load contents.</p>
+  <p><strong>Does the formatter support JSON5 or JSONC?</strong> The tool validates standard JSON only; strip comments/trailing commas before formatting.</p>
+  <p><strong>Can I convert JSON to CSV?</strong> This tool focuses on formatting and validation; conversion is out of scope.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>

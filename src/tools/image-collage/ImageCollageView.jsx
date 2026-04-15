@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useImageCollage from "./hooks/useImageCollage";
 import ImageFileList from "./ImageFileList";
+import './ImageCollage.css'
 
 const ImageCollageView = ({
   columns,
@@ -657,6 +658,138 @@ const ImageCollageView = ({
           )}
         </>
       )}
+      
+
+      {/* --- Image Collage Guide (user-provided text) --- */}
+      <div className="ic-guide">
+        <div className="ic-guide-header">
+          <h2 className="ic-guide-title">How to Create Stunning Image Collages That Tell a Story</h2>
+          <h3>Introduction</h3>
+          <p className="ic-guide-lead">Sometimes one photo isn’t enough.</p>
+          <p>Whether you're capturing a trip, showcasing products, or sharing moments on social media, a single image can feel limiting. That’s where image collages come in.</p>
+          <p>By combining multiple images into one, you can:</p>
+          <ul className="ic-list">
+            <li>Tell a richer story</li>
+            <li>Show variety in a single frame</li>
+            <li>Create eye-catching visuals</li>
+          </ul>
+          <p>In this guide, you’ll learn how to design effective image collages, when to use them, and how to make them look professional (not messy).</p>
+        </div>
+
+        <section className="ic-section">
+          <h3>What Is an Image Collage?</h3>
+          <p>An image collage is a collection of multiple images arranged into one unified composition.</p>
+          <p>Instead of viewing photos individually, a collage lets you:</p>
+          <ul className="ic-list">
+            <li>Present them together</li>
+            <li>Create meaning through arrangement</li>
+            <li>Highlight connections between images</li>
+          </ul>
+          <p>👉 Think of it as visual storytelling using multiple moments at once.</p>
+        </section>
+
+        <section className="ic-section">
+          <h3>Why Use Image Collages?</h3>
+          <ol className="ic-list">
+            <li><strong>Tell a Complete Story</strong><br/>A single image shows one moment. A collage shows before and after, different angles, or a sequence of events. 👉 This makes it perfect for storytelling and memory sharing.</li>
+            <li><strong>Maximize Limited Space</strong><br/>On platforms like social media, websites, or thumbnails you often have limited space. A collage allows you to show multiple visuals in one post and avoid cluttering your layout.</li>
+            <li><strong>Create Strong Visual Impact</strong><br/>Collages stand out because they contain more information, create contrast and variation, and naturally attract attention. 👉 This makes them great for engagement.</li>
+            <li><strong>Showcase Variety</strong><br/>Perfect for product galleries, portfolio previews, and feature comparisons.</li>
+          </ol>
+        </section>
+
+        <section className="ic-section">
+          <h3>Types of Image Collage Layouts</h3>
+          <div className="ic-layouts">
+            <div className="ic-layout">🔲 <div><strong>Grid Layout</strong><p>Clean and structured — equal-sized images, great for portfolios.</p></div></div>
+            <div className="ic-layout">🧩 <div><strong>Freeform Layout</strong><p>Different sizes and positions — more creative and dynamic.</p></div></div>
+            <div className="ic-layout">🎯 <div><strong>Themed Collage</strong><p>Focused on a single concept — consistent colors or subject.</p></div></div>
+            <div className="ic-layout">🔍 <div><strong>Before &amp; After Collage</strong><p>Shows transformation — common in tutorials and comparisons.</p></div></div>
+          </div>
+        </section>
+
+        <section className="ic-section">
+          <h3>Best Practices for Creating a Great Collage</h3>
+          <ol className="ic-best">
+            <li><strong>Start With a Clear Purpose</strong><br/>Ask yourself: What story am I telling? What should viewers notice first? 👉 Without a purpose, collages look random.</li>
+            <li><strong>Choose Related Images</strong><br/>Images should share a theme and similar tone or subject.</li>
+            <li><strong>Keep It Simple</strong><br/>Too many images can overwhelm viewers — 3–6 images is often ideal.</li>
+            <li><strong>Use Consistent Spacing</strong><br/>Spacing creates balance and readability; uneven spacing looks unprofessional.</li>
+            <li><strong>Maintain Visual Balance</strong><br/>Avoid one side being too heavy; consider symmetry or intentional asymmetry.</li>
+            <li><strong>Pay Attention to Background</strong><br/>A good background supports the images and doesn’t distract.</li>
+          </ol>
+        </section>
+
+        <section className="ic-section">
+          <h3>Common Mistakes to Avoid</h3>
+          <ul className="ic-list">
+            <li>Mixing unrelated images</li>
+            <li>Using too many photos</li>
+            <li>Poor alignment</li>
+            <li>Inconsistent image quality</li>
+            <li>Overcomplicated layouts</li>
+          </ul>
+        </section>
+
+        <section className="ic-section">
+          <h3>Step-by-Step: How to Create an Image Collage</h3>
+          <ol className="ic-steps">
+            <li>Upload your images</li>
+            <li>Select a layout (grid or custom)</li>
+            <li>Arrange images in desired order</li>
+            <li>Adjust spacing and alignment</li>
+            <li>Preview the final composition</li>
+            <li>Download your collage</li>
+          </ol>
+          <p>👉 Try it here:</p>
+          <div className="ic-cta-wrap">
+            <a href="/image-collage" className="ic-cta" onClick={(e)=>{ e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-collage'); }}>Use the Image Collage Tool →</a>
+          </div>
+        </section>
+
+        <section className="ic-section">
+          <h3>Real-World Use Cases</h3>
+          <ul className="ic-list">
+            <li>📱 Social Media Posts — combine highlights into one post and increase engagement</li>
+            <li>🛍 Product Showcases — display multiple angles and highlight features</li>
+            <li>✈️ Travel Memories — show an entire trip in one frame</li>
+            <li>💼 Portfolio Presentation — show variety of work quickly</li>
+          </ul>
+        </section>
+
+        <section className="ic-section">
+          <h3>Image Collage vs Gallery (Important Difference)</h3>
+          <p><strong>Collage:</strong> Single image, strong storytelling, efficient space usage, high visual impact.</p>
+          <p><strong>Gallery:</strong> Multiple images, moderate storytelling, requires scrolling.</p>
+        </section>
+
+        <section className="ic-section">
+          <h3>Tips to Make Your Collage Stand Out</h3>
+          <ul className="ic-list">
+            <li>Use contrast (light vs dark images)</li>
+            <li>Mix close-up and wide shots</li>
+            <li>Add subtle borders</li>
+            <li>Keep a consistent color tone</li>
+          </ul>
+        </section>
+
+        <section className="ic-section">
+          <h3>FAQ</h3>
+          <p><strong>How many images should I use in a collage?</strong><br/>Usually 3–6 images works best for clarity and balance.</p>
+          <p><strong>Can I use different image sizes?</strong><br/>Yes — but keep alignment clean to avoid a messy look.</p>
+          <p><strong>Are collages good for SEO or websites?</strong><br/>Yes — they save space, improve visual engagement, and reduce page clutter.</p>
+          <p><strong>Do collages reduce image quality?</strong><br/>Not if created properly — ensure source images are high quality.</p>
+        </section>
+
+        <section className="ic-section">
+          <h3>Conclusion</h3>
+          <p>Image collages are more than just combining photos — they’re a powerful way to tell stories, present information, and capture attention. With the right layout and purpose, a simple set of images can become a compelling visual experience.</p>
+          <p>👉 Create your own collage here:</p>
+          <div className="ic-cta-wrap">
+            <a href="/image-collage" className="ic-cta" onClick={(e)=>{ e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-collage'); }}>Image Collage Tool →</a>
+          </div>
+        </section>
+      </div>
 
       {showPreview && (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 20 }} onClick={() => setShowPreview(false)} ref={previewOverlayRef}>

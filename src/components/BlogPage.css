@@ -1,0 +1,26 @@
+.blog-post-page .main {
+  padding: 2rem 1.25rem;
+  align-items: center;
+}
+
+.blog-post-page .container {
+  width: 100%;
+  max-width: 860px;
+}
+
+.blog-post-page .card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e6f0;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .blog-post-page .card {
+    padding: 1.25rem 1rem;
+    border-radius: 10px;
+  }
+}
