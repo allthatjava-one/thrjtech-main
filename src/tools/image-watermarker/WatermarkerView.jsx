@@ -38,6 +38,15 @@ export function WatermarkerView({
       <p className="hero-tagline">Protect your images by adding a custom text or logo watermark. 
         Adjust the position and style to fit your needs, then download the watermarked 
         result instantly. <Link to="/blogs/image-watermark-guide">Learn how to put a watermark on your image →</Link></p>
+      
+      <div className="ir-tip-banner">
+        <span className="ir-tip-text">Would you like to <b>resize</b> your image before put watermark?</span>
+        <button className="ir-tip-btn" onClick={() => navigate('/image-resizer')}>
+          Try Image Resizer
+        </button>
+      </div>
+
+
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button
