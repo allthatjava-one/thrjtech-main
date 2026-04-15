@@ -307,3 +307,29 @@
     padding-right: 1rem;
   }
 }
+
+/* Image Collage guide styles - cool-toned, high-contrast */
+.ic-guide {
+  margin: 28px 0;
+  padding: 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(15,23,42,0.03), rgba(15,23,42,0.01));
+  border: 1px solid rgba(20,36,56,0.06);
+  color: #0f172a;
+}
+.ic-guide-header { margin-bottom: 12px }
+.ic-guide-title { font-size: 1.4rem; color: #05204a; margin: 0 0 6px }
+.ic-guide-lead { color: #23466a; margin: 0 0 10px }
+.ic-section { margin: 12px 0; color: #16324a }
+.ic-list, .ic-steps { margin-left: 18px; color: #254a66 }
+.ic-layouts { display:flex; gap:10px; flex-wrap:wrap }
+.ic-layout { background: rgba(37,74,102,0.04); padding:10px; border-radius:8px; display:flex; gap:8px; align-items:flex-start; min-width:160px }
+.ic-layout strong { display:block }
+.ic-best { margin-left:18px; color:#1b3b54 }
+.ic-cta-wrap { margin-top:14px }
+.ic-cta { display:inline-block; padding:10px 14px; background: linear-gradient(90deg,#3b82f6,#06b6d4); color:#fff; border-radius:8px; text-decoration:none; font-weight:600 }
+
+@media (max-width: 720px) {
+  .ic-layouts { flex-direction: column }
+  .ic-guide { padding: 16px }
+}

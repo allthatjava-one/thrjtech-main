@@ -297,3 +297,28 @@
     padding-right: 1rem;
   }
 }
+
+/* --- Meme guide styles (distinct, punchy) --- */
+.mg-guide {
+  margin: 24px 0;
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(245,248,255,0.9), #fff);
+  border: 1px solid rgba(10,20,40,0.06);
+  color: #0b1220;
+}
+.mg-title { font-size: 1.4rem; color: #0b1220; margin-bottom: 8px }
+.mg-list { margin-left: 1rem; color: #243447 }
+.mg-section { margin: 12px 0 }
+.mg-cta-wrap { margin-top: 12px }
+.mg-cta { display:inline-block; padding:10px 14px; background: linear-gradient(90deg,#111827,#6366f1); color:#fff; border-radius:8px; text-decoration:none; font-weight:700 }
+.mg-table { width:100%; border-collapse: collapse; margin-top: 10px }
+.mg-table th, .mg-table td { border: 1px solid rgba(15,23,42,0.06); padding: 8px; text-align: left }
+.mg-table thead th { background: rgba(99,102,241,0.08); font-weight:700 }
+
+.mg-section { margin: 12px 0; color: #16324a }
+
+@media (max-width:720px) {
+  .mg-guide { padding: 14px }
+  .mg-table { font-size: 0.92rem }
+}

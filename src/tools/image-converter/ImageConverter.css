@@ -415,3 +415,102 @@
     padding-right: 1rem;
   }
 }
+
+/* ── Guide styles (Image Converter) — scoped to .ic-guide-convert ── */
+.ic-section { margin: 12px 0; color: #16324a }
+
+.ic-guide-convert {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.25rem;
+  width: 100%;
+  margin-top: 1.25rem;
+  align-items: start;
+}
+
+.ic-guide-convert .ic-guide-article {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+  border: 1px solid #e6e9f8;
+  padding: 1.25rem;
+  border-radius: 10px;
+}
+
+.ic-guide-convert .ic-guide-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  color: #0f172a;
+}
+
+.ic-guide-convert .ic-lead {
+  margin: 0.4rem 0 0.6rem 0;
+  color: #374151;
+  font-weight: 600;
+}
+
+.ic-guide-convert .ic-bullet-list {
+  margin: 0.4rem 0 0.8rem 1rem;
+  color: #4b5563;
+}
+
+.ic-guide-convert .ic-format-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 0.5rem;
+  margin: 0.6rem 0 0.8rem 0;
+}
+
+.ic-guide-convert .ic-format-pill {
+  background: #fff;
+  border: 1px solid #eef2ff;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #0b1220;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.ic-guide-convert .ic-format-pill span { font-weight: 500; color: #6b7280; font-size: 0.78rem; }
+.ic-guide-convert .ic-pill-jpg { border-left: 4px solid #f97316; }
+.ic-guide-convert .ic-pill-png { border-left: 4px solid #6366f1; }
+.ic-guide-convert .ic-pill-webp { border-left: 4px solid #06b6d4; }
+.ic-guide-convert .ic-pill-heic { border-left: 4px solid #f43f5e; }
+
+.ic-guide-convert .ic-checklist { margin-left: 1rem; color: #374151; }
+.ic-guide-convert .ic-xlist { margin-left: 1rem; color: #374151; }
+
+.ic-guide-convert .ic-steps-compact { margin-left: 1rem; color: #374151; }
+
+.ic-guide-convert .ic-conclusion { margin-top: 0.8rem; font-weight: 600; color: #111827; }
+
+.ic-guide-convert .ic-guide-aside { position: relative; }
+.ic-guide-convert .ic-aside-card {
+  position: sticky;
+  top: 80px;
+  background: linear-gradient(180deg,#f8fafc 0%, #ffffff 100%);
+  border: 1px solid #e6eef7;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.ic-guide-convert .ic-guide-cta {
+  display: inline-block;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  margin: 0.6rem 0 0.8rem 0;
+  cursor: pointer;
+}
+
+.ic-guide-convert .ic-mini-list { margin: 0; padding-left: 1rem; color: #475569; }
+
+@media (max-width: 900px) {
+  .ic-guide-convert { grid-template-columns: 1fr; }
+  .ic-guide-convert .ic-aside-card { position: relative; top: auto; }
+}

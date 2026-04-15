@@ -1,0 +1,101 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1>Image Converter — Convert Images Between Formats in Your Browser (JPG, PNG, WebP, AVIF, BMP, GIF, ICO)</h1>
+
+  <p>A complete guide to the <strong>Image Converter</strong> on THRJ. This article explains how to convert images between formats, preserve transparency, create ICO favicon files, and choose the right format for every use case — all without uploading your files to a server. <a href="/image-converter">Open the Image Converter</a></p>
+
+  <br>
+  <h2>Why Image Format Matters</h2>
+
+  <p>Every image format was designed for a different purpose, and choosing the wrong one can mean bloated file sizes, lost transparency, or degraded quality. Understanding the trade-offs helps you pick the right format every time:</p>
+
+  <ul>
+    <li><strong>JPEG (JPG)</strong>: Best for photos and complex color gradients. Lossy compression produces small files, but repeated saves degrade quality. Does not support transparency.</li>
+    <li><strong>PNG</strong>: Lossless compression with full transparency support. Larger file sizes than JPEG, but ideal for screenshots, logos, icons, and any image where sharp edges and transparency matter.</li>
+    <li><strong>WebP</strong>: Google's modern format that beats both JPEG and PNG in file size at equivalent quality. Supports transparency and animation. Excellent for web pages.</li>
+    <li><strong>AVIF</strong>: Next-generation format with outstanding compression. Produces the smallest files at high quality, and supports transparency. Browser support is now mainstream as of 2024.</li>
+    <li><strong>BMP</strong>: Uncompressed bitmap format, generally much larger than other options. Used in some legacy Windows applications.</li>
+    <li><strong>GIF</strong>: 8-bit color with animation support. Largely superseded by WebP and APNG for animations, but still widely supported everywhere.</li>
+    <li><strong>ICO</strong>: Windows icon format, used for browser favicons and desktop icons. Contains one or more image sizes in a single file container.</li>
+  </ul>
+
+  <br>
+  <h2>Overview</h2>
+
+  <p>Image Converter runs entirely in your browser — no uploads required. It decodes your image, draws it to an offscreen canvas, and exports to the selected target format. Supported outputs include JPG, PNG, WebP, AVIF, BMP, GIF, and ICO. TIFF is supported as an input format (decoded in-browser).</p>
+
+  <br>
+  <h2>Quick steps</h2>
+
+  <ol>
+    <li>Open the Image Converter page: <code>/image-converter</code>.</li>
+    <li>Drag &amp; drop an image or click to choose a file.</li>
+    <li>Pick the output format from the buttons.</li>
+    <li>(For ICO) choose the desired icon size and click <strong>Convert</strong>.</li>
+    <li>Download the converted image using <strong>Download</strong>.</li>
+  </ol>
+
+  <br>
+  <h2>Step-by-step with screenshots</h2>
+
+  <h3>1. Upload an image</h3>
+  <p>Drop a file onto the upload area or use the file picker. The tool auto-selects sensible defaults.</p>
+  <p><img src="/screenshots/image-converter/image-converter-002.png" alt="Upload" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <h3>2. Choose a format and convert</h3>
+  <p>Select the target format and click <strong>Convert</strong>. The preview shows the converted result and supports pan and zoom.</p>
+  <p><img src="/screenshots/image-converter/image-converter-003.png" alt="Convert" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <br>
+  <h2>Tips</h2>
+  <ul>
+    <li>Use PNG, WebP, or AVIF to preserve transparency.</li>
+    <li>For photos, JPG or AVIF typically give the best size/quality trade-off.</li>
+    <li>ICO exports create single-size icons; pick the size you need for favicons.</li>
+  </ul>
+
+  <br>
+  <h2>When to Convert — Practical Scenarios</h2>
+
+  <p><strong>Converting a screenshot PNG to JPEG</strong>: If you need to share a screenshot but the PNG is too large for email, converting to JPEG at 85% quality typically reduces the file by 60–75% with barely noticeable visual difference.</p>
+
+  <p><strong>Converting a JPEG photo to WebP for a website</strong>: WebP files are typically 25–35% smaller than JPEG at equivalent quality. Switching to WebP can meaningfully improve page load speeds and Core Web Vitals scores, which matter for SEO.</p>
+
+  <p><strong>Creating a favicon ICO</strong>: Browser favicons traditionally require ICO format with specific sizes (16×16, 32×32, 48×48). The converter lets you pick the size and export directly. For modern browsers, a 32×32 PNG also works but ICO provides better compatibility with older browsers.</p>
+
+  <p><strong>Removing a white background</strong>: If you need transparency but have a JPEG (which cannot store transparency), you will need an editing tool to remove the background first, then export as PNG or WebP.</p>
+
+  <br>
+  <h2>Format Comparison Table</h2>
+  <table>
+    <thead>
+      <tr><th>Format</th><th>Transparency</th><th>Animation</th><th>Lossless option</th><th>Typical use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>JPEG</td><td>No</td><td>No</td><td>No</td><td>Photos, complex imagery</td></tr>
+      <tr><td>PNG</td><td>Yes</td><td>No</td><td>Yes</td><td>Screenshots, logos, icons</td></tr>
+      <tr><td>WebP</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Web images (modern browsers)</td></tr>
+      <tr><td>AVIF</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Web images (best compression)</td></tr>
+      <tr><td>GIF</td><td>1-bit</td><td>Yes</td><td>Yes (256 colors)</td><td>Simple animations, icons</td></tr>
+      <tr><td>BMP</td><td>No</td><td>No</td><td>Yes</td><td>Legacy Windows apps</td></tr>
+      <tr><td>ICO</td><td>Yes</td><td>No</td><td>Yes</td><td>Favicons, desktop icons</td></tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2>Privacy</h2>
+  <p>All conversion happens locally in your browser; no files are uploaded to any server. This means you can safely convert sensitive or confidential images without worrying about data leaving your device.</p>
+
+  <h2>Frequently Asked Questions</h2>
+  <p><strong>Why is my converted JPEG much larger than the original JPEG?</strong> The conversion process decodes the original JPEG into a raw pixel buffer and then re-encodes it. If the original was highly compressed, the re-encoded version at a higher quality setting will be larger. Adjust the quality slider downward to reduce file size.</p>
+
+  <p><strong>Can I convert multiple images at once?</strong> Currently the tool processes one image at a time. For batch conversions, you can re-use the tool quickly by dragging the next image in after each conversion.</p>
+
+  <p><strong>Why doesn't AVIF work in my browser?</strong> AVIF encoding requires browser support for the <code>canvas.toBlob()</code> API with AVIF. Most modern browsers support this, but older versions may not. Switch to WebP as a fallback if AVIF is unavailable.</p>
+
+  <p><strong>Can I convert a PDF page to an image?</strong> The image converter handles image files. To convert PDF pages to images, use the <a href="/pdf-converter">PDF Converter</a> on THRJ.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>

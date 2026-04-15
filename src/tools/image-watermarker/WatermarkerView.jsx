@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect, useRef } from 'react'
+import './Watermarker.css'
 
 export function WatermarkerView({
   mainImage,
@@ -25,6 +26,7 @@ export function WatermarkerView({
   const [previewOpen, setPreviewOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
   const logoInputRef = useRef(null)
+  const navigate = useNavigate();
 
   // Auto-open popup once the watermarked result is ready
   useEffect(() => {
@@ -256,6 +258,73 @@ export function WatermarkerView({
         )}
       </div>
       {errorMsg && <div className="error-msg">{errorMsg}</div>}
+
+      {/* ── Watermarker Guide Section ── */}
+      <div className="wm-guide">
+        <div className="wm-guide-intro">
+          <h2 className="wm-guide-title">How to Add Watermarks to Images (Protect Your Work and Build Your Brand)</h2>
+          <p className="wm-guide-lead">If you share images online — whether photos, designs, or screenshots — you’ve probably worried about others using them without permission. That’s where watermarking comes in. Adding a watermark allows you to protect ownership, promote your brand, and prevent unauthorized reuse.</p>
+        </div>
+
+        <div className="wm-guide-section">
+          <h3 className="wm-guide-h3">What Is a Watermark?</h3>
+          <p>A watermark is a visible overlay (text or logo) placed on an image to indicate ownership or origin. Common types include text watermarks (name, website), logo watermarks (brand identity), and pattern watermarks (repeated across image).</p>
+        </div>
+
+        <div className="wm-guide-section wm-guide-why">
+          <h3 className="wm-guide-h3">Why You Should Use Watermarks</h3>
+          <ol className="wm-guide-list">
+            <li><strong>Protect Your Content:</strong> Watermarks discourage casual reuse by clearly showing ownership.</li>
+            <li><strong>Build Brand Recognition:</strong> Every shared image carries your name or logo with it.</li>
+            <li><strong>Prevent Content Theft:</strong> Makes removal harder and reduces casual copying.</li>
+            <li><strong>Add Professional Identity:</strong> Watermarked images look intentional and authoritative.</li>
+          </ol>
+        </div>
+
+        <div className="wm-guide-section">
+          <h3 className="wm-guide-h3">Types of Watermarks</h3>
+          <div className="wm-guide-types">
+            <div className="wm-type">🔤<div className="wm-type-body"><strong>Text Watermark</strong><p>Simple and fast — good for blogs and tools (e.g., "thrjtech.com").</p></div></div>
+            <div className="wm-type">🖼<div className="wm-type-body"><strong>Logo Watermark</strong><p>Strong branding — ideal for businesses; use PNG/SVG for transparency.</p></div></div>
+            <div className="wm-type">🔁<div className="wm-type-body"><strong>Repeated Watermark</strong><p>Tiled across the image — best for high-value content, but less clean visually.</p></div></div>
+          </div>
+        </div>
+
+        <div className="wm-guide-section">
+          <h3 className="wm-guide-h3">Best Practices</h3>
+          <ul className="wm-guide-best">
+            <li>Keep it visible but not distracting (opacity ~30–60%).</li>
+            <li>Choose the right position: corner for subtle, center for strong protection.</li>
+            <li>Use consistent branding (font, logo, placement).</li>
+            <li>Avoid overpowering the image — balance is key.</li>
+            <li>Match watermark color to image brightness for legibility.</li>
+          </ul>
+        </div>
+
+        <div className="wm-guide-section">
+          <h3 className="wm-guide-h3">Step-by-Step</h3>
+          <ol className="wm-guide-steps">
+            <li>Upload your image</li>
+            <li>Enter text or upload a logo</li>
+            <li>Adjust size, position, and opacity</li>
+            <li>Preview the watermark</li>
+            <li>Download the final image</li>
+          </ol>
+        </div>
+
+        <div className="wm-guide-section wm-guide-faq">
+          <h3 className="wm-guide-h3">FAQ</h3>
+          <details className="wm-faq-item"><summary>Can watermarks be removed?</summary><p>Yes — advanced tools may remove watermarks, but well-placed marks make removal harder.</p></details>
+          <details className="wm-faq-item"><summary>What opacity should I use?</summary><p>Usually between 30% and 60% depending on the background.</p></details>
+          <details className="wm-faq-item"><summary>Should I place watermark in the center?</summary><p>Center placement offers stronger protection; corners are subtler — choose based on your goal.</p></details>
+        </div>
+
+        <div className="wm-guide-conclusion">
+          <h3>Conclusion</h3>
+          <p>Watermarking is a simple way to protect images, promote your brand, and maintain ownership visibility. When done right it enhances your content without distracting from it.</p>
+          <a href="/image-watermarker" className="wm-guide-cta" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-watermarker'); }}>Try the Image Watermarker →</a>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useRef, useState, useEffect } from "react";
 import "./MemeGenerator.css";
 
@@ -6,6 +6,7 @@ export default function MemeGeneratorView({ initialFile }) {
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
+  const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(null);
   const [imageObj, setImageObj] = useState(null);
   // Layers: multiple text layers with position, size and color
@@ -633,9 +634,11 @@ export default function MemeGeneratorView({ initialFile }) {
                   </li>
                 </ol>
               </div>
-          </div>
-      </div>
-    <div className="meme-generator">
+            </div>
+        </div>
+
+        
+      <div className="meme-generator">
       <div className="meme-controls">
         {/* Image upload handled by the Upload button below — remove top file input */}
         <div className="control-row layers-header">
@@ -772,6 +775,137 @@ export default function MemeGeneratorView({ initialFile }) {
         </div>
       </div>
     )}
+      {/* --- Meme Guide (user-provided copy) — placed at end of main content --- */}
+      <div className="mg-guide">
+        <h2 className="mg-title">How to Create Memes That Actually Go Viral (Simple Guide for Beginners)</h2>
+        <p>Memes are everywhere. From social media feeds to group chats, memes have become one of the fastest ways to communicate ideas, humor, and opinions.</p>
+        <p>But creating a meme that people actually share? That’s a different story.</p>
+        <p>In this guide, you’ll learn:</p>
+        <ul className="mg-list">
+          <li>What makes a meme work</li>
+          <li>How to create one from scratch</li>
+          <li>Common mistakes to avoid</li>
+          <li>Tips to make your memes more engaging</li>
+        </ul>
+
+        <section className='mg-section'>
+        <h3>What Is a Meme (Really)?</h3>
+        <p>A meme is a piece of content — usually an image with text — designed to be shared and adapted by others.</p>
+        <p>Unlike regular images, memes are relatable, quick to understand, and easy to share. 👉 A good meme delivers its message in seconds.</p>
+        </section>
+    
+        <section className='mg-section'>
+        <h3>Why Memes Are So Popular</h3>
+        <ol className="mg-list">
+          <li><strong>Instant Communication</strong> — Memes compress ideas into one image and a few words, faster than paragraphs.</li>
+          <li><strong>Relatability</strong> — The best memes make people think “That’s exactly me.”</li>
+          <li><strong>Shareability</strong> — Memes are designed to be reposted and modified.</li>
+          <li><strong>Low Effort, High Impact</strong> — You don’t need design skills or expensive tools; just a good idea.</li>
+        </ol>
+        </section>
+
+
+        <section className='mg-section'>
+        <h3>Anatomy of a Good Meme</h3>
+        <ul className="mg-list">
+          <li><strong>Image:</strong> Recognizable or expressive, supports the message.</li>
+          <li><strong>Text:</strong> Short and clear, easy to read.</li>
+          <li><strong>Punchline:</strong> The twist or humor that makes people share.</li>
+        </ul>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Types of Memes You Can Create</h3>
+        <ul className="mg-list">
+          <li>😂 Relatable Memes — everyday situations</li>
+          <li>🔥 Trend-Based Memes — use current formats</li>
+          <li>💼 Niche Memes — target specific audiences</li>
+          <li>🧠 Informational Memes — mix humor with useful info</li>
+        </ul>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Best Practices</h3>
+        <ol className="mg-list">
+          <li>Keep text short — 2–3 seconds to read.</li>
+          <li>Use clear, bold fonts with high contrast.</li>
+          <li>Match text to image so it reinforces the message.</li>
+          <li>Stay relevant — trending formats perform better.</li>
+          <li>Know your audience and tailor the humor.</li>
+        </ol>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Common Mistakes to Avoid</h3>
+        <ul className="mg-list">
+          <li>Too much text</li>
+          <li>Unclear message</li>
+          <li>Using outdated formats</li>
+          <li>Low-quality images</li>
+          <li>Trying too hard to be funny</li>
+        </ul>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Step-by-Step: How to Create a Meme</h3>
+        <ol className="mg-list">
+          <li>Upload or choose an image</li>
+          <li>Add top and/or bottom text</li>
+          <li>Adjust font size and position</li>
+          <li>Preview your meme</li>
+          <li>Download and share</li>
+        </ol>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Real-World Use Cases</h3>
+        <ul className="mg-list">
+          <li>📱 Social Media Content — boost engagement</li>
+          <li>💼 Marketing — make brands feel human</li>
+          <li>🧑‍💻 Developer Humor — build community</li>
+          <li>👥 Group Chats — react faster than typing</li>
+        </ul>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Tips to Make Your Memes Stand Out</h3>
+        <ul className="mg-list">
+          <li>Use unexpected twists</li>
+          <li>Combine two ideas creatively</li>
+          <li>Keep it simple but clever</li>
+          <li>Test different variations</li>
+        </ul>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Meme Generator vs Image Editor</h3>
+        <table className="mg-table">
+          <thead><tr><th>Feature</th><th>Meme Generator</th><th>Image Editor</th></tr></thead>
+          <tbody>
+            <tr><td>Purpose</td><td>Quick meme creation</td><td>General editing</td></tr>
+            <tr><td>Speed</td><td>Fast</td><td>Slower</td></tr>
+            <tr><td>Ease of use</td><td>Very easy</td><td>Moderate</td></tr>
+            <tr><td>Focus</td><td>Text + image</td><td>Full customization</td></tr>
+          </tbody>
+        </table>
+        </section>
+
+        <section className='mg-section'>
+        <h3>FAQ</h3>
+        <p><strong>Do I need design skills?</strong> No — just a good idea and clear message.</p>
+        <p><strong>Can I use any image?</strong> You can, but be mindful of copyright and prefer common meme formats when possible.</p>
+        <p><strong>Why are my memes not getting engagement?</strong> Possible reasons: too much text, not relatable, outdated format.</p>
+        </section>
+
+        <section className='mg-section'>
+        <h3>Conclusion</h3>
+        <p>Creating memes isn’t about complex design — it’s about communication and timing. Focus on clear ideas, simple text, and relatability.</p>
+        <p>👉 Try making your own here:</p>
+        <div className="mg-cta-wrap">
+          <a href="/image-meme-generator" className="mg-cta" onClick={(e)=>{ e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-meme-generator'); }}>Image Meme Generator →</a>
+        </div>
+        </section>
+      </div>
     </>
   );
 }
