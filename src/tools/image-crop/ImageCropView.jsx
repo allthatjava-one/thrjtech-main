@@ -172,6 +172,13 @@ export function ImageCropView(props) {
       <p className="hero-tagline">Select and crop a portion of your image. 
         Use presets, zoom, rotate and flip tools, then preview and download. <Link to="/blogs/image-crop-guide">Learn how to crop your image →</Link></p>
 
+      <div className="ir-tip-banner">
+        <span className="ir-tip-text">Would you like to put words on your image before cropping it?</span>
+        <button className="ir-tip-btn" onClick={() => navigate('/image-meme-generator')}>
+          Try Meme Generator
+        </button>
+      </div>
+
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button

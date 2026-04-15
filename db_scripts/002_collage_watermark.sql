@@ -1,4 +1,4 @@
-INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
+INSERT INTO blogs (slug, title, description, thumbnail, content,createdAt) VALUES
 (
   'image-collage-guide',
   'Want beautifully collaged images?',
@@ -55,7 +55,8 @@ A short walkthrough for using the Image Collage tool on THRJ. This guide explain
 - Animated sources (GIF/WebP) are flattened to a single frame during export.
 
 ---
-Published by THRJ Tech.'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 );
 
 INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
@@ -118,6 +119,7 @@ A short walkthrough for using the Image Watermarker tool on THRJ. This guide exp
 - Visible watermarks deter casual reuse but are not foolproof — a determined actor can crop or remove them.
 
 ---
-Published by THRJ Tech'
+Published by THRJ Tech',
+CURRENT_TIMESTAMP
 );
 

@@ -269,10 +269,10 @@ export default function JsonFormatterView() {
         </div>
 
         {/* JSON Formatter guide - purple/code-editor vibe */}
-        <div style={{ marginTop: 28, padding: 18, borderTop: '1px solid #dddaff', color: '#111' }}>
-          <div style={{ display: 'flex', gap: 12 }}>
-            <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1, fontFamily: 'monospace', fontWeight: 700, color: '#6c63ff' }}>{'{}'}</div>
-            <div style={{ flex: 1 }}>
+        <div className="jf-guide" style={{ marginTop: 28, padding: 18, borderTop: '1px solid #dddaff', color: '#111' }}>
+          <div className="jf-guide-row" style={{ display: 'flex', gap: 12 }}>
+            <div className="jf-guide-icon" style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1, fontFamily: 'monospace', fontWeight: 700, color: '#6c63ff' }}>{'{}'}</div>
+            <div className="jf-guide-content" style={{ flex: 1 }}>
               <h2 style={{ margin: 0, fontSize: 22 }}>How to Read and Fix JSON Faster (A Practical Guide for Developers)</h2>
               <p style={{ marginTop: 8 }}>If you've ever worked with APIs, logs, or config files, you've seen something like this:</p>
               <pre style={{ background: '#1e1e2e', color: '#cdd6f4', borderRadius: 6, padding: '10px 14px', fontSize: 13, overflowX: 'auto', marginTop: 8 }}>{'{"user":{"id":1,"name":"John","roles":["admin","editor"],"active":true}}'}</pre>

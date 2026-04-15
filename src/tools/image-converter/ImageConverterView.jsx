@@ -164,6 +164,13 @@ export function ImageConverterView({
         Convert images between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely 
         in your browser — no uploads, no account required. <Link to="/blogs/image-converter-guide">Learn how to use the Image Converter →</Link>
       </p>
+              
+      <div className="ir-tip-banner">
+        <span className="ir-tip-text">Would you like to <b>crop</b> your image before converting your image?</span>
+        <button className="ir-tip-btn" onClick={() => navigate('/image-resizer')}>
+          Try Image Crop
+        </button>
+      </div>
 
       {/* ── Details / How it works ── */}
       <div className="details-row" data-open={openPanel}>

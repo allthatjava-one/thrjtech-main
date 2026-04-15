@@ -10,6 +10,13 @@
   padding: 0 1.5rem;
 }
 
+/* Prevent the card from overflowing small viewports */
+.jf-container,
+.jf-container .card {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
 /* ── Hero ────────────────────────────────────────────────────── */
 .jf-hero {
   text-align: center;
@@ -276,6 +283,55 @@ kbd {
   .jf-json-output {
     min-height: 260px;
   }
+
+  /* Reduce padding and avoid horizontal scroll on very small screens */
+  .jf-container {
+    padding: 0 1rem;
+  }
+
+  .jf-container .card {
+    padding: 1rem;
+    overflow-x: visible;
+  }
+}
+
+/* Ensure guide content cannot overflow its container and wraps long words */
+.jf-guide,
+.jf-guide * {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.jf-guide-content,
+.jf-guide-content p,
+.jf-guide-content h2,
+.jf-guide-content h3,
+.jf-guide-content li,
+.jf-guide-content ul,
+.jf-guide-content ol,
+.jf-guide-content table,
+.jf-guide-content td,
+.jf-guide-content th,
+.jf-guide-content code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.jf-guide-content table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+.jf-guide-content pre {
+  white-space: pre-wrap; /* allow wrapping within pre blocks */
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+@media (max-width: 480px) {
+  .jf-guide-content h2 { font-size: 18px; }
+  .jf-guide-content pre { font-size: 12px; padding: 8px; }
 }
 
 /* Tool details (collapsible) */
@@ -398,4 +454,43 @@ kbd {
   display: none !important;
 }
 .jf-container .details-row[data-open="howitworks"] .tool-details {
+}
+
+/* Guide block responsiveness (bottom content inside the card) */
+.jf-guide-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.jf-guide-icon {
+  flex: 0 0 60px;
+  font-size: 34px;
+  line-height: 1;
+  font-family: monospace;
+  font-weight: 700;
+  color: #6c63ff;
+}
+.jf-guide-content {
+  flex: 1 1 0;
+  min-width: 0; /* allow content to shrink below its contents */
+}
+.jf-guide-content pre {
+  overflow-x: auto;
+}
+
+@media (max-width: 720px) {
+  .jf-guide {
+    padding: 12px;
+  }
+  .jf-guide-row {
+    flex-direction: column;
+  }
+  .jf-guide-icon {
+    flex: 0 0 auto;
+    margin-bottom: 8px;
+  }
+  .jf-guide-content pre {
+    width: 100%;
+  }
 }
