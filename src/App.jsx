@@ -1,6 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import RotatingCards from './components/RotatingCards'
@@ -58,6 +58,58 @@ function HomePage() {
             <RotatingCards />
           </div>
         </div>
+
+        {/* Popular Guides */}
+        <section className="home-section">
+          <div className="container">
+            <h2 className="home-section-title">Popular Guides</h2>
+            <div className="guide-links">
+              <Link className="guide-link" to="/blogs/json-formatter-guide">JSON Formatter — Pretty-print, validate &amp; explore JSON</Link>
+              <Link className="guide-link" to="/blogs/image-crop-guide">Image Crop — Trim and frame your images</Link>
+              <Link className="guide-link" to="/blogs/meme-generator-guide">Meme Generator — Create shareable memes in seconds</Link>
+              <Link className="guide-link" to="/blogs/pdf-compressor-guide">PDF Compressor — Shrink PDF file sizes quickly</Link>
+              <Link className="guide-link" to="/blogs/image-collage-guide">Image Collage — Build beautiful photo collages</Link>
+              <Link className="guide-link" to="/blogs/pdf-merger-guide">PDF Merger — Combine multiple PDFs into one</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Developer & Image Tools Spotlight */}
+        <section className="home-section home-section--alt">
+          <div className="container">
+
+            {/* Developer Tools */}
+            <div className="spotlight-group">
+              <h2 className="home-section-title">Developer Tools</h2>
+              <div className="spotlight-cards">
+                <Link className="spotlight-card" to="/json-formatter">
+                  <span className="spotlight-card-name">JSON Formatter</span>
+                  <p className="spotlight-card-desc">Format, validate, and pretty-print JSON instantly in your browser. Supports syntax highlighting, minification, and clear error reporting.</p>
+                </Link>
+                <Link className="spotlight-card" to="/regex-tester">
+                  <span className="spotlight-card-name">Regex Tester</span>
+                  <p className="spotlight-card-desc">Test regular expressions with live match highlighting and replace support. Iterate quickly on patterns with real-time feedback.</p>
+                </Link>
+              </div>
+            </div>
+
+            {/* Image Tools */}
+            <div className="spotlight-group">
+              <h2 className="home-section-title">Image Tools</h2>
+              <div className="spotlight-cards">
+                <Link className="spotlight-card" to="/image-crop">
+                  <span className="spotlight-card-name">Crop Image</span>
+                  <p className="spotlight-card-desc">Crop any image to the exact size and aspect ratio you need. Supports free-form cropping and convenient presets like 1:1, 16:9, and 4:5 — all in your browser.</p>
+                </Link>
+                <Link className="spotlight-card" to="/image-meme-generator">
+                  <span className="spotlight-card-name">Meme Generator</span>
+                  <p className="spotlight-card-desc">Add bold text layers over any image, drag them into position, and download your custom meme as a PNG. No account needed.</p>
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </section>
 
         {/* Main content - End */}
       </main>
