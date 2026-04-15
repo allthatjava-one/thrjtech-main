@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import { formatSize } from './utils/formatSize'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { formatSize } from './utils/formatSize'
 
 export function PdfMergerView({
   files,
@@ -30,6 +30,7 @@ export function PdfMergerView({
   setCompress,
 }) {
   const [openPanel, setOpenPanel] = useState('')
+  const navigate = useNavigate()
   return (
     <>
       {status !== 'done' && (
@@ -311,6 +312,132 @@ export function PdfMergerView({
         Note: The merged file will be stored in Cloudflare R2 storage for 30 min. Please
         download it within this period. After 30 min, the file will be automatically deleted.
       </div>
+
+      {/* Merger guide - different visual vibe */}
+      <section className="merger-guide" style={{ marginTop: 28 }}>
+        <div style={{ maxWidth: 880, margin: '0 auto', padding: 18, background: 'linear-gradient(180deg,#f7fbff,#ffffff)', borderRadius: 10, border: '1px solid #e6f0ff', color: '#111' }}>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>
+              🧩
+            </div>
+            <div style={{ flex: 1 }}>
+              <h2 style={{ margin: 0, fontSize: 22 }}>Combine Multiple PDFs Into One (Clean, Organized &amp; Stress-Free Guide)</h2>
+              <p style={{ marginTop: 8 }}>Working with multiple PDF files can get messy fast. Instead of sending or managing them one by one, you can merge everything into a single, clean document.</p>
+              <p style={{ marginTop: 6, fontWeight: 700 }}>👉 This guide shows you how to merge PDFs efficiently, organize them properly, and avoid common mistakes.</p>
+
+              <br />
+              <h3 style={{ marginTop: 12 }}>📌 What Is a PDF Merger?</h3>
+              <p>A PDF merger is a tool that lets you:</p>
+              <ul style={{ marginLeft: 16 }}>
+                <li>📄 Combine multiple PDF files</li>
+                <li>🔀 Rearrange page order</li>
+                <li>➕ Add or remove pages</li>
+                <li>📥 Export as a single document</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🎯 Why Merging PDFs Matters</h3>
+              <ul style={{ marginLeft: 16 }}>
+                <li><strong>Better Organization</strong> — turn several files into one structured document.</li>
+                <li><strong>Easier Sharing</strong> — one file is faster, cleaner, and less confusing.</li>
+                <li><strong>Professional Presentation</strong> — a single merged PDF looks polished.</li>
+                <li><strong>Improved Workflow</strong> — reduces clutter and repetitive tasks.</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🛠 Common Use Cases</h3>
+              <ul style={{ marginLeft: 16 }}>
+                <li>💼 Business Documents — combine reports, invoices, contracts</li>
+                <li>🎓 Student Assignments — merge multiple sections into one submission</li>
+                <li>🧾 Scanned Files — combine scanned pages into a single file</li>
+                <li>📑 Application Submissions — resume + cover letter + certificates</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🧠 How PDF Merging Works (Simple Explanation)</h3>
+              <p>Files are loaded, pages are extracted and arranged, and a new PDF is generated. The original files remain unchanged.</p>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🧭 Step-by-Step: Merge PDFs Easily</h3>
+              <ol style={{ marginLeft: 16 }}>
+                <li>📤 Upload your PDF files</li>
+                <li>👀 Preview all pages</li>
+                <li>🔀 Drag to reorder</li>
+                <li>➕ Add or remove files</li>
+                <li>📥 Download merged PDF</li>
+              </ol>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🎨 Tips to Make Your Merged PDF Look Clean</h3>
+              <ul style={{ marginLeft: 16 }}>
+                <li>✅ Keep logical order (Cover → Content → Appendix)</li>
+                <li>✅ Use clear file naming (rename files in correct order)</li>
+                <li>✅ Remove unnecessary pages (blank pages, duplicates)</li>
+                <li>✅ Check final output (page order, orientation, formatting)</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>⚠️ Common Mistakes to Avoid</h3>
+              <ul style={{ marginLeft: 16 }}>
+                <li>❌ Wrong page order</li>
+                <li>❌ Mixing portrait &amp; landscape awkwardly</li>
+                <li>❌ Forgetting to remove duplicates</li>
+                <li>❌ Merging low-quality scans</li>
+                <li>❌ Not reviewing final file</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🔍 PDF Merger vs PDF Splitter</h3>
+              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid #e6f0ff' }}>
+                    <th style={{ textAlign: 'left', padding: 6 }}>Feature</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>PDF Merger</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>PDF Splitter</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #f3f7ff' }}>Purpose</td><td style={{ padding: 6, borderBottom: '1px solid #f3f7ff' }}>Combine files</td><td style={{ padding: 6, borderBottom: '1px solid #f3f7ff' }}>Break files apart</td></tr>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #f3f7ff' }}>Output</td><td style={{ padding: 6, borderBottom: '1px solid #f3f7ff' }}>Single document</td><td style={{ padding: 6, borderBottom: '1px solid #f3f7ff' }}>Multiple documents</td></tr>
+                  <tr><td style={{ padding: 6 }}>Use case</td><td style={{ padding: 6 }}>Organization</td><td style={{ padding: 6 }}>Extraction</td></tr>
+                </tbody>
+              </table>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🚀 Pro Tips for Faster Workflow</h3>
+              <ul style={{ marginLeft: 16 }}>
+                <li>🗂 Prepare files in advance</li>
+                <li>🔢 Name files in order (01, 02, 03…)</li>
+                <li>⚡ Merge once instead of repeatedly</li>
+                <li>🔒 Use tools that respect privacy</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🔐 Is It Safe to Merge PDFs Online?</h3>
+              <p>Most tools process files temporarily and delete them after completion. Still, avoid uploading sensitive documents unless you trust the tool.</p>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>❓ FAQ</h3>
+              <p><strong>Can I change page order after merging?</strong> Yes — most tools allow reordering before final export.</p>
+              <p><strong>Will merging affect quality?</strong> No — good tools preserve layout and formatting.</p>
+              <p><strong>Can I merge images into PDFs?</strong> Yes — many tools support combining images and PDFs.</p>
+              <p><strong>Is there a limit on number of files?</strong> Depends on the tool, but many support multiple files easily.</p>
+
+              <br />
+              <p style={{ marginTop: 12 }}><strong>🧾 Conclusion</strong>
+              <br/>Merging PDFs helps you stay organized and present information professionally. With the right approach you can turn scattered files into a clean document in seconds.</p>
+
+              <p style={{ marginTop: 12 }}>
+                <a
+                  className="btn btn-primary"
+                  href="/pdf-merger"
+                  onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-merger') }}
+                >👉 Try it here: PDF Merger Tool</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

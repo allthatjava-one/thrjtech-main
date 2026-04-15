@@ -437,10 +437,10 @@
 
 /* ── Match highlight ─────────────────────────────────────────── */
 .rt-match {
-  background: #f59e0b;
+  background: #fff3bf;
   border-radius: 2px;
   padding: 0 2px;
-  color: #1a1a1a;
+  color: inherit;
 }
 
 /* ── Output panel (shown after Replace All) ──────────────────── */

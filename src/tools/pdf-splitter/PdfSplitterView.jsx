@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { formatSize } from './utils/formatSize'
 import React, { useState } from 'react'
 
@@ -23,6 +23,7 @@ export function PdfSplitterView({
   handleReset,
 }) {
   const [openPanel, setOpenPanel] = useState('')
+  const navigate = useNavigate()
   const togglePanel = (panel) => setOpenPanel((prev) => (prev === panel ? '' : panel))
   return (
     <>
@@ -277,6 +278,135 @@ export function PdfSplitterView({
         <span className="note-icon">⚠️</span>
         Files are available for a short time. Please download before they expire.
       </div>
+
+      {/* Splitter guide - green/teal design */}
+      <section className="splitter-guide" style={{ marginTop: 28 }}>
+        <div style={{ maxWidth: 880, margin: '0 auto', padding: 18, background: 'linear-gradient(180deg,#f4fdf7,#ffffff)', borderRadius: 10, border: '1px solid #c8ebd5', color: '#111' }}>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>✂️</div>
+            <div style={{ flex: 1 }}>
+              <h2 style={{ margin: 0, fontSize: 22 }}>How to Split PDF Files Efficiently (Take Control of Large Documents)</h2>
+              <p style={{ marginTop: 8 }}>Big PDF files can be overwhelming — dozens of pages, mixed content you don't need, sections that should really be separate. Instead of working with the entire file, you can split it into smaller, focused documents.</p>
+              <p style={{ marginTop: 6, fontWeight: 700 }}>👉 In this guide, you'll learn how to break PDFs into exactly what you need — quickly and cleanly.</p>
+
+              <br />
+              <h3 style={{ marginTop: 12 }}>📄 What Is a PDF Splitter?</h3>
+              <p>A PDF splitter is a tool that lets you:</p>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>✂️ Extract specific pages</li>
+                <li>📑 Separate a large file into multiple PDFs</li>
+                <li>🎯 Keep only the content you need</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🧠 Why Splitting PDFs Is Useful</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li><strong>🎯 Focus on Relevant Content</strong> — keep only the pages you need instead of scrolling through everything.</li>
+                <li><strong>📤 Share Specific Sections</strong> — no need to send a 50-page document when only 3 pages matter.</li>
+                <li><strong>⚡ Improve Workflow Efficiency</strong> — smaller files are faster to open, easier to manage, and quicker to upload.</li>
+                <li><strong>📂 Better Organization</strong> — turn one large file into multiple categorized documents.</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🛠 Common Use Cases</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>💼 <strong>Business Documents</strong> — extract contracts, invoices, reports</li>
+                <li>🎓 <strong>Academic Work</strong> — separate chapters or submit only required pages</li>
+                <li>📑 <strong>Legal or Official Files</strong> — isolate important pages, keep records organized</li>
+                <li>🧾 <strong>Scanned Documents</strong> — split scanned pages into individual files</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🔍 Ways to Split a PDF</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>📌 <strong>By Page Range</strong> — e.g. Pages 1–5 → File A, Pages 6–10 → File B</li>
+                <li>📌 <strong>Extract Specific Pages</strong> — pick exact pages (Page 2, 5, 9 → new file)</li>
+                <li>📌 <strong>Split Every Page</strong> — turn one PDF into multiple single-page files</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🪜 Step-by-Step: How to Split a PDF</h3>
+              <ol style={{ marginLeft: 16 }}>
+                <li>📤 Upload your PDF</li>
+                <li>👀 Preview pages</li>
+                <li>✂️ Select pages or ranges</li>
+                <li>⚙️ Choose split method</li>
+                <li>📥 Download results</li>
+              </ol>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🎯 Best Practices for Splitting PDFs</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>✅ <strong>Plan before splitting</strong> — know what pages you need and how you want them grouped.</li>
+                <li>✅ <strong>Keep file names clear</strong> — name files logically (e.g., "Chapter1.pdf").</li>
+                <li>✅ <strong>Avoid over-splitting</strong> — too many small files can become hard to manage.</li>
+                <li>✅ <strong>Check output files</strong> — verify correct pages and proper order.</li>
+                <li>✅ <strong>Keep the original file</strong> — in case you need additional pages later.</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>⚠️ Common Mistakes to Avoid</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>❌ Selecting wrong page range</li>
+                <li>❌ Losing important pages</li>
+                <li>❌ Creating too many tiny files</li>
+                <li>❌ Not reviewing final output</li>
+                <li>❌ Overwriting original file</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>⚖️ PDF Splitter vs PDF Merger</h3>
+              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid #c8ebd5' }}>
+                    <th style={{ textAlign: 'left', padding: 6 }}>Feature</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>PDF Splitter</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>PDF Merger</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>Purpose</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>Break file apart</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>Combine files</td></tr>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>Output</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>Multiple PDFs</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>Single PDF</td></tr>
+                  <tr><td style={{ padding: 6 }}>Use case</td><td style={{ padding: 6 }}>Extraction</td><td style={{ padding: 6 }}>Organization</td></tr>
+                </tbody>
+              </table>
+              <p style={{ marginTop: 6 }}>Opposite tools — often used together.</p>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🚀 Pro Tips for Better Workflow</h3>
+              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
+                <li>🔢 Use page numbers as reference</li>
+                <li>🗂 Organize files immediately after splitting</li>
+                <li>⚡ Split once instead of repeatedly</li>
+                <li>📌 Combine with merging for full control</li>
+              </ul>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🔐 Is It Safe to Split PDFs Online?</h3>
+              <p>Most modern tools process files temporarily and remove them after download. Still, avoid uploading sensitive documents unless you trust the tool.</p>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>❓ FAQ</h3>
+              <p><strong>Can I split a PDF without losing quality?</strong> Yes — splitting does not affect content quality.</p>
+              <p><strong>Can I extract just one page?</strong> Absolutely — you can extract any page individually.</p>
+              <p><strong>Is there a limit to file size?</strong> Depends on the tool, but most support reasonably large files.</p>
+              <p><strong>Can I undo splitting?</strong> No — but you can merge files back together if needed.</p>
+
+              <br />
+              <h3 style={{ marginTop: 10 }}>🧾 Conclusion</h3>
+              <p>Splitting PDFs gives you control over your documents. Instead of dealing with large, cluttered files, you can extract only what matters, organize content efficiently, and work faster and smarter.</p>
+
+              <p style={{ marginTop: 12 }}>
+                <a
+                  className="btn btn-primary"
+                  href="/pdf-splitter"
+                  onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-splitter') }}
+                >👉 Start splitting your PDF here</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
