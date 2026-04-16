@@ -45,7 +45,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     const prev = document.title
-    if (title) document.title = `THRJ Blog | ${title}`
+    if (title) document.title = `${title} | THRJ Blog`
     return () => { document.title = prev }
   }, [title])
 
