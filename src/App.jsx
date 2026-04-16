@@ -160,7 +160,7 @@ export default function App() {
         <Route path="/about/us" element={<AboutUsPage />} />
         <Route path="/about/policy" element={<PrivacyPolicyPage />} />
         <Route path="/about/terms" element={<TermsOfServicePage />} />
-        <Route path="/contact-us" element={<ContactUsPage />} />
+        <Route path="/contact" element={<ContactUsPage />} />
       </Routes>
     </BrowserRouter>
   )

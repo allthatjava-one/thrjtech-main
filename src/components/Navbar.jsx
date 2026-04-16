@@ -76,7 +76,7 @@ export default function Navbar() {
             )}
           </div>
           <Link to="/blogs" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
-          <Link to="/contact-us" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
+          <Link to="/contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
         </nav>
       </div>
     </header>
