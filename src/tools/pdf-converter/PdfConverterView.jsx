@@ -43,7 +43,7 @@ export function PdfConverterView({
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
               <span style={{ fontSize: 18 }}>🖼️</span>
-              <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>Do you want to convert image type instead?</span>
+              <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>Do you want to convert <b>image</b> type instead?</span>
               <Link
                 to="/image-converter"
                 style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
