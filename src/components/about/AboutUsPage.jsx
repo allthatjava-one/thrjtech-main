@@ -76,7 +76,7 @@ export default function AboutUsPage() {
               look forward to hearing what you think next.
             </p>
             <p>
-              <Link to="/contact-us">Contact Us →</Link>
+              <Link to="/contact">Contact Us →</Link>
             </p>
           </div>
         </div>
