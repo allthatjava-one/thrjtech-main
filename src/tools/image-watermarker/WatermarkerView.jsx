@@ -175,7 +175,7 @@ export function WatermarkerView({
                       src={URL.createObjectURL(f)}
                       alt={`upload-${i}`}
                       className="stacked-thumb clickable"
-                      style={{ left: `${left}px`, zIndex: 100 + i }}
+                      style={{ left: `${left}px`, zIndex: 1 + i }}
                       onClick={(ev) => { ev.stopPropagation(); setCurrentIndex(i); setPreviewOpen(true) }}
                     />
                   )
@@ -319,7 +319,7 @@ export function WatermarkerView({
           </select>
         </label>
 
-        <label style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: 6, cursor: position === 'default' ? 'pointer' : 'not-allowed' }}>
+        <label className="repeated-label" style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: 6, cursor: position === 'default' ? 'pointer' : 'not-allowed' }}>
           <input
             type="checkbox"
             checked={repeated}
