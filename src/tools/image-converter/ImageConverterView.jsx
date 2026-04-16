@@ -281,7 +281,7 @@ export function ImageConverterView({
               <polyline points="21 15 16 10 5 21"/>
             </svg>
             <span className="ic-drop-text">Drag &amp; drop an image here, or click to select</span>
-            <span className="ic-drop-hint">Supports JPG, PNG, WebP, AVIF, GIF, BMP, ICO</span>
+            <span className="ic-drop-hint">Supports JPG, PNG, WebP, AVIF, GIF, BMP, and more</span>
           </div>
         )}
         <input
