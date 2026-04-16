@@ -1,3 +1,0 @@
-ALTER TABLE blogs ADD COLUMN createdAt DATETIME;
-
-UPDATE blogs SET createdAt = CURRENT_TIMESTAMP WHERE createdAt IS NULL;
