@@ -41,6 +41,17 @@ export function PdfMergerView({
               Drop and Merge - Combine multiple PDF files into a single document in seconds. 
               Upload your files, drag to reorder them, then merge and download the result. <Link to="/blogs/pdf-merger-guide">Learn how to merge PDF →</Link>
             </p>
+
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
+              <span style={{ fontSize: 18 }}>🖼️</span>
+              <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>Do you need to split them before re-merge?</span>
+              <Link
+                to="/pdf-splitter"
+                style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
+              >Try PDF Splitter</Link>
+            </div>
+
             <div className="details-row" data-open={openPanel}>
               <div className="details-controls">
                 <button
