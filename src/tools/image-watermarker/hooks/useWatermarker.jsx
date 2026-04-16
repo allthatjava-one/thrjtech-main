@@ -13,6 +13,7 @@ export function useWatermarker(initialImage) {
   const [isDragging, setIsDragging] = useState(false)
   const [repeated, setRepeated] = useState(false)
   const [position, setPosition] = useState('default') // 'default'|'center'|'top-left'|'top-right'|'bottom-left'|'bottom-right'
+  const [opacity, setOpacity] = useState(0.25) // 0.0 – 1.0
   const fileInputRef = useRef(null)
 
   const handleMainImage = (files) => {
@@ -199,7 +200,7 @@ export function useWatermarker(initialImage) {
     if (position === 'default') {
       const fontSize = Math.floor(img.width / 7)
       ctx.font = `bold ${fontSize}px sans-serif`
-      ctx.fillStyle = 'rgba(255,255,255,0.22)'
+      ctx.fillStyle = `rgba(255,255,255,${opacity})`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       ctx.save()
@@ -213,7 +214,7 @@ export function useWatermarker(initialImage) {
     // Non-default: place single watermark at chosen corner/center with no rotation
     const fontSize = Math.max(14, Math.floor(img.width / 14))
     ctx.font = `bold ${fontSize}px sans-serif`
-    ctx.fillStyle = 'rgba(255,255,255,0.28)'
+    ctx.fillStyle = `rgba(255,255,255,${opacity})`
     const metricsHeight = fontSize
     const anchor = anchorCoords(canvas, ctx.measureText(text).width, metricsHeight, position)
     ctx.textAlign = anchor.align
@@ -232,7 +233,7 @@ export function useWatermarker(initialImage) {
     if (position === 'default') {
       const logoWidth = img.width * 0.4
       const logoHeight = logoImg.height * (logoWidth / logoImg.width)
-      ctx.globalAlpha = 0.22
+      ctx.globalAlpha = opacity
       ctx.drawImage(
         logoImg,
         (canvas.width - logoWidth) / 2,
@@ -248,7 +249,7 @@ export function useWatermarker(initialImage) {
     const logoWidth = Math.max(32, Math.floor(img.width * 0.18))
     const logoHeight = Math.floor(logoImg.height * (logoWidth / logoImg.width))
     const anchor = anchorCoords(canvas, logoWidth, logoHeight, position)
-    ctx.globalAlpha = 0.28
+    ctx.globalAlpha = opacity
     let drawX = anchor.x
     if (anchor.align === 'center') drawX = anchor.x - logoWidth / 2
     if (anchor.align === 'left') drawX = anchor.x
@@ -267,7 +268,7 @@ export function useWatermarker(initialImage) {
     ctx.drawImage(img, 0, 0)
     const fontSize = Math.max(14, Math.floor(img.width / 18))
     ctx.font = `bold ${fontSize}px sans-serif`
-    ctx.fillStyle = 'rgba(255,255,255,0.28)'
+    ctx.fillStyle = `rgba(255,255,255,${opacity})`
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     const textWidth = ctx.measureText(text).width
@@ -297,7 +298,7 @@ export function useWatermarker(initialImage) {
     const gapX = logoWidth * 2.2
     const gapY = logoHeight * 2.5
     const diagonal = Math.ceil(Math.sqrt(img.width ** 2 + img.height ** 2))
-    ctx.globalAlpha = 0.25
+    ctx.globalAlpha = opacity
     ctx.save()
     ctx.translate(img.width / 2, img.height / 2)
     ctx.rotate(-Math.PI / 6)
@@ -324,6 +325,8 @@ export function useWatermarker(initialImage) {
     setRepeated,
     position,
     setPosition,
+    opacity,
+    setOpacity,
     outputUrls,
     outputNames,
     status,

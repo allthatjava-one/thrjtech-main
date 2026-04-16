@@ -17,6 +17,8 @@ export function WatermarkerView({
   setRepeated,
   position,
   setPosition,
+  opacity,
+  setOpacity,
   outputUrls,
   outputNames,
   status,
@@ -330,6 +332,23 @@ export function WatermarkerView({
         </label>
       </div>
 
+      <div className="opacity-row">
+        <label htmlFor="watermark-opacity" style={{ fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Opacity:</label>
+        <input
+          id="watermark-opacity"
+          type="range"
+          min="0.05"
+          max="1"
+          step="0.05"
+          value={opacity}
+          onChange={e => setOpacity(parseFloat(e.target.value))}
+          className="opacity-slider"
+          style={{ background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${opacity * 100}%, #e2e6f0 ${opacity * 100}%, #e2e6f0 100%)` }}
+          aria-label="Watermark opacity"
+        />
+        <span className="opacity-value">{Math.round(opacity * 100)}%</span>
+      </div>
+
       <div className="watermark-actions">
         <button
           className="watermark-btn"
@@ -422,7 +441,7 @@ export function WatermarkerView({
         <div className="wm-guide-section">
           <h3 className="wm-guide-h3">Best Practices</h3>
           <ul className="wm-guide-best">
-            <li>Keep it visible but not distracting (opacity ~30–60%).</li>
+            <li>Keep it visible but not distracting (opacity ~20–60%).</li>
             <li>Choose the right position: corner for subtle, center for strong protection.</li>
             <li>Use consistent branding (font, logo, placement).</li>
             <li>Avoid overpowering the image — balance is key.</li>
