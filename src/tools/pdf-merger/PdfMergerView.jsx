@@ -331,7 +331,7 @@ export function PdfMergerView({
             <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>
               🧩
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontSize: 22 }}>Combine Multiple PDFs Into One (Clean, Organized &amp; Stress-Free Guide)</h2>
               <p style={{ marginTop: 8 }}>Working with multiple PDF files can get messy fast. Instead of sending or managing them one by one, you can merge everything into a single, clean document.</p>
               <p style={{ marginTop: 6, fontWeight: 700 }}>👉 This guide shows you how to merge PDFs efficiently, organize them properly, and avoid common mistakes.</p>
@@ -399,6 +399,7 @@ export function PdfMergerView({
 
               <br />
               <h3 style={{ marginTop: 10 }}>🔍 PDF Merger vs PDF Splitter</h3>
+              <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
                 <thead>
                   <tr style={{ borderBottom: '1px solid #e6f0ff' }}>
@@ -413,6 +414,7 @@ export function PdfMergerView({
                   <tr><td style={{ padding: 6 }}>Use case</td><td style={{ padding: 6 }}>Organization</td><td style={{ padding: 6 }}>Extraction</td></tr>
                 </tbody>
               </table>
+              </div>
 
               <br />
               <h3 style={{ marginTop: 10 }}>🚀 Pro Tips for Faster Workflow</h3>

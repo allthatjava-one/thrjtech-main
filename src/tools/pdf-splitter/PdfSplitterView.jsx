@@ -294,7 +294,7 @@ export function PdfSplitterView({
         <div style={{ maxWidth: 880, margin: '0 auto', padding: 18, background: 'linear-gradient(180deg,#f4fdf7,#ffffff)', borderRadius: 10, border: '1px solid #c8ebd5', color: '#111' }}>
           <div style={{ display: 'flex', gap: 12 }}>
             <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>✂️</div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontSize: 22 }}>How to Split PDF Files Efficiently (Take Control of Large Documents)</h2>
               <p style={{ marginTop: 8 }}>Big PDF files can be overwhelming — dozens of pages, mixed content you don't need, sections that should really be separate. Instead of working with the entire file, you can split it into smaller, focused documents.</p>
               <p style={{ marginTop: 6, fontWeight: 700 }}>👉 In this guide, you'll learn how to break PDFs into exactly what you need — quickly and cleanly.</p>
@@ -366,6 +366,7 @@ export function PdfSplitterView({
 
               <br />
               <h3 style={{ marginTop: 10 }}>⚖️ PDF Splitter vs PDF Merger</h3>
+              <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
                 <thead>
                   <tr style={{ borderBottom: '1px solid #c8ebd5' }}>
@@ -381,6 +382,7 @@ export function PdfSplitterView({
                 </tbody>
               </table>
               <p style={{ marginTop: 6 }}>Opposite tools — often used together.</p>
+              </div>
 
               <br />
               <h3 style={{ marginTop: 10 }}>🚀 Pro Tips for Better Workflow</h3>
