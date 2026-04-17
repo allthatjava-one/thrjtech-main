@@ -32,6 +32,7 @@ export function WatermarkerView({
   handleLogoInput,
   handleWatermark,
   handleWatermarkAll,
+  handleClear,
 }) {
   const [previewOpen, setPreviewOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
@@ -200,6 +201,26 @@ export function WatermarkerView({
           onChange={handleFileInput}
         />
       </div>
+
+      {/* File row */}
+      {mainImages && mainImages.length > 0 && (
+        <div className="wm-file-row">
+          <span className="wm-file-name">
+            {mainImages.length === 1 ? mainImages[0].name : `${mainImages.length} images selected`}
+          </span>
+          <button
+            type="button"
+            className="wm-change-btn"
+            onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          >
+            {mainImages.length === 1 ? 'Change image' : 'Change images'}
+          </button>
+          <button type="button" className="wm-clear-btn" onClick={handleClear}>
+            Clear
+          </button>
+        </div>
+      )}
+
       {/* Preview popup dialog */}
       {previewOpen && (outputUrls && outputUrls.length > 0 && outputUrls[currentIndex]) && (
         <div className="image-popup-overlay" onClick={() => setPreviewOpen(false)}>

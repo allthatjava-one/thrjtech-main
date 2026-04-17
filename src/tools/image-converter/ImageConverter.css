@@ -514,3 +514,92 @@
   .ic-guide-convert { grid-template-columns: 1fr; }
   .ic-guide-convert .ic-aside-card { position: relative; top: auto; }
 }
+
+/* ── Overlapping thumbnail stack in drop zone ── */
+.ic-overlap-stack {
+  display: inline-block;
+  position: relative;
+  height: 140px;
+}
+.ic-stacked-thumb {
+  position: absolute;
+  top: 12px;
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.ic-stacked-thumb:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+.ic-stack-more {
+  position: absolute;
+  top: 12px;
+  width: 40px;
+  height: 100px;
+  background: #6366f1;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Output preview popup ── */
+.ic-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+.ic-popup-dialog {
+  position: relative;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem 4rem;
+  max-width: min(92vw, 820px);
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+}
+.ic-popup-close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #f1f5f9;
+  color: #374151;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 501;
+  line-height: 1;
+  transition: background 0.15s;
+}
+.ic-popup-close-btn:hover {
+  background: #e2e8f0;
+}
+.ic-popup-nav-btn {
+  position: absolute;
+  bottom: 1rem;
+}
+.ic-popup-nav-prev { left: 1rem; }
+.ic-popup-nav-next { right: 1rem; }
