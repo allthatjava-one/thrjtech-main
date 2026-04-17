@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState, useCallback } from 'react'
+import { PDFDocument } from 'pdf-lib'
 import { uploadToR2 } from '../../../services/r2Service'
 
 function makeFileEntry(file) {
@@ -131,73 +132,102 @@ export function usePdfMerger() {
 
     try {
       setErrorMsg('')
-      setStatus('uploading')
-      setProgress(5)
+      setStatus('merging')
+      setProgress(10)
 
-      const objectKeys = []
-      let backendUrlFromUpload = ''
+      // --- Step 1: Merge PDFs in the browser using pdf-lib ---
+      const mergedPdf = await PDFDocument.create()
 
       for (let index = 0; index < files.length; index += 1) {
-        const currentFile = files[index].file
-        const { key, pdfMergerBackendUrl } = await uploadToR2(currentFile, 'pdf-merger')
-        objectKeys.push(key)
+        const arrayBuffer = await files[index].file.arrayBuffer()
+        const sourcePdf = await PDFDocument.load(arrayBuffer)
+        const pageIndices = sourcePdf.getPageIndices()
+        const copiedPages = await mergedPdf.copyPages(sourcePdf, pageIndices)
+        copiedPages.forEach((page) => mergedPdf.addPage(page))
 
-        if (!backendUrlFromUpload && pdfMergerBackendUrl) {
-          backendUrlFromUpload = pdfMergerBackendUrl
-        }
-
-        const uploadProgress = 10 + Math.round(((index + 1) / files.length) * 60)
-        setProgress(uploadProgress)
+        const mergeProgress = 10 + Math.round(((index + 1) / files.length) * 60)
+        setProgress(mergeProgress)
       }
 
-      setStatus('merging')
-      const backendUrl = backendUrlFromUpload || import.meta.env.VITE_PDF_MERGER_BACKEND_URL
-      if (!backendUrl) {
-        throw new Error('PDF merger backend URL is not configured.')
-      }
-
-      const response = await fetch(backendUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ objectKeys, compress }),
-      })
-
-      if (!response.ok) {
-        throw new Error(`Merge failed: ${response.status} ${response.statusText}`)
-      }
-
-      setProgress(85)
-
-      const { presignedUrl } = await response.json()
-      if (!presignedUrl) {
-        throw new Error('No presigned URL returned from server.')
-      }
-
-      const downloadResponse = await fetch(presignedUrl)
-      if (!downloadResponse.ok) {
-        throw new Error(`Failed to fetch merged file: ${downloadResponse.status} ${downloadResponse.statusText}`)
-      }
-
-      const blob = await downloadResponse.blob()
-      const blobUrl = URL.createObjectURL(blob)
-      const mergedFileName = 'merged.pdf'
+      const mergedBytes = await mergedPdf.save()
+      setProgress(80)
 
       if (downloadUrl) {
         URL.revokeObjectURL(downloadUrl)
       }
 
-      setDownloadUrl(blobUrl)
-      setDownloadName(mergedFileName)
-      setMergedSize(blob.size)
-      setProgress(100)
-      setStatus('done')
+      if (!compress) {
+        // --- Path A: No compression — serve blob directly ---
+        const blob = new Blob([mergedBytes], { type: 'application/pdf' })
+        const blobUrl = URL.createObjectURL(blob)
+        const mergedFileName = 'merged.pdf'
 
-      const anchor = document.createElement('a')
-      anchor.href = blobUrl
-      anchor.download = mergedFileName
-      document.body.appendChild(anchor)
-      anchor.click()
-      document.body.removeChild(anchor)
+        setDownloadUrl(blobUrl)
+        setDownloadName(mergedFileName)
+        setMergedSize(blob.size)
+        setProgress(100)
+        setStatus('done')
+
+        const anchor = document.createElement('a')
+        anchor.href = blobUrl
+        anchor.download = mergedFileName
+        document.body.appendChild(anchor)
+        anchor.click()
+        document.body.removeChild(anchor)
+      } else {
+        // --- Path B: Compress — upload merged PDF to R2, then call compressor backend ---
+        const mergedFile = new File([mergedBytes], 'merged.pdf', { type: 'application/pdf' })
+
+        setStatus('uploading')
+        setProgress(82)
+
+        const { key: objectKey, pdfCompressorBackendUrl } = await uploadToR2(mergedFile, 'pdf-compressor')
+
+        setStatus('compressing')
+        setProgress(90)
+
+        const backendUrl = pdfCompressorBackendUrl || import.meta.env.VITE_PDF_COMPRESSOR_BACKEND_URL
+        if (!backendUrl) {
+          throw new Error('PDF compressor backend URL is not configured.')
+        }
+
+        const response = await fetch(backendUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ objectKey, option: 'BALANCED' }),
+        })
+
+        if (!response.ok) {
+          throw new Error(`Compression failed: ${response.status} ${response.statusText}`)
+        }
+
+        const { presignedUrl } = await response.json()
+        if (!presignedUrl) {
+          throw new Error('No presigned URL returned from compressor.')
+        }
+
+        const downloadResponse = await fetch(presignedUrl)
+        if (!downloadResponse.ok) {
+          throw new Error(`Failed to fetch compressed file: ${downloadResponse.status} ${downloadResponse.statusText}`)
+        }
+
+        const blob = await downloadResponse.blob()
+        const blobUrl = URL.createObjectURL(blob)
+        const mergedFileName = 'merged_compressed.pdf'
+
+        setDownloadUrl(blobUrl)
+        setDownloadName(mergedFileName)
+        setMergedSize(blob.size)
+        setProgress(100)
+        setStatus('done')
+
+        const anchor = document.createElement('a')
+        anchor.href = blobUrl
+        anchor.download = mergedFileName
+        document.body.appendChild(anchor)
+        anchor.click()
+        document.body.removeChild(anchor)
+      }
     } catch (err) {
       setErrorMsg(err.message || 'An unexpected error occurred.')
       setStatus('error')
