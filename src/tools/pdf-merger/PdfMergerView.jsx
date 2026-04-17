@@ -263,10 +263,12 @@ export function PdfMergerView({
             </button>
           )}
 
-          {(status === 'uploading' || status === 'merging') && (
+          {(status === 'merging' || status === 'uploading' || status === 'compressing') && (
             <div className="progress-section">
               <div className="progress-label">
-                {status === 'uploading' ? 'Uploading files to R2 storage...' : 'Merging PDFs...'}
+                {status === 'merging' && 'Merging PDFs...'}
+                {status === 'uploading' && 'Uploading merged PDF...'}
+                {status === 'compressing' && 'Compressing merged PDF...'}
               </div>
               <div className="progress-bar">
                 <div className="progress-fill" style={{ width: `${progress}%` }} />
@@ -317,11 +319,13 @@ export function PdfMergerView({
         </div>
       )}
 
-      <div className="note">
-        <span className="note-icon">⚠️</span>
-        Note: The merged file will be stored in Cloudflare R2 storage for 30 min. Please
-        download it within this period. After 30 min, the file will be automatically deleted.
-      </div>
+      {compress && status === 'done' && (
+        <div className="note">
+          <span className="note-icon">⚠️</span>
+          Note: The compressed file will be stored in Cloudflare R2 storage for 30 min. Please
+          download it within this period. After 30 min, the file will be automatically deleted.
+        </div>
+      )}
       
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>

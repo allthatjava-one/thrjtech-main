@@ -230,9 +230,9 @@ export function PdfSplitterView({
             <button className="btn btn-primary compress-btn" onClick={handleSplit} disabled={!file || !segments || status !== 'idle'}>Split PDF</button>
           </div>
 
-          {(status === 'uploading' || status === 'splitting') && (
+          {status === 'splitting' && (
             <div className="progress-section" style={{ marginTop: 12 }}>
-              <div className="progress-label">{status === 'uploading' ? 'Uploading to R2 storage…' : 'Splitting PDF…'}</div>
+              <div className="progress-label">Splitting PDF…</div>
               <div className="progress-bar"><div className="progress-fill" style={{ width: `${progress}%` }} /></div>
             </div>
           )}
@@ -255,24 +255,14 @@ export function PdfSplitterView({
                 <button
                   className="btn btn-primary split-download-btn"
                   type="button"
-                  onClick={async (e) => {
+                  onClick={(e) => {
                     e.preventDefault()
-                    try {
-                      const resp = await fetch(r.url)
-                      if (!resp.ok) throw new Error('Download failed')
-                      const blob = await resp.blob()
-                      const objectUrl = URL.createObjectURL(blob)
-                      const a = document.createElement('a')
-                      a.href = objectUrl
-                      a.download = `Segments: ${r.segment}.pdf`
-                      document.body.appendChild(a)
-                      a.click()
-                      a.remove()
-                      URL.revokeObjectURL(objectUrl)
-                    } catch (err) {
-                      // fallback: open in new tab
-                      window.open(r.url, '_blank', 'noopener')
-                    }
+                    const a = document.createElement('a')
+                    a.href = r.url
+                    a.download = `Segments: ${r.segment}.pdf`
+                    document.body.appendChild(a)
+                    a.click()
+                    a.remove()
                   }}
                 >
                   Download
@@ -284,10 +274,7 @@ export function PdfSplitterView({
         </div>
       )}
 
-      <div className="note" style={{ marginTop: 12 }}>
-        <span className="note-icon">⚠️</span>
-        Files are available for a short time. Please download before they expire.
-      </div>
+
 
       {/* Splitter guide - green/teal design */}
       <section className="splitter-guide" style={{ marginTop: 28 }}>
