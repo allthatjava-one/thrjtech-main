@@ -246,9 +246,11 @@ export function ImageConverterView({
               <li style={{ marginBottom: '0.75rem' }}>
                 <img src="/screenshots/image-converter/image-converter-003.png" alt="Step 3" className="how-img" />
                 <p>Click <strong>Convert</strong> to process the image instantly in your browser.</p>
+                <p>Download your converted image with the <strong>Download</strong> button.</p>
               </li>
               <li>
-                <p>Download your converted image with the <strong>Download</strong> button.</p>
+                <img src="/screenshots/image-converter/image-converter-004.png" alt="Step 4" className="how-img" />
+                <p>You can also convert multiple images at once by selecting more than one file.</p>
               </li>
             </ol>
           </div>
@@ -267,7 +269,7 @@ export function ImageConverterView({
           (() => {
             const displayCount = Math.min(8, mainImages.length);
             const spacing = 22;
-            const thumbW = 150;
+            const thumbW = 200;
             const containerW = (displayCount - 1) * spacing + thumbW + 8;
             return (
               <div

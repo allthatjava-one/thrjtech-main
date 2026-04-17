@@ -563,7 +563,7 @@ const ImageCollageView = ({
                   </li>
                   <li>
                     <img src="/screenshots/collage/image-collage004.png" alt="Step 4" className="how-img" />
-                    <p>Generate and download the final collaged image.</p>
+                    <p>Finalize collaged image and download it.</p>
                   </li>
                 </ol>
               </div>

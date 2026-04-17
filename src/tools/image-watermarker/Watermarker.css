@@ -81,7 +81,8 @@
 .watermarker-page .drop-zone {
   border: 2px dashed #a5b4fc;
   border-radius: 12px;
-  padding: 3.5rem 1rem;
+  padding: 1.5rem 1rem;
+  min-height: 180px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -90,6 +91,9 @@
   background: #f8fafc;
   margin-bottom: 1rem;
   transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .watermarker-page .drop-zone.dragging {
   border-color: #6366f1;
@@ -495,14 +499,14 @@
 .watermarker-page .overlap-stack {
   display: inline-block;
   position: relative;
-  height: 140px;
-  padding: 10px 14px;
+  height: 185px;
+  padding: 0;
 }
 .watermarker-page .overlap-stack .stacked-thumb {
   position: absolute;
   top: 12px;
-  width: 150px;
-  height: 100px;
+  width: 200px;
+  height: 140px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid #fff;
@@ -519,7 +523,7 @@
   left: calc(22px * 8 + 8px);
   top: 12px;
   width: 68px;
-  height: 100px;
+  height: 140px;
   display:flex;
   align-items:center;
   justify-content:center;
