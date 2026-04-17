@@ -190,12 +190,13 @@ async function canvasToGifBlob(canvas) {
 
 // ── Hook ──────────────────────────────────────────────────────────────────────
 export function useImageConverter() {
-  const [mainImage, setMainImage] = useState(null);
+  const [mainImages, setMainImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [inputMime, setInputMime] = useState(null);
   const [outputFormat, setOutputFormat] = useState('JPG');
   const [availableFormats, setAvailableFormats] = useState(Object.keys(FORMAT_MIME));
-  const [outputUrl, setOutputUrl] = useState(null);
-  const [outputName, setOutputName] = useState('');
+  const [outputUrls, setOutputUrls] = useState([]);
+  const [outputNames, setOutputNames] = useState([]);
   const [convertedFormat, setConvertedFormat] = useState(null);
   const [icoSize, setIcoSize] = useState(256);
   const [status, setStatus] = useState('idle');
@@ -203,88 +204,101 @@ export function useImageConverter() {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef();
 
-  const processFile = (file) => {
-    if (!file) return;
-    const mime = resolveMime(file);
-    if (!mime.startsWith('image/')) {
-      setErrorMsg('Please select a valid image file.');
+  const processFiles = (files) => {
+    if (!files) return;
+    const arr = Array.from(files instanceof FileList ? files : files)
+      .filter(f => resolveMime(f).startsWith('image/'));
+    if (!arr.length) {
+      setErrorMsg('Please select valid image files.');
       return;
     }
-    setMainImage(file);
-    setOutputUrl(null);
+    const mime = resolveMime(arr[0]);
+    setMainImages(arr);
+    setCurrentIndex(0);
+    setOutputUrls([]);
+    setOutputNames([]);
     setErrorMsg('');
     setInputMime(mime);
-    setAvailableFormats(getAvailableFormats(mime));
+    // For multiple files the types may differ, so show all formats
+    setAvailableFormats(arr.length > 1 ? Object.keys(FORMAT_MIME) : getAvailableFormats(mime));
     setOutputFormat(getDefaultOutputFormat(mime));
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDragging(false);
-    processFile(e.dataTransfer.files[0]);
+    processFiles(e.dataTransfer.files);
   };
 
   const handleDragOver = (e) => { e.preventDefault(); setIsDragging(true); };
   const handleDragLeave = (e) => { e.preventDefault(); setIsDragging(false); };
-  const handleFileInput = (e) => processFile(e.target.files[0]);
+  const handleFileInput = (e) => processFiles(e.target.files);
 
 
 
-  const handleConvert = async () => {
-    if (!mainImage) return;
+  const handleConvertAll = async () => {
+    if (!mainImages.length) return;
     setStatus('processing');
     setErrorMsg('');
+    const newUrls = [];
+    const newNames = [];
     try {
       const targetMime = FORMAT_MIME[outputFormat];
       const fillOpaque = OPAQUE_FORMATS.has(targetMime);
 
-      let canvas;
-      if (isTiff(mainImage)) {
-        canvas = await tiffToCanvas(mainImage);
-        if (fillOpaque) {
-          const tmp = document.createElement('canvas');
-          tmp.width = canvas.width;
-          tmp.height = canvas.height;
-          const ctx = tmp.getContext('2d');
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, tmp.width, tmp.height);
-          ctx.drawImage(canvas, 0, 0);
-          canvas = tmp;
+      for (const file of mainImages) {
+        let canvas;
+        if (isTiff(file)) {
+          canvas = await tiffToCanvas(file);
+          if (fillOpaque) {
+            const tmp = document.createElement('canvas');
+            tmp.width = canvas.width;
+            tmp.height = canvas.height;
+            const ctx = tmp.getContext('2d');
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, tmp.width, tmp.height);
+            ctx.drawImage(canvas, 0, 0);
+            canvas = tmp;
+          }
+        } else {
+          canvas = await fileToCanvas(file, fillOpaque);
         }
-      } else {
-        canvas = await fileToCanvas(mainImage, fillOpaque);
-      }
 
-      let blob;
-      if (targetMime === 'image/bmp') {
-        blob = buildBmpBlob(canvas);
-      } else if (targetMime === 'image/gif') {
-        blob = await canvasToGifBlob(canvas);
-      } else if (targetMime === 'image/x-icon') {
-        blob = await buildIcoBlob(canvas, [icoSize]);
-      } else {
-        blob = await new Promise((resolve) => {
-          canvas.toBlob(
-            resolve,
-            targetMime,
-            targetMime === 'image/jpeg' ? 0.92 : undefined
+        let blob;
+        if (targetMime === 'image/bmp') {
+          blob = buildBmpBlob(canvas);
+        } else if (targetMime === 'image/gif') {
+          blob = await canvasToGifBlob(canvas);
+        } else if (targetMime === 'image/x-icon') {
+          blob = await buildIcoBlob(canvas, [icoSize]);
+        } else {
+          blob = await new Promise((resolve) => {
+            canvas.toBlob(
+              resolve,
+              targetMime,
+              targetMime === 'image/jpeg' ? 0.92 : undefined
+            );
+          });
+        }
+
+        if (!blob) {
+          setErrorMsg(
+            `Conversion to ${outputFormat} failed for "${file.name}". Your browser may not support encoding to this format.`
           );
-        });
+          setStatus('idle');
+          return;
+        }
+
+        const baseName = file.name.replace(/\.[^.]+$/, '');
+        const ext = EXT[targetMime] || outputFormat.toLowerCase();
+        newUrls.push(URL.createObjectURL(blob));
+        newNames.push(`${baseName}-converted.${ext}`);
       }
 
-      if (!blob) {
-        setErrorMsg(
-          `Conversion to ${outputFormat} failed. Your browser may not support encoding to this format.`
-        );
-        setStatus('idle');
-        return;
-      }
-
-      const baseName = mainImage.name.replace(/\.[^.]+$/, '');
-      const ext = EXT[targetMime] || outputFormat.toLowerCase();
-      setOutputUrl(URL.createObjectURL(blob));
-      setOutputName(`${baseName}-converted.${ext}`);
+      setOutputUrls(newUrls);
+      setOutputNames(newNames);
       setConvertedFormat(outputFormat);
+      setCurrentIndex(0);
     } catch (err) {
       setErrorMsg('Conversion failed: ' + (err?.message ?? 'Unknown error'));
     }
@@ -292,10 +306,11 @@ export function useImageConverter() {
   };
 
   const handleClear = () => {
-    setMainImage(null);
+    setMainImages([]);
+    setCurrentIndex(0);
     setInputMime(null);
-    setOutputUrl(null);
-    setOutputName('');
+    setOutputUrls([]);
+    setOutputNames([]);
     setConvertedFormat(null);
     setErrorMsg('');
     setStatus('idle');
@@ -306,13 +321,15 @@ export function useImageConverter() {
   };
 
   return {
-    mainImage,
+    mainImages,
+    currentIndex,
+    setCurrentIndex,
     inputMime,
     outputFormat,
     setOutputFormat,
     availableFormats,
-    outputUrl,
-    outputName,
+    outputUrls,
+    outputNames,
     convertedFormat,
     icoSize,
     setIcoSize,
@@ -324,7 +341,7 @@ export function useImageConverter() {
     handleDragOver,
     handleDragLeave,
     handleFileInput,
-    handleConvert,
+    handleConvertAll,
     handleClear,
   };
 }

@@ -110,6 +110,42 @@
 
 /* drop-zone always uses padding/flex; overlap-stack handles the thumbnail display */
 
+/* File row (count + change/clear buttons) */
+.watermarker-page .wm-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+  width: 100%;
+}
+.watermarker-page .wm-file-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.watermarker-page .wm-change-btn,
+.watermarker-page .wm-clear-btn {
+  background: none;
+  border: 1px solid #e2e6f0;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+.watermarker-page .wm-change-btn:hover,
+.watermarker-page .wm-clear-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+
 /* Opacity slider row */
 .watermarker-page .opacity-row {
   display: flex;

@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useRef, useCallback, useEffect } from 'react';
+import JSZip from 'jszip';
 import './ImageConverter.css';
 
 // ── Draggable + zoomable image viewport ─────────────────────────────────────
@@ -134,13 +135,15 @@ const FORMAT_DESC = {
 };
 
 export function ImageConverterView({
-  mainImage,
+  mainImages,
+  currentIndex,
+  setCurrentIndex,
   inputMime,
   outputFormat,
   setOutputFormat,
   availableFormats,
-  outputUrl,
-  outputName,
+  outputUrls,
+  outputNames,
   convertedFormat,
   status,
   errorMsg,
@@ -150,18 +153,24 @@ export function ImageConverterView({
   handleDragOver,
   handleDragLeave,
   handleFileInput,
-  handleConvert,
+  handleConvertAll,
   handleClear,
   icoSize,
   setIcoSize,
 }) {
   const [openPanel, setOpenPanel] = useState('');
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (outputUrls && outputUrls[currentIndex]) setPreviewOpen(true);
+  }, [outputUrls, currentIndex]);
 
   return (
     <div className="ic-view">
       <h2 className="hero-title">Image Converter</h2>
       <p className="hero-tagline">
-        Convert images between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely 
+        Convert image(s) between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely 
         in your browser — no uploads, no account required. <Link to="/blogs/image-converter-guide">Learn how to use the Image Converter →</Link>
       </p>
               
@@ -248,31 +257,48 @@ export function ImageConverterView({
 
       {/* ── Drop zone ── */}
       <div
-        className={`ic-drop-zone${isDragging ? ' dragging' : ''}${mainImage ? ' has-image' : ''}`}
+        className={`ic-drop-zone${isDragging ? ' dragging' : ''}`}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onClick={() => !mainImage && fileInputRef.current && fileInputRef.current.click()}
+        onClick={() => fileInputRef.current && fileInputRef.current.click()}
       >
-        {mainImage ? (
-          inputMime === 'image/tiff' ? (
-            <div className="ic-tiff-placeholder">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#a0aec0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="8" y1="13" x2="16" y2="13"/>
-                <line x1="8" y1="17" x2="16" y2="17"/>
-              </svg>
-              <span className="ic-drop-text">{mainImage.name}</span>
-              <span className="ic-drop-hint">TIFF loaded — ready to convert</span>
-            </div>
-          ) : (
-            <img
-              src={URL.createObjectURL(mainImage)}
-              alt="Preview"
-              className="ic-preview-image"
-            />
-          )
+        {mainImages && mainImages.length ? (
+          (() => {
+            const displayCount = Math.min(8, mainImages.length);
+            const spacing = 22;
+            const thumbW = 150;
+            const containerW = (displayCount - 1) * spacing + thumbW + 8;
+            return (
+              <div
+                className="ic-overlap-stack"
+                onClick={(e) => { e.stopPropagation(); }}
+                style={{ width: containerW }}
+              >
+                {mainImages.slice(0, displayCount).map((f, i) => {
+                  const left = i * spacing - ((displayCount - 1) * spacing) / 2 + (containerW / 2 - thumbW / 2);
+                  return (
+                    <img
+                      key={i}
+                      src={URL.createObjectURL(f)}
+                      alt={`upload-${i}`}
+                      className="ic-stacked-thumb"
+                      style={{ left: `${left}px`, zIndex: 1 + i }}
+                      onClick={(ev) => { ev.stopPropagation(); setCurrentIndex(i); }}
+                    />
+                  );
+                })}
+                {mainImages.length > 8 && (
+                  <div
+                    className="ic-stack-more"
+                    style={{ left: `${displayCount * spacing - ((displayCount - 1) * spacing) / 2 + (containerW / 2 - thumbW / 2)}px` }}
+                  >
+                    +{mainImages.length - 8}
+                  </div>
+                )}
+              </div>
+            );
+          })()
         ) : (
           <div className="ic-drop-placeholder">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a0aec0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -280,13 +306,14 @@ export function ImageConverterView({
               <circle cx="8.5" cy="8.5" r="1.5"/>
               <polyline points="21 15 16 10 5 21"/>
             </svg>
-            <span className="ic-drop-text">Drag &amp; drop an image here, or click to select</span>
+            <span className="ic-drop-text">Drag &amp; drop images here, or click to select</span>
             <span className="ic-drop-hint">Supports JPG, PNG, WebP, AVIF, GIF, BMP, and more</span>
           </div>
         )}
         <input
           type="file"
           accept="image/*"
+          multiple
           style={{ display: 'none' }}
           ref={fileInputRef}
           onChange={handleFileInput}
@@ -294,19 +321,53 @@ export function ImageConverterView({
       </div>
 
       {/* ── File row ── */}
-      {mainImage && (
+      {mainImages && mainImages.length > 0 && (
         <div className="ic-file-row">
-          <span className="ic-file-name">{mainImage.name}</span>
+          <span className="ic-file-name">
+            {mainImages.length === 1 ? mainImages[0].name : `${mainImages.length} images selected`}
+          </span>
           <button
             type="button"
             className="ic-change-btn"
             onClick={() => fileInputRef.current && fileInputRef.current.click()}
           >
-            Change image
+            {mainImages.length === 1 ? 'Change image' : 'Change images'}
           </button>
           <button type="button" className="ic-clear-btn" onClick={handleClear}>
             Clear
           </button>
+        </div>
+      )}
+
+      {/* ── Preview popup ── */}
+      {previewOpen && outputUrls && outputUrls.length > 0 && outputUrls[currentIndex] && (
+        <div className="ic-popup-overlay" onClick={() => setPreviewOpen(false)}>
+          <div className="ic-popup-dialog" onClick={(e) => e.stopPropagation()}>
+            <button className="ic-popup-close-btn" onClick={() => setPreviewOpen(false)}>&times;</button>
+            <p className="ic-output-label" style={{ margin: '0 0 0.5rem' }}>
+              &#10003; Converted to {convertedFormat}
+              {outputUrls.length > 1 && ` (${currentIndex + 1} / ${outputUrls.length})`}
+            </p>
+            <DraggablePreview src={outputUrls[currentIndex]} alt={`Converted output ${currentIndex + 1}`} />
+            {outputUrls.length > 1 && (
+              <>
+                <button
+                  className="ic-btn ic-popup-nav-btn ic-popup-nav-prev"
+                  onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
+                  disabled={currentIndex === 0}
+                >
+                  Prev
+                </button>
+                <button
+                  className="ic-btn ic-popup-nav-btn ic-popup-nav-next"
+                  onClick={() => setCurrentIndex((i) => Math.min(outputUrls.length - 1, i + 1))}
+                  disabled={currentIndex >= outputUrls.length - 1}
+                >
+                  Next
+                </button>
+              </>
+            )}
+          </div>
         </div>
       )}
 
@@ -352,39 +413,59 @@ export function ImageConverterView({
       <div className="ic-actions">
         <button
           className="ic-btn ic-btn-primary"
-          onClick={handleConvert}
-          disabled={!mainImage || status === 'processing'}
+          onClick={handleConvertAll}
+          disabled={!mainImages.length || status === 'processing'}
         >
-          {status === 'processing' ? 'Converting…' : 'Convert'}
+          {status === 'processing'
+            ? 'Converting…'
+            : mainImages.length > 1
+              ? `Convert All (${mainImages.length})`
+              : 'Convert'}
         </button>
-        <button
-          className="ic-btn ic-btn-download"
-          disabled={!outputUrl}
-          onClick={() => {
-            if (!outputUrl) return;
-            const link = document.createElement('a');
-            link.href = outputUrl;
-            link.download = outputName || 'converted-image';
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-          }}
-        >
-          Download
-        </button>
+        {mainImages.length <= 1 && outputUrls && outputUrls[0] && (
+          <button
+            className="ic-btn ic-btn-download"
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = outputUrls[0];
+              link.download = outputNames[0] || 'converted-image';
+              document.body.appendChild(link);
+              link.click();
+              link.remove();
+            }}
+          >
+            Download
+          </button>
+        )}
+        {mainImages.length > 1 && outputUrls && outputUrls.some(Boolean) && (
+          <button
+            className="ic-btn ic-btn-download"
+            onClick={async () => {
+              const zip = new JSZip();
+              const fetches = outputUrls.map((url, i) => {
+                if (!url) return null;
+                return fetch(url).then((r) => r.blob()).then((blob) => {
+                  zip.file(outputNames[i] || `converted-${i + 1}`, blob);
+                });
+              });
+              await Promise.all(fetches.filter(Boolean));
+              const blob = await zip.generateAsync({ type: 'blob' });
+              const link = document.createElement('a');
+              link.href = URL.createObjectURL(blob);
+              link.download = 'converted-images.zip';
+              document.body.appendChild(link);
+              link.click();
+              link.remove();
+            }}
+          >
+            Download All
+          </button>
+        )}
       </div>
 
       {/* ── Error ── */}
       {errorMsg && (
         <div className="ic-error" role="alert">{errorMsg}</div>
-      )}
-
-      {/* ── Output preview ── */}
-      {outputUrl && (
-        <div className="ic-output-section">
-          <p className="ic-output-label">&#10003; Converted to {convertedFormat}</p>
-          <DraggablePreview src={outputUrl} alt="Converted output" />
-        </div>
       )}
 
       {/* ── Guide: Why Image Formats Matter ── */}
