@@ -1,9 +1,22 @@
 import { useState, useRef, useCallback } from 'react'
-import { uploadToR2 } from '../../../services/r2Service'
+import { PDFDocument } from 'pdf-lib'
+
+function parseSegments(cleaned) {
+  return cleaned.split(',').map((token) => {
+    const trimmed = token.trim()
+    if (trimmed.includes('-')) {
+      const [start, end] = trimmed.split('-').map(Number)
+      const pages = []
+      for (let p = start; p <= end; p += 1) pages.push(p - 1)
+      return { label: trimmed, pages }
+    }
+    return { label: trimmed, pages: [Number(trimmed) - 1] }
+  })
+}
 
 export function usePdfSplitter() {
   const [file, setFile] = useState(null)
-  const [status, setStatus] = useState('idle') // idle | uploading | splitting | done | error
+  const [status, setStatus] = useState('idle') // idle | splitting | done | error
   const [progress, setProgress] = useState(0)
   const [originalSize, setOriginalSize] = useState(0)
   const [segments, setSegments] = useState('')
@@ -60,30 +73,43 @@ export function usePdfSplitter() {
     }
 
     try {
-      setStatus('uploading')
+      setStatus('splitting')
       setProgress(10)
       setErrorMsg('')
 
-      const { key: objectKey, pdfSplitterBackendUrl } = await uploadToR2(file, 'pdf-splitter')
+      const arrayBuffer = await file.arrayBuffer()
+      const sourcePdf = await PDFDocument.load(arrayBuffer)
+      setProgress(30)
 
-      setProgress(40)
-      setStatus('splitting')
+      const parsed = parseSegments(cleaned)
+      const newResults = []
 
-      const backendUrl = pdfSplitterBackendUrl || import.meta.env.VITE_PDF_SPLITTER_BACKEND_URL
-      if (!backendUrl) throw new Error('PDF splitter backend URL is not configured.')
+      if (outputOption === 'ONE') {
+        const outPdf = await PDFDocument.create()
+        for (const token of parsed) {
+          const copied = await outPdf.copyPages(sourcePdf, token.pages)
+          copied.forEach((page) => outPdf.addPage(page))
+        }
+        const bytes = await outPdf.save()
+        const blob = new Blob([bytes], { type: 'application/pdf' })
+        const url = URL.createObjectURL(blob)
+        newResults.push({ splitKey: '0', segment: cleaned, url })
+      } else {
+        for (let i = 0; i < parsed.length; i += 1) {
+          const token = parsed[i]
+          const outPdf = await PDFDocument.create()
+          const copied = await outPdf.copyPages(sourcePdf, token.pages)
+          copied.forEach((page) => outPdf.addPage(page))
+          const bytes = await outPdf.save()
+          const blob = new Blob([bytes], { type: 'application/pdf' })
+          const url = URL.createObjectURL(blob)
+          newResults.push({ splitKey: String(i), segment: token.label, url })
+          const splitProgress = 30 + Math.round(((i + 1) / parsed.length) * 60)
+          setProgress(splitProgress)
+        }
+      }
 
-      const resp = await fetch(backendUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ objectKey, splitOption: cleaned, outputOption }),
-      })
-
-      if (!resp.ok) throw new Error(`Split failed: ${resp.status} ${resp.statusText}`)
-
-      const json = await resp.json()
-      if (!json || !json.success) throw new Error(json?.message || 'Splitter backend returned an error')
-
-      setResults(json.results || [])
+      setResults(newResults)
       setProgress(100)
       setStatus('done')
     } catch (err) {
@@ -93,6 +119,7 @@ export function usePdfSplitter() {
   }
 
   const handleReset = () => {
+    results.forEach((r) => URL.revokeObjectURL(r.url))
     setFile(null)
     setStatus('idle')
     setProgress(0)
