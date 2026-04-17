@@ -42,7 +42,6 @@ export function PdfMergerView({
               Upload your files, drag to reorder them, then merge and download the result. <Link to="/blogs/pdf-merger-guide">Learn how to merge PDF →</Link>
             </p>
 
-
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
               <span style={{ fontSize: 18 }}>🖼️</span>
               <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>Do you need to split them before re-merge?</span>
@@ -322,6 +321,16 @@ export function PdfMergerView({
         <span className="note-icon">⚠️</span>
         Note: The merged file will be stored in Cloudflare R2 storage for 30 min. Please
         download it within this period. After 30 min, the file will be automatically deleted.
+      </div>
+      
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
+        <span style={{ fontSize: 18 }}>🖼️</span>
+        <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>Trouble merging because the files are too large?</span>
+        <Link
+          to="/pdf-compressor"
+          style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
+        >Try PDF Compressor</Link>
       </div>
 
       {/* Merger guide - different visual vibe */}
