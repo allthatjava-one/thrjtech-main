@@ -286,7 +286,7 @@ export function PdfConverterView({
         <div style={{ maxWidth: 880, margin: '0 auto', padding: 18, background: 'linear-gradient(180deg,#fffdf7,#ffffff)', borderRadius: 10, border: '1px solid #f0e8cc', color: '#111' }}>
           <div style={{ display: 'flex', gap: 12 }}>
             <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>🔄</div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontSize: 22 }}>How to Convert PDF Files Without Breaking Layout (Smart &amp; Simple Guide)</h2>
 
               <p style={{ marginTop: 8 }}>PDFs are great for sharing — but not always for editing. You've probably experienced this: you need to edit a PDF but it's locked, want to extract text but can't, or need a Word or Excel version but formatting breaks.</p>
