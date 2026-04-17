@@ -1,9 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect, useRef } from 'react'
+import JSZip from 'jszip'
 import './Watermarker.css'
 
 export function WatermarkerView({
-  mainImage,
+  mainImages,
+  currentIndex,
+  setCurrentIndex,
   watermarkType,
   setWatermarkType,
   watermarkText,
@@ -12,8 +15,12 @@ export function WatermarkerView({
   setLogoFile,
   repeated,
   setRepeated,
-  outputUrl,
-  outputName,
+  position,
+  setPosition,
+  opacity,
+  setOpacity,
+  outputUrls,
+  outputNames,
   status,
   errorMsg,
   isDragging,
@@ -24,16 +31,17 @@ export function WatermarkerView({
   handleFileInput,
   handleLogoInput,
   handleWatermark,
+  handleWatermarkAll,
 }) {
   const [previewOpen, setPreviewOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
   const logoInputRef = useRef(null)
   const navigate = useNavigate();
 
-  // Auto-open popup once the watermarked result is ready
+  // Auto-open popup once the watermarked result is ready for the current index
   useEffect(() => {
-    if (outputUrl) setPreviewOpen(true)
-  }, [outputUrl])
+    if (outputUrls && outputUrls[currentIndex]) setPreviewOpen(true)
+  }, [outputUrls, currentIndex])
   return (
     <div className="watermarker-view">
       <h2 className="hero-title">Image Watermarker</h2>
@@ -153,30 +161,47 @@ export function WatermarkerView({
         onDragLeave={handleDragLeave}
         onClick={() => fileInputRef.current && fileInputRef.current.click()}
       >
-        {mainImage ? (
-          <img
-            src={URL.createObjectURL(mainImage)}
-            alt="Main"
-            className="preview-image clickable"
-            style={{ cursor: 'pointer' }}
-            onClick={e => {
-              e.stopPropagation();
-              setPreviewOpen(true)
-            }}
-          />
+        {mainImages && mainImages.length ? (
+          (() => {
+            const displayCount = Math.min(8, mainImages.length)
+            const spacing = 22
+            const thumbW = 150
+            const containerW = (displayCount - 1) * spacing + thumbW + 8
+            return (
+              <div className="overlap-stack" onClick={e => { e.stopPropagation(); setPreviewOpen(true) }} style={{ width: containerW }}>
+                {mainImages.slice(0, displayCount).map((f, i) => {
+                  const left = i * spacing - ((displayCount - 1) * spacing) / 2 + (containerW / 2 - thumbW / 2)
+                  return (
+                    <img
+                      key={i}
+                      src={URL.createObjectURL(f)}
+                      alt={`upload-${i}`}
+                      className="stacked-thumb clickable"
+                      style={{ left: `${left}px`, zIndex: 1 + i }}
+                      onClick={(ev) => { ev.stopPropagation(); setCurrentIndex(i); setPreviewOpen(true) }}
+                    />
+                  )
+                })}
+                {mainImages.length > 8 && (
+                  <div className="stack-more" style={{ left: `${(displayCount * spacing - ((displayCount - 1) * spacing) / 2 + (containerW / 2 - thumbW / 2))}px` }}>+{mainImages.length - 8}</div>
+                )}
+              </div>
+            )
+          })()
         ) : (
-          <span className="hero-tagline">Drag & drop an image here, or click to select</span>
+          <span className="hero-tagline">Drag & drop images here, or click to select</span>
         )}
         <input
           type="file"
           accept="image/*"
+          multiple
           style={{ display: 'none' }}
           ref={fileInputRef}
           onChange={handleFileInput}
         />
       </div>
       {/* Preview popup dialog */}
-      {previewOpen && outputUrl && (
+      {previewOpen && (outputUrls && outputUrls.length > 0 && outputUrls[currentIndex]) && (
         <div className="image-popup-overlay" onClick={() => setPreviewOpen(false)}>
           <div
             className="image-popup-dialog"
@@ -184,8 +209,8 @@ export function WatermarkerView({
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <img
-              src={outputUrl}
-              alt="Watermarked preview"
+              src={outputUrls[currentIndex]}
+              alt={`Watermarked preview ${currentIndex + 1}`}
               className="image-popup-img"
               style={{
                 position: 'static',
@@ -199,11 +224,26 @@ export function WatermarkerView({
                 objectFit: 'contain',
               }}
             />
+            <button
+              className="watermark-btn popup-nav-btn popup-nav-prev"
+              onClick={() => setCurrentIndex(idx => Math.max(0, idx - 1))}
+              disabled={currentIndex === 0}
+            >
+              Prev
+            </button>
+            <button
+              className="watermark-btn popup-nav-btn popup-nav-next"
+              onClick={() => setCurrentIndex(idx => Math.min((mainImages.length || 1) - 1, idx + 1))}
+              disabled={currentIndex >= ((mainImages.length || 1) - 1)}
+            >
+              Next
+            </button>
           </div>
           <button className="close-popup-btn" onClick={() => setPreviewOpen(false)}>&times;</button>
         </div>
       )}
       <div className="watermark-options">
+        <label>Type:</label>
         <label>
           <input
             type="radio"
@@ -212,7 +252,7 @@ export function WatermarkerView({
             checked={watermarkType === 'text'}
             onChange={() => setWatermarkType('text')}
           />
-          Text Watermark
+          Text
         </label>
         <label>
           <input
@@ -222,15 +262,7 @@ export function WatermarkerView({
             checked={watermarkType === 'logo'}
             onChange={() => setWatermarkType('logo')}
           />
-          Logo Watermark
-        </label>
-        <label style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}>
-          <input
-            type="checkbox"
-            checked={repeated}
-            onChange={e => setRepeated(e.target.checked)}
-          />
-          Repeated
+          Logo
         </label>
       </div>
       {watermarkType === 'text' && (
@@ -264,27 +296,114 @@ export function WatermarkerView({
           )}
         </div>
       )}
+
+      <div className="watermark-options">
+        <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ marginRight: 6, fontSize: '0.95rem' }}>Position: </span>
+          <select
+            value={position}
+            className="select-modern"
+            onChange={(e) => {
+              const v = e.target.value
+              setPosition(v)
+              if (v !== 'default' && repeated) {
+                setRepeated(false)
+              }
+            }}
+            aria-label="Watermark position"
+          >
+            <option value="default">Default (center + diagonal)</option>
+            <option value="center">Center</option>
+            <option value="top-left">Top Left</option>
+            <option value="top-right">Top Right</option>
+            <option value="bottom-left">Bottom Left</option>
+            <option value="bottom-right">Bottom Right</option>
+          </select>
+        </label>
+
+        <label className="repeated-label" style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: 6, cursor: position === 'default' ? 'pointer' : 'not-allowed' }}>
+          <input
+            type="checkbox"
+            checked={repeated}
+            onChange={e => setRepeated(e.target.checked)}
+            disabled={position !== 'default'}
+          />
+          Repeated
+        </label>
+      </div>
+
+      <div className="opacity-row">
+        <label htmlFor="watermark-opacity" style={{ fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Opacity:</label>
+        <input
+          id="watermark-opacity"
+          type="range"
+          min="0.05"
+          max="1"
+          step="0.05"
+          value={opacity}
+          onChange={e => setOpacity(parseFloat(e.target.value))}
+          className="opacity-slider"
+          style={{ background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${opacity * 100}%, #e2e6f0 ${opacity * 100}%, #e2e6f0 100%)` }}
+          aria-label="Watermark opacity"
+        />
+        <span className="opacity-value">{Math.round(opacity * 100)}%</span>
+      </div>
+
       <div className="watermark-actions">
         <button
           className="watermark-btn"
-          onClick={handleWatermark}
-          disabled={status === 'processing' || !mainImage || (watermarkType === 'logo' && !logoFile) || (watermarkType === 'text' && !watermarkText)}
+          onClick={handleWatermarkAll}
+          disabled={status === 'processing' || !mainImages.length || (watermarkType === 'logo' && !logoFile) || (watermarkType === 'text' && !watermarkText)}
+          style={{ background: 'linear-gradient(135deg,#10b981,#06b6d4)' }}
         >
-          {status === 'processing' ? 'Processing...' : 'Preview'}
+          {status === 'processing' ? 'Processing...' : `Apply to ${mainImages.length || 0} image(s)`}
         </button>
-        {outputUrl && (
+        {mainImages.length <= 1 && (outputUrls && outputUrls[currentIndex]) && (
           <button
             className="watermark-btn watermark-btn--download"
             onClick={() => {
               const a = document.createElement('a')
-              a.href = outputUrl
-              a.download = outputName
+              a.href = outputUrls[currentIndex]
+              a.download = outputNames[currentIndex] || `watermarked-${currentIndex + 1}.jpg`
               a.click()
             }}
           >
             Download
           </button>
         )}
+        {mainImages.length > 1 && (outputUrls && outputUrls.some(Boolean)) && (
+            <button
+              className="watermark-btn watermark-btn--download"
+              onClick={async () => {
+                try {
+                  const zip = new JSZip()
+                  const entries = outputUrls.map((u, i) => ({ url: u, name: outputNames[i] || `watermarked-${i + 1}.jpg` }))
+                    .filter(e => e.url)
+
+                  const fetchBlobs = entries.map(async (e) => {
+                    // support both object URLs and network URLs
+                    const res = await fetch(e.url)
+                    const blob = await res.blob()
+                    zip.file(e.name, blob)
+                  })
+
+                  await Promise.all(fetchBlobs)
+                  const zipBlob = await zip.generateAsync({ type: 'blob' })
+                  const a = document.createElement('a')
+                  const zurl = URL.createObjectURL(zipBlob)
+                  a.href = zurl
+                  a.download = 'watermarked-images.zip'
+                  a.click()
+                  setTimeout(() => URL.revokeObjectURL(zurl), 5000)
+                } catch (err) {
+                  console.error('Failed to create zip:', err)
+                }
+              }}
+              style={{ marginLeft: 8 }}
+            >
+              Download All
+            </button>
+          )}
       </div>
       {errorMsg && <div className="error-msg">{errorMsg}</div>}
 
@@ -322,7 +441,7 @@ export function WatermarkerView({
         <div className="wm-guide-section">
           <h3 className="wm-guide-h3">Best Practices</h3>
           <ul className="wm-guide-best">
-            <li>Keep it visible but not distracting (opacity ~30–60%).</li>
+            <li>Keep it visible but not distracting (opacity ~20–60%).</li>
             <li>Choose the right position: corner for subtle, center for strong protection.</li>
             <li>Use consistent branding (font, logo, placement).</li>
             <li>Avoid overpowering the image — balance is key.</li>
