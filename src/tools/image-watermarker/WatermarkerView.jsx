@@ -32,6 +32,7 @@ export function WatermarkerView({
   handleLogoInput,
   handleWatermark,
   handleWatermarkAll,
+  handleClear,
 }) {
   const [previewOpen, setPreviewOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
@@ -150,6 +151,10 @@ export function WatermarkerView({
                     <img src="/screenshots/watermarker/watermarker004.png" alt="Step 4" className="how-img" />
                     <p>Export and download the watermarked image.</p>
                   </li>
+                  <li>
+                    <img src="/screenshots/watermarker/watermarker005.png" alt="Step 5" className="how-img" />
+                    <p>Optional - You can apply watermark on multiple files at once.</p>
+                  </li>
                 </ol>
               </div>
           </div>
@@ -165,7 +170,7 @@ export function WatermarkerView({
           (() => {
             const displayCount = Math.min(8, mainImages.length)
             const spacing = 22
-            const thumbW = 150
+            const thumbW = 200
             const containerW = (displayCount - 1) * spacing + thumbW + 8
             return (
               <div className="overlap-stack" onClick={e => { e.stopPropagation(); setPreviewOpen(true) }} style={{ width: containerW }}>
@@ -200,6 +205,26 @@ export function WatermarkerView({
           onChange={handleFileInput}
         />
       </div>
+
+      {/* File row */}
+      {mainImages && mainImages.length > 0 && (
+        <div className="wm-file-row">
+          <span className="wm-file-name">
+            {mainImages.length === 1 ? mainImages[0].name : `${mainImages.length} images selected`}
+          </span>
+          <button
+            type="button"
+            className="wm-change-btn"
+            onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          >
+            {mainImages.length === 1 ? 'Change image' : 'Change images'}
+          </button>
+          <button type="button" className="wm-clear-btn" onClick={handleClear}>
+            Clear
+          </button>
+        </div>
+      )}
+
       {/* Preview popup dialog */}
       {previewOpen && (outputUrls && outputUrls.length > 0 && outputUrls[currentIndex]) && (
         <div className="image-popup-overlay" onClick={() => setPreviewOpen(false)}>
@@ -410,7 +435,7 @@ export function WatermarkerView({
       {/* ── Watermarker Guide Section ── */}
       <div className="wm-guide">
         <div className="wm-guide-intro">
-          <h2 className="wm-guide-title">How to Add Watermarks to Images (Protect Your Work and Build Your Brand)</h2>
+          <h2 className="wm-guide-title">How to Add Watermarks to Image(s) (Protect Your Work and Build Your Brand)</h2>
           <p className="wm-guide-lead">If you share images online — whether photos, designs, or screenshots — you’ve probably worried about others using them without permission. That’s where watermarking comes in. Adding a watermark allows you to protect ownership, promote your brand, and prevent unauthorized reuse.</p>
         </div>
 
@@ -452,7 +477,7 @@ export function WatermarkerView({
         <div className="wm-guide-section">
           <h3 className="wm-guide-h3">Step-by-Step</h3>
           <ol className="wm-guide-steps">
-            <li>Upload your image</li>
+            <li>Upload your image(s)</li>
             <li>Enter text or upload a logo</li>
             <li>Adjust size, position, and opacity</li>
             <li>Preview the watermark</li>
@@ -462,6 +487,7 @@ export function WatermarkerView({
 
         <div className="wm-guide-section wm-guide-faq">
           <h3 className="wm-guide-h3">FAQ</h3>
+          <details className="wm-faq-item"><summary>Can you put watermarks on multiple images at once?</summary><p>Yes — you can select multiple images and apply the same watermark to all of them simultaneously.</p></details>
           <details className="wm-faq-item"><summary>Can watermarks be removed?</summary><p>Yes — advanced tools may remove watermarks, but well-placed marks make removal harder.</p></details>
           <details className="wm-faq-item"><summary>What opacity should I use?</summary><p>Usually between 30% and 60% depending on the background.</p></details>
           <details className="wm-faq-item"><summary>Should I place watermark in the center?</summary><p>Center placement offers stronger protection; corners are subtler — choose based on your goal.</p></details>

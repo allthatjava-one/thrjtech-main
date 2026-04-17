@@ -156,6 +156,17 @@ export function useWatermarker(initialImage) {
     }
   }
 
+  const handleClear = () => {
+    outputUrls.forEach(u => u && URL.revokeObjectURL(u))
+    setMainImages([])
+    setCurrentIndex(0)
+    setOutputUrls([])
+    setOutputNames([])
+    setStatus('idle')
+    setErrorMsg('')
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
+
   // Helpers
   function loadImage(file) {
     return new Promise((resolve, reject) => {
@@ -340,5 +351,6 @@ export function useWatermarker(initialImage) {
     handleLogoInput,
     handleWatermark,
     handleWatermarkAll,
+    handleClear,
   }
 }

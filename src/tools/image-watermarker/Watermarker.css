@@ -81,7 +81,8 @@
 .watermarker-page .drop-zone {
   border: 2px dashed #a5b4fc;
   border-radius: 12px;
-  padding: 3.5rem 1rem;
+  padding: 1.5rem 1rem;
+  min-height: 180px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -90,6 +91,9 @@
   background: #f8fafc;
   margin-bottom: 1rem;
   transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .watermarker-page .drop-zone.dragging {
   border-color: #6366f1;
@@ -109,6 +113,42 @@
 }
 
 /* drop-zone always uses padding/flex; overlap-stack handles the thumbnail display */
+
+/* File row (count + change/clear buttons) */
+.watermarker-page .wm-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+  width: 100%;
+}
+.watermarker-page .wm-file-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.watermarker-page .wm-change-btn,
+.watermarker-page .wm-clear-btn {
+  background: none;
+  border: 1px solid #e2e6f0;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+.watermarker-page .wm-change-btn:hover,
+.watermarker-page .wm-clear-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
 
 /* Opacity slider row */
 .watermarker-page .opacity-row {
@@ -459,14 +499,14 @@
 .watermarker-page .overlap-stack {
   display: inline-block;
   position: relative;
-  height: 140px;
-  padding: 10px 14px;
+  height: 185px;
+  padding: 0;
 }
 .watermarker-page .overlap-stack .stacked-thumb {
   position: absolute;
   top: 12px;
-  width: 150px;
-  height: 100px;
+  width: 200px;
+  height: 140px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid #fff;
@@ -483,7 +523,7 @@
   left: calc(22px * 8 + 8px);
   top: 12px;
   width: 68px;
-  height: 100px;
+  height: 140px;
   display:flex;
   align-items:center;
   justify-content:center;

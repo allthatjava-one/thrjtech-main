@@ -257,8 +257,8 @@ const cards = [
       },
       {
         src: '/screenshots/resizer/Image-resizer002.png',
-        alt: 'Step 2 — Choose resize mode and set dimensions',
-        caption: '2. Choose resize mode and set dimensions',
+        alt: 'Step 2 — Choose resize mode and set dimensions or zoom in/out',
+        caption: '2. Choose resize mode and set dimensions or zoom in/out',
       },
       {
         src: '/screenshots/resizer/Image-resizer003.png',
@@ -341,6 +341,11 @@ const cards = [
         src: '/screenshots/image-converter/image-converter-003.png',
         alt: 'Step 3 — Preview the converted image',
         caption: '3. Preview your converted image',
+      },
+      {
+        src: '/screenshots/image-converter/image-converter-004.png',
+        alt: 'Optional — Convert multiple images at once',
+        caption: 'Optional — Convert multiple images at once',
       },
     ],
   },
