@@ -50,7 +50,8 @@
 .ic-drop-zone {
   border: 2px dashed #a0aec0;
   border-radius: 8px;
-  padding: 3.5rem 1rem;
+  padding: 1.5rem 1rem;
+  min-height: 180px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -59,7 +60,6 @@
   margin-bottom: 0.5rem;
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
-  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
@@ -71,15 +71,9 @@
   background: #eef2ff;
 }
 
-.ic-drop-zone.has-image {
-  min-height: 320px;
-  padding: 1rem;
-  cursor: default;
-}
-
 @media (max-width: 600px) {
   .ic-drop-zone {
-    padding: 3rem 0.5rem;
+    padding: 1.5rem 0.5rem;
     font-size: 0.98rem;
   }
 }
@@ -519,13 +513,13 @@
 .ic-overlap-stack {
   display: inline-block;
   position: relative;
-  height: 140px;
+  height: 185px;
 }
 .ic-stacked-thumb {
   position: absolute;
   top: 12px;
-  width: 150px;
-  height: 100px;
+  width: 200px;
+  height: 140px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid #fff;
@@ -540,7 +534,7 @@
   position: absolute;
   top: 12px;
   width: 40px;
-  height: 100px;
+  height: 140px;
   background: #6366f1;
   color: #fff;
   border-radius: 10px;
