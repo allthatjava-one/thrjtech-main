@@ -7,11 +7,11 @@
  *     HEIF camera photos as image/jpeg with a .jpg extension.
  *
  * Conversion order (first success wins):
- *  1. createImageBitmap + canvas — uses the browser's native decoder.
- *     Works on Chrome for Android 12+ and Safari iOS 17+ without any
- *     extra library. Fast, no WASM overhead.
- *  2. heic2any (libheif WASM) — fallback for older browsers that can't
- *     natively decode HEIF.
+ *  1. <img> + canvas with explicit image/heic MIME type — triggers Android's
+ *     system MediaCodec HEIF decoder in Chrome for Android 12+ and Safari iOS 17+.
+ *     NOTE: createImageBitmap() does NOT use the Android HEIF decoder (known
+ *     Chromium limitation), so we use an <img> element instead.
+ *  2. heic2any (libheif WASM) — fallback for browsers without native HEIF support.
  *  3. Return the original file unchanged as a last resort.
  */
 
@@ -54,31 +54,51 @@ function isHeicByMagicBytes(file) {
   });
 }
 
+function outputName(file) {
+  return /\.(heic|heif)$/i.test(file.name)
+    ? file.name.replace(/\.(heic|heif)$/i, '.jpg')
+    : file.name;
+}
+
 /**
- * Decode the file using the browser's native image decoder (createImageBitmap),
- * draw it onto a canvas, and export as JPEG.
- * This is the preferred path on Chrome Android 12+ and Safari iOS 17+.
+ * Convert HEIF to JPEG using an <img> element loaded with an explicit
+ * image/heic blob URL.  Chrome for Android routes this through Android's
+ * system MediaCodec HEIF decoder (Android 12+), and Safari iOS 17+ handles
+ * it natively.  createImageBitmap() does NOT trigger the same path in
+ * Chrome for Android, so we use <img> + drawImage() + toBlob() instead.
  */
-async function convertViaCanvas(file) {
+async function convertViaImg(file) {
+  let url = null;
   try {
-    const bitmap = await createImageBitmap(file);
-    const canvas = document.createElement('canvas');
-    canvas.width = bitmap.width;
-    canvas.height = bitmap.height;
-    canvas.getContext('2d').drawImage(bitmap, 0, 0);
-    bitmap.close();
-    const newName = /\.(heic|heif)$/i.test(file.name)
-      ? file.name.replace(/\.(heic|heif)$/i, '.jpg')
-      : file.name;
+    const ab = await file.arrayBuffer();
+    // Re-wrap with the correct MIME type so the browser's HEIF decoder kicks in.
+    // Samsung files arrive labeled image/jpeg but contain HEIF bytes.
+    const heicBlob = new Blob([ab], { type: 'image/heic' });
+    url = URL.createObjectURL(heicBlob);
     return await new Promise((resolve) => {
-      canvas.toBlob(
-        blob => resolve(blob ? new File([blob], newName, { type: 'image/jpeg' }) : null),
-        'image/jpeg',
-        0.92,
-      );
+      const img = new Image();
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          canvas.getContext('2d').drawImage(img, 0, 0);
+          canvas.toBlob(
+            blob => resolve(blob ? new File([blob], outputName(file), { type: 'image/jpeg' }) : null),
+            'image/jpeg',
+            0.92,
+          );
+        } catch {
+          resolve(null);
+        }
+      };
+      img.onerror = () => resolve(null);
+      img.src = url;
     });
   } catch {
     return null;
+  } finally {
+    if (url) try { URL.revokeObjectURL(url); } catch { /* ignore */ }
   }
 }
 
@@ -86,19 +106,18 @@ export async function normalizeImageFile(file) {
   const heic = isHeicByTypeOrExtension(file) || await isHeicByMagicBytes(file);
   if (!heic) return file;
 
-  // Path 1: native browser decode (Chrome Android 12+, Safari iOS 17+)
-  const canvasResult = await convertViaCanvas(file);
-  if (canvasResult) return canvasResult;
+  // Path 1: <img> + canvas with explicit image/heic MIME type.
+  // Uses Android MediaCodec in Chrome for Android 12+, and native HEIF
+  // in Safari iOS 17+.
+  const imgResult = await convertViaImg(file);
+  if (imgResult) return imgResult;
 
-  // Path 2: heic2any WASM fallback (older browsers)
+  // Path 2: heic2any WASM (libheif) — works in browsers without native HEIF.
   try {
     const heic2any = await import('heic2any').then(m => m.default ?? m);
     const blob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.92 });
     const converted = Array.isArray(blob) ? blob[0] : blob;
-    const newName = /\.(heic|heif)$/i.test(file.name)
-      ? file.name.replace(/\.(heic|heif)$/i, '.jpg')
-      : file.name;
-    return new File([converted], newName, { type: 'image/jpeg' });
+    return new File([converted], outputName(file), { type: 'image/jpeg' });
   } catch {
     return file;
   }
