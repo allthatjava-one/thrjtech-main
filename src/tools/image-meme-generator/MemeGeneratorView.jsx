@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useRef, useState, useEffect } from "react";
 import "./MemeGenerator.css";
+import { normalizeImageFile } from '../../commons/normalizeImageFiles';
 
 export default function MemeGeneratorView({ initialFile }) {
   const canvasRef = useRef(null);
@@ -297,9 +298,10 @@ export default function MemeGeneratorView({ initialFile }) {
     };
   }, []);
 
-  function handleFile(e) {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
+  async function handleFile(e) {
+    const raw = e.target.files && e.target.files[0];
+    if (!raw) return;
+    const file = await normalizeImageFile(raw);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
@@ -360,11 +362,12 @@ export default function MemeGeneratorView({ initialFile }) {
     setIsFileDragging(false);
   }
 
-  function handleDrop(e) {
+  async function handleDrop(e) {
     e.preventDefault();
     setIsFileDragging(false);
-    const file = (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) || null;
-    if (!file) return;
+    const raw = (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) || null;
+    if (!raw) return;
+    const file = await normalizeImageFile(raw);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
@@ -787,7 +790,7 @@ export default function MemeGeneratorView({ initialFile }) {
           <div className="preview-placeholder">Click or drop image here to upload</div>
         )}
         {/* moved preview hint below the preview container so it doesn't overlap the image */}
-        <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFile} style={{ display: 'none' }} />
+        <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif" onChange={handleFile} style={{ display: 'none' }} />
 
         {/* Draggable overlay previews (HTML) to allow interactive positioning */}
         {layers.map((layer) => {

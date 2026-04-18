@@ -581,7 +581,7 @@ const ImageCollageView = ({
         <input
           ref={fileInputRef}
           type="file"
-          accept="image/*"
+          accept="image/*,.heic,.heif"
           multiple
           style={{ display: "none" }}
           onChange={handleFileChange}

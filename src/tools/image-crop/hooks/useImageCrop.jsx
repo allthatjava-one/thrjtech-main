@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import getCroppedImg from '../utils/cropImage';
+import { normalizeImageFile } from '../../../commons/normalizeImageFiles';
 
 function applyFlipToSrc(src, flipH, flipV) {
   if (!flipH && !flipV) return Promise.resolve(src);
@@ -37,8 +38,9 @@ export function useImageCrop() {
   const fileInputRef = useRef(null);
 
   const handleFileInput = async (e) => {
-    const file = e.target.files ? e.target.files[0] : e;
-    if (!file) return;
+    const raw = e.target.files ? e.target.files[0] : e;
+    if (!raw) return;
+    const file = await normalizeImageFile(raw);
     setMainImage(file);
     const url = URL.createObjectURL(file);
     setOriginalSrc(url);
@@ -65,10 +67,10 @@ export function useImageCrop() {
     img.src = originalSrc;
   }, [originalSrc]);
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
-    const file = e.dataTransfer.files && e.dataTransfer.files[0];
-    if (file) handleFileInput(file);
+    const raw = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (raw) handleFileInput(raw);
   };
   const handleDragOver = (e) => { e.preventDefault(); };
   const handleDragLeave = (e) => { e.preventDefault(); };

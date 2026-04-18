@@ -370,7 +370,7 @@ export function ImageCropView(props) {
           ) : (
             <span className="hero-tagline">Drag & drop an image here, or click to select</span>
           )}
-          <input type="file" accept="image/*" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileInput} />
+          <input type="file" accept="image/*,.heic,.heif" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileInput} />
         </div>
 
         <div className="crop-controls">

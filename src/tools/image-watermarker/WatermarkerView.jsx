@@ -199,7 +199,7 @@ export function WatermarkerView({
         )}
         <input
           type="file"
-          accept="image/*"
+          accept="image/*,.heic,.heif"
           multiple
           style={{ display: 'none' }}
           ref={fileInputRef}
@@ -314,7 +314,7 @@ export function WatermarkerView({
             id="logo-input"
             ref={logoInputRef}
             type="file"
-            accept="image/*"
+            accept="image/*,.heic,.heif"
             style={{ display: 'none' }}
             onChange={handleLogoInput}
           />
