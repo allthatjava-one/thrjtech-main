@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from 'react'
-import { normalizeImageFiles, normalizeImageFile } from '../../../commons/normalizeImageFiles'
+import { normalizeImageFiles, normalizeImageFile, isImageFile } from '../../../commons/normalizeImageFiles'
 
 export function useWatermarker(initialImage) {
   const [mainImages, setMainImages] = useState(initialImage ? [initialImage] : [])
@@ -21,8 +21,7 @@ export function useWatermarker(initialImage) {
     if (!files) return
     // normalize to array (converts HEIC/HEIF to JPEG)
     const normalized = await normalizeImageFiles(files instanceof FileList ? files : Array.from(files))
-    const arr = normalized
-      .filter(f => f && f.type && f.type.startsWith('image/'))
+    const arr = normalized.filter(isImageFile)
     if (!arr.length) {
       setErrorMsg('Please upload valid image files.')
       return
@@ -42,7 +41,7 @@ export function useWatermarker(initialImage) {
   const handleLogoFile = async (f) => {
     if (!f) return
     const normalized = await normalizeImageFile(f)
-    if (!normalized.type.startsWith('image/')) {
+    if (!isImageFile(normalized)) {
       setErrorMsg('Please upload a valid logo image file.')
       return
     }

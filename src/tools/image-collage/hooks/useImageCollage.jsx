@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { normalizeImageFiles } from '../../../commons/normalizeImageFiles';
+import { normalizeImageFiles, isImageFile } from '../../../commons/normalizeImageFiles';
 
 const PADDING = 10;
 
@@ -33,7 +33,7 @@ function useImageCollage({
     e.preventDefault();
     setIsDragging(false);
     const raw = await normalizeImageFiles(e.dataTransfer.files);
-    const files = raw.filter(f => f.type.startsWith('image/') || /\.(heic|heif)$/i.test(f.name));
+    const files = raw.filter(isImageFile);
     if (!files.length) return;
     let newImages = images.concat(files);
     // Auto-expand grid if needed
@@ -51,7 +51,7 @@ function useImageCollage({
 
   const handleFileChange = async e => {
     const raw = await normalizeImageFiles(e.target.files);
-    const files = raw.filter(f => f.type.startsWith('image/') || /\.(heic|heif)$/i.test(f.name));
+    const files = raw.filter(isImageFile);
     if (!files.length) return;
     let newImages = images.concat(files);
     // Auto-expand grid if needed
