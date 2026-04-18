@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cropper from 'react-easy-crop';
+import CustomSelect from '../../commons/CustomSelect';
 
 export function ImageCropView(props) {
   const {
@@ -408,24 +409,23 @@ export function ImageCropView(props) {
                 ];
 
                 return (
-                  <select value={selectValue} onChange={e => {
-                    const v = e.target.value;
-                    setSelectValue(v);
-                    const opt = aspectOptions.find(o => o.value === v);
-                    if (!opt || v === '') {
-                      setPreset('custom');
-                      setCustomW(4);
-                      setCustomH(3);
-                    } else {
-                      setCustomW(opt.w || 1);
-                      setCustomH(opt.h || 1);
-                      setPreset(opt.id || 'preset');
-                    }
-                  }}>
-                    {aspectOptions.map(o => (
-                      <option key={o.label} value={o.value}>{o.label}</option>
-                    ))}
-                  </select>
+                  <CustomSelect
+                    value={selectValue}
+                    onChange={v => {
+                      setSelectValue(v);
+                      const opt = aspectOptions.find(o => o.value === v);
+                      if (!opt || v === '') {
+                        setPreset('custom');
+                        setCustomW(4);
+                        setCustomH(3);
+                      } else {
+                        setCustomW(opt.w || 1);
+                        setCustomH(opt.h || 1);
+                        setPreset(opt.id || 'preset');
+                      }
+                    }}
+                    options={aspectOptions.map(o => ({ value: o.value, label: o.label }))}
+                  />
                 );
               })()
             }
