@@ -593,22 +593,25 @@ const ImageCollageView = ({
       </div>
 
       <div className="collage-options">
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-          <label>
+        <div className="collage-controls-row">
+          <label className="collage-inline-label">
             Columns:
-            <input type="number" min={1} max={10} value={columns} onChange={e => setColumns(Number(e.target.value))} />
           </label>
-          <label>
-            Rows:
-            <input type="number" min={1} max={10} value={rows} onChange={e => setRows(Number(e.target.value))} />
-          </label>
-        </div>
+          <input type="number" min={1} max={10} value={columns} onChange={e => setColumns(Number(e.target.value))} />
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <label style={{ display: 'flex', flexDirection: 'column' }}>
-            Width:
-            <input type="number" min={50} value={totalWidth} onChange={e => handleTotalWidthChange(Number(e.target.value))} />
+          <label className="collage-inline-label">
+            Rows:
           </label>
+          <input type="number" min={1} max={10} value={rows} onChange={e => setRows(Number(e.target.value))} />
+        </div>
+        <div className="collage-controls-row">
+          <label className="collage-inline-label">
+            Width x Height:
+          </label>
+            <div className="px-input">
+              <input type="number" placeholder='Width (px)' min={50} value={totalWidth} onChange={e => handleTotalWidthChange(Number(e.target.value))} />
+              <span className="px-suffix">px</span>
+            </div>
 
           <button
             type="button"
@@ -618,19 +621,20 @@ const ImageCollageView = ({
               setLockRatio(newLock);
               if (newLock && totalHeight > 0) ratioRef.current = totalWidth / totalHeight;
             }}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0 0.3rem', fontSize: '1.3rem', color: lockRatio ? '#3182ce' : '#a0aec0', display: 'flex', alignItems: 'center', alignSelf: 'center' }}
+            className="ratio-lock-btn"
+            title={lockRatio ? 'Unlink width and height' : 'Link width and height'}
           >
             {lockRatio ? (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1 0 7 5 5 0 0 1-7 0l-1-1"/><path d="M14 11a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1 0 7 5 5 0 0 1-7 0l-1-1"/><path d="M14 11a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/></svg>
             ) : (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 7a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 7a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
             )}
           </button>
 
-          <label style={{ display: 'flex', flexDirection: 'column' }}>
-            Height:
-            <input type="number" min={50} value={totalHeight} onChange={e => handleTotalHeightChange(Number(e.target.value))} />
-          </label>
+          <div className="px-input">
+            <input type="number" placeholder='Height (px)' min={50} value={totalHeight} onChange={e => handleTotalHeightChange(Number(e.target.value))} />
+            <span className="px-suffix">px</span>
+          </div>
         </div>
       </div>
 

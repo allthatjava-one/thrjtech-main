@@ -1,0 +1,55 @@
+/* Shared CustomSelect styles used by CustomSelect component */
+.custom-select {
+  position: relative;
+  display: inline-block;
+}
+.custom-select-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  min-width: 140px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ffffff, #fbfdff);
+  border: 1px solid #e6e9f2;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+}
+.custom-select-button:focus {
+  outline: none;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.12);
+  border-color: #6366f1;
+}
+.custom-select-value { max-width: 12rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.custom-select-caret { margin-left: auto; color: #6b7280; }
+.custom-select-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 160px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e6e9f2;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  padding: 0.25rem 0;
+  z-index: 60;
+}
+.custom-select-item {
+  list-style: none;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #111827;
+}
+.custom-select-item:hover,
+.custom-select-item.selected {
+  background: linear-gradient(90deg, #eef0ff, #f6f5ff);
+}
+
+/* Utility to allow wider select buttons for long labels */
+.custom-select.wide .custom-select-button {
+  min-width: 420px;
+}
+.custom-select.wide .custom-select-value { max-width: none; }

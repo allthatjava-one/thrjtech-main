@@ -207,7 +207,7 @@ export function PdfSplitterView({
                 value={segments}
                 onChange={e => setSegments(e.target.value)}
                 className="segments-input"
-                style={{ padding: '6px 8px', borderRadius: 6, border: '1px solid #d1d5db' }}
+                style={{ padding: '6px 8px', borderRadius: 6, border: `1px solid ${segments && !/^(\d+\s*(-\s*\d+)?)(,\s*(\d+\s*(-\s*\d+)?))*$/.test(segments.trim()) ? '#ef4444' : '#d1d5db'}` }}
               />
             </label>
 
@@ -224,7 +224,7 @@ export function PdfSplitterView({
             </div>
           </div>
 
-          {errorMsg && <p className="error-msg">{errorMsg}</p>}
+          {errorMsg && <p className="error-msg">{errorMsg}</p> }
 
           <div style={{ marginTop: 12 }}>
             <button className="btn btn-primary compress-btn" onClick={handleSplit} disabled={!file || !segments || status !== 'idle'}>Split PDF</button>
