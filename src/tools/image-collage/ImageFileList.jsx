@@ -1,9 +1,13 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function ImageFileList({ images, onMove, onRemove, onReset }) {
   const [urls, setUrls] = useState([]);
   const [errors, setErrors] = useState([]);
+  // Track which indices have already attempted the data-URL fallback so we
+  // don't enter an infinite onError loop when the data URL is also unrenderable
+  // (e.g. HEIC bytes that Chrome cannot display).
+  const dataUrlAttempted = useRef([]);
 
   useEffect(() => {
     // Clean up previous URLs
@@ -11,26 +15,33 @@ export default function ImageFileList({ images, onMove, onRemove, onReset }) {
     const newUrls = images.map(file => URL.createObjectURL(file));
     setUrls(newUrls);
     setErrors(images.map(() => false));
+    dataUrlAttempted.current = images.map(() => false);
     return () => {
       newUrls.forEach(url => { try { if (url && typeof url === 'string' && url.startsWith('blob:')) URL.revokeObjectURL(url); } catch (e) {} });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
-  const tryDataUrl = idx => {
+  const tryDataUrl = (idx, currentUrls, currentErrors) => {
+    // If we already tried the data-URL fallback and the image still errors,
+    // mark it as unsupported rather than looping forever.
+    if (dataUrlAttempted.current[idx]) {
+      const a = currentErrors.slice(); a[idx] = true; setErrors(a); return;
+    }
+    dataUrlAttempted.current[idx] = true;
     const file = images[idx];
     if (!file) {
-      const a = errors.slice(); a[idx] = true; setErrors(a); return;
+      const a = currentErrors.slice(); a[idx] = true; setErrors(a); return;
     }
     const reader = new FileReader();
     reader.onload = () => {
-      const newUrls = urls.slice();
+      const newUrls = currentUrls.slice();
       newUrls[idx] = reader.result;
       setUrls(newUrls);
-      const a = errors.slice(); a[idx] = false; setErrors(a);
+      const a = currentErrors.slice(); a[idx] = false; setErrors(a);
     };
     reader.onerror = () => {
-      const a = errors.slice(); a[idx] = true; setErrors(a);
+      const a = currentErrors.slice(); a[idx] = true; setErrors(a);
     };
     reader.readAsDataURL(file);
   };
@@ -49,7 +60,7 @@ export default function ImageFileList({ images, onMove, onRemove, onReset }) {
               alt={file.name}
               className="image-thumb"
               draggable={false}
-              onError={() => tryDataUrl(idx)}
+              onError={() => tryDataUrl(idx, urls, errors)}
             />
           )}
           <div className="image-file-actions">

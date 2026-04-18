@@ -113,6 +113,7 @@ const ImageCollageView = ({
   const [previewUrls, setPreviewUrls] = useState([]);
   const [previewMeta, setPreviewMeta] = useState([]);
   const [previewErrors, setPreviewErrors] = useState([]);
+  const previewDataUrlAttempted = useRef([]);
   const [offsets, setOffsets] = useState([]);
   const [scales, setScales] = useState([]);
   const previewRef = useRef(null);
@@ -136,6 +137,7 @@ const ImageCollageView = ({
     const urls = images.map(f => URL.createObjectURL(f));
     setPreviewUrls(urls);
     setPreviewErrors(images.map(() => false));
+    previewDataUrlAttempted.current = images.map(() => false);
     setOffsets(images.map(() => ({ x: 0, y: 0 })));
     setScales(images.map(() => 1));
     // load natural sizes for exact cover calculations
@@ -155,20 +157,24 @@ const ImageCollageView = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
-  const tryPreviewDataUrl = idx => {
+  const tryPreviewDataUrl = (idx, currentUrls, currentErrors) => {
+    if (previewDataUrlAttempted.current[idx]) {
+      const errs = currentErrors.slice(); errs[idx] = true; setPreviewErrors(errs); return;
+    }
+    previewDataUrlAttempted.current[idx] = true;
     const file = images[idx];
     if (!file) {
-      const arr = previewErrors.slice(); arr[idx] = true; setPreviewErrors(arr); return;
+      const arr = currentErrors.slice(); arr[idx] = true; setPreviewErrors(arr); return;
     }
     const reader = new FileReader();
     reader.onload = () => {
-      const arr = previewUrls.slice();
+      const arr = currentUrls.slice();
       arr[idx] = reader.result;
       setPreviewUrls(arr);
-      const errs = previewErrors.slice(); errs[idx] = false; setPreviewErrors(errs);
+      const errs = currentErrors.slice(); errs[idx] = false; setPreviewErrors(errs);
     };
     reader.onerror = () => {
-      const errs = previewErrors.slice(); errs[idx] = true; setPreviewErrors(errs);
+      const errs = currentErrors.slice(); errs[idx] = true; setPreviewErrors(errs);
     };
     reader.readAsDataURL(file);
   };
@@ -859,7 +865,7 @@ const ImageCollageView = ({
                       return (
                         <div key={idx} style={{ position: 'absolute', left, top, width: cellW, height: cellH, overflow: 'hidden', background: bgColor, display: 'flex', alignItems: 'center', justifyContent: 'center', touchAction: 'none' }} onPointerDown={e => onCellPointerDown(e, idx, cellW, cellH, left, top, meta)} onPointerMove={e => onCellPointerMove(e, idx)} onPointerUp={e => onCellPointerUp(e, idx)} onPointerCancel={e => onCellPointerUp(e, idx)} onWheel={e => onImageWheel(e, idx, meta, off, cellW, cellH, left, top)}>
                           {file && url && !previewErrors[idx] ? (
-                            <img src={url} data-idx={idx} alt={file.name} draggable={false} onError={() => tryPreviewDataUrl(idx)} style={{ position: 'absolute', left: off.x + (cellW - drawW) / 2, top: off.y + (cellH - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }} />
+                            <img src={url} data-idx={idx} alt={file.name} draggable={false} onError={() => tryPreviewDataUrl(idx, previewUrls, previewErrors)} style={{ position: 'absolute', left: off.x + (cellW - drawW) / 2, top: off.y + (cellH - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }} />
                           ) : file ? (
                             <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: 12, padding: 6, textAlign: 'center' }}>Preview not available for this image</div>
                           ) : null}
