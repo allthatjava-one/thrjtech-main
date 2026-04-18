@@ -50,6 +50,9 @@ function useImageCollage({
   };
 
   const handleFileChange = async e => {
+    // Blur the file input immediately so Samsung Browser releases scroll control
+    // back to the page after the file picker closes.
+    if (fileInputRef.current) fileInputRef.current.blur();
     const raw = await normalizeImageFiles(e.target.files);
     const files = raw.filter(isImageFile);
     if (!files.length) return;
