@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { normalizeImageFiles } from '../../../commons/normalizeImageFiles';
 
 const PADDING = 10;
 
@@ -28,10 +29,11 @@ function useImageCollage({
   // Allow collage if at least one image
   const canCollage = images.length > 0;
 
-  const handleDrop = e => {
+  const handleDrop = async e => {
     e.preventDefault();
     setIsDragging(false);
-    const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith("image/"));
+    const raw = await normalizeImageFiles(e.dataTransfer.files);
+    const files = raw.filter(f => f.type.startsWith('image/') || /\.(heic|heif)$/i.test(f.name));
     if (!files.length) return;
     let newImages = images.concat(files);
     // Auto-expand grid if needed
@@ -47,8 +49,9 @@ function useImageCollage({
     if (setRows && newRows !== rows) setRows(newRows);
   };
 
-  const handleFileChange = e => {
-    const files = Array.from(e.target.files).filter(f => f.type.startsWith("image/"));
+  const handleFileChange = async e => {
+    const raw = await normalizeImageFiles(e.target.files);
+    const files = raw.filter(f => f.type.startsWith('image/') || /\.(heic|heif)$/i.test(f.name));
     if (!files.length) return;
     let newImages = images.concat(files);
     // Auto-expand grid if needed

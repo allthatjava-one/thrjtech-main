@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { normalizeImageFile } from '../../../commons/normalizeImageFiles';
 
 export function useImageResizer() {
   const [mainImage, setMainImage] = useState(null);
@@ -13,10 +14,10 @@ export function useImageResizer() {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef();
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
     setIsDragging(false);
-    const file = e.dataTransfer.files[0];
+    const file = await normalizeImageFile(e.dataTransfer.files[0]);
     if (file && file.type.startsWith('image/')) {
       setMainImage(file);
       setOutputUrl(null);
@@ -43,8 +44,8 @@ export function useImageResizer() {
     setIsDragging(false);
   };
 
-  const handleFileInput = (e) => {
-    const file = e.target.files[0];
+  const handleFileInput = async (e) => {
+    const file = await normalizeImageFile(e.target.files[0]);
     if (file && file.type.startsWith('image/')) {
       setMainImage(file);
       setOutputUrl(null);

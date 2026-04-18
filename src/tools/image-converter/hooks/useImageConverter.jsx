@@ -204,9 +204,11 @@ export function useImageConverter() {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef();
 
-  const processFiles = (files) => {
+  const processFiles = async (files) => {
     if (!files) return;
-    const arr = Array.from(files instanceof FileList ? files : files)
+    const { normalizeImageFiles } = await import('../../../commons/normalizeImageFiles');
+    const normalized = await normalizeImageFiles(files instanceof FileList ? files : Array.from(files));
+    const arr = normalized
       .filter(f => resolveMime(f).startsWith('image/'));
     if (!arr.length) {
       setErrorMsg('Please select valid image files.');
@@ -232,7 +234,7 @@ export function useImageConverter() {
 
   const handleDragOver = (e) => { e.preventDefault(); setIsDragging(true); };
   const handleDragLeave = (e) => { e.preventDefault(); setIsDragging(false); };
-  const handleFileInput = (e) => processFiles(e.target.files);
+  const handleFileInput = (e) => { processFiles(e.target.files); };
 
 
 

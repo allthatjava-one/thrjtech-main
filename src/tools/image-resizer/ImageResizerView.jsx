@@ -329,7 +329,7 @@ export function ImageResizerView({
         )}
         <input
           type="file"
-          accept="image/*"
+          accept="image/*,.heic,.heif"
           style={{ display: 'none' }}
           ref={fileInputRef}
           onChange={handleFileInput}
