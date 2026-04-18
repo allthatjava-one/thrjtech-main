@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect, useRef } from 'react'
+import CustomSelect from '../../commons/CustomSelect'
 import JSZip from 'jszip'
 import './Watermarker.css'
 
@@ -297,10 +298,11 @@ export function WatermarkerView({
           placeholder="Enter watermark text"
           value={watermarkText}
           onChange={e => setWatermarkText(e.target.value)}
+          style={!watermarkText ? { borderColor: '#ef4444' } : undefined}
         />
       )}
       {watermarkType === 'logo' && (
-        <div className="watermark-input" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div className="watermark-input" style={{ display: 'flex', alignItems: 'center', gap: 12, ...(!logoFile ? { borderColor: '#ef4444' } : {}) }}>
           <button
             type="button"
             className="btn btn-outline"
@@ -325,25 +327,25 @@ export function WatermarkerView({
       <div className="watermark-options">
         <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{ marginRight: 6, fontSize: '0.95rem' }}>Position: </span>
-          <select
-            value={position}
-            className="select-modern"
-            onChange={(e) => {
-              const v = e.target.value
-              setPosition(v)
-              if (v !== 'default' && repeated) {
-                setRepeated(false)
-              }
-            }}
-            aria-label="Watermark position"
-          >
-            <option value="default">Default (center + diagonal)</option>
-            <option value="center">Center</option>
-            <option value="top-left">Top Left</option>
-            <option value="top-right">Top Right</option>
-            <option value="bottom-left">Bottom Left</option>
-            <option value="bottom-right">Bottom Right</option>
-          </select>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <CustomSelect
+              value={position}
+              onChange={(v) => {
+                setPosition(v)
+                if (v !== 'default' && repeated) {
+                  setRepeated(false)
+                }
+              }}
+              options={[
+                { value: 'default', label: 'Default (center + diagonal)' },
+                { value: 'center', label: 'Center' },
+                { value: 'top-left', label: 'Top Left' },
+                { value: 'top-right', label: 'Top Right' },
+                { value: 'bottom-left', label: 'Bottom Left' },
+                { value: 'bottom-right', label: 'Bottom Right' },
+              ]}
+            />
+          </div>
         </label>
 
         <label className="repeated-label" style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: 6, cursor: position === 'default' ? 'pointer' : 'not-allowed' }}>

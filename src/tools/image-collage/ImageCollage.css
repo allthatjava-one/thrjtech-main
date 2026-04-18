@@ -133,7 +133,7 @@
   flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  align-items: center;
+  align-items: stretch;
 }
 .collage-options label {
   display: flex;
@@ -147,6 +147,41 @@
   border: 1px solid #cbd5e1;
   border-radius: 6px;
   width: 70px;
+}
+
+/* Row layout for controls on desktop */
+.collage-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.collage-inline-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #374151;
+}
+.collage-controls-spacer { flex: 1 1 20px; }
+.px-input { display: inline-flex; align-items: center; gap: 6px; }
+.px-suffix { font-size: 0.95rem; color: #6b7280; }
+.ratio-lock-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: #a0aec0;
+  display: inline-flex;
+  align-items: center;
+}
+.ratio-lock-btn svg { display: block; }
+.ratio-lock-btn:hover { color: #374151; }
+
+@media (min-width: 740px) {
+  .collage-options { align-items: center; }
+  .collage-inline-label { flex-direction: row; align-items: center; gap: 8px; }
+  .collage-inline-label input { margin-top: 0; }
 }
 .expected-size {
   font-size: 0.95rem;

@@ -66,6 +66,8 @@
 .control-row input[type="range"] { width: 160px; }
 .control-row select { padding: 6px 8px; border-radius: 8px; border: 1px solid #e6e9f2; background: #fff; }
 
+/* Shared CustomSelect styles live in src/commons/CustomSelect.css */
+
 /* Modern button styles for crop controls */
 .crop-controls button,
 .crop-controls .download-btn,
