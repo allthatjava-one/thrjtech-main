@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
+import './CustomSelect.css'
 
-export default function CustomSelect({ value, onChange, options = [] }) {
+export default function CustomSelect({ value, onChange, options = [], className = '' }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
+
+  const selected = options.find((o) => o.value === value) || null
 
   useEffect(() => {
     function onDocClick(e) {
@@ -18,7 +21,7 @@ export default function CustomSelect({ value, onChange, options = [] }) {
   }
 
   return (
-    <div className="custom-select" ref={ref}>
+    <div className={`custom-select ${className}`} ref={ref}>
       <button
         type="button"
         className="custom-select-button"
@@ -26,7 +29,7 @@ export default function CustomSelect({ value, onChange, options = [] }) {
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
       >
-        <span className="custom-select-value">{value.toUpperCase()}</span>
+        <span className="custom-select-value">{selected ? selected.label : String(value).toUpperCase()}</span>
         <span className="custom-select-caret" aria-hidden="true">▾</span>
       </button>
 

@@ -89,7 +89,7 @@
   text-align: center;
   cursor: pointer;
   background: #f8fafc;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   transition: border-color 0.2s, background 0.2s;
   display: flex;
   align-items: center;
@@ -120,6 +120,7 @@
   align-items: center;
   gap: 0.6rem;
   flex-wrap: wrap;
+  margin-top: 0.2rem;
   margin-bottom: 0.25rem;
   width: 100%;
 }
@@ -201,6 +202,7 @@
   color: #6366f1;
   font-weight: 600;
 }
+
 
 .watermarker-page .clickable {
   cursor: pointer;

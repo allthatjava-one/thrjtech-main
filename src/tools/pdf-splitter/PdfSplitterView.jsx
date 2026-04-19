@@ -199,35 +199,37 @@ export function PdfSplitterView({
             )}
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 12, alignItems: 'center' }}>
-            <label className="hero-tagline" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>Page Ranges:
-              <input
-                aria-label="Page Ranges"
-                placeholder="e.g. 1,3-5,7-10"
-                value={segments}
-                onChange={e => setSegments(e.target.value)}
-                className="segments-input"
-                style={{ padding: '6px 8px', borderRadius: 6, border: '1px solid #d1d5db' }}
-              />
-            </label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
+              <label className="hero-tagline" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>Page Ranges:
+                <input
+                  aria-label="Page Ranges"
+                  placeholder="e.g. 1,3-5,7-10"
+                  value={segments}
+                  onChange={e => setSegments(e.target.value)}
+                  className="segments-input"
+                  style={{ padding: '6px 8px', borderRadius: 6, border: `1px solid ${segments && !/^(\d+\s*(-\s*\d+)?)(,\s*(\d+\s*(-\s*\d+)?))*$/.test(segments.trim()) ? '#ef4444' : '#d1d5db'}` }}
+                />
+              </label>
 
-            <div className="hero-tagline" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-              <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-                Output to file(s):
-              </label>
-              <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-                <input type="radio" name="output" checked={outputOption === 'ONE'} onChange={() => setOutputOption('ONE')} /> Single
-              </label>
-              <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-                <input type="radio" name="output" checked={outputOption === 'MULTIPLE'} onChange={() => setOutputOption('MULTIPLE')} /> Multiple
-              </label>
+              <div className="hero-tagline" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                  Output to file(s):
+                </label>
+                <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                  <input type="radio" name="output" checked={outputOption === 'ONE'} onChange={() => setOutputOption('ONE')} /> Single
+                </label>
+                <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                  <input type="radio" name="output" checked={outputOption === 'MULTIPLE'} onChange={() => setOutputOption('MULTIPLE')} /> Multiple
+                </label>
+              </div>
             </div>
-          </div>
 
-          {errorMsg && <p className="error-msg">{errorMsg}</p>}
+            {errorMsg && <p className="error-msg">{errorMsg}</p> }
 
-          <div style={{ marginTop: 12 }}>
-            <button className="btn btn-primary compress-btn" onClick={handleSplit} disabled={!file || !segments || status !== 'idle'}>Split PDF</button>
+            {file && (status === 'idle' || status === 'error') && (
+              <button className="btn btn-primary compress-btn" onClick={handleSplit} disabled={!segments}>Split PDF</button>
+            )}
           </div>
 
           {status === 'splitting' && (

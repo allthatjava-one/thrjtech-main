@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { formatSize } from './utils/formatSize'
 import { useState } from 'react'
+import CustomSelect from '../../commons/CustomSelect'
 
 export function PdfCompressorView({
   file,
@@ -222,19 +223,20 @@ export function PdfCompressorView({
                 )}
               </div>
 
-              <div className="quality-select" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <label htmlFor="quality-option" className="hero-tagline" style={{ fontWeight: 700, margin: 0 }}>Quality</label>
-                <select
-                  id="quality-option"
-                  value={qualityOption}
-                  onChange={(e) => setQualityOption(e.target.value)}
-                  aria-label="Compression quality option"
-                  style={{ padding: '6px 8px', borderRadius: 6 }}
-                >
-                  <option value="HQ">High Quality — minimal visual loss, modest size reduction.</option>
-                  <option value="BALANCED">Balanced — good quality with significant size savings.</option>
-                  <option value="MAX">Maximum Compression — largest size reduction, some visual loss possible.</option>
-                </select>
+              <div className="quality-controls">
+                <label className="quality-label">Quality</label>
+                <div className="quality-select-wrap">
+                  <CustomSelect
+                    className="wide"
+                    value={qualityOption}
+                    onChange={setQualityOption}
+                    options={[
+                      { value: 'HQ', label: 'High Quality — minimal visual loss, modest size reduction.' },
+                      { value: 'BALANCED', label: 'Balanced — good quality with significant size savings.' },
+                      { value: 'MAX', label: 'Maximum Compression — largest size reduction, some visual loss possible.' },
+                    ]}
+                  />
+                </div>
               </div>
 
               {errorMsg && <p className="error-msg">{errorMsg}</p>}

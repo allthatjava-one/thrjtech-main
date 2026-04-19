@@ -81,9 +81,11 @@
 .remove-btn { background:none; border:1px solid #e5e7eb; border-radius:8px; color:#9ca3af; width:32px; height:32px }
 
 .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.65rem 1.4rem; border-radius:10px; font-weight:600; cursor:pointer }
-.btn-primary { background: linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff }
+.btn-primary { background: linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff; box-shadow: 0 4px 14px rgba(99,102,241,0.35); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99,102,241,0.45); }
 .btn-outline { background:transparent; color:#6366f1; border:2px solid #6366f1 }
 .btn-ghost { background:transparent; color:#6b7280 }
+.pdf-splitter-page .compress-btn { width:100%; padding:0.85rem; font-size:1rem; }
 
 .progress-section { display:flex; flex-direction:column; gap:0.5rem }
 .progress-label { color:#6366f1 }
@@ -100,6 +102,7 @@
 .pdf-splitter-page .split-col-value { font-size:0.95rem; font-weight:600; color:#374151; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
 .pdf-splitter-page .split-download-btn { width:auto }
 .note { font-size:0.8rem; color:#9ca3af; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; padding:0.75rem }
+.pdf-splitter-page .error-msg { color: #ef4444; }
 
 .segments-input {
   min-width: 220px;

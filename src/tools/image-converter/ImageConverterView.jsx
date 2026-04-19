@@ -314,7 +314,7 @@ export function ImageConverterView({
         )}
         <input
           type="file"
-          accept="image/*"
+          accept="image/*,.heic,.heif"
           multiple
           style={{ display: 'none' }}
           ref={fileInputRef}

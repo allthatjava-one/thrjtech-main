@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { normalizeImageFile, isImageFile } from '../../../commons/normalizeImageFiles';
 
 export function useImageResizer() {
   const [mainImage, setMainImage] = useState(null);
@@ -13,39 +14,11 @@ export function useImageResizer() {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef();
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
     setIsDragging(false);
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) {
-      setMainImage(file);
-      setOutputUrl(null);
-      setErrorMsg('');
-      // Set default width/height to original image size
-      const img = new window.Image();
-      img.onload = () => {
-        setWidth(img.width.toString());
-        setHeight(img.height.toString());
-      };
-      img.src = URL.createObjectURL(file);
-    } else {
-      setErrorMsg('Please drop a valid image file.');
-    }
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-  };
-
-  const handleFileInput = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
+    const file = await normalizeImageFile(e.dataTransfer.files[0]);
+    if (file && isImageFile(file)) {
       setMainImage(file);
       setOutputUrl(null);
       setErrorMsg('');
@@ -59,6 +32,16 @@ export function useImageResizer() {
     } else {
       setErrorMsg('Please select a valid image file.');
     }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
   };
 
   const handleResize = () => {
@@ -103,6 +86,34 @@ export function useImageResizer() {
     img.src = URL.createObjectURL(mainImage);
   };
 
+  const handleFileInput = async (e) => {
+    const file = await normalizeImageFile(e.target.files[0]);
+    if (file && isImageFile(file)) {
+      setMainImage(file);
+      setOutputUrl(null);
+      setErrorMsg('');
+      const img = new window.Image();
+      img.onload = () => {
+        setWidth(img.width.toString());
+        setHeight(img.height.toString());
+      };
+      img.src = URL.createObjectURL(file);
+    } else {
+      setErrorMsg('Please select a valid image file.');
+    }
+  };
+
+  const handleClear = () => {
+    setMainImage(null);
+    setOutputUrl(null);
+    setWidth('');
+    setHeight('');
+    setPercentage(100);
+    setStatus('idle');
+    setErrorMsg('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
   return {
     mainImage,
     resizeMode,
@@ -124,5 +135,6 @@ export function useImageResizer() {
     handleDragLeave,
     handleFileInput,
     handleResize,
+    handleClear,
   };
 }

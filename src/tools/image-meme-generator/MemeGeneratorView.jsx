@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useRef, useState, useEffect } from "react";
 import "./MemeGenerator.css";
+import { normalizeImageFile } from '../../commons/normalizeImageFiles';
 
 export default function MemeGeneratorView({ initialFile }) {
   const canvasRef = useRef(null);
@@ -11,7 +12,7 @@ export default function MemeGeneratorView({ initialFile }) {
   const [imageObj, setImageObj] = useState(null);
   // Layers: multiple text layers with position, size and color
   const initialLayers = (() => {
-    const defaultFont = (typeof window !== 'undefined' && window.innerWidth <= 480) ? 28 : 48;
+    const defaultFont = 30;
     // fontRatio is fraction of original image height (e.g. 0.08 => 8% of image height)
     const defaultRatio = defaultFont / 600; // choose 600px as a sensible reference height
     return [
@@ -34,6 +35,7 @@ export default function MemeGeneratorView({ initialFile }) {
   const dragging = useRef(null);
   const wasDraggingRef = useRef(false);
   const [isFileDragging, setIsFileDragging] = useState(false);
+  const [imageFileName, setImageFileName] = useState(null);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -43,6 +45,13 @@ export default function MemeGeneratorView({ initialFile }) {
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
   useEffect(() => { imgTransformRef.current = imgTransform; }, [imgTransform]);
   useEffect(() => { selectedLayerIdRef.current = selectedLayerId; }, [selectedLayerId]);
+
+  // Auto-open Advanced section when a text layer is selected on the preview
+  useEffect(() => {
+    if (selectedLayerId) {
+      setAdvancedOpen(true);
+    }
+  }, [selectedLayerId]);
 
   // helper to check if user made changes compared to initial snapshot
   const hasChanges = () => {
@@ -83,6 +92,40 @@ export default function MemeGeneratorView({ initialFile }) {
       const reset = { offsetX: 0, offsetY: 0, scale: 1 };
       setImgTransform(reset);
       imgTransformRef.current = reset;
+      // When a new image loads, compute a fontRatio relative to the actual image height
+      // so the default font looks closer to the intended `defaultFont` (30px) on the preview.
+      requestAnimationFrame(() => {
+        try {
+          const desiredCss = 30; // target on-screen CSS px for new layers
+          let actualRatio = img.height ? (desiredCss / img.height) : (desiredCss / 600);
+          // If preview element is available, account for the preview draw scale so displayed px ~= desiredCss
+          try {
+            const previewRect = previewRef.current && previewRef.current.getBoundingClientRect && previewRef.current.getBoundingClientRect();
+            if (previewRect && img.width && img.height) {
+              const baseScale = Math.min(previewRect.width / img.width, previewRect.height / img.height) || 1;
+              const drawH = Math.max(1, Math.round(img.height * baseScale));
+              actualRatio = desiredCss / drawH;
+            }
+          } catch (err) {}
+
+          setLayers(prev => prev.map(l => {
+            // Only replace the placeholder initial ratio (30/600) so we don't override user edits
+            const placeholderRatio = 30 / 600;
+            if (Math.abs((l.fontRatio || 0) - placeholderRatio) < 1e-9) {
+              return { ...l, fontRatio: actualRatio };
+            }
+            return l;
+          }));
+          // Also update the stored initial snapshot so Reset preserves this baseline
+          initialStateRef.current.layers = (initialStateRef.current.layers || []).map(l => {
+            const placeholderRatio = 30 / 600;
+            if (Math.abs((l.fontRatio || 0) - placeholderRatio) < 1e-9) {
+              return { ...l, fontRatio: actualRatio };
+            }
+            return l;
+          });
+        } catch (err) {}
+      });
     };
     img.src = imageSrc;
   }, [imageSrc]);
@@ -146,7 +189,7 @@ export default function MemeGeneratorView({ initialFile }) {
       return { cssPx, canvasPx, lineHeightCss, lineHeightCanvas };
     }
     // Fallback to legacy fontSize (plain pixels)
-    const cssPx = layer.fontSize || 48;
+    const cssPx = layer.fontSize || 30;
     const lineHeightCss = Math.round((cssPx + 6) * 0.82);
     const lineHeightCanvas = lineHeightCss;
     return { cssPx, canvasPx: cssPx, lineHeightCss, lineHeightCanvas };
@@ -263,12 +306,23 @@ export default function MemeGeneratorView({ initialFile }) {
     };
   }, []);
 
-  function handleFile(e) {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
+  async function handleFile(e) {
+    const raw = e.target.files && e.target.files[0];
+    if (!raw) return;
+    const file = await normalizeImageFile(raw);
+    setImageFileName(file.name || null);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
+  }
+
+  function handleClearImage() {
+    setImageSrc(null);
+    setImageObj(null);
+    setImageFileName(null);
+    setImgTransform({ offsetX: 0, offsetY: 0, scale: 1 });
+    imgTransformRef.current = { offsetX: 0, offsetY: 0, scale: 1 };
+    if (fileInputRef.current) fileInputRef.current.value = '';
   }
 
   function handlePreviewClick() {
@@ -326,11 +380,13 @@ export default function MemeGeneratorView({ initialFile }) {
     setIsFileDragging(false);
   }
 
-  function handleDrop(e) {
+  async function handleDrop(e) {
     e.preventDefault();
     setIsFileDragging(false);
-    const file = (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) || null;
-    if (!file) return;
+    const raw = (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) || null;
+    if (!raw) return;
+    const file = await normalizeImageFile(raw);
+    setImageFileName(file.name || null);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
@@ -406,7 +462,7 @@ export default function MemeGeneratorView({ initialFile }) {
       // font size = fontRatio × original image height (keeps text proportional to the actual image)
       const fontPx = layer.fontRatio
         ? Math.max(10, Math.min(2400, Math.round(layer.fontRatio * h)))
-        : (layer.fontSize || 48);
+        : (layer.fontSize || 30);
       const lineHeight = Math.round((fontPx + 6) * 0.82);
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
@@ -502,7 +558,7 @@ export default function MemeGeneratorView({ initialFile }) {
 
   function addLayer() {
     const id = `layer-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-    const defaultFont = (typeof window !== 'undefined' && window.innerWidth <= 480) ? 28 : 48;
+    const defaultFont = 30;
     const defaultRatio = defaultFont / 600;
     const newLayer = { id, text: '', placeholder: 'New Text', x: 0.05, y: 0.5, fontSize: defaultFont, fontRatio: defaultRatio, color: '#ffffff' };
     setLayers((prev) => [...prev, newLayer]);
@@ -644,6 +700,58 @@ export default function MemeGeneratorView({ initialFile }) {
               </div>
             </div>
         </div>
+      <div
+        className={`meme-preview${isFileDragging ? ' dragging drop-zone' : ''}${!imageObj ? ' drop-zone-empty' : ''}${imageObj ? ' has-image' : ''}`}
+        ref={previewRef}
+        onClick={handlePreviewClick}
+        onPointerDown={handlePreviewPointerDown}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        <canvas ref={canvasRef} className="meme-canvas" />
+        {!imageObj && (
+          <div className="preview-placeholder">Click or drop image here to upload</div>
+        )}
+        {/* moved preview hint below the preview container so it doesn't overlap the image */}
+        <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif" onChange={handleFile} style={{ display: 'none' }} />
+
+        {/* Draggable overlay previews (HTML) to allow interactive positioning */}
+        {layers.map((layer) => {
+          const { cssPx, lineHeightCss } = computeFontSizes(layer);
+          return (
+          <div
+            key={layer.id}
+            data-layer-id={layer.id}
+            className={`draggable-text layer-overlay ${layer.id === selectedLayerId ? 'selected' : ''}`}
+            style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${cssPx}px`, lineHeight: `${lineHeightCss}px`, color: layer.color, whiteSpace: 'pre' }}
+            onPointerDown={(e) => startDrag(e, layer.id)}
+          >
+            {layer.text || (layer.placeholder || '').toUpperCase()}
+          </div>
+          );
+        })}
+      </div>
+      {imageObj && (
+        <div className="preview-hint-below">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
+      )}
+
+      {/* File row: filename + Change Image + Clear */}
+      {imageObj && (
+        <div className="mg-file-row">
+          <span className="mg-file-name">{imageFileName || 'Image loaded'}</span>
+          <button
+            type="button"
+            className="mg-change-btn"
+            onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          >
+            Change Image
+          </button>
+          <button type="button" className="mg-clear-btn" onClick={handleClearImage}>
+            Clear
+          </button>
+        </div>
+      )}
 
         
       <div className="meme-generator">
@@ -697,11 +805,11 @@ export default function MemeGeneratorView({ initialFile }) {
           aria-expanded={advancedOpen}
         >
           <span className={`arrow ${advancedOpen ? 'open' : ''}`}>{advancedOpen ? '▾' : '▸'}</span>
-          <span className="advanced-text">Advance...</span>
+          <span className="advanced-text">Font Options...</span>
         </div>
         {advancedOpen && (
           <div className="advanced-section">
-            <div className="control-row">
+            <div className={`control-row${selectedLayerId ? ' font-size-selected' : ''}`}>
               <label>Font Size</label>
               <input
                 type="range"
@@ -710,11 +818,11 @@ export default function MemeGeneratorView({ initialFile }) {
                 value={(() => {
                   const sel = layers.find((l) => l.id === selectedLayerId) || {};
                   const { cssPx } = computeFontSizes(sel);
-                  return cssPx || sel.fontSize || 48;
+                  return cssPx || sel.fontSize || 30;
                 })()}
                 onChange={handleFontSliderChange}
               />
-              <label>{(() => { const sel = layers.find((l) => l.id === selectedLayerId) || {}; const { cssPx } = computeFontSizes(sel); return (cssPx || sel.fontSize || 48) + 'px'; })()}</label>
+              <label>{(() => { const sel = layers.find((l) => l.id === selectedLayerId) || {}; const { cssPx } = computeFontSizes(sel); return (cssPx || sel.fontSize || 30) + 'px'; })()}</label>
             </div>
             <div className="control-row">
               <label>Text Color</label>
@@ -727,9 +835,6 @@ export default function MemeGeneratorView({ initialFile }) {
           </div>
         )}
         <div className="control-row buttons">
-          {imageObj && (
-            <button className="btn" onClick={() => fileInputRef.current?.click()}>Image...</button>
-          )}
           {hasChanges() && (
             <button className="btn" onClick={handleReset}>Reset</button>
           )}
@@ -739,41 +844,6 @@ export default function MemeGeneratorView({ initialFile }) {
           <button className="btn primary" onClick={handleDownload}>Download</button>
         </div>
       </div>
-      <div
-        className={`meme-preview${isFileDragging ? ' dragging drop-zone' : ''}${!imageObj ? ' drop-zone-empty' : ''}${imageObj ? ' has-image' : ''}`}
-        ref={previewRef}
-        onClick={handlePreviewClick}
-        onPointerDown={handlePreviewPointerDown}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-      >
-        <canvas ref={canvasRef} className="meme-canvas" />
-        {!imageObj && (
-          <div className="preview-placeholder">Click or drop image here to upload</div>
-        )}
-        {/* moved preview hint below the preview container so it doesn't overlap the image */}
-        <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFile} style={{ display: 'none' }} />
-
-        {/* Draggable overlay previews (HTML) to allow interactive positioning */}
-        {layers.map((layer) => {
-          const { cssPx, lineHeightCss } = computeFontSizes(layer);
-          return (
-          <div
-            key={layer.id}
-            data-layer-id={layer.id}
-            className={`draggable-text layer-overlay ${layer.id === selectedLayerId ? 'selected' : ''}`}
-            style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${cssPx}px`, lineHeight: `${lineHeightCss}px`, color: layer.color, whiteSpace: 'pre' }}
-            onPointerDown={(e) => startDrag(e, layer.id)}
-          >
-            {layer.text || (layer.placeholder || '').toUpperCase()}
-          </div>
-          );
-        })}
-      </div>
-      {imageObj && (
-        <div className="preview-hint-below">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
-      )}
     </div>
     {previewOpen && previewUrl && (
       <div className="meme-popup-overlay" onClick={() => setPreviewOpen(false)}>

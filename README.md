@@ -2,7 +2,11 @@ THRJ Tech main site
 
 # Start in local
 ```
+# For Local test
 npm run pages:dev
+
+# For mobile testing
+npm run dev -- --host
 ```
 
 # Features

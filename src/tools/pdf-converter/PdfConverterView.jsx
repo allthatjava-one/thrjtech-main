@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { formatSize } from '../pdf-compressor/utils/formatSize'
 import { useState } from 'react'
-import CustomSelect from './CustomSelect'
+import CustomSelect from '../../commons/CustomSelect'
 
 export function PdfConverterView({
   file,

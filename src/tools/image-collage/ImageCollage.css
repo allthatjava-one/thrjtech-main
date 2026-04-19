@@ -110,7 +110,7 @@
   box-sizing: border-box;
   text-align: center;
   background: #f8fafc;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
   transition: border-color 0.2s;
   display: flex;
@@ -120,6 +120,43 @@
 .image-collage-page .drop-zone.dragging {
   border-color: #3182ce;
   background: #ebf8ff;
+}
+
+/* File row (count + Change Images + Clear) */
+.image-collage-page .ic-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+}
+.image-collage-page .ic-file-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.image-collage-page .ic-change-btn,
+.image-collage-page .ic-clear-btn {
+  background: none;
+  border: 1px solid #e2e6f0;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+.image-collage-page .ic-change-btn:hover,
+.image-collage-page .ic-clear-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
 }
 @media (max-width: 600px) {
   .image-collage-page .drop-zone {
@@ -133,7 +170,7 @@
   flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  align-items: center;
+  align-items: stretch;
 }
 .collage-options label {
   display: flex;
@@ -147,6 +184,41 @@
   border: 1px solid #cbd5e1;
   border-radius: 6px;
   width: 70px;
+}
+
+/* Row layout for controls on desktop */
+.collage-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.collage-inline-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #374151;
+}
+.collage-controls-spacer { flex: 1 1 20px; }
+.px-input { display: inline-flex; align-items: center; gap: 6px; }
+.px-suffix { font-size: 0.95rem; color: #6b7280; }
+.ratio-lock-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: #a0aec0;
+  display: inline-flex;
+  align-items: center;
+}
+.ratio-lock-btn svg { display: block; }
+.ratio-lock-btn:hover { color: #374151; }
+
+@media (min-width: 740px) {
+  .collage-options { align-items: center; }
+  .collage-inline-label { flex-direction: row; align-items: center; gap: 8px; }
+  .collage-inline-label input { margin-top: 0; }
 }
 .expected-size {
   font-size: 0.95rem;

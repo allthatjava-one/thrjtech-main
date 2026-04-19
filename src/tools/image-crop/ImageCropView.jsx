@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cropper from 'react-easy-crop';
+import CustomSelect from '../../commons/CustomSelect';
 
 export function ImageCropView(props) {
   const {
@@ -27,13 +28,51 @@ export function ImageCropView(props) {
     handleDragOver,
     handleDragLeave,
     handleFileInput,
+    imageFileName,
+    handleClear,
     setPreset,
     handleReset,
   } = props;
 
   const navigate = useNavigate();
 
-  const [localAspect, setLocalAspect] = useState(aspect || undefined);
+  const [selectValue, setSelectValue] = useState(() => (aspect ? String(aspect) : String(4 / 3)));
+  const [customW, setCustomW] = useState(4);
+  const [customH, setCustomH] = useState(3);
+  const normalizePositiveInt = (v) => {
+    const n = Number(v);
+    if (!isFinite(n) || n <= 0) return 1;
+    return Math.max(1, Math.round(n));
+  };
+
+  // Ensure inputs reflect initial selection (if default is preset)
+  useEffect(() => {
+    try {
+      const val = Number(selectValue);
+      if (selectValue !== '' && isFinite(val) && val > 0) {
+        // Try to map common presets to integer w/h where possible
+        const map = {
+          [String(1)]: [1, 1],
+          [String(4 / 3)]: [4, 3],
+          [String(16 / 9)]: [16, 9],
+          [String(9 / 16)]: [9, 16],
+          [String(4 / 5)]: [4, 5],
+          [String(2 / 3)]: [2, 3],
+          [String(3 / 1)]: [3, 1],
+          [String(1.91)]: [191, 100],
+        };
+        const pair = map[String(selectValue)];
+        if (pair) {
+          setCustomW(pair[0]);
+          setCustomH(pair[1]);
+        }
+      }
+    } catch (err) {
+      // ignore
+    }
+    // run on mount only
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [hasCropEdited, setHasCropEdited] = useState(false);
@@ -51,7 +90,22 @@ export function ImageCropView(props) {
     if (!imageSrc) return;
     if (!hasCropEdited) setHasCropEdited(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [crop, zoom, rotation, flipH, flipV, localAspect]);
+  }, [crop, zoom, rotation, flipH, flipV, selectValue, customW, customH]);
+
+  // Compute the aspect used by the Cropper: if a preset is selected use that number,
+  // otherwise use the custom width/height ratio.
+  const isPreset = selectValue !== '';
+  const cropperAspect = isPreset ? Number(selectValue) : (customH > 0 ? (customW / customH) : undefined);
+
+  // Propagate aspect changes to parent
+  useEffect(() => {
+    try {
+      setAspect(cropperAspect);
+    } catch (err) {
+      // ignore
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectValue, customW, customH]);
 
   const download = async () => {
     setProcessing(true);
@@ -284,6 +338,7 @@ export function ImageCropView(props) {
       {/* send-to-meme box moved to bottom of main content (rendered later) */}
 
       <div className="crop-area">
+        <div className="crop-drop-wrapper">
         <div
           className="drop-zone crop-drop"
           onDrop={handleDrop}
@@ -304,7 +359,7 @@ export function ImageCropView(props) {
                 crop={crop}
                 zoom={zoom}
                 rotation={rotation}
-                aspect={localAspect}
+                aspect={cropperAspect}
                 onCropChange={setCrop}
                 onZoomChange={setZoom}
                 onRotationChange={setRotation}
@@ -318,13 +373,28 @@ export function ImageCropView(props) {
           ) : (
             <span className="hero-tagline">Drag & drop an image here, or click to select</span>
           )}
-          <input type="file" accept="image/*" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileInput} />
+          <input type="file" accept="image/*,.heic,.heif" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileInput} />
         </div>
 
-        <div className="crop-controls">
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <button onClick={() => fileInputRef.current && fileInputRef.current.click()} className="resize-btn">Image...</button>
+        {/* File row: filename + Change Image + Clear */}
+        {imageSrc && (
+          <div className="crop-file-row">
+            <span className="crop-file-name">{imageFileName || 'Image loaded'}</span>
+            <button
+              type="button"
+              className="crop-change-btn"
+              onClick={() => fileInputRef.current && fileInputRef.current.click()}
+            >
+              Change Image
+            </button>
+            <button type="button" className="crop-clear-btn" onClick={handleClear}>
+              Clear
+            </button>
           </div>
+        )}
+        </div>
+
+      <div className="crop-controls">
           <div className="control-row">
             <label>Zoom</label>
             <input type="range" min="0.5" max="3" step="0.01" value={zoom} onChange={e => setZoom(Number(e.target.value))} />
@@ -342,25 +412,105 @@ export function ImageCropView(props) {
           </div>
           <div className="control-row">
             <label>Aspect</label>
-            <select value={localAspect ?? ''} onChange={e => {
-              const val = e.target.value === '' ? undefined : Number(e.target.value);
-              setLocalAspect(val);
-              setAspect(val);
-            }}>
-              <option value={1}>1:1 (Profile)</option>
-              <option value={16/9}>16:9 (Youtube)</option>
-              <option value={4/5}>4:5 (Instagram)</option>
-              <option value="">Free</option>
-            </select>
-          </div>
-          <div className="control-row presets">
-            <label>Presets</label>
-            <button onClick={() => { setPreset('instagram'); setLocalAspect(4/5); }}>Instagram Post</button>
-            <button onClick={() => { setPreset('youtube'); setLocalAspect(16/9); }}>Youtube Thumbnail</button>
-            <button onClick={() => { setPreset('profile'); setLocalAspect(1); }}>Profile Picture</button>
+            {
+              (() => {
+                const aspectOptions = [
+                  { value: '', label: 'Use Custom Aspect Ratio', w: 0, h: 0, id: 'custom' },
+                  { value: String(1), label: '1:1 (Profile)', w: 1, h: 1, id: 'profile' },
+                  { value: String(4 / 3), label: '4:3 (Standard)', w: 4, h: 3, id: 'standard' },
+                  { value: String(16 / 9), label: '16:9 (Widescreen / YouTube)', w: 16, h: 9, id: 'widescreen' },
+                  { value: String(9 / 16), label: '9:16 (Story / Reels)', w: 9, h: 16, id: 'story' },
+                  { value: String(4 / 5), label: '4:5 (Instagram Post)', w: 4, h: 5, id: 'instagram' },
+                  { value: String(2 / 3), label: '2:3 (Pinterest Pin)', w: 2, h: 3, id: 'pinterest' },
+                  { value: String(3 / 1), label: '3:1 (Blog Featured)', w: 3, h: 1, id: 'blog' },
+                  { value: String(1.91), label: '1.91:1 (Facebook Post)', w: 191, h: 100, id: 'facebook' },
+                ];
+
+                return (
+                  <CustomSelect
+                    value={selectValue}
+                    onChange={v => {
+                      setSelectValue(v);
+                      const opt = aspectOptions.find(o => o.value === v);
+                      if (!opt || v === '') {
+                        setPreset('custom');
+                        setCustomW(4);
+                        setCustomH(3);
+                      } else {
+                        setCustomW(opt.w || 1);
+                        setCustomH(opt.h || 1);
+                        setPreset(opt.id || 'preset');
+                      }
+                    }}
+                    options={aspectOptions.map(o => ({ value: o.value, label: o.label }))}
+                  />
+                );
+              })()
+            }
           </div>
 
-          <div style={{ marginTop: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
+          {!isPreset && <div className="control-row aspect-inputs" style={{ alignItems: 'center', gap: 8 }}>
+            <label style={{ minWidth: 90 }}>Ratio</label>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <input
+                type="number"
+                min={1}
+                value={(() => {
+                  try {
+                    if (isPreset) {
+                      const parts = decimalToRatio(Number(selectValue)).split(':');
+                      return parts[0] || '';
+                    }
+                    return customW || '';
+                  } catch (err) { return '' }
+                })()}
+                onChange={(e) => {
+                  const w = e.target.value === '' ? '' : Number(e.target.value);
+                  setCustomW(w === '' ? '' : w);
+                }}
+                onBlur={() => setCustomW(normalizePositiveInt(customW))}
+                disabled={isPreset}
+                style={{
+                  width: 90,
+                  padding: '0.4rem',
+                  backgroundColor: isPreset ? '#f3f4f6' : undefined,
+                  border: isPreset ? '1px solid #d1d5db' : undefined,
+                  color: isPreset ? '#6b7280' : undefined,
+                  cursor: isPreset ? 'not-allowed' : 'text'
+                }}
+              />
+              <span style={{ color: '#6b7280' }}>:</span>
+              <input
+                type="number"
+                min={1}
+                value={(() => {
+                  try {
+                    if (isPreset) {
+                      const parts = decimalToRatio(Number(selectValue)).split(':');
+                      return parts[1] || '';
+                    }
+                    return customH || '';
+                  } catch (err) { return '' }
+                })()}
+                onChange={(e) => {
+                  const h = e.target.value === '' ? '' : Number(e.target.value);
+                  setCustomH(h === '' ? '' : h);
+                }}
+                onBlur={() => setCustomH(normalizePositiveInt(customH))}
+                disabled={isPreset}
+                style={{
+                  width: 90,
+                  padding: '0.4rem',
+                  backgroundColor: isPreset ? '#f3f4f6' : undefined,
+                  border: isPreset ? '1px solid #d1d5db' : undefined,
+                  color: isPreset ? '#6b7280' : undefined,
+                  cursor: isPreset ? 'not-allowed' : 'text'
+                }}
+              />
+            </div>
+          </div>}
+
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <button className="resize-btn" onClick={async () => { await download(); setPreviewOpen(true); }} disabled={processing || !imageSrc}>{processing ? 'Processing...' : 'Preview'}</button>
             <button className="resize-btn reset-btn" onClick={() => { handleReset(); setPreviewOpen(false); setHasCropEdited(false); }} disabled={!imageSrc} style={{ marginLeft: 8 }}>Reset</button>
             <button

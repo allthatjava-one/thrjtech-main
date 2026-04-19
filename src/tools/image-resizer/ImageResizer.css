@@ -147,10 +147,46 @@
   letter-spacing: 0.01em;
 }
 
+/* File row (filename + Change Image + Clear) */
+.image-resizer-view .ir-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.25rem;
+}
+.image-resizer-view .ir-file-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.image-resizer-view .ir-change-btn,
+.image-resizer-view .ir-clear-btn {
+  background: none;
+  border: 1px solid #e2e6f0;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+.image-resizer-view .ir-change-btn:hover,
+.image-resizer-view .ir-clear-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+
 .image-resizer-view .resize-options {
   display: flex;
   gap: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 .image-resizer-view .resize-options label {

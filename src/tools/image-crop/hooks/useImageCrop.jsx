@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import getCroppedImg from '../utils/cropImage';
+import { normalizeImageFile } from '../../../commons/normalizeImageFiles';
 
 function applyFlipToSrc(src, flipH, flipV) {
   if (!flipH && !flipV) return Promise.resolve(src);
@@ -25,6 +26,7 @@ export function useImageCrop() {
   const [mainImage, setMainImage] = useState(null);
   const [imageSrc, setImageSrc] = useState(null);
   const [originalSrc, setOriginalSrc] = useState(null);
+  const [imageFileName, setImageFileName] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
@@ -37,15 +39,31 @@ export function useImageCrop() {
   const fileInputRef = useRef(null);
 
   const handleFileInput = async (e) => {
-    const file = e.target.files ? e.target.files[0] : e;
-    if (!file) return;
+    const raw = e.target.files ? e.target.files[0] : e;
+    if (!raw) return;
+    const file = await normalizeImageFile(raw);
     setMainImage(file);
+    setImageFileName(file.name || null);
     const url = URL.createObjectURL(file);
     setOriginalSrc(url);
     setImageSrc(url);
     setFlipH(false);
     setFlipV(false);
     setOutputUrl(null);
+  };
+
+  const handleClear = () => {
+    setMainImage(null);
+    setImageSrc(null);
+    setOriginalSrc(null);
+    setImageFileName(null);
+    setFlipH(false);
+    setFlipV(false);
+    setRotation(0);
+    setZoom(1);
+    setCrop({ x: 0, y: 0 });
+    setOutputUrl(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   // When a NEW file is loaded, reset zoom/crop and detect aspect ratio.
@@ -65,10 +83,10 @@ export function useImageCrop() {
     img.src = originalSrc;
   }, [originalSrc]);
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
-    const file = e.dataTransfer.files && e.dataTransfer.files[0];
-    if (file) handleFileInput(file);
+    const raw = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (raw) handleFileInput(raw);
   };
   const handleDragOver = (e) => { e.preventDefault(); };
   const handleDragLeave = (e) => { e.preventDefault(); };
@@ -130,6 +148,7 @@ export function useImageCrop() {
   return {
     mainImage,
     imageSrc,
+    imageFileName,
     naturalAspect,
     crop,
     setCrop,
@@ -153,5 +172,6 @@ export function useImageCrop() {
     handleFileInput,
     setPreset,
     handleReset,
+    handleClear,
   };
 }

@@ -113,6 +113,7 @@ const ImageCollageView = ({
   const [previewUrls, setPreviewUrls] = useState([]);
   const [previewMeta, setPreviewMeta] = useState([]);
   const [previewErrors, setPreviewErrors] = useState([]);
+  const previewDataUrlAttempted = useRef([]);
   const [offsets, setOffsets] = useState([]);
   const [scales, setScales] = useState([]);
   const previewRef = useRef(null);
@@ -136,6 +137,7 @@ const ImageCollageView = ({
     const urls = images.map(f => URL.createObjectURL(f));
     setPreviewUrls(urls);
     setPreviewErrors(images.map(() => false));
+    previewDataUrlAttempted.current = images.map(() => false);
     setOffsets(images.map(() => ({ x: 0, y: 0 })));
     setScales(images.map(() => 1));
     // load natural sizes for exact cover calculations
@@ -155,20 +157,24 @@ const ImageCollageView = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
-  const tryPreviewDataUrl = idx => {
+  const tryPreviewDataUrl = (idx, currentUrls, currentErrors) => {
+    if (previewDataUrlAttempted.current[idx]) {
+      const errs = currentErrors.slice(); errs[idx] = true; setPreviewErrors(errs); return;
+    }
+    previewDataUrlAttempted.current[idx] = true;
     const file = images[idx];
     if (!file) {
-      const arr = previewErrors.slice(); arr[idx] = true; setPreviewErrors(arr); return;
+      const arr = currentErrors.slice(); arr[idx] = true; setPreviewErrors(arr); return;
     }
     const reader = new FileReader();
     reader.onload = () => {
-      const arr = previewUrls.slice();
+      const arr = currentUrls.slice();
       arr[idx] = reader.result;
       setPreviewUrls(arr);
-      const errs = previewErrors.slice(); errs[idx] = false; setPreviewErrors(errs);
+      const errs = currentErrors.slice(); errs[idx] = false; setPreviewErrors(errs);
     };
     reader.onerror = () => {
-      const errs = previewErrors.slice(); errs[idx] = true; setPreviewErrors(errs);
+      const errs = currentErrors.slice(); errs[idx] = true; setPreviewErrors(errs);
     };
     reader.readAsDataURL(file);
   };
@@ -581,7 +587,7 @@ const ImageCollageView = ({
         <input
           ref={fileInputRef}
           type="file"
-          accept="image/*"
+          accept="image/*,.heic,.heif"
           multiple
           style={{ display: "none" }}
           onChange={handleFileChange}
@@ -592,23 +598,49 @@ const ImageCollageView = ({
         )}
       </div>
 
-      <div className="collage-options">
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-          <label>
-            Columns:
-            <input type="number" min={1} max={10} value={columns} onChange={e => setColumns(Number(e.target.value))} />
-          </label>
-          <label>
-            Rows:
-            <input type="number" min={1} max={10} value={rows} onChange={e => setRows(Number(e.target.value))} />
-          </label>
+      {/* File row: count + Change Images + Clear */}
+      {images.length > 0 && (
+        <div className="ic-file-row">
+          <span className="ic-file-name">
+            {images.length === 1 ? images[0].name : `${images.length} images selected`}
+          </span>
+          <button
+            type="button"
+            className="ic-change-btn"
+            onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          >
+            {images.length === 1 ? 'Change Image' : 'Change Images'}
+          </button>
+          <button
+            type="button"
+            className="ic-clear-btn"
+            onClick={() => { setImages([]); setCollageUrl(null); }}
+          >
+            Clear
+          </button>
         </div>
+      )}
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <label style={{ display: 'flex', flexDirection: 'column' }}>
-            Width:
-            <input type="number" min={50} value={totalWidth} onChange={e => handleTotalWidthChange(Number(e.target.value))} />
+      <div className="collage-options">
+        <div className="collage-controls-row">
+          <label className="collage-inline-label">
+            Columns:
           </label>
+          <input type="number" min={1} max={10} value={columns} onChange={e => setColumns(Number(e.target.value))} />
+
+          <label className="collage-inline-label">
+            Rows:
+          </label>
+          <input type="number" min={1} max={10} value={rows} onChange={e => setRows(Number(e.target.value))} />
+        </div>
+        <div className="collage-controls-row">
+          <label className="collage-inline-label">
+            Width x Height:
+          </label>
+            <div className="px-input">
+              <input type="number" placeholder='Width (px)' min={50} value={totalWidth} onChange={e => handleTotalWidthChange(Number(e.target.value))} />
+              <span className="px-suffix">px</span>
+            </div>
 
           <button
             type="button"
@@ -618,19 +650,20 @@ const ImageCollageView = ({
               setLockRatio(newLock);
               if (newLock && totalHeight > 0) ratioRef.current = totalWidth / totalHeight;
             }}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0 0.3rem', fontSize: '1.3rem', color: lockRatio ? '#3182ce' : '#a0aec0', display: 'flex', alignItems: 'center', alignSelf: 'center' }}
+            className="ratio-lock-btn"
+            title={lockRatio ? 'Unlink width and height' : 'Link width and height'}
           >
             {lockRatio ? (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1 0 7 5 5 0 0 1-7 0l-1-1"/><path d="M14 11a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1 0 7 5 5 0 0 1-7 0l-1-1"/><path d="M14 11a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/></svg>
             ) : (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 7a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 7a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
             )}
           </button>
 
-          <label style={{ display: 'flex', flexDirection: 'column' }}>
-            Height:
-            <input type="number" min={50} value={totalHeight} onChange={e => handleTotalHeightChange(Number(e.target.value))} />
-          </label>
+          <div className="px-input">
+            <input type="number" placeholder='Height (px)' min={50} value={totalHeight} onChange={e => handleTotalHeightChange(Number(e.target.value))} />
+            <span className="px-suffix">px</span>
+          </div>
         </div>
       </div>
 
@@ -855,7 +888,7 @@ const ImageCollageView = ({
                       return (
                         <div key={idx} style={{ position: 'absolute', left, top, width: cellW, height: cellH, overflow: 'hidden', background: bgColor, display: 'flex', alignItems: 'center', justifyContent: 'center', touchAction: 'none' }} onPointerDown={e => onCellPointerDown(e, idx, cellW, cellH, left, top, meta)} onPointerMove={e => onCellPointerMove(e, idx)} onPointerUp={e => onCellPointerUp(e, idx)} onPointerCancel={e => onCellPointerUp(e, idx)} onWheel={e => onImageWheel(e, idx, meta, off, cellW, cellH, left, top)}>
                           {file && url && !previewErrors[idx] ? (
-                            <img src={url} data-idx={idx} alt={file.name} draggable={false} onError={() => tryPreviewDataUrl(idx)} style={{ position: 'absolute', left: off.x + (cellW - drawW) / 2, top: off.y + (cellH - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }} />
+                            <img src={url} data-idx={idx} alt={file.name} draggable={false} onError={() => tryPreviewDataUrl(idx, previewUrls, previewErrors)} style={{ position: 'absolute', left: off.x + (cellW - drawW) / 2, top: off.y + (cellH - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }} />
                           ) : file ? (
                             <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: 12, padding: 6, textAlign: 'center' }}>Preview not available for this image</div>
                           ) : null}
