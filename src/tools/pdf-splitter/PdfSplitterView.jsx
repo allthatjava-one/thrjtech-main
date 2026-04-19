@@ -199,7 +199,7 @@ export function PdfSplitterView({
             )}
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 12, alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
             <label className="hero-tagline" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>Page Ranges:
               <input
                 aria-label="Page Ranges"
@@ -226,7 +226,7 @@ export function PdfSplitterView({
 
           {errorMsg && <p className="error-msg">{errorMsg}</p> }
 
-          <div style={{ marginTop: 12 }}>
+          <div>
             <button className="btn btn-primary compress-btn" onClick={handleSplit} disabled={!file || !segments || status !== 'idle'}>Split PDF</button>
           </div>
 
