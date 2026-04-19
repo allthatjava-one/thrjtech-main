@@ -28,6 +28,8 @@ export function ImageCropView(props) {
     handleDragOver,
     handleDragLeave,
     handleFileInput,
+    imageFileName,
+    handleClear,
     setPreset,
     handleReset,
   } = props;
@@ -336,6 +338,7 @@ export function ImageCropView(props) {
       {/* send-to-meme box moved to bottom of main content (rendered later) */}
 
       <div className="crop-area">
+        <div className="crop-drop-wrapper">
         <div
           className="drop-zone crop-drop"
           onDrop={handleDrop}
@@ -373,10 +376,25 @@ export function ImageCropView(props) {
           <input type="file" accept="image/*,.heic,.heif" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileInput} />
         </div>
 
-        <div className="crop-controls">
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <button onClick={() => fileInputRef.current && fileInputRef.current.click()} className="resize-btn">Image...</button>
+        {/* File row: filename + Change Image + Clear */}
+        {imageSrc && (
+          <div className="crop-file-row">
+            <span className="crop-file-name">{imageFileName || 'Image loaded'}</span>
+            <button
+              type="button"
+              className="crop-change-btn"
+              onClick={() => fileInputRef.current && fileInputRef.current.click()}
+            >
+              Change Image
+            </button>
+            <button type="button" className="crop-clear-btn" onClick={handleClear}>
+              Clear
+            </button>
           </div>
+        )}
+        </div>
+
+      <div className="crop-controls">
           <div className="control-row">
             <label>Zoom</label>
             <input type="range" min="0.5" max="3" step="0.01" value={zoom} onChange={e => setZoom(Number(e.target.value))} />

@@ -35,6 +35,7 @@ export default function MemeGeneratorView({ initialFile }) {
   const dragging = useRef(null);
   const wasDraggingRef = useRef(false);
   const [isFileDragging, setIsFileDragging] = useState(false);
+  const [imageFileName, setImageFileName] = useState(null);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -44,6 +45,13 @@ export default function MemeGeneratorView({ initialFile }) {
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
   useEffect(() => { imgTransformRef.current = imgTransform; }, [imgTransform]);
   useEffect(() => { selectedLayerIdRef.current = selectedLayerId; }, [selectedLayerId]);
+
+  // Auto-open Advanced section when a text layer is selected on the preview
+  useEffect(() => {
+    if (selectedLayerId) {
+      setAdvancedOpen(true);
+    }
+  }, [selectedLayerId]);
 
   // helper to check if user made changes compared to initial snapshot
   const hasChanges = () => {
@@ -302,9 +310,19 @@ export default function MemeGeneratorView({ initialFile }) {
     const raw = e.target.files && e.target.files[0];
     if (!raw) return;
     const file = await normalizeImageFile(raw);
+    setImageFileName(file.name || null);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
+  }
+
+  function handleClearImage() {
+    setImageSrc(null);
+    setImageObj(null);
+    setImageFileName(null);
+    setImgTransform({ offsetX: 0, offsetY: 0, scale: 1 });
+    imgTransformRef.current = { offsetX: 0, offsetY: 0, scale: 1 };
+    if (fileInputRef.current) fileInputRef.current.value = '';
   }
 
   function handlePreviewClick() {
@@ -368,6 +386,7 @@ export default function MemeGeneratorView({ initialFile }) {
     const raw = (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) || null;
     if (!raw) return;
     const file = await normalizeImageFile(raw);
+    setImageFileName(file.name || null);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
@@ -681,6 +700,58 @@ export default function MemeGeneratorView({ initialFile }) {
               </div>
             </div>
         </div>
+      <div
+        className={`meme-preview${isFileDragging ? ' dragging drop-zone' : ''}${!imageObj ? ' drop-zone-empty' : ''}${imageObj ? ' has-image' : ''}`}
+        ref={previewRef}
+        onClick={handlePreviewClick}
+        onPointerDown={handlePreviewPointerDown}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        <canvas ref={canvasRef} className="meme-canvas" />
+        {!imageObj && (
+          <div className="preview-placeholder">Click or drop image here to upload</div>
+        )}
+        {/* moved preview hint below the preview container so it doesn't overlap the image */}
+        <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif" onChange={handleFile} style={{ display: 'none' }} />
+
+        {/* Draggable overlay previews (HTML) to allow interactive positioning */}
+        {layers.map((layer) => {
+          const { cssPx, lineHeightCss } = computeFontSizes(layer);
+          return (
+          <div
+            key={layer.id}
+            data-layer-id={layer.id}
+            className={`draggable-text layer-overlay ${layer.id === selectedLayerId ? 'selected' : ''}`}
+            style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${cssPx}px`, lineHeight: `${lineHeightCss}px`, color: layer.color, whiteSpace: 'pre' }}
+            onPointerDown={(e) => startDrag(e, layer.id)}
+          >
+            {layer.text || (layer.placeholder || '').toUpperCase()}
+          </div>
+          );
+        })}
+      </div>
+      {imageObj && (
+        <div className="preview-hint-below">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
+      )}
+
+      {/* File row: filename + Change Image + Clear */}
+      {imageObj && (
+        <div className="mg-file-row">
+          <span className="mg-file-name">{imageFileName || 'Image loaded'}</span>
+          <button
+            type="button"
+            className="mg-change-btn"
+            onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          >
+            Change Image
+          </button>
+          <button type="button" className="mg-clear-btn" onClick={handleClearImage}>
+            Clear
+          </button>
+        </div>
+      )}
 
         
       <div className="meme-generator">
@@ -734,11 +805,11 @@ export default function MemeGeneratorView({ initialFile }) {
           aria-expanded={advancedOpen}
         >
           <span className={`arrow ${advancedOpen ? 'open' : ''}`}>{advancedOpen ? '▾' : '▸'}</span>
-          <span className="advanced-text">Advance...</span>
+          <span className="advanced-text">Font Options...</span>
         </div>
         {advancedOpen && (
           <div className="advanced-section">
-            <div className="control-row">
+            <div className={`control-row${selectedLayerId ? ' font-size-selected' : ''}`}>
               <label>Font Size</label>
               <input
                 type="range"
@@ -764,9 +835,6 @@ export default function MemeGeneratorView({ initialFile }) {
           </div>
         )}
         <div className="control-row buttons">
-          {imageObj && (
-            <button className="btn" onClick={() => fileInputRef.current?.click()}>Image...</button>
-          )}
           {hasChanges() && (
             <button className="btn" onClick={handleReset}>Reset</button>
           )}
@@ -776,41 +844,6 @@ export default function MemeGeneratorView({ initialFile }) {
           <button className="btn primary" onClick={handleDownload}>Download</button>
         </div>
       </div>
-      <div
-        className={`meme-preview${isFileDragging ? ' dragging drop-zone' : ''}${!imageObj ? ' drop-zone-empty' : ''}${imageObj ? ' has-image' : ''}`}
-        ref={previewRef}
-        onClick={handlePreviewClick}
-        onPointerDown={handlePreviewPointerDown}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-      >
-        <canvas ref={canvasRef} className="meme-canvas" />
-        {!imageObj && (
-          <div className="preview-placeholder">Click or drop image here to upload</div>
-        )}
-        {/* moved preview hint below the preview container so it doesn't overlap the image */}
-        <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif" onChange={handleFile} style={{ display: 'none' }} />
-
-        {/* Draggable overlay previews (HTML) to allow interactive positioning */}
-        {layers.map((layer) => {
-          const { cssPx, lineHeightCss } = computeFontSizes(layer);
-          return (
-          <div
-            key={layer.id}
-            data-layer-id={layer.id}
-            className={`draggable-text layer-overlay ${layer.id === selectedLayerId ? 'selected' : ''}`}
-            style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${cssPx}px`, lineHeight: `${lineHeightCss}px`, color: layer.color, whiteSpace: 'pre' }}
-            onPointerDown={(e) => startDrag(e, layer.id)}
-          >
-            {layer.text || (layer.placeholder || '').toUpperCase()}
-          </div>
-          );
-        })}
-      </div>
-      {imageObj && (
-        <div className="preview-hint-below">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
-      )}
     </div>
     {previewOpen && previewUrl && (
       <div className="meme-popup-overlay" onClick={() => setPreviewOpen(false)}>

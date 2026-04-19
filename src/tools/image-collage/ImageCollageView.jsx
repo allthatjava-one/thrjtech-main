@@ -598,6 +598,29 @@ const ImageCollageView = ({
         )}
       </div>
 
+      {/* File row: count + Change Images + Clear */}
+      {images.length > 0 && (
+        <div className="ic-file-row">
+          <span className="ic-file-name">
+            {images.length === 1 ? images[0].name : `${images.length} images selected`}
+          </span>
+          <button
+            type="button"
+            className="ic-change-btn"
+            onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          >
+            {images.length === 1 ? 'Change Image' : 'Change Images'}
+          </button>
+          <button
+            type="button"
+            className="ic-clear-btn"
+            onClick={() => { setImages([]); setCollageUrl(null); }}
+          >
+            Clear
+          </button>
+        </div>
+      )}
+
       <div className="collage-options">
         <div className="collage-controls-row">
           <label className="collage-inline-label">

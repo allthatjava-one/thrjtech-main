@@ -103,6 +103,17 @@ export function useImageResizer() {
     }
   };
 
+  const handleClear = () => {
+    setMainImage(null);
+    setOutputUrl(null);
+    setWidth('');
+    setHeight('');
+    setPercentage(100);
+    setStatus('idle');
+    setErrorMsg('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
   return {
     mainImage,
     resizeMode,
@@ -124,5 +135,6 @@ export function useImageResizer() {
     handleDragLeave,
     handleFileInput,
     handleResize,
+    handleClear,
   };
 }
