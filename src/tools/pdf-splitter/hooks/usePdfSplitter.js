@@ -82,6 +82,18 @@ export function usePdfSplitter() {
       setProgress(30)
 
       const parsed = parseSegments(cleaned)
+      const totalPages = sourcePdf.getPageCount()
+
+      // Validate all page numbers against actual page count
+      for (const token of parsed) {
+        for (const pageIndex of token.pages) {
+          if (pageIndex < 0 || pageIndex >= totalPages) {
+            const pageNum = pageIndex + 1
+            throw new Error(`Page ${pageNum} does not exist. This PDF has ${totalPages} page${totalPages === 1 ? '' : 's'}.`)
+          }
+        }
+      }
+
       const newResults = []
 
       if (outputOption === 'ONE') {
