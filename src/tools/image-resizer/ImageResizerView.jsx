@@ -23,6 +23,7 @@ export function ImageResizerView({
   handleDragLeave,
   handleFileInput,
   handleResize,
+  handleClear,
 }) {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
@@ -338,6 +339,24 @@ export function ImageResizerView({
           <div className="drop-zone-hint">Alt+Scroll to zoom · Pinch on mobile · {Math.round(previewZoom * 100)}%</div>
         )}
       </div>
+
+      {/* File row: filename + Change Image + Clear */}
+      {mainImage && (
+        <div className="ir-file-row">
+          <span className="ir-file-name">{mainImage.name}</span>
+          <button
+            type="button"
+            className="ir-change-btn"
+            onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          >
+            Change Image
+          </button>
+          <button type="button" className="ir-clear-btn" onClick={handleClear}>
+            Clear
+          </button>
+        </div>
+      )}
+
       {/* Preview popup dialog */}
       {previewOpen && (mainImage || outputUrl) && (
         <div className="image-popup-overlay" onClick={() => setPreviewOpen(false)}>

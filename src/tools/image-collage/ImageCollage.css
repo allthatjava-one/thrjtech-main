@@ -110,7 +110,7 @@
   box-sizing: border-box;
   text-align: center;
   background: #f8fafc;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
   transition: border-color 0.2s;
   display: flex;
@@ -120,6 +120,43 @@
 .image-collage-page .drop-zone.dragging {
   border-color: #3182ce;
   background: #ebf8ff;
+}
+
+/* File row (count + Change Images + Clear) */
+.image-collage-page .ic-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+}
+.image-collage-page .ic-file-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.image-collage-page .ic-change-btn,
+.image-collage-page .ic-clear-btn {
+  background: none;
+  border: 1px solid #e2e6f0;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+.image-collage-page .ic-change-btn:hover,
+.image-collage-page .ic-clear-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
 }
 @media (max-width: 600px) {
   .image-collage-page .drop-zone {

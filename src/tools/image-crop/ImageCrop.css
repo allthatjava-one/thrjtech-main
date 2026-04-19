@@ -36,8 +36,14 @@
   gap: 1rem;
   align-items: flex-start;
 }
-.crop-drop {
+.crop-drop-wrapper {
   flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.crop-drop {
+  flex: 1 1 auto;
   min-height: 300px;
   display: flex;
   align-items: center;
@@ -299,4 +305,44 @@
   .send-action { flex-direction: column; align-items: stretch; }
   .send-action .send-text { margin-bottom: 8px; }
   .send-action .send-btn { margin-left: 0; width: 100%; }
+}
+
+/* File row: shown below crop area when an image is loaded */
+.image-crop-view .crop-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+.image-crop-view .crop-file-name {
+  flex: 1 1 0%;
+  font-size: 0.92rem;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.image-crop-view .crop-change-btn,
+.image-crop-view .crop-clear-btn {
+  padding: 0.3rem 0.9rem;
+  font-size: 0.88rem;
+  border-radius: 6px;
+  border: 1px solid #e2e6f0;
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  color: #6b7280;
+}
+.image-crop-view .crop-clear-btn {
+  background: none;
+  color: #6b7280;
+  border-color: #e2e6f0;
+}
+.image-crop-view .crop-change-btn:hover,
+.image-crop-view .crop-clear-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
 }
