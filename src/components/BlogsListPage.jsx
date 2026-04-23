@@ -5,7 +5,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import "./BlogsListPage.css";
 
-const DEFAULT_THUMB = '/default-thumb.svg'
+const DEFAULT_THUMB = '/images/blogs/default-thumb.svg'
 
 export default function BlogsListPage() {
   const { t } = useTranslation('blogs')
