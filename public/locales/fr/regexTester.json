@@ -62,7 +62,7 @@
     "searchAriaLabel": "Modèle de recherche",
     "regexLabel": "Expression régulière",
     "regexTitle": "Activer le mode expression régulière",
-    "flagI": "je",
+    "flagI": "i",
     "flagITitle": "Insensible à la casse",
     "flagM": "m",
     "flagMTitle": "Multiligne",

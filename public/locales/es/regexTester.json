@@ -84,7 +84,7 @@
     "regexTitle": "Alternar el modo de expresión regular",
     "flagI": "i",
     "flagITitle": "No distingue entre mayúsculas y minúsculas",
-    "flagM": "metro",
+    "flagM": "m",
     "flagMTitle": "multilínea",
     "clearBtn": "Borrar",
     "matchCount": "{{count}} coincidencias",

@@ -69,7 +69,7 @@
   "actions": {
     "preview": "미리보기",
     "processing": "처리 중...",
-    "reset": "재지정",
+    "reset": "초기화",
     "download": "다운로드"
   },
   "sendToMeme": {
