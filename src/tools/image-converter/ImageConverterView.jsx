@@ -326,7 +326,7 @@ export function ImageConverterView({
       {mainImages && mainImages.length > 0 && (
         <div className="ic-file-row">
           <span className="ic-file-name">
-            {mainImages.length === 1 ? mainImages[0].name : `${mainImages.length} images selected`}
+            {mainImages.length === 1 ? mainImages[0].name : t('fileRow.count', { count: mainImages.length })}
           </span>
           <button
             type="button"

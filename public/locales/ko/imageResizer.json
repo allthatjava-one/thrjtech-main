@@ -84,7 +84,7 @@
   },
   "fileRow": {
     "name": "이미지 변경",
-    "clear": "책임"
+    "clear": "지우기"
   },
   "resizeMode": {
     "percentage": "백분율로 크기 조정",
@@ -100,7 +100,7 @@
     "unlinkAria": "너비와 높이 연결 해제",
     "linkAria": "링크 너비 및 높이"
   },
-  "previewBtn": "시사",
+  "previewBtn": "미리보기",
   "processingBtn": "처리 중...",
   "downloadBtn": "다운로드",
   "watermarkPrompt": {

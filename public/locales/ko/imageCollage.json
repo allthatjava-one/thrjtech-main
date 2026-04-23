@@ -111,7 +111,7 @@
     "count": "이미지 {{count}} 개 선택됨",
     "changeOne": "이미지 변경",
     "changeMany": "이미지 변경",
-    "clear": "책임"
+    "clear": "지우기"
   },
   "infoBanner": "미리보기 화면에서 콜라주 테두리 색상과 두께를 변경할 수 있습니다.",
   "collageBtn": "콜라주 및 미리보기",
