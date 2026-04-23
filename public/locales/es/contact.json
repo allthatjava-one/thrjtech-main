@@ -1,0 +1,14 @@
+{
+  "title": "Contáctenos",
+  "intro": "Sus comentarios son lo que nos impulsa a seguir mejorando. Ya sea que haya encontrado un error, tenga una solicitud de función o simplemente quiera compartir su experiencia, queremos saberlo. Envíenos un mensaje a través del formulario y le responderemos lo antes posible.",
+  "signature": "- El equipo de THRJTech",
+  "emailLabel": "Correo electrónico",
+  "emailPlaceholder": "su@correo.com",
+  "messageLabel": "Mensaje",
+  "messagePlaceholder": "¿Cómo podemos ayudarle?",
+  "submitBtn": "Enviar",
+  "sendingBtn": "Enviando…",
+  "successMsg": "¡Gracias! Hemos recibido su mensaje.",
+  "errorMsg": "Lo sentimos, algo salió mal. Por favor, inténtelo de nuevo.",
+  "honeypotLabel": "Deje este campo vacío"
+}

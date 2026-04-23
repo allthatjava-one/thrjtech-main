@@ -1,0 +1,187 @@
+{
+  "hero": {
+    "title": "Image Collage",
+    "tagline": "Combine multiple images into a beautiful grid collage. Arrange photos into rows and columns, set a custom canvas size, then download the result as a single image.",
+    "blogLink": "Learn how to create an image collage →"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Image Collage",
+      "body": "The Image Collage tool lets you arrange multiple photos into a single composite image using a configurable grid layout. You control the number of rows and columns, the overall canvas dimensions, and the gap between cells. Within each cell you can reposition and scale the source image by dragging and scrolling in the preview before finalizing the export."
+    },
+    "howWorks": {
+      "heading": "How collage generation works",
+      "body": "Images are decoded in the browser and rendered onto an offscreen canvas at the specified grid layout. Each cell shows a cropped and scaled version of its source image. The final canvas is exported as a PNG preserving quality. Everything runs locally in your browser."
+    },
+    "practical": {
+      "heading": "Practical tips",
+      "item1": "Start with lower-resolution images while composing and previewing, then use originals for the final export.",
+      "item2": "Use the lock ratio option to keep proportional scaling when changing canvas dimensions.",
+      "item3": "Adjust border gap to create breathing room or tight tiles depending on your design goal."
+    },
+    "whenToUse": {
+      "heading": "When to use a collage",
+      "item1": "Creating social media posts that combine multiple shots into a single, shareable image.",
+      "item2": "Building product grids or marketing montages for newsletters, landing pages, or ads.",
+      "item3": "Quickly assembling family photo montages or event highlights."
+    },
+    "privacy": {
+      "heading": "Privacy & sharing",
+      "body": "Collage generation occurs entirely on your device — the images do not leave your browser unless you explicitly upload or share them."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: How many images can I use?",
+      "a1": "A: Best for small to medium batches (roughly 4–25 images); very large sets can degrade performance.",
+      "q2": "Q: Will image quality be preserved?",
+      "a2": "A: Quality depends on chosen canvas export size and the source resolutions.",
+      "q3": "Q: Can I reorder or remove images?",
+      "a3": "A: Yes — use the file list controls to move or delete items before generating the final collage.",
+      "q4": "Q: Does this run in my browser?",
+      "a4": "A: Yes — collage assembly is client-side; nothing is uploaded unless you explicitly use a sharing feature."
+    }
+  },
+  "howItWorks": {
+    "step1": "Add images via drag & drop or the file browser.",
+    "step2": "Adjust rows, columns, and spacing to arrange the grid.",
+    "step3": "Preview the collage and reposition images if needed.",
+    "step4": "Finalize collaged image and download it."
+  },
+  "dropZone": {
+    "text": "Drag & drop images here, or click to add. The grid will expand as needed."
+  },
+  "fileRow": {
+    "count": "{{count}} images selected",
+    "changeOne": "Change Image",
+    "changeMany": "Change Images",
+    "clear": "Clear"
+  },
+  "controls": {
+    "columns": "Columns:",
+    "rows": "Rows:",
+    "widthHeight": "Width x Height:",
+    "widthPlaceholder": "Width (px)",
+    "heightPlaceholder": "Height (px)",
+    "pxSuffix": "px",
+    "unlinkAria": "Unlink width and height",
+    "linkAria": "Link width and height"
+  },
+  "infoBanner": "You can change the collage border color and thickness in the preview screen.",
+  "collageBtn": "Collage and Preview",
+  "finalSize": "Final Collage Size: {{width}} x {{height}} px",
+  "downloadBtn": "Download",
+  "downloadingBtn": "Downloading...",
+  "watermarkPrompt": {
+    "text": "Would you like to put a private watermark on the collaged image?",
+    "yes": "Yes",
+    "preparing": "Preparing...",
+    "error": "Failed to send image to watermark tool."
+  },
+  "preview": {
+    "header": "Preview",
+    "reset": "Reset",
+    "finalize": "Finalize Collage",
+    "close": "Close",
+    "hint1": "- Drag images to reposition, click on Border color to change it",
+    "hint2": "- Hold Alt + scroll to zoom (desktop). Use two-finger pinch to zoom on touch.",
+    "borderColor": "Border color:",
+    "borderThickness": "Border thickness:",
+    "closeAria": "Close preview",
+    "noPreview": "Preview not available for this image"
+  },
+  "guide": {
+    "title": "How to Create Stunning Image Collages That Tell a Story",
+    "introHeading": "Introduction",
+    "lead": "Sometimes one photo isn't enough. Whether you're capturing a trip, showcasing products, or sharing moments on social media, a single image can feel limiting. That's where image collages come in.",
+    "byCombining": "By combining multiple images into one, you can:",
+    "introConclusion": "In this guide, you’ll learn how to design effective image collages, when to use them, and how to make them look professional (not messy).",
+    "tryIt": "Try it here:",
+    "intro": {
+      "items": {
+        "item1": "Tell a richer story",
+        "item2": "Show variety in a single frame",
+        "item3": "Create eye-catching visuals"
+      }
+    },
+    "whatIs": {
+      "heading": "What Is an Image Collage?",
+      "body": "An image collage is a collection of multiple images arranged into one unified composition. Instead of viewing photos individually, a collage lets you present them together, create meaning through arrangement, and highlight connections between images."
+    },
+    "why": {
+      "heading": "Why Use Image Collages?",
+      "item1": "Tell a Complete Story — A single image shows one moment. A collage shows before and after, different angles, or a sequence of events.",
+      "item2": "Maximize Limited Space — On social media, websites, or thumbnails you often have limited space. A collage allows you to show multiple visuals in one post.",
+      "item3": "Create Strong Visual Impact — Collages stand out because they contain more information and naturally attract attention.",
+      "item4": "Showcase Variety — Perfect for product galleries, portfolio previews, and feature comparisons."
+    },
+    "types": {
+      "heading": "Types of Image Collage Layouts",
+      "grid": "🔲 Grid Layout — Clean and structured — equal-sized images, great for portfolios.",
+      "freeform": "🧩 Freeform Layout — Different sizes and positions — more creative and dynamic.",
+      "themed": "🎯 Themed Collage — Focused on a single concept — consistent colors or subject.",
+      "beforeAfter": "🔍 Before & After Collage — Shows transformation — common in tutorials and comparisons."
+    },
+    "bestPractices": {
+      "heading": "Best Practices for Creating a Great Collage",
+      "item1": "Start With a Clear Purpose — Ask yourself: What story am I telling?",
+      "item2": "Choose Related Images — Images should share a theme and similar tone or subject.",
+      "item3": "Keep It Simple — Too many images can overwhelm viewers — 3–6 images is often ideal.",
+      "item4": "Use Consistent Spacing — Spacing creates balance and readability.",
+      "item5": "Maintain Visual Balance — Avoid one side being too heavy.",
+      "item6": "Pay Attention to Background — A good background supports the images and doesn't distract."
+    },
+    "mistakes": {
+      "heading": "Common Mistakes to Avoid",
+      "item1": "Mixing unrelated images",
+      "item2": "Using too many photos",
+      "item3": "Poor alignment",
+      "item4": "Inconsistent image quality",
+      "item5": "Overcomplicated layouts"
+    },
+    "stepByStep": {
+      "heading": "Step-by-Step: How to Create an Image Collage",
+      "step1": "Upload your images",
+      "step2": "Select a layout (grid or custom)",
+      "step3": "Arrange images in desired order",
+      "step4": "Adjust spacing and alignment",
+      "step5": "Preview the final composition",
+      "step6": "Download your collage"
+    },
+    "useCases": {
+      "heading": "Real-World Use Cases",
+      "item1": "📱 Social Media Posts — combine highlights into one post and increase engagement",
+      "item2": "🛍 Product Showcases — display multiple angles and highlight features",
+      "item3": "✈️ Travel Memories — show an entire trip in one frame",
+      "item4": "💼 Portfolio Presentation — show variety of work quickly"
+    },
+    "comparison": {
+      "heading": "Image Collage vs Gallery",
+      "collage": "Collage: Single image, strong storytelling, efficient space usage, high visual impact.",
+      "gallery": "Gallery: Multiple images, moderate storytelling, requires scrolling."
+    },
+    "tips": {
+      "heading": "Tips to Make Your Collage Stand Out",
+      "item1": "Use contrast (light vs dark images)",
+      "item2": "Mix close-up and wide shots",
+      "item3": "Add subtle borders",
+      "item4": "Keep a consistent color tone"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "How many images should I use in a collage?",
+      "a1": "Usually 3–6 images works best for clarity and balance.",
+      "q2": "Can I use different image sizes?",
+      "a2": "Yes — but keep alignment clean to avoid a messy look.",
+      "q3": "Are collages good for SEO or websites?",
+      "a3": "Yes — they save space, improve visual engagement, and reduce page clutter.",
+      "q4": "Do collages reduce image quality?",
+      "a4": "Not if created properly — ensure source images are high quality."
+    },
+    "conclusion": "Image collages are more than just combining photos — they're a powerful way to tell stories, present information, and capture attention. With the right layout and purpose, a simple set of images can become a compelling visual experience.",
+    "ctaBtn": "Image Collage Tool →"
+  }
+}

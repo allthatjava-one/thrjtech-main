@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import "./BlogsListPage.css";
@@ -7,6 +8,7 @@ import "./BlogsListPage.css";
 const DEFAULT_THUMB = '/default-thumb.svg'
 
 export default function BlogsListPage() {
+  const { t } = useTranslation('blogs')
   const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -48,13 +50,13 @@ export default function BlogsListPage() {
       <Navbar />
       <main className="main">
         <div className="container">
-          <h2 className="section-heading">Blog</h2>
-          {loading && <p style={{ color: '#6b7280' }}>Loading articles…</p>}
-          {error && <p style={{ color: '#dc2626' }}>Error: {error}</p>}
+          <h2 className="section-heading">{t('title')}</h2>
+          {loading && <p style={{ color: '#6b7280' }}>{t('loading')}</p>}
+          {error && <p style={{ color: '#dc2626' }}>{t('error', { error })}</p>}
           {!loading && !error && (
           <div style={{ display: 'grid', gap: 16 }}>
             <div style={{ border: '1px solid #e5e7eb', borderRadius: 8, overflow: 'hidden' }}>
-              <div style={{ background: '#f9fafb', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', fontWeight: 700, color: '#111827' }}>Articles</div>
+              <div style={{ background: '#f9fafb', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', fontWeight: 700, color: '#111827' }}>{t('articlesHeader')}</div>
               <div>
                 {pageBlogs.map((b, idx) => {
                   const background = ((idx + 1) % 2 === 0) ? '#f8fafc' : '#e6e7eb'
@@ -82,7 +84,7 @@ export default function BlogsListPage() {
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: '#fff' }}>
                   <div style={{ display: 'flex', gap: 4, alignItems: 'center' }} role="navigation" aria-label="Pagination">
-                    <button onClick={() => goToPage(1)} disabled={!links.prev} style={{ padding: '6px 8px', borderRadius: 4, border: '1px solid transparent', background: 'transparent', color: !links.prev ? '#9ca3af' : '#111827', cursor: !links.prev ? 'default' : 'pointer' }}>First</button>
+                    <button onClick={() => goToPage(1)} disabled={!links.prev} style={{ padding: '6px 8px', borderRadius: 4, border: '1px solid transparent', background: 'transparent', color: !links.prev ? '#9ca3af' : '#111827', cursor: !links.prev ? 'default' : 'pointer' }}>{t('first')}</button>
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
                       <button
                         key={n}
@@ -101,10 +103,10 @@ export default function BlogsListPage() {
                         {n}
                       </button>
                     ))}
-                    <button onClick={() => goToPage(totalPages)} disabled={!links.next} style={{ padding: '6px 8px', borderRadius: 4, border: '1px solid transparent', background: 'transparent', color: !links.next ? '#9ca3af' : '#111827', cursor: !links.next ? 'default' : 'pointer' }}>Last</button>
+                    <button onClick={() => goToPage(totalPages)} disabled={!links.next} style={{ padding: '6px 8px', borderRadius: 4, border: '1px solid transparent', background: 'transparent', color: !links.next ? '#9ca3af' : '#111827', cursor: !links.next ? 'default' : 'pointer' }}>{t('last')}</button>
                   </div>
                   <label style={{ fontSize: 14, color: '#6b7280', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    Per page:
+                    {t('perPage')}
                     <select
                       value={pageSize ?? ''}
                       onChange={e => changePageSize(Number(e.target.value))}

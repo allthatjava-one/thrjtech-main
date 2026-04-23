@@ -1,0 +1,32 @@
+{
+  "title": "Terms of Service",
+  "lastUpdated": "Last updated: April 2026",
+  "freeService": {
+    "heading": "Free Service",
+    "body": "All tools on THRJTech are provided free of charge. We reserve the right to modify, suspend, or discontinue any part of the service at any time without notice."
+  },
+  "privacyCore": {
+    "heading": "Privacy as a Core Value",
+    "body": "Most of our tools operate entirely in your browser — no files are uploaded to our servers. For tools that require server-side processing (such as PDF compression or merging), files are processed on short-lived infrastructure and are permanently and automatically deleted within 30 minutes. We do not view, store, or share the contents of any uploaded files."
+  },
+  "acceptableUse": {
+    "heading": "Acceptable Use",
+    "body": "You agree to use this site lawfully and not to upload or process content that infringes on copyrights, contains malware, or violates the rights of others."
+  },
+  "noWarranty": {
+    "heading": "No Warranty",
+    "body": "The tools are provided 'as-is' without any warranties of accuracy, reliability, or fitness for a particular purpose."
+  },
+  "limitedLiability": {
+    "heading": "Limitation of Liability",
+    "body": "THRJTech is not liable for any loss of data or damages arising from your use of these tools."
+  },
+  "changes": {
+    "heading": "Changes",
+    "body": "We may update these terms at any time. Continued use of the site constitutes acceptance of any revisions."
+  },
+  "contact": {
+    "heading": "Contact",
+    "body": "Questions? Contact us using the form available on this website."
+  }
+}

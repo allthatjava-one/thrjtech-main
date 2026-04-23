@@ -1,0 +1,13 @@
+{
+  "title": "Blogue",
+  "loading": "Chargement des articles…",
+  "error": "Erreur : {{error}}",
+  "articlesHeader": "Articles",
+  "first": "Premier",
+  "last": "Dernier",
+  "perPage": "Par page :",
+  "back": "← Retour au blog",
+  "createdAt": "Créé le : {{date}}",
+  "loadingArticle": "Chargement…",
+  "errorArticle": "Erreur : {{error}}"
+}

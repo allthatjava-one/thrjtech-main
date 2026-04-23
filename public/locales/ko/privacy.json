@@ -1,0 +1,45 @@
+{
+  "title": "개인정보 처리방침",
+  "lastUpdated": "최종 업데이트: 2026년 4월",
+  "overview": {
+    "heading": "개요",
+    "body": "THRJTech는 사용자의 개인정보를 존중합니다. 본 정책은 사이트 방문 시 정보가 어떻게 수집되고 사용되는지 설명합니다. 이미지/PDF 도구는 별도 안내가 없는 한 브라우저에서만 처리됩니다."
+  },
+  "googleAdsense": {
+    "heading": "Google AdSense 및 광고",
+    "body1": "본 사이트는 광고 표시를 위해 Google AdSense를 사용합니다.",
+    "body2Pre": "개인 맞춤 광고는",
+    "googleAdsLink": "Google 광고 설정",
+    "body2Mid": "에서 관리할 수 있습니다. 또는",
+    "aboutadsLink": "aboutads.info",
+    "body2Post": "에서 제3자 쿠키를 관리할 수 있습니다."
+  },
+  "cookies": {
+    "heading": "쿠키",
+    "body": "당사는 자체 추적 쿠키를 설정하지 않습니다. 다만 광고 파트너는 자체 정책에 따라 쿠키를 설정할 수 있습니다."
+  },
+  "userConsent": {
+    "heading": "사용자 동의",
+    "body": "현지 법률에서 요구되는 경우 동의 관리 플랫폼(CMP)을 통해 동의를 수집하고 기록합니다."
+  },
+  "dataWeCollect": {
+    "heading": "수집하는 데이터",
+    "body": "개인 식별 정보를 수집하거나 저장하지 않습니다. 서버 처리가 필요한 파일은 메모리에서 처리되며 30분 이내 자동 삭제됩니다."
+  },
+  "googleAnalytics": {
+    "heading": "구글애널리틱스",
+    "body": "페이지 조회 및 성능 개선을 위해 익명화된 사용 통계를 수집합니다."
+  },
+  "thirdPartyLinks": {
+    "heading": "제3자 링크",
+    "body": "외부 사이트 링크가 포함될 수 있으며, 해당 사이트의 정책과 콘텐츠에 대해 당사는 책임지지 않습니다."
+  },
+  "californiaRights": {
+    "heading": "캘리포니아 개인정보 권리 (CCPA/CPRA)",
+    "body": "캘리포니아 거주자는 개인정보 판매/공유 거부 권리가 있습니다. 당사는 개인정보를 판매하지 않습니다."
+  },
+  "contact": {
+    "heading": "문의",
+    "body": "개인정보 처리방침 관련 문의: privacy@thjrtech.com"
+  }
+}

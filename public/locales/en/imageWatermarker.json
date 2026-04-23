@@ -1,0 +1,155 @@
+{
+  "hero": {
+    "title": "Image Watermarker",
+    "tagline": "Protect your images by adding a custom text or logo watermark. Adjust the position and style to fit your needs, then download the watermarked result instantly.",
+    "blogLink": "Learn how to put a watermark on your image →"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "hint": {
+    "text": "Would you like to resize your image before put watermark?",
+    "btn": "Try Image Resizer"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Image watermarker",
+      "body": "An Image Watermarker applies a visible overlay—either text or a logo—onto an image to indicate ownership, branding, or provenance. The tool supports placement, scaling, opacity adjustments, and simple styling so you can make the watermark subtle or clearly visible depending on your goals."
+    },
+    "howWorks": {
+      "heading": "How watermarking works",
+      "body": "After selecting a source image you can choose a text watermark or upload a logo. The editor renders the watermark on an offscreen canvas at the chosen position and opacity, and then exports the composite as a new image file for download. Processing is performed locally in the browser."
+    },
+    "choosing": {
+      "heading": "Choosing the right watermark",
+      "item1": "Semi-transparent text is a good balance for branding without overwhelming the image.",
+      "item2": "Logos (PNG/SVG) keep transparency and provide a cleaner brand mark—use vector or high-resolution PNG logos where possible.",
+      "item3": "Consider placement: corners are less likely to be cropped, while tiled or full-frame watermarks offer stronger protection but impact aesthetics."
+    },
+    "practical": {
+      "heading": "Practical tips",
+      "item1": "Use lower opacity and smaller scale for a subtle brand mark; increase opacity and size for stronger visible protection.",
+      "item2": "For batch use, standardize watermark position and size to ensure consistent branding across images.",
+      "item3": "Preview at actual export size to confirm legibility and visual balance before downloading."
+    },
+    "usefulWhen": {
+      "heading": "Useful when",
+      "item1": "need to protect your images with a visible watermark.",
+      "item2": "want to maintain control over watermark placement, size, and opacity.",
+      "item3": "preparing images for sharing online or for branding purposes."
+    },
+    "privacy": {
+      "heading": "Privacy, retention and limitations",
+      "body": "Because watermarking runs in your browser, your images remain on your device unless you explicitly upload them. Note that visible watermarks deter casual reuse but are not a foolproof copyright protection; determined actors can remove or crop them."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Can I use a logo?",
+      "a1": "A: Yes — upload a PNG or SVG logo to apply as a watermark; transparent backgrounds are supported.",
+      "q2": "Q: Will this change my original image?",
+      "a2": "A: No — the tool creates a new watermarked file and does not overwrite your original file.",
+      "q3": "Q: Does the image leave my browser?",
+      "a3": "A: No — watermarking runs in your browser and does not upload the original image by default.",
+      "q4": "Q: Can I control opacity, size, and position?",
+      "a4": "A: Yes — use the controls to adjust the watermark's opacity, scale, and placement.",
+      "q5": "Q: Does watermarking work with all image formats?",
+      "a5": "A: Common web formats (JPEG, PNG, WebP) are supported."
+    }
+  },
+  "howItWorks": {
+    "step1": "Import an image to watermark via drag & drop or file select.",
+    "step2": "Choose text or logo watermark and adjust position, size, and opacity.",
+    "step3": "Apply the watermark preview and fine-tune placement.",
+    "step4": "Export and download the watermarked image.",
+    "step5": "Optional - You can apply watermark on multiple files at once."
+  },
+  "dropZone": {
+    "text": "Drag & drop images here, or click to select"
+  },
+  "fileRow": {
+    "count": "{{count}} images selected",
+    "changeOne": "Change image",
+    "changeMany": "Change images",
+    "clear": "Clear"
+  },
+  "type": {
+    "label": "Type:",
+    "text": "Text",
+    "logo": "Logo"
+  },
+  "textInput": {
+    "placeholder": "Enter watermark text"
+  },
+  "logoBtn": "Choose logo",
+  "position": {
+    "label": "Position:",
+    "default": "Default (center + diagonal)",
+    "center": "Center",
+    "topLeft": "Top Left",
+    "topRight": "Top Right",
+    "bottomLeft": "Bottom Left",
+    "bottomRight": "Bottom Right"
+  },
+  "repeated": "Repeated",
+  "opacity": "Opacity:",
+  "applyBtn": "Apply to {{count}} image(s)",
+  "processingBtn": "Processing...",
+  "downloadBtn": "Download",
+  "downloadAllBtn": "Download All",
+  "popup": {
+    "prev": "Prev",
+    "next": "Next",
+    "close": "×"
+  },
+  "guide": {
+    "title": "How to Add Watermarks to Image(s) (Protect Your Work and Build Your Brand)",
+    "lead": "If you share images online — whether photos, designs, or screenshots — you've probably worried about others using them without permission. That's where watermarking comes in.",
+    "whatIs": {
+      "heading": "What Is a Watermark?",
+      "body": "A watermark is a visible overlay (text or logo) placed on an image to indicate ownership or origin. Common types include text watermarks (name, website), logo watermarks (brand identity), and pattern watermarks (repeated across image)."
+    },
+    "why": {
+      "heading": "Why You Should Use Watermarks",
+      "item1": "Protect Your Content: Watermarks discourage casual reuse by clearly showing ownership.",
+      "item2": "Build Brand Recognition: Every shared image carries your name or logo with it.",
+      "item3": "Prevent Content Theft: Makes removal harder and reduces casual copying.",
+      "item4": "Add Professional Identity: Watermarked images look intentional and authoritative."
+    },
+    "types": {
+      "heading": "Types of Watermarks",
+      "text": "🔤 Text Watermark — Simple and fast — good for blogs and tools (e.g., \"thrjtech.com\").",
+      "logo": "🖼 Logo Watermark — Strong branding — ideal for businesses; use PNG/SVG for transparency.",
+      "repeated": "🔁 Repeated Watermark — Tiled across the image — best for high-value content, but less clean visually."
+    },
+    "bestPractices": {
+      "heading": "Best Practices",
+      "item1": "Keep it visible but not distracting (opacity ~20–60%).",
+      "item2": "Choose the right position: corner for subtle, center for strong protection.",
+      "item3": "Use consistent branding (font, logo, placement).",
+      "item4": "Avoid overpowering the image — balance is key.",
+      "item5": "Match watermark color to image brightness for legibility."
+    },
+    "stepByStep": {
+      "heading": "Step-by-Step",
+      "step1": "Upload your image(s)",
+      "step2": "Enter text or upload a logo",
+      "step3": "Adjust size, position, and opacity",
+      "step4": "Preview the watermark",
+      "step5": "Download the final image"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Can you put watermarks on multiple images at once?",
+      "a1": "Yes — you can select multiple images and apply the same watermark to all of them simultaneously.",
+      "q2": "Can watermarks be removed?",
+      "a2": "Yes — advanced tools may remove watermarks, but well-placed marks make removal harder.",
+      "q3": "What opacity should I use?",
+      "a3": "Usually between 30% and 60% depending on the background.",
+      "q4": "Should I place watermark in the center?",
+      "a4": "Center placement offers stronger protection; corners are subtler — choose based on your goal."
+    },
+    "conclusion": "Watermarking is a simple way to protect images, promote your brand, and maintain ownership visibility. When done right it enhances your content without distracting from it.",
+    "ctaBtn": "Try the Image Watermarker →"
+  }
+}

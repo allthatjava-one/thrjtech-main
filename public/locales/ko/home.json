@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "title": "온라인 도구,\n복잡함 없이",
+    "subtitle": "브라우저에서 바로 작동하는 빠르고 무료이며 개인정보를 존중하는 유틸리티"
+  },
+  "popularGuides": {
+    "heading": "인기 가이드",
+    "jsonFormatter": "JSON 포맷터 — JSON 포맷, 검증, 탐색",
+    "imageCrop": "이미지 자르기 — 이미지를 정확히 크롭",
+    "memeGenerator": "밈 생성기 — 몇 초 만에 공유용 밈 만들기",
+    "pdfCompressor": "PDF 압축기 — PDF 파일 크기 빠르게 줄이기",
+    "imageCollage": "이미지 콜라주 — 아름다운 사진 콜라주 만들기",
+    "pdfMerger": "PDF 병합기 — 여러 PDF를 하나로 결합"
+  },
+  "developerTools": {
+    "heading": "개발자 도구",
+    "jsonFormatterName": "JSON 포맷터",
+    "jsonFormatterDesc": "브라우저에서 즉시 JSON을 포맷, 검증, 정리합니다.",
+    "regexTesterName": "정규식 테스터",
+    "regexTesterDesc": "실시간 매치 하이라이트와 치환 지원으로 정규식을 테스트합니다."
+  },
+  "imageTools": {
+    "heading": "이미지 도구",
+    "imageCropName": "이미지 자르기",
+    "imageCropDesc": "필요한 정확한 크기와 비율로 이미지를 자릅니다.",
+    "memeGeneratorName": "밈 생성기",
+    "memeGeneratorDesc": "이미지 위에 텍스트 레이어를 추가하고 위치를 조정해 PNG로 저장합니다."
+  },
+  "cards": {
+    "howItWorks": "작동 방식",
+    "pdfCompressor": {
+      "title": "PDF 압축기",
+      "btn": "PDF 압축기 열기",
+      "description": "품질 손실을 최소화하면서 PDF 파일 크기를 줄입니다.",
+      "feature1": "PDF 크기를 최대 90%까지 축소",
+      "feature2": "압축 수준 조절 가능",
+      "feature3": "다중 페이지 PDF 지원",
+      "feature4": "100% 무료, 회원가입 불필요",
+      "step1": "1. PDF를 드래그 앤 드롭하거나 선택",
+      "step2": "2. 파일 확인 후 PDF 압축 클릭",
+      "step3": "3. 몇 초 안에 안전하게 업로드 및 압축",
+      "step4": "4. 압축된 PDF 다운로드"
+    },
+    "pdfMerger": {
+      "title": "PDF 병합기",
+      "btn": "PDF 병합기 열기",
+      "description": "여러 PDF 파일을 하나의 문서로 결합합니다.",
+      "feature1": "무제한 PDF 병합",
+      "feature2": "병합 전 파일 순서 변경",
+      "feature3": "워터마크 없음, 회원가입 없음",
+      "feature4": "빠르고 안전한 처리",
+      "feature5": "병합 후 자동 압축(선택)",
+      "step1": "1. PDF 파일 업로드",
+      "step2": "2. 파일 순서 정리",
+      "step3": "3. PDF 병합 클릭",
+      "step4": "4. 병합된 PDF 다운로드"
+    },
+    "pdfConverter": {
+      "title": "PDF 변환기",
+      "btn": "PDF 변환기 열기",
+      "description": "PDF 페이지를 JPG 또는 PNG 이미지로 변환합니다.",
+      "feature1": "PDF를 JPG/PNG로 변환",
+      "feature2": "원클릭 빠른 변환",
+      "feature3": "변환 이미지 미리보기/다운로드",
+      "feature4": "임시 저장 후 자동 삭제",
+      "feature5": "회원가입/워터마크 없음",
+      "step1": "1. PDF 업로드",
+      "step2": "2. JPG 또는 PNG 선택",
+      "step3": "3. 변환 시작",
+      "step4": "4. 변환된 이미지 다운로드"
+    },
+    "jsonFormatter": {
+      "title": "JSON 포맷터",
+      "btn": "JSON 포맷터 열기",
+      "description": "JSON 데이터를 빠르게 검증하고 정리합니다.",
+      "feature1": "즉시 JSON 검증/포맷",
+      "feature2": "붙여넣기/업로드/드래그 지원",
+      "feature3": "라인 번호와 함께 오류 표시",
+      "feature4": "포맷 결과 복사/다운로드",
+      "step1": "1. JSON 데이터 붙여넣기 또는 업로드",
+      "step2": "2. JSON 검증 및 포맷 클릭",
+      "step3": "3. 오류 또는 결과 확인",
+      "step4": "4. 결과 다운로드 또는 복사"
+    },
+    "imageWatermarker": {
+      "title": "이미지 워터마크",
+      "btn": "워터마크 도구 열기",
+      "description": "이미지에 텍스트 또는 로고 워터마크를 추가합니다.",
+      "feature1": "텍스트/로고 워터마크 지원",
+      "feature2": "다운로드 전 미리보기",
+      "feature3": "드래그 앤 드롭 업로드",
+      "feature4": "워터마크/회원가입 없음",
+      "feature5": "PNG, JPG 등 지원",
+      "step1": "1. 이미지 업로드",
+      "step2": "2. 텍스트 입력 또는 로고 업로드",
+      "step3": "3. 워터마크 결과 미리보기",
+      "step4": "4. 워터마크 이미지 다운로드"
+    },
+    "imageResizer": {
+      "title": "이미지 리사이저",
+      "btn": "리사이저 열기",
+      "description": "비율 또는 사용자 지정 크기로 이미지를 조정합니다.",
+      "feature1": "비율/치수 기준 크기 조정",
+      "feature2": "가로세로 비율 유지(선택)",
+      "feature3": "PNG, JPG 등 지원",
+      "feature4": "워터마크/회원가입 없음",
+      "feature5": "다운로드 전 미리보기",
+      "step1": "1. 이미지 업로드",
+      "step2": "2. 모드 선택 및 크기 조정",
+      "step3": "3. 결과 미리보기",
+      "step4": "4. 조정된 이미지 다운로드"
+    },
+    "imageCollage": {
+      "title": "이미지 콜라주",
+      "btn": "이미지 콜라주 열기",
+      "description": "여러 이미지를 깔끔한 그리드 콜라주로 만듭니다.",
+      "feature1": "여러 이미지를 그리드로 결합",
+      "feature2": "드래그 앤 드롭으로 정렬",
+      "feature3": "이미지 수에 맞춰 자동 확장",
+      "feature4": "사용자 지정 너비/높이",
+      "feature5": "워터마크/회원가입 없음",
+      "step1": "1. 이미지 업로드",
+      "step2": "2. 배치 및 그리드 설정",
+      "step3": "3. 즉시 미리보기",
+      "step4": "4. 콜라주 다운로드"
+    },
+    "imageConverter": {
+      "title": "이미지 변환기",
+      "btn": "이미지 변환기 열기",
+      "description": "JPG, PNG, WebP 간 이미지를 즉시 변환합니다.",
+      "feature1": "JPG, PNG, WebP 상호 변환",
+      "feature2": "입력 형식 자동 감지",
+      "feature3": "PNG 투명 배경 JPG 변환 시 흰 배경 처리",
+      "feature4": "100% 로컬 처리",
+      "step1": "1. 이미지 업로드",
+      "step2": "2. 출력 형식 선택",
+      "step3": "3. 변환 결과 미리보기",
+      "step4": "4. 여러 이미지 일괄 변환 가능"
+    }
+  }
+}

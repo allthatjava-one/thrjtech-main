@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function ImageResizerView({
   mainImage,
@@ -25,6 +26,7 @@ export function ImageResizerView({
   handleResize,
   handleClear,
 }) {
+  const { t } = useTranslation('imageResizer');
   const [previewOpen, setPreviewOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
   const [linked, setLinked] = useState(true);
@@ -197,15 +199,14 @@ export function ImageResizerView({
   };
   return (
     <div className="image-resizer-view">
-      <h2 className="hero-title">Image Resizer</h2>
-      <p className="hero-tagline">Resize your image to any size by percentage 
-        or exact pixel dimensions. Lock the aspect ratio to prevent distortion, 
-        then download your result instantly. <Link to="/blogs/image-resizer-guide">Learn how to resize your image →</Link></p>
+      <h2 className="hero-title">{t('hero.title')}</h2>
+      <p className="hero-tagline">{t('hero.tagline')}{' '}
+        <Link to="/blogs/image-resizer-guide">{t('hero.blogLink')}</Link></p>
 
       <div className="ir-tip-banner">
-        <span className="ir-tip-text">Do you want your picture to fit on YouTube Thumbnail or Instagram?</span>
+        <span className="ir-tip-text">{t('hint.text')}</span>
         <button className="ir-tip-btn" onClick={() => navigate('/image-crop')}>
-          Try Image Crop
+          {t('hint.btn')}
         </button>
       </div>
 
@@ -217,7 +218,7 @@ export function ImageResizerView({
             aria-expanded={openPanel === 'details'}
             type="button"
           >
-            Details
+            {t('tabs.details')}
           </button>
           <button
             className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
@@ -225,55 +226,41 @@ export function ImageResizerView({
             aria-expanded={openPanel === 'howitworks'}
             type="button"
           >
-            How it works
+            {t('tabs.howItWorks')}
           </button>
         </div>
 
             <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
-                <h3>What is Image Resizer</h3>
-                <p>
-                  The Image Resizer lets you change an image's pixel dimensions by a percentage scale or by specifying exact width and height. It
-                  performs client-side scaling using an offscreen canvas so the original image remains on your device and the resized output is produced
-                  instantly for download. This tool is ideal for preparing images for web, email, or printing where specific pixel dimensions or file
-                  size targets are required.
-                </p>
+                <h3>{t('details.whatIs.heading')}</h3>
+                <p>{t('details.whatIs.body')}</p>
 
-                <h3>How resizing works</h3>
-                <p>
-                  Resizing decodes the source image in the browser, draws it to a canvas at the target dimensions, and then exports the canvas content
-                  as a new image file. Downsizing reduces file size while preserving visual fidelity in most cases; upscaling cannot add real
-                  detail and will often produce softer results depending on the original resolution and browser interpolation algorithms.
-                </p>
+                <h3>{t('details.howWorks.heading')}</h3>
+                <p>{t('details.howWorks.body')}</p>
 
-                <h3>Quality, interpolation and tradeoffs</h3>
+                <h3>{t('details.quality.heading')}</h3>
                 <ul>
-                  <li>Downscaling: preserves perceived quality and reduces bytes; suitable for thumbnails and web delivery.</li>
-                  <li>Upscaling: limited by source resolution—avoid excessive upscaling (e.g., &gt;2x) to prevent pixelation.</li>
-                  <li>Interpolation: browsers use built-in resampling; results vary by engine—specialized algorithms often produce better upscaling quality.</li>
+                  <li>{t('details.quality.item1')}</li>
+                  <li>{t('details.quality.item2')}</li>
+                  <li>{t('details.quality.item3')}</li>
                 </ul>
 
-                <h3>Practical tips</h3>
+                <h3>{t('details.practical.heading')}</h3>
                 <ul>
-                  <li>For web, aim for moderate dimensions (e.g., 1200–2048px on the long edge) to balance quality and performance.</li>
-                  <li>Use percentage mode for quick proportional scaling; use exact dimensions when a precise pixel size is required.</li>
-                  <li>Keep a copy of the original file if you expect to re-edit or export at larger sizes later.</li>
+                  <li>{t('details.practical.item1')}</li>
+                  <li>{t('details.practical.item2')}</li>
+                  <li>{t('details.practical.item3')}</li>
                 </ul>
 
-                <h3>When to use</h3>
-                <p>
-                  Use the resizer when you need to prepare images for specific display contexts (web pages, email, thumbnails), reduce file weight for
-                  faster uploads, or adjust images to meet platform requirements. For batch processing or professional-grade upscaling, consider
-                  specialized desktop tools or server-side services.
-                </p>
+                <h3>{t('details.whenToUse.heading')}</h3>
+                <p>{t('details.whenToUse.body')}</p>
 
-                <h3>FAQs</h3>
+                <h3>{t('details.faq.heading')}</h3>
                 <ul>
-                  <li><strong>Q:</strong> Can I preserve aspect ratio? <strong>A:</strong> Yes — enable the aspect lock to maintain proportions while changing one dimension.</li>
-                  <li><strong>Q:</strong> Is resizing local? <strong>A:</strong> Yes — resizing occurs in your browser via an offscreen canvas; files are not uploaded unless you choose to share them.</li>
-                  <li><strong>Q:</strong> Will file size always decrease? <strong>A:</strong> Usually when downscaling, but file size also depends on format and compression settings.</li>
-                  <li><strong>Q:</strong> Can I batch resize? <strong>A:</strong> This UI focuses on single-image operations; for many images use a batch tool or script.
-                  </li>
+                  <li><strong>{t('details.faq.q1')}</strong> {t('details.faq.a1')}</li>
+                  <li><strong>{t('details.faq.q2')}</strong> {t('details.faq.a2')}</li>
+                  <li><strong>{t('details.faq.q3')}</strong> {t('details.faq.a3')}</li>
+                  <li><strong>{t('details.faq.q4')}</strong> {t('details.faq.a4')}</li>
                 </ul>
               </div>
 
@@ -281,20 +268,19 @@ export function ImageResizerView({
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/resizer/Image-resizer001.png" alt="Step 1" className="how-img" />
-                    <p>Choose a source image by drag & drop or browsing.</p>
+                    <p>{t('howItWorks.step1')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/resizer/Image-resizer002.png" alt="Step 2" className="how-img" />
-                    <p>Select percentage or explicit width/height and lock the aspect ratio if needed. 
-                      You can use Alt+Scroll or Pinch to zoom on mobile in the preview. Actual size will show up on width and height fields.</p>
+                    <p>{t('howItWorks.step2')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/resizer/Image-resizer003.png" alt="Step 3" className="how-img" />
-                    <p>Click Resize to run client-side scaling and produce the output file.</p>
+                    <p>{t('howItWorks.step3')}</p>
                   </li>
                   <li>
                     <img src="/screenshots/resizer/Image-resizer004.png" alt="Step 4" className="how-img" />
-                    <p>Preview and download the resized image.</p>
+                    <p>{t('howItWorks.step4')}</p>
                   </li>
                 </ol>
               </div>
@@ -326,7 +312,7 @@ export function ImageResizerView({
             }}
           />
         ) : (
-          <span className="hero-tagline">Drag & drop an image here, or click to select</span>
+          <span className="hero-tagline">{t('dropZone.text')}</span>
         )}
         <input
           type="file"
@@ -336,7 +322,7 @@ export function ImageResizerView({
           onChange={handleFileInput}
         />
         {mainImage && (
-          <div className="drop-zone-hint">Alt+Scroll to zoom · Pinch on mobile · {Math.round(previewZoom * 100)}%</div>
+          <div className="drop-zone-hint">{t('dropZone.hint', { percent: Math.round(previewZoom * 100) })}</div>
         )}
       </div>
 
@@ -349,10 +335,10 @@ export function ImageResizerView({
             className="ir-change-btn"
             onClick={() => fileInputRef.current && fileInputRef.current.click()}
           >
-            Change Image
+            {t('fileRow.name')}
           </button>
           <button type="button" className="ir-clear-btn" onClick={handleClear}>
-            Clear
+            {t('fileRow.clear')}
           </button>
         </div>
       )}
@@ -416,7 +402,7 @@ export function ImageResizerView({
             checked={resizeMode === 'percentage'}
             onChange={() => setResizeMode('percentage')}
           />
-          Resize by Percentage
+          {t('resizeMode.percentage')}
         </label>
         <label>
           <input
@@ -426,7 +412,7 @@ export function ImageResizerView({
             checked={resizeMode === 'dimensions'}
             onChange={() => setResizeMode('dimensions')}
           />
-          Resize by Width & Height
+          {t('resizeMode.dimensions')}
         </label>
       </div>
       {resizeMode === 'percentage' && (
@@ -434,7 +420,7 @@ export function ImageResizerView({
         <input
           type="number"
           className="resize-input"
-          placeholder="Enter percentage (e.g. 50)"
+          placeholder={t('percentInput.placeholder')}
           value={percentage}
           min={1}
           max={500}
@@ -448,7 +434,7 @@ export function ImageResizerView({
           <input
             type="number"
             className="resize-input"
-            placeholder="Width (px)"
+            placeholder={t('dimensionInputs.width')}
             value={width}
             min={1}
             style={{ alignSelf: 'center' }}
@@ -466,7 +452,7 @@ export function ImageResizerView({
           />
           <button
             type="button"
-            aria-label={linked ? 'Unlink width and height' : 'Link width and height'}
+            aria-label={linked ? t('dimensionInputs.unlinkAria') : t('dimensionInputs.linkAria')}
             style={{
               background: 'none',
               border: 'none',
@@ -489,7 +475,7 @@ export function ImageResizerView({
           <input
             type="number"
             className="resize-input"
-            placeholder="Height (px)"
+            placeholder={t('dimensionInputs.height')}
             value={height}
             min={1}
             style={{ alignSelf: 'center' }}
@@ -513,7 +499,7 @@ export function ImageResizerView({
           onClick={handleResize}
           disabled={status === 'processing' || !mainImage || (resizeMode === 'dimensions' && (!width || !height))}
         >
-          {status === 'processing' ? 'Processing...' : 'Preview'}
+          {status === 'processing' ? t('processingBtn') : t('previewBtn')}
         </button>
 
         <button
@@ -534,7 +520,7 @@ export function ImageResizerView({
             }
           }}
         >
-          Download
+          {t('downloadBtn')}
         </button>
       </div>
 
@@ -559,18 +545,18 @@ export function ImageResizerView({
             }}
           >
             <span style={{ fontWeight: 600, color: '#222', fontSize: '1.08rem', marginBottom: 0, textAlign: 'left', flex: 1, display: 'block', alignSelf: 'center' }}>
-              Would you like to put private watermark on the resized image?
+            {t('watermarkPrompt.text')}
             </span>
             <button
               className="resize-btn"
               onClick={handleSendToWatermark}
               disabled={sendStatus === 'processing'}
             >
-              {sendStatus === 'processing' ? 'Preparing...' : 'Yes'}
+              {sendStatus === 'processing' ? t('watermarkPrompt.preparing') : t('watermarkPrompt.yes')}
             </button>
           </div>
           {sendStatus === 'error' && (
-            <div className="error-msg" style={{ marginTop: 8 }}>Failed to send image to watermark tool.</div>
+            <div className="error-msg" style={{ marginTop: 8 }}>{t('watermarkPrompt.error')}</div>
           )}
         </div>
       )}
@@ -578,26 +564,22 @@ export function ImageResizerView({
       {/* ── Guide Article ── */}
       <div className="ir-guide">
         <div className="ir-guide-intro">
-          <h2 className="ir-guide-title">The Complete Guide to Resizing Images Without Losing Quality</h2>
-          <p className="ir-guide-lead">
-            Resizing images seems simple — until you end up with blurry, pixelated, or distorted results.
-            Whether you're uploading photos to a website, sending images by email, or optimizing for
-            performance, resizing <em>the right way</em> matters more than most people think.
-          </p>
+          <h2 className="ir-guide-title">{t('guide.title')}</h2>
+          <p className="ir-guide-lead">{t('guide.lead')}</p>
           <div className="ir-guide-learn-box">
             <span className="ir-guide-learn-label">In this guide, you'll learn:</span>
             <ul className="ir-guide-learn-list">
-              <li>How image resizing actually works</li>
-              <li>Why quality loss happens</li>
-              <li>The best ways to resize images without ruining them</li>
-              <li>Practical tips you can use immediately</li>
+              <li>{t('guide.learnItems.item1')}</li>
+              <li>{t('guide.learnItems.item2')}</li>
+              <li>{t('guide.learnItems.item3')}</li>
+              <li>{t('guide.learnItems.item4')}</li>
             </ul>
           </div>
         </div>
 
         <div className="ir-guide-section">
-          <h3 className="ir-guide-h3">What Does "Resizing an Image" Really Mean?</h3>
-          <p>Resizing an image means changing its dimensions — usually width and height in pixels.</p>
+          <h3 className="ir-guide-h3">{t('guide.whatMeans.heading')}</h3>
+          <p>{t('guide.whatMeans.body')}</p>
           <div className="ir-guide-example-box">
             <div className="ir-guide-example-row">
               <span className="ir-guide-example-label">Original</span>
@@ -609,157 +591,123 @@ export function ImageResizerView({
               <span className="ir-guide-example-val ir-guide-example-val--accent">800 × 600 px</span>
             </div>
           </div>
-          <p>When you shrink an image, the system must decide: <em>"Which pixels should be removed, and how should the remaining ones adjust?"</em></p>
-          <p>This process is called <strong>resampling</strong>, and it directly affects quality.</p>
+          <p>{t('guide.whatMeans.resampling')}</p>
         </div>
 
         <div className="ir-guide-section">
-          <h3 className="ir-guide-h3">Why Do Images Lose Quality?</h3>
+          <h3 className="ir-guide-h3">{t('guide.whyLoseQuality.heading')}</h3>
           <div className="ir-guide-cards">
             <div className="ir-guide-card">
               <span className="ir-guide-card-num">1</span>
-              <div>
-                <strong>Pixel Loss</strong>
-                <p>When reducing size, pixels are permanently removed. If done poorly, edges become jagged and fine details disappear.</p>
-              </div>
+              <div><p>{t('guide.whyLoseQuality.pixel')}</p></div>
             </div>
             <div className="ir-guide-card">
               <span className="ir-guide-card-num">2</span>
-              <div>
-                <strong>Poor Resampling Method</strong>
-                <p>Not all resizing algorithms are equal. <em>Nearest Neighbor</em> is fast but blocky. <em>Bilinear</em> is smoother. <em>Bicubic</em> is best for most cases.</p>
-              </div>
+              <div><p>{t('guide.whyLoseQuality.resampling')}</p></div>
             </div>
             <div className="ir-guide-card">
               <span className="ir-guide-card-num">3</span>
-              <div>
-                <strong>Repeated Resizing</strong>
-                <p>Every resize discards more data. Always resize from the <strong>original image</strong>, never from a previously resized copy.</p>
-              </div>
+              <div><p>{t('guide.whyLoseQuality.repeated')}</p></div>
             </div>
           </div>
         </div>
 
         <div className="ir-guide-section">
-          <h3 className="ir-guide-h3">Best Practices to Resize Without Losing Quality</h3>
+          <h3 className="ir-guide-h3">{t('guide.bestPractices.heading')}</h3>
           <div className="ir-guide-best-list">
             <div className="ir-guide-best-item">
               <span className="ir-guide-best-icon">✅</span>
-              <div>
-                <strong>Maintain Aspect Ratio</strong>
-                <p>Always keep width and height proportional. Setting 800 × 800 on a 4:3 image will stretch it — use 800 × 600 for a natural look.</p>
-              </div>
+              <div><p>{t('guide.bestPractices.aspectRatio')}</p></div>
             </div>
             <div className="ir-guide-best-item">
               <span className="ir-guide-best-icon">✅</span>
-              <div>
-                <strong>Resize Once</strong>
-                <p>Start with the original → resize once → save the final version. Avoid repeated edits.</p>
-              </div>
+              <div><p>{t('guide.bestPractices.resizeOnce')}</p></div>
             </div>
             <div className="ir-guide-best-item">
               <span className="ir-guide-best-icon">✅</span>
-              <div>
-                <strong>Choose the Right Format</strong>
-                <div className="ir-guide-format-chips">
-                  <span className="ir-guide-chip">JPEG — smaller size, slight loss</span>
-                  <span className="ir-guide-chip">PNG — higher quality, larger file</span>
-                  <span className="ir-guide-chip ir-guide-chip--accent">WebP — best balance ✨</span>
-                </div>
-              </div>
+              <div><p>{t('guide.bestPractices.format')}</p></div>
             </div>
             <div className="ir-guide-best-item">
               <span className="ir-guide-best-icon">✅</span>
-              <div>
-                <strong>Avoid Over-Compression</strong>
-                <p>Compression reduces file size but can blur details and introduce artifacts. Aim for balance, not maximum compression.</p>
-              </div>
+              <div><p>{t('guide.bestPractices.compression')}</p></div>
             </div>
           </div>
         </div>
 
         <div className="ir-guide-section">
-          <h3 className="ir-guide-h3">Common Use Cases</h3>
+          <h3 className="ir-guide-h3">{t('guide.useCases.heading')}</h3>
           <div className="ir-guide-usecases">
             <div className="ir-guide-usecase">
               <span className="ir-guide-usecase-icon">🌐</span>
-              <strong>Website Uploads</strong>
-              <p>Resize large images (4000px → 1200px) to dramatically improve page load speed.</p>
+              <p>{t('guide.useCases.website')}</p>
             </div>
             <div className="ir-guide-usecase">
               <span className="ir-guide-usecase-icon">📱</span>
-              <strong>Social Media</strong>
-              <p>Each platform has optimal sizes. Resizing ensures no cropping issues and better visual quality across profiles, posts, and thumbnails.</p>
+              <p>{t('guide.useCases.social')}</p>
             </div>
             <div className="ir-guide-usecase">
               <span className="ir-guide-usecase-icon">📧</span>
-              <strong>Email Attachments</strong>
-              <p>Large images slow down sending and may be rejected. Resizing keeps files manageable and deliverable.</p>
+              <p>{t('guide.useCases.email')}</p>
             </div>
           </div>
         </div>
 
         <div className="ir-guide-section">
-          <h3 className="ir-guide-h3">Mistakes to Avoid</h3>
+          <h3 className="ir-guide-h3">{t('guide.mistakes.heading')}</h3>
           <div className="ir-guide-mistakes">
-            <div className="ir-guide-mistake">❌ Stretching images (wrong aspect ratio)</div>
-            <div className="ir-guide-mistake">❌ Saving repeatedly in JPEG</div>
-            <div className="ir-guide-mistake">❌ Using tools with poor resampling algorithms</div>
-            <div className="ir-guide-mistake">❌ Upscaling small images expecting higher quality</div>
+            <div className="ir-guide-mistake">{t('guide.mistakes.item1')}</div>
+            <div className="ir-guide-mistake">{t('guide.mistakes.item2')}</div>
+            <div className="ir-guide-mistake">{t('guide.mistakes.item3')}</div>
+            <div className="ir-guide-mistake">{t('guide.mistakes.item4')}</div>
           </div>
         </div>
 
         <div className="ir-guide-section">
-          <h3 className="ir-guide-h3">Quick Step-by-Step Guide</h3>
+          <h3 className="ir-guide-h3">{t('guide.stepByStep.heading')}</h3>
           <ol className="ir-guide-steps">
-            <li>Upload your image</li>
-            <li>Choose desired width or height</li>
-            <li>Keep aspect ratio enabled</li>
-            <li>Select output format (JPEG / PNG / WebP)</li>
-            <li>Download resized image</li>
+            <li>{t('guide.stepByStep.step1')}</li>
+            <li>{t('guide.stepByStep.step2')}</li>
+            <li>{t('guide.stepByStep.step3')}</li>
+            <li>{t('guide.stepByStep.step4')}</li>
+            <li>{t('guide.stepByStep.step5')}</li>
           </ol>
         </div>
 
         <div className="ir-guide-section">
-          <h3 className="ir-guide-h3">FAQ</h3>
+          <h3 className="ir-guide-h3">{t('guide.faq.heading')}</h3>
           <div className="ir-guide-faq">
             <details className="ir-guide-faq-item">
-              <summary>Does resizing reduce quality?</summary>
-              <p>Yes — but if done correctly, the loss is minimal and often unnoticeable to the human eye.</p>
+              <summary>{t('guide.faq.q1')}</summary>
+              <p>{t('guide.faq.a1')}</p>
             </details>
             <details className="ir-guide-faq-item">
-              <summary>Can I resize without losing any quality?</summary>
-              <p>Only if you're not reducing size significantly. Otherwise, some data loss is unavoidable. The key is choosing the right algorithm and format.</p>
+              <summary>{t('guide.faq.q2')}</summary>
+              <p>{t('guide.faq.a2')}</p>
             </details>
             <details className="ir-guide-faq-item">
-              <summary>What's the best format after resizing?</summary>
-              <p><strong>Web:</strong> WebP or JPEG — <strong>High quality archival:</strong> PNG</p>
+              <summary>{t('guide.faq.q3')}</summary>
+              <p>{t('guide.faq.a3')}</p>
             </details>
             <details className="ir-guide-faq-item">
-              <summary>Is it better to resize or compress?</summary>
-              <p>They serve different purposes. <strong>Resize</strong> changes dimensions; <strong>Compress</strong> reduces file size. Best results come from using both carefully.</p>
+              <summary>{t('guide.faq.q4')}</summary>
+              <p>{t('guide.faq.a4')}</p>
             </details>
           </div>
         </div>
 
         <div className="ir-guide-conclusion">
           <h3>Conclusion</h3>
-          <p>
-            Resizing images isn't just about making them smaller — it's about doing it correctly to preserve clarity and usability.
-            By maintaining aspect ratio, resizing once from the original, and choosing the right format, you can significantly
-            improve both image quality and performance.
-          </p>
+          <p>{t('guide.conclusion')}</p>
           <a
             href="/image-resizer"
             className="ir-guide-cta"
             onClick={(e) => {
               e.preventDefault();
-              // Smooth scroll to top, then navigate
               window.scrollTo({ top: 0, behavior: 'smooth' });
               navigate('/image-resizer');
             }}
           >
-            Try the Image Resizer →
+            {t('guide.ctaBtn')}
           </a>
         </div>
       </div>

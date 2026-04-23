@@ -1,0 +1,14 @@
+{
+  "title": "Contactez-nous",
+  "intro": "Nous adorons avoir des nouvelles de nos utilisateurs — vos retours sont ce qui nous pousse à continuer à nous améliorer. Que vous ayez trouvé un bug, une suggestion de fonctionnalité, ou que vous souhaitiez simplement partager votre expérience, nous voulons sincèrement le savoir. Envoyez-nous un message via le formulaire ci-dessous et nous vous répondrons dès que possible. Chaque message est lu par une vraie personne et nous faisons de notre mieux pour répondre rapidement. Merci de prendre le temps de nous contacter !",
+  "signature": "- L'équipe THRJTech",
+  "emailLabel": "Adresse e-mail",
+  "emailPlaceholder": "votre@email.com",
+  "messageLabel": "Message",
+  "messagePlaceholder": "Comment pouvons-nous vous aider ?",
+  "submitBtn": "Envoyer",
+  "sendingBtn": "Envoi en cours…",
+  "successMsg": "Merci ! Nous avons bien reçu votre message.",
+  "errorMsg": "Désolé, une erreur s'est produite. Veuillez réessayer.",
+  "honeypotLabel": "Laissez ce champ vide"
+}

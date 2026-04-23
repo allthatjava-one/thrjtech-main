@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "title": "Outils en ligne,\nZéro tracas",
+    "subtitle": "Des utilitaires gratuits, rapides et respectueux de la vie privée qui fonctionnent directement dans votre navigateur."
+  },
+  "popularGuides": {
+    "heading": "Guides populaires",
+    "jsonFormatter": "Formateur JSON — Embellir, valider et explorer le JSON",
+    "imageCrop": "Recadrage d'image — Ajustez et cadrez vos images",
+    "memeGenerator": "Générateur de mèmes — Créez des mèmes partageables en quelques secondes",
+    "pdfCompressor": "Compresseur PDF — Réduisez rapidement la taille des fichiers PDF",
+    "imageCollage": "Collage d'images — Créez de beaux collages photo",
+    "pdfMerger": "Fusionneur PDF — Combinez plusieurs PDF en un seul"
+  },
+  "developerTools": {
+    "heading": "Outils pour développeurs",
+    "jsonFormatterName": "Formateur JSON",
+    "jsonFormatterDesc": "Formatez, validez et embellissez le JSON instantanément dans votre navigateur. Prend en charge la coloration syntaxique, la minification et un rapport d'erreurs clair.",
+    "regexTesterName": "Testeur de Regex",
+    "regexTesterDesc": "Testez des expressions régulières avec une mise en évidence des correspondances en direct et la prise en charge du remplacement. Itérez rapidement sur les patterns avec des retours en temps réel."
+  },
+  "imageTools": {
+    "heading": "Outils d'image",
+    "imageCropName": "Recadrer une image",
+    "imageCropDesc": "Recadrez n'importe quelle image à la taille et au rapport d'aspect exact dont vous avez besoin. Prend en charge le recadrage libre et des préréglages pratiques comme 1:1, 16:9 et 4:5 — directement dans votre navigateur.",
+    "memeGeneratorName": "Générateur de mèmes",
+    "memeGeneratorDesc": "Ajoutez des calques de texte en gras sur n'importe quelle image, faites-les glisser à la position souhaitée et téléchargez votre mème personnalisé en PNG. Aucun compte requis."
+  },
+  "cards": {
+    "howItWorks": "Comment ça fonctionne",
+    "pdfCompressor": {
+      "title": "Compresseur PDF",
+      "btn": "Ouvrir le compresseur PDF",
+      "description": "Réduisez la taille de vos fichiers PDF sans sacrifier la qualité. Chargez un document et téléchargez une version plus petite en quelques secondes — aucun compte requis, sans filigrane.",
+      "feature1": "Compressez les PDF jusqu'à 90% plus petits",
+      "feature2": "Niveaux de compression ajustables (faible, moyen, élevé)",
+      "feature3": "Prend en charge les PDF multi-pages de toute taille",
+      "feature4": "100% gratuit, sans inscription",
+      "step1": "1. Glissez-déposez ou parcourez votre PDF",
+      "step2": "2. Vérifiez le fichier, puis cliquez sur Compresser le PDF",
+      "step3": "3. Chargement et compression sécurisés en quelques secondes",
+      "step4": "4. Téléchargez votre PDF compressé"
+    },
+    "pdfMerger": {
+      "title": "Fusionneur PDF",
+      "btn": "Ouvrir le fusionneur PDF",
+      "description": "Combinez plusieurs fichiers PDF en un seul document en quelques secondes. Glissez, déposez et fusionnez — aucun compte requis, sans filigrane.",
+      "feature1": "Fusionnez des PDF illimités gratuitement",
+      "feature2": "Réorganisez les fichiers avant la fusion",
+      "feature3": "Sans filigrane, sans inscription",
+      "feature4": "Rapide, sécurisé et respectueux de la vie privée",
+      "feature5": "Compresse automatiquement le fichier fusionné pour réduire la taille (Optionnel)",
+      "step1": "1. Glissez-déposez ou parcourez vos PDF",
+      "step2": "2. Organisez l'ordre de vos fichiers",
+      "step3": "3. Cliquez sur Fusionner le PDF pour combiner les fichiers",
+      "step4": "4. Téléchargez votre PDF fusionné"
+    },
+    "pdfConverter": {
+      "title": "Convertisseur PDF",
+      "btn": "Ouvrir le convertisseur PDF",
+      "description": "Convertissez rapidement les pages PDF en images JPG ou PNG — chargez, choisissez le format et téléchargez les résultats sans créer de compte.",
+      "feature1": "Convertissez un PDF en JPG ou PNG",
+      "feature2": "Conversions rapides en un clic",
+      "feature3": "Prévisualisez et téléchargez les images converties",
+      "feature4": "Stockage temporaire avec nettoyage automatique",
+      "feature5": "Sans compte ni filigrane",
+      "step1": "1. Glissez-déposez ou parcourez votre PDF",
+      "step2": "2. Choisissez JPG ou PNG",
+      "step3": "3. Démarrez la conversion et suivez la progression",
+      "step4": "4. Téléchargez les images converties sur votre appareil"
+    },
+    "jsonFormatter": {
+      "title": "Formateur JSON",
+      "btn": "Ouvrir le formateur JSON",
+      "description": "Validez, formatez et embellissez rapidement vos données JSON. Visualisez instantanément les erreurs, obtenez une sortie lisible et copiez ou téléchargez le résultat.",
+      "feature1": "Validez et formatez le JSON instantanément",
+      "feature2": "Collez, chargez ou glissez-déposez des fichiers JSON",
+      "feature3": "Met en évidence les erreurs avec les numéros de ligne",
+      "feature4": "Téléchargez ou copiez la sortie formatée",
+      "step1": "1. Collez ou chargez vos données JSON",
+      "step2": "2. Cliquez sur Valider et formater le JSON",
+      "step3": "3. Visualisez instantanément les erreurs avec les numéros de ligne si votre JSON est invalide",
+      "step4": "4. Téléchargez ou copiez le JSON embelli"
+    },
+    "imageWatermarker": {
+      "title": "Filigrane d'image",
+      "btn": "Ouvrir le filigrane d'image",
+      "description": "Ajoutez un filigrane textuel ou logo à vos images en quelques secondes. Glissez, déposez et téléchargez — tout dans votre navigateur, sans compte requis.",
+      "feature1": "Ajoutez du texte ou un logo comme filigrane",
+      "feature2": "Prévisualisez avant de télécharger",
+      "feature3": "Chargement d'image par glisser-déposer",
+      "feature4": "Sans filigrane tiers ni inscription",
+      "feature5": "Fonctionne avec PNG, JPG et plus",
+      "step1": "1. Glissez-déposez ou parcourez votre image",
+      "step2": "2. Entrez le texte du filigrane ou chargez un logo",
+      "step3": "3. Prévisualisez l'image avec filigrane",
+      "step4": "4. Téléchargez votre image avec filigrane"
+    },
+    "imageResizer": {
+      "title": "Redimensionneur d'image",
+      "btn": "Ouvrir le redimensionneur d'image",
+      "description": "Redimensionnez vos images par pourcentage ou par dimensions personnalisées. Rapide, respectueux de la vie privée et fonctionne entièrement dans votre navigateur — sans chargement, sans compte, sans filigrane.",
+      "feature1": "Redimensionnez par pourcentage ou dimensions",
+      "feature2": "Maintient le rapport d'aspect (optionnel)",
+      "feature3": "Fonctionne avec PNG, JPG et plus",
+      "feature4": "Sans filigrane ni inscription",
+      "feature5": "Prévisualisez avant de télécharger",
+      "step1": "1. Glissez-déposez ou parcourez votre image",
+      "step2": "2. Choisissez le mode de redimensionnement et définissez les dimensions ou zoomez",
+      "step3": "3. Prévisualisez l'image redimensionnée",
+      "step4": "4. Téléchargez votre image redimensionnée"
+    },
+    "imageCollage": {
+      "title": "Collage d'images",
+      "btn": "Ouvrir le collage d'images",
+      "description": "Arrangez plusieurs images en un collage en grille instantanément. Glissez, déposez, réorganisez et téléchargez — tout dans votre navigateur, sans compte requis, sans filigrane.",
+      "feature1": "Combinez plusieurs images en un collage en grille",
+      "feature2": "Glissez-déposez pour charger et réorganiser les images",
+      "feature3": "Grille auto-extensible pour accueillir toutes vos images",
+      "feature4": "Définissez une largeur et une hauteur de sortie personnalisées",
+      "feature5": "Sans filigrane ni inscription",
+      "step1": "1. Glissez-déposez ou parcourez vos images",
+      "step2": "2. Arrangez les images et définissez la disposition en grille",
+      "step3": "3. Prévisualisez votre collage instantanément",
+      "step4": "4. Téléchargez votre collage terminé"
+    },
+    "imageConverter": {
+      "title": "Convertisseur d'image",
+      "btn": "Ouvrir le convertisseur d'image",
+      "description": "Convertissez des images entre JPG, PNG et WebP instantanément dans votre navigateur. Déposez votre image, choisissez un format et téléchargez — sans chargement de fichier, sans compte requis.",
+      "feature1": "Convertissez entre JPG, PNG et WebP",
+      "feature2": "Détecte automatiquement le format d'entrée",
+      "feature3": "Les PNG transparents obtiennent un fond blanc lors de l'export en JPG",
+      "feature4": "100% local — les fichiers ne quittent jamais votre navigateur",
+      "step1": "1. Glissez-déposez ou parcourez vos images",
+      "step2": "2. Choisissez le format de sortie (JPG, PNG ou WebP)",
+      "step3": "3. Prévisualisez votre image convertie",
+      "step4": "Optionnel — Convertissez plusieurs images à la fois"
+    }
+  }
+}

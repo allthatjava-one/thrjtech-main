@@ -1,0 +1,189 @@
+{
+  "hero": {
+    "title": "Meme Generator",
+    "tagline": "Create fun memes by adding custom text to any image. Drag text anywhere on the canvas, adjust font size and color, then download your finished meme with one click.",
+    "blogLink": "Learn how to use the Meme Generator →"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "hint": {
+    "text": "Would you like to crop your image before creating a meme?",
+    "btn": "Try Image Crop"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is a Meme Generator",
+      "body": "A meme generator is a lightweight creative editor that lets you place text overlays on images to produce humorous, informative, or expressive graphics quickly. It supports multiple text layers, free positioning, font sizing, color selection, and simple export controls so you can craft a share-ready image in seconds."
+    },
+    "howWorks": {
+      "heading": "How the generator works",
+      "body": "Upload or drop an image into the canvas area, then add one or more text layers using the controls. Each layer can be positioned by dragging, resized via the advanced controls, and styled with a color picker. The preview area reflects changes in real time."
+    },
+    "whyBrowser": {
+      "heading": "Why use a browser-based tool",
+      "body": "Browser-based meme editors are instant and accessible: they don't require installations, run offline once loaded, and keep your images local to your device."
+    },
+    "tips": {
+      "heading": "Tips for better memes",
+      "item1": "Use short, punchy captions and capitalize text for classic meme styles.",
+      "item2": "Keep good contrast between text and background; add stroke or shadow if needed for readability.",
+      "item3": "Use multiple layers for complex layouts—title, subtitle, or small annotations all work well."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Will my image be uploaded anywhere?",
+      "a1": "A: No — everything runs client-side in your browser.",
+      "q2": "Q: Can I add more than two text lines?",
+      "a2": "A: Yes — use the ＋ button to add as many text layers as you need.",
+      "q3": "Q: What image formats are supported?",
+      "a3": "A: Any image format your browser supports (JPEG, PNG, WebP, GIF, etc.)."
+    }
+  },
+  "howItWorks": {
+    "step1": "Upload an image by clicking the canvas area or dragging and dropping a file onto it.",
+    "step2": "Click the ＋ button to add a text layer and type your caption in the text box on the left panel.",
+    "step3": "Drag the text overlay on the canvas to position it. Use the Advanced section to adjust font size and color.",
+    "step4": "Add more text layers as needed, then click Download to save your meme as a PNG."
+  },
+  "canvas": {
+    "placeholder": "Click or drop image here to upload",
+    "previewHint": "Drag to pan · Alt+Scroll to zoom · Pinch on mobile"
+  },
+  "fileRow": {
+    "loaded": "Image loaded",
+    "change": "Change Image",
+    "clear": "Clear"
+  },
+  "layers": {
+    "label": "Text Layers",
+    "addAria": "Add layer",
+    "removeAria": "Remove layer",
+    "topPlaceholder": "Top Text",
+    "bottomPlaceholder": "Bottom Text",
+    "newPlaceholder": "New Text"
+  },
+  "advanced": {
+    "toggleOpen": "▾",
+    "toggleClosed": "▸",
+    "label": "Font Options...",
+    "fontSize": "Font Size",
+    "fontSizePx": "{{size}}px",
+    "textColor": "Text Color"
+  },
+  "actions": {
+    "reset": "Reset",
+    "preview": "Preview",
+    "download": "Download"
+  },
+  "popup": {
+    "close": "×"
+  },
+  "guide": {
+    "title": "How to Create Memes That Actually Go Viral (Simple Guide for Beginners)",
+    "intro": "Memes are everywhere. From social media feeds to group chats, memes have become one of the fastest ways to communicate ideas, humor, and opinions.",
+    "learnItems": {
+      "item1": "What makes a meme work",
+      "item2": "How to create one from scratch",
+      "item3": "Common mistakes to avoid",
+      "item4": "Tips to make your memes more engaging"
+    },
+    "whatIs": {
+      "heading": "What Is a Meme (Really)?",
+      "body": "A meme is a piece of content — usually an image with text — designed to be shared and adapted by others. Unlike regular images, memes are relatable, quick to understand, and easy to share.",
+      "tip": "👉 A good meme delivers its message in seconds."
+    },
+    "why": {
+      "heading": "Why Memes Are So Popular",
+      "item1": "Instant Communication — Memes compress ideas into one image and a few words, faster than paragraphs.",
+      "item2": "Relatability — The best memes make people think \"That's exactly me.\"",
+      "item3": "Shareability — Memes are designed to be reposted and modified.",
+      "item4": "Low Effort, High Impact — You don't need design skills or expensive tools; just a good idea."
+    },
+    "anatomy": {
+      "heading": "Anatomy of a Good Meme",
+      "image": "Image: Recognizable or expressive, supports the message.",
+      "text": "Text: Short and clear, easy to read.",
+      "punchline": "Punchline: The twist or humor that makes people share."
+    },
+    "types": {
+      "heading": "Types of Memes You Can Create",
+      "item1": "😂 Relatable Memes — everyday situations",
+      "item2": "🔥 Trend-Based Memes — use current formats",
+      "item3": "💼 Niche Memes — target specific audiences",
+      "item4": "🧠 Informational Memes — mix humor with useful info"
+    },
+    "bestPractices": {
+      "heading": "Best Practices",
+      "item1": "Keep text short — 2–3 seconds to read.",
+      "item2": "Use clear, bold fonts with high contrast.",
+      "item3": "Match text to image so it reinforces the message.",
+      "item4": "Stay relevant — trending formats perform better.",
+      "item5": "Know your audience and tailor the humor."
+    },
+    "mistakes": {
+      "heading": "Common Mistakes to Avoid",
+      "item1": "Too much text",
+      "item2": "Unclear message",
+      "item3": "Using outdated formats",
+      "item4": "Low-quality images",
+      "item5": "Trying too hard to be funny"
+    },
+    "stepByStep": {
+      "heading": "Step-by-Step: How to Create a Meme",
+      "step1": "Upload or choose an image",
+      "step2": "Add top and/or bottom text",
+      "step3": "Adjust font size and position",
+      "step4": "Preview your meme",
+      "step5": "Download and share"
+    },
+    "useCases": {
+      "heading": "Real-World Use Cases",
+      "item1": "📱 Social Media Content — boost engagement",
+      "item2": "💼 Marketing — make brands feel human",
+      "item3": "🧑‍💻 Developer Humor — build community",
+      "item4": "👥 Group Chats — react faster than typing"
+    },
+    "tips": {
+      "heading": "Tips to Make Your Memes Stand Out",
+      "item1": "Use unexpected twists",
+      "item2": "Combine two ideas creatively",
+      "item3": "Keep it simple but clever",
+      "item4": "Test different variations"
+    },
+    "comparison": {
+      "heading": "Meme Generator vs Image Editor",
+      "col1": "Feature",
+      "col2": "Meme Generator",
+      "col3": "Image Editor",
+      "row1col1": "Purpose",
+      "row1col2": "Quick meme creation",
+      "row1col3": "General editing",
+      "row2col1": "Speed",
+      "row2col2": "Fast",
+      "row2col3": "Slower",
+      "row3col1": "Ease of use",
+      "row3col2": "Very easy",
+      "row3col3": "Moderate",
+      "row4col1": "Focus",
+      "row4col2": "Text + image",
+      "row4col3": "Full customization"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Do I need design skills?",
+      "a1": "No — just a good idea and clear message.",
+      "q2": "Can I use any image?",
+      "a2": "You can, but be mindful of copyright and prefer common meme formats when possible.",
+      "q3": "Why are my memes not getting engagement?",
+      "a3": "Possible reasons: too much text, not relatable, outdated format."
+    },
+    "conclusion": "Creating memes isn't about complex design — it's about communication and timing. Focus on clear ideas, simple text, and relatability.",
+    "ctaBtn": "Image Meme Generator →",
+    "lead2": "But creating a meme that people actually share? That’s a different story.",
+    "learnIntro": "In this guide, you’ll learn:",
+    "conclusionTitle": "Conclusion",
+    "tryIt": "Try making your own here:"
+  }
+}

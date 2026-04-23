@@ -1,0 +1,185 @@
+{
+  "hero": {
+    "title": "Générateur de mèmes",
+    "tagline": "Créez des mèmes amusants en ajoutant du texte personnalisé à n'importe quelle image. Faites glisser le texte n'importe où sur le canevas, ajustez la taille et la couleur de la police, puis téléchargez votre mème en un clic.",
+    "blogLink": "Apprenez à utiliser le Générateur de mèmes →"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "hint": {
+    "text": "Souhaitez-vous recadrer votre image avant de créer un mème ?",
+    "btn": "Essayer le Recadrage d'image"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce qu'un Générateur de mèmes",
+      "body": "Un générateur de mèmes est un éditeur créatif léger qui vous permet de placer des superpositions de texte sur des images pour produire rapidement des graphiques humoristiques ou expressifs."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne le générateur",
+      "body": "Téléchargez ou déposez une image dans la zone de canevas, puis ajoutez une ou plusieurs couches de texte à l'aide des commandes. Chaque couche peut être positionnée par glissement et stylisée."
+    },
+    "whyBrowser": {
+      "heading": "Pourquoi utiliser un outil basé sur le navigateur",
+      "body": "Les éditeurs de mèmes basés sur le navigateur sont instantanés et accessibles : ils ne nécessitent pas d'installation, fonctionnent hors ligne une fois chargés, et gardent vos images locales sur votre appareil."
+    },
+    "tips": {
+      "heading": "Conseils pour de meilleurs mèmes",
+      "item1": "Utilisez des légendes courtes et percutantes et mettez le texte en majuscules pour les styles de mèmes classiques.",
+      "item2": "Maintenez un bon contraste entre le texte et l'arrière-plan.",
+      "item3": "Utilisez plusieurs couches pour des mises en page complexes."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Mon image sera-t-elle téléchargée quelque part ?",
+      "a1": "R : Non — tout s'exécute côté client dans votre navigateur.",
+      "q2": "Q : Puis-je ajouter plus de deux lignes de texte ?",
+      "a2": "R : Oui — utilisez le bouton ＋ pour ajouter autant de couches de texte que vous le souhaitez.",
+      "q3": "Q : Quels formats d'image sont pris en charge ?",
+      "a3": "R : Tout format d'image pris en charge par votre navigateur (JPEG, PNG, WebP, GIF, etc.)."
+    }
+  },
+  "howItWorks": {
+    "step1": "Téléchargez une image en cliquant sur la zone de canevas ou en faisant glisser et déposer un fichier.",
+    "step2": "Cliquez sur le bouton ＋ pour ajouter une couche de texte et saisissez votre légende.",
+    "step3": "Faites glisser la superposition de texte sur le canevas pour la positionner.",
+    "step4": "Ajoutez d'autres couches de texte selon vos besoins, puis cliquez sur Télécharger."
+  },
+  "canvas": {
+    "placeholder": "Cliquez ou déposez une image ici pour télécharger",
+    "previewHint": "Faire glisser pour déplacer · Alt+Défilement pour zoomer · Pincer sur mobile"
+  },
+  "fileRow": {
+    "loaded": "Image chargée",
+    "change": "Changer l'image",
+    "clear": "Effacer"
+  },
+  "layers": {
+    "label": "Couches de texte",
+    "addAria": "Ajouter une couche",
+    "removeAria": "Supprimer la couche",
+    "topPlaceholder": "Texte du haut",
+    "bottomPlaceholder": "Texte du bas",
+    "newPlaceholder": "Nouveau texte"
+  },
+  "advanced": {
+    "toggleOpen": "▾",
+    "toggleClosed": "▸",
+    "label": "Options de police...",
+    "fontSize": "Taille de police",
+    "fontSizePx": "{{taille}}px",
+    "textColor": "Couleur du texte"
+  },
+  "actions": {
+    "reset": "Réinitialiser",
+    "preview": "Aperçu",
+    "download": "Télécharger"
+  },
+  "popup": {
+    "close": "×"
+  },
+  "guide": {
+    "title": "Comment créer des mèmes qui deviennent réellement viraux (guide simple pour les débutants)",
+    "intro": "Les mèmes sont partout. Des flux de réseaux sociaux aux discussions de groupe, les mèmes sont devenus l’un des moyens les plus rapides de communiquer des idées, de l’humour et des opinions.",
+    "learnItems": {
+      "item1": "Qu'est-ce qui fait fonctionner un mème",
+      "item2": "Comment en créer un à partir de zéro",
+      "item3": "Erreurs courantes à éviter",
+      "item4": "Conseils pour rendre vos mèmes plus attrayants"
+    },
+    "whatIs": {
+      "heading": "Qu'est-ce qu'un mème (vraiment) ?",
+      "body": "Un mème est un élément de contenu – généralement une image avec du texte – conçu pour être partagé et adapté par d'autres. Contrairement aux images classiques, les mèmes sont pertinents, rapides à comprendre et faciles à partager.",
+      "tip": "👉 Un bon mème délivre son message en quelques secondes."
+    },
+    "why": {
+      "heading": "Pourquoi les mèmes sont si populaires",
+      "item1": "Communication instantanée — Les mèmes compressent les idées en une seule image et quelques mots, plus rapidement que des paragraphes.",
+      "item2": "Relativité - Les meilleurs mèmes font penser aux gens \"C'est exactement moi\".",
+      "item3": "Partageabilité – Les mèmes sont conçus pour être republiés et modifiés.",
+      "item4": "Faible effort, impact élevé — Vous n'avez pas besoin de compétences en conception ni d'outils coûteux ; juste une bonne idée."
+    },
+    "anatomy": {
+      "heading": "Anatomie d'un bon mème",
+      "image": "Image : Reconnaissable ou expressive, soutient le message.",
+      "text": "Texte : Court et clair, facile à lire.",
+      "punchline": "Punchline : Le twist ou l’humour qui fait partager."
+    },
+    "types": {
+      "heading": "Types de mèmes que vous pouvez créer",
+      "item1": "😂 Mèmes pertinents - situations quotidiennes",
+      "item2": "🔥 Mèmes basés sur les tendances — utilisez les formats actuels",
+      "item3": "💼 Niche Memes – ciblez des publics spécifiques",
+      "item4": "🧠 Mèmes informatifs - mélangez l'humour avec des informations utiles"
+    },
+    "bestPractices": {
+      "heading": "Meilleures pratiques",
+      "item1": "Gardez le texte court – 2 à 3 secondes pour le lire.",
+      "item2": "Utilisez des polices claires et grasses avec un contraste élevé.",
+      "item3": "Faites correspondre le texte à l’image pour renforcer le message.",
+      "item4": "Restez pertinent : les formats tendance fonctionnent mieux.",
+      "item5": "Connaissez votre public et adaptez l’humour."
+    },
+    "mistakes": {
+      "heading": "Les erreurs courantes à éviter.",
+      "item1": "Trop de texte",
+      "item2": "Message peu clair",
+      "item3": "Utiliser des formats obsolètes",
+      "item4": "Images de mauvaise qualité",
+      "item5": "J'essaie trop d'être drôle"
+    },
+    "stepByStep": {
+      "heading": "Étape par étape : comment créer un mème",
+      "step1": "Téléchargez ou choisissez une image",
+      "step2": "Ajouter du texte en haut et/ou en bas",
+      "step3": "Ajuster la taille et la position de la police",
+      "step4": "Prévisualisez votre mème",
+      "step5": "Téléchargez et partagez"
+    },
+    "useCases": {
+      "heading": "Cas d'utilisation réels",
+      "item1": "📱 Contenu sur les réseaux sociaux – stimulez l'engagement",
+      "item2": "💼 Marketing – faire en sorte que les marques se sentent humaines",
+      "item3": "🧑‍💻 Humour des développeurs – créer une communauté",
+      "item4": "👥 Discussions de groupe : réagissez plus rapidement que de taper"
+    },
+    "tips": {
+      "heading": "Conseils pour faire ressortir vos mèmes",
+      "item1": "Utilisez des rebondissements inattendus",
+      "item2": "Combinez deux idées de manière créative",
+      "item3": "Restez simple mais intelligent",
+      "item4": "Testez différentes variantes"
+    },
+    "comparison": {
+      "heading": "Générateur de mèmes vs éditeur d'images",
+      "col1": "Fonctionnalité",
+      "col2": "Générateur de mèmes",
+      "col3": "Éditeur d'images",
+      "row1col1": "But",
+      "row1col2": "Création rapide de mèmes",
+      "row1col3": "Édition générale",
+      "row2col1": "Vitesse",
+      "row2col2": "Rapide",
+      "row2col3": "Ralentissez",
+      "row3col1": "Facilité d'utilisation",
+      "row3col2": "Très facile",
+      "row3col3": "Modéré",
+      "row4col1": "Se concentrer",
+      "row4col2": "Texte + image",
+      "row4col3": "Personnalisation complète"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Ai-je besoin de compétences en conception ?",
+      "a1": "Non, juste une bonne idée et un message clair.",
+      "q2": "Puis-je utiliser n’importe quelle image ?",
+      "a2": "Vous pouvez, mais soyez attentif aux droits d’auteur et préférez les formats de mèmes courants lorsque cela est possible.",
+      "q3": "Pourquoi mes mèmes ne suscitent-ils pas d'engagement ?",
+      "a3": "Raisons possibles : trop de texte, format peu pertinent et obsolète."
+    },
+    "conclusion": "Créer des mèmes n'est pas une question de conception complexe, c'est une question de communication et de timing. Concentrez-vous sur des idées claires, un texte simple et la pertinence.",
+    "ctaBtn": "Générateur de mèmes d'images →"
+  }
+}

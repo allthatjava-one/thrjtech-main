@@ -1,12 +1,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './RotatingCards.css';
 
 const cards = [
   // PDF Compressor
   {
     key: 'compressor',
+    i18nKey: 'pdfCompressor',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -51,6 +53,7 @@ const cards = [
   // PDF Merger
   {
     key: 'merger',
+    i18nKey: 'pdfMerger',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <rect x="3" y="3" width="7" height="7" rx="1.5"/>
@@ -97,6 +100,7 @@ const cards = [
   // PDF Converter
   {
     key: 'converter',
+    i18nKey: 'pdfConverter',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <path d="M12 2v6" />
@@ -143,6 +147,7 @@ const cards = [
   // JSON Formatter
   {
     key: 'json-formatter',
+    i18nKey: 'jsonFormatter',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <rect x="3" y="3" width="7" height="7" rx="1.5"/>
@@ -188,6 +193,7 @@ const cards = [
   // Image Watermarker
   {
     key: 'image-watermarker',
+    i18nKey: 'imageWatermarker',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <rect x="3" y="3" width="18" height="18" rx="4"/>
@@ -232,6 +238,7 @@ const cards = [
   // Image Resizer (new last card)
   {
     key: 'image-resizer',
+    i18nKey: 'imageResizer',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <rect x="3" y="3" width="18" height="18" rx="4"/>
@@ -276,6 +283,7 @@ const cards = [
   // Image Collage
   {
     key: 'image-collage',
+    i18nKey: 'imageCollage',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
         <rect x="3" y="3" width="8" height="8" rx="1.5"/>
@@ -320,6 +328,7 @@ const cards = [
   },
   {
     key: 'image-converter',
+    i18nKey: 'imageConverter',
     icon: (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>),
     title: 'Image Converter',
     link: '/image-converter',
@@ -352,6 +361,7 @@ const cards = [
 ];
 
 function RotatingCards() {
+  const { t } = useTranslation('home');
   const [active, setActive] = useState(0);
   const [next, setNext] = useState(null); // index of next card for animation
   const [direction, setDirection] = useState(1); // 1 for left, -1 for right
@@ -399,23 +409,24 @@ function RotatingCards() {
   // Render a card (no fade)
   const renderCard = (idx) => {
     const card = cards[idx];
+    const i18nKey = card.i18nKey || card.key;
     return (
       <div className="rotator-card" key={card.key}>
         <div className="tool-card">
           <div className="tool-icon" aria-hidden="true">{card.icon}</div>
           <div className="tool-content">
-            <h3 className="tool-title"><Link to={card.link}>{card.title}</Link></h3>
-            {/* <Link to={card.link} className="btn btn-primary">{card.btn}</Link> */}
-            <p className="tool-description">{card.description}</p>
+            <h3 className="tool-title"><Link to={card.link}>{t(`cards.${i18nKey}.title`)}</Link></h3>
+            {/* <Link to={card.link} className="btn btn-primary">{t(`cards.${i18nKey}.btn`)}</Link> */}
+            <p className="tool-description">{t(`cards.${i18nKey}.description`)}</p>
             <ul className="feature-list">
-              {card.features.map((f, i) => (
-                <li key={i}><span className="feature-check" aria-hidden="true">✓</span>{f}</li>
+              {card.features.map((_, i) => (
+                <li key={i}><span className="feature-check" aria-hidden="true">✓</span>{t(`cards.${i18nKey}.feature${i + 1}`)}</li>
               ))}
             </ul>
           </div>
         </div>
         <div className="screenshots-section">
-          <h3 className="screenshots-heading">How it works</h3>
+          <h3 className="screenshots-heading">{t('cards.howItWorks')}</h3>
           <div className="screenshots-grid">
             {card.screenshots.map((s, i) => (
               <figure className="screenshot-item" key={i}>
@@ -428,7 +439,7 @@ function RotatingCards() {
                   onClick={() => handleScreenshotClick(s.src, s.alt)}
                   onError={e => { e.currentTarget.classList.add('screenshot-missing') }}
                 />
-                <figcaption>{s.caption}</figcaption>
+                <figcaption>{t(`cards.${i18nKey}.step${i + 1}`)}</figcaption>
               </figure>
             ))}
           </div>
@@ -463,7 +474,7 @@ function RotatingCards() {
           <button
             key={c.key}
             className={i === active ? 'rotator-dot active' : 'rotator-dot'}
-            aria-label={c.title}
+            aria-label={t(`cards.${c.i18nKey || c.key}.title`)}
             onClick={() => handleDotClick(i)}
           />
         ))}

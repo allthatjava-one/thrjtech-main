@@ -1,0 +1,210 @@
+{
+  "hero": {
+    "title": "Fusionneur PDF",
+    "tagline": "Déposez et fusionnez - Combinez plusieurs fichiers PDF en un seul document en quelques secondes. Chargez vos fichiers, faites-les glisser pour les réorganiser, puis fusionnez et téléchargez le résultat.",
+    "blogLink": "Apprendre à fusionner des PDF →"
+  },
+  "hint": {
+    "text": "Avez-vous besoin de les diviser avant de les refusionner ?",
+    "btn": "Essayer le diviseur PDF"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça fonctionne"
+  },
+  "details": {
+    "howMergeWorks": {
+      "heading": "Comment fonctionne la fusion PDF",
+      "body": "Une opération de fusion PDF prend les flux de pages de chaque document source dans l'ordre que vous spécifiez et les écrit séquentiellement dans un nouveau conteneur PDF. Le fichier résultant ne partage aucune donnée avec les originaux — chaque page est entièrement reproduite, préservant le texte, les images, les annotations et les graphiques vectoriels."
+    },
+    "howSizeDetermined": {
+      "heading": "Comment la taille fusionnée est déterminée",
+      "body": "La taille du PDF fusionné est approximativement la somme des tailles des fichiers d'entrée, plus une petite quantité de surcharge pour la nouvelle table de références croisées et la bande-annonce. Les ressources intégrées en double (polices, images) ne sont pas automatiquement dédupliquées à moins que l'outil ne le fasse explicitement."
+    },
+    "whyUseOnline": {
+      "heading": "Pourquoi utiliser un fusionneur en ligne",
+      "body": "La fusion basée sur navigateur élimine le besoin d'installer un logiciel. Les fichiers sont transférés vers un processus serveur éphémère, fusionnés et retournés ; les originaux restent sur votre appareil."
+    },
+    "bestPractices": {
+      "heading": "Meilleures pratiques",
+      "item1": "Fusionnez dans l'ordre — organisez vos fichiers à l'avance pour éviter une refusion.",
+      "item2": "Compressez après fusion — utilisez la case à cocher pour réduire la taille du fichier final.",
+      "item3": "Vérifiez le nombre de fichiers — la plupart des outils en ligne gèrent un nombre raisonnable de fichiers."
+    },
+    "whatItDoes": {
+      "heading": "Ce qu'il fait",
+      "item1": "Combine plusieurs PDF en un seul document ordonné."
+    },
+    "usefulWhen": {
+      "heading": "Utile lorsque",
+      "item1": "Combinaison de chapitres ou sections rédigés séparément.",
+      "item2": "Fusion de pages numérisées enregistrées sous forme de fichiers individuels.",
+      "item3": "Combinaison d'une page de couverture, du document principal et d'une annexe."
+    },
+    "comparison": {
+      "heading": "Comparaison",
+      "item1": "Contrairement aux outils bureau, celui-ci fonctionne dans votre navigateur sans installation."
+    },
+    "privacy": {
+      "heading": "Confidentialité et conservation",
+      "body": "Les fichiers chargés sont traités sur une infrastructure éphémère et supprimés conformément à la politique de conservation de l'application. Si vous traitez des documents hautement sensibles, préférez les outils bureau locaux ou une solution sur site correspondant à vos exigences de conformité."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Mon fichier est-il privé ?",
+      "a1": "R : Les fichiers sont traités temporairement et supprimés automatiquement conformément à la politique de l'application.",
+      "q2": "Q : La fusion modifiera-t-elle le formatage des PDF individuels ?",
+      "a2": "R : Non — les pages sont reproduites telles quelles ; le formatage est préservé.",
+      "q3": "Q : Puis-je contrôler l'ordre des pages ?",
+      "a3": "R : Oui — faites glisser les fichiers pour les réorganiser avant la fusion.",
+      "q4": "Q : Puis-je fusionner plus de deux PDF ?",
+      "a4": "R : Oui — il n'y a pas de limite fixe, bien que les très grands lots puissent être plus lents.",
+      "q5": "Q : Que faire si le résultat est plus grand que prévu ?",
+      "a5": "R : Activez la compression après la fusion pour réduire la taille du fichier final."
+    }
+  },
+  "howItWorks": {
+    "step1": "Chargez les fichiers PDF que vous souhaitez fusionner.",
+    "step2": "Faites glisser pour réorganiser les fichiers afin de définir l'ordre de fusion.",
+    "step3": "Cliquez sur Fusionner pour envoyer les fichiers au processus de fusion côté serveur.",
+    "step4": "Téléchargez le PDF fusionné une fois le traitement terminé."
+  },
+  "badges": {
+    "fast": "⚡ Rapide",
+    "secure": "🔒 Sécurisé",
+    "autoDeleted": "🗑️ Suppression auto"
+  },
+  "dropZone": {
+    "icon": "📚",
+    "text": "Glissez-déposez vos fichiers PDF ici",
+    "or": "ou",
+    "browse": "Parcourir les fichiers"
+  },
+  "fileList": {
+    "title": "Fichiers PDF ({{count}})",
+    "reorderHint": "Faites glisser les fichiers pour réorganiser l'ordre de fusion.",
+    "addMore": "Ajouter d'autres fichiers",
+    "moveUp": "Déplacer vers le haut",
+    "moveDown": "Déplacer vers le bas",
+    "remove": "Supprimer le fichier"
+  },
+  "compress": "Compresser le PDF fusionné",
+  "mergeBtn": "Fusionner les PDF",
+  "progress": {
+    "merging": "Fusion des PDF...",
+    "uploading": "Chargement du PDF fusionné...",
+    "compressing": "Compression du PDF fusionné..."
+  },
+  "result": {
+    "icon": "✅",
+    "title": "Fusion terminée !",
+    "inputLabel": "Entrée",
+    "totalSizeLabel": "Taille totale",
+    "filesCount": "{{count}} fichiers PDF",
+    "mergedLabel": "Fusionné",
+    "sizeLabel": "Taille",
+    "download": "Télécharger le PDF fusionné",
+    "another": "Fusionner un autre ensemble"
+  },
+  "note": "Remarque : Le fichier compressé sera stocké dans le stockage Cloudflare R2 pendant 30 min. Veuillez le télécharger dans ce délai. Après 30 min, le fichier sera automatiquement supprimé.",
+  "lowerHint": {
+    "text": "Problème de fusion car les fichiers sont trop volumineux ?",
+    "btn": "Essayer le compresseur PDF"
+  },
+  "guide": {
+    "title": "Combiner plusieurs PDF en un seul (Guide propre, organisé et sans stress)",
+    "intro": "Travailler avec plusieurs fichiers PDF peut rapidement devenir compliqué. Au lieu de les envoyer ou de les gérer un par un, vous pouvez tout fusionner en un seul document propre.",
+    "cta": "👉 Ce guide vous montre comment fusionner des PDF efficacement, les organiser correctement et éviter les erreurs courantes.",
+    "whatIs": {
+      "heading": "📌 Qu'est-ce qu'un fusionneur PDF ?",
+      "body": "Un fusionneur PDF est un outil qui vous permet de :",
+      "item1": "📄 Combiner plusieurs fichiers PDF",
+      "item2": "🔀 Réorganiser l'ordre des pages",
+      "item3": "➕ Ajouter ou supprimer des pages",
+      "item4": "📥 Exporter en tant que document unique"
+    },
+    "whyMatters": {
+      "heading": "🎯 Pourquoi la fusion de PDF est importante",
+      "item1": "Meilleure organisation — transformez plusieurs fichiers en un document structuré.",
+      "item2": "Partage plus facile — un seul fichier est plus rapide, plus propre et moins confus.",
+      "item3": "Présentation professionnelle — un seul PDF fusionné paraît soigné.",
+      "item4": "Flux de travail amélioré — réduit le désordre et les tâches répétitives."
+    },
+    "useCases": {
+      "heading": "🛠 Cas d'utilisation courants",
+      "item1": "💼 Documents professionnels — combiner rapports, factures, contrats",
+      "item2": "🎓 Devoirs étudiants — fusionner plusieurs sections en une seule soumission",
+      "item3": "🧾 Fichiers numérisés — combiner des pages numérisées en un seul fichier",
+      "item4": "📑 Soumissions de candidature — CV + lettre de motivation + certificats"
+    },
+    "howWorks": {
+      "heading": "🧠 Comment fonctionne la fusion PDF (Explication simple)",
+      "body": "Les fichiers sont chargés, les pages sont extraites et arrangées, et un nouveau PDF est généré. Les fichiers originaux restent inchangés."
+    },
+    "stepByStep": {
+      "heading": "🧭 Étape par étape : Fusionner des PDF facilement",
+      "step1": "📤 Chargez vos fichiers PDF",
+      "step2": "👀 Prévisualisez toutes les pages",
+      "step3": "🔀 Faites glisser pour réorganiser",
+      "step4": "➕ Ajoutez ou supprimez des fichiers",
+      "step5": "📥 Téléchargez le PDF fusionné"
+    },
+    "tips": {
+      "heading": "🎨 Conseils pour rendre votre PDF fusionné propre",
+      "item1": "✅ Gardez un ordre logique (Couverture → Contenu → Annexe)",
+      "item2": "✅ Utilisez des noms de fichiers clairs (renommez les fichiers dans le bon ordre)",
+      "item3": "✅ Supprimez les pages inutiles (pages vides, doublons)",
+      "item4": "✅ Vérifiez la sortie finale (ordre des pages, orientation, formatage)"
+    },
+    "mistakes": {
+      "heading": "⚠️ Erreurs courantes à éviter",
+      "item1": "❌ Mauvais ordre de pages",
+      "item2": "❌ Mélange maladroit de portrait et paysage",
+      "item3": "❌ Oublier de supprimer les doublons",
+      "item4": "❌ Fusionner des numérisations de faible qualité",
+      "item5": "❌ Ne pas réviser le fichier final"
+    },
+    "comparison": {
+      "heading": "🔍 Fusionneur PDF vs Diviseur PDF",
+      "col1": "Fonctionnalité",
+      "col2": "Fusionneur PDF",
+      "col3": "Diviseur PDF",
+      "row1col1": "Objectif",
+      "row1col2": "Combiner des fichiers",
+      "row1col3": "Diviser des fichiers",
+      "row2col1": "Sortie",
+      "row2col2": "Document unique",
+      "row2col3": "Documents multiples",
+      "row3col1": "Cas d'utilisation",
+      "row3col2": "Organisation",
+      "row3col3": "Extraction"
+    },
+    "proTips": {
+      "heading": "🚀 Conseils pro pour un flux de travail plus rapide",
+      "item1": "🗂 Préparez les fichiers à l'avance",
+      "item2": "🔢 Nommez les fichiers dans l'ordre (01, 02, 03…)",
+      "item3": "⚡ Fusionnez une seule fois au lieu de répéter",
+      "item4": "🔒 Utilisez des outils qui respectent la vie privée"
+    },
+    "safety": {
+      "heading": "🔐 Est-il sûr de fusionner des PDF en ligne ?",
+      "body": "La plupart des outils traitent les fichiers temporairement et les suppriment après la fin. Néanmoins, évitez de charger des documents sensibles sauf si vous faites confiance à l'outil."
+    },
+    "faq": {
+      "heading": "❓FAQ",
+      "q1": "Puis-je changer l'ordre des pages après la fusion ?",
+      "a1": "Oui — la plupart des outils permettent la réorganisation avant l'export final.",
+      "q2": "La fusion affectera-t-elle la qualité ?",
+      "a2": "Non — les bons outils préservent la mise en page et le formatage.",
+      "q3": "Puis-je fusionner des images en PDF ?",
+      "a3": "Oui — de nombreux outils prennent en charge la combinaison d'images et de PDF.",
+      "q4": "Y a-t-il une limite sur le nombre de fichiers ?",
+      "a4": "Cela dépend de l'outil, mais beaucoup prennent en charge plusieurs fichiers facilement."
+    },
+    "conclusion": {
+      "heading": "🧾Conclusion",
+      "body": "La fusion de PDF vous aide à rester organisé et à présenter des informations de manière professionnelle. Avec la bonne approche, vous pouvez transformer des fichiers éparpillés en un document propre en quelques secondes."
+    },
+    "ctaBtn": "👉 Essayez ici : Outil Fusionneur PDF"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "title": "Politique de confidentialité",
+  "lastUpdated": "Dernière mise à jour : avril 2026",
+  "overview": {
+    "heading": "Aperçu",
+    "body": "THRJTech (\"nous\", \"notre\" ou \"nos\") respecte votre vie privée. Cette politique explique comment les informations sont collectées et utilisées lorsque vous visitez ce site. Tous les outils de traitement d'images et de PDF fonctionnent entièrement dans votre navigateur — vos fichiers ne sont jamais chargés sur nos serveurs sauf indication explicite pour une fonctionnalité spécifique (comme la compression ou la fusion de PDF qui utilisent un traitement cloud éphémère)."
+  },
+  "googleAdsense": {
+    "heading": "Google AdSense et publicité",
+    "body1": "Nous utilisons Google AdSense pour afficher des publicités sur ce site. Google, en tant que fournisseur tiers, utilise des cookies (y compris le cookie DoubleClick) pour diffuser des annonces basées sur vos visites précédentes sur ce site et d'autres sites Internet. L'utilisation par Google des cookies publicitaires lui permet, ainsi qu'à ses partenaires, de diffuser des annonces à nos utilisateurs en fonction de leur visite sur thjrtech.com et/ou d'autres sites sur Internet.",
+    "body2Pre": "Vous pouvez vous désinscrire de la publicité personnalisée en visitant",
+    "googleAdsLink": "Paramètres des annonces Google",
+    "body2Mid": ". Vous pouvez également vous désinscrire de l'utilisation des cookies d'un fournisseur tiers pour la publicité personnalisée en visitant",
+    "aboutadsLink": "à propos d'ads.info",
+    "body2Post": "."
+  },
+  "cookies": {
+    "heading": "Cookies",
+    "body": "Nous ne définissons aucun cookie de suivi propriétaire. Les partenaires publicitaires tiers (Google AdSense) peuvent définir des cookies sur votre appareil conformément à leurs propres politiques de confidentialité. Vous pouvez contrôler les préférences de cookies via les paramètres de votre navigateur ou les liens de désinscription ci-dessus."
+  },
+  "userConsent": {
+    "heading": "Consentement de l'utilisateur",
+    "body": "Nous utilisons une Plateforme de Gestion du Consentement (CMP) pour obtenir et enregistrer le consentement des utilisateurs là où requis par les lois locales (par exemple le RGPD ou le CCPA). La CMP présente des choix concernant l'utilisation des cookies et la publicité personnalisée aux visiteurs dans les régions applicables ; nous respectons ces choix et limitons le traitement des données en conséquence. Vous pouvez consulter ou modifier vos préférences de consentement via les contrôles de confidentialité du site ou les paramètres de votre navigateur. La désinscription peut empêcher les publicités personnalisées mais n'affecte pas les fonctionnalités principales des outils. Pour les utilisateurs de l'Espace économique européen (EEE) et du Royaume-Uni, nous utilisons une Plateforme de Gestion du Consentement certifiée par Google pour gérer les préférences des utilisateurs et nous conformer au Cadre de Transparence et de Consentement de l'IAB."
+  },
+  "dataWeCollect": {
+    "heading": "Données que nous collectons",
+    "body": "Nous ne collectons, ne stockons ni ne partageons aucune information personnellement identifiable. Les analyses d'utilisation (si activées) sont anonymisées et agrégées. Les fichiers que vous traitez avec nos outils restent sur votre appareil et ne nous sont pas transmis. Les fichiers chargés pour un traitement côté serveur (comme la fusion de PDF) sont traités en mémoire, ne sont jamais consultés par des humains et sont définitivement supprimés de nos serveurs automatiquement dans les 30 minutes suivant le traitement. Nous ne conservons pas de sauvegardes ni de journaux du contenu de ces fichiers."
+  },
+  "googleAnalytics": {
+    "heading": "Google Analytics",
+    "body": "Nous utilisons Google Analytics (GA4) pour collecter des données d'utilisation anonymisées telles que les pages vues, les événements et les métriques de performance afin d'améliorer le site Web et nos outils. Nous ne collectons pas d'identifiants personnels via Analytics ; lorsque disponible, nous activons l'anonymisation des IP pour minimiser l'identifiabilité. Les données Analytics sont traitées par Google conformément à leurs politiques et peuvent faire l'objet d'un transfert international. Notre CMP respecte les choix de consentement des utilisateurs, et vous pouvez vous désinscrire du suivi Analytics via la CMP ou en utilisant des contrôles au niveau du navigateur (par exemple, l'extension d'opt-out Google Analytics)."
+  },
+  "thirdPartyLinks": {
+    "heading": "Liens tiers",
+    "body": "Ce site peut contenir des liens vers des sites Web externes. Nous ne sommes pas responsables des pratiques de confidentialité ou du contenu de ces sites."
+  },
+  "californiaRights": {
+    "heading": "Droits à la confidentialité en Californie (CCPA/CPRA)",
+    "body": "Si vous êtes résident californien, vous avez le droit de vous opposer à la « vente » ou au « partage » de vos informations personnelles. Nous ne vendons pas vos données personnelles ; cependant, notre utilisation des cookies publicitaires peut être considérée comme un « partage » au sens de la loi californienne. Vous pouvez exercer votre droit d'opposition via les liens de paramètres de publicité fournis ci-dessus."
+  },
+  "contact": {
+    "heading": "Contact",
+    "body": "Si vous avez des questions concernant cette Politique de confidentialité, veuillez nous contacter via les informations de contact fournies sur ce site à privacy@thjrtech.com"
+  }
+}

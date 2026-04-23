@@ -1,0 +1,188 @@
+{
+  "hero": {
+    "title": "Conversor de imágenes",
+    "tagline": "Convierta imágenes entre JPG, PNG y WebP en segundos.",
+    "blogLink": "Aprenda a convertir imágenes →"
+  },
+  "hint": {
+    "text": "¿Necesita convertir páginas PDF a imágenes?",
+    "btn": "Probar Conversor PDF"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "dropZone": {
+    "text": "Arrastre y suelte sus imágenes aquí",
+    "hint": "Soporta JPG, PNG, WebP, BMP y GIF"
+  },
+  "fileRow": {
+    "changeOne": "Cambiar imagen",
+    "changeMany": "Cambiar imágenes",
+    "clear": "Borrar",
+    "count": "{{count}} imágenes seleccionadas"
+  },
+  "popup": {
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "converted": "✓ Convertido a {{formato}}",
+    "progress": "({{actual}} / {{total}})",
+    "close": "×",
+    "previewHint": "Alt+Desplazarse para hacer zoom · Arrastrar para desplazarse"
+  },
+  "format": {
+    "label": "Formato de salida",
+    "jpgName": "JPEG",
+    "jpgDesc": "Lo mejor para fotos. Archivo más pequeño, compresión con pérdida.",
+    "pngName": "PNG",
+    "pngDesc": "Lo mejor para gráficos con transparencia. Calidad sin pérdidas.",
+    "webpName": "WebP",
+    "webpDesc": "Formato moderno. Más pequeño que JPG y PNG con gran calidad.",
+    "avifName": "AVIF",
+    "avifDesc": "Formato de próxima generación. Mejor compresión. Se recomienda Chrome y Firefox.",
+    "bmpName": "BMP",
+    "bmpDesc": "Mapa de bits sin comprimir. Archivo grande y sin pérdidas. Compatibilidad máxima.",
+    "gifName": "GIF",
+    "gifDesc": "Formato de 256 colores. Lo mejor para gráficos simples, no para fotografías.",
+    "icoName": "ICO",
+    "icoDesc": "Formato de icono de Windows. Elija qué tamaños incluir."
+  },
+  "icoSize": {
+    "label": "Tamaño de icono"
+  },
+  "buttons": {
+    "converting": "Convirtiendo...",
+    "convertAll": "Convertir todo",
+    "convert": "Convertir",
+    "download": "Descargar",
+    "downloadAll": "Descargar todo"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es el convertidor de imágenes?",
+      "body": "Image Converter le permite cambiar el formato de una o más imágenes completamente en su navegador. Seleccione los archivos de origen, elija un formato de destino y descargue los resultados convertidos; no es necesario cargarlos en el servidor."
+    },
+    "howWorks": {
+      "heading": "Cómo funciona la conversión",
+      "body": "Cada imagen de origen se decodifica en el navegador, se dibuja en un lienzo fuera de la pantalla y luego se vuelve a codificar en el formato de salida elegido. La calidad de la conversión y el tamaño del archivo dependen de la imagen de origen y de las características de compresión del formato de destino."
+    },
+    "formats": {
+      "heading": "Formatos soportados",
+      "jpgDesc": "JPEG: compresión con pérdida, ideal para fotografías y ampliamente compatible.",
+      "pngDesc": "PNG: compresión sin pérdidas con soporte de transparencia.",
+      "webpDesc": "WebP: formato moderno con excelente relación tamaño/calidad.",
+      "avifDesc": "AVIF: compresión de próxima generación, la mejor calidad por byte.",
+      "bmpDesc": "BMP: mapa de bits sin comprimir, máxima compatibilidad.",
+      "gifDesc": "GIF: formato indexado de 256 colores para gráficos simples.",
+      "icoDesc": "ICO: formato de icono de Windows, múltiples opciones de tamaño."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Mis imágenes se cargan en un servidor?",
+      "a1": "R: No, todas las conversiones se realizan localmente en su navegador.",
+      "q2": "P: ¿Puedo convertir varias imágenes a la vez?",
+      "a2": "R: Sí, seleccione varios archivos y conviértalos todos a la vez.",
+      "q3": "P: ¿Se preservará la transparencia?",
+      "a3": "R: Sólo para formatos que lo admitan (PNG, WebP, AVIF). La conversión a JPG elimina la transparencia.",
+      "q4": "P: ¿Por qué AVIF no es compatible con mi navegador?",
+      "a4": "R: AVIF requiere un navegador moderno (Chrome 85+, Firefox 93+). Utilice WebP como alternativa."
+    }
+  },
+  "howItWorks": {
+    "step1": "Seleccione una o más imágenes arrastrándolas o haciendo clic para explorar.",
+    "step2": "Elija el formato de salida desde los botones selectores de formato.",
+    "step3": "Haga clic en Convertir o Convertir todo para procesar las imágenes.",
+    "step4": "También puedes convertir varias imágenes a la vez seleccionando más de un archivo."
+  },
+  "actions": {
+    "converting": "Mudado…",
+    "convertAll": "Convertir todo ({{count}})",
+    "convert": "Convertir",
+    "download": "Descargar",
+    "downloadAll": "Descargar todo"
+  },
+  "guide": {
+    "title": "Por qué son importantes los formatos de imagen (y cómo convertir imágenes de la manera correcta)",
+    "intro": "Intentas cargar una imagen... y de repente: \"Formato de archivo no compatible\", la imagen no se abre en otro dispositivo, el tamaño del archivo es demasiado grande. Estos problemas suelen reducirse a una cosa: el formato de la imagen.",
+    "whatIs": {
+      "heading": "¿Qué es la conversión de imágenes?",
+      "body": "La conversión de imágenes significa cambiar una imagen de un formato a otro (por ejemplo PNG → JPG o HEIC → JPG). El contenido de la imagen sigue siendo el mismo, pero el tamaño, la calidad y la compatibilidad del archivo pueden cambiar."
+    },
+    "why": {
+      "heading": "¿Por qué existen los formatos de imagen?",
+      "body": "Existen diferentes formatos porque tienen diferentes propósitos: rendimiento (tamaño de archivo más pequeño), calidad (más detalles) y compatibilidad (funciona en todas partes). Un formato rara vez se adapta a todas las situaciones."
+    },
+    "whenToConvert": {
+      "heading": "¿Cuándo necesitas convertir imágenes?",
+      "item1": "Errores de carga: algunas plataformas aceptan solo formatos específicos.",
+      "item2": "Tamaño de archivo demasiado grande: convierta formatos pesados ​​como PNG a JPG/WebP para reducir el tamaño.",
+      "item3": "Compatibilidad de dispositivos: convierta HEIC de iPhone a JPG para obtener una compatibilidad más amplia.",
+      "item4": "Optimización web: los sitios modernos prefieren WebP para archivos más pequeños y una carga más rápida."
+    },
+    "formats": {
+      "heading": "Formatos de imagen más comunes (Guía rápida)",
+      "jpg": "JPEG (JPG): ideal para fotografías: archivos pequeños, sin transparencia",
+      "png": "PNG: alta calidad, compatible con la transparencia",
+      "webp": "WebP – Moderno – tamaño más pequeño con buena calidad",
+      "heic": "HEIC: utilizado por iPhone: soporte eficiente pero limitado"
+    },
+    "bestPractices": {
+      "heading": "Mejores prácticas para convertir imágenes",
+      "item1": "Elija el formato según el caso de uso: WebP para web, JPG para fotografías, PNG para gráficos.",
+      "item2": "Evite conversiones repetidas: convierta siempre desde el original.",
+      "item3": "Comprenda con pérdida y sin pérdida: JPG tiene pérdida, PNG no tiene pérdida.",
+      "item4": "Equilibre calidad y tamaño: elija un término medio.",
+      "item5": "Utilice una herramienta confiable que preserve la calidad y admita muchos formatos."
+    },
+    "mistakes": {
+      "heading": "Errores comunes a evitar",
+      "item1": "Convirtiendo PNG → JPG (perdiendo transparencia)",
+      "item2": "Convertir repetidamente el mismo archivo",
+      "item3": "Usar el formato incorrecto para el caso de uso",
+      "item4": "Ignorar la configuración de calidad",
+      "item5": "Subir imágenes enormes sin optimización"
+    },
+    "stepByStep": {
+      "heading": "Paso a paso: cómo convertir una imagen",
+      "step1": "Sube tu imagen",
+      "step2": "Seleccionar formato de salida",
+      "step3": "Ajustar la configuración de calidad (si está disponible)",
+      "step4": "Convertir la imagen",
+      "step5": "Descargar el resultado"
+    },
+    "useCases": {
+      "heading": "Casos de uso en el mundo real",
+      "item1": "Optimización de sitios web — PNG → WebP",
+      "item2": "Cargas sociales: convertir a formatos compatibles",
+      "item3": "Documentos empresariales: garantice la compatibilidad entre sistemas",
+      "item4": "Fotos de iPhone: HEIC → JPG para compartir"
+    },
+    "conclusion": "La conversión de imágenes no es sólo técnica: es esencial para la compatibilidad, el rendimiento y la usabilidad. Al elegir el formato correcto, puedes evitar errores de carga, mejorar la velocidad y mantener una buena calidad.",
+    "ctaBtn": "Utilice la herramienta de conversión de imágenes",
+    "toolTitle": "¿Qué es el conversor de imágenes?",
+    "toolLead": "El conversor de imágenes te permite convertir imágenes entre formatos web comunes — JPG, PNG y WebP — directamente en tu navegador. Ningún archivo se envía nunca a un servidor.",
+    "outputFormatsTitle": "Formatos de salida compatibles",
+    "inputFormatsTitle": "Formatos de entrada compatibles",
+    "inputFormatsBody": "Puedes subir archivos JPG, PNG, WebP, AVIF, GIF, BMP, ICO, SVG y TIFF. Los GIFs animados se convierten usando solo el primer fotograma.",
+    "howItWorksTitle": "Cómo funciona la conversión",
+    "howItWorksBody": "Tu imagen se decodifica en el navegador, se dibuja en un lienzo fuera de pantalla y se exporta al formato de destino. Los archivos TIFF se decodifican usando una biblioteca JS ligera. Para los formatos que no admiten transparencia (JPG, BMP, GIF), las áreas transparentes se rellenan con blanco.",
+    "faqTitle": "Preguntas frecuentes",
+    "faq": {
+      "q1": "¿Mi imagen abandona mi navegador?",
+      "a1": "No. Todo el procesamiento se realiza localmente; nada se sube.",
+      "q2": "¿Por qué AVIF no funciona?",
+      "a2": "La codificación AVIF requiere un navegador moderno; los navegadores más antiguos pueden no admitirla.",
+      "q3": "¿Qué pasa con la transparencia al convertir a JPG, BMP o GIF?",
+      "a3": "Las áreas transparentes se rellenan con blanco.",
+      "q4": "¿Por qué el GIF se ve mal para las fotos?",
+      "a4": "El GIF solo admite 256 colores; usa PNG o WebP para fotos."
+    },
+    "introLead": "Intentas cargar una imagen… y de repente:",
+    "introBullet1": "«Formato de archivo no compatible»",
+    "introBullet2": "La imagen no se abre en otro dispositivo",
+    "introBullet3": "El tamaño del archivo es demasiado grande",
+    "introConclusion": "Estos problemas suelen reducirse a una cosa: el formato de la imagen. En esta guía aprenderás por qué existen los formatos, cuándo convertirlos, qué formato elegir y cómo convertir sin perder calidad.",
+    "asideTitle": "Acciones rápidas",
+    "asideDesc": "¿Listo para convertir? Ve directamente a la herramienta."
+  }
+}

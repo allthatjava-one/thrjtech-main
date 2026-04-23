@@ -1,6 +1,7 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import RotatingCards from './components/RotatingCards'
@@ -27,6 +28,7 @@ import TermsOfServicePage from './components/about/TermsOfServicePage';
 import ContactUsPage from './components/ContactUsPage';
 
 function HomePage() {
+  const { t } = useTranslation('home')
 
   useEffect(() => {
     try {
@@ -44,9 +46,9 @@ function HomePage() {
         {/* Hero */}
         <section className="hero">
           <div className="hero-inner">
-            <h1 className="hero-title">Online Tools,<br />Zero Hassle</h1>
+            <h1 className="hero-title">{t('hero.title').split('\n').reduce((acc, line, i) => i === 0 ? [line] : [...acc, <br key={i} />, line], [])}</h1>
             <p className="hero-subtitle">
-              Free, fast, and privacy-friendly utilities that work right in your browser.
+              {t('hero.subtitle')}
             </p>
           </div>
         </section>
@@ -62,14 +64,14 @@ function HomePage() {
         {/* Popular Guides */}
         <section className="home-section">
           <div className="container">
-            <h2 className="home-section-title">Popular Guides</h2>
+            <h2 className="home-section-title">{t('popularGuides.heading')}</h2>
             <div className="guide-links">
-              <Link className="guide-link" to="/blogs/json-formatter-guide">JSON Formatter — Pretty-print, validate &amp; explore JSON</Link>
-              <Link className="guide-link" to="/blogs/image-crop-guide">Image Crop — Trim and frame your images</Link>
-              <Link className="guide-link" to="/blogs/meme-generator-guide">Meme Generator — Create shareable memes in seconds</Link>
-              <Link className="guide-link" to="/blogs/pdf-compressor-guide">PDF Compressor — Shrink PDF file sizes quickly</Link>
-              <Link className="guide-link" to="/blogs/image-collage-guide">Image Collage — Build beautiful photo collages</Link>
-              <Link className="guide-link" to="/blogs/pdf-merger-guide">PDF Merger — Combine multiple PDFs into one</Link>
+              <Link className="guide-link" to="/blogs/json-formatter-guide">{t('popularGuides.jsonFormatter')}</Link>
+              <Link className="guide-link" to="/blogs/image-crop-guide">{t('popularGuides.imageCrop')}</Link>
+              <Link className="guide-link" to="/blogs/meme-generator-guide">{t('popularGuides.memeGenerator')}</Link>
+              <Link className="guide-link" to="/blogs/pdf-compressor-guide">{t('popularGuides.pdfCompressor')}</Link>
+              <Link className="guide-link" to="/blogs/image-collage-guide">{t('popularGuides.imageCollage')}</Link>
+              <Link className="guide-link" to="/blogs/pdf-merger-guide">{t('popularGuides.pdfMerger')}</Link>
             </div>
           </div>
         </section>
@@ -80,30 +82,30 @@ function HomePage() {
 
             {/* Developer Tools */}
             <div className="spotlight-group">
-              <h2 className="home-section-title">Developer Tools</h2>
+              <h2 className="home-section-title">{t('developerTools.heading')}</h2>
               <div className="spotlight-cards">
                 <Link className="spotlight-card" to="/json-formatter">
-                  <span className="spotlight-card-name">JSON Formatter</span>
-                  <p className="spotlight-card-desc">Format, validate, and pretty-print JSON instantly in your browser. Supports syntax highlighting, minification, and clear error reporting.</p>
+                  <span className="spotlight-card-name">{t('developerTools.jsonFormatterName')}</span>
+                  <p className="spotlight-card-desc">{t('developerTools.jsonFormatterDesc')}</p>
                 </Link>
                 <Link className="spotlight-card" to="/regex-tester">
-                  <span className="spotlight-card-name">Regex Tester</span>
-                  <p className="spotlight-card-desc">Test regular expressions with live match highlighting and replace support. Iterate quickly on patterns with real-time feedback.</p>
+                  <span className="spotlight-card-name">{t('developerTools.regexTesterName')}</span>
+                  <p className="spotlight-card-desc">{t('developerTools.regexTesterDesc')}</p>
                 </Link>
               </div>
             </div>
 
             {/* Image Tools */}
             <div className="spotlight-group">
-              <h2 className="home-section-title">Image Tools</h2>
+              <h2 className="home-section-title">{t('imageTools.heading')}</h2>
               <div className="spotlight-cards">
                 <Link className="spotlight-card" to="/image-crop">
-                  <span className="spotlight-card-name">Crop Image</span>
-                  <p className="spotlight-card-desc">Crop any image to the exact size and aspect ratio you need. Supports free-form cropping and convenient presets like 1:1, 16:9, and 4:5 — all in your browser.</p>
+                  <span className="spotlight-card-name">{t('imageTools.imageCropName')}</span>
+                  <p className="spotlight-card-desc">{t('imageTools.imageCropDesc')}</p>
                 </Link>
                 <Link className="spotlight-card" to="/image-meme-generator">
-                  <span className="spotlight-card-name">Meme Generator</span>
-                  <p className="spotlight-card-desc">Add bold text layers over any image, drag them into position, and download your custom meme as a PNG. No account needed.</p>
+                  <span className="spotlight-card-name">{t('imageTools.memeGeneratorName')}</span>
+                  <p className="spotlight-card-desc">{t('imageTools.memeGeneratorDesc')}</p>
                 </Link>
               </div>
             </div>

@@ -1,0 +1,181 @@
+{
+  "hero": {
+    "title": "Image Converter",
+    "tagline": "Convert image(s) between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely in your browser. No upload required — fast, private, and free.",
+    "blogLink": "Learn about image formats →"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "hint": {
+    "text": "Would you like to crop your image before converting your image?",
+    "btn": "Try Image Crop"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Image Converter",
+      "body": "The Image Converter lets you change the format of one or more images entirely in your browser. Select source files, pick a target format, and download the converted results — no server upload required."
+    },
+    "howWorks": {
+      "heading": "How conversion works",
+      "body": "Each source image is decoded in the browser, drawn to an offscreen canvas, and then re-encoded in the chosen output format. Conversion quality and file size depend on the source image and the target format's compression characteristics."
+    },
+    "formats": {
+      "heading": "Supported formats",
+      "jpgDesc": "JPEG — Lossy compression, great for photos, widely supported.",
+      "pngDesc": "PNG — Lossless compression with transparency support.",
+      "webpDesc": "WebP — Modern format with excellent size/quality ratio.",
+      "avifDesc": "AVIF — Next-generation compression, best quality per byte.",
+      "bmpDesc": "BMP — Uncompressed bitmap, maximum compatibility.",
+      "gifDesc": "GIF — 256-color indexed format for simple graphics.",
+      "icoDesc": "ICO — Windows icon format, multiple size options."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Are my images uploaded to a server?",
+      "a1": "A: No — all conversion happens locally in your browser.",
+      "q2": "Q: Can I convert multiple images at once?",
+      "a2": "A: Yes — select multiple files and convert them all at once.",
+      "q3": "Q: Will transparency be preserved?",
+      "a3": "A: Only for formats that support it (PNG, WebP, AVIF). Converting to JPG removes transparency.",
+      "q4": "Q: Why is AVIF not supported in my browser?",
+      "a4": "A: AVIF requires a modern browser (Chrome 85+, Firefox 93+). Use WebP as an alternative."
+    }
+  },
+  "howItWorks": {
+    "step1": "Select one or more images by dragging them in or clicking to browse.",
+    "step2": "Choose the output format from the format selector buttons.",
+    "step3": "Click Convert or Convert All to process the images.",
+    "step4": "You can also convert multiple images at once by selecting more than one file."
+  },
+  "dropZone": {
+    "text": "Drag & drop images here, or click to select",
+    "hint": "Supports JPG, PNG, WebP, AVIF, GIF, BMP, and more"
+  },
+  "fileRow": {
+    "count": "{{count}} images selected",
+    "changeOne": "Change image",
+    "changeMany": "Change images",
+    "clear": "Clear"
+  },
+  "popup": {
+    "converted": "✓ Converted to {{format}}",
+    "progress": "({{current}} / {{total}})",
+    "prev": "Prev",
+    "next": "Next",
+    "close": "×",
+    "previewHint": "Alt+Scroll to zoom · Drag to pan"
+  },
+  "format": {
+    "label": "Convert to:",
+    "jpgName": "JPG",
+    "jpgDesc": "Best for photos. Smaller file, lossy compression.",
+    "pngName": "PNG",
+    "pngDesc": "Best for graphics with transparency. Lossless quality.",
+    "webpName": "WebP",
+    "webpDesc": "Modern format. Smaller than JPG & PNG with great quality.",
+    "avifName": "AVIF",
+    "avifDesc": "Next-gen format. Best compression. Chrome & Firefox recommended.",
+    "bmpName": "BMP",
+    "bmpDesc": "Uncompressed bitmap. Lossless, large file. Max compatibility.",
+    "gifName": "GIF",
+    "gifDesc": "256-color format. Best for simple graphics, not photos.",
+    "icoName": "ICO",
+    "icoDesc": "Windows icon format. Choose which sizes to include."
+  },
+  "icoSize": {
+    "label": "Output size:"
+  },
+  "actions": {
+    "converting": "Converting…",
+    "convertAll": "Convert All ({{count}})",
+    "convert": "Convert",
+    "download": "Download",
+    "downloadAll": "Download All"
+  },
+  "guide": {
+    "title": "Why Image Formats Matter (And How to Convert Images the Right Way)",
+    "intro": "You try to upload an image… and suddenly: \"File format not supported\", image won't open on another device, file size is too large. These issues usually come down to one thing: image format.",
+    "whatIs": {
+      "heading": "What Is Image Conversion?",
+      "body": "Image conversion means changing an image from one format to another (for example PNG → JPG or HEIC → JPG). The image content stays the same, but file size, quality, and compatibility can change."
+    },
+    "why": {
+      "heading": "Why Do Image Formats Even Exist?",
+      "body": "Different formats exist because they serve different purposes: performance (smaller file size), quality (more detail), and compatibility (works everywhere). One format rarely fits all situations."
+    },
+    "whenToConvert": {
+      "heading": "When Do You Need to Convert Images?",
+      "item1": "Upload Errors: Some platforms accept only specific formats.",
+      "item2": "File Size Too Large: Convert heavy formats like PNG to JPG/WebP to reduce size.",
+      "item3": "Device Compatibility: Convert HEIC from iPhones to JPG for wider support.",
+      "item4": "Web Optimization: Modern sites prefer WebP for smaller files and faster loading."
+    },
+    "formats": {
+      "heading": "Most Common Image Formats (Quick Guide)",
+      "jpg": "JPEG (JPG) — Best for photos — small files, no transparency",
+      "png": "PNG — High quality, supports transparency",
+      "webp": "WebP — Modern — smaller size with good quality",
+      "heic": "HEIC — Used by iPhones — efficient but limited support"
+    },
+    "bestPractices": {
+      "heading": "Best Practices for Converting Images",
+      "item1": "Choose format by use case — WebP for web, JPG for photos, PNG for graphics.",
+      "item2": "Avoid repeated conversions — always convert from the original.",
+      "item3": "Understand lossy vs lossless: JPG is lossy, PNG is lossless.",
+      "item4": "Balance quality and size — pick a middle ground.",
+      "item5": "Use a reliable tool that preserves quality and supports many formats."
+    },
+    "mistakes": {
+      "heading": "Common Mistakes to Avoid",
+      "item1": "Converting PNG → JPG (losing transparency)",
+      "item2": "Repeatedly converting the same file",
+      "item3": "Using the wrong format for the use case",
+      "item4": "Ignoring quality settings",
+      "item5": "Uploading huge images without optimization"
+    },
+    "stepByStep": {
+      "heading": "Step-by-Step: How to Convert an Image",
+      "step1": "Upload your image",
+      "step2": "Select output format",
+      "step3": "Adjust quality settings (if available)",
+      "step4": "Convert the image",
+      "step5": "Download the result"
+    },
+    "useCases": {
+      "heading": "Real-World Use Cases",
+      "item1": "Website optimization — PNG → WebP",
+      "item2": "Social uploads — convert to supported formats",
+      "item3": "Business docs — ensure cross-system compatibility",
+      "item4": "iPhone photos — HEIC → JPG for sharing"
+    },
+    "conclusion": "Image conversion isn't just technical — it's essential for compatibility, performance, and usability. By picking the right format you can avoid upload errors, improve speed, and keep good quality.",
+    "ctaBtn": "Use the Image Converter Tool",
+    "toolTitle": "What is Image Converter",
+    "toolLead": "The Image Converter lets you convert images between common web formats — JPG, PNG, and WebP — directly in your browser. No file is ever sent to a server.",
+    "outputFormatsTitle": "Supported Output Formats",
+    "inputFormatsTitle": "Supported Input Formats",
+    "inputFormatsBody": "You can upload JPG, PNG, WebP, AVIF, GIF, BMP, ICO, SVG, and TIFF files. Animated GIFs are converted using the first frame only.",
+    "howItWorksTitle": "How conversion works",
+    "howItWorksBody": "Your image is decoded in the browser, drawn onto an offscreen canvas, and exported to the target format. TIFF files are decoded using a lightweight JS library. For formats that don’t support transparency (JPG, BMP, GIF), transparent areas are filled with white.",
+    "faqTitle": "FAQs",
+    "faq": {
+      "q1": "Does my image leave my browser?",
+      "a1": "No. All processing is done locally; nothing is uploaded.",
+      "q2": "Why is AVIF not working?",
+      "a2": "AVIF encoding requires a modern browser; older browsers may not support it.",
+      "q3": "What happens to transparency when converting to JPG, BMP, or GIF?",
+      "a3": "Transparent areas are filled with white.",
+      "q4": "Why does GIF look bad for photos?",
+      "a4": "GIF supports only 256 colors; use PNG or WebP for photos."
+    },
+    "introLead": "You try to upload an image… and suddenly:",
+    "introBullet1": "\"File format not supported\"",
+    "introBullet2": "Image won’t open on another device",
+    "introBullet3": "File size is too large",
+    "introConclusion": "These issues usually come down to one thing: image format. In this guide you’ll learn why formats exist, when to convert them, which format to choose, and how to convert without losing quality.",
+    "asideTitle": "Quick Actions",
+    "asideDesc": "Ready to convert? Jump straight to the tool."
+  }
+}
