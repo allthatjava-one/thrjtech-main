@@ -257,80 +257,67 @@ export function ImageCropView(props) {
 
             <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
-                <h3>What is Image Crop</h3>
-                <p>
-                  The Image Crop tool provides an interactive way to select and export a rectangular portion of an image. It offers zoom, rotation,
-                  and flip controls, aspect ratio presets for common targets (social, profile, banners), and a preview step so you can confirm the crop
-                  before downloading. All transformation and export operations are performed in your browser using an offscreen canvas; your original file
-                  does not leave your device unless you explicitly share or upload it.
-                </p>
+                <h3>{t('details.whatIs.heading', { defaultValue: 'What is Image Crop' })}</h3>
+                <p>{t('details.whatIs.body', { defaultValue: 'The Image Crop tool provides an interactive way to select and export a rectangular portion of an image. It offers zoom, rotation, and flip controls, aspect ratio presets for common targets (social, profile, banners), and a preview step so you can confirm the crop before downloading. All transformation and export operations are performed in your browser using an offscreen canvas; your original file does not leave your device unless you explicitly share or upload it.' })}</p>
 
-                <h3>How cropping works</h3>
-                <p>
-                  After loading an image the editor displays a resizable crop overlay. You can drag the overlay to reposition it, resize using handles,
-                  or pick one of the provided aspect ratios for exact output dimensions. Zooming and rotation let you refine framing; flips mirror the
-                  image horizontally or vertically. When you click Preview or Download the selected region is rendered to an offscreen canvas with any
-                  transforms applied, and the result is exported as a PNG file for immediate download.
-                </p>
+                <h3>{t('details.howWorks.heading', { defaultValue: 'How cropping works' })}</h3>
+                <p>{t('details.howWorks.body', { defaultValue: 'After loading an image the editor displays a resizable crop overlay. You can drag the overlay to reposition it, resize using handles, or pick one of the provided aspect ratios for exact output dimensions. Zooming and rotation let you refine framing; flips mirror the image horizontally or vertically. When you click Preview or Download the selected region is rendered to an offscreen canvas with any transforms applied, and the result is exported as a PNG file for immediate download.' })}</p>
 
-                <h3>Presets and precision</h3>
+                <h3>{t('details.presets.heading', { defaultValue: 'Presets and precision' })}</h3>
                 <ul>
-                  <li><strong>1:1 (Profile)</strong> — Ideal for avatars and profile photos.</li>
-                  <li><strong>16:9 (Widescreen)</strong> — Useful for video thumbnails, banners, and widescreen presentations.</li>
-                  <li><strong>4:5 (Portrait)</strong> — A common format for social feeds and portrait-oriented content.</li>
-                  <li><strong>Free</strong> — No constraints; crop to any dimensions you need.</li>
+                  <li><strong>{t('details.presets.item1.title', { defaultValue: '1:1 (Profile)' })}</strong> — {t('details.presets.item1.body', { defaultValue: 'Ideal for avatars and profile photos.' })}</li>
+                  <li><strong>{t('details.presets.item2.title', { defaultValue: '16:9 (Widescreen)' })}</strong> — {t('details.presets.item2.body', { defaultValue: 'Useful for video thumbnails, banners, and widescreen presentations.' })}</li>
+                  <li><strong>{t('details.presets.item3.title', { defaultValue: '4:5 (Portrait)' })}</strong> — {t('details.presets.item3.body', { defaultValue: 'A common format for social feeds and portrait-oriented content.' })}</li>
+                  <li><strong>{t('details.presets.item4.title', { defaultValue: 'Free' })}</strong> — {t('details.presets.item4.body', { defaultValue: 'No constraints; crop to any dimensions you need.' })}</li>
                 </ul>
 
-                <h3>Practical tips</h3>
+                <h3>{t('details.practical.heading', { defaultValue: 'Practical tips' })}</h3>
                 <ul>
-                  <li>Use the aspect-lock to keep exact proportions when resizing the crop area.</li>
-                  <li>For pixel-perfect exports, set the desired output resolution after choosing the crop area, then preview at 100% if possible.</li>
-                  <li>If you need to crop many images the same way, note the preset values so you can repeat the process consistently.</li>
+                  <li>{t('details.practical.item1', { defaultValue: 'Use the aspect-lock to keep exact proportions when resizing the crop area.' })}</li>
+                  <li>{t('details.practical.item2', { defaultValue: 'For pixel-perfect exports, set the desired output resolution after choosing the crop area, then preview at 100% if possible.' })}</li>
+                  <li>{t('details.practical.item3', { defaultValue: 'If you need to crop many images the same way, note the preset values so you can repeat the process consistently.' })}</li>
                 </ul>
 
-                <h3>Useful when</h3>
+                <h3>{t('details.useful.heading', { defaultValue: 'Useful when' })}</h3>
                 <ul>
-                  <li>preparing profile pictures or social media assets to exact dimensions.</li>
-                  <li>removing unwanted borders, background, or distracting elements from a photo.</li>
-                  <li>cropping a screenshot to a specific region for docs or presentations.</li>
-                  <li>quickly re-framing a photo without opening a desktop image editor.</li>
+                  <li>{t('details.useful.item1', { defaultValue: 'preparing profile pictures or social media assets to exact dimensions.' })}</li>
+                  <li>{t('details.useful.item2', { defaultValue: 'removing unwanted borders, background, or distracting elements from a photo.' })}</li>
+                  <li>{t('details.useful.item3', { defaultValue: 'cropping a screenshot to a specific region for docs or presentations.' })}</li>
+                  <li>{t('details.useful.item4', { defaultValue: 'quickly re-framing a photo without opening a desktop image editor.' })}</li>
                 </ul>
                 
-                <h3>Accessibility & privacy</h3>
-                <p>
-                  Controls are keyboard accessible and sized for touch interaction; the preview dialog helps users of all devices confirm changes. Because
-                  cropping is performed locally, your images remain private unless you choose to upload them as part of a sharing workflow.
-                </p>
+                <h3>{t('details.accessibility.heading', { defaultValue: 'Accessibility & privacy' })}</h3>
+                <p>{t('details.accessibility.body', { defaultValue: 'Controls are keyboard accessible and sized for touch interaction; the preview dialog helps users of all devices confirm changes. Because cropping is performed locally, your images remain private unless you choose to upload them as part of a sharing workflow.' })}</p>
 
-                <h3>FAQs</h3>
+                <h3>{t('details.faq.heading', { defaultValue: 'FAQs' })}</h3>
                 <ul>
-                  <li><strong>Q:</strong> Is my image uploaded anywhere? <strong>A:</strong> No — all cropping runs client-side in your browser. Your image never leaves your device.</li>
-                  <li><strong>Q:</strong> What formats are supported? <strong>A:</strong> You can load any image format the browser supports (JPEG, PNG, WebP, GIF, etc.). The cropped output is always exported as PNG.</li>
-                  <li><strong>Q:</strong> Can I undo a crop? <strong>A:</strong> Yes — simply adjust the crop selection and click Preview again to regenerate the output before downloading.</li>
-                  <li><strong>Q:</strong> Why does the download button stay greyed out? <strong>A:</strong> Click Preview first to generate a cropped image, then the Download button becomes active.</li>
+                  <li><strong>{t('details.faq.q1', { defaultValue: 'Q: Is my image uploaded anywhere?' })}</strong> <strong>{t('details.faq.a1', { defaultValue: 'A: No — all cropping runs client-side in your browser. Your image never leaves your device.' })}</strong></li>
+                  <li><strong>{t('details.faq.q2', { defaultValue: 'Q: What formats are supported?' })}</strong> <strong>{t('details.faq.a2', { defaultValue: 'A: You can load any image format the browser supports (JPEG, PNG, WebP, GIF, etc.). The cropped output is always exported as PNG.' })}</strong></li>
+                  <li><strong>{t('details.faq.q3', { defaultValue: 'Q: Can I undo a crop?' })}</strong> <strong>{t('details.faq.a3', { defaultValue: 'A: Yes — simply adjust the crop selection and click Preview again to regenerate the output before downloading.' })}</strong></li>
+                  <li><strong>{t('details.faq.q4', { defaultValue: 'Q: Why does the download button stay greyed out?' })}</strong> <strong>{t('details.faq.a4', { defaultValue: 'A: Click Preview first to generate a cropped image, then the Download button becomes active.' })}</strong></li>
                 </ul>
               </div>
 
             <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_001.png" alt="Step 1" className="how-img" />
-                    <p>Load an image by dragging and dropping it onto the crop area, or click to browse your files.</p>
+                    <img src="/screenshots/crop/crop_001.png" alt={t('howItWorks.imgAlt.step1', { defaultValue: 'Step 1' })} className="how-img" />
+                    <p>{t('howItWorks.step1', { defaultValue: 'Load an image by dragging and dropping it onto the crop area, or click to browse your files.' })}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_002.png" alt="Step 2" className="how-img" />
-                    <p>Drag and resize the crop overlay to select the region you want to keep. Choose an aspect ratio preset or use Free mode.</p>
+                    <img src="/screenshots/crop/crop_002.png" alt={t('howItWorks.imgAlt.step2', { defaultValue: 'Step 2' })} className="how-img" />
+                    <p>{t('howItWorks.step2', { defaultValue: 'Drag and resize the crop overlay to select the region you want to keep. Choose an aspect ratio preset or use Free mode.' })}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_003.png" alt="Step 3" className="how-img" />
-                    <p>Optionally adjust zoom, rotation, and flip to fine-tune the framing before cropping.</p>
+                    <img src="/screenshots/crop/crop_003.png" alt={t('howItWorks.imgAlt.step3', { defaultValue: 'Step 3' })} className="how-img" />
+                    <p>{t('howItWorks.step3', { defaultValue: 'Optionally adjust zoom, rotation, and flip to fine-tune the framing before cropping.' })}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_004.png" alt="Step 4" className="how-img" />
-                    <p>Click Preview to generate the cropped image and inspect the result in the preview dialog.</p>
+                    <img src="/screenshots/crop/crop_004.png" alt={t('howItWorks.imgAlt.step4', { defaultValue: 'Step 4' })} className="how-img" />
+                    <p>{t('howItWorks.step4', { defaultValue: 'Click Preview to generate the cropped image and inspect the result in the preview dialog.' })}</p>
                   </li>
                   <li>
-                    <p>Click Download to save the cropped PNG to your device.</p>
+                    <p>{t('howItWorks.step5', { defaultValue: 'Click Download to save the cropped PNG to your device.' })}</p>
                   </li>
                 </ol>
               </div>

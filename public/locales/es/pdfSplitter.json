@@ -19,11 +19,13 @@
     },
     "outputOptions": {
       "heading": "Opciones de salida",
+      "intro": "Se admiten dos modos de salida, lo que le permite elegir el resultado adecuado para su flujo de trabajo:",
       "multiple": "Múltiples archivos: cada rango de páginas produce un PDF independiente.",
       "single": "Archivo combinado único: todos los rangos seleccionados se ensamblan en un PDF en el orden en que aparecen."
     },
     "pageRangeFormat": {
       "heading": "Formato de rango de páginas",
+      "intro": "Los rangos se introducen como una lista separada por comas. La sintaxis admitida es:",
       "single": "Página única: 3",
       "contiguous": "Rango contiguo: 3-7",
       "mixed": "Lista mixta: 1,3-5,8,10-12",
@@ -207,6 +209,7 @@
       "q4": "¿Puedo deshacer la división?",
       "a4": "No, pero puedes volver a fusionar archivos si es necesario."
     },
+    "conclusionTitle": "Conclusión",
     "conclusion": "Dividir archivos PDF le brinda control sobre sus documentos. En lugar de lidiar con archivos grandes y desordenados, puede extraer solo lo que importa, organizar el contenido de manera eficiente y trabajar de manera más rápida e inteligente.",
     "ctaBtn": "👉 Comience a dividir su PDF aquí"
   }

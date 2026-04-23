@@ -11,34 +11,55 @@
   "details": {
     "whatIs": {
       "heading": "What is Image Collage",
-      "body": "The Image Collage tool lets you arrange multiple photos into a single composite image using a configurable grid layout. You control the number of rows and columns, the overall canvas dimensions, and the gap between cells. Within each cell you can reposition and scale the source image by dragging and scrolling in the preview before finalizing the export."
+      "body": "A collage combines multiple images into a single tiled layout on a shared canvas. You control rows, columns, spacing, and final canvas dimensions to create social posts, montages, product previews, or portfolio images. Assembly happens locally in the browser, producing a single raster image you can download or share. This keeps your originals private unless you explicitly upload or use a sharing workflow."
     },
     "howWorks": {
-      "heading": "How collage generation works",
-      "body": "Images are decoded in the browser and rendered onto an offscreen canvas at the specified grid layout. Each cell shows a cropped and scaled version of its source image. The final canvas is exported as a PNG preserving quality. Everything runs locally in your browser."
+      "heading": "How the collage works",
+      "body": "The tool computes each cell's placement by dividing the canvas into a uniform grid based on the selected rows and columns. For every cell it calculates a \"cover\" rectangle so the image fills the slot without leaving gaps; users can then pan and scale each image within its cell to adjust framing and composition. When you finalize the collage the images are drawn onto an offscreen HTML canvas at the chosen export resolution and exported as a PNG for download."
+    },
+    "design": {
+      "heading": "Design choices and tradeoffs",
+      "item1": "Quality vs. Size: Higher canvas sizes preserve detail but increase memory usage and final file size. For most social media scenarios, 1200–2048px on the long edge balances clarity and performance.",
+      "item2": "Performance: All decoding and compositing are performed client-side. Very large canvases or many high-resolution images can slow the UI or exhaust browser memory — reduce export size or source resolutions for better responsiveness.",
+      "item3": "Consistency: Fixed cell sizes ensure a predictable layout; tweak spacing and border color to alter the visual rhythm of the collage."
     },
     "practical": {
       "heading": "Practical tips",
-      "item1": "Start with lower-resolution images while composing and previewing, then use originals for the final export.",
-      "item2": "Use the lock ratio option to keep proportional scaling when changing canvas dimensions.",
-      "item3": "Adjust border gap to create breathing room or tight tiles depending on your design goal."
+      "item1": "Start with lower-resolution images while composing and previewing, then use originals for the final export if necessary.",
+      "item2": "Use the \"lock ratio\" option to keep proportional scaling when changing canvas dimensions so your layout doesn't distort.",
+      "item3": "Adjust border gap to create breathing room or tight tiles depending on your design goal.",
+      "item4": "If an image looks soft at export, either increase the canvas resolution or supply a higher-resolution source image."
+    },
+    "accessibility": {
+      "heading": "Accessibility & UX",
+      "body": "Controls are labeled and keyboard accessible, and preview mode scales to smaller screens so users can accurately inspect and adjust images before exporting. Large hit targets and clear visual focus help when using touch devices or screen magnification."
     },
     "whenToUse": {
       "heading": "When to use a collage",
       "item1": "Creating social media posts that combine multiple shots into a single, shareable image.",
       "item2": "Building product grids or marketing montages for newsletters, landing pages, or ads.",
-      "item3": "Quickly assembling family photo montages or event highlights."
+      "item3": "Quickly assembling family photo montages or event highlights to share with friends and family."
+    },
+    "export": {
+      "heading": "Export options",
+      "body": "By default the final canvas is exported as a PNG to preserve quality. If you need smaller web-friendly files you can convert the PNG to a JPEG at a chosen quality level using an external image editor or additional client-side encoding step. Filenames include a timestamp to keep exports unique and easily traceable."
     },
     "privacy": {
       "heading": "Privacy & sharing",
-      "body": "Collage generation occurs entirely on your device — the images do not leave your browser unless you explicitly upload or share them."
+      "body": "Collage generation occurs entirely on your device — the images do not leave your browser unless you explicitly upload or share them via the app's sharing/watermarking workflow. If you choose to use the watermark or sharing features those steps will present clear prompts and require confirmation before any upload occurs."
+    },
+    "limitations": {
+      "heading": "Limitations",
+      "item1": "Very large canvases (for example, >10000px) may be limited by browser memory or implementation limits.",
+      "item2": "Animated sources (GIF/WebP) are flattened to a single frame during export.",
+      "item3": "Embedded color profiles may be handled differently by different browsers and can affect exported color fidelity."
     },
     "faq": {
       "heading": "FAQs",
       "q1": "Q: How many images can I use?",
-      "a1": "A: Best for small to medium batches (roughly 4–25 images); very large sets can degrade performance.",
+      "a1": "A: Best for small to medium batches (roughly 4–25 images); very large sets can degrade performance depending on client resources.",
       "q2": "Q: Will image quality be preserved?",
-      "a2": "A: Quality depends on chosen canvas export size and the source resolutions.",
+      "a2": "A: Quality depends on chosen canvas export size and the source resolutions — use higher-resolution originals for larger exports.",
       "q3": "Q: Can I reorder or remove images?",
       "a3": "A: Yes — use the file list controls to move or delete items before generating the final collage.",
       "q4": "Q: Does this run in my browser?",

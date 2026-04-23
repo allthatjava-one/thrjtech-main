@@ -468,89 +468,56 @@ const ImageCollageView = ({
 
         <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
-                <h3>What is Collage</h3>
-                <p>
-                  A collage combines multiple images into a single tiled layout on a shared canvas. You control rows, columns, spacing, and final canvas
-                  dimensions to create social posts, montages, product previews, or portfolio images. Assembly happens locally in the browser, producing a
-                  single raster image you can download or share. This keeps your originals private unless you explicitly upload or use a sharing workflow.
-                </p>
+                <h3>{t('details.whatIs.heading')}</h3>
+                <p>{t('details.whatIs.body')}</p>
 
-                <h3>How the collage works</h3>
-                <p>
-                  The tool computes each cell's placement by dividing the canvas into a uniform grid based on the selected rows and columns. For every cell
-                  it calculates a "cover" rectangle so the image fills the slot without leaving gaps; users can then pan and scale each image within its
-                  cell to adjust framing and composition. When you finalize the collage the images are drawn onto an offscreen HTML canvas at the chosen
-                  export resolution and exported as a PNG (or optionally JPEG) for download. This approach avoids server roundtrips and gives immediate
-                  visual feedback in the browser.
-                </p>
+                <h3>{t('details.howWorks.heading')}</h3>
+                <p>{t('details.howWorks.body')}</p>
 
-                <h3>Design choices and tradeoffs</h3>
+                <h3>{t('details.design.heading')}</h3>
                 <ul>
-                  <li>
-                    Quality vs. Size: Higher canvas sizes preserve detail but increase memory usage and final file size. For most social media scenarios,
-                    1200–2048px on the long edge balances clarity and performance.
-                  </li>
-                  <li>
-                    Performance: All decoding and compositing are performed client-side. Very large canvases or many high-resolution images can slow the UI
-                    or exhaust browser memory—reduce export size or source resolutions for better responsiveness.
-                  </li>
-                  <li>
-                    Consistency: Fixed cell sizes ensure a predictable layout; tweak spacing and border color to alter the visual rhythm of the collage.
-                  </li>
+                  <li>{t('details.design.item1')}</li>
+                  <li>{t('details.design.item2')}</li>
+                  <li>{t('details.design.item3')}</li>
                 </ul>
 
-                <h3>Practical tips</h3>
+                <h3>{t('details.practical.heading')}</h3>
                 <ul>
-                  <li>Start with lower-resolution images while composing and previewing, then use originals for the final export if necessary.</li>
-                  <li>Use the "lock ratio" option to keep proportional scaling when changing canvas dimensions so your layout doesn't distort.</li>
-                  <li>Adjust border gap to create breathing room or tight tiles depending on your design goal.</li>
-                  <li>If an image looks soft at export, either increase the canvas resolution or supply a higher-resolution source image.</li>
+                  <li>{t('details.practical.item1')}</li>
+                  <li>{t('details.practical.item2')}</li>
+                  <li>{t('details.practical.item3')}</li>
+                  <li>{t('details.practical.item4')}</li>
                 </ul>
 
-                <h3>Accessibility & UX</h3>
-                <p>
-                  Controls are labeled and keyboard accessible, and preview mode scales to smaller screens so users can accurately inspect and adjust images
-                  before exporting. Large hit targets and clear visual focus help when using touch devices or screen magnification.
-                </p>
+                <h3>{t('details.accessibility.heading')}</h3>
+                <p>{t('details.accessibility.body')}</p>
 
-                <h3>When to use a collage</h3>
+                <h3>{t('details.whenToUse.heading')}</h3>
                 <ul>
-                  <li>Creating social media posts that combine multiple shots into a single, shareable image.</li>
-                  <li>Building product grids or marketing montages for newsletters, landing pages, or ads.</li>
-                  <li>Quickly assembling family photo montages or event highlights to share with friends and family.</li>
+                  <li>{t('details.whenToUse.item1')}</li>
+                  <li>{t('details.whenToUse.item2')}</li>
+                  <li>{t('details.whenToUse.item3')}</li>
                 </ul>
 
-                <h3>Export options</h3>
-                <p>
-                  By default the final canvas is exported as a PNG to preserve quality. If you need smaller web-friendly files you can convert the PNG to
-                  a JPEG at a chosen quality level using an external image editor or additional client-side encoding step. Filenames include a timestamp to
-                  keep exports unique and easily traceable.
-                </p>
+                <h3>{t('details.export.heading')}</h3>
+                <p>{t('details.export.body')}</p>
 
-                <h3>Privacy & sharing</h3>
-                <p>
-                  Collage generation occurs entirely on your device—the images do not leave your browser unless you explicitly upload or share them via the
-                  app's sharing/watermarking workflow. If you choose to use the watermark or sharing features those steps will present clear prompts and
-                  require confirmation before any upload occurs.
-                </p>
+                <h3>{t('details.privacy.heading')}</h3>
+                <p>{t('details.privacy.body')}</p>
 
-                <h3>Limitations</h3>
+                <h3>{t('details.limitations.heading')}</h3>
                 <ul>
-                  <li>Very large canvases (for example, &gt;10000px) may be limited by browser memory or implementation limits.</li>
-                  <li>Animated sources (GIF/WebP) are flattened to a single frame during export.</li>
-                  <li>Embedded color profiles may be handled differently by different browsers and can affect exported color fidelity.</li>
+                  <li>{t('details.limitations.item1')}</li>
+                  <li>{t('details.limitations.item2')}</li>
+                  <li>{t('details.limitations.item3')}</li>
                 </ul>
 
-                <h3>FAQs</h3>
+                <h3>{t('details.faq.heading')}</h3>
                 <ul>
-                  <li><strong>Q:</strong> How many images can I use? <strong>A:</strong> Best for small to medium batches (roughly 4–25 images); very large sets
-                    can degrade performance depending on client resources.</li>
-                  <li><strong>Q:</strong> Will image quality be preserved? <strong>A:</strong> Quality depends on chosen canvas export size and the source
-                    resolutions—use higher-resolution originals for larger exports.</li>
-                  <li><strong>Q:</strong> Can I reorder or remove images? <strong>A:</strong> Yes — use the file list controls to move or delete items before
-                    generating the final collage.</li>
-                  <li><strong>Q:</strong> Does this run in my browser? <strong>A:</strong> Yes — collage assembly is client-side; nothing is uploaded unless you
-                    explicitly use a sharing feature.</li>
+                  <li><strong>{t('details.faq.q1')}</strong> {t('details.faq.a1')}</li>
+                  <li><strong>{t('details.faq.q2')}</strong> {t('details.faq.a2')}</li>
+                  <li><strong>{t('details.faq.q3')}</strong> {t('details.faq.a3')}</li>
+                  <li><strong>{t('details.faq.q4')}</strong> {t('details.faq.a4')}</li>
                 </ul>
               </div>
 

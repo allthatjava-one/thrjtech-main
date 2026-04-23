@@ -498,7 +498,7 @@ export function WatermarkerView({
         </div>
 
         <div className="wm-guide-conclusion">
-          <h3>{t('common:conclusion', { defaultValue: 'Conclusion' })}</h3>
+          <h3>{t('guide.conclusionTitle', { defaultValue: 'Conclusion' })}</h3>
           <p>{t('guide.conclusion')}</p>
           <a href="/image-watermarker" className="wm-guide-cta" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-watermarker'); }}>{t('guide.ctaBtn')}</a>
         </div>

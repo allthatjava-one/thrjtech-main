@@ -47,6 +47,22 @@
     "icoName": "ICO",
     "icoDesc": "Formato de icono de Windows. Elija qué tamaños incluir."
   },
+  "formats": {
+    "jpg": "JPEG",
+    "jpgDesc": "Lo mejor para fotos. Archivo más pequeño, compresión con pérdida.",
+    "png": "PNG",
+    "pngDesc": "Lo mejor para gráficos con transparencia. Calidad sin pérdidas.",
+    "webp": "WebP",
+    "webpDesc": "Formato moderno. Más pequeño que JPG y PNG con gran calidad.",
+    "avif": "AVIF",
+    "avifDesc": "Formato de próxima generación. Mejor compresión. Se recomienda Chrome y Firefox.",
+    "bmp": "BMP",
+    "bmpDesc": "Mapa de bits sin comprimir. Archivo grande y sin pérdidas. Compatibilidad máxima.",
+    "gif": "GIF",
+    "gifDesc": "Formato de 256 colores. Lo mejor para gráficos simples, no para fotografías.",
+    "ico": "ICO",
+    "icoDesc": "Formato de icono de Windows. Elija qué tamaños incluir."
+  },
   "icoSize": {
     "label": "Tamaño de icono"
   },
@@ -91,7 +107,8 @@
   "howItWorks": {
     "step1": "Seleccione una o más imágenes arrastrándolas o haciendo clic para explorar.",
     "step2": "Elija el formato de salida desde los botones selectores de formato.",
-    "step3": "Haga clic en Convertir o Convertir todo para procesar las imágenes.",
+    "step3a": "Haga clic en <strong>Convertir</strong> para procesar la imagen al instante en su navegador.",
+    "step3b": "Descargue su imagen convertida con el botón <strong>Descargar</strong>.",
     "step4": "También puedes convertir varias imágenes a la vez seleccionando más de un archivo."
   },
   "actions": {

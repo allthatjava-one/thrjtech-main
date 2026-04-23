@@ -112,6 +112,7 @@
   "guide": {
     "title": "La guía completa para cambiar el tamaño de las imágenes sin perder calidad",
     "lead": "Cambiar el tamaño de las imágenes parece sencillo, hasta que terminas con resultados borrosos, pixelados o distorsionados. Ya sea que esté subiendo fotos a un sitio web, enviando imágenes por correo electrónico u optimizando el rendimiento, cambiar el tamaño de la manera correcta es más importante de lo que la mayoría de la gente piensa.",
+    "learn": "En esta guía aprenderás:",
     "learnItems": {
       "item1": "Cómo funciona realmente el cambio de tamaño de la imagen",
       "item2": "¿Por qué ocurre la pérdida de calidad?",
@@ -169,6 +170,7 @@
       "q4": "¿Es mejor cambiar el tamaño o comprimir?",
       "a4": "Sirven para diferentes propósitos. Cambiar tamaño cambia las dimensiones; Comprimir reduce el tamaño del archivo. Los mejores resultados se obtienen si se utilizan ambos con cuidado."
     },
+    "conclusionTitle": "Conclusión",
     "conclusion": "Cambiar el tamaño de las imágenes no se trata sólo de hacerlas más pequeñas, sino de hacerlo correctamente para preservar la claridad y la usabilidad. Si mantiene la relación de aspecto, cambia el tamaño una vez con respecto al original y elige el formato correcto, puede mejorar significativamente tanto la calidad como el rendimiento de la imagen.",
     "ctaBtn": "Pruebe el cambio de tamaño de imagen →"
   }

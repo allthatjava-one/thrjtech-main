@@ -89,6 +89,7 @@
   "guide": {
     "title": "The Complete Guide to Resizing Images Without Losing Quality",
     "lead": "Resizing images seems simple — until you end up with blurry, pixelated, or distorted results. Whether you're uploading photos to a website, sending images by email, or optimizing for performance, resizing the right way matters more than most people think.",
+    "learn": "In this guide, you'll learn:",
     "learnItems": {
       "item1": "How image resizing actually works",
       "item2": "Why quality loss happens",
@@ -146,6 +147,7 @@
       "q4": "Is it better to resize or compress?",
       "a4": "They serve different purposes. Resize changes dimensions; Compress reduces file size. Best results come from using both carefully."
     },
+    "conclusionTitle": "Conclusion",
     "conclusion": "Resizing images isn't just about making them smaller — it's about doing it correctly to preserve clarity and usability. By maintaining aspect ratio, resizing once from the original, and choosing the right format, you can significantly improve both image quality and performance.",
     "ctaBtn": "Try the Image Resizer →"
   }

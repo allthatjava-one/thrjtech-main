@@ -636,46 +636,30 @@ export default function MemeGeneratorView({ initialFile }) {
 
             <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
-                <h3>What is a Meme Generator</h3>
-                <p>
-                  A meme generator is a lightweight creative editor that lets you place text overlays on images to produce humorous, informative, or
-                  expressive graphics quickly. It supports multiple text layers, free positioning, font sizing, color selection, and simple export
-                  controls so you can craft a share-ready image in seconds. All composition happens within your browser—no external upload is required
-                  unless you explicitly share or save to a remote service.
-                </p>
+                <h3>{t('details.whatIs.heading', { defaultValue: 'What is a Meme Generator' })}</h3>
+                <p>{t('details.whatIs.body', { defaultValue: 'A meme generator is a lightweight creative editor that lets you place text overlays on images to produce humorous, informative, or expressive graphics quickly. It supports multiple text layers, free positioning, font sizing, color selection, and simple export controls so you can craft a share-ready image in seconds.' })}</p>
 
-                <h3>How the generator works</h3>
-                <p>
-                  Upload or drop an image into the canvas area, then add one or more text layers using the controls. Each layer can be positioned by
-                  dragging, resized via the advanced controls, and styled with a color picker. The preview area reflects changes in real time. When you
-                  export, the app merges the text onto the image on an offscreen canvas and creates a downloadable PNG that preserves your layout and
-                  styling choices.
-                </p>
+                <h3>{t('details.howWorks.heading', { defaultValue: 'How the generator works' })}</h3>
+                <p>{t('details.howWorks.body', { defaultValue: 'Upload or drop an image into the canvas area, then add one or more text layers using the controls. Each layer can be positioned by dragging, resized via the advanced controls, and styled with a color picker. The preview area reflects changes in real time.' })}</p>
 
-                <h3>Why use a browser-based tool</h3>
-                <p>
-                  Browser-based meme editors are instant and accessible: they don't require installations, run offline once loaded, and keep your images
-                  local to your device. This makes them convenient for casual creation on phones, tablets, and desktops alike.
-                </p>
+                <h3>{t('details.whyBrowser.heading', { defaultValue: 'Why use a browser-based tool' })}</h3>
+                <p>{t('details.whyBrowser.body', { defaultValue: "Browser-based meme editors are instant and accessible: they don't require installations, run offline once loaded, and keep your images local to your device." })}</p>
 
-                <h3>Tips for better memes</h3>
+                <h3>{t('details.tips.heading', { defaultValue: 'Tips for better memes' })}</h3>
                 <ul>
-                  <li>Use short, punchy captions and capitalize text for classic meme styles.</li>
-                  <li>Keep good contrast between text and background; add stroke or shadow if needed for readability.</li>
-                  <li>Use multiple layers for complex layouts—title, subtitle, or small annotations all work well.</li>
+                  <li>{t('details.tips.item1', { defaultValue: 'Use short, punchy captions and capitalize text for classic meme styles.' })}</li>
+                  <li>{t('details.tips.item2', { defaultValue: 'Keep good contrast between text and background; add stroke or shadow if needed for readability.' })}</li>
+                  <li>{t('details.tips.item3', { defaultValue: 'Use multiple layers for complex layouts—title, subtitle, or small annotations all work well.' })}</li>
                 </ul>
 
-                <h3>Accessibility & privacy</h3>
-                <p>
-                  Controls are designed with accessibility in mind (large targets, keyboard support). Since composition occurs locally, your images are
-                  not transmitted off your device by default — they only leave the browser if you choose to upload or share them.
-                </p>
+                <h3>{t('details.accessibility.heading', { defaultValue: 'Accessibility & privacy' })}</h3>
+                <p>{t('details.accessibility.body', { defaultValue: 'Controls are designed with accessibility in mind (large targets, keyboard support). Since composition occurs locally, your images are not transmitted off your device by default — they only leave the browser if you choose to upload or share them.' })}</p>
 
-                <h3>FAQs</h3>
+                <h3>{t('details.faq.heading', { defaultValue: 'FAQs' })}</h3>
                 <ul>
-                  <li><strong>Q:</strong> Will my image be uploaded anywhere? <strong>A:</strong> No — everything runs client-side in your browser.</li>
-                  <li><strong>Q:</strong> Can I add more than two text lines? <strong>A:</strong> Yes — use the ＋ button to add as many text layers as you need.</li>
-                  <li><strong>Q:</strong> What image formats are supported? <strong>A:</strong> Any image format your browser supports (JPEG, PNG, WebP, GIF, etc.).</li>
+                  <li><strong>{t('details.faq.q1', { defaultValue: 'Q: Will my image be uploaded anywhere?' })}</strong> <strong>{t('details.faq.a1', { defaultValue: 'A: No — everything runs client-side in your browser.' })}</strong></li>
+                  <li><strong>{t('details.faq.q2', { defaultValue: 'Q: Can I add more than two text lines?' })}</strong> <strong>{t('details.faq.a2', { defaultValue: 'A: Yes — use the ＋ button to add as many text layers as you need.' })}</strong></li>
+                  <li><strong>{t('details.faq.q3', { defaultValue: 'Q: What image formats are supported?' })}</strong> <strong>{t('details.faq.a3', { defaultValue: 'A: Any image format your browser supports (JPEG, PNG, WebP, GIF, etc.).' })}</strong></li>
                 </ul>
               </div>
 

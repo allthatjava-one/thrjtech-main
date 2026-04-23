@@ -26,7 +26,9 @@
   gap: 8px;
   margin-bottom: 12px;
 }
-.meme-controls label,
+.meme-controls label{ 
+  color: var(--muted-text, #666);
+}
 .meme-controls .file-label {
   min-width: 90px;
   color: var(--muted-text, #666);
@@ -130,6 +132,11 @@
 .meme-generator-page .layer-textarea { flex:1; min-width: 100px; min-height: 52px; padding: 0.45rem 0.6rem; border-radius: 8px; border: 1px solid #d1d5db; resize: none; overflow: hidden; }
 .meme-generator-page .layer-textarea:focus { outline: none; box-shadow: 0 6px 18px rgba(15,23,42,0.04); }
 .meme-generator-page .layers-header { display:flex; gap:8px; align-items:center; justify-content:space-between }
+/* Allow the header label to size naturally (override global .control-row label width:80px) */
+.meme-controls .control-row.layers-header > label {
+  width: auto !important;
+  min-width: 0;
+}
 .meme-generator-page .layer-overlay.selected { outline: 2px dashed rgba(255,255,255,0.5); }
 
 .meme-generator-page .advanced-section { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
