@@ -1,0 +1,155 @@
+{
+  "hero": {
+    "title": "Filigrane d'image",
+    "tagline": "Protégez vos images en ajoutant un filigrane de texte ou de logo personnalisé. Ajustez la position et le style selon vos besoins, puis téléchargez le résultat instantanément.",
+    "blogLink": "Apprenez à mettre un filigrane sur votre image →"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "hint": {
+    "text": "Souhaitez-vous redimensionner votre image avant d'ajouter un filigrane ?",
+    "btn": "Essayer le Redimensionneur"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que le filigrane d'image",
+      "body": "Un filigrane d'image applique une superposition visible — texte ou logo — sur une image pour indiquer la propriété, la marque ou la provenance."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne le filigranage",
+      "body": "Après avoir sélectionné une image source, vous pouvez choisir un filigrane de texte ou télécharger un logo. L'éditeur rend le filigrane sur un canevas hors écran et exporte le composite en tant que nouveau fichier image."
+    },
+    "choosing": {
+      "heading": "Choisir le bon filigrane",
+      "item1": "Le texte semi-transparent offre un bon équilibre pour la marque sans écraser l'image.",
+      "item2": "Les logos (PNG/SVG) conservent la transparence — utilisez des logos vectoriels ou haute résolution si possible.",
+      "item3": "Tenez compte du placement : les coins sont moins susceptibles d'être rognés."
+    },
+    "practical": {
+      "heading": "Conseils pratiques",
+      "item1": "Utilisez une opacité plus faible pour une marque subtile ; augmentez l'opacité pour une protection visible plus forte.",
+      "item2": "Pour une utilisation en masse, standardisez la position et la taille du filigrane.",
+      "item3": "Prévisualisez à la taille d'exportation réelle avant de télécharger."
+    },
+    "usefulWhen": {
+      "heading": "Utile quand",
+      "item1": "vous devez protéger vos images avec un filigrane visible.",
+      "item2": "vous souhaitez contrôler le placement, la taille et l'opacité du filigrane.",
+      "item3": "vous préparez des images pour le partage en ligne ou à des fins de marque."
+    },
+    "privacy": {
+      "heading": "Confidentialité, conservation et limitations",
+      "body": "Étant donné que le filigranage s'exécute dans votre navigateur, vos images restent sur votre appareil. Les filigranes visibles découragent la réutilisation occasionnelle mais ne constituent pas une protection absolue des droits d'auteur."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Puis-je utiliser un logo ?",
+      "a1": "R : Oui — téléchargez un logo PNG ou SVG pour l'appliquer comme filigrane.",
+      "q2": "Q : Cela modifiera-t-il mon image originale ?",
+      "a2": "R : Non — l'outil crée un nouveau fichier filigrané et ne remplace pas votre original.",
+      "q3": "Q : L'image quitte-t-elle mon navigateur ?",
+      "a3": "R : Non — le filigranage s'exécute dans votre navigateur et ne télécharge pas l'image originale.",
+      "q4": "Q : Puis-je contrôler l'opacité, la taille et la position ?",
+      "a4": "R : Oui — utilisez les commandes pour ajuster l'opacité, l'échelle et le placement du filigrane.",
+      "q5": "Q : Le filigranage fonctionne-t-il avec tous les formats d'image ?",
+      "a5": "R : Les formats web courants (JPEG, PNG, WebP) sont pris en charge."
+    }
+  },
+  "howItWorks": {
+    "step1": "Importez une image à filigraner via glisser-déposer ou sélection de fichier.",
+    "step2": "Choisissez un filigrane de texte ou de logo et ajustez la position, la taille et l'opacité.",
+    "step3": "Appliquez l'aperçu du filigrane et affinez le placement.",
+    "step4": "Exportez et téléchargez l'image filigrané.",
+    "step5": "Facultatif - Vous pouvez appliquer un filigrane sur plusieurs fichiers à la fois."
+  },
+  "dropZone": {
+    "text": "Glissez-déposez des images ici, ou cliquez pour sélectionner"
+  },
+  "fileRow": {
+    "count": "{{count}} images sélectionnées",
+    "changeOne": "Changer l'image",
+    "changeMany": "Changer les images",
+    "clear": "Effacer"
+  },
+  "type": {
+    "label": "Type :",
+    "text": "Texte",
+    "logo": "Logo"
+  },
+  "textInput": {
+    "placeholder": "Saisissez le texte du filigrane"
+  },
+  "logoBtn": "Choisir un logo",
+  "position": {
+    "label": "Position :",
+    "default": "Par défaut (centre + diagonal)",
+    "center": "Centre",
+    "topLeft": "Haut gauche",
+    "topRight": "Haut droite",
+    "bottomLeft": "Bas gauche",
+    "bottomRight": "Bas droite"
+  },
+  "repeated": "Répété",
+  "opacity": "Opacité :",
+  "applyBtn": "Appliquer à {{count}} image(s)",
+  "processingBtn": "Traitement en cours...",
+  "downloadBtn": "Télécharger",
+  "downloadAllBtn": "Tout télécharger",
+  "popup": {
+    "prev": "Préc.",
+    "next": "Suiv.",
+    "close": "×"
+  },
+  "guide": {
+    "title": "Comment ajouter des filigranes aux images (protégez votre travail et développez votre marque)",
+    "lead": "Si vous partagez des images en ligne, qu'il s'agisse de photos, de dessins ou de captures d'écran, vous craignez probablement que d'autres personnes les utilisent sans autorisation. C'est là qu'intervient le filigrane.",
+    "whatIs": {
+      "heading": "Qu'est-ce qu'un filigrane ?",
+      "body": "Un filigrane est une superposition visible (texte ou logo) placée sur une image pour indiquer la propriété ou l'origine. Les types courants incluent les filigranes de texte (nom, site Web), les filigranes de logo (identité de marque) et les filigranes de motifs (répétés sur l'image)."
+    },
+    "why": {
+      "heading": "Pourquoi devriez-vous utiliser des filigranes",
+      "item1": "Protégez votre contenu : les filigranes découragent la réutilisation occasionnelle en indiquant clairement la propriété.",
+      "item2": "Développez la reconnaissance de la marque : chaque image partagée porte votre nom ou votre logo.",
+      "item3": "Prévenir le vol de contenu : rend la suppression plus difficile et réduit les copies occasionnelles.",
+      "item4": "Ajoutez une identité professionnelle : les images filigranées semblent intentionnelles et font autorité."
+    },
+    "types": {
+      "heading": "Types de filigranes",
+      "text": "🔤 Filigrane de texte — Simple et rapide — idéal pour les blogs et les outils (par exemple, « thrjtech.com »).",
+      "logo": "🖼 Logo en filigrane – Image de marque forte – idéal pour les entreprises ; utilisez PNG/SVG pour la transparence.",
+      "repeated": "🔁 Filigrane répété – en mosaïque sur toute l’image – idéal pour un contenu de grande valeur, mais moins propre visuellement."
+    },
+    "bestPractices": {
+      "heading": "Meilleures pratiques",
+      "item1": "Gardez-le visible mais sans distraction (opacité ~ 20 à 60 %).",
+      "item2": "Choisissez la bonne position : coin pour une protection subtile, centre pour une protection forte.",
+      "item3": "Utilisez une image de marque cohérente (police, logo, emplacement).",
+      "item4": "Évitez de dominer l’image – l’équilibre est la clé.",
+      "item5": "Faites correspondre la couleur du filigrane à la luminosité de l’image pour plus de lisibilité."
+    },
+    "stepByStep": {
+      "heading": "Étape par étape",
+      "step1": "Téléchargez votre (vos) image(s)",
+      "step2": "Saisissez du texte ou téléchargez un logo",
+      "step3": "Ajuster la taille, la position et l'opacité",
+      "step4": "Aperçu du filigrane",
+      "step5": "Téléchargez l'image finale"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Pouvez-vous mettre des filigranes sur plusieurs images à la fois ?",
+      "a1": "Oui, vous pouvez sélectionner plusieurs images et leur appliquer simultanément le même filigrane.",
+      "q2": "Les filigranes peuvent-ils être supprimés ?",
+      "a2": "Oui, des outils avancés peuvent supprimer les filigranes, mais des marques bien placées rendent la suppression plus difficile.",
+      "q3": "Quelle opacité dois-je utiliser ?",
+      "a3": "Généralement entre 30% et 60% selon le contexte.",
+      "q4": "Dois-je placer un filigrane au centre ?",
+      "a4": "Le placement central offre une protection plus forte ; les coins sont plus subtils – choisissez en fonction de votre objectif."
+    },
+    "conclusion": "Le filigrane est un moyen simple de protéger les images, de promouvoir votre marque et de maintenir la visibilité de la propriété. Lorsqu'il est bien fait, il améliore votre contenu sans le distraire.",
+    "ctaBtn": "Essayez le filigrane d'image →"
+  }
+}

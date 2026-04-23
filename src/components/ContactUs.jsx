@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import './ContactUs.css'
 
 const ContactUs = ({ open, onClose }) => {
+  const { t } = useTranslation('contact')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [honeypot, setHoneypot] = useState('')
@@ -55,15 +57,11 @@ const ContactUs = ({ open, onClose }) => {
       <div className="aboutus-modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="aboutus-modal-close" onClick={onClose} aria-label="Close">&times;</button>
         <div className="aboutus-section">
-          <h3>Contact Us</h3>
+          <h3>{t('title')}</h3>
           <p>
-            We love hearing from our users — your feedback is what drives us to keep improving.
-            Whether you've spotted a bug, have a feature request, or just want to share your
-            experience, we genuinely want to know. Drop us a message using the form below and
-            we'll get back to you as soon as possible. Every message is read by a real person,
-            and we do our best to respond promptly. Thank you for taking the time to reach out!
+            {t('intro')}
             <span style={{ display: 'block', textAlign: 'right', marginTop: '0.5em' }}>
-              - The THRJTech Team
+              {t('signature')}
             </span>
           </p>
         </div>
@@ -73,7 +71,7 @@ const ContactUs = ({ open, onClose }) => {
             {/* Honeypot — hidden from real users, traps bots */}
             <div style={{ display: 'none' }}>
               <label>
-                Leave this field empty
+                {t('honeypotLabel')}
                 <input
                   type="text"
                   name="website"
@@ -85,34 +83,34 @@ const ContactUs = ({ open, onClose }) => {
               </label>
             </div>
             <label>
-              Email Address
+              {t('emailLabel')}
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="your@email.com"
+                placeholder={t('emailPlaceholder')}
                 autoComplete="email"
               />
             </label>
             <label>
-              Message
+              {t('messageLabel')}
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                placeholder="How can we help you?"
+                placeholder={t('messagePlaceholder')}
                 rows={4}
               />
             </label>
             <button type="submit" className="btn btn-primary" disabled={submitting}>
-              {submitting ? 'Sending…' : 'Submit'}
+              {submitting ? t('sendingBtn') : t('submitBtn')}
             </button>
             {submitSuccess && (
-              <div className="contactus-success">Thank you! We received your message.</div>
+              <div className="contactus-success">{t('successMsg')}</div>
             )}
             {submitError && (
-              <div className="contactus-error">Sorry, something went wrong. Please try again.</div>
+              <div className="contactus-error">{t('errorMsg')}</div>
             )}
           </form>
         </div>

@@ -1,0 +1,197 @@
+{
+  "hero": {
+    "title": "PDF Converter",
+    "tagline": "Quickly convert PDF pages into high-quality JPG or PNG images. Choose the output format, preview the converted result, and download images for sharing, thumbnails, or embedding — no account required.",
+    "blogLink": "Learn how to convert PDF →"
+  },
+  "hint": {
+    "text": "Do you want to convert image type instead?",
+    "btn": "Try Image Converter"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is PDF conversion",
+      "body": "PDF-to-image conversion renders each page of the document as a raster image at a defined resolution. The output is a set of image files (one per page) that capture the visual appearance of the PDF — including text rendered as pixels, embedded images, and vector graphics rasterized at the specified DPI."
+    },
+    "whenToConvert": {
+      "heading": "When to convert",
+      "body": "Converting PDF pages to images is appropriate when you need to embed document content in a context that doesn't support PDF rendering (for example, web pages that display static thumbnails, presentation slides, or messaging platforms that only accept images)."
+    },
+    "howBehaves": {
+      "heading": "How conversion behaves",
+      "body": "A PDF-to-image converter renders each page at a fixed resolution and saves the result in the chosen format. The quality and file size of the output depend on the resolution (DPI) and the selected image format."
+    },
+    "quality": {
+      "heading": "Quality and performance",
+      "resolution": "Resolution: Higher DPI produces sharper images but larger files.",
+      "format": "Format: JPEG uses lossy compression (smaller files, visible artifacts at low quality); PNG uses lossless compression (larger files, no artifacts, supports transparency).",
+      "processing": "Processing time: Each page requires independent rendering; multi-page PDFs take proportionally longer."
+    },
+    "benefits": {
+      "heading": "Benefits of conversion",
+      "item1": "Makes PDF content usable in image-only contexts.",
+      "item2": "Allows individual pages to be shared, cropped, or annotated as images.",
+      "item3": "Produces a visual representation that matches the exact PDF rendering."
+    },
+    "privacy": {
+      "heading": "Privacy & retention",
+      "body": "Files are processed on short-lived server infrastructure. Converted images are made available for download and then deleted automatically after a short retention window. Do not upload documents containing personal or sensitive information if you cannot accept the associated privacy risk."
+    },
+    "practical": {
+      "heading": "Practical tips",
+      "item1": "For thumbnails or web previews, lower DPI (72–96) is usually sufficient.",
+      "item2": "For high-quality archival images, use higher DPI (150–300) and PNG.",
+      "item3": "For large PDFs, convert only the pages you actually need."
+    },
+    "usefulWhen": {
+      "heading": "Useful when",
+      "item1": "You need to share individual pages as images.",
+      "item2": "You want to embed PDF pages in presentations or web content.",
+      "item3": "You need to extract visual content from a PDF."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q: Does the conversion preserve all visual content?",
+      "a1": "A: Yes — the converter renders the page at the specified DPI, capturing text, images, and graphics as they appear in the PDF.",
+      "q2": "Q: Can I convert a multi-page PDF?",
+      "a2": "A: Yes — each page is converted to a separate image file.",
+      "q3": "Q: Which format is better, JPG or PNG?",
+      "a3": "A: JPG for smaller files with minor quality loss; PNG for lossless quality with transparency support.",
+      "q4": "Q: Why is my output image blurry?",
+      "a4": "A: The DPI setting may be too low. Try a higher resolution setting.",
+      "q5": "Q: Can I convert password-protected PDFs?",
+      "a5": "A: Not directly — the PDF must be unlocked before conversion."
+    }
+  },
+  "howItWorks": {
+    "step1": "Drag & drop your PDF or click Browse File to choose one. The file name and size are shown in the drop zone.",
+    "step2": "Select the output format (JPG or PNG) using the Convert to selector.",
+    "step3": "Tap Convert. A progress bar shows upload and conversion status.",
+    "step4": "When ready, the converted image appears with a Download button."
+  },
+  "badges": {
+    "instant": "⚡ Instant",
+    "secure": "🔒 Secure",
+    "autoDeleted": "🗑️ Auto-deleted"
+  },
+  "dropZone": {
+    "icon": "📂",
+    "text": "Drag & drop your PDF here",
+    "or": "or",
+    "browse": "Browse File",
+    "removeTitle": "Remove file"
+  },
+  "convertTo": "Convert to",
+  "convertBtn": "Convert to {{type}}",
+  "progress": {
+    "uploading": "Uploading…",
+    "converting": "Converting PDF…"
+  },
+  "result": {
+    "icon": "✅",
+    "title": "Conversion Complete!",
+    "originalLabel": "Original",
+    "sizeLabel": "Size",
+    "download": "Download Converted File",
+    "another": "Convert Another File"
+  },
+  "note": "Note: The converted file will be stored temporarily for a short time. Please download it within the available window.",
+  "guide": {
+    "title": "How to Convert PDF Files Without Breaking Layout (Smart & Simple Guide)",
+    "intro": "PDFs are great for sharing — but not always for editing. You've probably experienced this: you need to edit a PDF but it's locked, want to extract text but can't, or need a Word or Excel version but formatting breaks.",
+    "cta": "👉 In this guide, you'll learn how to convert PDFs safely, preserve formatting, and choose the right format for your needs.",
+    "whatIs": {
+      "heading": "📄 What Is a PDF Converter?",
+      "body": "A PDF converter is a tool that allows you to:",
+      "item1": "🔁 Convert PDF → Word, Excel, PowerPoint",
+      "item2": "🖼 Convert PDF → images (JPG, PNG)",
+      "item3": "📥 Convert files → PDF (Word, images, etc.)",
+      "note": "Modern tools support both directions and multiple formats, making them highly flexible. Think of it as a bridge between formats."
+    },
+    "whyConvert": {
+      "heading": "🤔 Why Convert PDFs?",
+      "item1": "✏️ Edit Content Easily — convert to Word or Excel to modify text, update data, and reuse content.",
+      "item2": "📊 Extract Data — convert PDF → Excel to save time and avoid manual typing.",
+      "item3": "🖼 Use Content in Other Formats — convert to image to share visuals or embed in presentations.",
+      "item4": "📤 Improve Compatibility — some systems require specific file types; conversion solves this instantly."
+    },
+    "howWorks": {
+      "heading": "⚙️ How PDF Conversion Works",
+      "body": "When you convert a PDF, the system reads the file structure, identifies text, images, and layout, then rebuilds content in the new format. Good tools try to preserve layout and keep fonts and spacing intact."
+    },
+    "whyBreaks": {
+      "heading": "🧠 Why Formatting Sometimes Breaks",
+      "body": "PDFs are built for display, not structure. Text may not be stored logically and layout may be \"visual only\" — so converters sometimes have to guess structure. This is why results vary."
+    },
+    "bestPractices": {
+      "heading": "✅ Best Practices for Accurate Conversion",
+      "item1": "🔹 Use clean source files — clear text, standard fonts, simple layout.",
+      "item2": "🔹 Choose the right output format — Word for editing, Excel for tables, JPG for sharing visuals.",
+      "item3": "🔹 Check after conversion — always review alignment, fonts, and tables.",
+      "item4": "🔹 Avoid re-converting files — each step can introduce errors; always convert from the original PDF.",
+      "item5": "🔹 Use a reliable tool — a good converter should preserve formatting and support multiple formats."
+    },
+    "stepByStep": {
+      "heading": "🚀 Step-by-Step: Convert a PDF",
+      "step1": "📤 Upload your PDF",
+      "step2": "🎯 Select output format (JPG, PNG, etc.)",
+      "step3": "⚙️ Start conversion",
+      "step4": "📥 Download the new file",
+      "note": "Most tools complete this in seconds."
+    },
+    "scenarios": {
+      "heading": "🧩 Common Conversion Scenarios",
+      "item1": "📄 PDF → Word — edit documents, update text",
+      "item2": "📊 PDF → Excel — extract tables, work with data",
+      "item3": "🖼 PDF → Image — share pages visually, use in presentations",
+      "item4": "📥 Word/Image → PDF — create shareable documents, preserve formatting"
+    },
+    "mistakes": {
+      "heading": "⚠️ Common Mistakes to Avoid",
+      "item1": "❌ Converting scanned PDFs without OCR",
+      "item2": "❌ Expecting perfect formatting every time",
+      "item3": "❌ Using low-quality source files",
+      "item4": "❌ Not reviewing final output",
+      "item5": "❌ Converting multiple times unnecessarily"
+    },
+    "comparison": {
+      "heading": "🔍 PDF Converter vs PDF Editor",
+      "col1": "Feature",
+      "col2": "Converter",
+      "col3": "Editor",
+      "row1col1": "Purpose",
+      "row1col2": "Change format",
+      "row1col3": "Modify content",
+      "row2col1": "Ease of use",
+      "row2col2": "Easy",
+      "row2col3": "Moderate",
+      "row3col1": "Best for",
+      "row3col2": "Flexibility",
+      "row3col3": "Detailed editing"
+    },
+    "proTips": {
+      "heading": "💡 Pro Tips",
+      "item1": "📌 Convert a small test file first",
+      "item2": "📌 Use consistent fonts in original",
+      "item3": "📌 Avoid complex layouts when possible",
+      "item4": "📌 Keep a backup of the original file"
+    },
+    "faq": {
+      "heading": "❓ FAQ",
+      "q1": "Does PDF conversion always keep formatting?",
+      "a1": "Not always — but good tools preserve most layout and structure.",
+      "q2": "Can I convert scanned PDFs?",
+      "a2": "Yes, but you may need OCR (text recognition) for accurate results.",
+      "q3": "What's the best format to convert to?",
+      "a3": "Editing → Word, data → Excel, sharing → PDF/Image.",
+      "q4": "Is online conversion safe?",
+      "a4": "Most tools process files securely and temporarily."
+    },
+    "conclusion": "PDF conversion isn't just about changing formats — it's about unlocking your content. With the right approach, you can edit documents easily, extract useful data, and share content in any format.",
+    "ctaBtn": "👉 Try it here: PDF Converter Tool"
+  }
+}

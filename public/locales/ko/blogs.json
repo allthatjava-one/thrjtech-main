@@ -1,0 +1,17 @@
+{
+  "title": "블로그",
+  "subtitle": "도구를 더 잘 활용할 수 있도록 실용적인 가이드와 팁을 제공합니다.",
+  "readMore": "더 읽기",
+  "backToList": "블로그 목록으로",
+  "notFound": "블로그를 찾을 수 없습니다",
+  "loading": "게시글 로드 중...",
+  "error": "error: '오류',",
+  "articlesHeader": "기사",
+  "first": "처음",
+  "last": "마지막",
+  "perPage": "개가 한 페이지에 보이도록",
+  "back": "블로그로 ← 돌아가기",
+  "createdAt": "생성 날짜",
+  "loadingArticle": "로드 중…",
+  "errorArticle": "error: '오류',"
+}

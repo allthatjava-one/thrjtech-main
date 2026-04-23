@@ -1,0 +1,210 @@
+{
+  "hero": {
+    "title": "PDF Merger",
+    "tagline": "Drop and Merge - Combine multiple PDF files into a single document in seconds. Upload your files, drag to reorder them, then merge and download the result.",
+    "blogLink": "Learn how to merge PDF →"
+  },
+  "hint": {
+    "text": "Do you need to split them before re-merge?",
+    "btn": "Try PDF Splitter"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "details": {
+    "howMergeWorks": {
+      "heading": "How PDF merge works",
+      "body": "A PDF merge operation takes the page streams from each source document in the order you specify and writes them sequentially into a new PDF container. The resulting file shares no data with the originals — each page is fully reproduced, preserving text, images, annotations, and vector graphics."
+    },
+    "howSizeDetermined": {
+      "heading": "How merged size is determined",
+      "body": "The merged PDF's size is roughly the sum of the input files' sizes, plus a small amount of overhead for the new cross-reference table and trailer. Duplicate embedded resources (fonts, images) are not automatically de-duplicated unless the tool explicitly does so."
+    },
+    "whyUseOnline": {
+      "heading": "Why use an online merger",
+      "body": "Browser-based merging eliminates the need to install software. Files are transferred to a short-lived server process, merged, and returned; the originals remain on your device."
+    },
+    "bestPractices": {
+      "heading": "Best practices",
+      "item1": "Merge in order — arrange your files beforehand to avoid re-merging.",
+      "item2": "Compress after merging — use the checkbox to reduce the size of the final file.",
+      "item3": "Check file count — most online tools handle up to a reasonable number of files."
+    },
+    "whatItDoes": {
+      "heading": "What it does",
+      "item1": "Combines multiple PDFs into a single ordered document."
+    },
+    "usefulWhen": {
+      "heading": "Useful when",
+      "item1": "Combining chapters or sections written separately.",
+      "item2": "Merging scanned pages saved as individual files.",
+      "item3": "Combining a cover page, main document, and appendix."
+    },
+    "comparison": {
+      "heading": "Comparison",
+      "item1": "Unlike desktop tools, this runs in your browser without installation."
+    },
+    "privacy": {
+      "heading": "Privacy & retention",
+      "body": "Uploaded files are processed on short-lived infrastructure and removed according to the app's retention policy. If you are handling highly sensitive documents, prefer local desktop tools or an on-prem solution that matches your compliance requirements."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Is my file private?",
+      "a1": "A: Files are processed temporarily and auto-deleted according to the app's policy.",
+      "q2": "Q: Will merging change the formatting of individual PDFs?",
+      "a2": "A: No — pages are reproduced as-is; formatting is preserved.",
+      "q3": "Q: Can I control the order of pages?",
+      "a3": "A: Yes — drag files to reorder them before merging.",
+      "q4": "Q: Can I merge more than two PDFs?",
+      "a4": "A: Yes — there is no fixed limit, though very large batches may be slower.",
+      "q5": "Q: What if the result is larger than expected?",
+      "a5": "A: Enable compression after merging to reduce the final file size."
+    }
+  },
+  "howItWorks": {
+    "step1": "Upload the PDF files you want to merge.",
+    "step2": "Drag to reorder files to set the merge order.",
+    "step3": "Click Merge to send files to the backend merging process.",
+    "step4": "Download the merged PDF when processing completes."
+  },
+  "badges": {
+    "fast": "⚡ Fast",
+    "secure": "🔒 Secure",
+    "autoDeleted": "🗑️ Auto-deleted"
+  },
+  "dropZone": {
+    "icon": "📚",
+    "text": "Drag and drop your PDF files here",
+    "or": "or",
+    "browse": "Browse Files"
+  },
+  "fileList": {
+    "title": "PDF files ({{count}})",
+    "reorderHint": "Drag files to reorder merge order.",
+    "addMore": "Add More Files",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "remove": "Remove file"
+  },
+  "compress": "Compress merged PDF",
+  "mergeBtn": "Merge PDFs",
+  "progress": {
+    "merging": "Merging PDFs...",
+    "uploading": "Uploading merged PDF...",
+    "compressing": "Compressing merged PDF..."
+  },
+  "result": {
+    "icon": "✅",
+    "title": "Merge Complete!",
+    "inputLabel": "Input",
+    "totalSizeLabel": "Total Size",
+    "filesCount": "{{count}} PDF files",
+    "mergedLabel": "Merged",
+    "sizeLabel": "Size",
+    "download": "Download Merged PDF",
+    "another": "Merge Another Set"
+  },
+  "note": "Note: The compressed file will be stored in Cloudflare R2 storage for 30 min. Please download it within this period. After 30 min, the file will be automatically deleted.",
+  "lowerHint": {
+    "text": "Trouble merging because the files are too large?",
+    "btn": "Try PDF Compressor"
+  },
+  "guide": {
+    "title": "Combine Multiple PDFs Into One (Clean, Organized & Stress-Free Guide)",
+    "intro": "Working with multiple PDF files can get messy fast. Instead of sending or managing them one by one, you can merge everything into a single, clean document.",
+    "cta": "👉 This guide shows you how to merge PDFs efficiently, organize them properly, and avoid common mistakes.",
+    "whatIs": {
+      "heading": "📌 What Is a PDF Merger?",
+      "body": "A PDF merger is a tool that lets you:",
+      "item1": "📄 Combine multiple PDF files",
+      "item2": "🔀 Rearrange page order",
+      "item3": "➕ Add or remove pages",
+      "item4": "📥 Export as a single document"
+    },
+    "whyMatters": {
+      "heading": "🎯 Why Merging PDFs Matters",
+      "item1": "Better Organization — turn several files into one structured document.",
+      "item2": "Easier Sharing — one file is faster, cleaner, and less confusing.",
+      "item3": "Professional Presentation — a single merged PDF looks polished.",
+      "item4": "Improved Workflow — reduces clutter and repetitive tasks."
+    },
+    "useCases": {
+      "heading": "🛠 Common Use Cases",
+      "item1": "💼 Business Documents — combine reports, invoices, contracts",
+      "item2": "🎓 Student Assignments — merge multiple sections into one submission",
+      "item3": "🧾 Scanned Files — combine scanned pages into a single file",
+      "item4": "📑 Application Submissions — resume + cover letter + certificates"
+    },
+    "howWorks": {
+      "heading": "🧠 How PDF Merging Works (Simple Explanation)",
+      "body": "Files are loaded, pages are extracted and arranged, and a new PDF is generated. The original files remain unchanged."
+    },
+    "stepByStep": {
+      "heading": "🧭 Step-by-Step: Merge PDFs Easily",
+      "step1": "📤 Upload your PDF files",
+      "step2": "👀 Preview all pages",
+      "step3": "🔀 Drag to reorder",
+      "step4": "➕ Add or remove files",
+      "step5": "📥 Download merged PDF"
+    },
+    "tips": {
+      "heading": "🎨 Tips to Make Your Merged PDF Look Clean",
+      "item1": "✅ Keep logical order (Cover → Content → Appendix)",
+      "item2": "✅ Use clear file naming (rename files in correct order)",
+      "item3": "✅ Remove unnecessary pages (blank pages, duplicates)",
+      "item4": "✅ Check final output (page order, orientation, formatting)"
+    },
+    "mistakes": {
+      "heading": "⚠️ Common Mistakes to Avoid",
+      "item1": "❌ Wrong page order",
+      "item2": "❌ Mixing portrait & landscape awkwardly",
+      "item3": "❌ Forgetting to remove duplicates",
+      "item4": "❌ Merging low-quality scans",
+      "item5": "❌ Not reviewing final file"
+    },
+    "comparison": {
+      "heading": "🔍 PDF Merger vs PDF Splitter",
+      "col1": "Feature",
+      "col2": "PDF Merger",
+      "col3": "PDF Splitter",
+      "row1col1": "Purpose",
+      "row1col2": "Combine files",
+      "row1col3": "Break files apart",
+      "row2col1": "Output",
+      "row2col2": "Single document",
+      "row2col3": "Multiple documents",
+      "row3col1": "Use case",
+      "row3col2": "Organization",
+      "row3col3": "Extraction"
+    },
+    "proTips": {
+      "heading": "🚀 Pro Tips for Faster Workflow",
+      "item1": "🗂 Prepare files in advance",
+      "item2": "🔢 Name files in order (01, 02, 03…)",
+      "item3": "⚡ Merge once instead of repeatedly",
+      "item4": "🔒 Use tools that respect privacy"
+    },
+    "safety": {
+      "heading": "🔐 Is It Safe to Merge PDFs Online?",
+      "body": "Most tools process files temporarily and delete them after completion. Still, avoid uploading sensitive documents unless you trust the tool."
+    },
+    "faq": {
+      "heading": "❓ FAQ",
+      "q1": "Can I change page order after merging?",
+      "a1": "Yes — most tools allow reordering before final export.",
+      "q2": "Will merging affect quality?",
+      "a2": "No — good tools preserve layout and formatting.",
+      "q3": "Can I merge images into PDFs?",
+      "a3": "Yes — many tools support combining images and PDFs.",
+      "q4": "Is there a limit on number of files?",
+      "a4": "Depends on the tool, but many support multiple files easily."
+    },
+    "conclusion": {
+      "heading": "🧾 Conclusion",
+      "body": "Merging PDFs helps you stay organized and present information professionally. With the right approach you can turn scattered files into a clean document in seconds."
+    },
+    "ctaBtn": "👉 Try it here: PDF Merger Tool"
+  }
+}

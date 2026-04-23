@@ -3,6 +3,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cropper from 'react-easy-crop';
 import CustomSelect from '../../commons/CustomSelect';
+import { useTranslation } from 'react-i18next';
 
 export function ImageCropView(props) {
   const {
@@ -35,6 +36,7 @@ export function ImageCropView(props) {
   } = props;
 
   const navigate = useNavigate();
+  const { t } = useTranslation('imageCrop');
 
   const [selectValue, setSelectValue] = useState(() => (aspect ? String(aspect) : String(4 / 3)));
   const [customW, setCustomW] = useState(4);
@@ -222,14 +224,14 @@ export function ImageCropView(props) {
 
   return (
     <div className="image-crop-view">
-      <h2 className="hero-title">Image Crop</h2>
-      <p className="hero-tagline">Select and crop a portion of your image. 
-        Use presets, zoom, rotate and flip tools, then preview and download. <Link to="/blogs/image-crop-guide">Learn how to crop your image →</Link></p>
+      <h2 className="hero-title">{t('hero.title')}</h2>
+      <p className="hero-tagline">{t('hero.tagline')}{' '}
+        <Link to="/blogs/image-crop-guide">{t('hero.blogLink')}</Link></p>
 
       <div className="ir-tip-banner">
-        <span className="ir-tip-text">Would you like to put words on your image before cropping it?</span>
+        <span className="ir-tip-text">{t('hint.text')}</span>
         <button className="ir-tip-btn" onClick={() => navigate('/image-meme-generator')}>
-          Try Meme Generator
+          {t('hint.btn')}
         </button>
       </div>
 
@@ -241,7 +243,7 @@ export function ImageCropView(props) {
             aria-expanded={openPanel === 'details'}
             type="button"
           >
-            Details
+            {t('tabs.details')}
           </button>
           <button
             className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
@@ -249,7 +251,7 @@ export function ImageCropView(props) {
             aria-expanded={openPanel === 'howitworks'}
             type="button"
           >
-            How it works
+            {t('tabs.howItWorks')}
           </button>
         </div>
 
@@ -371,7 +373,7 @@ export function ImageCropView(props) {
               />
             </div>
           ) : (
-            <span className="hero-tagline">Drag & drop an image here, or click to select</span>
+            <span className="hero-tagline">{t('dropZone.text')}</span>
           )}
           <input type="file" accept="image/*,.heic,.heif" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileInput} />
         </div>
@@ -385,10 +387,10 @@ export function ImageCropView(props) {
               className="crop-change-btn"
               onClick={() => fileInputRef.current && fileInputRef.current.click()}
             >
-              Change Image
+              {t('fileRow.change')}
             </button>
             <button type="button" className="crop-clear-btn" onClick={handleClear}>
-              Clear
+              {t('fileRow.clear')}
             </button>
           </div>
         )}
@@ -396,34 +398,34 @@ export function ImageCropView(props) {
 
       <div className="crop-controls">
           <div className="control-row">
-            <label>Zoom</label>
+            <label>{t('controls.zoom')}</label>
             <input type="range" min="0.5" max="3" step="0.01" value={zoom} onChange={e => setZoom(Number(e.target.value))} />
           </div>
           <div className="control-row">
-            <label>Rotation</label>
+            <label>{t('controls.rotation')}</label>
             <button type="button" onClick={() => setRotation((r) => r - 90)} aria-label="rotate-left">⟲</button>
             <button type="button" onClick={() => setRotation((r) => r + 90)} aria-label="rotate-right">⟳</button>
             <span style={{ marginLeft: 8 }}>{rotation}°</span>
           </div>
           <div className="control-row">
-            <label>Flip</label>
-            <button type="button" onClick={handleFlipH} aria-pressed={flipH}>Horizontal</button>
-            <button type="button" onClick={handleFlipV} aria-pressed={flipV}>Vertical</button>
+            <label>{t('controls.flip')}</label>
+            <button type="button" onClick={handleFlipH} aria-pressed={flipH}>{t('controls.horizontal')}</button>
+            <button type="button" onClick={handleFlipV} aria-pressed={flipV}>{t('controls.vertical')}</button>
           </div>
           <div className="control-row">
-            <label>Aspect</label>
+            <label>{t('controls.aspect')}</label>
             {
               (() => {
                 const aspectOptions = [
-                  { value: '', label: 'Use Custom Aspect Ratio', w: 0, h: 0, id: 'custom' },
-                  { value: String(1), label: '1:1 (Profile)', w: 1, h: 1, id: 'profile' },
-                  { value: String(4 / 3), label: '4:3 (Standard)', w: 4, h: 3, id: 'standard' },
-                  { value: String(16 / 9), label: '16:9 (Widescreen / YouTube)', w: 16, h: 9, id: 'widescreen' },
-                  { value: String(9 / 16), label: '9:16 (Story / Reels)', w: 9, h: 16, id: 'story' },
-                  { value: String(4 / 5), label: '4:5 (Instagram Post)', w: 4, h: 5, id: 'instagram' },
-                  { value: String(2 / 3), label: '2:3 (Pinterest Pin)', w: 2, h: 3, id: 'pinterest' },
-                  { value: String(3 / 1), label: '3:1 (Blog Featured)', w: 3, h: 1, id: 'blog' },
-                  { value: String(1.91), label: '1.91:1 (Facebook Post)', w: 191, h: 100, id: 'facebook' },
+                  { value: '', label: t('aspectOptions.custom'), w: 0, h: 0, id: 'custom' },
+                  { value: String(1), label: t('aspectOptions.profile'), w: 1, h: 1, id: 'profile' },
+                  { value: String(4 / 3), label: t('aspectOptions.standard'), w: 4, h: 3, id: 'standard' },
+                  { value: String(16 / 9), label: t('aspectOptions.widescreen'), w: 16, h: 9, id: 'widescreen' },
+                  { value: String(9 / 16), label: t('aspectOptions.story'), w: 9, h: 16, id: 'story' },
+                  { value: String(4 / 5), label: t('aspectOptions.instagram'), w: 4, h: 5, id: 'instagram' },
+                  { value: String(2 / 3), label: t('aspectOptions.pinterest'), w: 2, h: 3, id: 'pinterest' },
+                  { value: String(3 / 1), label: t('aspectOptions.blog'), w: 3, h: 1, id: 'blog' },
+                  { value: String(1.91), label: t('aspectOptions.facebook'), w: 191, h: 100, id: 'facebook' },
                 ];
 
                 return (
@@ -511,14 +513,14 @@ export function ImageCropView(props) {
           </div>}
 
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <button className="resize-btn" onClick={async () => { await download(); setPreviewOpen(true); }} disabled={processing || !imageSrc}>{processing ? 'Processing...' : 'Preview'}</button>
-            <button className="resize-btn reset-btn" onClick={() => { handleReset(); setPreviewOpen(false); setHasCropEdited(false); }} disabled={!imageSrc} style={{ marginLeft: 8 }}>Reset</button>
+            <button className="resize-btn" onClick={async () => { await download(); setPreviewOpen(true); }} disabled={processing || !imageSrc}>{processing ? t('actions.processing') : t('actions.preview')}</button>
+            <button className="resize-btn reset-btn" onClick={() => { handleReset(); setPreviewOpen(false); setHasCropEdited(false); }} disabled={!imageSrc} style={{ marginLeft: 8 }}>{t('actions.reset')}</button>
             <button
               className={`download-btn ${!outputUrl ? 'disabled' : ''}`}
               onClick={triggerDownload}
               disabled={!(outputUrl || hasCropEdited)}
             >
-              Download
+              {t('actions.download')}
             </button>
           </div>
 
@@ -538,13 +540,13 @@ export function ImageCropView(props) {
       {/* Bottom action block: appears only after a crop output is generated */}
       {(outputUrl || hasCropEdited) && (
         <div className="send-action">
-          <span className="send-text">Would you like to put a text on cropped image?</span>
+          <span className="send-text">{t('sendToMeme.text')}</span>
           <button
             className="send-btn"
             onClick={handleSendToMeme}
             disabled={!(outputUrl || hasCropEdited)}
           >
-            Send to Meme Generator
+            {t('sendToMeme.btn')}
           </button>
         </div>
       )}
@@ -552,123 +554,114 @@ export function ImageCropView(props) {
       {/* ── Guide Article for Image Crop ── */}
       <div className="ic-guide">
         <div className="ic-guide-intro">
-          <h2 className="ic-guide-title">How to Crop Images Perfectly (Without Losing Quality or Composition)</h2>
-          <p className="ic-guide-lead">Cropping an image is one of the simplest edits you can make — but it has a huge impact on how your image looks and communicates. Whether you're preparing images for websites, social media, or documents, cropping helps you focus on what matters, remove distractions, and fit images into required sizes.</p>
+          <h2 className="ic-guide-title">{t('guide.title', { defaultValue: 'How to Crop Images Perfectly (Without Losing Quality or Composition)' })}</h2>
+          <p className="ic-guide-lead">{t('guide.lead', { defaultValue: 'Cropping an image is one of the simplest edits you can make — but it has a huge impact on how your image looks and communicates.' })}</p>
           <div className="ic-guide-learn-box">
-            <span className="ic-guide-learn-label">In this guide, you'll learn:</span>
+            <span className="ic-guide-learn-label">{t('guide.learnLabel', { defaultValue: "In this guide, you'll learn:" })}</span>
             <ul className="ic-guide-learn-list">
-              <li>How image cropping works</li>
-              <li>When to use it</li>
-              <li>How to crop properly without ruining quality</li>
+              <li>{t('guide.learnItems.item1', { defaultValue: 'How image cropping works' })}</li>
+              <li>{t('guide.learnItems.item2', { defaultValue: 'When to use it' })}</li>
+              <li>{t('guide.learnItems.item3', { defaultValue: 'How to crop properly without ruining quality' })}</li>
             </ul>
           </div>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">What Is Image Cropping?</h3>
-          <p>Image cropping is the process of removing unwanted outer areas of an image to improve composition or adjust size. Instead of resizing the entire image, cropping lets you cut out unnecessary parts, focus on the subject, and change the aspect ratio.</p>
-          <p><em>Think of it as framing your image after it’s already taken.</em></p>
+          <h3 className="ic-guide-h3">{t('guide.whatIs.heading', { defaultValue: 'What Is Image Cropping?' })}</h3>
+          <p>{t('guide.whatIs.body', { defaultValue: 'Image cropping is the process of removing unwanted outer areas of an image to improve composition or adjust size. Instead of resizing the entire image, cropping lets you cut out unnecessary parts, focus on the subject, and change the aspect ratio.' })}</p>
+          <p><em>{t('guide.whatIs.analogy', { defaultValue: 'Think of it as framing your image after it’s already taken.' })}</em></p>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">Why Cropping Matters</h3>
+          <h3 className="ic-guide-h3">{t('guide.why.heading', { defaultValue: 'Why Cropping Matters' })}</h3>
           <div className="ic-guide-cards">
             <div className="ic-guide-card">
               <span className="ic-guide-card-num">1</span>
-              <div>
-                <strong>Focus on the Subject</strong>
-                <p>Cropping removes distractions and highlights the most important part of the image so the subject becomes the main focus.</p>
-              </div>
+              <div><p>{t('guide.why.focus', { defaultValue: 'Focus on the Subject — Cropping removes distractions and highlights the most important part of the image.' })}</p></div>
             </div>
             <div className="ic-guide-card">
               <span className="ic-guide-card-num">2</span>
-              <div>
-                <strong>Improve Composition</strong>
-                <p>Use cropping to balance the image, apply the rule of thirds, and create a cleaner layout.</p>
-              </div>
+              <div><p>{t('guide.why.composition', { defaultValue: 'Improve Composition — Use cropping to balance the image, apply the rule of thirds, and create a cleaner layout.' })}</p></div>
             </div>
             <div className="ic-guide-card">
               <span className="ic-guide-card-num">3</span>
-              <div>
-                <strong>Fit Platform Requirements</strong>
-                <p>Different platforms need different sizes; crop to square, vertical, or landscape to avoid distortion and cropping issues on upload.</p>
-              </div>
+              <div><p>{t('guide.why.platform', { defaultValue: 'Fit Platform Requirements — Different platforms need different sizes; crop to square, vertical, or landscape to avoid distortion.' })}</p></div>
             </div>
           </div>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">Cropping vs Resizing</h3>
+          <h3 className="ic-guide-h3">{t('guide.croppingVsResizing.heading', { defaultValue: 'Cropping vs Resizing' })}</h3>
           <table className="ic-guide-table">
-            <thead><tr><th>Feature</th><th>Cropping</th><th>Resizing</th></tr></thead>
+            <thead><tr><th>{t('guide.croppingVsResizing.col1', { defaultValue: 'Feature' })}</th><th>{t('guide.croppingVsResizing.col2', { defaultValue: 'Cropping' })}</th><th>{t('guide.croppingVsResizing.col3', { defaultValue: 'Resizing' })}</th></tr></thead>
             <tbody>
-              <tr><td>What it does</td><td>Removes part of image</td><td>Scales entire image</td></tr>
-              <tr><td>Keeps full content</td><td>No</td><td>Yes</td></tr>
-              <tr><td>Changes composition</td><td>Yes</td><td>No</td></tr>
-              <tr><td>Use case</td><td>Focus / framing</td><td>File size / dimensions</td></tr>
+              <tr><td>{t('guide.croppingVsResizing.row1col1', { defaultValue: 'What it does' })}</td><td>{t('guide.croppingVsResizing.row1col2', { defaultValue: 'Removes part of image' })}</td><td>{t('guide.croppingVsResizing.row1col3', { defaultValue: 'Scales entire image' })}</td></tr>
+              <tr><td>{t('guide.croppingVsResizing.row2col1', { defaultValue: 'Keeps full content' })}</td><td>{t('guide.croppingVsResizing.row2col2', { defaultValue: 'No' })}</td><td>{t('guide.croppingVsResizing.row2col3', { defaultValue: 'Yes' })}</td></tr>
+              <tr><td>{t('guide.croppingVsResizing.row3col1', { defaultValue: 'Changes composition' })}</td><td>{t('guide.croppingVsResizing.row3col2', { defaultValue: 'Yes' })}</td><td>{t('guide.croppingVsResizing.row3col3', { defaultValue: 'No' })}</td></tr>
+              <tr><td>{t('guide.croppingVsResizing.row4col1', { defaultValue: 'Use case' })}</td><td>{t('guide.croppingVsResizing.row4col2', { defaultValue: 'Focus / framing' })}</td><td>{t('guide.croppingVsResizing.row4col3', { defaultValue: 'File size / dimensions' })}</td></tr>
             </tbody>
           </table>
-          <p><strong>Best practice:</strong> Crop first → then resize if needed.</p>
+          <p>{t('guide.croppingVsResizing.tip', { defaultValue: 'Best practice: Crop first → then resize if needed.' })}</p>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">Best Practices for Cropping</h3>
+          <h3 className="ic-guide-h3">{t('guide.bestPractices.heading', { defaultValue: 'Best Practices for Cropping' })}</h3>
           <div className="ic-guide-best-list">
-            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Keep the Subject Clear</strong><p>Ensure the main subject is centered or well-positioned and not cut awkwardly.</p></div></div>
-            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Maintain Aspect Ratio</strong><p>Use fixed ratios (1:1, 16:9, 4:5) when targeting specific platforms.</p></div></div>
-            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Don't Crop Too Much</strong><p>Excessive cropping reduces resolution and may make images blurry when enlarged.</p></div></div>
-            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Leave Breathing Space</strong><p>Avoid tight crops—leave slight spacing around the subject for a natural look.</p></div></div>
-            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><div><strong>Keep the Original</strong><p>Always save the original image; cropped areas cannot be recovered.</p></div></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><p>{t('guide.bestPractices.item1', { defaultValue: 'Keep the Subject Clear — Ensure the main subject is centered or well-positioned and not cut awkwardly.' })}</p></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><p>{t('guide.bestPractices.item2', { defaultValue: 'Maintain Aspect Ratio — Use fixed ratios (1:1, 16:9, 4:5) when targeting specific platforms.' })}</p></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><p>{t('guide.bestPractices.item3', { defaultValue: "Don't Crop Too Much — Excessive cropping reduces resolution and may make images blurry." })}</p></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><p>{t('guide.bestPractices.item4', { defaultValue: 'Leave Breathing Space — Avoid tight crops—leave slight spacing around the subject for a natural look.' })}</p></div>
+            <div className="ic-guide-best-item"><span className="ic-guide-best-icon">✅</span><p>{t('guide.bestPractices.item5', { defaultValue: 'Keep the Original — Always save the original image; cropped areas cannot be recovered.' })}</p></div>
           </div>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">Common Mistakes to Avoid</h3>
+          <h3 className="ic-guide-h3">{t('guide.mistakes.heading', { defaultValue: 'Common Mistakes to Avoid' })}</h3>
           <div className="ic-guide-mistakes">
-            <div className="ic-guide-mistake">❌ Cutting off important parts (faces, edges, text)</div>
-            <div className="ic-guide-mistake">❌ Cropping without purpose</div>
-            <div className="ic-guide-mistake">❌ Ignoring aspect ratio</div>
-            <div className="ic-guide-mistake">❌ Over-cropping low-resolution images</div>
-            <div className="ic-guide-mistake">❌ Using random crop sizes across platforms</div>
+            <div className="ic-guide-mistake">{t('guide.mistakes.item1', { defaultValue: '❌ Cutting off important parts (faces, edges, text)' })}</div>
+            <div className="ic-guide-mistake">{t('guide.mistakes.item2', { defaultValue: '❌ Cropping without purpose' })}</div>
+            <div className="ic-guide-mistake">{t('guide.mistakes.item3', { defaultValue: '❌ Ignoring aspect ratio' })}</div>
+            <div className="ic-guide-mistake">{t('guide.mistakes.item4', { defaultValue: '❌ Over-cropping low-resolution images' })}</div>
+            <div className="ic-guide-mistake">{t('guide.mistakes.item5', { defaultValue: '❌ Using random crop sizes across platforms' })}</div>
           </div>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">Step-by-Step: How to Crop an Image</h3>
+          <h3 className="ic-guide-h3">{t('guide.stepByStep.heading', { defaultValue: 'Step-by-Step: How to Crop an Image' })}</h3>
           <ol className="ic-guide-steps">
-            <li>Upload your image</li>
-            <li>Select the area you want to keep</li>
-            <li>Adjust the crop box (drag edges)</li>
-            <li>Choose aspect ratio (optional)</li>
-            <li>Apply crop</li>
-            <li>Download the final image</li>
+            <li>{t('guide.stepByStep.step1', { defaultValue: 'Upload your image' })}</li>
+            <li>{t('guide.stepByStep.step2', { defaultValue: 'Select the area you want to keep' })}</li>
+            <li>{t('guide.stepByStep.step3', { defaultValue: 'Adjust the crop box (drag edges)' })}</li>
+            <li>{t('guide.stepByStep.step4', { defaultValue: 'Choose aspect ratio (optional)' })}</li>
+            <li>{t('guide.stepByStep.step5', { defaultValue: 'Apply crop' })}</li>
+            <li>{t('guide.stepByStep.step6', { defaultValue: 'Download the final image' })}</li>
           </ol>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">Real Use Cases</h3>
+          <h3 className="ic-guide-h3">{t('guide.useCases.heading', { defaultValue: 'Real Use Cases' })}</h3>
           <div className="ic-guide-usecases">
-            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">📱</span><strong>Social Media Posts</strong><p>Crop to square or vertical to improve engagement.</p></div>
-            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🌐</span><strong>Website Images</strong><p>Remove unnecessary space and make images consistent across pages.</p></div>
-            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">👤</span><strong>Profile Pictures</strong><p>Crop tightly around the face and center for better visibility.</p></div>
-            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🛍️</span><strong>Product Images</strong><p>Remove background clutter and highlight the product clearly.</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">📱</span><p>{t('guide.useCases.social', { defaultValue: '📱 Social Media Posts — Crop to square or vertical to improve engagement.' })}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🌐</span><p>{t('guide.useCases.website', { defaultValue: '🌐 Website Images — Remove unnecessary space and make images consistent across pages.' })}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">👤</span><p>{t('guide.useCases.profile', { defaultValue: '👤 Profile Pictures — Crop tightly around the face and center for better visibility.' })}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🛍️</span><p>{t('guide.useCases.product', { defaultValue: '🛍️ Product Images — Remove background clutter and highlight the product clearly.' })}</p></div>
           </div>
         </div>
 
         <div className="ic-guide-section">
-          <h3 className="ic-guide-h3">FAQ</h3>
+          <h3 className="ic-guide-h3">{t('guide.faq.heading', { defaultValue: 'FAQ' })}</h3>
           <div className="ic-guide-faq">
-            <details className="ic-guide-faq-item"><summary>Does cropping reduce image quality?</summary><p>Yes — because pixels are removed, but if done carefully the quality loss is usually not noticeable.</p></details>
-            <details className="ic-guide-faq-item"><summary>Can I undo cropping?</summary><p>Only if your tool supports non-destructive editing or you kept the original image.</p></details>
-            <details className="ic-guide-faq-item"><summary>What is the best aspect ratio?</summary><p>Depends on usage: Instagram → 1:1 or 4:5; YouTube → 16:9; Websites → varies.</p></details>
-            <details className="ic-guide-faq-item"><summary>Is cropping better than resizing?</summary><p>They serve different purposes: cropping changes composition, resizing changes dimensions.</p></details>
+            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q1', { defaultValue: 'Does cropping reduce image quality?' })}</summary><p>{t('guide.faq.a1', { defaultValue: 'Yes — because pixels are removed, but if done carefully the quality loss is usually not noticeable.' })}</p></details>
+            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q2', { defaultValue: 'Can I undo cropping?' })}</summary><p>{t('guide.faq.a2', { defaultValue: 'Only if your tool supports non-destructive editing or you kept the original image.' })}</p></details>
+            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q3', { defaultValue: 'What is the best aspect ratio?' })}</summary><p>{t('guide.faq.a3', { defaultValue: 'Depends on usage: Instagram → 1:1 or 4:5; YouTube → 16:9; Websites → varies.' })}</p></details>
+            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q4', { defaultValue: 'Is cropping better than resizing?' })}</summary><p>{t('guide.faq.a4', { defaultValue: 'They serve different purposes: cropping changes composition, resizing changes dimensions.' })}</p></details>
           </div>
         </div>
 
         <div className="ic-guide-conclusion">
-          <h3>Conclusion</h3>
-          <p>Image cropping is a simple but powerful way to improve composition, highlight important content, and make images fit any platform. Use the right techniques to turn an average image into a clean, professional-looking one.</p>
-          <a href="/image-crop" className="ic-guide-cta" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-crop'); }}>Try the Image Crop Tool →</a>
+          <h3>{t('guide.conclusionTitle', { defaultValue: 'Conclusion' })}</h3>
+          <p>{t('guide.conclusion', { defaultValue: 'Image cropping is a simple but powerful way to improve composition, highlight important content, and make images fit any platform. Use the right techniques to turn an average image into a clean, professional-looking one.' })}</p>
+          <a href="/image-crop" className="ic-guide-cta" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-crop'); }}>{t('guide.ctaBtn', { defaultValue: 'Try the Image Crop Tool →' })}</a>
         </div>
       </div>
     </div>

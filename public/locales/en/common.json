@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Home",
+    "tools": "Tools",
+    "pdf": "PDF",
+    "pdfCompressor": "PDF Compressor",
+    "pdfMerger": "PDF Merger",
+    "pdfConverter": "PDF Converter",
+    "pdfSplitter": "PDF Splitter",
+    "text": "Text",
+    "jsonFormatter": "JSON Formatter",
+    "regexTester": "Regex Tester",
+    "image": "Image",
+    "imageResize": "Resize",
+    "imageWatermark": "Watermark",
+    "imageCollage": "Collage",
+    "imageCrop": "Crop",
+    "imageMemeGenerator": "Meme Generator",
+    "imageConverter": "Converter",
+    "blog": "Blog",
+    "contactUs": "Contact Us",
+    "openMenu": "Open menu"
+  },
+  "footer": {
+    "copyright": "© {{year}} THRJTech. All rights reserved.",
+    "aboutUs": "About Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "lang": {
+    "en": "EN",
+    "fr": "FR",
+    "es": "ES",
+    "ko": "KO"
+  }
+}

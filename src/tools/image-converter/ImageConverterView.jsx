@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useRef, useCallback, useEffect } from 'react';
 import JSZip from 'jszip';
 import './ImageConverter.css';
+import { useTranslation } from 'react-i18next';
 
 // ── Draggable + zoomable image viewport ─────────────────────────────────────
 function DraggablePreview({ src, alt }) {
@@ -161,6 +162,7 @@ export function ImageConverterView({
   const [openPanel, setOpenPanel] = useState('');
   const [previewOpen, setPreviewOpen] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation('imageConverter');
 
   useEffect(() => {
     if (outputUrls && outputUrls[currentIndex]) setPreviewOpen(true);
@@ -168,16 +170,15 @@ export function ImageConverterView({
 
   return (
     <div className="ic-view">
-      <h2 className="hero-title">Image Converter</h2>
+      <h2 className="hero-title">{t('hero.title')}</h2>
       <p className="hero-tagline">
-        Convert image(s) between JPG, PNG, WebP, AVIF, BMP, GIF, and ICO entirely 
-        in your browser — no uploads, no account required. <Link to="/blogs/image-converter-guide">Learn how to use the Image Converter →</Link>
+        {t('hero.tagline')}{' '}<Link to="/blogs/image-converter-guide">{t('hero.blogLink')}</Link>
       </p>
               
       <div className="ir-tip-banner">
-        <span className="ir-tip-text">Would you like to <b>crop</b> your image before converting your image?</span>
+        <span className="ir-tip-text">{t('hint.text')}</span>
         <button className="ir-tip-btn" onClick={() => navigate('/image-resizer')}>
-          Try Image Crop
+          {t('hint.btn')}
         </button>
       </div>
 
@@ -190,7 +191,7 @@ export function ImageConverterView({
             aria-expanded={openPanel === 'details'}
             type="button"
           >
-            Details
+            {t('tabs.details')}
           </button>
           <button
             className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
@@ -198,38 +199,38 @@ export function ImageConverterView({
             aria-expanded={openPanel === 'howitworks'}
             type="button"
           >
-            How it works
+            {t('tabs.howItWorks')}
           </button>
         </div>
 
         <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
           <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
-            <h3>What is Image Converter</h3>
-            <p>The Image Converter lets you convert images between common web formats — JPG, PNG, and WebP — directly in your browser. No file is ever sent to a server.</p>
+            <h3>{t('guide.toolTitle', { defaultValue: 'What is Image Converter' })}</h3>
+            <p>{t('guide.toolLead', { defaultValue: 'The Image Converter lets you convert images between common web formats — JPG, PNG, and WebP — directly in your browser. No file is ever sent to a server.' })}</p>
 
-            <h3>Supported Output Formats</h3>
+            <h3>{t('guide.outputFormatsTitle', { defaultValue: 'Supported Output Formats' })}</h3>
             <ul>
-              <li><strong>JPG</strong> — Lossy compression ideal for photographs. Produces smaller files at the cost of some quality.</li>
-              <li><strong>PNG</strong> — Lossless format that preserves every pixel. Supports transparency. Best for logos, screenshots, and graphics.</li>
-              <li><strong>WebP</strong> — Modern format by Google. Smaller files than JPG & PNG with great quality.</li>
-              <li><strong>AVIF</strong> — Next-gen format with superior compression. Supported in Chrome 93+, Firefox 93+, and Safari 16+.</li>
-              <li><strong>BMP</strong> — Uncompressed 24-bit bitmap. No quality loss, large file size. Best for compatibility with legacy software.</li>
-              <li><strong>GIF</strong> — Limited to 256 colors. Best for simple graphics and icons; not recommended for photographs.</li>
-              <li><strong>ICO</strong> — Windows icon format. Automatically generates 16×16, 32×32, 48×48, and 256×256 sizes in a single file. Ideal for favicons.</li>
+              <li><strong>{t('formats.jpg', { defaultValue: 'JPG' })}</strong> — {t('formats.jpgDesc', { defaultValue: 'Lossy compression ideal for photographs. Produces smaller files at the cost of some quality.' })}</li>
+              <li><strong>{t('formats.png', { defaultValue: 'PNG' })}</strong> — {t('formats.pngDesc', { defaultValue: 'Lossless format that preserves every pixel. Supports transparency. Best for logos, screenshots, and graphics.' })}</li>
+              <li><strong>{t('formats.webp', { defaultValue: 'WebP' })}</strong> — {t('formats.webpDesc', { defaultValue: 'Modern format by Google. Smaller files than JPG & PNG with great quality.' })}</li>
+              <li><strong>{t('formats.avif', { defaultValue: 'AVIF' })}</strong> — {t('formats.avifDesc', { defaultValue: 'Next-gen format with superior compression. Supported in modern browsers.' })}</li>
+              <li><strong>{t('formats.bmp', { defaultValue: 'BMP' })}</strong> — {t('formats.bmpDesc', { defaultValue: 'Uncompressed bitmap. Lossless, large file. Max compatibility.' })}</li>
+              <li><strong>{t('formats.gif', { defaultValue: 'GIF' })}</strong> — {t('formats.gifDesc', { defaultValue: '256-color format. Best for simple graphics, not photos.' })}</li>
+              <li><strong>{t('formats.ico', { defaultValue: 'ICO' })}</strong> — {t('formats.icoDesc', { defaultValue: 'Windows icon format. Automatically generates multiple sizes for favicons.' })}</li>
             </ul>
 
-            <h3>Supported Input Formats</h3>
-            <p>You can upload JPG, PNG, WebP, AVIF, GIF, BMP, ICO, SVG, and TIFF files. Animated GIFs are converted using the first frame only.</p>
+            <h3>{t('guide.inputFormatsTitle', { defaultValue: 'Supported Input Formats' })}</h3>
+            <p>{t('guide.inputFormatsBody', { defaultValue: 'You can upload JPG, PNG, WebP, AVIF, GIF, BMP, ICO, SVG, and TIFF files. Animated GIFs are converted using the first frame only.' })}</p>
 
-            <h3>How conversion works</h3>
-            <p>Your image is decoded in the browser, drawn onto an offscreen canvas, and exported to the target format. TIFF files are decoded using a lightweight JS library. For formats that don't support transparency (JPG, BMP, GIF), transparent areas are filled with white.</p>
+            <h3>{t('guide.howItWorksTitle', { defaultValue: 'How conversion works' })}</h3>
+            <p>{t('guide.howItWorksBody', { defaultValue: "Your image is decoded in the browser, drawn onto an offscreen canvas, and exported to the target format. TIFF files are decoded using a lightweight JS library. For formats that don’t support transparency (JPG, BMP, GIF), transparent areas are filled with white." })}</p>
 
-            <h3>FAQs</h3>
+            <h3>{t('guide.faqTitle', { defaultValue: 'FAQs' })}</h3>
             <ul>
-              <li><strong>Q:</strong> Does my image leave my browser? <strong>A:</strong> No. All processing is done locally; nothing is uploaded.</li>
-              <li><strong>Q:</strong> Why is AVIF not working? <strong>A:</strong> AVIF encoding requires Chrome 93+, Firefox 93+, or Safari 16+. Other browsers will show an error.</li>
-              <li><strong>Q:</strong> What happens to transparency when converting to JPG, BMP, or GIF? <strong>A:</strong> Transparent areas are filled with white.</li>
-              <li><strong>Q:</strong> Why does GIF look bad for photos? <strong>A:</strong> GIF supports only 256 colors, so photos with many colors will appear degraded. Use PNG or WebP for photos.</li>
+              <li><strong>{t('guide.faq.q1', { defaultValue: 'Does my image leave my browser?' })}</strong> {t('guide.faq.a1', { defaultValue: 'No. All processing is done locally; nothing is uploaded.' })}</li>
+              <li><strong>{t('guide.faq.q2', { defaultValue: 'Why is AVIF not working?' })}</strong> {t('guide.faq.a2', { defaultValue: 'AVIF encoding requires a modern browser; older browsers may not support it.' })}</li>
+              <li><strong>{t('guide.faq.q3', { defaultValue: 'What happens to transparency when converting to JPG, BMP, or GIF?' })}</strong> {t('guide.faq.a3', { defaultValue: 'Transparent areas are filled with white.' })}</li>
+              <li><strong>{t('guide.faq.q4', { defaultValue: 'Why does GIF look bad for photos?' })}</strong> {t('guide.faq.a4', { defaultValue: 'GIF supports only 256 colors; use PNG or WebP for photos.' })}</li>
             </ul>
           </div>
 
@@ -308,8 +309,8 @@ export function ImageConverterView({
               <circle cx="8.5" cy="8.5" r="1.5"/>
               <polyline points="21 15 16 10 5 21"/>
             </svg>
-            <span className="ic-drop-text">Drag &amp; drop images here, or click to select</span>
-            <span className="ic-drop-hint">Supports JPG, PNG, WebP, AVIF, GIF, BMP, and more</span>
+            <span className="ic-drop-text">{t('dropZone.text')}</span>
+            <span className="ic-drop-hint">{t('dropZone.hint')}</span>
           </div>
         )}
         <input
@@ -333,10 +334,10 @@ export function ImageConverterView({
             className="ic-change-btn"
             onClick={() => fileInputRef.current && fileInputRef.current.click()}
           >
-            {mainImages.length === 1 ? 'Change image' : 'Change images'}
+            {mainImages.length === 1 ? t('fileRow.changeOne') : t('fileRow.changeMany')}
           </button>
           <button type="button" className="ic-clear-btn" onClick={handleClear}>
-            Clear
+            {t('fileRow.clear')}
           </button>
         </div>
       )}
@@ -358,14 +359,14 @@ export function ImageConverterView({
                   onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
                   disabled={currentIndex === 0}
                 >
-                  Prev
+              {t('popup.prev')}
                 </button>
                 <button
                   className="ic-btn ic-popup-nav-btn ic-popup-nav-next"
                   onClick={() => setCurrentIndex((i) => Math.min(outputUrls.length - 1, i + 1))}
                   disabled={currentIndex >= outputUrls.length - 1}
                 >
-                  Next
+              {t('popup.next')}
                 </button>
               </>
             )}
@@ -375,7 +376,7 @@ export function ImageConverterView({
 
       {/* ── Format selector ── */}
       <div className="ic-format-section">
-        <p className="ic-format-label">Convert to:</p>
+        <p className="ic-format-label">{t('format.label')}</p>
         <div className="ic-format-buttons">
           {availableFormats.map((fmt) => (
             <button
@@ -394,7 +395,7 @@ export function ImageConverterView({
       {/* ── ICO size picker ── */}
       {outputFormat === 'ICO' && (
         <div className="ic-ico-sizes">
-          <p className="ic-ico-sizes-label">Output size:</p>
+          <p className="ic-ico-sizes-label">{t('icoSize.label')}</p>
           <div className="ic-ico-sizes-options">
             {[16, 32, 48, 256].map((sz) => (
               <label key={sz} className="ic-ico-size-check">
@@ -419,10 +420,10 @@ export function ImageConverterView({
           disabled={!mainImages.length || status === 'processing'}
         >
           {status === 'processing'
-            ? 'Converting…'
+            ? t('actions.converting')
             : mainImages.length > 1
-              ? `Convert All (${mainImages.length})`
-              : 'Convert'}
+              ? t('actions.convertAll', { count: mainImages.length })
+              : t('actions.convert')}
         </button>
         {mainImages.length <= 1 && outputUrls && outputUrls[0] && (
           <button
@@ -436,7 +437,7 @@ export function ImageConverterView({
               link.remove();
             }}
           >
-            Download
+            {t('actions.download')}
           </button>
         )}
         {mainImages.length > 1 && outputUrls && outputUrls.some(Boolean) && (
@@ -460,7 +461,7 @@ export function ImageConverterView({
               link.remove();
             }}
           >
-            Download All
+            {t('actions.downloadAll')}
           </button>
         )}
       </div>
@@ -473,88 +474,88 @@ export function ImageConverterView({
       {/* ── Guide: Why Image Formats Matter ── */}
       <section className="ic-guide ic-guide-convert">
         <div className="ic-guide-article">
-          <h3 className="ic-guide-title">Why Image Formats Matter (And How to Convert Images the Right Way)</h3>
+          <h3 className="ic-guide-title">{t('guide.title', { defaultValue: 'Why Image Formats Matter (And How to Convert Images the Right Way)' })}</h3>
 
-          <p className="ic-lead">You try to upload an image… and suddenly:</p>
+          <p className="ic-lead">{t('guide.introLead', { defaultValue: 'You try to upload an image… and suddenly:' })}</p>
           <ul className="ic-bullet-list">
-            <li>“File format not supported”</li>
-            <li>Image won’t open on another device</li>
-            <li>File size is too large</li>
+            <li>{t('guide.introBullet1', { defaultValue: '"File format not supported"' })}</li>
+            <li>{t('guide.introBullet2', { defaultValue: "Image won’t open on another device" })}</li>
+            <li>{t('guide.introBullet3', { defaultValue: 'File size is too large' })}</li>
           </ul>
 
-          <p>These issues usually come down to one thing: <strong>image format</strong>. In this guide you'll learn why formats exist, when to convert them, which format to choose, and how to convert without losing quality.</p>
+          <p>{t('guide.introConclusion', { defaultValue: "These issues usually come down to one thing: image format. In this guide you’ll learn why formats exist, when to convert them, which format to choose, and how to convert without losing quality." })}</p>
 
 
           <section className='ic-section'>
-          <h4>Why Do Image Formats Even Exist?</h4>
-          <p>Different formats exist because they serve different purposes: performance (smaller file size), quality (more detail), and compatibility (works everywhere). One format rarely fits all situations.</p>
+          <h4>{t('guide.why.heading', { defaultValue: 'Why Do Image Formats Even Exist?' })}</h4>
+          <p>{t('guide.why.body', { defaultValue: 'Different formats exist because they serve different purposes: performance (smaller file size), quality (more detail), and compatibility (works everywhere). One format rarely fits all situations.' })}</p>
           </section>
 
           <section className='ic-section'>
-          <h4>What Is Image Conversion?</h4>
-          <p>Image conversion means changing an image from one format to another (for example <em>PNG → JPG</em> or <em>HEIC → JPG</em>). The image content stays the same, but file size, quality, and compatibility can change.</p>
+          <h4>{t('guide.whatIs.heading', { defaultValue: 'What Is Image Conversion?' })}</h4>
+          <p>{t('guide.whatIs.body', { defaultValue: 'Image conversion means changing an image from one format to another (for example PNG → JPG or HEIC → JPG). The image content stays the same, but file size, quality, and compatibility can change.' })}</p>
           </section>
 
           <section className='ic-section'>
-          <h4>When Do You Need to Convert Images?</h4>
+          <h4>{t('guide.whenToConvert.heading', { defaultValue: 'When Do You Need to Convert Images?' })}</h4>
           <ol className="ic-quick-steps">
-            <li><strong>Upload Errors:</strong> Some platforms accept only specific formats.</li>
-            <li><strong>File Size Too Large:</strong> Convert heavy formats like PNG to JPG/WebP to reduce size.</li>
-            <li><strong>Device Compatibility:</strong> Convert HEIC from iPhones to JPG for wider support.</li>
-            <li><strong>Web Optimization:</strong> Modern sites prefer WebP for smaller files and faster loading.</li>
+            <li>{t('guide.whenToConvert.item1', { defaultValue: 'Upload Errors: Some platforms accept only specific formats.' })}</li>
+            <li>{t('guide.whenToConvert.item2', { defaultValue: 'File Size Too Large: Convert heavy formats like PNG to JPG/WebP to reduce size.' })}</li>
+            <li>{t('guide.whenToConvert.item3', { defaultValue: 'Device Compatibility: Convert HEIC from iPhones to JPG for wider support.' })}</li>
+            <li>{t('guide.whenToConvert.item4', { defaultValue: 'Web Optimization: Modern sites prefer WebP for smaller files and faster loading.' })}</li>
           </ol>
           </section>
 
           <section className='ic-section'>
-          <h4>Most Common Image Formats (Quick Guide)</h4>
+          <h4>{t('guide.formats.heading', { defaultValue: 'Most Common Image Formats (Quick Guide)' })}</h4>
           <div className="ic-format-grid">
-            <div className="ic-format-pill ic-pill-jpg">JPEG (JPG)<span>Best for photos — small files, no transparency</span></div>
-            <div className="ic-format-pill ic-pill-png">PNG<span>High quality, supports transparency</span></div>
-            <div className="ic-format-pill ic-pill-webp">WebP<span>Modern — smaller size with good quality</span></div>
-            <div className="ic-format-pill ic-pill-heic">HEIC<span>Used by iPhones — efficient but limited support</span></div>
+            <div className="ic-format-pill ic-pill-jpg">{t('guide.formats.jpg', { defaultValue: 'JPEG (JPG) — Best for photos — small files, no transparency' })}</div>
+            <div className="ic-format-pill ic-pill-png">{t('guide.formats.png', { defaultValue: 'PNG — High quality, supports transparency' })}</div>
+            <div className="ic-format-pill ic-pill-webp">{t('guide.formats.webp', { defaultValue: 'WebP — Modern — smaller size with good quality' })}</div>
+            <div className="ic-format-pill ic-pill-heic">{t('guide.formats.heic', { defaultValue: 'HEIC — Used by iPhones — efficient but limited support' })}</div>
           </div>
           </section>
 
           <section className='ic-section'>
-          <h4>Best Practices for Converting Images</h4>
+          <h4>{t('guide.bestPractices.heading', { defaultValue: 'Best Practices for Converting Images' })}</h4>
           <ul className="ic-checklist">
-            <li>Choose format by use case — WebP for web, JPG for photos, PNG for graphics.</li>
-            <li>Avoid repeated conversions — always convert from the original.</li>
-            <li>Understand lossy vs lossless: JPG is lossy, PNG is lossless.</li>
-            <li>Balance quality and size — pick a middle ground.</li>
-            <li>Use a reliable tool that preserves quality and supports many formats.</li>
+            <li>{t('guide.bestPractices.item1', { defaultValue: 'Choose format by use case — WebP for web, JPG for photos, PNG for graphics.' })}</li>
+            <li>{t('guide.bestPractices.item2', { defaultValue: 'Avoid repeated conversions — always convert from the original.' })}</li>
+            <li>{t('guide.bestPractices.item3', { defaultValue: 'Understand lossy vs lossless: JPG is lossy, PNG is lossless.' })}</li>
+            <li>{t('guide.bestPractices.item4', { defaultValue: 'Balance quality and size — pick a middle ground.' })}</li>
+            <li>{t('guide.bestPractices.item5', { defaultValue: 'Use a reliable tool that preserves quality and supports many formats.' })}</li>
           </ul>
           </section>
 
           <section className='ic-section'>
-          <h4>Common Mistakes to Avoid</h4>
+          <h4>{t('guide.mistakes.heading', { defaultValue: 'Common Mistakes to Avoid' })}</h4>
           <ul className="ic-xlist">
-            <li>Converting PNG → JPG (losing transparency)</li>
-            <li>Repeatedly converting the same file</li>
-            <li>Using the wrong format for the use case</li>
-            <li>Ignoring quality settings</li>
-            <li>Uploading huge images without optimization</li>
+            <li>{t('guide.mistakes.item1', { defaultValue: 'Converting PNG → JPG (losing transparency)' })}</li>
+            <li>{t('guide.mistakes.item2', { defaultValue: 'Repeatedly converting the same file' })}</li>
+            <li>{t('guide.mistakes.item3', { defaultValue: 'Using the wrong format for the use case' })}</li>
+            <li>{t('guide.mistakes.item4', { defaultValue: 'Ignoring quality settings' })}</li>
+            <li>{t('guide.mistakes.item5', { defaultValue: 'Uploading huge images without optimization' })}</li>
           </ul>
           </section>
 
           <section className='ic-section'>
-          <h4>Step-by-Step: How to Convert an Image</h4>
+          <h4>{t('guide.stepByStep.heading', { defaultValue: 'Step-by-Step: How to Convert an Image' })}</h4>
           <ol className="ic-steps-compact">
-            <li>Upload your image</li>
-            <li>Select output format</li>
-            <li>Adjust quality settings (if available)</li>
-            <li>Convert the image</li>
-            <li>Download the result</li>
+            <li>{t('guide.stepByStep.step1', { defaultValue: 'Upload your image' })}</li>
+            <li>{t('guide.stepByStep.step2', { defaultValue: 'Select output format' })}</li>
+            <li>{t('guide.stepByStep.step3', { defaultValue: 'Adjust quality settings (if available)' })}</li>
+            <li>{t('guide.stepByStep.step4', { defaultValue: 'Convert the image' })}</li>
+            <li>{t('guide.stepByStep.step5', { defaultValue: 'Download the result' })}</li>
           </ol>
           </section>
 
-          <p className="ic-conclusion">Image conversion isn't just technical — it's essential for compatibility, performance, and usability. By picking the right format you can avoid upload errors, improve speed, and keep good quality.</p>
+          <p className="ic-conclusion">{t('guide.conclusion', { defaultValue: "Image conversion isn’t just technical — it’s essential for compatibility, performance, and usability. By picking the right format you can avoid upload errors, improve speed, and keep good quality." })}</p>
         </div>
 
         <aside className="ic-guide-aside">
           <div className="ic-aside-card">
-            <h5>Quick Actions</h5>
-            <p className="muted">Ready to convert? Jump straight to the tool.</p>
+            <h5>{t('guide.asideTitle', { defaultValue: 'Quick Actions' })}</h5>
+            <p className="muted">{t('guide.asideDesc', { defaultValue: 'Ready to convert? Jump straight to the tool.' })}</p>
             <button
               type="button"
               className="ic-guide-cta"
@@ -562,15 +563,15 @@ export function ImageConverterView({
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              Use the Image Converter Tool
+              {t('guide.ctaBtn', { defaultValue: 'Use the Image Converter Tool' })}
             </button>
 
-            <h6>Real-World Use Cases</h6>
+            <h6>{t('guide.useCases.heading', { defaultValue: 'Real-World Use Cases' })}</h6>
             <ul className="ic-mini-list">
-              <li>Website optimization — PNG → WebP</li>
-              <li>Social uploads — convert to supported formats</li>
-              <li>Business docs — ensure cross-system compatibility</li>
-              <li>iPhone photos — HEIC → JPG for sharing</li>
+              <li>{t('guide.useCases.item1', { defaultValue: 'Website optimization — PNG → WebP' })}</li>
+              <li>{t('guide.useCases.item2', { defaultValue: 'Social uploads — convert to supported formats' })}</li>
+              <li>{t('guide.useCases.item3', { defaultValue: 'Business docs — ensure cross-system compatibility' })}</li>
+              <li>{t('guide.useCases.item4', { defaultValue: 'iPhone photos — HEIC → JPG for sharing' })}</li>
             </ul>
           </div>
         </aside>

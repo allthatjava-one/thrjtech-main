@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "title": "Herramientas en línea,\nSin complicaciones",
+    "subtitle": "Utilidades gratuitas, rápidas y respetuosas de la privacidad que funcionan directamente en su navegador."
+  },
+  "popularGuides": {
+    "heading": "Guías populares",
+    "jsonFormatter": "Formateador JSON — Formatear, validar y explorar JSON",
+    "imageCrop": "Recortar imagen — Recorte y encuadre sus imágenes",
+    "memeGenerator": "Generador de memes — Cree memes para compartir en segundos",
+    "pdfCompressor": "Compresor PDF — Reduzca el tamaño de archivos PDF rápidamente",
+    "imageCollage": "Collage de imágenes — Cree hermosos collages de fotos",
+    "pdfMerger": "Fusionador PDF — Combine múltiples PDFs en uno"
+  },
+  "developerTools": {
+    "heading": "Herramientas para desarrolladores",
+    "jsonFormatterName": "Formateador JSON",
+    "jsonFormatterDesc": "Formatee, valide y embellezca JSON instantáneamente en su navegador. Soporta resaltado de sintaxis, minificación e informes de errores claros.",
+    "regexTesterName": "Tester de Regex",
+    "regexTesterDesc": "Pruebe expresiones regulares con resaltado de coincidencias en vivo y soporte de reemplazo. Itere rápidamente con retroalimentación en tiempo real."
+  },
+  "imageTools": {
+    "heading": "Herramientas de imagen",
+    "imageCropName": "Recortar imagen",
+    "imageCropDesc": "Recorte cualquier imagen al tamaño y relación de aspecto exactos que necesita. Soporta recorte libre y preajustes convenientes como 1:1, 16:9 y 4:5.",
+    "memeGeneratorName": "Generador de memes",
+    "memeGeneratorDesc": "Agregue capas de texto en negrita sobre cualquier imagen, arrástrelas a la posición deseada y descargue su meme personalizado como PNG."
+  },
+  "cards": {
+    "howItWorks": "Cómo funciona",
+    "pdfCompressor": {
+      "title": "Compresor PDF",
+      "btn": "Abrir Compresor PDF",
+      "description": "Reduzca el tamaño de sus archivos PDF sin sacrificar calidad. Cargue un documento y descargue una versión más pequeña en segundos — sin cuenta requerida, sin marcas de agua.",
+      "feature1": "Comprima PDFs hasta un 90% más pequeños",
+      "feature2": "Niveles de compresión ajustables (bajo, medio, alto)",
+      "feature3": "Soporta PDFs de múltiples páginas de cualquier tamaño",
+      "feature4": "100% gratuito, sin registro",
+      "step1": "1. Arrastre y suelte o busque su PDF",
+      "step2": "2. Revise el archivo, luego haga clic en Comprimir PDF",
+      "step3": "3. Se carga y comprime de forma segura en segundos",
+      "step4": "4. Descargue su PDF comprimido"
+    },
+    "pdfMerger": {
+      "title": "Fusionador PDF",
+      "btn": "Abrir Fusionador PDF",
+      "description": "Combine múltiples archivos PDF en un solo documento en segundos. Arrastre, suelte y fusione — sin cuenta requerida, sin marcas de agua.",
+      "feature1": "Fusione PDFs ilimitados gratis",
+      "feature2": "Reordene archivos antes de fusionar",
+      "feature3": "Sin marcas de agua, sin registro",
+      "feature4": "Rápido, seguro y respetuoso de la privacidad",
+      "feature5": "Comprime automáticamente el archivo fusionado (Opcional)",
+      "step1": "1. Arrastre y suelte o busque sus PDFs",
+      "step2": "2. Organice el orden de sus archivos",
+      "step3": "3. Haga clic en Fusionar PDF para combinar",
+      "step4": "4. Descargue su PDF fusionado"
+    },
+    "pdfConverter": {
+      "title": "Conversor PDF",
+      "btn": "Abrir Conversor PDF",
+      "description": "Convierta páginas PDF en imágenes JPG o PNG rápidamente — cargue, elija el formato y descargue los resultados sin registrarse.",
+      "feature1": "Convierta PDF a JPG o PNG",
+      "feature2": "Conversiones rápidas con un solo clic",
+      "feature3": "Vista previa y descarga de imágenes convertidas",
+      "feature4": "Almacenamiento temporal con limpieza automática",
+      "feature5": "Sin cuenta ni marcas de agua",
+      "step1": "1. Arrastre y suelte o busque su PDF",
+      "step2": "2. Elija JPG o PNG",
+      "step3": "3. Inicie la conversión y observe el progreso",
+      "step4": "4. Descargue las imágenes convertidas"
+    },
+    "jsonFormatter": {
+      "title": "Formateador JSON",
+      "btn": "Abrir Formateador JSON",
+      "description": "Valide, formatee y embellezca sus datos JSON rápidamente. Vea errores instantáneamente, obtenga salida legible y copie o descargue el resultado.",
+      "feature1": "Valide y formatee JSON instantáneamente",
+      "feature2": "Pegue, cargue o arrastre archivos JSON",
+      "feature3": "Resalta errores con números de línea",
+      "feature4": "Descargue o copie la salida formateada",
+      "step1": "1. Pegue o cargue sus datos JSON",
+      "step2": "2. Haga clic en Validar y Formatear JSON",
+      "step3": "3. Vea instantáneamente errores con números de línea",
+      "step4": "4. Descargue o copie el JSON embellecido"
+    },
+    "imageWatermarker": {
+      "title": "Marca de agua en imagen",
+      "btn": "Abrir Marca de agua",
+      "description": "Agregue una marca de agua de texto o logotipo a sus imágenes en segundos. Arrastre, suelte y descargue — todo en su navegador.",
+      "feature1": "Agregue texto o logotipo como marca de agua",
+      "feature2": "Vista previa antes de descargar",
+      "feature3": "Carga de imágenes por arrastre",
+      "feature4": "Sin marcas de agua ni registro",
+      "feature5": "Funciona con PNG, JPG y más",
+      "step1": "1. Arrastre y suelte o busque su imagen",
+      "step2": "2. Ingrese texto de marca de agua o cargue logotipo",
+      "step3": "3. Vista previa de la imagen con marca de agua",
+      "step4": "4. Descargue su imagen con marca de agua"
+    },
+    "imageResizer": {
+      "title": "Redimensionador de imagen",
+      "btn": "Abrir Redimensionador",
+      "description": "Redimensione sus imágenes por porcentaje o dimensiones personalizadas. Rápido, respetuoso de la privacidad y funciona en su navegador.",
+      "feature1": "Redimensione por porcentaje o dimensiones",
+      "feature2": "Mantiene la relación de aspecto (opcional)",
+      "feature3": "Funciona con PNG, JPG y más",
+      "feature4": "Sin marcas de agua, sin registro",
+      "feature5": "Vista previa antes de descargar",
+      "step1": "1. Arrastre y suelte o busque su imagen",
+      "step2": "2. Elija el modo y ajuste las dimensiones",
+      "step3": "3. Vista previa de la imagen redimensionada",
+      "step4": "4. Descargue su imagen redimensionada"
+    },
+    "imageCollage": {
+      "title": "Collage de imágenes",
+      "btn": "Abrir Collage de imágenes",
+      "description": "Organice múltiples imágenes en un collage de cuadrícula limpio al instante. Arrastre, suelte, reordene y descargue — todo en su navegador.",
+      "feature1": "Combine múltiples imágenes en un collage de cuadrícula",
+      "feature2": "Arrastre y suelte para cargar y reordenar",
+      "feature3": "Se expande automáticamente para ajustar todas las imágenes",
+      "feature4": "Establezca ancho y alto personalizados",
+      "feature5": "Sin marcas de agua, sin registro",
+      "step1": "1. Arrastre y suelte o busque sus imágenes",
+      "step2": "2. Organice imágenes y establezca el diseño de cuadrícula",
+      "step3": "3. Vista previa de su collage al instante",
+      "step4": "4. Descargue su collage terminado"
+    },
+    "imageConverter": {
+      "title": "Conversor de imágenes",
+      "btn": "Abrir Conversor de imágenes",
+      "description": "Convierta imágenes entre JPG, PNG y WebP al instante en su navegador. Suelte su imagen, elija un formato y descargue.",
+      "feature1": "Convierta entre JPG, PNG y WebP",
+      "feature2": "Detecta automáticamente el formato de entrada",
+      "feature3": "PNGs transparentes obtienen fondo blanco al exportar a JPG",
+      "feature4": "100% local — los archivos nunca salen de su navegador",
+      "step1": "1. Arrastre y suelte o busque sus imágenes",
+      "step2": "2. Elija el formato de salida (JPG, PNG o WebP)",
+      "step3": "3. Vista previa de su imagen convertida",
+      "step4": "Opcional — Convierta múltiples imágenes a la vez"
+    }
+  }
+}

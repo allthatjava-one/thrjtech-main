@@ -1,0 +1,163 @@
+{
+  "hero": {
+    "title": "Recortador de imagen",
+    "tagline": "Recorte cualquier imagen a la dimensión o relación de aspecto exacta que necesite.",
+    "blogLink": "Aprenda a recortar imágenes →"
+  },
+  "hint": {
+    "text": "¿Necesita redimensionar después de recortar?",
+    "btn": "Probar Redimensionador"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "howItWorksSteps": {
+    "step1": "Cargue su imagen.",
+    "step2": "Ajuste el área de recorte.",
+    "step3": "Elija relación de aspecto o tamaño personalizado.",
+    "step4": "Previsualice y descargue la imagen recortada."
+  },
+  "dropZone": {
+    "text": "Arrastre y suelte su imagen aquí",
+    "or": "o",
+    "browse": "Explorar imagen"
+  },
+  "controls": {
+    "aspectRatio": "Relación de aspecto",
+    "free": "Libre",
+    "custom": "Personalizado",
+    "width": "Ancho",
+    "height": "Alto",
+    "zoom": "Zoom",
+    "rotate": "Rotar",
+    "rotation": "Rotación",
+    "rotateLeft": "⟲",
+    "rotateRight": "⟳",
+    "rotateLeftAria": "girar a la izquierda",
+    "rotateRightAria": "girar a la derecha",
+    "degrees": "{{rotación}}°",
+    "flip": "Voltear",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical",
+    "aspect": "Aspecto",
+    "ratio": "Relación",
+    "ratioSeparator": ":"
+  },
+  "buttons": {
+    "changeImage": "Cambiar imagen",
+    "clear": "Borrar",
+    "preview": "Vista previa",
+    "download": "Descargar"
+  },
+  "fileRow": {
+    "loaded": "Imagen cargada",
+    "change": "Cambiar imagen",
+    "clear": "Borrar"
+  },
+  "aspectOptions": {
+    "custom": "Usar relación de aspecto personalizada",
+    "profile": "1:1 (Perfil)",
+    "standard": "4:3 (Estándar)",
+    "widescreen": "16:9 (pantalla ancha/YouTube)",
+    "story": "9:16 (Historia / Carretes)",
+    "instagram": "4:5 (publicación de Instagram)",
+    "pinterest": "2:3 (Pin de Pinterest)",
+    "blog": "3:1 (Blog destacado)",
+    "facebook": "1.91:1 (publicación de Facebook)"
+  },
+  "actions": {
+    "preview": "Vista previa",
+    "processing": "Tratamiento...",
+    "reset": "Restablecimiento",
+    "download": "Descargar"
+  },
+  "sendToMeme": {
+    "text": "¿Quieres poner un texto en una imagen recortada?",
+    "btn": "Enviar al generador de memes"
+  },
+  "guide": {
+    "title": "Cómo recortar imágenes a la perfección (sin perder calidad ni composición)",
+    "lead": "Recortar una imagen es una de las ediciones más sencillas que puedes realizar, pero tiene un gran impacto en el aspecto y la comunicación de tu imagen.",
+    "learnItems": {
+      "item1": "Cómo funciona el recorte de imágenes",
+      "item2": "Cuando usarlo",
+      "item3": "Cómo cosechar adecuadamente sin arruinar la calidad"
+    },
+    "whatIs": {
+      "heading": "¿Qué es el recorte de imágenes?",
+      "body": "El recorte de imágenes es el proceso de eliminar áreas exteriores no deseadas de una imagen para mejorar la composición o ajustar el tamaño. En lugar de cambiar el tamaño de toda la imagen, recortar le permite recortar partes innecesarias, enfocarse en el sujeto y cambiar la relación de aspecto.",
+      "analogy": "Piense en ello como si estuviera enmarcando su imagen una vez tomada."
+    },
+    "why": {
+      "heading": "Por qué es importante el cultivo",
+      "focus": "Centrarse en el sujeto: recortar elimina distracciones y resalta la parte más importante de la imagen.",
+      "composition": "Mejorar la composición: utilice el recorte para equilibrar la imagen, aplique la regla de los tercios y cree un diseño más limpio.",
+      "platform": "Requisitos de ajuste de la plataforma: diferentes plataformas necesitan diferentes tamaños; recorte a cuadrado, vertical u horizontal para evitar distorsiones."
+    },
+    "croppingVsResizing": {
+      "heading": "Recortar versus cambiar el tamaño",
+      "col1": "Característica",
+      "col2": "Recortar",
+      "col3": "Cambiar el tamaño",
+      "row1col1": "que hace",
+      "row1col2": "Elimina parte de la imagen.",
+      "row1col3": "Escala toda la imagen",
+      "row2col1": "Mantiene el contenido completo",
+      "row2col2": "No",
+      "row2col3": "Sí",
+      "row3col1": "Cambia la composición",
+      "row3col2": "Sí",
+      "row3col3": "No",
+      "row4col1": "Caso de uso",
+      "row4col2": "Enfoque/encuadre",
+      "row4col3": "Tamaño/dimensiones del archivo",
+      "tip": "Mejor práctica: recortar primero → luego cambiar el tamaño si es necesario."
+    },
+    "bestPractices": {
+      "heading": "Mejores prácticas para el cultivo",
+      "item1": "Mantenga el sujeto despejado: asegúrese de que el sujeto principal esté centrado o bien colocado y que no se corte de manera incómoda.",
+      "item2": "Mantenga la relación de aspecto: utilice proporciones fijas (1:1, 16:9, 4:5) cuando apunte a plataformas específicas.",
+      "item3": "No recorte demasiado: el recorte excesivo reduce la resolución y puede hacer que las imágenes salgan borrosas.",
+      "item4": "Deje espacio para respirar: evite cultivos muy ajustados; deje un ligero espacio alrededor del sujeto para lograr una apariencia natural.",
+      "item5": "Conservar el original: guarde siempre la imagen original; Las áreas cultivadas no se pueden recuperar."
+    },
+    "mistakes": {
+      "heading": "Errores comunes a evitar",
+      "item1": "❌ Cortar partes importantes (caras, bordes, texto)",
+      "item2": "❌ Recortar sin propósito",
+      "item3": "❌ Ignorar la relación de aspecto",
+      "item4": "❌ Recorte excesivo de imágenes de baja resolución",
+      "item5": "❌ Uso de tamaños de recorte aleatorios en todas las plataformas"
+    },
+    "stepByStep": {
+      "heading": "Paso a paso: cómo recortar una imagen",
+      "step1": "Sube tu imagen",
+      "step2": "Seleccione el área que desea conservar",
+      "step3": "Ajustar el cuadro de recorte (arrastrar bordes)",
+      "step4": "Elija la relación de aspecto (opcional)",
+      "step5": "Aplicar cultivo",
+      "step6": "Descarga la imagen final"
+    },
+    "useCases": {
+      "heading": "Casos de uso reales",
+      "social": "📱 Publicaciones en redes sociales: recorta en cuadrado o vertical para mejorar la participación.",
+      "website": "🌐 Imágenes del sitio web: elimine el espacio innecesario y haga que las imágenes sean consistentes en todas las páginas.",
+      "profile": "👤 Imágenes de perfil: recorta bien alrededor de la cara y céntrala para una mejor visibilidad.",
+      "product": "🛍️ Imágenes del producto: elimine el desorden del fondo y resalte el producto con claridad."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "¿El recorte reduce la calidad de la imagen?",
+      "a1": "Sí, porque se eliminan los píxeles, pero si se hace con cuidado, la pérdida de calidad no suele ser perceptible.",
+      "q2": "¿Puedo deshacer el recorte?",
+      "a2": "Solo si su herramienta admite la edición no destructiva o si conservó la imagen original.",
+      "q3": "¿Cuál es la mejor relación de aspecto?",
+      "a3": "Depende del uso: Instagram → 1:1 o 4:5; Youtube → 16:9; Sitios web → varía.",
+      "q4": "¿Es mejor recortar que cambiar el tamaño?",
+      "a4": "Sirven para diferentes propósitos: recortar cambia la composición, cambiar el tamaño cambia las dimensiones."
+    },
+    "conclusion": "Recortar imágenes es una forma sencilla pero poderosa de mejorar la composición, resaltar contenido importante y hacer que las imágenes se adapten a cualquier plataforma. Utilice las técnicas adecuadas para convertir una imagen normal en una limpia y de aspecto profesional.",
+    "ctaBtn": "Pruebe la herramienta Recortar imagen →"
+  }
+}

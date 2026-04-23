@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import './BlogPage.css'
@@ -21,6 +22,7 @@ function naiveMarkdownToHtml(md) {
 }
 
 export default function BlogPage() {
+  const { t } = useTranslation('blogs')
   const { slug } = useParams()
   const [createdAt, setCreatedAt] = useState(null)
   const [content, setContent] = useState(null)
@@ -55,14 +57,14 @@ export default function BlogPage() {
       <main className="main">
         <div className="container">
           <div style={{ marginBottom: '1rem' }}>
-            <Link to="/blogs">← Back to Blog</Link>
+            <Link to="/blogs">{t('back')}</Link>
           </div>
           <article className="card">
-            <div style={{ color: '#000000' }}>Created at: {new Date(createdAt).toLocaleString()}</div>
+            <div style={{ color: '#000000' }}>{t('createdAt', { date: new Date(createdAt).toLocaleString() })}</div>
             {error
-              ? <p style={{ color: '#dc2626' }}>Error: {error}</p>
+              ? <p style={{ color: '#dc2626' }}>{t('errorArticle', { error })}</p>
               : <>
-                  <div dangerouslySetInnerHTML={{ __html: content || '<p>Loading…</p>' }} />
+                  <div dangerouslySetInnerHTML={{ __html: content || `<p>${t('loadingArticle')}</p>` }} />
                 </>
             }
           </article>

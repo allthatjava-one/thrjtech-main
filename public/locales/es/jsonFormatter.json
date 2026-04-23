@@ -1,0 +1,192 @@
+{
+  "hero": {
+    "title": "Formateador JSON",
+    "tagline": "Valide y formatee JSON al instante en su navegador con resaltado y mensajes de error claros.",
+    "blogLink": "Aprenda a formatear JSON →",
+    "icon": "{}"
+  },
+  "hint": {
+    "text": "¿Necesita probar patrones de texto también?",
+    "btn": "Probar Tester Regex"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es el formateo JSON?",
+      "body": "El formateo JSON toma JSON válido o casi válido y lo reestructura con sangría y saltos de línea consistentes para mejorar la legibilidad."
+    },
+    "whatItDoes": {
+      "heading": "Qué hace",
+      "item1": "Valida sintaxis JSON y señala errores.",
+      "item2": "Embellece JSON con sangría consistente.",
+      "item3": "Minifica JSON cuando necesita una salida compacta."
+    },
+    "usefulWhen": {
+      "heading": "Útil cuando",
+      "item1": "depura respuestas de API.",
+      "item2": "limpia archivos de configuración.",
+      "item3": "comparte JSON legible con su equipo."
+    },
+    "whenToUse": {
+      "heading": "Cuando usar JSON",
+      "body": "Utilice JSON cuando necesite una forma simple e interoperable de serializar datos estructurados para su transmisión o almacenamiento, particularmente en contextos web donde JavaScript está involucrado en uno o ambos extremos."
+    },
+    "howFormatterWorks": {
+      "heading": "Cómo funciona el formateador JSON",
+      "body": "El formateador analiza la entrada sin formato como JSON (usando el JSON.parse integrado del navegador) y luego la serializa nuevamente con JSON.stringify usando un nivel de sangría configurable. Si el análisis falla, se detecta el error y se informa el número de línea aproximado del problema."
+    },
+    "prettyFormat": {
+      "heading": "JSON en formato bonito",
+      "body": "JSON con una bonita impresión inserta saltos de línea entre pares clave-valor y matrices, y sangra objetos y matrices anidados. Esto hace que la estructura sea inmediatamente visible sin cambiar los datos."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿El formato cambia los datos?",
+      "a1": "R: No, el formato sólo cambia los espacios en blanco; Todos los valores y la estructura siguen siendo idénticos.",
+      "q2": "P: ¿Puede el formateador reparar JSON roto?",
+      "a2": "R: No: informa la línea aproximada del error pero no puede reparar la entrada con formato incorrecto.",
+      "q3": "P: ¿Qué sangría se utiliza?",
+      "a3": "R: Dos espacios, que es la convención más utilizada para JSON.",
+      "q4": "P: ¿Se procesa el JSON en mi dispositivo?",
+      "a4": "R: Sí, todo el análisis y formateo se ejecuta en el navegador; no se envían datos a un servidor.",
+      "q5": "P: ¿Por qué el formateador informa un error en una línea diferente a la esperada?",
+      "a5": "R: Los analizadores JSON a menudo continúan después de un error antes de fallar; la línea informada es la mejor aproximación que puede proporcionar el analizador."
+    }
+  },
+  "howItWorks": {
+    "step1": "Pegue o cargue su JSON.",
+    "step2": "Haga clic en Validar y formatear.",
+    "step3": "Revise errores o la salida embellecida.",
+    "step4": "Copie o descargue el resultado."
+  },
+  "inputLabel": "Entrada JSON",
+  "outputLabel": "Salida formateada",
+  "placeholder": "Pegue JSON aquí...",
+  "validateBtn": "Validar y formatear JSON",
+  "minifyBtn": "Minificar",
+  "copyBtn": "Copiar",
+  "downloadBtn": "Descargar",
+  "clearBtn": "Borrar",
+  "errorPrefix": "Error",
+  "howToUse": {
+    "heading": "como usar",
+    "step1": "1: Pegue o escriba su JSON en el campo de entrada a continuación.",
+    "step2": "2: Haga clic en Formatear JSON (o presione Ctrl+Entrar).",
+    "step3": "3: Revise el resultado formateado y haga clic en Copiar para copiarlo."
+  },
+  "input": {
+    "label": "Entrada JSON",
+    "clearBtn": "Borrar",
+    "clearTitle": "Borrar todo",
+    "placeholder": "Pega tu JSON aquí...\n\nEjemplo:\n{\n  \"nombre\": \"Juan\",\n  \"edad\": 30\n}",
+    "errorLine": "Problema detectado cerca de la línea {{line}}.",
+    "ariaLabel": "entrada JSON"
+  },
+  "formatBtn": "Validar y formatear JSON",
+  "output": {
+    "label": "Salida formateada",
+    "copyBtn": "Copiar",
+    "copiedBtn": "✓ ¡Copiado!",
+    "copyTitle": "Copiar al portapapeles",
+    "placeholder": "JSON formateado aparecerá aquí...",
+    "ariaLabel": "Salida JSON formateada"
+  },
+  "errors": {
+    "invalid": "JSON no válido: {{mensaje}}",
+    "empty": "Ingrese algo de JSON para formatear."
+  },
+  "guide": {
+    "title": "Cómo leer y corregir JSON más rápido (una guía práctica para desarrolladores)",
+    "intro": "Si alguna vez ha trabajado con API, registros o archivos de configuración, habrá visto JSON minificado y desordenado. Técnicamente correcto... pero doloroso de leer. Ahí es donde un formateador JSON se vuelve esencial.",
+    "cta": "👉 En esta guía, aprenderá cómo convertir JSON desordenado en una estructura legible, depurar errores más rápido y trabajar de manera más eficiente con datos API.",
+    "whatIs": {
+      "heading": "📦 ¿Qué es JSON (actualización rápida)?",
+      "body": "JSON (Notación de objetos JavaScript) es un formato de datos ligero que se utiliza para intercambiar datos estructurados entre sistemas. Se utiliza en API, servicios backend, archivos de configuración y bases de datos. A las máquinas les encanta JSON; a los humanos, no tanto (cuando es complicado)."
+    },
+    "whatDoes": {
+      "heading": "🔍 ¿Qué hace un formateador JSON?",
+      "body": "Un formateador JSON toma JSON sin formato o minimizado y agrega sangría, organiza estructuras anidadas y hace que los datos sean legibles. No cambia los datos, sólo su apariencia.",
+      "beforeLabel": "Antes:",
+      "afterLabel": "Después:"
+    },
+    "whySlows": {
+      "heading": "😵 Por qué Raw JSON te ralentiza",
+      "item1": "🔍 Difícil de escanear: los objetos anidados se vuelven densos, confusos y fáciles de malinterpretar.",
+      "item2": "🐞 La depuración se vuelve dolorosa: una coma o un corchete faltante rompe todo y es difícil de localizar.",
+      "item3": "⏱ Tiempo perdido: pasas más tiempo leyendo la estructura en lugar de resolver problemas."
+    },
+    "whenToUse": {
+      "heading": "⚡ Cuándo debería utilizar un formateador JSON",
+      "item1": "🔌 Respuestas API: la mayoría de las API devuelven JSON minimizado; El formateo revela la estructura inmediatamente.",
+      "item2": "🐞 Errores de depuración: el formateador + validador muestra exactamente dónde se rompe JSON.",
+      "item3": "⚙️ Archivos de configuración: una estructura más limpia significa menos errores en la configuración .json.",
+      "item4": "📄 Análisis de registros: formatear blobs JSON anidados en los registros ayuda a detectar problemas rápidamente."
+    },
+    "commonErrors": {
+      "heading": "🧪 Errores JSON comunes",
+      "item1": "❌ Coma final",
+      "item2": "❌ Cotizaciones faltantes en las claves",
+      "item3": "❌ Cotizaciones simples",
+      "item4": "❌ Corchetes abiertos"
+    },
+    "stepByStep": {
+      "heading": "🪜 Paso a paso: formatee JSON fácilmente",
+      "step1": "📋 Pega tu JSON",
+      "step2": "⚙️ Haga clic en Formatear",
+      "step3": "👀 Revisar la salida estructurada",
+      "step4": "❗ Corrija los errores mostrados",
+      "step5": "📄 Copiar JSON limpio"
+    },
+    "bestPractices": {
+      "heading": "🚀 Mejores prácticas para trabajar con JSON",
+      "item1": "✅ Manténgalo válido: utilice siempre comillas dobles y haga coincidir los paréntesis correctamente.",
+      "item2": "✅ Formatee antes de depurar: no depure JSON sin formato; siempre formatee primero.",
+      "item3": "✅ Utilice una sangría consistente: 2 espacios es el estándar más común.",
+      "item4": "✅ Evite el anidamiento excesivo: el anidamiento profundo es difícil de leer y de mantener.",
+      "item5": "✅ Valide temprano: detecte errores antes de usar JSON en el código."
+    },
+    "comparison": {
+      "heading": "🧰 Formateador JSON vs Validador JSON",
+      "col1": "Característica",
+      "col2": "Formateador",
+      "col3": "Validador",
+      "row1col1": "Objetivo",
+      "row1col2": "Mejorar la legibilidad",
+      "row1col3": "comprobar la corrección",
+      "row2col1": "Corregir errores",
+      "row2col2": "❌No",
+      "row2col3": "✅ Sí",
+      "row3col1": "Producción",
+      "row3col2": "Estructura limpia",
+      "row3col3": "Mensajes de error",
+      "workflow": "Mejor flujo de trabajo: Formatear → Validar → Corregir."
+    },
+    "proTips": {
+      "heading": "⚡ Consejos profesionales",
+      "item1": "🔍 Formatee antes de registrar JSON grande",
+      "item2": "🧩 Divida JSON grande en partes más pequeñas",
+      "item3": "📋 Copia solo lo que necesites",
+      "item4": "⚡ Utilice la herramienta formateador + diferenciación juntas"
+    },
+    "safety": {
+      "heading": "🔐 ¿Es seguro utilizar formateadores JSON en línea?",
+      "body": "La mayoría de las herramientas modernas se ejecutan directamente en su navegador y no envían datos a los servidores. Aún así, evite pegar claves API o datos de producción confidenciales."
+    },
+    "faq": {
+      "heading": "❓ Preguntas frecuentes",
+      "q1": "¿El formato cambia mis datos JSON?",
+      "a1": "No, sólo cambia la apariencia, no el contenido.",
+      "q2": "¿Puede un formateador corregir JSON no válido?",
+      "a2": "No, pero te ayuda a ver dónde está el problema.",
+      "q3": "¿Cuál es el mejor estilo de sangría?",
+      "a3": "2 espacios es el estándar más común.",
+      "q4": "¿Por qué no se formatea mi JSON?",
+      "a4": "Probablemente debido a errores de sintaxis, falta de corchetes o estilo de cita incorrecto."
+    },
+    "conclusion": "Trabajar con JSON sin formato no tiene por qué ser frustrante. Con un formateador JSON, puede leer datos al instante, depurar más rápido y reducir errores: una de las herramientas más simples que puede mejorar significativamente su flujo de trabajo.",
+    "ctaBtn": "👉 Pruébelo aquí: Herramienta de formato JSON"
+  }
+}

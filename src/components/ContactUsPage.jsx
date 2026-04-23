@@ -3,8 +3,10 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import Seo from '../services/Seo'
 import './ContactUs.css'
+import { useTranslation } from 'react-i18next'
 
 export default function ContactUsPage() {
+  const { t } = useTranslation('contact')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [honeypot, setHoneypot] = useState('')
@@ -50,24 +52,15 @@ export default function ContactUsPage() {
         <div className="container">
           <div className="card" style={{ maxWidth: 540 }}>
             <div className="aboutus-section">
-              <h2 style={{ marginBottom: '0.75rem' }}>Contact Us</h2>
-              <p>
-                We love hearing from our users — your feedback is what drives us to keep improving.
-                Whether you've spotted a bug, have a feature request, or just want to share your
-                experience, we genuinely want to know. Drop us a message using the form below and
-                we'll get back to you as soon as possible. Every message is read by a real person,
-                and we do our best to respond promptly. Thank you for taking the time to reach out!
-                <span style={{ display: 'block', textAlign: 'right', marginTop: '0.5em' }}>
-                  - The THRJTech Team
-                </span>
-              </p>
+              <h2 style={{ marginBottom: '0.75rem' }}>{t('title')}</h2>
+              <p>{t('intro')}<span style={{ display: 'block', textAlign: 'right', marginTop: '0.5em' }}>- {t('signature')}</span></p>
             </div>
             <hr style={{ margin: '0.5rem 0 1rem', border: 'none', borderTop: '1px solid #e2e6f0' }} />
             <form onSubmit={handleSubmit} className="contactus-form" autoComplete="off">
               {/* Honeypot — hidden from real users, traps bots */}
               <div style={{ display: 'none' }}>
                 <label>
-                  Leave this field empty
+                  {t('honeypotLabel')}
                   <input
                     type="text"
                     name="website"
@@ -79,34 +72,34 @@ export default function ContactUsPage() {
                 </label>
               </div>
               <label>
-                Email Address
+                {t('emailLabel')}
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="your@email.com"
+                  placeholder={t('emailPlaceholder')}
                   autoComplete="email"
                 />
               </label>
               <label>
-                Message
+                {t('messageLabel')}
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   required
-                  placeholder="How can we help you?"
+                  placeholder={t('messagePlaceholder')}
                   rows={4}
                 />
               </label>
               <button type="submit" className="btn btn-primary" disabled={submitting}>
-                {submitting ? 'Sending…' : 'Submit'}
+                {submitting ? t('sendingBtn') : t('submitBtn')}
               </button>
               {submitSuccess && (
-                <div className="contactus-success">Thank you! We received your message.</div>
+                <div className="contactus-success">{t('successMsg')}</div>
               )}
               {submitError && (
-                <div className="contactus-error">Sorry, something went wrong. Please try again.</div>
+                <div className="contactus-error">{t('errorMsg')}</div>
               )}
             </form>
           </div>
