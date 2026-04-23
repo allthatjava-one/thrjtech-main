@@ -110,7 +110,7 @@
   "fileRow": {
     "count": "{{count}} imágenes seleccionadas",
     "changeOne": "Cambiar imagen",
-    "changeMany": "Buenos días,\n\nAyer no llegó la máquina a nuestras instalaciones y ya hemos empezado a repararla.\nAdjunto las fotos aportadas por la clienta y la factura de reparación para cambiar el cristal y vinilo.\n\nSoliciten si necesitan mas documentación.\n\nQuedamos a la espera,\nMuchas gracias,\n\nUn saludo,",
+    "changeMany": "Cambiar imágenes",
     "clear": "Borrar"
   },
   "infoBanner": "Puede cambiar el color y el grosor del borde del collage en la pantalla de vista previa.",
@@ -126,7 +126,7 @@
   },
   "preview": {
     "header": "Vista previa",
-    "reset": "Restablecimiento",
+    "reset": "Restablecer",
     "finalize": "Finalizar collage",
     "close": "Cerrar",
     "hint1": "- Arrastra las imágenes para reposicionarlas, haz clic en Color del borde para cambiarlo",

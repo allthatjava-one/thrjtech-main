@@ -94,7 +94,7 @@
     "count": "이미지 {{count}} 개 선택됨",
     "changeOne": "이미지 변경",
     "changeMany": "이미지 변경",
-    "clear": "책임"
+    "clear": "지우기"
   },
   "type": {
     "label": "유형:",

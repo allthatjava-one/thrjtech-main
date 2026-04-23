@@ -570,7 +570,7 @@ const ImageCollageView = ({
       {images.length > 0 && (
         <div className="ic-file-row">
           <span className="ic-file-name">
-            {images.length === 1 ? images[0].name : `${images.length} images selected`}
+            {images.length === 1 ? images[0].name : t('fileRow.count', { count: images.length })}
           </span>
           <button
             type="button"

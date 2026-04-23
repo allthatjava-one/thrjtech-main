@@ -439,7 +439,7 @@ export function ImageCropView(props) {
           </div>
 
           {!isPreset && <div className="control-row aspect-inputs" style={{ alignItems: 'center', gap: 8 }}>
-            <label style={{ minWidth: 90 }}>Ratio</label>
+            <label style={{ minWidth: 90 }}>{t('controls.ratio')}</label>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <input
                 type="number"
