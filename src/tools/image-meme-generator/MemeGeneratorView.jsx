@@ -9,7 +9,7 @@ export default function MemeGeneratorView({ initialFile }) {
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
   const navigate = useNavigate();
-  const { t } = useTranslation('memeGenerator');
+  const { t } = useTranslation('imageMemeGenerator');
   const [imageSrc, setImageSrc] = useState(null);
   const [imageObj, setImageObj] = useState(null);
   // Layers: multiple text layers with position, size and color
