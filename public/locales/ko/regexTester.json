@@ -86,7 +86,7 @@
     "flagITitle": "대소문자를 구분하지 않음",
     "flagM": "m",
     "flagMTitle": "여러 줄",
-    "clearBtn": "지우기",
+    "clearBtn": "초기화",
     "matchCount": "{{count}}개 일치",
     "noMatches": "일치하는 항목 없음",
     "replaceToggleOpen": "▾ 다음으로 바꾸기…",
@@ -102,10 +102,10 @@
     "ariaLabel": "텍스트 입력"
   },
   "preview": {
-    "label": "경기 미리보기"
+    "label": "찾은 결과 미리보기"
   },
   "output": {
-    "label": "대체된 출력",
+    "label": "대체된 결과",
     "copyBtn": "복사",
     "copiedBtn": "✓ 복사되었습니다!"
   },
