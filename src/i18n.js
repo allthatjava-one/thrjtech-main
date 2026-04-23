@@ -29,7 +29,7 @@ i18n
       'imageResizer',
       'imageCollage',
       'imageCrop',
-      'memeGenerator',
+      'imageMemeGenerator',
       'imageConverter',
     ],
     backend: {
