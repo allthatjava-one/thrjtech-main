@@ -395,7 +395,8 @@ export function PdfCompressorView({
               <p><strong>{t('guide.faq.q2')}</strong><br/>{t('guide.faq.a2')}</p>
               <p><strong>{t('guide.faq.q3')}</strong><br/>{t('guide.faq.a3')}</p>
 
-              <p style={{ marginTop: 10 }}><strong>Conclusion</strong><br/>{t('guide.conclusion')}</p>
+              <p style={{ marginTop: 10 }}><strong>{t('guide.conclusionTitle')}</strong><br/>
+              {t('guide.conclusion')}</p>
 
               <p style={{ marginTop: 12 }}>
                 <a

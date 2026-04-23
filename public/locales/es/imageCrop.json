@@ -76,13 +76,67 @@
     "text": "¿Quieres poner un texto en una imagen recortada?",
     "btn": "Enviar al generador de memes"
   },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es la herramienta de recorte de imágenes?",
+      "body": "La herramienta de recorte de imágenes ofrece una forma interactiva de seleccionar y exportar una porción rectangular de una imagen. Incluye controles de zoom, rotación y volteo, preajustes de relación de aspecto para objetivos comunes (redes sociales, perfil, banners) y un paso de vista previa para confirmar el recorte antes de descargar. Todas las transformaciones y exportaciones se realizan en el navegador mediante un canvas fuera de pantalla; su archivo original no se envía fuera de su dispositivo a menos que lo comparta o cargue explícitamente."
+    },
+    "howWorks": {
+      "heading": "Cómo funciona el recorte",
+      "body": "Tras cargar una imagen, el editor muestra una superposición de recorte redimensionable. Puede arrastrarla para reposicionarla, cambiar su tamaño con los manejadores o elegir una de las relaciones de aspecto disponibles para obtener dimensiones exactas. El zoom y la rotación permiten afinar el encuadre; los volteos reflejan la imagen horizontal o verticalmente. Al hacer clic en Vista previa o Descargar, la región seleccionada se renderiza en un canvas fuera de pantalla con las transformaciones aplicadas y el resultado se exporta como PNG."
+    },
+    "presets": {
+      "heading": "Preajustes y precisión",
+      "item1": { "title": "1:1 (Perfil)", "body": "Ideal para avatares y fotos de perfil." },
+      "item2": { "title": "16:9 (Pantalla ancha)", "body": "Útil para miniaturas de vídeo, banners y presentaciones en pantalla ancha." },
+      "item3": { "title": "4:5 (Vertical)", "body": "Formato común para feeds sociales y contenido orientado en vertical." },
+      "item4": { "title": "Libre", "body": "Sin restricciones; recorta a las dimensiones que necesites." }
+    },
+    "practical": {
+      "heading": "Consejos prácticos",
+      "item1": "Use el bloqueo de aspecto para mantener proporciones exactas al redimensionar el área de recorte.",
+      "item2": "Para exportaciones con píxeles perfectos, establezca la resolución de salida deseada después de elegir el área de recorte y previsualice al 100% si es posible.",
+      "item3": "Si necesita recortar muchas imágenes de la misma forma, anote los valores de los preajustes para poder repetir el proceso de forma consistente."
+    },
+    "useful": {
+      "heading": "Útil cuando",
+      "item1": "prepara fotos de perfil o activos para redes sociales con dimensiones exactas.",
+      "item2": "elimina bordes no deseados, fondo o elementos que distraen de una foto.",
+      "item3": "recorta una captura de pantalla a una región específica para documentación o presentaciones.",
+      "item4": "reencuadra rápidamente una foto sin abrir un editor de imágenes de escritorio."
+    },
+    "accessibility": {
+      "heading": "Accesibilidad y privacidad",
+      "body": "Los controles están diseñados pensando en la accesibilidad (objetivos grandes, soporte de teclado). El cuadro de vista previa ayuda a los usuarios de todos los dispositivos a confirmar los cambios. Dado que el recorte se realiza localmente, sus imágenes permanecen privadas a menos que decida cargarlas como parte de un flujo de compartición."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Mi imagen se cargará en algún lugar?",
+      "a1": "R: No — todo el recorte se realiza del lado del cliente en su navegador. Su imagen nunca sale de su dispositivo.",
+      "q2": "P: ¿Qué formatos son compatibles?",
+      "a2": "R: Puede cargar cualquier formato de imagen que admita el navegador (JPEG, PNG, WebP, GIF, etc.). La salida recortada siempre se exporta como PNG.",
+      "q3": "P: ¿Puedo deshacer un recorte?",
+      "a3": "R: Sí — simplemente ajuste la selección de recorte y haga clic en Vista previa nuevamente para regenerar la salida antes de descargar.",
+      "q4": "P: ¿Por qué el botón Descargar permanece atenuado?",
+      "a4": "R: Haga clic en Vista previa primero para generar una imagen recortada; entonces el botón Descargar quedará activo."
+    }
+  },
+  "howItWorks": {
+    "step1": "Cargue una imagen arrastrándola y soltándola en el área de recorte, o haga clic para explorar sus archivos.",
+    "step2": "Arrastre y cambie el tamaño de la superposición de recorte para seleccionar la región que desea conservar. Elija un preajuste de relación de aspecto o use el modo Libre.",
+    "step3": "Opcionalmente, ajuste el zoom, la rotación y el volteo para perfeccionar el encuadre antes de recortar.",
+    "step4": "Haga clic en Vista previa para generar la imagen recortada e inspeccionar el resultado en el cuadro de vista previa.",
+    "step5": "Haga clic en Descargar para guardar el PNG recortado en su dispositivo.",
+    "imgAlt": { "step1": "Paso 1", "step2": "Paso 2", "step3": "Paso 3", "step4": "Paso 4" }
+  },
   "guide": {
     "title": "Cómo recortar imágenes a la perfección (sin perder calidad ni composición)",
     "lead": "Recortar una imagen es una de las ediciones más sencillas que puedes realizar, pero tiene un gran impacto en el aspecto y la comunicación de tu imagen.",
+    "learnLabel": "En esta guía, aprenderás:",
     "learnItems": {
       "item1": "Cómo funciona el recorte de imágenes",
-      "item2": "Cuando usarlo",
-      "item3": "Cómo cosechar adecuadamente sin arruinar la calidad"
+      "item2": "Cuándo usarlo",
+      "item3": "Cómo recortar adecuadamente sin arruinar la calidad"
     },
     "whatIs": {
       "heading": "¿Qué es el recorte de imágenes?",
@@ -157,6 +211,7 @@
       "q4": "¿Es mejor recortar que cambiar el tamaño?",
       "a4": "Sirven para diferentes propósitos: recortar cambia la composición, cambiar el tamaño cambia las dimensiones."
     },
+    "conclusionTitle": "Conclusión",
     "conclusion": "Recortar imágenes es una forma sencilla pero poderosa de mejorar la composición, resaltar contenido importante y hacer que las imágenes se adapten a cualquier plataforma. Utilice las técnicas adecuadas para convertir una imagen normal en una limpia y de aspecto profesional.",
     "ctaBtn": "Pruebe la herramienta Recortar imagen →"
   }

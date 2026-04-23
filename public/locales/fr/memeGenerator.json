@@ -40,6 +40,11 @@
       "q3": "Q : Quels formats d'image sont pris en charge ?",
       "a3": "R : Tout format d'image pris en charge par votre navigateur (JPEG, PNG, WebP, GIF, etc.)."
     }
+    ,
+    "accessibility": {
+      "heading": "Accessibilité et confidentialité",
+      "body": "Les contrôles sont conçus en tenant compte de l'accessibilité (cibles larges, prise en charge du clavier). Comme la composition s'effectue localement, vos images ne sont pas transmises hors de votre appareil par défaut — elles ne quittent le navigateur que si vous choisissez de les télécharger ou de les partager."
+    }
   },
   "howItWorks": {
     "step1": "Téléchargez une image en cliquant sur la zone de canevas ou en faisant glisser et déposer un fichier.",
@@ -180,6 +185,10 @@
       "a3": "Raisons possibles : trop de texte, format peu pertinent et obsolète."
     },
     "conclusion": "Créer des mèmes n'est pas une question de conception complexe, c'est une question de communication et de timing. Concentrez-vous sur des idées claires, un texte simple et la pertinence.",
-    "ctaBtn": "Générateur de mèmes d'images →"
+    "ctaBtn": "Générateur de mèmes d'images →",
+    "lead2": "Mais créer un mème que les gens partagent réellement ? C'est une autre histoire.",
+    "learnIntro": "Dans ce guide, vous apprendrez :",
+    "conclusionTitle": "Conclusion",
+    "tryIt": "Essayez de créer le vôtre ici :"
   }
 }

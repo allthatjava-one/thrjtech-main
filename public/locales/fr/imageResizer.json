@@ -89,6 +89,7 @@
   "guide": {
     "title": "Le guide complet pour redimensionner les images sans perte de qualité",
     "lead": "Redimensionner les images semble simple, jusqu'à ce que vous obteniez des résultats flous, pixellisés ou déformés. Que vous téléchargiez des photos sur un site Web, envoyiez des images par courrier électronique ou optimisiez les performances, redimensionner correctement est plus important que la plupart des gens ne le pensent.",
+    "learn": "Dans ce guide, vous apprendrez :",
     "learnItems": {
       "item1": "Comment fonctionne réellement le redimensionnement de l'image",
       "item2": "Pourquoi la perte de qualité se produit",
@@ -146,6 +147,7 @@
       "q4": "Vaut-il mieux redimensionner ou compresser ?",
       "a4": "Ils servent à des fins différentes. Redimensionner modifie les dimensions ; La compression réduit la taille du fichier. Les meilleurs résultats proviennent d’une utilisation prudente des deux."
     },
+    "conclusionTitle": "Conclusion",
     "conclusion": "Redimensionner des images ne consiste pas seulement à les réduire, il s'agit de le faire correctement pour préserver la clarté et la convivialité. En conservant les proportions, en redimensionnant une fois par rapport à l'original et en choisissant le bon format, vous pouvez améliorer considérablement la qualité et les performances de l'image.",
     "ctaBtn": "Essayez le redimensionneur d'image →"
   }

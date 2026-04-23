@@ -370,7 +370,7 @@ export function PdfConverterView({
               <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
               
               <br />
-              <p style={{ marginTop: 12 }}><strong>🧾 Conclusion</strong><br/>
+              <p style={{ marginTop: 12 }}><strong>🧾 {t('guide.conclusionTitle')}</strong><br/>
               {t('guide.conclusion')}</p>
 
               <p style={{ marginTop: 12 }}>

@@ -567,7 +567,7 @@ export function ImageResizerView({
           <h2 className="ir-guide-title">{t('guide.title')}</h2>
           <p className="ir-guide-lead">{t('guide.lead')}</p>
           <div className="ir-guide-learn-box">
-            <span className="ir-guide-learn-label">In this guide, you'll learn:</span>
+            <span className="ir-guide-learn-label">{t('guide.learn')}</span>
             <ul className="ir-guide-learn-list">
               <li>{t('guide.learnItems.item1')}</li>
               <li>{t('guide.learnItems.item2')}</li>
@@ -696,7 +696,7 @@ export function ImageResizerView({
         </div>
 
         <div className="ir-guide-conclusion">
-          <h3>Conclusion</h3>
+          <h3>{t('guide.conclusionTitle')}</h3>
           <p>{t('guide.conclusion')}</p>
           <a
             href="/image-resizer"

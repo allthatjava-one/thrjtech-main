@@ -40,6 +40,11 @@
       "q3": "Q: What image formats are supported?",
       "a3": "A: Any image format your browser supports (JPEG, PNG, WebP, GIF, etc.)."
     }
+    ,
+    "accessibility": {
+      "heading": "Accessibility & privacy",
+      "body": "Controls are designed with accessibility in mind (large targets, keyboard support). Since composition occurs locally, your images are not transmitted off your device by default — they only leave the browser if you choose to upload or share them."
+    }
   },
   "howItWorks": {
     "step1": "Upload an image by clicking the canvas area or dragging and dropping a file onto it.",

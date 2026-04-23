@@ -56,9 +56,63 @@
     "text": "Souhaitez-vous ajouter du texte à l'image recadrée ?",
     "btn": "Envoyer au Générateur de mèmes"
   },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que le recadrage d'image ?",
+      "body": "L'outil de recadrage d'image permet de sélectionner et d'exporter de manière interactive une portion rectangulaire d'une image. Il propose des commandes de zoom, de rotation et de retournement, des préréglages de rapport d'aspect pour des usages courants (réseaux sociaux, profil, bannières) et une étape de prévisualisation pour confirmer le recadrage avant le téléchargement. Toutes les transformations et exportations s'effectuent dans votre navigateur via un canvas hors écran ; votre fichier original ne quitte pas votre appareil sauf si vous choisissez explicitement de le partager ou de le télécharger."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne le recadrage",
+      "body": "Après avoir chargé une image, l'éditeur affiche une superposition de recadrage redimensionnable. Vous pouvez la déplacer pour la repositionner, la redimensionner à l'aide des poignées ou choisir l'un des rapports d'aspect proposés pour obtenir des dimensions exactes. Le zoom et la rotation permettent d'affiner le cadrage ; les retournements reflètent l'image horizontalement ou verticalement. En cliquant sur Aperçu ou Télécharger, la zone sélectionnée est rendue dans un canvas hors écran avec les transformations appliquées, puis le résultat est exporté en PNG."
+    },
+    "presets": {
+      "heading": "Préréglages et précision",
+      "item1": { "title": "1:1 (Profil)", "body": "Idéal pour les avatars et les photos de profil." },
+      "item2": { "title": "16:9 (Grand écran)", "body": "Utile pour les vignettes vidéo, les bannières et les présentations grand écran." },
+      "item3": { "title": "4:5 (Portrait)", "body": "Format courant pour les flux sociaux et les contenus orientés portrait." },
+      "item4": { "title": "Libre", "body": "Aucune contrainte : recadrez selon les dimensions dont vous avez besoin." }
+    },
+    "practical": {
+      "heading": "Conseils pratiques",
+      "item1": "Utilisez le verrouillage du rapport pour conserver des proportions exactes lors du redimensionnement de la zone de recadrage.",
+      "item2": "Pour des exportations parfaites au pixel, définissez la résolution de sortie souhaitée après avoir choisi la zone de recadrage, puis prévisualisez à 100 % si possible.",
+      "item3": "Si vous devez recadrer de nombreuses images de la même manière, notez les valeurs des préréglages pour reproduire le processus de manière cohérente."
+    },
+    "useful": {
+      "heading": "Utile lorsque",
+      "item1": "préparer des photos de profil ou des éléments pour les réseaux sociaux avec des dimensions précises.",
+      "item2": "supprimer des bordures non désirées, l'arrière-plan ou des éléments distrayants d'une photo.",
+      "item3": "recadrer une capture d'écran à une région spécifique pour la documentation ou des présentations.",
+      "item4": "re-cadrer rapidement une photo sans ouvrir un éditeur d'images de bureau."
+    },
+    "accessibility": {
+      "heading": "Accessibilité et confidentialité",
+      "body": "Les contrôles sont conçus en tenant compte de l'accessibilité (cibles larges, prise en charge du clavier). La boîte de prévisualisation aide les utilisateurs de tous appareils à confirmer les modifications. Comme le recadrage s'effectue localement, vos images restent privées sauf si vous choisissez de les télécharger ou de les partager."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Mon image sera-t-elle téléchargée quelque part ?",
+      "a1": "R : Non — tout le recadrage s'exécute côté client dans votre navigateur. Votre image ne quitte jamais votre appareil.",
+      "q2": "Q : Quels formats sont pris en charge ?",
+      "a2": "R : Vous pouvez charger tout format d'image pris en charge par le navigateur (JPEG, PNG, WebP, GIF, etc.). La sortie recadrée est toujours exportée en PNG.",
+      "q3": "Q : Puis-je annuler un recadrage ?",
+      "a3": "R : Oui — ajustez simplement la sélection de recadrage et cliquez de nouveau sur Aperçu pour régénérer la sortie avant de télécharger.",
+      "q4": "Q : Pourquoi le bouton Télécharger reste-t-il grisé ?",
+      "a4": "R : Cliquez d'abord sur Aperçu pour générer l'image recadrée ; le bouton Télécharger deviendra alors actif."
+    }
+  },
+  "howItWorks": {
+    "step1": "Chargez une image en la faisant glisser dans la zone de recadrage ou cliquez pour parcourir vos fichiers.",
+    "step2": "Faites glisser et redimensionnez la superposition de recadrage pour sélectionner la zone à conserver. Choisissez un préréglage de rapport d'aspect ou utilisez le mode Libre.",
+    "step3": "Ajustez éventuellement le zoom, la rotation et le retournement pour affiner le cadrage avant le recadrage.",
+    "step4": "Cliquez sur Aperçu pour générer l'image recadrée et inspecter le résultat dans la boîte de prévisualisation.",
+    "step5": "Cliquez sur Télécharger pour enregistrer le PNG recadré sur votre appareil.",
+    "imgAlt": { "step1": "Étape 1", "step2": "Étape 2", "step3": "Étape 3", "step4": "Étape 4" }
+  },
   "guide": {
     "title": "Comment recadrer parfaitement les images (sans perte de qualité ou de composition)",
     "lead": "Le recadrage d'une image est l'une des modifications les plus simples que vous puissiez effectuer, mais cela a un impact énorme sur l'apparence et la communication de votre image.",
+    "learnLabel": "Dans ce guide, vous apprendrez :",
     "learnItems": {
       "item1": "Comment fonctionne le recadrage d'image",
       "item2": "Quand l'utiliser",
@@ -137,6 +191,7 @@
       "q4": "Est-il préférable de recadrer plutôt que de redimensionner ?",
       "a4": "Ils servent à différentes fins : le recadrage modifie la composition, le redimensionnement modifie les dimensions."
     },
+    "conclusionTitle": "Conclusion",
     "conclusion": "Le recadrage d'images est un moyen simple mais puissant d'améliorer la composition, de mettre en évidence le contenu important et d'adapter les images à n'importe quelle plate-forme. Utilisez les bonnes techniques pour transformer une image moyenne en une image nette et professionnelle.",
     "ctaBtn": "Essayez l'outil de recadrage d'image →"
   }

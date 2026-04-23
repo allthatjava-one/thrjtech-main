@@ -46,7 +46,8 @@
   "howItWorks": {
     "step1": "Select one or more images by dragging them in or clicking to browse.",
     "step2": "Choose the output format from the format selector buttons.",
-    "step3": "Click Convert or Convert All to process the images.",
+    "step3a": "Click <strong>Convert</strong> to process the image instantly in your browser.",
+    "step3b": "Download your converted image with the <strong>Download</strong> button.",
     "step4": "You can also convert multiple images at once by selecting more than one file."
   },
   "dropZone": {
@@ -82,6 +83,22 @@
     "gifName": "GIF",
     "gifDesc": "256-color format. Best for simple graphics, not photos.",
     "icoName": "ICO",
+    "icoDesc": "Windows icon format. Choose which sizes to include."
+  },
+  "formats": {
+    "jpg": "JPG",
+    "jpgDesc": "Best for photos. Smaller file, lossy compression.",
+    "png": "PNG",
+    "pngDesc": "Best for graphics with transparency. Lossless quality.",
+    "webp": "WebP",
+    "webpDesc": "Modern format. Smaller than JPG & PNG with great quality.",
+    "avif": "AVIF",
+    "avifDesc": "Next-gen format. Best compression. Chrome & Firefox recommended.",
+    "bmp": "BMP",
+    "bmpDesc": "Uncompressed bitmap. Lossless, large file. Max compatibility.",
+    "gif": "GIF",
+    "gifDesc": "256-color format. Best for simple graphics, not photos.",
+    "ico": "ICO",
     "icoDesc": "Windows icon format. Choose which sizes to include."
   },
   "icoSize": {

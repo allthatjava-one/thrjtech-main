@@ -46,7 +46,8 @@
   "howItWorks": {
     "step1": "Sélectionnez une ou plusieurs images en les faisant glisser ou en cliquant pour parcourir.",
     "step2": "Choisissez le format de sortie dans les boutons de sélection de format.",
-    "step3": "Cliquez sur Convertir ou Tout convertir pour traiter les images.",
+    "step3a": "Cliquez sur <strong>Convertir</strong> pour traiter l'image instantanément dans votre navigateur.",
+    "step3b": "Téléchargez votre image convertie avec le bouton <strong>Télécharger</strong>.",
     "step4": "Vous pouvez également convertir plusieurs images à la fois."
   },
   "dropZone": {
@@ -82,6 +83,22 @@
     "gifName": "GIF",
     "gifDesc": "Format 256 couleurs. Idéal pour les graphiques simples, pas les photos.",
     "icoName": "OIC",
+    "icoDesc": "Format d'icône Windows. Choisissez les tailles à inclure."
+  },
+  "formats": {
+    "jpg": "JPG",
+    "jpgDesc": "Idéal pour les photos. Fichier plus petit, compression avec perte.",
+    "png": "PNG",
+    "pngDesc": "Idéal pour les graphiques avec transparence. Qualité sans perte.",
+    "webp": "WebP",
+    "webpDesc": "Format moderne. Plus petit que JPG & PNG avec une excellente qualité.",
+    "avif": "AVIF",
+    "avifDesc": "Format nouvelle génération. Meilleure compression. Chrome & Firefox recommandés.",
+    "bmp": "BMP",
+    "bmpDesc": "Bitmap non compressé. Sans perte, fichier volumineux. Compatibilité maximale.",
+    "gif": "GIF",
+    "gifDesc": "Format 256 couleurs. Idéal pour les graphiques simples, pas les photos.",
+    "ico": "ICO",
     "icoDesc": "Format d'icône Windows. Choisissez les tailles à inclure."
   },
   "icoSize": {

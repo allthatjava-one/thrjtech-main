@@ -19,11 +19,13 @@
     },
     "outputOptions": {
       "heading": "Options de sortie",
+      "intro": "Deux modes de sortie sont pris en charge, vous permettant de choisir le résultat adapté à votre flux de travail :",
       "multiple": "Fichiers multiples : chaque plage de pages produit un PDF indépendant.",
       "single": "Fichier combiné unique : toutes les plages sélectionnées sont assemblées dans un seul PDF dans l'ordre où elles apparaissent."
     },
     "pageRangeFormat": {
       "heading": "Format de plage de pages",
+      "intro": "Les plages sont saisies sous forme de liste séparée par des virgules. La syntaxe prise en charge est :",
       "single": "Page unique : 3",
       "contiguous": "Plage contiguë : 3-7",
       "mixed": "Liste mixte : 1,3-5,8,10-12",
@@ -207,6 +209,7 @@
       "q4": "Puis-je annuler la division ?",
       "a4": "Non — mais vous pouvez refusionner les fichiers ensemble si nécessaire."
     },
+    "conclusionTitle": "Conclusion",
     "conclusion": "Diviser les PDF vous donne le contrôle sur vos documents. Au lieu de traiter des fichiers volumineux et encombrés, vous pouvez extraire uniquement ce qui compte, organiser le contenu efficacement et travailler plus rapidement et plus intelligemment.",
     "ctaBtn": "👉 Commencez à diviser votre PDF ici"
   }

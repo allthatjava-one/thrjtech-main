@@ -77,6 +77,11 @@
       "q3": "P: ¿Qué formatos de imagen son compatibles?",
       "a3": "R: Cualquier formato de imagen que admita su navegador (JPEG, PNG, WebP, GIF, etc.)."
     }
+    ,
+    "accessibility": {
+      "heading": "Accesibilidad y privacidad",
+      "body": "Los controles están diseñados pensando en la accesibilidad (objetivos grandes, soporte de teclado). Dado que la composición se realiza localmente, sus imágenes no se transmiten fuera de su dispositivo a menos que elija cargarlas o compartirlas."
+    }
   },
   "howItWorks": {
     "step1": "Cargue una imagen haciendo clic en el área del lienzo o arrastrando y soltando un archivo en él.",
@@ -192,6 +197,10 @@
       "a3": "Posibles motivos: demasiado texto, no identificable, formato desactualizado."
     },
     "conclusion": "Crear memes no se trata de un diseño complejo, se trata de comunicación y sincronización. Concéntrese en ideas claras, texto simple y relacionabilidad.",
-    "ctaBtn": "Generador de memes de imágenes →"
+    "ctaBtn": "Generador de memes de imágenes →",
+    "lead2": "Pero crear un meme que la gente realmente comparta? Esa es otra historia.",
+    "learnIntro": "En esta guía, aprenderás:",
+    "conclusionTitle": "Conclusión",
+    "tryIt": "Prueba a crear el tuyo aquí:"
   }
 }

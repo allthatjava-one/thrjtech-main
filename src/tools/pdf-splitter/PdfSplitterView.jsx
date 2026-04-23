@@ -66,14 +66,14 @@ export function PdfSplitterView({
             <p>{t('details.whatIs.body')}</p>
 
             <h3>{t('details.outputOptions.heading')}</h3>
-            <p>Two output modes are supported, letting you choose the right result for your workflow:</p>
+            <p>{t('details.outputOptions.intro')}</p>
             <ul>
               <li>{t('details.outputOptions.multiple')}</li>
               <li>{t('details.outputOptions.single')}</li>
             </ul>
 
             <h3>{t('details.pageRangeFormat.heading')}</h3>
-            <p>Ranges are entered as a comma-separated list. The supported syntax is:</p>
+            <p>{t('details.pageRangeFormat.intro')}</p>
             <ul>
               <li>{t('details.pageRangeFormat.single')}</li>
               <li>{t('details.pageRangeFormat.contiguous')}</li>
@@ -385,7 +385,7 @@ export function PdfSplitterView({
               <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
 
               <br />
-              <h3 style={{ marginTop: 10 }}>🧾 Conclusion</h3>
+              <h3 style={{ marginTop: 10 }}>🧾 {t('guide.conclusionTitle')}</h3>
               <p>{t('guide.conclusion')}</p>
 
               <p style={{ marginTop: 12 }}>

@@ -115,25 +115,7 @@ function DraggablePreview({ src, alt }) {
   );
 }
 
-const FORMAT_LABEL = {
-  JPG:  'JPG',
-  PNG:  'PNG',
-  WebP: 'WebP',
-  AVIF: 'AVIF',
-  BMP:  'BMP',
-  GIF:  'GIF',
-  ICO:  'ICO',
-};
-
-const FORMAT_DESC = {
-  JPG:  'Best for photos. Smaller file, lossy compression.',
-  PNG:  'Best for graphics with transparency. Lossless quality.',
-  WebP: 'Modern format. Smaller than JPG & PNG with great quality.',
-  AVIF: 'Next-gen format. Best compression. Chrome & Firefox recommended.',
-  BMP:  'Uncompressed bitmap. Lossless, large file. Max compatibility.',
-  GIF:  '256-color format. Best for simple graphics, not photos.',
-  ICO:  'Windows icon format. Choose which sizes to include.',
-};
+// Format labels/descriptions are resolved via i18n at render time
 
 export function ImageConverterView({
   mainImages,
@@ -163,6 +145,23 @@ export function ImageConverterView({
   const [previewOpen, setPreviewOpen] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation('imageConverter');
+
+  // Provide defaults for keys so UI stays readable even if translations are missing
+  const formatDefaultLabels = {
+    JPG: 'JPG', PNG: 'PNG', WebP: 'WebP', AVIF: 'AVIF', BMP: 'BMP', GIF: 'GIF', ICO: 'ICO',
+  };
+  const formatDefaultDesc = {
+    JPG: 'Best for photos. Smaller file, lossy compression.',
+    PNG: 'Best for graphics with transparency. Lossless quality.',
+    WebP: 'Modern format. Smaller than JPG & PNG with great quality.',
+    AVIF: 'Next-gen format. Best compression. Chrome & Firefox recommended.',
+    BMP: 'Uncompressed bitmap. Lossless, large file. Max compatibility.',
+    GIF: '256-color format. Best for simple graphics, not photos.',
+    ICO: 'Windows icon format. Choose which sizes to include.',
+  };
+
+  const fmtLabel = (fmt) => t(`formats.${fmt.toLowerCase()}`, { defaultValue: formatDefaultLabels[fmt] || fmt });
+  const fmtDesc = (fmt) => t(`formats.${fmt.toLowerCase()}Desc`, { defaultValue: formatDefaultDesc[fmt] || '' });
 
   useEffect(() => {
     if (outputUrls && outputUrls[currentIndex]) setPreviewOpen(true);
@@ -237,21 +236,21 @@ export function ImageConverterView({
           <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
             <ol style={{ margin: 0, paddingLeft: '1rem' }}>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/image-converter/image-converter-001.png" alt="Step 1" className="how-img" />
-                <p>Drag &amp; drop an image onto the upload area, or click it to browse for a file.</p>
+                <img src="/screenshots/image-converter/image-converter-001.png" alt={t('howItWorks.imgAlt.step1', { defaultValue: 'Step 1' })} className="how-img" />
+                <p>{t('howItWorks.step1', { defaultValue: 'Drag & drop an image onto the upload area, or click it to browse for a file.' })}</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/image-converter/image-converter-002.png" alt="Step 2" className="how-img" />
-                <p>Select your desired output format from the format buttons. The tool auto-selects a sensible default based on your input.</p>
+                <img src="/screenshots/image-converter/image-converter-002.png" alt={t('howItWorks.imgAlt.step2', { defaultValue: 'Step 2' })} className="how-img" />
+                <p>{t('howItWorks.step2', { defaultValue: 'Select your desired output format from the format buttons. The tool auto-selects a sensible default based on your input.' })}</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/image-converter/image-converter-003.png" alt="Step 3" className="how-img" />
-                <p>Click <strong>Convert</strong> to process the image instantly in your browser.</p>
-                <p>Download your converted image with the <strong>Download</strong> button.</p>
+                <img src="/screenshots/image-converter/image-converter-003.png" alt={t('howItWorks.imgAlt.step3', { defaultValue: 'Step 3' })} className="how-img" />
+                <p dangerouslySetInnerHTML={{ __html: t('howItWorks.step3a', { defaultValue: 'Click <strong>Convert</strong> to process the image instantly in your browser.' }) }} />
+                <p dangerouslySetInnerHTML={{ __html: t('howItWorks.step3b', { defaultValue: 'Download your converted image with the <strong>Download</strong> button.' }) }} />
               </li>
               <li>
-                <img src="/screenshots/image-converter/image-converter-004.png" alt="Step 4" className="how-img" />
-                <p>You can also convert multiple images at once by selecting more than one file.</p>
+                <img src="/screenshots/image-converter/image-converter-004.png" alt={t('howItWorks.imgAlt.step4', { defaultValue: 'Step 4' })} className="how-img" />
+                <p>{t('howItWorks.step4', { defaultValue: 'You can also convert multiple images at once by selecting more than one file.' })}</p>
               </li>
             </ol>
           </div>
@@ -385,8 +384,8 @@ export function ImageConverterView({
               className={`ic-format-btn${outputFormat === fmt ? ' active' : ''}`}
               onClick={() => setOutputFormat(fmt)}
             >
-              <span className="ic-fmt-name">{FORMAT_LABEL[fmt]}</span>
-              <span className="ic-fmt-desc">{FORMAT_DESC[fmt]}</span>
+              <span className="ic-fmt-name">{fmtLabel(fmt)}</span>
+              <span className="ic-fmt-desc">{fmtDesc(fmt)}</span>
             </button>
           ))}
         </div>

@@ -10,39 +10,60 @@
   },
   "details": {
     "whatIs": {
-      "heading": "Qu'est-ce que le Collage d'images",
-      "body": "L'outil Collage d'images vous permet d'organiser plusieurs photos en une seule image composite à l'aide d'une grille configurable. Vous contrôlez le nombre de lignes et de colonnes, les dimensions globales du canevas et l'espace entre les cellules."
+      "heading": "Qu'est-ce que le Collage d'images ?",
+      "body": "Un collage combine plusieurs images en une seule mise en page en mosaïque sur un canevas partagé. Vous contrôlez les lignes, les colonnes, l'espacement et les dimensions finales du canevas pour créer des publications sociales, des montages, des aperçus de produits ou des images de portfolio. L'assemblage se fait localement dans le navigateur, produisant une seule image raster téléchargeable ou partageable."
     },
     "howWorks": {
-      "heading": "Comment fonctionne la génération de collage",
-      "body": "Les images sont décodées dans le navigateur et rendues sur un canevas hors écran à la mise en page de grille spécifiée. Tout s'exécute localement dans votre navigateur."
+      "heading": "Comment fonctionne le collage",
+      "body": "L'outil calcule le placement de chaque cellule en divisant le canevas en une grille uniforme selon les lignes et colonnes sélectionnées. Pour chaque cellule, il calcule un rectangle de « couverture » afin que l'image remplisse l'emplacement sans laisser de vides ; les utilisateurs peuvent ensuite déplacer et mettre à l'échelle chaque image dans sa cellule pour ajuster le cadrage. Lors de la finalisation, les images sont dessinées sur un canevas HTML hors écran et exportées en PNG."
+    },
+    "design": {
+      "heading": "Choix de conception et compromis",
+      "item1": "Qualité vs. taille : des canevas plus grands préservent les détails mais augmentent l'utilisation de la mémoire et la taille du fichier final. Pour la plupart des scénarios de réseaux sociaux, 1200–2048 px sur le long côté équilibre clarté et performance.",
+      "item2": "Performance : tout le décodage et la composition sont effectués côté client. Les très grands canevas ou de nombreuses images haute résolution peuvent ralentir l'interface ou épuiser la mémoire du navigateur.",
+      "item3": "Cohérence : des tailles de cellules fixes garantissent une mise en page prévisible ; ajustez l'espacement et la couleur de bordure pour modifier le rythme visuel du collage."
     },
     "practical": {
       "heading": "Conseils pratiques",
-      "item1": "Commencez avec des images à résolution plus faible lors de la composition, puis utilisez les originaux pour l'exportation finale.",
-      "item2": "Utilisez l'option de verrouillage du rapport pour conserver une mise à l'échelle proportionnelle.",
-      "item3": "Ajustez l'espace de bordure pour créer de la respiration ou des tuiles serrées."
+      "item1": "Commencez avec des images à résolution plus faible lors de la composition et de la prévisualisation, puis utilisez les originaux pour l'exportation finale si nécessaire.",
+      "item2": "Utilisez l'option « verrouiller le ratio » pour conserver une mise à l'échelle proportionnelle lors du changement des dimensions du canevas afin que votre mise en page ne se déforme pas.",
+      "item3": "Ajustez l'espace de bordure pour créer de l'espace de respiration ou des tuiles serrées selon votre objectif de conception.",
+      "item4": "Si une image paraît floue à l'exportation, augmentez la résolution du canevas ou fournissez une image source de plus haute résolution."
+    },
+    "accessibility": {
+      "heading": "Accessibilité et UX",
+      "body": "Les contrôles sont étiquetés et accessibles au clavier, et le mode aperçu s'adapte aux petits écrans afin que les utilisateurs puissent inspecter et ajuster les images avec précision avant de les exporter."
     },
     "whenToUse": {
       "heading": "Quand utiliser un collage",
-      "item1": "Création de publications sur les réseaux sociaux combinant plusieurs clichés.",
-      "item2": "Construction de grilles de produits ou de montages marketing.",
-      "item3": "Assemblage rapide de montages photos de famille ou de moments d'événements."
+      "item1": "Créer des publications sur les réseaux sociaux combinant plusieurs clichés en une seule image partageable.",
+      "item2": "Construire des grilles de produits ou des montages marketing pour des newsletters, des pages de destination ou des publicités.",
+      "item3": "Assembler rapidement des montages photos de famille ou des moments forts d'événements."
+    },
+    "export": {
+      "heading": "Options d'exportation",
+      "body": "Par défaut, le canevas final est exporté en PNG pour préserver la qualité. Si vous avez besoin de fichiers plus légers pour le web, vous pouvez convertir le PNG en JPEG au niveau de qualité choisi. Les noms de fichiers incluent un horodatage pour que les exportations restent uniques et facilement traçables."
     },
     "privacy": {
       "heading": "Confidentialité et partage",
-      "body": "La génération de collage s'effectue entièrement sur votre appareil — les images ne quittent pas votre navigateur."
+      "body": "La génération du collage s'effectue entièrement sur votre appareil — les images ne quittent pas votre navigateur sauf si vous les téléchargez ou les partagez explicitement via le flux de travail de filigrane ou de partage de l'application."
+    },
+    "limitations": {
+      "heading": "Limitations",
+      "item1": "Les très grands canevas (par exemple, >10 000 px) peuvent être limités par la mémoire du navigateur ou les limites d'implémentation.",
+      "item2": "Les sources animées (GIF/WebP) sont aplaties en une seule image lors de l'exportation.",
+      "item3": "Les profils de couleurs incorporés peuvent être gérés différemment selon les navigateurs et affecter la fidélité des couleurs exportées."
     },
     "faq": {
       "heading": "FAQ",
       "q1": "Q : Combien d'images puis-je utiliser ?",
-      "a1": "R : Idéal pour des lots petits à moyens (environ 4 à 25 images).",
+      "a1": "R : Idéal pour des lots petits à moyens (environ 4 à 25 images) ; de très grands ensembles peuvent dégrader les performances.",
       "q2": "Q : La qualité de l'image sera-t-elle préservée ?",
       "a2": "R : La qualité dépend de la taille d'exportation choisie et des résolutions sources.",
       "q3": "Q : Puis-je réorganiser ou supprimer des images ?",
-      "a3": "R : Oui — utilisez les commandes de liste de fichiers pour déplacer ou supprimer des éléments.",
+      "a3": "R : Oui — utilisez les commandes de liste de fichiers pour déplacer ou supprimer des éléments avant de générer le collage final.",
       "q4": "Q : Cela s'exécute-t-il dans mon navigateur ?",
-      "a4": "R : Oui — l'assemblage du collage est côté client ; rien n'est téléchargé."
+      "a4": "R : Oui — l'assemblage du collage est côté client ; rien n'est téléchargé sauf si vous utilisez explicitement une fonction de partage."
     }
   },
   "howItWorks": {
@@ -95,12 +116,16 @@
   },
   "guide": {
     "title": "Comment créer de superbes collages d'images qui racontent une histoire",
+    "introHeading": "Introduction",
     "lead": "Parfois, une seule photo ne suffit pas. Que vous capturiez un voyage, que vous présentiez des produits ou que vous partagiez des moments sur les réseaux sociaux, une seule image peut sembler limitante. C'est là qu'interviennent les collages d'images.",
+    "byCombining": "En combinant plusieurs images en une seule, vous pouvez :",
+    "introConclusion": "Dans ce guide, vous apprendrez à concevoir des collages d'images efficaces, quand les utiliser et comment les rendre professionnels (et non désordonnés).",
+    "tryIt": "Essayez-le ici :",
     "intro": {
       "items": {
         "item1": "Raconter une histoire plus riche",
         "item2": "Afficher la variété dans un seul cadre",
-        "item3": "Créez des visuels accrocheurs"
+        "item3": "Créer des visuels accrocheurs"
       }
     },
     "whatIs": {
