@@ -39,7 +39,7 @@
   "advanced": {
     "label": "고급 옵션",
     "fontSize": "글꼴 크기",
-    "textColor": "텍스트 색상",
+    "textColor": "글꼴 색상",
     "toggleOpen": "▾",
     "toggleClosed": "▸",
     "fontSizePx": "{{크기}}픽셀"
@@ -90,7 +90,7 @@
     "step4": "필요에 따라 더 많은 텍스트 레이어를 추가한 다음 다운로드를 클릭하여 밈을 PNG로 저장하세요."
   },
   "actions": {
-    "reset": "재지정",
+    "reset": "초기화",
     "preview": "미리보기",
     "download": "다운로드"
   },

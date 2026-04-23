@@ -99,7 +99,7 @@
   "type": {
     "label": "유형:",
     "text": "텍스트",
-    "logo": "심벌 마크"
+    "logo": "로고 이미지"
   },
   "textInput": {
     "placeholder": "워터마크 텍스트 입력"
@@ -114,7 +114,7 @@
     "bottomLeft": "왼쪽 하단",
     "bottomRight": "오른쪽 하단"
   },
-  "repeated": "반복됨",
+  "repeated": "반복",
   "opacity": "불투명:",
   "applyBtn": "{{count}}개의 이미지에 적용",
   "processingBtn": "처리 중...",
