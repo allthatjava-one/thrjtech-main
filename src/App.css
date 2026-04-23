@@ -154,7 +154,7 @@
   /* match container horizontal padding (1.25rem each side -> 2.5rem total) */
   width: calc(100% - 2.5rem);
   max-width: calc(860px - 2.5rem); /* container max-width minus horizontal padding */
-  background-image: url('/Main_Background_70per.png');
+  background-image: url('/images/main/Main_Background_70per.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
