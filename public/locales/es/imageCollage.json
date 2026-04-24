@@ -1,0 +1,230 @@
+{
+  "hero": {
+    "title": "Collage de imágenes",
+    "tagline": "Combine múltiples imágenes en un collage limpio y descargable en segundos.",
+    "blogLink": "Aprenda a crear un collage →"
+  },
+  "hint": {
+    "text": "¿Necesita redimensionar imágenes primero?",
+    "btn": "Probar Redimensionador"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "howItWorksSteps": {
+    "step1": "Cargue varias imágenes.",
+    "step2": "Establezca filas y columnas.",
+    "step3": "Reordene imágenes si es necesario.",
+    "step4": "Previsualice y descargue su collage."
+  },
+  "dropZone": {
+    "text": "Arrastre y suelte sus imágenes aquí",
+    "or": "o",
+    "browse": "Explorar imágenes"
+  },
+  "controls": {
+    "rows": "Filas",
+    "columns": "Columnas",
+    "width": "Ancho",
+    "height": "Alto",
+    "gap": "Espaciado",
+    "background": "Color de fondo",
+    "widthHeight": "Ancho x alto: @label",
+    "widthPlaceholder": "Ancho (px)",
+    "heightPlaceholder": "Altura (px)",
+    "pxSuffix": "píxeles",
+    "unlinkAria": "Desvincular ancho y alto",
+    "linkAria": "Ancho y alto."
+  },
+  "buttons": {
+    "addImages": "Agregar imágenes",
+    "clear": "Borrar",
+    "preview": "Vista previa",
+    "download": "Descargar"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es el Collage de imágenes?",
+      "body": "Un collage combina varias imágenes en un único diseño en mosaico sobre un lienzo compartido. Controlas las filas, columnas, espaciado y las dimensiones finales del lienzo para crear publicaciones sociales, montajes, vistas previas de productos o imágenes de portafolio. El ensamblaje se realiza localmente en el navegador, produciendo una única imagen rasterizada que puedes descargar o compartir."
+    },
+    "howWorks": {
+      "heading": "Cómo funciona el collage",
+      "body": "La herramienta calcula la ubicación de cada celda dividiendo el lienzo en una cuadrícula uniforme según las filas y columnas seleccionadas. Para cada celda calcula un rectángulo de \"cobertura\" para que la imagen llene el espacio sin dejar huecos; los usuarios pueden mover y escalar cada imagen dentro de su celda para ajustar el encuadre. Al finalizar, las imágenes se dibujan en un lienzo HTML fuera de pantalla y se exportan como PNG."
+    },
+    "design": {
+      "heading": "Opciones de diseño y compensaciones",
+      "item1": "Calidad vs. tamaño: los lienzos más grandes preservan el detalle pero aumentan el uso de memoria y el tamaño del archivo final. Para la mayoría de los escenarios de redes sociales, 1200–2048 px en el lado largo equilibra claridad y rendimiento.",
+      "item2": "Rendimiento: toda la decodificación y composición se realiza en el lado del cliente. Los lienzos muy grandes o muchas imágenes de alta resolución pueden ralentizar la interfaz o agotar la memoria del navegador.",
+      "item3": "Consistencia: los tamaños de celda fijos garantizan un diseño predecible; ajusta el espaciado y el color del borde para alterar el ritmo visual del collage."
+    },
+    "practical": {
+      "heading": "Consejos prácticos",
+      "item1": "Comienza con imágenes de menor resolución mientras compones y previsualizas, luego usa los originales para la exportación final.",
+      "item2": "Usa la opción «bloquear proporción» para mantener un escalado proporcional al cambiar las dimensiones del lienzo.",
+      "item3": "Ajusta el espacio del borde para crear aire o mosaicos ajustados según tu objetivo de diseño.",
+      "item4": "Si una imagen se ve borrosa al exportar, aumenta la resolución del lienzo o usa una imagen fuente de mayor resolución."
+    },
+    "accessibility": {
+      "heading": "Accesibilidad y UX",
+      "body": "Los controles están etiquetados y son accesibles con teclado. El modo de vista previa se escala a pantallas más pequeñas para que los usuarios puedan inspeccionar y ajustar las imágenes con precisión antes de exportar."
+    },
+    "whenToUse": {
+      "heading": "Cuándo usar un collage",
+      "item1": "Crear publicaciones en redes sociales que combinen varias tomas en una sola imagen compartible.",
+      "item2": "Construir cuadrículas de productos o montajes de marketing para boletines, páginas de destino o anuncios.",
+      "item3": "Ensamblar rápidamente montajes fotográficos familiares o resúmenes de eventos para compartir."
+    },
+    "export": {
+      "heading": "Opciones de exportación",
+      "body": "De forma predeterminada, el lienzo final se exporta como PNG para preservar la calidad. Si necesitas archivos más pequeños compatibles con la web, puedes convertir el PNG a JPEG con un nivel de calidad elegido usando un editor externo. Los nombres de archivo incluyen una marca de tiempo para que las exportaciones sean únicas."
+    },
+    "privacy": {
+      "heading": "Privacidad y uso compartido",
+      "body": "La generación del collage ocurre completamente en tu dispositivo: las imágenes no salen de tu navegador a menos que las subas o compartas explícitamente mediante el flujo de trabajo de marca de agua o compartición de la aplicación."
+    },
+    "limitations": {
+      "heading": "Limitaciones",
+      "item1": "Los lienzos muy grandes (por ejemplo, >10 000 px) pueden estar limitados por la memoria del navegador o los límites de implementación.",
+      "item2": "Las fuentes animadas (GIF/WebP) se aplanan a un solo fotograma durante la exportación.",
+      "item3": "Los perfiles de color integrados pueden manejarse de manera diferente en distintos navegadores y afectar la fidelidad del color exportado."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Cuántas imágenes puedo usar?",
+      "a1": "R: Ideal para lotes pequeños a medianos (aproximadamente 4–25 imágenes); los conjuntos muy grandes pueden degradar el rendimiento.",
+      "q2": "P: ¿Se preservará la calidad de la imagen?",
+      "a2": "R: La calidad depende del tamaño de exportación del lienzo elegido y de las resoluciones de origen.",
+      "q3": "P: ¿Puedo reordenar o eliminar imágenes?",
+      "a3": "R: Sí — usa los controles de la lista de archivos para mover o eliminar elementos antes de generar el collage final.",
+      "q4": "P: ¿Se ejecuta en mi navegador?",
+      "a4": "R: Sí — el ensamblaje del collage es del lado del cliente; nada se sube a menos que uses una función de compartición."
+    }
+  },
+  "howItWorks": {
+    "step1": "Añade imágenes a través de arrastrar y soltar o del navegador de archivos.",
+    "step2": "Ajuste las filas, las columnas y el espaciado para organizar la cuadrícula.",
+    "step3": "Obtenga una vista previa del collage y cambie la posición de las imágenes si es necesario.",
+    "step4": "Finalice la imagen collage y descárguela."
+  },
+  "fileRow": {
+    "count": "{{count}} imágenes seleccionadas",
+    "changeOne": "Cambiar imagen",
+    "changeMany": "Cambiar imágenes",
+    "clear": "Borrar"
+  },
+  "infoBanner": "Puede cambiar el color y el grosor del borde del collage en la pantalla de vista previa.",
+  "collageBtn": "Collage y vista previa",
+  "finalSize": "Tamaño final del collage: {{width}} x {{height}} px",
+  "downloadBtn": "Descargar",
+  "downloadingBtn": "Descargando...",
+  "watermarkPrompt": {
+    "text": "¿Le gustaría poner una marca de agua privada en la imagen collage?",
+    "yes": "Sí",
+    "preparing": "Preparando...",
+    "error": "Error al enviar la imagen a la herramienta de marca de agua."
+  },
+  "preview": {
+    "header": "Vista previa",
+    "reset": "Restablecer",
+    "finalize": "Finalizar collage",
+    "close": "Cerrar",
+    "hint1": "- Arrastra las imágenes para reposicionarlas, haz clic en Color del borde para cambiarlo",
+    "hint2": "- Mantenga pulsada la tecla Alt + desplazarse para hacer zoom (escritorio). Utilice el pellizco de dos dedos para hacer zoom al tacto.",
+    "borderColor": "Color del borde:",
+    "borderThickness": "Grosor del borde:",
+    "closeAria": "Cerrar vista previa",
+    "noPreview": "Vista previa no disponible para esta imagen"
+  },
+  "guide": {
+    "title": "Cómo crear collages de imágenes impresionantes que cuentan una historia",
+    "introHeading": "Introducción",
+    "lead": "A veces una foto no es suficiente. Ya sea que estés capturando un viaje, mostrando productos o compartiendo momentos en las redes sociales, una sola imagen puede parecer limitante. Ahí es donde entran los collages de imágenes.",
+    "byCombining": "Al combinar múltiples imágenes en una sola, puedes:",
+    "introConclusion": "En esta guía, aprenderás a diseñar collages de imágenes efectivos, cuándo usarlos y cómo hacer que se vean profesionales (no desordenados).",
+    "tryIt": "Pruébalo aquí:",
+    "intro": {
+      "items": {
+        "item1": "Cuenta una historia más rica",
+        "item2": "Mostrar variedad en un solo fotograma",
+        "item3": "Crea efectos visuales llamativos"
+      }
+    },
+    "whatIs": {
+      "heading": "¿Qué es un collage de imágenes?",
+      "body": "Un collage de imágenes es una colección de múltiples imágenes dispuestas en una composición unificada. En lugar de ver las fotos individualmente, un collage te permite presentarlas juntas, crear significado a través de la disposición y resaltar las conexiones entre las imágenes."
+    },
+    "why": {
+      "heading": "¿Por qué usar collages de imágenes?",
+      "item1": "Cuenta una historia completa: una sola imagen muestra un momento. Un collage muestra antes y después, diferentes ángulos o una secuencia de eventos.",
+      "item2": "Maximiza el espacio limitado: en las redes sociales, los sitios web o las miniaturas, a menudo tienes espacio limitado. Un collage te permite mostrar varias imágenes en una sola publicación.",
+      "item3": "Crea un fuerte impacto visual: los collages se destacan porque contienen más información y atraen la atención de forma natural.",
+      "item4": "Showcase Variety: perfecto para galerías de productos, vistas previas de portafolios y comparaciones de funciones."
+    },
+    "types": {
+      "heading": "Tipos de diseños de collage de imágenes",
+      "grid": "Diseño de 🔲 cuadrícula: imágenes limpias y estructuradas, de igual tamaño, ideales para portafolios.",
+      "freeform": "Diseño de 🧩 forma libre: diferentes tamaños y posiciones, más creativo y dinámico.",
+      "themed": "Collage 🎯 temático: centrado en un solo concepto: colores o temas consistentes.",
+      "beforeAfter": "Collage 🔍 Antes y Después — Muestra la transformación — común en tutoriales y comparaciones."
+    },
+    "bestPractices": {
+      "heading": "Mejores prácticas para crear un gran collage",
+      "item1": "Comience con un propósito claro — Pregúntese: ¿Qué historia estoy contando?",
+      "item2": "Elija Imágenes relacionadas: las imágenes deben compartir un tema y un tono o tema similar.",
+      "item3": "Manténgalo simple: demasiadas imágenes pueden abrumar a los espectadores: 3–6 imágenes suelen ser ideales.",
+      "item4": "Utilice un espaciado consistente: el espaciado crea equilibrio y legibilidad.",
+      "item5": "Mantenga el equilibrio visual: evite que un lado sea demasiado pesado.",
+      "item6": "Presta atención al fondo: un buen fondo es compatible con las imágenes y no distrae."
+    },
+    "mistakes": {
+      "heading": "Errores comunes a evitar",
+      "item1": "Mezcla de imágenes no relacionadas",
+      "item2": "Usar demasiadas fotos",
+      "item3": "Alineación deficiente",
+      "item4": "Calidad de imagen inconsistente",
+      "item5": "Diseños demasiado complicados"
+    },
+    "stepByStep": {
+      "heading": "Paso a paso: cómo crear un collage de imágenes",
+      "step1": "Sube tus imágenes.",
+      "step2": "Selecciona un diseño (cuadrícula o personalizado)",
+      "step3": "Organiza las imágenes en el orden deseado",
+      "step4": "Ajuste el espaciado y la alineación",
+      "step5": "Vista previa de la composición final",
+      "step6": "Descarga tu collage"
+    },
+    "useCases": {
+      "heading": "Casos de uso en el mundo real",
+      "item1": "Publicaciones en redes 📱 sociales: combina lo más destacado en una publicación y aumenta la participación",
+      "item2": "Vitrinas 🛍 de productos: muestra múltiples ángulos y resalta las características",
+      "item3": "Recuerdos ✈️ de viaje: muestra un viaje completo en un solo fotograma",
+      "item4": "Presentación del 💼 portafolio: muestra la variedad de trabajos rápidamente"
+    },
+    "comparison": {
+      "heading": "Collage de imágenes frente a galería",
+      "collage": "Collage: Imagen única, narración sólida, uso eficiente del espacio, alto impacto visual.",
+      "gallery": "Galería: Múltiples imágenes, narración moderada, requiere desplazamiento."
+    },
+    "tips": {
+      "heading": "Consejos para que tu collage destaque",
+      "item1": "Usar contraste (imágenes claras frente a oscuras)",
+      "item2": "Mezcla primeros planos y planos generales",
+      "item3": "Añade bordes sutiles",
+      "item4": "Mantener un tono de color consistente"
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "¿Cuántas imágenes debo usar en un collage?",
+      "a1": "Por lo general, 3–6 imágenes funcionan mejor para mayor claridad y equilibrio.",
+      "q2": "¿Puedo usar diferentes tamaños de imagen?",
+      "a2": "Sí, pero mantén la alineación limpia para evitar un aspecto desordenado.",
+      "q3": "¿Los collages son buenos para SEO o sitios web?",
+      "a3": "Sí, ahorran espacio, mejoran la interacción visual y reducen el desorden de las páginas.",
+      "q4": "¿Los collages reducen la calidad de la imagen?",
+      "a4": "No si se crean correctamente: asegúrese de que las imágenes de origen sean de alta calidad."
+    },
+    "conclusion": "Los collages de imágenes son más que solo combinar fotos: son una forma poderosa de contar historias, presentar información y captar la atención. Con el diseño y el propósito correctos, un simple conjunto de imágenes puede convertirse en una experiencia visual convincente.",
+    "ctaBtn": "Herramienta de collage de imágenes →"
+  }
+}

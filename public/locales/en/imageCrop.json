@@ -1,0 +1,198 @@
+{
+  "hero": {
+    "title": "Image Crop",
+    "tagline": "Select and crop a portion of your image. Choose from standard aspect ratios or set a custom one, rotate and flip as needed, then download the cropped result.",
+    "blogLink": "Learn how to crop your image →"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "hint": {
+    "text": "Would you like to put words on your image before cropping it?",
+    "btn": "Try Meme Generator"
+  },
+  "dropZone": {
+    "text": "Drag & drop an image here, or click to select"
+  },
+  "fileRow": {
+    "loaded": "Image loaded",
+    "change": "Change Image",
+    "clear": "Clear"
+  },
+  "controls": {
+    "zoom": "Zoom",
+    "rotation": "Rotation",
+    "rotateLeft": "⟲",
+    "rotateRight": "⟳",
+    "rotateLeftAria": "rotate-left",
+    "rotateRightAria": "rotate-right",
+    "degrees": "{{rotation}}°",
+    "flip": "Flip",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical",
+    "aspect": "Aspect",
+    "ratio": "Ratio",
+    "ratioSeparator": ":"
+  },
+  "aspectOptions": {
+    "custom": "Use Custom Aspect Ratio",
+    "profile": "1:1 (Profile)",
+    "standard": "4:3 (Standard)",
+    "widescreen": "16:9 (Widescreen / YouTube)",
+    "story": "9:16 (Story / Reels)",
+    "instagram": "4:5 (Instagram Post)",
+    "pinterest": "2:3 (Pinterest Pin)",
+    "blog": "3:1 (Blog Featured)",
+    "facebook": "1.91:1 (Facebook Post)"
+  },
+  "actions": {
+    "preview": "Preview",
+    "processing": "Processing...",
+    "reset": "Reset",
+    "download": "Download"
+  },
+  "sendToMeme": {
+    "text": "Would you like to put a text on cropped image?",
+    "btn": "Send to Meme Generator"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Image Crop",
+      "body": "The Image Crop tool provides an interactive way to select and export a rectangular portion of an image. It offers zoom, rotation, and flip controls, aspect ratio presets for common targets (social, profile, banners), and a preview step so you can confirm the crop before downloading. All transformation and export operations are performed in your browser using an offscreen canvas; your original file does not leave your device unless you explicitly share or upload it."
+    },
+    "howWorks": {
+      "heading": "How cropping works",
+      "body": "After loading an image the editor displays a resizable crop overlay. You can drag the overlay to reposition it, resize using handles, or pick one of the provided aspect ratios for exact output dimensions. Zooming and rotation let you refine framing; flips mirror the image horizontally or vertically. When you click Preview or Download the selected region is rendered to an offscreen canvas with any transforms applied, and the result is exported as a PNG file for immediate download."
+    },
+    "presets": {
+      "heading": "Presets and precision",
+      "item1": { "title": "1:1 (Profile)", "body": "Ideal for avatars and profile photos." },
+      "item2": { "title": "16:9 (Widescreen)", "body": "Useful for video thumbnails, banners, and widescreen presentations." },
+      "item3": { "title": "4:5 (Portrait)", "body": "A common format for social feeds and portrait-oriented content." },
+      "item4": { "title": "Free", "body": "No constraints; crop to any dimensions you need." }
+    },
+    "practical": {
+      "heading": "Practical tips",
+      "item1": "Use the aspect-lock to keep exact proportions when resizing the crop area.",
+      "item2": "For pixel-perfect exports, set the desired output resolution after choosing the crop area, then preview at 100% if possible.",
+      "item3": "If you need to crop many images the same way, note the preset values so you can repeat the process consistently."
+    },
+    "useful": {
+      "heading": "Useful when",
+      "item1": "preparing profile pictures or social media assets to exact dimensions.",
+      "item2": "removing unwanted borders, background, or distracting elements from a photo.",
+      "item3": "cropping a screenshot to a specific region for docs or presentations.",
+      "item4": "quickly re-framing a photo without opening a desktop image editor."
+    },
+    "accessibility": {
+      "heading": "Accessibility & privacy",
+      "body": "Controls are keyboard accessible and sized for touch interaction; the preview dialog helps users of all devices confirm changes. Because cropping is performed locally, your images remain private unless you choose to upload them as part of a sharing workflow."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Is my image uploaded anywhere?",
+      "a1": "A: No — all cropping runs client-side in your browser. Your image never leaves your device.",
+      "q2": "Q: What formats are supported?",
+      "a2": "A: You can load any image format the browser supports (JPEG, PNG, WebP, GIF, etc.). The cropped output is always exported as PNG.",
+      "q3": "Q: Can I undo a crop?",
+      "a3": "A: Yes — simply adjust the crop selection and click Preview again to regenerate the output before downloading.",
+      "q4": "Q: Why does the download button stay greyed out?",
+      "a4": "A: Click Preview first to generate a cropped image, then the Download button becomes active."
+    }
+  },
+  "howItWorks": {
+    "step1": "Load an image by dragging and dropping it onto the crop area, or click to browse your files.",
+    "step2": "Drag and resize the crop overlay to select the region you want to keep. Choose an aspect ratio preset or use Free mode.",
+    "step3": "Optionally adjust zoom, rotation, and flip to fine-tune the framing before cropping.",
+    "step4": "Click Preview to generate the cropped image and inspect the result in the preview dialog.",
+    "step5": "Click Download to save the cropped PNG to your device.",
+    "imgAlt": { "step1": "Step 1", "step2": "Step 2", "step3": "Step 3", "step4": "Step 4" }
+  },
+  "guide": {
+    "title": "How to Crop Images Perfectly (Without Losing Quality or Composition)",
+    "lead": "Cropping an image is one of the simplest edits you can make — but it has a huge impact on how your image looks and communicates.",
+    "learnLabel": "In this guide, you'll learn:",
+    "learnItems": {
+      "item1": "How image cropping works",
+      "item2": "When to use it",
+      "item3": "How to crop properly without ruining quality"
+    },
+    "whatIs": {
+      "heading": "What Is Image Cropping?",
+      "body": "Image cropping is the process of removing unwanted outer areas of an image to improve composition or adjust size. Instead of resizing the entire image, cropping lets you cut out unnecessary parts, focus on the subject, and change the aspect ratio.",
+      "analogy": "Think of it as framing your image after it's already taken."
+    },
+    "why": {
+      "heading": "Why Cropping Matters",
+      "focus": "Focus on the Subject — Cropping removes distractions and highlights the most important part of the image.",
+      "composition": "Improve Composition — Use cropping to balance the image, apply the rule of thirds, and create a cleaner layout.",
+      "platform": "Fit Platform Requirements — Different platforms need different sizes; crop to square, vertical, or landscape to avoid distortion."
+    },
+    "croppingVsResizing": {
+      "heading": "Cropping vs Resizing",
+      "col1": "Feature",
+      "col2": "Cropping",
+      "col3": "Resizing",
+      "row1col1": "What it does",
+      "row1col2": "Removes part of image",
+      "row1col3": "Scales entire image",
+      "row2col1": "Keeps full content",
+      "row2col2": "No",
+      "row2col3": "Yes",
+      "row3col1": "Changes composition",
+      "row3col2": "Yes",
+      "row3col3": "No",
+      "row4col1": "Use case",
+      "row4col2": "Focus / framing",
+      "row4col3": "File size / dimensions",
+      "tip": "Best practice: Crop first → then resize if needed."
+    },
+    "bestPractices": {
+      "heading": "Best Practices for Cropping",
+      "item1": "Keep the Subject Clear — Ensure the main subject is centered or well-positioned and not cut awkwardly.",
+      "item2": "Maintain Aspect Ratio — Use fixed ratios (1:1, 16:9, 4:5) when targeting specific platforms.",
+      "item3": "Don't Crop Too Much — Excessive cropping reduces resolution and may make images blurry.",
+      "item4": "Leave Breathing Space — Avoid tight crops—leave slight spacing around the subject for a natural look.",
+      "item5": "Keep the Original — Always save the original image; cropped areas cannot be recovered."
+    },
+    "mistakes": {
+      "heading": "Common Mistakes to Avoid",
+      "item1": "❌ Cutting off important parts (faces, edges, text)",
+      "item2": "❌ Cropping without purpose",
+      "item3": "❌ Ignoring aspect ratio",
+      "item4": "❌ Over-cropping low-resolution images",
+      "item5": "❌ Using random crop sizes across platforms"
+    },
+    "stepByStep": {
+      "heading": "Step-by-Step: How to Crop an Image",
+      "step1": "Upload your image",
+      "step2": "Select the area you want to keep",
+      "step3": "Adjust the crop box (drag edges)",
+      "step4": "Choose aspect ratio (optional)",
+      "step5": "Apply crop",
+      "step6": "Download the final image"
+    },
+    "useCases": {
+      "heading": "Real Use Cases",
+      "social": "📱 Social Media Posts — Crop to square or vertical to improve engagement.",
+      "website": "🌐 Website Images — Remove unnecessary space and make images consistent across pages.",
+      "profile": "👤 Profile Pictures — Crop tightly around the face and center for better visibility.",
+      "product": "🛍️ Product Images — Remove background clutter and highlight the product clearly."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Does cropping reduce image quality?",
+      "a1": "Yes — because pixels are removed, but if done carefully the quality loss is usually not noticeable.",
+      "q2": "Can I undo cropping?",
+      "a2": "Only if your tool supports non-destructive editing or you kept the original image.",
+      "q3": "What is the best aspect ratio?",
+      "a3": "Depends on usage: Instagram → 1:1 or 4:5; YouTube → 16:9; Websites → varies.",
+      "q4": "Is cropping better than resizing?",
+      "a4": "They serve different purposes: cropping changes composition, resizing changes dimensions."
+    },
+    "conclusionTitle": "Conclusion",
+    "conclusion": "Image cropping is a simple but powerful way to improve composition, highlight important content, and make images fit any platform. Use the right techniques to turn an average image into a clean, professional-looking one.",
+    "ctaBtn": "Try the Image Crop Tool →"
+  }
+}

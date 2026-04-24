@@ -1,0 +1,213 @@
+{
+  "hero": {
+    "title": "Testeur Regex",
+    "icon": ".*",
+    "tagline": "Collez du texte ci-dessous, saisissez un modèle de recherche et visualisez instantanément les correspondances en surbrillance — sans inscription.",
+    "blogLink": "Apprenez à utiliser le Testeur Regex →"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que Regex",
+      "body": "Une expression régulière (regex) est un modèle qui spécifie un ensemble de chaînes. En JavaScript, les regex sont des objets (RegExp) pouvant être appliqués aux chaînes pour tester des correspondances, les extraire ou effectuer des substitutions."
+    },
+    "whenToUse": {
+      "heading": "Quand utiliser Regex",
+      "body": "Utilisez Regex lorsque vous devez trouver, valider ou transformer du texte basé sur un modèle structurel plutôt qu'une chaîne fixe."
+    },
+    "flags": {
+      "heading": "Indicateurs Regex",
+      "g": "g — global : toujours actif. Toutes les correspondances non chevauchantes sont renvoyées.",
+      "i": "i — insensible à la casse : a correspond à A, B correspond à b.",
+      "m": "m — multiligne : ^ et $ correspondent au début/fin de chaque ligne."
+    },
+    "captureGroups": {
+      "heading": "Groupes de capture et remplacements",
+      "body": "Les parenthèses dans un modèle regex créent des groupes de capture. Dans une chaîne de remplacement, $1 fait référence au premier groupe, $2 au deuxième, etc."
+    },
+    "usefulWhen": {
+      "heading": "Utile quand",
+      "item1": "Validation de la saisie utilisateur selon un format requis (e-mail, téléphone, URL).",
+      "item2": "Extraction de champs structurés (dates, identifiants, jetons) à partir de texte non structuré.",
+      "item3": "Remplacement par lots sur du texte avec des règles complexes."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Quelle saveur de regex ce testeur utilise-t-il ?",
+      "a1": "R : JavaScript (ECMAScript) regex, exécuté par le moteur RegExp intégré du navigateur.",
+      "q2": "Q : Pourquoi le comptage de correspondances inclut-il des chevauchements ?",
+      "a2": "R : Non — l'indicateur global renvoie des correspondances non chevauchantes de gauche à droite.",
+      "q3": "Q : Pourquoi mon modèle ne correspond-il pas sur plusieurs lignes ?",
+      "a3": "R : Activez l'indicateur m. Par défaut, ^ et $ ne correspondent qu'au début et à la fin de la chaîne entière."
+    }
+  },
+  "howItWorks": {
+    "step1": "Collez ou saisissez le texte que vous souhaitez rechercher dans le panneau Texte d'entrée.",
+    "step2": "Saisissez un modèle de recherche dans le champ Recherche. Activez Regex pour la syntaxe JavaScript complète.",
+    "step3": "Les correspondances sont surlignées en temps réel dans le panneau Aperçu des correspondances.",
+    "step4": "Saisissez un remplacement dans le champ Remplacer et cliquez sur Remplacer tout."
+  },
+  "howToUse": {
+    "heading": "Comment utiliser",
+    "step1": "1. Collez votre texte dans le panneau Texte d'entrée.",
+    "step2": "2. Saisissez un modèle dans le champ Recherche.",
+    "step3": "3. Les correspondances s'illuminent en temps réel dans le panneau Aperçu.",
+    "step4": "4. Utilisez Remplacer tout pour remplacer les correspondances."
+  },
+  "controls": {
+    "searchPlaceholder": "Modèle de recherche…",
+    "searchAriaLabel": "Modèle de recherche",
+    "regexLabel": "Expression régulière",
+    "regexTitle": "Activer le mode expression régulière",
+    "flagI": "i",
+    "flagITitle": "Insensible à la casse",
+    "flagM": "m",
+    "flagMTitle": "Multiligne",
+    "clearBtn": "Effacer",
+    "matchCount": "{{count}} correspondance(s)",
+    "noMatches": "Aucune correspondance",
+    "replaceToggleOpen": "▾ Remplacer par…",
+    "replaceToggleClose": "▸ Remplacer par…",
+    "replacePlaceholder": "Remplacement (prend en charge $1, $2…)",
+    "replaceAriaLabel": "Texte de remplacement",
+    "replaceAllBtn": "Remplacer tout",
+    "patternError": "Erreur de modèle : {{message}}"
+  },
+  "input": {
+    "label": "Texte d'entrée",
+    "placeholder": "Collez ou saisissez du texte ici…\n\nExemple :\nBonjour Monde 123\nfoo@bar.com",
+    "ariaLabel": "Texte d'entrée"
+  },
+  "preview": {
+    "label": "Aperçu des correspondances"
+  },
+  "output": {
+    "label": "Sortie remplacée",
+    "copyBtn": "Copier",
+    "copiedBtn": "✓ Copié !"
+  },
+  "guide": {
+    "title": "Comment tester et déboguer rapidement Regex (sans perdre la tête)",
+    "intro": "Les expressions régulières sont puissantes… mais notoirement frustrantes. Vous écrivez un modèle en vous attendant à ce qu'il corresponde parfaitement - et au lieu de cela, il correspond trop, rien ou fonctionne partiellement.",
+    "cta": "👉 La clé pour maîtriser les regex n'est pas la mémorisation, mais les tests et l'itération.",
+    "learnItems": {
+      "item1": "🧪 Testez efficacement les modèles d'expressions régulières",
+      "item2": "🐞 Déboguer les problèmes courants",
+      "item3": "👁 Comprenez ce que fait réellement votre modèle",
+      "item4": "🚀 Créez des regex en toute confiance"
+    },
+    "whatIs": {
+      "heading": "🔍 Qu'est-ce qu'un testeur Regex ?",
+      "body": "Un testeur d'expressions régulières est un outil interactif qui vous permet d'écrire un modèle, de fournir un exemple de texte et de voir instantanément les correspondances, transformant ainsi l'expression régulière en un retour visuel."
+    },
+    "whyDifficult": {
+      "heading": "🧠 Pourquoi Regex semble difficile",
+      "item1": "😵 Compact — un petit motif peut représenter beaucoup de logique et être difficile à lire.",
+      "item2": "🔄 Sensible — un changement de personnage peut tout casser ou changer complètement le comportement.",
+      "item3": "🧩 Abstrait — les motifs ne « ressemblent » pas toujours à ce à quoi ils correspondent."
+    },
+    "whyUse": {
+      "heading": "⚡ Pourquoi vous devriez toujours utiliser un testeur Regex",
+      "item1": "👀 Commentaires instantanés : consultez les correspondances au fur et à mesure que vous tapez ; pas de devinettes, pas d'exécution de code à plusieurs reprises.",
+      "item2": "🐞 Débogage plus rapide : identifiez rapidement les mauvais groupes, les évasions manquantes et les limites incorrectes.",
+      "item3": "🎯 Meilleure précision : testez par rapport aux données d'entrée réelles et aux cas extrêmes.",
+      "item4": "🚀 Apprentissage plus rapide : l'expérimentation vous aide à comprendre les modèles et à mémoriser la syntaxe naturellement."
+    },
+    "example": {
+      "heading": "🧪 Exemple : Regex en action",
+      "goal": "Objectif : faire correspondre les adresses e-mail",
+      "testInput": "Entrée de test :",
+      "result": "Un testeur d'expressions régulières met en évidence ✅ les correspondances valides et ❌ celles non valides, ce qui rend le débogage beaucoup plus facile."
+    },
+    "mistakes": {
+      "heading": "🛠 Erreurs courantes d'expression régulière",
+      "item1": "❌ Oublier les caractères d'échappement",
+      "item1Wrong": "// Faux — correspond à N'IMPORTE QUEL caractère",
+      "item1Right": "// Correct — correspond au point littéral",
+      "item2": "❌ Matching gourmand",
+      "item2Wrong": "// Faux — correspond trop",
+      "item2Right": "// Correct — non gourmand",
+      "item3": "❌ Ancres manquantes",
+      "item3Wrong": "// Correspond à n'importe quel endroit dans la chaîne",
+      "item3Right": "// Correct — ancré à la chaîne complète",
+      "item4": "❌ Classes de personnages incorrectes",
+      "item4Wrong": "// Faux — minuscules uniquement",
+      "item4Right": "// Correct — lettres et chiffres"
+    },
+    "stepByStep": {
+      "heading": "🪜 Étape par étape : comment tester Regex",
+      "step1": "✍️ Entrez votre modèle d'expression régulière",
+      "step2": "📄 Coller un exemple de texte",
+      "step3": "👀 Observer les matchs",
+      "step4": "🔧 Ajuster le motif",
+      "step5": "🔁 Répétez jusqu'à ce que ce soit correct"
+    },
+    "bestPractices": {
+      "heading": "🧠 Meilleures pratiques pour écrire des Regex",
+      "item1": "✅ Commencez simplement : créez des modèles étape par étape, ajoutez de la complexité progressivement.",
+      "item2": "✅ Testez des données réelles : utilisez les entrées réelles des utilisateurs et des exemples concrets.",
+      "item3": "✅ Utilisez les commentaires lorsque cela est possible – divisez les expressions régulières complexes en parties compréhensibles.",
+      "item4": "✅ Évitez la sur-optimisation : une regex lisible bat une regex \"intelligente\".",
+      "item5": "✅ Validez les cas extrêmes : testez les entrées vides et les formats inattendus."
+    },
+    "useCases": {
+      "heading": "🧑‍💻 Cas d'utilisation réels",
+      "item1": "📧 Validation par e-mail — vérifiez le format d'entrée avant de soumettre",
+      "item2": "🔐 Règles de mot de passe : appliquez les exigences de complexité",
+      "item3": "📄 Extraction de données : extrayez les identifiants, les URL et les numéros du texte",
+      "item4": "📊 Log Parsing - analyser et filtrer les journaux du système"
+    },
+    "pitfalls": {
+      "heading": "⚠️ Pièges courants",
+      "item1": "❌ Écrire une regex entière en même temps",
+      "item2": "❌ Ne pas tester les cas extrêmes",
+      "item3": "❌ Copier-coller une regex sans la comprendre",
+      "item4": "❌ Ignorer la lisibilité"
+    },
+    "comparison": {
+      "heading": "🔍 Testeur Regex vs exécution de code",
+      "col1": "Fonctionnalité",
+      "col2": "Testeur d'expressions régulières",
+      "col3": "Code",
+      "row1col1": "Vitesse",
+      "row1col2": "Instantané",
+      "row1col3": "Ralentissez",
+      "row2col1": "Débogage",
+      "row2col2": "Visuel",
+      "row2col3": "Manuel",
+      "row3col1": "Apprentissage",
+      "row3col2": "Facile",
+      "row3col3": "Plus fort"
+    },
+    "proTips": {
+      "heading": "🚀 Conseils de pro",
+      "item1": "🔍 Testez d'abord de petites parties de regex",
+      "item2": "🧩 Divisez les modèles complexes en morceaux",
+      "item3": "⚡ Utilisez une correspondance non gourmande en cas de besoin",
+      "item4": "📋 Conservez les exemples d'entrées enregistrés pour les réutiliser"
+    },
+    "safety": {
+      "heading": "🔐 Est-il sûr d'utiliser un testeur Regex ?",
+      "body": "Outils les plus modernes :",
+      "item1": "✅ Exécutez directement dans votre navigateur",
+      "item2": "✅ Ne stockez pas les entrées",
+      "warning": "👉 Évitez tout de même de coller des données sensibles ou des secrets de production."
+    },
+    "faq": {
+      "heading": "❓FAQ",
+      "q1": "Pourquoi mon expression régulière ne correspond-elle à rien ?",
+      "a1": "Raisons possibles : ancres manquantes, syntaxe incorrecte ou mauvaise entrée de test.",
+      "q2": "Pourquoi mon expression régulière correspond-elle trop ?",
+      "a2": "Probablement en raison de modèles gourmands comme .*. Essayer .*? plutôt.",
+      "q3": "Puis-je apprendre les regex sans tout mémoriser ?",
+      "a3": "Oui, la pratique avec des outils de test est le moyen le plus rapide.",
+      "q4": "Quelle est la meilleure façon d’améliorer les compétences en matière d’expression régulière ?",
+      "a4": "Construire + tester + itérer à plusieurs reprises."
+    },
+    "conclusion": "Regex ne doit pas être frustrant. Avec la bonne approche et un bon testeur, vous pouvez créer des modèles plus rapidement, déboguer en toute confiance et vraiment comprendre ce que fait votre regex.",
+    "ctaBtn": "👉 Essayez votre regex ici : Regex Tester Tool"
+  }
+}

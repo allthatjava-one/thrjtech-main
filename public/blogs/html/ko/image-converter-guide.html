@@ -1,0 +1,102 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1>이미지 변환기 — 브라우저에서 이미지 형식 변환 (JPG, PNG, WebP, AVIF, BMP, GIF, ICO)</h1>
+
+  <p>THRJ의 <strong>이미지 변환기</strong>에 대한 완전한 가이드입니다. 이 문서는 이미지 형식 변환 방법, 투명도 보존, ICO 파비콘 파일 생성, 매우 사용 사례에 맞는 올바른 형식 선택 방법을 설명합니다 — 파일을 서버에 업로드하지 않고. <a href="/image-converter">이미지 변환기 열기</a></p>
+
+  <br>
+  <h2>이미지 형식이 중요한 이유</h2>
+
+  <p>모든 이미지 형식은 서로 다른 목적으로 설계되었으며, 잘못된 형식을 선택하면 파일 크기 매대, 투명도 손실, 화질이 일어날 수 있습니다. 트레이드오프를 이해하면 항상 올바른 형식을 선택할 수 있습니다:</p>
+
+  <ul>
+    <li><strong>JPEG (JPG)</strong>: 사진과 복잡한 색상 그라데이션에 최적. 손실 압축으로 작은 파일을 생성하지만, 반복 저장 시 화질이 있습니다. 투명도를 지원하지 않습니다.</li>
+    <li><strong>PNG</strong>: 완전한 투명도 지원을 포함한 무손실 압축. JPEG보다 파일 크기가 크지만 스크린샷, 로고, 아이콘, 날카로운 경계선과 투명도가 중요한 이미지에 이상적.</li>
+    <li><strong>WebP</strong>: 동등한 품질에서 JPEG와 PNG 모두를 파일 크기 면에서 능가하는 Google의 현대적인 형식. 투명도와 애니메이션을 지원하며 웹 페이지에 탁월합니다.</li>
+    <li><strong>AVIF</strong>: 뛰어난 압축력의 차세대 형식. 고품질에서 가장 작은 파일을 생성하며 투명도를 지원합니다. 2024년 현재 브라우저 지원이 주류화되었습니다.</li>
+    <li><strong>BMP</strong>: 압축되지 않은 비트맵 형식으로 일반적으로 다른 옵션보다 훨씬 큽니다. 일부 레거시 Windows 애플리케이션에서 사용됩니다.</li>
+    <li><strong>GIF</strong>: 애니메이션 지원을 포함한 8비트 색상. 애니메이션의 경우 WebP와 APNG로 대부분 대체되었지만 여전히 모든 곳에서 널리 지원됩니다.</li>
+    <li><strong>ICO</strong>: 브라우저 파비콘과 데스크톱 아이콘에 사용되는 Windows 아이콘 형식. 단일 파일 컨테이너에 하나 이상의 이미지 크기가 포함됩니다.</li>
+  </ul>
+
+  <br>
+  <h2>개요</h2>
+
+  <p>이미지 변환기는 브라우저에서 완전히 실행됩니다 — 업로드가 필요 없습니다. 이미지를 디코딩하고 오프스크린 캔버스에 그린 후 선택한 대상 형식으로 내보내에즍니다. 지원되는 출력 형식으로는 JPG, PNG, WebP, AVIF, BMP, GIF, ICO가 있습니다. TIFF는 입력 형식으로 지원됩니다(브라우저 내 디코딩).</p>
+
+  <br>
+  <h2>빠른 단계</h2>
+
+  <ol>
+    <li>이미지 변환기 페이지를 엽니다: <code>/image-converter</code>.</li>
+    <li>이미지를 드래그 &amp; 드롭하거나 클릭하여 파일을 선택하세요.</li>
+    <li>버튼에서 출력 형식을 선택하세요.</li>
+    <li>(ICO의 경우) 원하는 아이콘 크기를 선택하고 <strong>Convert</strong>를 클릭하세요.</li>
+    <li><strong>Download</strong>를 사용하여 변환된 이미지를 다운로드하세요.</li>
+  </ol>
+
+  <br>
+  <h2>스크린샷으로 보는 단계별 안내</h2>
+
+  <h3>1. 이미지 업로드</h3>
+  <p>업로드 영역에 파일을 드롭하거나 파일 선택기를 사용하세요. 도구가 합리적인 기본값을 자동으로 선택합니다.</p>
+  <p><img src="/screenshots/image-converter/image-converter-002.png" alt="Upload" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <h3>2. 형식 선택 및 변환</h3>
+  <p>대상 형식을 선택하고 <strong>Convert</strong>를 클릭하세요. 미리보기에 변환된 결과가 표시되며 패닝 및 즐 기능을 지원합니다.</p>
+  <p><img src="/screenshots/image-converter/image-converter-003.png" alt="Convert" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <br>
+  <h2>팁</h2>
+  <ul>
+    <li>투명도를 보존하려면 PNG, WebP 또는 AVIF를 사용하세요.</li>
+    <li>사진의 경우 JPG 또는 AVIF가 일반적으로 가장 좋은 크기/품질 균형을 제공합니다.</li>
+    <li>ICO 내보내기는 단일 크기 아이콘을 생성합니다; 파비콘에 필요한 크기를 선택하세요.</li>
+  </ul>
+
+  <br>
+  <h2>변환 시점 — 실용적인 시나리오</h2>
+
+  <p><strong>스크린샷 PNG를 JPEG로 변환</strong>: 스크린샷을 공유해야 하지만 PNG가 이메일 첨부에 너무 크다면, 85% 품질로 JPEG로 변환하면 주목할 만한 시각적 차이 없이 파일이 일반적으로 60–75% 감소됩니다.</p>
+
+  <p><strong>웹사이트를 위해 JPEG 사진을 WebP로 변환</strong>: WebP 파일은 동등한 품질에서 JPEG보다 일반적으로 25–35% 작습니다. WebP로 전환하면 페이지 로딩 속도와 Core Web Vitals 점수를 의만하게 개선할 수 있으며, 이는 SEO에도 중요합니다.</p>
+
+  <p><strong>파비콘 ICO 생성</strong>: 브라우저 파비콘은 전통적으로 특정 크기(16×16, 32×32, 48×48)의 ICO 형식이 필요합니다. 변환기에서 크기를 선택하고 직접 내보낼 수 있습니다. 현대 브라우저의 경우 32×32 PNG도 작동하지만 ICO는 이전 브라우저와의 호환성이 더 좋습니다.</p>
+
+  <p><strong>흰 배경 제거</strong>: JPEG(투명도 저장 불가)를 가지고 있지만 투명도가 필요하다면, 먼저 편집 도구로 배경을 제거한 후 PNG 또는 WebP로 내보내야 합니다.</p>
+
+  <br>
+  <h2>형식 비교 표</h2>
+  <table>
+    <thead>
+      <tr><th>형식</th><th>투명도</th><th>애니메이션</th><th>무손실 옵션</th><th>일반적인 용도</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>JPEG</td><td>없음</td><td>없음</td><td>없음</td><td>사진, 복잡한 이미지</td></tr>
+      <tr><td>PNG</td><td>있음</td><td>없음</td><td>있음</td><td>스크린샷, 로고, 아이콘</td></tr>
+      <tr><td>WebP</td><td>있음</td><td>있음</td><td>있음</td><td>웹 이미지 (현대 브라우저)</td></tr>
+      <tr><td>AVIF</td><td>있음</td><td>있음</td><td>있음</td><td>웹 이미지 (최상 압축)</td></tr>
+      <tr><td>GIF</td><td>1비트</td><td>있음</td><td>있음 (256색)</td><td>간단한 애니메이션, 아이콘</td></tr>
+      <tr><td>BMP</td><td>없음</td><td>없음</td><td>있음</td><td>레거시 Windows 앱</td></tr>
+      <tr><td>ICO</td><td>있음</td><td>없음</td><td>있음</td><td>파비콘, 데스크톱 아이콘</td></tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2>개인 정보 보호</h2>
+  <p>모든 변환은 브라우저에서 로컈로 이루어집니다; 어떤 서버에도 파일이 업로드되지 않습니다. 따라서 기밀, 기밀 또는 도메인 이미지를 데이터 유로 업로드될 걸정 없이 안전하게 변환할 수 있습니다.</p>
+
+  <br>
+  <h2>자주 묻는 질문</h2>
+  <p><strong>변환된 JPEG가 원본 JPEG보다 훨씬 큰 이유는?</strong> 변환 과정에서 원본 JPEG를 원시 픽셀 버퍼로 디코딩한 후 다시 인코딩합니다. 원본이 높은 압축이었다면 더 높은 품질 설정으로 재인코딩한 버전이 더 큽니다. 파일 크기를 줄이려면 품질 슬라이더를 낮춰 조정하세요.</p>
+
+  <p><strong>여러 이미지를 한 번에 변환할 수 있나요?</strong> 현재 도구는 한 번에 하나의 이미지를 처리합니다. 일괄 변환의 경우 각 변환 후 다음 이미지를 드래그하여 도구를 빠르게 재사용할 수 있습니다.</p>
+
+  <p><strong>AVIF가 브라우저에서 작동하지 않는 이유는?</strong> AVIF 인코딩은 AVIF를 지원하는 <code>canvas.toBlob()</code> API가 필요합니다. 대부분의 현대 브라우저는 지원하지만 이전 버전은 지원하지 않을 수 있습니다. AVIF를 사용할 수 없다면 WebP를 폴백으로 사용하세요.</p>
+
+  <p><strong>PDF 페이지를 이미지로 변환할 수 있나요?</strong> 이미지 변환기는 이미지 파일을 처리합니다. PDF 페이지를 이미지로 변환하려면 THRJ의 <a href="/pdf-converter">PDF 변환기</a>를 사용하세요.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>

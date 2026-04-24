@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import './BlogPage.css'
@@ -21,12 +22,17 @@ function naiveMarkdownToHtml(md) {
 }
 
 export default function BlogPage() {
+  const { t, i18n } = useTranslation('blogs')
   const { slug } = useParams()
   const [createdAt, setCreatedAt] = useState(null)
-  const [content, setContent] = useState(null)
-  const [title, setTitle] = useState(null)
+  const [blogData, setBlogData] = useState(null)
   const [error, setError] = useState(null)
 
+  const lang = i18n.resolvedLanguage || i18n.language || 'en'
+  const title = blogData ? ((lang !== 'en' && blogData[`title_${lang}`]) || blogData.title) : null
+  const content = blogData
+    ? naiveMarkdownToHtml((lang !== 'en' && blogData[`content_${lang}`]) || blogData.content)
+    : null
 
   useEffect(() => {
     const url = `/api/blogs/${slug}`
@@ -36,8 +42,7 @@ export default function BlogPage() {
         return res.json()
       })
       .then(data => {
-        setTitle(data.title)
-        setContent(naiveMarkdownToHtml(data.content))
+        setBlogData(data)
         setCreatedAt(data.createdAt)
       })
       .catch(err => setError(err.message))
@@ -47,7 +52,7 @@ export default function BlogPage() {
     const prev = document.title
     if (title) document.title = `${title} | THRJ Blog`
     return () => { document.title = prev }
-  }, [title])
+  }, [title, lang])
 
   return (
     <div className="page blog-post-page">
@@ -55,14 +60,14 @@ export default function BlogPage() {
       <main className="main">
         <div className="container">
           <div style={{ marginBottom: '1rem' }}>
-            <Link to="/blogs">← Back to Blog</Link>
+            <Link to="/blogs">{t('back')}</Link>
           </div>
           <article className="card">
-            <div style={{ color: '#000000' }}>Created at: {new Date(createdAt).toLocaleString()}</div>
+            <div style={{ color: '#000000' }}>{t('createdAt', { date: new Date(createdAt).toLocaleString() })}</div>
             {error
-              ? <p style={{ color: '#dc2626' }}>Error: {error}</p>
+              ? <p style={{ color: '#dc2626' }}>{t('errorArticle', { error })}</p>
               : <>
-                  <div dangerouslySetInnerHTML={{ __html: content || '<p>Loading…</p>' }} />
+                  <div dangerouslySetInnerHTML={{ __html: content || `<p>${t('loadingArticle')}</p>` }} />
                 </>
             }
           </article>

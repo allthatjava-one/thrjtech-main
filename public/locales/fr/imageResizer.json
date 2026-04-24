@@ -1,0 +1,154 @@
+{
+  "hero": {
+    "title": "Redimensionneur d'image",
+    "tagline": "Redimensionnez votre image à n'importe quelle taille par pourcentage ou dimensions exactes en pixels. Verrouillez le rapport d'aspect pour éviter la distorsion, puis téléchargez votre résultat instantanément.",
+    "blogLink": "Apprenez à redimensionner votre image →"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "hint": {
+    "text": "Voulez-vous que votre image s'adapte à une miniature YouTube ou Instagram ?",
+    "btn": "Essayer le Recadrage"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que le Redimensionneur d'image",
+      "body": "Le Redimensionneur d'image vous permet de modifier les dimensions en pixels d'une image par un pourcentage ou en spécifiant des valeurs exactes de largeur et de hauteur."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne le redimensionnement",
+      "body": "Le redimensionnement décode l'image source dans le navigateur, la dessine sur un canevas aux dimensions cibles, puis exporte le contenu du canevas comme nouveau fichier image."
+    },
+    "quality": {
+      "heading": "Qualité, interpolation et compromis",
+      "item1": "Réduction : préserve la qualité perçue et réduit les octets ; adapté aux vignettes et à la diffusion web.",
+      "item2": "Agrandissement : limité par la résolution source — évitez un agrandissement excessif pour prévenir la pixelisation.",
+      "item3": "Interpolation : les navigateurs utilisent le rééchantillonnage intégré ; les résultats varient selon le moteur."
+    },
+    "practical": {
+      "heading": "Conseils pratiques",
+      "item1": "Pour le web, visez des dimensions modérées (par ex. 1200–2048 px sur le bord long).",
+      "item2": "Utilisez le mode pourcentage pour une mise à l'échelle proportionnelle rapide.",
+      "item3": "Conservez une copie du fichier original si vous prévoyez de le rééditer."
+    },
+    "whenToUse": {
+      "heading": "Quand utiliser",
+      "body": "Utilisez le redimensionneur pour préparer des images pour des contextes d'affichage spécifiques, réduire le poids des fichiers ou ajuster les images aux exigences de la plateforme."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Puis-je conserver le rapport d'aspect ?",
+      "a1": "R : Oui — activez le verrou d'aspect pour maintenir les proportions.",
+      "q2": "Q : Le redimensionnement est-il local ?",
+      "a2": "R : Oui — le redimensionnement s'effectue dans votre navigateur ; les fichiers ne sont pas téléchargés.",
+      "q3": "Q : La taille du fichier diminuera-t-elle toujours ?",
+      "a3": "R : Généralement lors d'une réduction, mais la taille dépend aussi du format et des paramètres de compression.",
+      "q4": "Q : Puis-je redimensionner par lots ?",
+      "a4": "R : Cette interface se concentre sur les opérations sur une seule image."
+    }
+  },
+  "howItWorks": {
+    "step1": "Choisissez une image source par glisser-déposer ou navigation.",
+    "step2": "Sélectionnez le pourcentage ou la largeur/hauteur explicite et verrouillez le rapport d'aspect si nécessaire.",
+    "step3": "Cliquez sur Redimensionner pour effectuer la mise à l'échelle côté client.",
+    "step4": "Prévisualisez et téléchargez l'image redimensionnée."
+  },
+  "dropZone": {
+    "text": "Glissez-déposez une image ici, ou cliquez pour sélectionner",
+    "hint": "Alt+Défilement pour zoomer · Pincer sur mobile · {{percent}}%"
+  },
+  "fileRow": {
+    "name": "Changer l'image",
+    "clear": "Effacer"
+  },
+  "resizeMode": {
+    "percentage": "Redimensionner par pourcentage",
+    "dimensions": "Redimensionner par largeur et hauteur"
+  },
+  "percentInput": {
+    "placeholder": "Saisissez le pourcentage (ex. 50)",
+    "suffix": "%"
+  },
+  "dimensionInputs": {
+    "width": "Largeur (px)",
+    "height": "Hauteur (px)",
+    "unlinkAria": "Dissocier la largeur et la hauteur",
+    "linkAria": "Lier la largeur et la hauteur"
+  },
+  "previewBtn": "Aperçu",
+  "processingBtn": "Traitement en cours...",
+  "downloadBtn": "Télécharger",
+  "watermarkPrompt": {
+    "text": "Souhaitez-vous ajouter un filigrane privé à l'image redimensionnée ?",
+    "yes": "Oui",
+    "preparing": "Préparation...",
+    "error": "Échec de l'envoi de l'image à l'outil de filigrane."
+  },
+  "guide": {
+    "title": "Le guide complet pour redimensionner les images sans perte de qualité",
+    "lead": "Redimensionner les images semble simple, jusqu'à ce que vous obteniez des résultats flous, pixellisés ou déformés. Que vous téléchargiez des photos sur un site Web, envoyiez des images par courrier électronique ou optimisiez les performances, redimensionner correctement est plus important que la plupart des gens ne le pensent.",
+    "learn": "Dans ce guide, vous apprendrez :",
+    "learnItems": {
+      "item1": "Comment fonctionne réellement le redimensionnement de l'image",
+      "item2": "Pourquoi la perte de qualité se produit",
+      "item3": "Les meilleures façons de redimensionner les images sans les gâcher",
+      "item4": "Des conseils pratiques que vous pouvez utiliser immédiatement"
+    },
+    "whatMeans": {
+      "heading": "Que signifie réellement « Redimensionner une image » ?",
+      "body": "Redimensionner une image signifie modifier ses dimensions – généralement la largeur et la hauteur en pixels.",
+      "example": "Original : 4000 × 3000 px → Redimensionné : 800 × 600 px",
+      "resampling": "Ce processus est appelé rééchantillonnage et affecte directement la qualité."
+    },
+    "whyLoseQuality": {
+      "heading": "Pourquoi les images perdent-elles en qualité ?",
+      "pixel": "Perte de pixels — Lors de la réduction de la taille, les pixels sont définitivement supprimés. Si cela est mal fait, les bords deviennent irréguliers et les détails fins disparaissent.",
+      "resampling": "Mauvaise méthode de rééchantillonnage — Tous les algorithmes de redimensionnement ne sont pas égaux. Le voisin le plus proche est rapide mais en bloc. Le bilinéaire est plus fluide. Bicubic est le meilleur dans la plupart des cas.",
+      "repeated": "Redimensionnement répété — Chaque redimensionnement supprime davantage de données. Redimensionnez toujours à partir de l'image originale, jamais à partir d'une copie précédemment redimensionnée."
+    },
+    "bestPractices": {
+      "heading": "Meilleures pratiques pour redimensionner sans perdre en qualité",
+      "aspectRatio": "Conserver les proportions – Gardez toujours la largeur et la hauteur proportionnelles.",
+      "resizeOnce": "Redimensionner une fois — Commencez par l'original → redimensionnez une fois → enregistrez la version finale.",
+      "format": "Choisissez le bon format — JPEG : taille plus petite, légère perte. PNG : qualité supérieure, fichier plus volumineux. WebP : meilleur équilibre.",
+      "compression": "Évitez la surcompression – Visez l’équilibre et non la compression maximale."
+    },
+    "useCases": {
+      "heading": "Cas d'utilisation courants",
+      "website": "Téléchargements de sites Web — Redimensionnez les grandes images (4 000 px → 1 200 px) pour améliorer considérablement la vitesse de chargement des pages.",
+      "social": "Médias sociaux — Le redimensionnement garantit l'absence de problèmes de recadrage et une meilleure qualité visuelle sur les profils, les publications et les miniatures.",
+      "email": "Pièces jointes aux e-mails : les images volumineuses ralentissent l'envoi et peuvent être rejetées. Le redimensionnement permet de gérer les fichiers."
+    },
+    "mistakes": {
+      "heading": "Erreurs à éviter",
+      "item1": "❌ Étirement des images (mauvais rapport hauteur/largeur)",
+      "item2": "❌ Enregistrement répété au format JPEG",
+      "item3": "❌ Utiliser des outils avec de mauvais algorithmes de rééchantillonnage",
+      "item4": "❌ Mise à l'échelle de petites images en attendant une qualité supérieure"
+    },
+    "stepByStep": {
+      "heading": "Guide rapide étape par étape",
+      "step1": "Téléchargez votre image",
+      "step2": "Choisissez la largeur ou la hauteur souhaitée",
+      "step3": "Garder les proportions activées",
+      "step4": "Sélectionnez le format de sortie (JPEG / PNG / WebP)",
+      "step5": "Télécharger l'image redimensionnée"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Le redimensionnement réduit-il la qualité ?",
+      "a1": "Oui, mais si cela est fait correctement, la perte est minime et souvent imperceptible à l’œil humain.",
+      "q2": "Puis-je redimensionner sans perdre en qualité ?",
+      "a2": "Seulement si vous ne réduisez pas la taille de manière significative. Sinon, certaines pertes de données sont inévitables.",
+      "q3": "Quel est le meilleur format après le redimensionnement ?",
+      "a3": "Web : WebP ou JPEG — Archivage haute qualité : PNG",
+      "q4": "Vaut-il mieux redimensionner ou compresser ?",
+      "a4": "Ils servent à des fins différentes. Redimensionner modifie les dimensions ; La compression réduit la taille du fichier. Les meilleurs résultats proviennent d’une utilisation prudente des deux."
+    },
+    "conclusionTitle": "Conclusion",
+    "conclusion": "Redimensionner des images ne consiste pas seulement à les réduire, il s'agit de le faire correctement pour préserver la clarté et la convivialité. En conservant les proportions, en redimensionnant une fois par rapport à l'original et en choisissant le bon format, vous pouvez améliorer considérablement la qualité et les performances de l'image.",
+    "ctaBtn": "Essayez le redimensionneur d'image →"
+  }
+}

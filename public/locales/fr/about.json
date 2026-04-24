@@ -1,0 +1,33 @@
+{
+  "title": "À propos de nous",
+  "whoWeAre": {
+    "heading": "Qui sommes-nous",
+    "body": "THRJTech est une petite équipe indépendante de développeurs passionnés par la simplification des tâches numériques quotidiennes pour tout le monde. Nous créons des outils gratuits basés sur navigateur pour que vous puissiez accomplir vos tâches sans installer de logiciel, créer des comptes ou payer des abonnements. Nous avons commencé parce que nous en avions assez de chercher des utilitaires simples pour n'atterrir que sur des sites criblés de publicités, de paywalls ou d'inscriptions obligatoires. Il devait y avoir une meilleure façon — alors nous l'avons construite nous-mêmes."
+  },
+  "ourMission": {
+    "heading": "Notre mission",
+    "body": "Nous croyons que des outils puissants et pratiques doivent être gratuits et accessibles à tous. Que vous ayez besoin de redimensionner une photo, compresser un PDF, créer un mème ou apposer un filigrane sur une image, notre objectif est de vous offrir un moyen rapide, privé et sans friction de le faire — directement dans votre navigateur. Nous nous concentrons sans relâche sur la simplicité : chaque outil est conçu pour être intuitif et utilisable en quelques secondes, sans courbe d'apprentissage ni manuel requis."
+  },
+  "builtForEveryone": {
+    "heading": "Conçu pour tous",
+    "body": "Nos utilisateurs vont des étudiants et freelances aux propriétaires de petites entreprises et développeurs. Ce qu'ils ont tous en commun, c'est le besoin d'accomplir quelque chose rapidement sans sauter des obstacles. Nous concevons chaque fonctionnalité avec cela à l'esprit — temps de chargement rapides, interfaces épurées et résultats fiables. Si un outil semble maladroit ou déroutant, nous considérons cela comme un bug à corriger."
+  },
+  "privacyFirst": {
+    "heading": "La confidentialité avant tout",
+    "body": "Chaque outil que nous créons est conçu en tenant compte de votre vie privée. Dans la mesure du possible, tout le traitement se fait localement sur votre appareil — vos fichiers ne quittent jamais votre navigateur. Pour les fonctionnalités qui nécessitent un traitement côté serveur (comme la compression ou la fusion de PDF), les fichiers sont traités sur une infrastructure éphémère et supprimés automatiquement dans les 30 minutes. Nous ne stockons, ne vendons ni ne partageons vos données. Pour plus d'informations sur la manière dont nous et nos partenaires traitons les données, veuillez consulter notre",
+    "privacyLink": "Politique de confidentialité"
+  },
+  "alwaysFree": {
+    "heading": "Toujours gratuit",
+    "body": "Tous nos outils sont entièrement gratuits, sans coûts cachés, sans inscription requise et sans limites d'utilisation. Nous soutenons le service grâce à des partenariats publicitaires transparents et non intrusifs (dont Google AdSense), ce qui nous permet de maintenir nos outils gratuits et accessibles à la communauté mondiale sans compromettre l'expérience utilisateur. Nous ne mettrons jamais les fonctionnalités principales derrière un paywall — cela va à l'encontre de tout ce pour quoi nous nous battons."
+  },
+  "constantlyImproving": {
+    "heading": "En amélioration constante",
+    "body": "Nous publions des mises à jour régulièrement basées sur les retours des utilisateurs et notre propre utilisation quotidienne des outils. De nouveaux outils sont ajoutés lorsque nous identifions un manque qui n'est pas déjà bien servi par une solution simple, gratuite et basée sur navigateur. Notre feuille de route est guidée par ce qui est réellement utile — et non par les tendances ou le gonflement des fonctionnalités. Si quelque chose n'améliore pas l'expérience, cela ne sort pas."
+  },
+  "getInTouch": {
+    "heading": "Prenez contact",
+    "body": "Nous cherchons toujours à nous améliorer. Si vous avez des suggestions, des commentaires ou trouvez un bug, n'hésitez pas à nous contacter — nous lisons chaque message et apprécions sincèrement le temps que les gens prennent pour écrire. Vos contributions ont directement façonné de nombreuses fonctionnalités que vous voyez aujourd'hui, et nous avons hâte d'entendre ce que vous pensez ensuite.",
+    "contactLink": "Contactez-nous →"
+  }
+}

@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { formatSize } from './utils/formatSize'
 import { useState } from 'react'
 import CustomSelect from '../../commons/CustomSelect'
+import { useTranslation } from 'react-i18next'
 
 export function PdfCompressorView({
   file,
@@ -21,6 +22,7 @@ export function PdfCompressorView({
   handleCompress,
   handleReset,
 }) {
+  const { t } = useTranslation('pdfCompressor')
   const [openPanel, setOpenPanel] = useState('')
   const [qualityOption, setQualityOption] = useState('BALANCED')
 
@@ -37,20 +39,18 @@ export function PdfCompressorView({
           {status !== 'done' && (
             <>
               <div className="hero-section">
-                <h1 className="hero-title">PDF Compressor</h1>
+                <h1 className="hero-title">{t('hero.title')}</h1>
                 <p className="hero-tagline">
-                    Just Drop and Go - 
-                    Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, 
-                    and download the smaller result. <Link to="/blogs/pdf-compressor-guide">Learn how to compress PDF →</Link>
+                    {t('hero.tagline')} <Link to="/blogs/pdf-compressor-guide">{t('hero.blogLink')}</Link>
                   </p>
                   
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
                   <span style={{ fontSize: 18 }}>🖼️</span>
-                  <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>Do you need to split the PDFs before compress?</span>
+                  <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>{t('hint.text')}</span>
                   <Link
                     to="/pdf-splitter"
                     style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
-                  >Try PDF Splitter</Link>
+                  >{t('hint.btn')}</Link>
                 </div>
 
                   <div className="details-controls">
@@ -60,7 +60,7 @@ export function PdfCompressorView({
                       aria-expanded={openPanel === 'details'}
                       type="button"
                     >
-                      Details
+                      {t('tabs.details')}
                     </button>
                     <button
                       className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
@@ -68,91 +68,64 @@ export function PdfCompressorView({
                       aria-expanded={openPanel === 'howitworks'}
                       type="button"
                     >
-                      How it works
+                      {t('tabs.howItWorks')}
                     </button>
                   </div>
                   <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
                       <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
-                                  <h3>What is PDF compression</h3>
-                                  <p>
-                                    PDF compression is the process of reducing the storage footprint of a PDF file by optimizing and re-encoding its internal
-                                    resources — principally images, embedded fonts, and stream objects — while aiming to preserve the document's visible appearance.
-                                    Compression helps when you need faster transfers, lower storage costs, or to meet attachment limits without having to manually edit
-                                    or recreate the document in external applications.
-                                  </p>
+                                  <h3>{t('details.whatIsCompression.heading')}</h3>
+                                  <p>{t('details.whatIsCompression.body')}</p>
 
-                                  <h3>How compression works</h3>
-                                  <p>
-                                    Under the hood, a compressor inspects the PDF's object tree, identifies large embedded binaries (for example, raster images and
-                                    redundant font subsets), and rewrites those resources with more efficient encodings. There are two broad strategies: lossless
-                                    optimizations (which repackage streams and remove unused objects without altering pixel data) and lossy image recompression
-                                    (which reduces image fidelity in exchange for significant size savings). Good compressors select the least-destructive option based on
-                                    the content type and configured quality targets.
-                                  </p>
+                                  <h3>{t('details.howWorks.heading')}</h3>
+                                  <p>{t('details.howWorks.body')}</p>
 
-                                  <h3>Design tradeoffs</h3>
+                                  <h3>{t('details.tradeoffs.heading')}</h3>
                                   <ul>
-                                    <li>
-                                      Quality vs. Size: Aggressive, lossy recompression reduces bytes but can visibly affect photographs and scanned documents. For
-                                      archival or print-ready assets prefer conservative, lossless steps; for web delivery, more aggressive settings often make sense.
-                                    </li>
-                                    <li>
-                                      Speed and Resource Use: Compression of large, image-heavy PDFs is CPU- and memory-intensive — server-side processing can provide
-                                      more consistent performance for very large files than client-only approaches.
-                                    </li>
-                                    <li>
-                                      Predictability: Different PDF producers embed resources differently; results vary depending on how the original was generated.
-                                    </li>
+                                    <li>{t('details.tradeoffs.item1')}</li>
+                                    <li>{t('details.tradeoffs.item2')}</li>
+                                    <li>{t('details.tradeoffs.item3')}</li>
                                   </ul>
 
-                                  <h3>Practical recommendations</h3>
+                                  <h3>{t('details.practical.heading')}</h3>
                                   <ul>
-                                    <li>Prefer lossless steps when exact visual fidelity is required (legal, regulated, or archival content).</li>
-                                    <li>For scanned or photographic PDFs, try a mild lossy recompression first and review the output visually before further reductions.</li>
-                                    <li>Keep a copy of the original file until you confirm the compressed output meets your needs.</li>
+                                    <li>{t('details.practical.item1')}</li>
+                                    <li>{t('details.practical.item2')}</li>
+                                    <li>{t('details.practical.item3')}</li>
                                   </ul>
 
-                              <h3>What it does</h3>
+                              <h3>{t('details.whatItDoes.heading')}</h3>
                               <ul>
-                                <li>Compresses PDFs by optimizing embedded images and streams.</li>
-                                <li>Reduces file size while preserving text and structural metadata when possible.</li>
-                                <li>Produces a smaller, downloadable PDF suitable for sharing and storage.</li>
+                                <li>{t('details.whatItDoes.item1')}</li>
+                                <li>{t('details.whatItDoes.item2')}</li>
+                                <li>{t('details.whatItDoes.item3')}</li>
                               </ul>
 
-                              <h3>Useful when</h3>
+                              <h3>{t('details.usefulWhen.heading')}</h3>
                               <ul>
-                                <li>need to send PDF file but the file size is over email attachment limits.</li>
-                                <li>save disk space.</li>
-                                <li>prepare documents for email or web publishing.</li>
+                                <li>{t('details.usefulWhen.item1')}</li>
+                                <li>{t('details.usefulWhen.item2')}</li>
+                                <li>{t('details.usefulWhen.item3')}</li>
                               </ul>
 
-                              <h3>Comparison</h3>
+                              <h3>{t('details.comparison.heading')}</h3>
                               <ul>
-                                <li>Quick and easy — no local software required.</li>
-                                <li>Server-side processing may be more consistent for large or complex PDFs.</li>
-                                <li>Not a full editor — for advanced edits use desktop tools.</li>
+                                <li>{t('details.comparison.item1')}</li>
+                                <li>{t('details.comparison.item2')}</li>
+                                <li>{t('details.comparison.item3')}</li>
                               </ul>
 
-                              <h3>Privacy & retention</h3>
-                              <p>
-                                Uploaded files are processed on short-lived infrastructure and removed according to the app's retention policy. If you are handling
-                                highly sensitive documents, prefer local desktop tools or an on-prem solution that matches your compliance requirements.
-                              </p>
+                              <h3>{t('details.privacy.heading')}</h3>
+                              <p>{t('details.privacy.body')}</p>
 
-                              <h3>When to use PDF compression</h3>
-                              <p>
-                                Use compression when you want to optimize documents for email, website publishing, or to save storage. Compression is particularly
-                                valuable for scanned documents, photo-heavy reports, or any content where embedded images dominate file size.
-                              </p>
+                              <h3>{t('details.whenToUse.heading')}</h3>
+                              <p>{t('details.whenToUse.body')}</p>
 
-                                  <h3>FAQs</h3>
+                                  <h3>{t('details.faq.heading')}</h3>
                                   <ul>
-                                    <li><strong>Q:</strong> Is my file private? <strong>A:</strong> Files are processed temporarily and auto-deleted according to the app's policy.</li>
-                                    <li><strong>Q:</strong> Will compression change layout or searchable text? <strong>A:</strong> No — compression focuses on images and streams while
-                                      preserving textual content and layout in most cases.</li>
-                                    <li><strong>Q:</strong> Can I control compression level? <strong>A:</strong> This interface applies automatic heuristics; advanced presets are available
-                                      in pro or expert modes in other tools.</li>
-                                    <li><strong>Q:</strong> What if the result looks worse? <strong>A:</strong> Keep the original and retry with milder settings or use lossless-only options.</li>
+                                    <li><strong>{t('details.faq.q1')}</strong> {t('details.faq.a1')}</li>
+                                    <li><strong>{t('details.faq.q2')}</strong> {t('details.faq.a2')}</li>
+                                    <li><strong>{t('details.faq.q3')}</strong> {t('details.faq.a3')}</li>
+                                    <li><strong>{t('details.faq.q4')}</strong> {t('details.faq.a4')}</li>
                                   </ul>
                             </div>
 
@@ -160,27 +133,27 @@ export function PdfCompressorView({
                           <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                             <li style={{ marginBottom: '0.75rem' }}>
                               <img src="/screenshots/compressor/pdf-compressor-01.png" alt="Step 1" className="how-img" />
-                              <p>Upload a PDF using drag & drop or the browse button.</p>
+                              <p>{t('howItWorks.step1')}</p>
                             </li>
                             <li style={{ marginBottom: '0.75rem' }}>
                               <img src="/screenshots/compressor/pdf-compressor-02.png" alt="Step 2" className="how-img" />
-                              <p>The file is sent to the serverless compressor which optimizes embedded images and streams.</p>
+                              <p>{t('howItWorks.step2')}</p>
                             </li>
                             <li style={{ marginBottom: '0.75rem' }}>
                               <img src="/screenshots/compressor/pdf-compressor-03.png" alt="Step 3" className="how-img" />
-                              <p>Compression progress is shown and the compressed file becomes available for download.</p>
+                              <p>{t('howItWorks.step3')}</p>
                             </li>
                             <li>
                               <img src="/screenshots/compressor/pdf-compressor-04.png" alt="Step 4" className="how-img" />
-                              <p>Download the compressed PDF before it is removed from temporary storage.</p>
+                              <p>{t('howItWorks.step4')}</p>
                             </li>
                           </ol>
                         </div>
                   </div>
                 <div className="hero-badges">
-                  <span className="hero-badge">⚡ Instant</span>
-                  <span className="hero-badge">🔒 Secure</span>
-                  <span className="hero-badge">🗑️ Auto-deleted</span>
+                  <span className="hero-badge">{t('badges.instant')}</span>
+                  <span className="hero-badge">{t('badges.secure')}</span>
+                  <span className="hero-badge">{t('badges.autoDeleted')}</span>
                 </div>
               </div>
 
@@ -201,9 +174,9 @@ export function PdfCompressorView({
                       onChange={handleFileInput}
                     />
                     <div className="drop-icon">📂</div>
-                    <p className="drop-text">Drag &amp; drop your PDF here</p>
-                    <p className="drop-sub">or</p>
-                    <span className="btn btn-outline">Browse File</span>
+                    <p className="drop-text">{t('dropZone.text')}</p>
+                    <p className="drop-sub">{t('dropZone.or')}</p>
+                    <span className="btn btn-outline">{t('dropZone.browse')}</span>
                   </label>
                 ) : (
                   <div className="file-info">
@@ -215,7 +188,7 @@ export function PdfCompressorView({
                     <button
                       className="remove-btn"
                       onClick={handleReset}
-                      title="Remove file"
+                      title={t('dropZone.removeTitle')}
                     >
                       ✕
                     </button>
@@ -224,16 +197,16 @@ export function PdfCompressorView({
               </div>
 
               <div className="quality-controls">
-                <label className="quality-label">Quality</label>
+                <label className="quality-label">{t('quality.label')}</label>
                 <div className="quality-select-wrap">
                   <CustomSelect
                     className="wide"
                     value={qualityOption}
                     onChange={setQualityOption}
                     options={[
-                      { value: 'HQ', label: 'High Quality — minimal visual loss, modest size reduction.' },
-                      { value: 'BALANCED', label: 'Balanced — good quality with significant size savings.' },
-                      { value: 'MAX', label: 'Maximum Compression — largest size reduction, some visual loss possible.' },
+                      { value: 'HQ', label: t('quality.hq') },
+                      { value: 'BALANCED', label: t('quality.balanced') },
+                      { value: 'MAX', label: t('quality.max') },
                     ]}
                   />
                 </div>
@@ -243,14 +216,14 @@ export function PdfCompressorView({
 
               {file && status === 'idle' && (
                 <button className="btn btn-primary compress-btn" onClick={() => handleCompress(qualityOption)}>
-                  Compress PDF
+                  {t('compressBtn')}
                 </button>
               )}
 
               {(status === 'uploading' || status === 'compressing') && (
                 <div className="progress-section">
                   <div className="progress-label">
-                    {status === 'uploading' ? 'Uploading to R2 storage…' : 'Compressing PDF…'}
+                    {status === 'uploading' ? t('progress.uploading') : t('progress.compressing')}
                   </div>
                   <div className="progress-bar">
                     <div className="progress-fill" style={{ width: `${progress}%` }} />
@@ -262,13 +235,13 @@ export function PdfCompressorView({
 
           {status === 'done' && (
             <div className="result-section">
-              <div className="result-icon">✅</div>
-              <h2 className="result-title">Compression Complete!</h2>
+              <div className="result-icon">{t('result.icon')}</div>
+              <h2 className="result-title">{t('result.title')}</h2>
 
               <div className="size-comparison">
                 <div className="size-row">
-                  <span className="size-col-label">Original</span>
-                  <span className="size-col-label">Size</span>
+                  <span className="size-col-label">{t('result.originalLabel')}</span>
+                  <span className="size-col-label">{t('result.sizeLabel')}</span>
                 </div>
                 <div className="size-row size-row--data">
                   <span className="size-col-value">{file.name}</span>
@@ -276,8 +249,8 @@ export function PdfCompressorView({
                 </div>
                 <div className="size-row size-row--spacer" />
                 <div className="size-row">
-                  <span className="size-col-label">Compressed</span>
-                  <span className="size-col-label">Size</span>
+                  <span className="size-col-label">{t('result.compressedLabel')}</span>
+                  <span className="size-col-label">{t('result.sizeLabel')}</span>
                 </div>
                 <div className="size-row size-row--data">
                   <span className="size-col-value size-col-value--compressed">{downloadName}</span>
@@ -292,150 +265,145 @@ export function PdfCompressorView({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download Compressed PDF
+                {t('result.download')}
               </a>
 
               <button className="btn btn-ghost" onClick={handleReset}>
-                Compress Another File
+                {t('result.another')}
               </button>
             </div>
           )}
 
           <div className="note">
             <span className="note-icon">⚠️</span>
-            Note: The compressed file will be stored in Cloudflare R2 storage for 30 min. Please
-            download it within this period. After 30 min, the file will be automatically deleted.
+            {t('note')}
           </div>
 
           {/* Guide / How-to section */}
           <section className="tool-guide" style={{ marginTop: 28 }}>
             <div style={{ maxWidth: 820, margin: '0 auto', padding: '12px 6px', color: '#222', lineHeight: 1.6 }}>
-              <h2 style={{ fontSize: 22, marginBottom: 6 }}>How to Reduce PDF File Size Without Losing Quality (Fast &amp; Simple Guide)</h2>
+              <h2 style={{ fontSize: 22, marginBottom: 6 }}>{t('guide.title')}</h2>
 
-              <p>
-                You’ve probably run into this problem: <em>“File size exceeds limit”</em>, email won’t send your PDF, or an upload fails.
-                Large PDFs are frustrating — but you don’t need to recreate your file. This short guide explains why PDFs get large, how
-                compression works, and how to reduce file size without ruining quality.
-              </p>
+              <p>{t('guide.intro')}</p>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>Why Are PDF Files So Large?</h3>
-              <p>A PDF can contain much more than just text. Common reasons for large files:</p>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.whyLarge.heading')}</h3>
+              <p>{t('guide.whyLarge.body')}</p>
               <ul style={guideListStyle}>
-                <li><strong>High-Resolution Images</strong> — images often use full resolution and are not optimized.</li>
-                <li><strong>Embedded Fonts</strong> — PDFs may include multiple full font sets.</li>
-                <li><strong>Scanned Documents</strong> — scanned PDFs are images saved as pages and can be very large.</li>
-                <li><strong>Uncompressed Elements</strong> — files created without optimization contain extra data.</li>
+                <li>{t('guide.whyLarge.item1')}</li>
+                <li>{t('guide.whyLarge.item2')}</li>
+                <li>{t('guide.whyLarge.item3')}</li>
+                <li>{t('guide.whyLarge.item4')}</li>
               </ul>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>What Does PDF Compression Do?</h3>
-              <p>Compression reduces file size by lowering image resolution, removing unnecessary data, and optimizing internal structure —
-                 aiming for a smaller file while keeping acceptable visual quality.</p>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.whatDoes.heading')}</h3>
+              <p>{t('guide.whatDoes.body')}</p>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>When Should You Compress a PDF?</h3>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.whenToCompress.heading')}</h3>
               <ul style={guideListStyle}>
-                <li><strong>Sending via email</strong> — avoid 20–25MB attachment limits.</li>
-                <li><strong>Uploading to websites</strong> — job portals, forms, and submissions often limit file size.</li>
-                <li><strong>Saving storage</strong> — smaller files save disk space and speed backups.</li>
-                <li><strong>Improving performance</strong> — smaller PDFs open and load faster on all devices.</li>
+                <li>{t('guide.whenToCompress.item1')}</li>
+                <li>{t('guide.whenToCompress.item2')}</li>
+                <li>{t('guide.whenToCompress.item3')}</li>
+                <li>{t('guide.whenToCompress.item4')}</li>
               </ul>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>Best Practices for PDF Compression</h3>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.bestPractices.heading')}</h3>
               <ol style={guideListStyle}>
-                <li><strong>Choose the right compression level</strong> — low compression keeps quality, high compression reduces size more.</li>
-                <li><strong>Optimize images first</strong> — resize/compress images before creating the PDF when possible.</li>
-                <li><strong>Avoid repeated compression</strong> — always keep an original copy; repeated recompression degrades quality.</li>
-                <li><strong>Know your purpose</strong> — printing needs higher quality; sharing can be smaller.</li>
-                <li><strong>Use a reliable tool</strong> — balance size and quality; try this compressor for fast results.</li>
+                <li>{t('guide.bestPractices.item1')}</li>
+                <li>{t('guide.bestPractices.item2')}</li>
+                <li>{t('guide.bestPractices.item3')}</li>
+                <li>{t('guide.bestPractices.item4')}</li>
+                <li>{t('guide.bestPractices.item5')}</li>
               </ol>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>Common Mistakes to Avoid</h3>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.mistakes.heading')}</h3>
               <ul style={guideListStyle}>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#b91c1c', fontWeight: 700, lineHeight: '1em' }}>✕</span>
-                  Over-compressing important documents
+                  {t('guide.mistakes.item1')}
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#b91c1c', fontWeight: 700, lineHeight: '1em' }}>✕</span>
-                  Compressing already optimized PDFs
+                  {t('guide.mistakes.item2')}
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#b91c1c', fontWeight: 700, lineHeight: '1em' }}>✕</span>
-                  Ignoring readability after compression
+                  {t('guide.mistakes.item3')}
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#b91c1c', fontWeight: 700, lineHeight: '1em' }}>✕</span>
-                  Using low-quality scans as input
+                  {t('guide.mistakes.item4')}
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#b91c1c', fontWeight: 700, lineHeight: '1em' }}>✕</span>
-                  Not checking the final output
+                  {t('guide.mistakes.item5')}
                 </li>
               </ul>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>Step-by-Step: How to Compress a PDF</h3>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.stepByStep.heading')}</h3>
               <ol style={guideListStyle}>
-                <li>Upload your PDF file</li>
-                <li>Choose compression level</li>
-                <li>Start compression</li>
-                <li>Preview the result</li>
-                <li>Download the optimized file</li>
+                <li>{t('guide.stepByStep.step1')}</li>
+                <li>{t('guide.stepByStep.step2')}</li>
+                <li>{t('guide.stepByStep.step3')}</li>
+                <li>{t('guide.stepByStep.step4')}</li>
+                <li>{t('guide.stepByStep.step5')}</li>
               </ol>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>Real-World Use Cases</h3>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.useCases.heading')}</h3>
               <ul style={guideListStyle}>
-                <li>Job applications — upload resumes within limits</li>
-                <li>Business documents — share reports efficiently</li>
-                <li>Student assignments — submit without upload errors</li>
-                <li>Mobile sharing — avoid long download times</li>
+                <li>{t('guide.useCases.item1')}</li>
+                <li>{t('guide.useCases.item2')}</li>
+                <li>{t('guide.useCases.item3')}</li>
+                <li>{t('guide.useCases.item4')}</li>
               </ul>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>PDF Compression vs File Splitting</h3>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.comparison.heading')}</h3>
               <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
                 <thead>
                   <tr style={{ borderBottom: '1px solid #e6e6e6' }}>
-                    <th style={{ textAlign: 'left', padding: 6 }}>Feature</th>
-                    <th style={{ textAlign: 'left', padding: 6 }}>Compression</th>
-                    <th style={{ textAlign: 'left', padding: 6 }}>Splitting</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col1')}</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col2')}</th>
+                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col3')}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>Goal</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>Reduce size</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>Break into parts</td></tr>
-                  <tr><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>Keeps file intact</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>✅ Yes</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>❌ No</td></tr>
-                  <tr><td style={{ padding: 6 }}>Best for</td><td style={{ padding: 6 }}>Email, uploads</td><td style={{ padding: 6 }}>Large document sharing</td></tr>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>{t('guide.comparison.row1col1')}</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>{t('guide.comparison.row1col2')}</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>{t('guide.comparison.row1col3')}</td></tr>
+                  <tr><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>{t('guide.comparison.row2col1')}</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>{t('guide.comparison.row2col2')}</td><td style={{ padding: 6, borderBottom: '1px solid #f3f3f3' }}>{t('guide.comparison.row2col3')}</td></tr>
+                  <tr><td style={{ padding: 6 }}>{t('guide.comparison.row3col1')}</td><td style={{ padding: 6 }}>{t('guide.comparison.row3col2')}</td><td style={{ padding: 6 }}>{t('guide.comparison.row3col3')}</td></tr>
                 </tbody>
               </table>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>Tips for Better Results</h3>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.tips.heading')}</h3>
               <ul style={guideListStyle}>
-                <li>Use clear, high-quality originals</li>
-                <li>Avoid unnecessary images</li>
-                <li>Keep formatting simple</li>
-                <li>Test different compression levels</li>
+                <li>{t('guide.tips.item1')}</li>
+                <li>{t('guide.tips.item2')}</li>
+                <li>{t('guide.tips.item3')}</li>
+                <li>{t('guide.tips.item4')}</li>
               </ul>
 
               <br />
-              <h3 style={{ fontSize: 16, marginTop: 6 }}>FAQ</h3>
-              <p><strong>Does PDF compression reduce quality?</strong><br/>Yes — but good tools minimize noticeable loss.</p>
-              <p><strong>How much can I reduce file size?</strong><br/>It depends on content: image-heavy PDFs see large reductions; text-only PDFs see smaller changes.</p>
-              <p><strong>Can I reverse compression?</strong><br/>No — compression is usually permanent. Keep originals.</p>
+              <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.faq.heading')}</h3>
+              <p><strong>{t('guide.faq.q1')}</strong><br/>{t('guide.faq.a1')}</p>
+              <p><strong>{t('guide.faq.q2')}</strong><br/>{t('guide.faq.a2')}</p>
+              <p><strong>{t('guide.faq.q3')}</strong><br/>{t('guide.faq.a3')}</p>
 
-              <p style={{ marginTop: 10 }}><strong>Conclusion</strong><br/>Large PDFs don’t have to slow you down. Use proper compression techniques to share files, meet upload limits, and improve performance without sacrificing usability.</p>
+              <p style={{ marginTop: 10 }}><strong>{t('guide.conclusionTitle')}</strong><br/>
+              {t('guide.conclusion')}</p>
 
               <p style={{ marginTop: 12 }}>
                 <a
                   className="btn btn-primary"
                   href="/pdf-compressor"
                   onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-compressor') }}
-                >👉 Compress your PDF here: PDF Compressor Tool</a>
+                >{t('guide.ctaBtn')}</a>
               </p>
             </div>
           </section>

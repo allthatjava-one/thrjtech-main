@@ -2,12 +2,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import React, { useRef, useState, useEffect } from "react";
 import "./MemeGenerator.css";
 import { normalizeImageFile } from '../../commons/normalizeImageFiles';
+import { useTranslation } from 'react-i18next';
 
 export default function MemeGeneratorView({ initialFile }) {
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
   const navigate = useNavigate();
+  const { t } = useTranslation('imageMemeGenerator');
   const [imageSrc, setImageSrc] = useState(null);
   const [imageObj, setImageObj] = useState(null);
   // Layers: multiple text layers with position, size and color
@@ -601,15 +603,14 @@ export default function MemeGeneratorView({ initialFile }) {
 
   return (
     <>
-      <h2 className="hero-title">Meme Generator</h2>
-      <p className="hero-tagline">Create fun memes by adding custom text to any image. 
-        Drag text anywhere on the canvas, adjust font size and color, then download 
-        your finished meme with one click. <Link to="/blogs/meme-generator-guide">Learn how to use the Meme Generator →</Link></p>
+      <h2 className="hero-title">{t('hero.title')}</h2>
+      <p className="hero-tagline">{t('hero.tagline')}{' '}
+        <Link to="/blogs/meme-generator-guide">{t('hero.blogLink')}</Link></p>
         
       <div className="ir-tip-banner">
-        <span className="ir-tip-text">Would you like to <b>crop</b> your image before creating a meme?</span>
+        <span className="ir-tip-text">{t('hint.text')}</span>
         <button className="ir-tip-btn" onClick={() => navigate('/image-resizer')}>
-          Try Image Crop
+          {t('hint.btn')}
         </button>
       </div>
       
@@ -621,7 +622,7 @@ export default function MemeGeneratorView({ initialFile }) {
             aria-expanded={openPanel === 'details'}
             type="button"
           >
-            Details
+            {t('tabs.details')}
           </button>
           <button
             className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
@@ -629,52 +630,36 @@ export default function MemeGeneratorView({ initialFile }) {
             aria-expanded={openPanel === 'howitworks'}
             type="button"
           >
-            How it works
+            {t('tabs.howItWorks')}
           </button>
         </div>
 
             <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
-                <h3>What is a Meme Generator</h3>
-                <p>
-                  A meme generator is a lightweight creative editor that lets you place text overlays on images to produce humorous, informative, or
-                  expressive graphics quickly. It supports multiple text layers, free positioning, font sizing, color selection, and simple export
-                  controls so you can craft a share-ready image in seconds. All composition happens within your browser—no external upload is required
-                  unless you explicitly share or save to a remote service.
-                </p>
+                <h3>{t('details.whatIs.heading', { defaultValue: 'What is a Meme Generator' })}</h3>
+                <p>{t('details.whatIs.body', { defaultValue: 'A meme generator is a lightweight creative editor that lets you place text overlays on images to produce humorous, informative, or expressive graphics quickly. It supports multiple text layers, free positioning, font sizing, color selection, and simple export controls so you can craft a share-ready image in seconds.' })}</p>
 
-                <h3>How the generator works</h3>
-                <p>
-                  Upload or drop an image into the canvas area, then add one or more text layers using the controls. Each layer can be positioned by
-                  dragging, resized via the advanced controls, and styled with a color picker. The preview area reflects changes in real time. When you
-                  export, the app merges the text onto the image on an offscreen canvas and creates a downloadable PNG that preserves your layout and
-                  styling choices.
-                </p>
+                <h3>{t('details.howWorks.heading', { defaultValue: 'How the generator works' })}</h3>
+                <p>{t('details.howWorks.body', { defaultValue: 'Upload or drop an image into the canvas area, then add one or more text layers using the controls. Each layer can be positioned by dragging, resized via the advanced controls, and styled with a color picker. The preview area reflects changes in real time.' })}</p>
 
-                <h3>Why use a browser-based tool</h3>
-                <p>
-                  Browser-based meme editors are instant and accessible: they don't require installations, run offline once loaded, and keep your images
-                  local to your device. This makes them convenient for casual creation on phones, tablets, and desktops alike.
-                </p>
+                <h3>{t('details.whyBrowser.heading', { defaultValue: 'Why use a browser-based tool' })}</h3>
+                <p>{t('details.whyBrowser.body', { defaultValue: "Browser-based meme editors are instant and accessible: they don't require installations, run offline once loaded, and keep your images local to your device." })}</p>
 
-                <h3>Tips for better memes</h3>
+                <h3>{t('details.tips.heading', { defaultValue: 'Tips for better memes' })}</h3>
                 <ul>
-                  <li>Use short, punchy captions and capitalize text for classic meme styles.</li>
-                  <li>Keep good contrast between text and background; add stroke or shadow if needed for readability.</li>
-                  <li>Use multiple layers for complex layouts—title, subtitle, or small annotations all work well.</li>
+                  <li>{t('details.tips.item1', { defaultValue: 'Use short, punchy captions and capitalize text for classic meme styles.' })}</li>
+                  <li>{t('details.tips.item2', { defaultValue: 'Keep good contrast between text and background; add stroke or shadow if needed for readability.' })}</li>
+                  <li>{t('details.tips.item3', { defaultValue: 'Use multiple layers for complex layouts—title, subtitle, or small annotations all work well.' })}</li>
                 </ul>
 
-                <h3>Accessibility & privacy</h3>
-                <p>
-                  Controls are designed with accessibility in mind (large targets, keyboard support). Since composition occurs locally, your images are
-                  not transmitted off your device by default — they only leave the browser if you choose to upload or share them.
-                </p>
+                <h3>{t('details.accessibility.heading', { defaultValue: 'Accessibility & privacy' })}</h3>
+                <p>{t('details.accessibility.body', { defaultValue: 'Controls are designed with accessibility in mind (large targets, keyboard support). Since composition occurs locally, your images are not transmitted off your device by default — they only leave the browser if you choose to upload or share them.' })}</p>
 
-                <h3>FAQs</h3>
+                <h3>{t('details.faq.heading', { defaultValue: 'FAQs' })}</h3>
                 <ul>
-                  <li><strong>Q:</strong> Will my image be uploaded anywhere? <strong>A:</strong> No — everything runs client-side in your browser.</li>
-                  <li><strong>Q:</strong> Can I add more than two text lines? <strong>A:</strong> Yes — use the ＋ button to add as many text layers as you need.</li>
-                  <li><strong>Q:</strong> What image formats are supported? <strong>A:</strong> Any image format your browser supports (JPEG, PNG, WebP, GIF, etc.).</li>
+                  <li><strong>{t('details.faq.q1', { defaultValue: 'Q: Will my image be uploaded anywhere?' })}</strong> <strong>{t('details.faq.a1', { defaultValue: 'A: No — everything runs client-side in your browser.' })}</strong></li>
+                  <li><strong>{t('details.faq.q2', { defaultValue: 'Q: Can I add more than two text lines?' })}</strong> <strong>{t('details.faq.a2', { defaultValue: 'A: Yes — use the ＋ button to add as many text layers as you need.' })}</strong></li>
+                  <li><strong>{t('details.faq.q3', { defaultValue: 'Q: What image formats are supported?' })}</strong> <strong>{t('details.faq.a3', { defaultValue: 'A: Any image format your browser supports (JPEG, PNG, WebP, GIF, etc.).' })}</strong></li>
                 </ul>
               </div>
 
@@ -682,19 +667,19 @@ export default function MemeGeneratorView({ initialFile }) {
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/meme-generator/meme-generator001.png" alt="Step 1" className="how-img" />
-                    <p>Upload an image by clicking the canvas area or dragging and dropping a file onto it.</p>
+                    <p>{t('howItWorks.step1')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/meme-generator/meme-generator002.png" alt="Step 2" className="how-img" />
-                    <p>Click the ＋ button to add a text layer and type your caption in the text box on the left panel.</p>
+                    <p>{t('howItWorks.step2')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/meme-generator/meme-generator003.png" alt="Step 3" className="how-img" />
-                    <p>Drag the text overlay on the canvas to position it. Use the Advanced section to adjust font size and color.</p>
+                    <p>{t('howItWorks.step3')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/meme-generator/meme-generator004.png" alt="Step 4" className="how-img" />
-                    <p>Add more text layers as needed, then click Download to save your meme as a PNG.</p>
+                    <p>{t('howItWorks.step4')}</p>
                   </li>
                 </ol>
               </div>
@@ -711,7 +696,7 @@ export default function MemeGeneratorView({ initialFile }) {
       >
         <canvas ref={canvasRef} className="meme-canvas" />
         {!imageObj && (
-          <div className="preview-placeholder">Click or drop image here to upload</div>
+          <div className="preview-placeholder">{t('canvas.placeholder')}</div>
         )}
         {/* moved preview hint below the preview container so it doesn't overlap the image */}
         <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif" onChange={handleFile} style={{ display: 'none' }} />
@@ -733,7 +718,7 @@ export default function MemeGeneratorView({ initialFile }) {
         })}
       </div>
       {imageObj && (
-        <div className="preview-hint-below">Drag to pan · Alt+Scroll to zoom · Pinch on mobile</div>
+        <div className="preview-hint-below">{t('canvas.previewHint')}</div>
       )}
 
       {/* File row: filename + Change Image + Clear */}
@@ -745,10 +730,10 @@ export default function MemeGeneratorView({ initialFile }) {
             className="mg-change-btn"
             onClick={() => fileInputRef.current && fileInputRef.current.click()}
           >
-            Change Image
+            {t('fileRow.change')}
           </button>
           <button type="button" className="mg-clear-btn" onClick={handleClearImage}>
-            Clear
+            {t('fileRow.clear')}
           </button>
         </div>
       )}
@@ -758,9 +743,9 @@ export default function MemeGeneratorView({ initialFile }) {
       <div className="meme-controls">
         {/* Image upload handled by the Upload button below — remove top file input */}
         <div className="control-row layers-header">
-          <label>Text Layers</label>
+          <label>{t('layers.label')}</label>
           <div style={{display: 'flex', gap: 8}}>
-            <button className="btn" onClick={addLayer} aria-label="Add layer">＋</button>
+            <button className="btn" onClick={addLayer} aria-label={t('layers.addAria')}>＋</button>
           </div>
         </div>
         <div className="layers-list">
@@ -792,7 +777,7 @@ export default function MemeGeneratorView({ initialFile }) {
                 }}
                 onInput={(e) => { e.target.style.height = 'auto'; e.target.style.height = e.target.scrollHeight + 'px'; }}
               />
-              <button className="btn" onClick={(e) => { e.stopPropagation(); removeLayer(layer.id); }} aria-label="Remove layer">✕</button>
+              <button className="btn" onClick={(e) => { e.stopPropagation(); removeLayer(layer.id); }} aria-label={t('layers.removeAria')}>✕</button>
             </div>
           ))}
         </div>
@@ -805,12 +790,12 @@ export default function MemeGeneratorView({ initialFile }) {
           aria-expanded={advancedOpen}
         >
           <span className={`arrow ${advancedOpen ? 'open' : ''}`}>{advancedOpen ? '▾' : '▸'}</span>
-          <span className="advanced-text">Font Options...</span>
+          <span className="advanced-text">{t('advanced.label')}</span>
         </div>
         {advancedOpen && (
           <div className="advanced-section">
             <div className={`control-row${selectedLayerId ? ' font-size-selected' : ''}`}>
-              <label>Font Size</label>
+              <label>{t('advanced.fontSize')}</label>
               <input
                 type="range"
                 min="18"
@@ -825,7 +810,7 @@ export default function MemeGeneratorView({ initialFile }) {
               <label>{(() => { const sel = layers.find((l) => l.id === selectedLayerId) || {}; const { cssPx } = computeFontSizes(sel); return (cssPx || sel.fontSize || 30) + 'px'; })()}</label>
             </div>
             <div className="control-row">
-              <label>Text Color</label>
+              <label>{t('advanced.textColor')}</label>
               <input
                 type="color"
                 value={(layers.find((l) => l.id === selectedLayerId) || {}).color || '#ffffff'}
@@ -836,12 +821,12 @@ export default function MemeGeneratorView({ initialFile }) {
         )}
         <div className="control-row buttons">
           {hasChanges() && (
-            <button className="btn" onClick={handleReset}>Reset</button>
+            <button className="btn" onClick={handleReset}>{t('actions.reset')}</button>
           )}
           {imageObj && (
-            <button className="btn" onClick={handlePreview}>Preview</button>
+            <button className="btn" onClick={handlePreview}>{t('actions.preview')}</button>
           )}
-          <button className="btn primary" onClick={handleDownload}>Download</button>
+          <button className="btn primary" onClick={handleDownload}>{t('actions.download')}</button>
         </div>
       </div>
     </div>
@@ -853,135 +838,133 @@ export default function MemeGeneratorView({ initialFile }) {
         </div>
       </div>
     )}
-      {/* --- Meme Guide (user-provided copy) — placed at end of main content --- */}
+      {/* --- Meme Guide --- */}
       <div className="mg-guide">
-        <h2 className="mg-title">How to Create Memes That Actually Go Viral (Simple Guide for Beginners)</h2>
-        <p>Memes are everywhere. From social media feeds to group chats, memes have become one of the fastest ways to communicate ideas, humor, and opinions.</p>
-        <p>But creating a meme that people actually share? That’s a different story.</p>
-        <p>In this guide, you’ll learn:</p>
+        <h2 className="mg-title">{t('guide.title', { defaultValue: 'How to Create Memes That Actually Go Viral (Simple Guide for Beginners)' })}</h2>
+        <p>{t('guide.intro', { defaultValue: 'Memes are everywhere. From social media feeds to group chats, memes have become one of the fastest ways to communicate ideas, humor, and opinions.' })}</p>
+        <p>{t('guide.lead2', { defaultValue: "But creating a meme that people actually share? That’s a different story." })}</p>
+        <p>{t('guide.learnIntro', { defaultValue: "In this guide, you’ll learn:" })}</p>
         <ul className="mg-list">
-          <li>What makes a meme work</li>
-          <li>How to create one from scratch</li>
-          <li>Common mistakes to avoid</li>
-          <li>Tips to make your memes more engaging</li>
+          <li>{t('guide.learnItems.item1', { defaultValue: 'What makes a meme work' })}</li>
+          <li>{t('guide.learnItems.item2', { defaultValue: 'How to create one from scratch' })}</li>
+          <li>{t('guide.learnItems.item3', { defaultValue: 'Common mistakes to avoid' })}</li>
+          <li>{t('guide.learnItems.item4', { defaultValue: 'Tips to make your memes more engaging' })}</li>
         </ul>
 
         <section className='mg-section'>
-        <h3>What Is a Meme (Really)?</h3>
-        <p>A meme is a piece of content — usually an image with text — designed to be shared and adapted by others.</p>
-        <p>Unlike regular images, memes are relatable, quick to understand, and easy to share. 👉 A good meme delivers its message in seconds.</p>
-        </section>
-    
-        <section className='mg-section'>
-        <h3>Why Memes Are So Popular</h3>
-        <ol className="mg-list">
-          <li><strong>Instant Communication</strong> — Memes compress ideas into one image and a few words, faster than paragraphs.</li>
-          <li><strong>Relatability</strong> — The best memes make people think “That’s exactly me.”</li>
-          <li><strong>Shareability</strong> — Memes are designed to be reposted and modified.</li>
-          <li><strong>Low Effort, High Impact</strong> — You don’t need design skills or expensive tools; just a good idea.</li>
-        </ol>
-        </section>
-
-
-        <section className='mg-section'>
-        <h3>Anatomy of a Good Meme</h3>
-        <ul className="mg-list">
-          <li><strong>Image:</strong> Recognizable or expressive, supports the message.</li>
-          <li><strong>Text:</strong> Short and clear, easy to read.</li>
-          <li><strong>Punchline:</strong> The twist or humor that makes people share.</li>
-        </ul>
+          <h3>{t('guide.whatIs.heading', { defaultValue: 'What Is a Meme (Really)?' })}</h3>
+          <p>{t('guide.whatIs.body', { defaultValue: 'A meme is a piece of content — usually an image with text — designed to be shared and adapted by others. Unlike regular images, memes are relatable, quick to understand, and easy to share.' })}</p>
         </section>
 
         <section className='mg-section'>
-        <h3>Types of Memes You Can Create</h3>
-        <ul className="mg-list">
-          <li>😂 Relatable Memes — everyday situations</li>
-          <li>🔥 Trend-Based Memes — use current formats</li>
-          <li>💼 Niche Memes — target specific audiences</li>
-          <li>🧠 Informational Memes — mix humor with useful info</li>
-        </ul>
+          <h3>{t('guide.why.heading', { defaultValue: 'Why Memes Are So Popular' })}</h3>
+          <ol className="mg-list">
+            <li>{t('guide.why.item1', { defaultValue: 'Instant Communication — Memes compress ideas into one image and a few words, faster than paragraphs.' })}</li>
+            <li>{t('guide.why.item2', { defaultValue: "Relatability \u2014 The best memes make people think \"That's exactly me.\"" })}</li>
+            <li>{t('guide.why.item3', { defaultValue: 'Shareability — Memes are designed to be reposted and modified.' })}</li>
+            <li>{t('guide.why.item4', { defaultValue: "Low Effort, High Impact — You don't need design skills or expensive tools; just a good idea." })}</li>
+          </ol>
         </section>
 
         <section className='mg-section'>
-        <h3>Best Practices</h3>
-        <ol className="mg-list">
-          <li>Keep text short — 2–3 seconds to read.</li>
-          <li>Use clear, bold fonts with high contrast.</li>
-          <li>Match text to image so it reinforces the message.</li>
-          <li>Stay relevant — trending formats perform better.</li>
-          <li>Know your audience and tailor the humor.</li>
-        </ol>
+          <h3>{t('guide.anatomy.heading', { defaultValue: 'Anatomy of a Good Meme' })}</h3>
+          <ul className="mg-list">
+            <li>{t('guide.anatomy.image', { defaultValue: 'Image: Recognizable or expressive, supports the message.' })}</li>
+            <li>{t('guide.anatomy.text', { defaultValue: 'Text: Short and clear, easy to read.' })}</li>
+            <li>{t('guide.anatomy.punchline', { defaultValue: 'Punchline: The twist or humor that makes people share.' })}</li>
+          </ul>
         </section>
 
         <section className='mg-section'>
-        <h3>Common Mistakes to Avoid</h3>
-        <ul className="mg-list">
-          <li>Too much text</li>
-          <li>Unclear message</li>
-          <li>Using outdated formats</li>
-          <li>Low-quality images</li>
-          <li>Trying too hard to be funny</li>
-        </ul>
+          <h3>{t('guide.types.heading', { defaultValue: 'Types of Memes You Can Create' })}</h3>
+          <ul className="mg-list">
+            <li>{t('guide.types.item1', { defaultValue: '😂 Relatable Memes — everyday situations' })}</li>
+            <li>{t('guide.types.item2', { defaultValue: '🔥 Trend-Based Memes — use current formats' })}</li>
+            <li>{t('guide.types.item3', { defaultValue: '💼 Niche Memes — target specific audiences' })}</li>
+            <li>{t('guide.types.item4', { defaultValue: '🧠 Informational Memes — mix humor with useful info' })}</li>
+          </ul>
         </section>
 
         <section className='mg-section'>
-        <h3>Step-by-Step: How to Create a Meme</h3>
-        <ol className="mg-list">
-          <li>Upload or choose an image</li>
-          <li>Add top and/or bottom text</li>
-          <li>Adjust font size and position</li>
-          <li>Preview your meme</li>
-          <li>Download and share</li>
-        </ol>
+          <h3>{t('guide.bestPractices.heading', { defaultValue: 'Best Practices' })}</h3>
+          <ol className="mg-list">
+            <li>{t('guide.bestPractices.item1', { defaultValue: 'Keep text short — 2–3 seconds to read.' })}</li>
+            <li>{t('guide.bestPractices.item2', { defaultValue: 'Use clear, bold fonts with high contrast.' })}</li>
+            <li>{t('guide.bestPractices.item3', { defaultValue: 'Match text to image so it reinforces the message.' })}</li>
+            <li>{t('guide.bestPractices.item4', { defaultValue: 'Stay relevant — trending formats perform better.' })}</li>
+            <li>{t('guide.bestPractices.item5', { defaultValue: 'Know your audience and tailor the humor.' })}</li>
+          </ol>
         </section>
 
         <section className='mg-section'>
-        <h3>Real-World Use Cases</h3>
-        <ul className="mg-list">
-          <li>📱 Social Media Content — boost engagement</li>
-          <li>💼 Marketing — make brands feel human</li>
-          <li>🧑‍💻 Developer Humor — build community</li>
-          <li>👥 Group Chats — react faster than typing</li>
-        </ul>
+          <h3>{t('guide.mistakes.heading', { defaultValue: 'Common Mistakes to Avoid' })}</h3>
+          <ul className="mg-list">
+            <li>{t('guide.mistakes.item1', { defaultValue: 'Too much text' })}</li>
+            <li>{t('guide.mistakes.item2', { defaultValue: 'Unclear message' })}</li>
+            <li>{t('guide.mistakes.item3', { defaultValue: 'Using outdated formats' })}</li>
+            <li>{t('guide.mistakes.item4', { defaultValue: 'Low-quality images' })}</li>
+            <li>{t('guide.mistakes.item5', { defaultValue: 'Trying too hard to be funny' })}</li>
+          </ul>
         </section>
 
         <section className='mg-section'>
-        <h3>Tips to Make Your Memes Stand Out</h3>
-        <ul className="mg-list">
-          <li>Use unexpected twists</li>
-          <li>Combine two ideas creatively</li>
-          <li>Keep it simple but clever</li>
-          <li>Test different variations</li>
-        </ul>
+          <h3>{t('guide.stepByStep.heading', { defaultValue: 'Step-by-Step: How to Create a Meme' })}</h3>
+          <ol className="mg-list">
+            <li>{t('guide.stepByStep.step1', { defaultValue: 'Upload or choose an image' })}</li>
+            <li>{t('guide.stepByStep.step2', { defaultValue: 'Add top and/or bottom text' })}</li>
+            <li>{t('guide.stepByStep.step3', { defaultValue: 'Adjust font size and position' })}</li>
+            <li>{t('guide.stepByStep.step4', { defaultValue: 'Preview your meme' })}</li>
+            <li>{t('guide.stepByStep.step5', { defaultValue: 'Download and share' })}</li>
+          </ol>
         </section>
 
         <section className='mg-section'>
-        <h3>Meme Generator vs Image Editor</h3>
-        <table className="mg-table">
-          <thead><tr><th>Feature</th><th>Meme Generator</th><th>Image Editor</th></tr></thead>
-          <tbody>
-            <tr><td>Purpose</td><td>Quick meme creation</td><td>General editing</td></tr>
-            <tr><td>Speed</td><td>Fast</td><td>Slower</td></tr>
-            <tr><td>Ease of use</td><td>Very easy</td><td>Moderate</td></tr>
-            <tr><td>Focus</td><td>Text + image</td><td>Full customization</td></tr>
-          </tbody>
-        </table>
+          <h3>{t('guide.useCases.heading', { defaultValue: 'Real-World Use Cases' })}</h3>
+          <ul className="mg-list">
+            <li>{t('guide.useCases.item1', { defaultValue: '📱 Social Media Content — boost engagement' })}</li>
+            <li>{t('guide.useCases.item2', { defaultValue: '💼 Marketing — make brands feel human' })}</li>
+            <li>{t('guide.useCases.item3', { defaultValue: '🧑‍💻 Developer Humor — build community' })}</li>
+            <li>{t('guide.useCases.item4', { defaultValue: '👥 Group Chats — react faster than typing' })}</li>
+          </ul>
         </section>
 
         <section className='mg-section'>
-        <h3>FAQ</h3>
-        <p><strong>Do I need design skills?</strong> No — just a good idea and clear message.</p>
-        <p><strong>Can I use any image?</strong> You can, but be mindful of copyright and prefer common meme formats when possible.</p>
-        <p><strong>Why are my memes not getting engagement?</strong> Possible reasons: too much text, not relatable, outdated format.</p>
+          <h3>{t('guide.tips.heading', { defaultValue: 'Tips to Make Your Memes Stand Out' })}</h3>
+          <ul className="mg-list">
+            <li>{t('guide.tips.item1', { defaultValue: 'Use unexpected twists' })}</li>
+            <li>{t('guide.tips.item2', { defaultValue: 'Combine two ideas creatively' })}</li>
+            <li>{t('guide.tips.item3', { defaultValue: 'Keep it simple but clever' })}</li>
+            <li>{t('guide.tips.item4', { defaultValue: 'Test different variations' })}</li>
+          </ul>
         </section>
 
         <section className='mg-section'>
-        <h3>Conclusion</h3>
-        <p>Creating memes isn’t about complex design — it’s about communication and timing. Focus on clear ideas, simple text, and relatability.</p>
-        <p>👉 Try making your own here:</p>
-        <div className="mg-cta-wrap">
-          <a href="/image-meme-generator" className="mg-cta" onClick={(e)=>{ e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-meme-generator'); }}>Image Meme Generator →</a>
-        </div>
+          <h3>{t('guide.comparison.heading', { defaultValue: 'Meme Generator vs Image Editor' })}</h3>
+          <table className="mg-table">
+            <thead><tr><th>{t('guide.comparison.col1', { defaultValue: 'Feature' })}</th><th>{t('guide.comparison.col2', { defaultValue: 'Meme Generator' })}</th><th>{t('guide.comparison.col3', { defaultValue: 'Image Editor' })}</th></tr></thead>
+            <tbody>
+              <tr><td>{t('guide.comparison.row1col1', { defaultValue: 'Purpose' })}</td><td>{t('guide.comparison.row1col2', { defaultValue: 'Quick meme creation' })}</td><td>{t('guide.comparison.row1col3', { defaultValue: 'General editing' })}</td></tr>
+              <tr><td>{t('guide.comparison.row2col1', { defaultValue: 'Speed' })}</td><td>{t('guide.comparison.row2col2', { defaultValue: 'Fast' })}</td><td>{t('guide.comparison.row2col3', { defaultValue: 'Slower' })}</td></tr>
+              <tr><td>{t('guide.comparison.row3col1', { defaultValue: 'Ease of use' })}</td><td>{t('guide.comparison.row3col2', { defaultValue: 'Very easy' })}</td><td>{t('guide.comparison.row3col3', { defaultValue: 'Moderate' })}</td></tr>
+              <tr><td>{t('guide.comparison.row4col1', { defaultValue: 'Focus' })}</td><td>{t('guide.comparison.row4col2', { defaultValue: 'Text + image' })}</td><td>{t('guide.comparison.row4col3', { defaultValue: 'Full customization' })}</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section className='mg-section'>
+          <h3>{t('guide.faq.heading', { defaultValue: 'FAQ' })}</h3>
+          <p><strong>{t('guide.faq.q1', { defaultValue: 'Do I need design skills?' })}</strong> {t('guide.faq.a1', { defaultValue: 'No — just a good idea and clear message.' })}</p>
+          <p><strong>{t('guide.faq.q2', { defaultValue: 'Can I use any image?' })}</strong> {t('guide.faq.a2', { defaultValue: 'You can, but be mindful of copyright and prefer common meme formats when possible.' })}</p>
+          <p><strong>{t('guide.faq.q3', { defaultValue: 'Why are my memes not getting engagement?' })}</strong> {t('guide.faq.a3', { defaultValue: 'Possible reasons: too much text, not relatable, outdated format.' })}</p>
+        </section>
+
+        <section className='mg-section'>
+          <h3>{t('guide.conclusionTitle', { defaultValue: 'Conclusion' })}</h3>
+          <p>{t('guide.conclusion', { defaultValue: "Creating memes isn’t about complex design — it’s about communication and timing. Focus on clear ideas, simple text, and relatability." })}</p>
+          <p>{t('guide.tryIt', { defaultValue: 'Try making your own here:' })}</p>
+          <div className="mg-cta-wrap">
+            <a href="/image-meme-generator" className="mg-cta" onClick={(e)=>{ e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-meme-generator'); }}>{t('guide.ctaBtn', { defaultValue: 'Image Meme Generator →' })}</a>
+          </div>
         </section>
       </div>
     </>

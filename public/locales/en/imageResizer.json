@@ -1,0 +1,154 @@
+{
+  "hero": {
+    "title": "Image Resizer",
+    "tagline": "Resize your image to any size by percentage or exact pixel dimensions. Lock the aspect ratio to prevent distortion, then download your result instantly.",
+    "blogLink": "Learn how to resize your image →"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "hint": {
+    "text": "Do you want your picture to fit on YouTube Thumbnail or Instagram?",
+    "btn": "Try Image Crop"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Image Resizer",
+      "body": "The Image Resizer lets you change an image's pixel dimensions by a percentage scale or by specifying exact width and height. It performs client-side scaling using an offscreen canvas so the original image remains on your device and the resized output is produced instantly for download."
+    },
+    "howWorks": {
+      "heading": "How resizing works",
+      "body": "Resizing decodes the source image in the browser, draws it to a canvas at the target dimensions, and then exports the canvas content as a new image file. Downsizing reduces file size while preserving visual fidelity in most cases; upscaling cannot add real detail and will often produce softer results."
+    },
+    "quality": {
+      "heading": "Quality, interpolation and tradeoffs",
+      "item1": "Downscaling: preserves perceived quality and reduces bytes; suitable for thumbnails and web delivery.",
+      "item2": "Upscaling: limited by source resolution—avoid excessive upscaling (e.g., >2x) to prevent pixelation.",
+      "item3": "Interpolation: browsers use built-in resampling; results vary by engine."
+    },
+    "practical": {
+      "heading": "Practical tips",
+      "item1": "For web, aim for moderate dimensions (e.g., 1200–2048px on the long edge) to balance quality and performance.",
+      "item2": "Use percentage mode for quick proportional scaling; use exact dimensions when a precise pixel size is required.",
+      "item3": "Keep a copy of the original file if you expect to re-edit or export at larger sizes later."
+    },
+    "whenToUse": {
+      "heading": "When to use",
+      "body": "Use the resizer when you need to prepare images for specific display contexts (web pages, email, thumbnails), reduce file weight for faster uploads, or adjust images to meet platform requirements."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Can I preserve aspect ratio?",
+      "a1": "A: Yes — enable the aspect lock to maintain proportions while changing one dimension.",
+      "q2": "Q: Is resizing local?",
+      "a2": "A: Yes — resizing occurs in your browser via an offscreen canvas; files are not uploaded.",
+      "q3": "Q: Will file size always decrease?",
+      "a3": "A: Usually when downscaling, but file size also depends on format and compression settings.",
+      "q4": "Q: Can I batch resize?",
+      "a4": "A: This UI focuses on single-image operations; for many images use a batch tool or script."
+    }
+  },
+  "howItWorks": {
+    "step1": "Choose a source image by drag & drop or browsing.",
+    "step2": "Select percentage or explicit width/height and lock the aspect ratio if needed. You can use Alt+Scroll or Pinch to zoom on mobile in the preview.",
+    "step3": "Click Resize to run client-side scaling and produce the output file.",
+    "step4": "Preview and download the resized image."
+  },
+  "dropZone": {
+    "text": "Drag & drop an image here, or click to select",
+    "hint": "Alt+Scroll to zoom · Pinch on mobile · {{percent}}%"
+  },
+  "fileRow": {
+    "name": "Change Image",
+    "clear": "Clear"
+  },
+  "resizeMode": {
+    "percentage": "Resize by Percentage",
+    "dimensions": "Resize by Width & Height"
+  },
+  "percentInput": {
+    "placeholder": "Enter percentage (e.g. 50)",
+    "suffix": "%"
+  },
+  "dimensionInputs": {
+    "width": "Width (px)",
+    "height": "Height (px)",
+    "unlinkAria": "Unlink width and height",
+    "linkAria": "Link width and height"
+  },
+  "previewBtn": "Preview",
+  "processingBtn": "Processing...",
+  "downloadBtn": "Download",
+  "watermarkPrompt": {
+    "text": "Would you like to put private watermark on the resized image?",
+    "yes": "Yes",
+    "preparing": "Preparing...",
+    "error": "Failed to send image to watermark tool."
+  },
+  "guide": {
+    "title": "The Complete Guide to Resizing Images Without Losing Quality",
+    "lead": "Resizing images seems simple — until you end up with blurry, pixelated, or distorted results. Whether you're uploading photos to a website, sending images by email, or optimizing for performance, resizing the right way matters more than most people think.",
+    "learn": "In this guide, you'll learn:",
+    "learnItems": {
+      "item1": "How image resizing actually works",
+      "item2": "Why quality loss happens",
+      "item3": "The best ways to resize images without ruining them",
+      "item4": "Practical tips you can use immediately"
+    },
+    "whatMeans": {
+      "heading": "What Does \"Resizing an Image\" Really Mean?",
+      "body": "Resizing an image means changing its dimensions — usually width and height in pixels.",
+      "example": "Original: 4000 × 3000 px → Resized: 800 × 600 px",
+      "resampling": "This process is called resampling, and it directly affects quality."
+    },
+    "whyLoseQuality": {
+      "heading": "Why Do Images Lose Quality?",
+      "pixel": "Pixel Loss — When reducing size, pixels are permanently removed. If done poorly, edges become jagged and fine details disappear.",
+      "resampling": "Poor Resampling Method — Not all resizing algorithms are equal. Nearest Neighbor is fast but blocky. Bilinear is smoother. Bicubic is best for most cases.",
+      "repeated": "Repeated Resizing — Every resize discards more data. Always resize from the original image, never from a previously resized copy."
+    },
+    "bestPractices": {
+      "heading": "Best Practices to Resize Without Losing Quality",
+      "aspectRatio": "Maintain Aspect Ratio — Always keep width and height proportional.",
+      "resizeOnce": "Resize Once — Start with the original → resize once → save the final version.",
+      "format": "Choose the Right Format — JPEG: smaller size, slight loss. PNG: higher quality, larger file. WebP: best balance.",
+      "compression": "Avoid Over-Compression — Aim for balance, not maximum compression."
+    },
+    "useCases": {
+      "heading": "Common Use Cases",
+      "website": "Website Uploads — Resize large images (4000px → 1200px) to dramatically improve page load speed.",
+      "social": "Social Media — Resizing ensures no cropping issues and better visual quality across profiles, posts, and thumbnails.",
+      "email": "Email Attachments — Large images slow down sending and may be rejected. Resizing keeps files manageable."
+    },
+    "mistakes": {
+      "heading": "Mistakes to Avoid",
+      "item1": "❌ Stretching images (wrong aspect ratio)",
+      "item2": "❌ Saving repeatedly in JPEG",
+      "item3": "❌ Using tools with poor resampling algorithms",
+      "item4": "❌ Upscaling small images expecting higher quality"
+    },
+    "stepByStep": {
+      "heading": "Quick Step-by-Step Guide",
+      "step1": "Upload your image",
+      "step2": "Choose desired width or height",
+      "step3": "Keep aspect ratio enabled",
+      "step4": "Select output format (JPEG / PNG / WebP)",
+      "step5": "Download resized image"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Does resizing reduce quality?",
+      "a1": "Yes — but if done correctly, the loss is minimal and often unnoticeable to the human eye.",
+      "q2": "Can I resize without losing any quality?",
+      "a2": "Only if you're not reducing size significantly. Otherwise, some data loss is unavoidable.",
+      "q3": "What's the best format after resizing?",
+      "a3": "Web: WebP or JPEG — High quality archival: PNG",
+      "q4": "Is it better to resize or compress?",
+      "a4": "They serve different purposes. Resize changes dimensions; Compress reduces file size. Best results come from using both carefully."
+    },
+    "conclusionTitle": "Conclusion",
+    "conclusion": "Resizing images isn't just about making them smaller — it's about doing it correctly to preserve clarity and usability. By maintaining aspect ratio, resizing once from the original, and choosing the right format, you can significantly improve both image quality and performance.",
+    "ctaBtn": "Try the Image Resizer →"
+  }
+}

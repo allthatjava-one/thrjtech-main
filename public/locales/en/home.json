@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "title": "Simple Online Tools,\nZero Hassle",
+    "subtitle": "Free, fast, and privacy-friendly utilities that work right in your browser."
+  },
+  "popularGuides": {
+    "heading": "Popular Guides",
+    "jsonFormatter": "JSON Formatter — Pretty-print, validate & explore JSON",
+    "imageCrop": "Image Crop — Trim and frame your images",
+    "memeGenerator": "Meme Generator — Create shareable memes in seconds",
+    "pdfCompressor": "PDF Compressor — Shrink PDF file sizes quickly",
+    "imageCollage": "Image Collage — Build beautiful photo collages",
+    "pdfMerger": "PDF Merger — Combine multiple PDFs into one"
+  },
+  "developerTools": {
+    "heading": "Developer Tools",
+    "jsonFormatterName": "JSON Formatter",
+    "jsonFormatterDesc": "Format, validate, and pretty-print JSON instantly in your browser. Supports syntax highlighting, minification, and clear error reporting.",
+    "regexTesterName": "Regex Tester",
+    "regexTesterDesc": "Test regular expressions with live match highlighting and replace support. Iterate quickly on patterns with real-time feedback."
+  },
+  "imageTools": {
+    "heading": "Image Tools",
+    "imageCropName": "Crop Image",
+    "imageCropDesc": "Crop any image to the exact size and aspect ratio you need. Supports free-form cropping and convenient presets like 1:1, 16:9, and 4:5 — all in your browser.",
+    "memeGeneratorName": "Meme Generator",
+    "memeGeneratorDesc": "Add bold text layers over any image, drag them into position, and download your custom meme as a PNG. No account needed."
+  },
+  "cards": {
+    "howItWorks": "How it works",
+    "pdfCompressor": {
+      "title": "PDF Compressor",
+      "btn": "Open PDF Compressor",
+      "description": "Shrink your PDF files without sacrificing quality. Upload a document and download a smaller version in seconds — no account required, no watermarks.",
+      "feature1": "Compress PDFs up to 90% smaller",
+      "feature2": "Adjustable compression levels (low, medium, high)",
+      "feature3": "Supports multi-page PDFs of any size",
+      "feature4": "100% free, no sign-up needed",
+      "step1": "1. Drag & drop or browse for your PDF",
+      "step2": "2. Review the file, then hit Compress PDF",
+      "step3": "3. Securely uploads & compresses in seconds",
+      "step4": "4. Download your compressed PDF"
+    },
+    "pdfMerger": {
+      "title": "PDF Merger",
+      "btn": "Open PDF Merger",
+      "description": "Combine multiple PDF files into a single document in seconds. Drag, drop, and merge — no account required, no watermarks.",
+      "feature1": "Merge unlimited PDFs for free",
+      "feature2": "Reorder files before merging",
+      "feature3": "No watermarks, no sign-up needed",
+      "feature4": "Fast, secure, and privacy-friendly",
+      "feature5": "Automatically compresses merged file to reduce size (Optional)",
+      "step1": "1. Drag & drop or browse for your PDFs",
+      "step2": "2. Arrange the order of your files",
+      "step3": "3. Click Merge PDF to combine files",
+      "step4": "4. Download your merged PDF"
+    },
+    "pdfConverter": {
+      "title": "PDF Converter",
+      "btn": "Open PDF Converter",
+      "description": "Convert PDF pages into JPG or PNG images quickly — upload, choose format, and download the results without signing up.",
+      "feature1": "Convert PDF to JPG or PNG",
+      "feature2": "Fast, single-click conversions",
+      "feature3": "Preview and download converted images",
+      "feature4": "Temporary storage with automatic cleanup",
+      "feature5": "No account or watermarks",
+      "step1": "1. Drag & drop or browse for your PDF",
+      "step2": "2. Choose JPG or PNG",
+      "step3": "3. Start conversion and watch progress",
+      "step4": "4. Download converted images to your device"
+    },
+    "jsonFormatter": {
+      "title": "JSON Formatter",
+      "btn": "Open JSON Formatter",
+      "description": "Quickly validate, format, and beautify your JSON data. Instantly see errors, get readable output, and copy or download the result.",
+      "feature1": "Validate and format JSON instantly",
+      "feature2": "Paste, upload, or drag & drop JSON files",
+      "feature3": "Highlights errors with line numbers",
+      "feature4": "Download or copy formatted output",
+      "step1": "1. Paste or upload your JSON data",
+      "step2": "2. Click Validate and Format JSON",
+      "step3": "3. Instantly see errors with line numbers if your JSON is invalid",
+      "step4": "4. Download or copy the beautified JSON"
+    },
+    "imageWatermarker": {
+      "title": "Image Watermarker",
+      "btn": "Open Image Watermarker",
+      "description": "Add a text or logo watermark to your images in seconds. Drag, drop, and download — all in your browser, no account required.",
+      "feature1": "Add text or logo as watermark",
+      "feature2": "Preview before downloading",
+      "feature3": "Drag & drop image upload",
+      "feature4": "No watermarks or sign-up needed",
+      "feature5": "Works with PNG, JPG, and more",
+      "step1": "1. Drag & drop or browse for your image",
+      "step2": "2. Enter watermark text or upload logo",
+      "step3": "3. Preview the watermarked image",
+      "step4": "4. Download your watermarked image"
+    },
+    "imageResizer": {
+      "title": "Image Resizer",
+      "btn": "Open Image Resizer",
+      "description": "Resize your images by percentage or by custom dimensions. Fast, privacy-friendly, and works entirely in your browser — no uploads, no accounts, no watermarks.",
+      "feature1": "Resize by percentage or dimensions",
+      "feature2": "Maintains aspect ratio (optional)",
+      "feature3": "Works with PNG, JPG, and more",
+      "feature4": "No watermarks, no sign-up needed",
+      "feature5": "Preview before downloading",
+      "step1": "1. Drag & drop or browse for your image",
+      "step2": "2. Choose resize mode and set dimensions or zoom in/out",
+      "step3": "3. Preview the resized image",
+      "step4": "4. Download your resized image"
+    },
+    "imageCollage": {
+      "title": "Image Collage",
+      "btn": "Open Image Collage",
+      "description": "Arrange multiple images into a clean grid collage instantly. Drag, drop, reorder, and download — all in your browser, no account required, no watermarks.",
+      "feature1": "Combine multiple images into a grid collage",
+      "feature2": "Drag & drop to upload and reorder images",
+      "feature3": "Auto-expands grid to fit all your images",
+      "feature4": "Set custom output width and height",
+      "feature5": "No watermarks, no sign-up needed",
+      "step1": "1. Drag & drop or browse for your images",
+      "step2": "2. Arrange images and set the grid layout",
+      "step3": "3. Preview your collage instantly",
+      "step4": "4. Download your finished collage"
+    },
+    "imageConverter": {
+      "title": "Image Converter",
+      "btn": "Open Image Converter",
+      "description": "Convert images between JPG, PNG, and WebP instantly in your browser. Drop your image, choose a format, and download — no uploads, no account required.",
+      "feature1": "Convert between JPG, PNG, and WebP",
+      "feature2": "Auto-detects input format",
+      "feature3": "Transparent PNGs get white background on JPG export",
+      "feature4": "100% local — files never leave your browser",
+      "step1": "1. Drag & drop or browse for your images",
+      "step2": "2. Choose output format (JPG, PNG, or WebP)",
+      "step3": "3. Preview your converted image",
+      "step4": "Optional — Convert multiple images at once"
+    }
+  }
+}

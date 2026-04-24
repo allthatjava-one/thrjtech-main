@@ -1,0 +1,216 @@
+{
+  "hero": {
+    "title": "Divisor PDF",
+    "tagline": "Solo suelte y listo — Extraiga las páginas que necesita de cualquier PDF ingresando rangos de páginas simples (ej. 1, 3-5, 7-10). Obtenga cada rango como su propio archivo, o combínelos en un solo PDF. Sin software necesario.",
+    "blogLink": "Aprenda a dividir PDF →"
+  },
+  "hint": {
+    "text": "¿Necesita fusionar PDFs?",
+    "btn": "Probar el Fusionador PDF"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es la división de PDFs?",
+      "body": "La división de PDFs es la operación de extraer un subconjunto de páginas de un PDF fuente y escribirlas en uno o más documentos de salida. La operación no es destructiva — el archivo fuente no se modifica."
+    },
+    "outputOptions": {
+      "heading": "Opciones de salida",
+      "intro": "Se admiten dos modos de salida, lo que le permite elegir el resultado adecuado para su flujo de trabajo:",
+      "multiple": "Múltiples archivos: cada rango de páginas produce un PDF independiente.",
+      "single": "Archivo combinado único: todos los rangos seleccionados se ensamblan en un PDF en el orden en que aparecen."
+    },
+    "pageRangeFormat": {
+      "heading": "Formato de rango de páginas",
+      "intro": "Los rangos se introducen como una lista separada por comas. La sintaxis admitida es:",
+      "single": "Página única: 3",
+      "contiguous": "Rango contiguo: 3-7",
+      "mixed": "Lista mixta: 1,3-5,8,10-12",
+      "note": "Los rangos son inclusivos e indexados en 1. La herramienta valida la entrada e informa errores para valores fuera de rango."
+    },
+    "tradeoffs": {
+      "heading": "Compromisos de diseño",
+      "fidelity": "Fidelidad: El contenido de la página se reproduce exactamente; sin recompresión.",
+      "performance": "Rendimiento: El tiempo de procesamiento escala con el tamaño del archivo.",
+      "order": "Orden: Las páginas aparecen en la salida en el orden definido por la expresión de rango."
+    },
+    "practical": {
+      "heading": "Recomendaciones prácticas",
+      "item1": "Para extracciones recurrentes de un documento estándar, anote los números de página de antemano.",
+      "item2": "Si solo necesita pocas páginas de un archivo grande, dividir primero reduce el tiempo de procesamiento.",
+      "item3": "Combine división y fusión cuando necesite reordenar o combinar páginas de múltiples documentos."
+    },
+    "whatItDoes": {
+      "heading": "Qué hace",
+      "item1": "Extrae uno o más rangos de páginas de un PDF.",
+      "item2": "Produce un archivo de salida por rango, o un único archivo combinado.",
+      "item3": "Preserva el contenido original de la página y los recursos incrustados.",
+      "item4": "Se ejecuta del lado del servidor para un manejo confiable de archivos grandes."
+    },
+    "usefulWhen": {
+      "heading": "Útil cuando",
+      "item1": "Necesita compartir solo capítulos o secciones específicos de un documento.",
+      "item2": "Desea dividir un documento de múltiples páginas escaneado en archivos individuales.",
+      "item3": "Necesita extraer apéndices o anexos de un informe.",
+      "item4": "Necesita reducir el tamaño del archivo eliminando páginas innecesarias."
+    },
+    "privacy": {
+      "heading": "Privacidad y retención",
+      "body": "Los archivos cargados se procesan en infraestructura de corta duración y se eliminan según la política de retención de la aplicación."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Mi archivo es privado?",
+      "a1": "R: Los archivos se procesan temporalmente y se eliminan automáticamente según la política de la aplicación.",
+      "q2": "P: ¿Puedo extraer páginas no contiguas?",
+      "a2": "R: Sí — use una lista separada por comas como 1,3,7.",
+      "q3": "P: ¿Qué pasa con el PDF original?",
+      "a3": "R: El original no se modifica; solo las páginas seleccionadas se escriben en nuevos archivos de salida.",
+      "q4": "P: ¿Puedo combinar los rangos divididos en un archivo?",
+      "a4": "R: Sí — seleccione la opción de salida 'Único' para recibir todos los rangos fusionados en un archivo.",
+      "q5": "P: ¿Qué pasa si mi rango está fuera de límites?",
+      "a5": "R: La herramienta valida su entrada y muestra un error antes de intentar procesar."
+    },
+    "comparison": {
+      "heading": "Comparación con alternativas",
+      "browser": "Basado en navegador: conveniente, sin instalación; adecuado para uso ocasional.",
+      "desktop": "Herramientas de escritorio: más adecuadas para flujos de trabajo por lotes o documentos que requieren un manejo especial.",
+      "commandLine": "Herramientas de línea de comandos: las más rápidas para automatización y flujos de trabajo programados."
+    }
+  },
+  "howItWorks": {
+    "step1": "Cargue un PDF usando arrastrar y soltar o el botón de exploración.",
+    "step2": "Ingrese los rangos de páginas que desea (ej. 1,3-5,7-10) y elija salida Único o Múltiple.",
+    "step3": "Haga clic en Dividir PDF — el archivo se carga y el divisor procesa sus rangos.",
+    "step4": "Descargue cada segmento (o el archivo combinado) antes de que expire del almacenamiento temporal."
+  },
+  "badges": {
+    "instant": "⚡ Instantáneo",
+    "secure": "🔒 Seguro",
+    "autoDeleted": "🗑️ Eliminación automática"
+  },
+  "dropZone": {
+    "icon": "📂",
+    "text": "Arrastre y suelte su PDF aquí",
+    "or": "o",
+    "browse": "Explorar archivo",
+    "removeTitle": "Eliminar archivo"
+  },
+  "pageRangesLabel": "Rangos de páginas:",
+  "pageRangesPlaceholder": "ej. 1,3-5,7-10",
+  "outputLabel": "Salida a archivo(s):",
+  "outputSingle": "Único",
+  "outputMultiple": "Múltiple",
+  "splitBtn": "Dividir PDF",
+  "progress": {
+    "splitting": "Dividiendo PDF…"
+  },
+  "result": {
+    "icon": "✅",
+    "title": "División completada",
+    "segmentLabel": "Segmento",
+    "downloadLabel": "Descargar",
+    "downloadBtn": "Descargar",
+    "another": "Dividir otro archivo"
+  },
+  "guide": {
+    "title": "Cómo dividir archivos PDF de manera eficiente (tome el control de documentos grandes)",
+    "intro": "Los archivos PDF de gran tamaño pueden resultar abrumadores: docenas de páginas, contenido mixto que no necesita, secciones que realmente deberían estar separadas. En lugar de trabajar con el archivo completo, puede dividirlo en documentos más pequeños y enfocados.",
+    "cta": "👉 En esta guía, aprenderá cómo dividir archivos PDF en exactamente lo que necesita, de forma rápida y limpia.",
+    "whatIs": {
+      "heading": "📄 ¿Qué es un divisor de PDF?",
+      "body": "Un divisor de PDF es una herramienta que le permite:",
+      "item1": "✂️ Extraer páginas específicas",
+      "item2": "📑 Separe un archivo grande en varios PDF",
+      "item3": "🎯 Conserva solo el contenido que necesitas"
+    },
+    "whyUseful": {
+      "heading": "🧠 Por qué es útil dividir archivos PDF",
+      "item1": "🎯 Céntrese en el contenido relevante: conserve solo las páginas que necesita en lugar de desplazarse por todo.",
+      "item2": "📤 Comparta secciones específicas: no es necesario enviar un documento de 50 páginas cuando solo importan 3.",
+      "item3": "⚡ Mejore la eficiencia del flujo de trabajo: los archivos más pequeños se abren más rápido, son más fáciles de administrar y se cargan más rápido.",
+      "item4": "📂 Mejor organización: convierta un archivo grande en varios documentos categorizados."
+    },
+    "useCases": {
+      "heading": "🛠 Casos de uso comunes",
+      "item1": "💼 Documentos comerciales: extraiga contratos, facturas, informes",
+      "item2": "🎓 Trabajo académico: capítulos separados o envíe solo las páginas requeridas",
+      "item3": "📑 Archivos legales u oficiales: aísle las páginas importantes y mantenga los registros organizados",
+      "item4": "🧾 Documentos escaneados: divida las páginas escaneadas en archivos individuales"
+    },
+    "ways": {
+      "heading": "🔍 Formas de dividir un PDF",
+      "item1": "📌 Por rango de páginas, p. Páginas 1–5 → Archivo A, Páginas 6–10 → Archivo B",
+      "item2": "📌 Extraiga páginas específicas: seleccione páginas exactas (Páginas 2, 5, 9 → archivo nuevo)",
+      "item3": "📌 Divida cada página: convierta un PDF en varios archivos de una sola página"
+    },
+    "stepByStep": {
+      "heading": "🪜 Paso a paso: cómo dividir un PDF",
+      "step1": "📤 Sube tu PDF",
+      "step2": "👀 Vista previa de páginas",
+      "step3": "✂️ Seleccionar páginas o rangos",
+      "step4": "⚙️ Elija el método de división",
+      "step5": "📥 Descargar resultados"
+    },
+    "bestPractices": {
+      "heading": "🎯 Mejores prácticas para dividir archivos PDF",
+      "item1": "✅ Planifique antes de dividir: sepa qué páginas necesita y cómo quiere agruparlas.",
+      "item2": "✅ Mantenga claros los nombres de los archivos: nombre los archivos de forma lógica (por ejemplo, \"Capítulo1.pdf\").",
+      "item3": "✅ Evite dividir demasiado: demasiados archivos pequeños pueden resultar difíciles de administrar.",
+      "item4": "✅ Verifique los archivos de salida: verifique las páginas correctas y el orden correcto.",
+      "item5": "✅ Conserve el archivo original, en caso de que necesite páginas adicionales más adelante."
+    },
+    "mistakes": {
+      "heading": "⚠️ Errores comunes que se deben evitar",
+      "item1": "❌ Seleccionar un rango de páginas incorrecto",
+      "item2": "❌ Perder páginas importantes",
+      "item3": "❌ Crear demasiados archivos pequeños",
+      "item4": "❌ No revisar el resultado final",
+      "item5": "❌ Sobrescribir el archivo original"
+    },
+    "comparison": {
+      "heading": "⚖️ Divisor de PDF frente a fusión de PDF",
+      "col1": "Característica",
+      "col2": "Divisor de PDF",
+      "col3": "Fusión de PDF",
+      "row1col1": "Objetivo",
+      "row1col2": "separar el archivo",
+      "row1col3": "Combinar archivos",
+      "row2col1": "Producción",
+      "row2col2": "Varios archivos PDF",
+      "row2col3": "PDF único",
+      "row3col1": "Caso de uso",
+      "row3col2": "Extracción",
+      "row3col3": "Organización",
+      "note": "Herramientas opuestas, a menudo utilizadas juntas."
+    },
+    "proTips": {
+      "heading": "🚀 Consejos profesionales para un mejor flujo de trabajo",
+      "item1": "🔢 Utilice los números de página como referencia",
+      "item2": "🗂 Organice archivos inmediatamente después de dividirlos",
+      "item3": "⚡ Dividir una vez en lugar de repetidamente",
+      "item4": "📌 Combine con la fusión para obtener un control total"
+    },
+    "safety": {
+      "heading": "🔐 ¿Es seguro dividir archivos PDF en línea?",
+      "body": "La mayoría de las herramientas modernas procesan archivos temporalmente y los eliminan después de descargarlos. Aún así, evite cargar documentos confidenciales a menos que confíe en la herramienta."
+    },
+    "faq": {
+      "heading": "❓ Preguntas frecuentes",
+      "q1": "¿Puedo dividir un PDF sin perder calidad?",
+      "a1": "Sí, la división no afecta la calidad del contenido.",
+      "q2": "¿Puedo extraer solo una página?",
+      "a2": "Absolutamente, puedes extraer cualquier página individualmente.",
+      "q3": "¿Existe un límite para el tamaño del archivo?",
+      "a3": "Depende de la herramienta, pero la mayoría admite archivos razonablemente grandes.",
+      "q4": "¿Puedo deshacer la división?",
+      "a4": "No, pero puedes volver a fusionar archivos si es necesario."
+    },
+    "conclusionTitle": "Conclusión",
+    "conclusion": "Dividir archivos PDF le brinda control sobre sus documentos. En lugar de lidiar con archivos grandes y desordenados, puede extraer solo lo que importa, organizar el contenido de manera eficiente y trabajar de manera más rápida e inteligente.",
+    "ctaBtn": "👉 Comience a dividir su PDF aquí"
+  }
+}

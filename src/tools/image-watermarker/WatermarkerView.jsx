@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import CustomSelect from '../../commons/CustomSelect'
 import JSZip from 'jszip'
 import './Watermarker.css'
+import { useTranslation } from 'react-i18next'
 
 export function WatermarkerView({
   mainImages,
@@ -39,6 +40,7 @@ export function WatermarkerView({
   const [openPanel, setOpenPanel] = useState('')
   const logoInputRef = useRef(null)
   const navigate = useNavigate();
+  const { t } = useTranslation('imageWatermarker')
 
   // Auto-open popup once the watermarked result is ready for the current index
   useEffect(() => {
@@ -46,15 +48,13 @@ export function WatermarkerView({
   }, [outputUrls, currentIndex])
   return (
     <div className="watermarker-view">
-      <h2 className="hero-title">Image Watermarker</h2>
-      <p className="hero-tagline">Protect your images by adding a custom text or logo watermark. 
-        Adjust the position and style to fit your needs, then download the watermarked 
-        result instantly. <Link to="/blogs/image-watermark-guide">Learn how to put a watermark on your image →</Link></p>
+      <h2 className="hero-title">{t('hero.title')}</h2>
+      <p className="hero-tagline">{t('hero.tagline')} <Link to="/blogs/image-watermark-guide">{t('hero.blogLink')}</Link></p>
       
       <div className="ir-tip-banner">
-        <span className="ir-tip-text">Would you like to <b>resize</b> your image before put watermark?</span>
+        <span className="ir-tip-text">{t('hint.text')}</span>
         <button className="ir-tip-btn" onClick={() => navigate('/image-resizer')}>
-          Try Image Resizer
+          {t('hint.btn')}
         </button>
       </div>
 
@@ -67,7 +67,7 @@ export function WatermarkerView({
             aria-expanded={openPanel === 'details'}
             type="button"
           >
-            Details
+            {t('tabs.details')}
           </button>
           <button
             className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
@@ -75,62 +75,49 @@ export function WatermarkerView({
             aria-expanded={openPanel === 'howitworks'}
             type="button"
           >
-            How it works
+            {t('tabs.howItWorks')}
           </button>
         </div>
 
         <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
             <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
-                <h3>What is Image watermarker</h3>
-                <p>
-                  An Image Watermarker applies a visible overlay—either text or a logo—onto an image to indicate ownership, branding, or provenance.
-                  The tool supports placement, scaling, opacity adjustments, and simple styling so you can make the watermark subtle or clearly visible
-                  depending on your goals. Watermarking is intended as a deterrent for casual reuse and a visual cue pointing back to the original
-                  creator or source.
-                </p>
+                <h3>{t('details.whatIs.heading')}</h3>
+                <p>{t('details.whatIs.body')}</p>
 
-                <h3>How watermarking works</h3>
-                <p>
-                  After selecting a source image you can choose a text watermark or upload a logo. The editor renders the watermark on an offscreen
-                  canvas at the chosen position and opacity, and then exports the composite as a new image file for download. Processing is performed
-                  locally in the browser by default; nothing is uploaded unless you explicitly use a sharing or cloud-save feature.
-                </p>
+                <h3>{t('details.howWorks.heading')}</h3>
+                <p>{t('details.howWorks.body')}</p>
 
-                <h3>Choosing the right watermark</h3>
+                <h3>{t('details.choosing.heading')}</h3>
                 <ul>
-                  <li>Semi-transparent text is a good balance for branding without overwhelming the image.</li>
-                  <li>Logos (PNG/SVG) keep transparency and provide a cleaner brand mark—use vector or high-resolution PNG logos where possible.</li>
-                  <li>Consider placement: corners are less likely to be cropped, while tiled or full-frame watermarks offer stronger protection but impact aesthetics.</li>
+                  <li>{t('details.choosing.item1')}</li>
+                  <li>{t('details.choosing.item2')}</li>
+                  <li>{t('details.choosing.item3')}</li>
                 </ul>
 
-                <h3>Practical tips</h3>
+                <h3>{t('details.practical.heading')}</h3>
                 <ul>
-                  <li>Use lower opacity and smaller scale for a subtle brand mark; increase opacity and size for stronger visible protection.</li>
-                  <li>For batch use, standardize watermark position and size to ensure consistent branding across images.</li>
-                  <li>Preview at actual export size to confirm legibility and visual balance before downloading.</li>
+                  <li>{t('details.practical.item1')}</li>
+                  <li>{t('details.practical.item2')}</li>
+                  <li>{t('details.practical.item3')}</li>
                 </ul>
 
-                <h3>Useful when</h3>
+                <h3>{t('details.usefulWhen.heading')}</h3>
                 <ul>
-                  <li>need to protect your images with a visible watermark.</li>
-                  <li>want to maintain control over watermark placement, size, and opacity.</li>
-                  <li>preparing images for sharing online or for branding purposes.</li>
+                  <li>{t('details.usefulWhen.item1')}</li>
+                  <li>{t('details.usefulWhen.item2')}</li>
+                  <li>{t('details.usefulWhen.item3')}</li>
                 </ul>
 
-                <h3>Privacy, retention and limitations</h3>
-                <p>
-                  Because watermarking runs in your browser, your images remain on your device unless you explicitly upload them. Note that visible
-                  watermarks deter casual reuse but are not a foolproof copyright protection; determined actors can remove or crop them. Animated images
-                  will be flattened to a single frame during export.
-                </p>
+                <h3>{t('details.privacy.heading')}</h3>
+                <p>{t('details.privacy.body')}</p>
 
-                <h3>FAQs</h3>
+                <h3>{t('details.faq.heading')}</h3>
                 <ul>
-                  <li><strong>Q:</strong> Can I use a logo? <strong>A:</strong> Yes — upload a PNG or SVG logo to apply as a watermark; transparent backgrounds are supported when the source graphic includes them.</li>
-                  <li><strong>Q:</strong> Will this change my original image? <strong>A:</strong> No — the tool creates a new watermarked file and does not overwrite your original file unless you choose to replace it locally.</li>
-                  <li><strong>Q:</strong> Does the image leave my browser? <strong>A:</strong> No — watermarking runs in your browser and does not upload the original image by default. If you use a share or cloud-save feature, that may transmit the file.</li>
-                  <li><strong>Q:</strong> Can I control opacity, size, and position? <strong>A:</strong> Yes — use the controls to adjust the watermark's opacity, scale, and placement to suit your needs.</li>
-                  <li><strong>Q:</strong> Does watermarking work with all image formats? <strong>A:</strong> Common web formats (JPEG, PNG, WebP) are supported. For formats with special features (animated GIF/PNG), results may vary and animation frames are not preserved by single-frame export.</li>
+                  <li><strong>{t('details.faq.q1')}</strong> {t('details.faq.a1')}</li>
+                  <li><strong>{t('details.faq.q2')}</strong> {t('details.faq.a2')}</li>
+                  <li><strong>{t('details.faq.q3')}</strong> {t('details.faq.a3')}</li>
+                  <li><strong>{t('details.faq.q4')}</strong> {t('details.faq.a4')}</li>
+                  <li><strong>{t('details.faq.q5')}</strong> {t('details.faq.a5')}</li>
                 </ul>
               </div>
 
@@ -138,23 +125,23 @@ export function WatermarkerView({
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/watermarker/watermarker001.png" alt="Step 1" className="how-img" />
-                    <p>Import an image to watermark via drag & drop or file select.</p>
+                        <p>{t('howItWorks.step1')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/watermarker/watermarker002.png" alt="Step 2" className="how-img" />
-                    <p>Choose text or logo watermark and adjust position, size, and opacity.</p>
+                        <p>{t('howItWorks.step2')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
                     <img src="/screenshots/watermarker/watermarker003.png" alt="Step 3" className="how-img" />
-                    <p>Apply the watermark preview and fine-tune placement.</p>
+                        <p>{t('howItWorks.step3')}</p>
                   </li>
                   <li>
                     <img src="/screenshots/watermarker/watermarker004.png" alt="Step 4" className="how-img" />
-                    <p>Export and download the watermarked image.</p>
+                        <p>{t('howItWorks.step4')}</p>
                   </li>
                   <li>
                     <img src="/screenshots/watermarker/watermarker005.png" alt="Step 5" className="how-img" />
-                    <p>Optional - You can apply watermark on multiple files at once.</p>
+                        <p>{t('howItWorks.step5')}</p>
                   </li>
                 </ol>
               </div>
@@ -195,7 +182,7 @@ export function WatermarkerView({
             )
           })()
         ) : (
-          <span className="hero-tagline">Drag & drop images here, or click to select</span>
+          <span className="hero-tagline">{t('dropZone.text')}</span>
         )}
         <input
           type="file"
@@ -211,17 +198,17 @@ export function WatermarkerView({
       {mainImages && mainImages.length > 0 && (
         <div className="wm-file-row">
           <span className="wm-file-name">
-            {mainImages.length === 1 ? mainImages[0].name : `${mainImages.length} images selected`}
+            {mainImages.length === 1 ? mainImages[0].name : t('fileRow.count', {count: mainImages.length})}
           </span>
           <button
             type="button"
             className="wm-change-btn"
             onClick={() => fileInputRef.current && fileInputRef.current.click()}
           >
-            {mainImages.length === 1 ? 'Change image' : 'Change images'}
+            {mainImages.length === 1 ? t('fileRow.changeOne') : t('fileRow.changeMany')}
           </button>
           <button type="button" className="wm-clear-btn" onClick={handleClear}>
-            Clear
+            {t('fileRow.clear')}
           </button>
         </div>
       )}
@@ -255,21 +242,21 @@ export function WatermarkerView({
               onClick={() => setCurrentIndex(idx => Math.max(0, idx - 1))}
               disabled={currentIndex === 0}
             >
-              Prev
+              {t('popup.prev')}
             </button>
             <button
               className="watermark-btn popup-nav-btn popup-nav-next"
               onClick={() => setCurrentIndex(idx => Math.min((mainImages.length || 1) - 1, idx + 1))}
               disabled={currentIndex >= ((mainImages.length || 1) - 1)}
             >
-              Next
+              {t('popup.next')}
             </button>
           </div>
-          <button className="close-popup-btn" onClick={() => setPreviewOpen(false)}>&times;</button>
+          <button className="close-popup-btn" onClick={() => setPreviewOpen(false)}>{t('popup.close')}</button>
         </div>
       )}
       <div className="watermark-options">
-        <label>Type:</label>
+        <label>{t('type.label')}</label>
         <label>
           <input
             type="radio"
@@ -278,7 +265,7 @@ export function WatermarkerView({
             checked={watermarkType === 'text'}
             onChange={() => setWatermarkType('text')}
           />
-          Text
+          {t('type.text')}
         </label>
         <label>
           <input
@@ -288,14 +275,14 @@ export function WatermarkerView({
             checked={watermarkType === 'logo'}
             onChange={() => setWatermarkType('logo')}
           />
-          Logo
+          {t('type.logo')}
         </label>
       </div>
       {watermarkType === 'text' && (
         <input
           type="text"
           className="watermark-input"
-          placeholder="Enter watermark text"
+          placeholder={t('textInput.placeholder')}
           value={watermarkText}
           onChange={e => setWatermarkText(e.target.value)}
           style={!watermarkText ? { borderColor: '#ef4444' } : undefined}
@@ -308,7 +295,7 @@ export function WatermarkerView({
             className="btn btn-outline"
             onClick={() => logoInputRef.current && logoInputRef.current.click()}
           >
-            Choose logo
+            {t('logoBtn')}
           </button>
           <input
             id="logo-input"
@@ -326,7 +313,7 @@ export function WatermarkerView({
 
       <div className="watermark-options">
         <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ marginRight: 6, fontSize: '0.95rem' }}>Position: </span>
+          <span style={{ marginRight: 6, fontSize: '0.95rem' }}>{t('position.label')} </span>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <CustomSelect
               value={position}
@@ -337,12 +324,12 @@ export function WatermarkerView({
                 }
               }}
               options={[
-                { value: 'default', label: 'Default (center + diagonal)' },
-                { value: 'center', label: 'Center' },
-                { value: 'top-left', label: 'Top Left' },
-                { value: 'top-right', label: 'Top Right' },
-                { value: 'bottom-left', label: 'Bottom Left' },
-                { value: 'bottom-right', label: 'Bottom Right' },
+                { value: 'default', label: t('position.default') },
+                { value: 'center', label: t('position.center') },
+                { value: 'top-left', label: t('position.topLeft') },
+                { value: 'top-right', label: t('position.topRight') },
+                { value: 'bottom-left', label: t('position.bottomLeft') },
+                { value: 'bottom-right', label: t('position.bottomRight') },
               ]}
             />
           </div>
@@ -355,12 +342,12 @@ export function WatermarkerView({
             onChange={e => setRepeated(e.target.checked)}
             disabled={position !== 'default'}
           />
-          Repeated
+          {t('repeated')}
         </label>
       </div>
 
       <div className="opacity-row">
-        <label htmlFor="watermark-opacity" style={{ fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Opacity:</label>
+        <label htmlFor="watermark-opacity" style={{ fontSize: '0.95rem', whiteSpace: 'nowrap' }}>{t('opacity')}</label>
         <input
           id="watermark-opacity"
           type="range"
@@ -383,7 +370,7 @@ export function WatermarkerView({
           disabled={status === 'processing' || !mainImages.length || (watermarkType === 'logo' && !logoFile) || (watermarkType === 'text' && !watermarkText)}
           style={{ background: 'linear-gradient(135deg,#10b981,#06b6d4)' }}
         >
-          {status === 'processing' ? 'Processing...' : `Apply to ${mainImages.length || 0} image(s)`}
+          {status === 'processing' ? t('processingBtn') : t('applyBtn', {count: mainImages.length || 0})}
         </button>
         {mainImages.length <= 1 && (outputUrls && outputUrls[currentIndex]) && (
           <button
@@ -395,7 +382,7 @@ export function WatermarkerView({
               a.click()
             }}
           >
-            Download
+            {t('downloadBtn')}
           </button>
         )}
         {mainImages.length > 1 && (outputUrls && outputUrls.some(Boolean)) && (
@@ -428,7 +415,7 @@ export function WatermarkerView({
               }}
               style={{ marginLeft: 8 }}
             >
-              Download All
+            {t('downloadAllBtn')}
             </button>
           )}
       </div>
@@ -437,68 +424,83 @@ export function WatermarkerView({
       {/* ── Watermarker Guide Section ── */}
       <div className="wm-guide">
         <div className="wm-guide-intro">
-          <h2 className="wm-guide-title">How to Add Watermarks to Image(s) (Protect Your Work and Build Your Brand)</h2>
-          <p className="wm-guide-lead">If you share images online — whether photos, designs, or screenshots — you’ve probably worried about others using them without permission. That’s where watermarking comes in. Adding a watermark allows you to protect ownership, promote your brand, and prevent unauthorized reuse.</p>
+          <h2 className="wm-guide-title">{t('guide.title')}</h2>
+          <p className="wm-guide-lead">{t('guide.lead')}</p>
         </div>
 
         <div className="wm-guide-section">
-          <h3 className="wm-guide-h3">What Is a Watermark?</h3>
-          <p>A watermark is a visible overlay (text or logo) placed on an image to indicate ownership or origin. Common types include text watermarks (name, website), logo watermarks (brand identity), and pattern watermarks (repeated across image).</p>
+          <h3 className="wm-guide-h3">{t('guide.whatIs.heading')}</h3>
+          <p>{t('guide.whatIs.body')}</p>
         </div>
 
         <div className="wm-guide-section wm-guide-why">
-          <h3 className="wm-guide-h3">Why You Should Use Watermarks</h3>
+          <h3 className="wm-guide-h3">{t('guide.why.heading')}</h3>
           <ol className="wm-guide-list">
-            <li><strong>Protect Your Content:</strong> Watermarks discourage casual reuse by clearly showing ownership.</li>
-            <li><strong>Build Brand Recognition:</strong> Every shared image carries your name or logo with it.</li>
-            <li><strong>Prevent Content Theft:</strong> Makes removal harder and reduces casual copying.</li>
-            <li><strong>Add Professional Identity:</strong> Watermarked images look intentional and authoritative.</li>
+            <li>{t('guide.why.item1')}</li>
+            <li>{t('guide.why.item2')}</li>
+            <li>{t('guide.why.item3')}</li>
+            <li>{t('guide.why.item4')}</li>
           </ol>
         </div>
 
         <div className="wm-guide-section">
-          <h3 className="wm-guide-h3">Types of Watermarks</h3>
+          <h3 className="wm-guide-h3">{t('guide.types.heading')}</h3>
           <div className="wm-guide-types">
-            <div className="wm-type">🔤<div className="wm-type-body"><strong>Text Watermark</strong><p>Simple and fast — good for blogs and tools (e.g., "thrjtech.com").</p></div></div>
-            <div className="wm-type">🖼<div className="wm-type-body"><strong>Logo Watermark</strong><p>Strong branding — ideal for businesses; use PNG/SVG for transparency.</p></div></div>
-            <div className="wm-type">🔁<div className="wm-type-body"><strong>Repeated Watermark</strong><p>Tiled across the image — best for high-value content, but less clean visually.</p></div></div>
+            <div className="wm-type">
+              🔤
+              <div className="wm-type-body">
+                <p>{t('guide.types.text').replace(/^🔤\s*/, '')}</p>
+              </div>
+            </div>
+            <div className="wm-type">
+              🖼
+              <div className="wm-type-body">
+                <p>{t('guide.types.logo').replace(/^🖼\s*/, '')}</p>
+              </div>
+            </div>
+            <div className="wm-type">
+              🔁
+              <div className="wm-type-body">
+                <p>{t('guide.types.repeated').replace(/^🔁\s*/, '')}</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="wm-guide-section">
-          <h3 className="wm-guide-h3">Best Practices</h3>
+          <h3 className="wm-guide-h3">{t('guide.bestPractices.heading')}</h3>
           <ul className="wm-guide-best">
-            <li>Keep it visible but not distracting (opacity ~20–60%).</li>
-            <li>Choose the right position: corner for subtle, center for strong protection.</li>
-            <li>Use consistent branding (font, logo, placement).</li>
-            <li>Avoid overpowering the image — balance is key.</li>
-            <li>Match watermark color to image brightness for legibility.</li>
+            <li>{t('guide.bestPractices.item1')}</li>
+            <li>{t('guide.bestPractices.item2')}</li>
+            <li>{t('guide.bestPractices.item3')}</li>
+            <li>{t('guide.bestPractices.item4')}</li>
+            <li>{t('guide.bestPractices.item5')}</li>
           </ul>
         </div>
 
         <div className="wm-guide-section">
-          <h3 className="wm-guide-h3">Step-by-Step</h3>
+          <h3 className="wm-guide-h3">{t('guide.stepByStep.heading')}</h3>
           <ol className="wm-guide-steps">
-            <li>Upload your image(s)</li>
-            <li>Enter text or upload a logo</li>
-            <li>Adjust size, position, and opacity</li>
-            <li>Preview the watermark</li>
-            <li>Download the final image</li>
+            <li>{t('guide.stepByStep.step1')}</li>
+            <li>{t('guide.stepByStep.step2')}</li>
+            <li>{t('guide.stepByStep.step3')}</li>
+            <li>{t('guide.stepByStep.step4')}</li>
+            <li>{t('guide.stepByStep.step5')}</li>
           </ol>
         </div>
 
         <div className="wm-guide-section wm-guide-faq">
-          <h3 className="wm-guide-h3">FAQ</h3>
-          <details className="wm-faq-item"><summary>Can you put watermarks on multiple images at once?</summary><p>Yes — you can select multiple images and apply the same watermark to all of them simultaneously.</p></details>
-          <details className="wm-faq-item"><summary>Can watermarks be removed?</summary><p>Yes — advanced tools may remove watermarks, but well-placed marks make removal harder.</p></details>
-          <details className="wm-faq-item"><summary>What opacity should I use?</summary><p>Usually between 30% and 60% depending on the background.</p></details>
-          <details className="wm-faq-item"><summary>Should I place watermark in the center?</summary><p>Center placement offers stronger protection; corners are subtler — choose based on your goal.</p></details>
+          <h3 className="wm-guide-h3">{t('guide.faq.heading')}</h3>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q1')}</summary><p>{t('guide.faq.a1')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q2')}</summary><p>{t('guide.faq.a2')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q3')}</summary><p>{t('guide.faq.a3')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q4')}</summary><p>{t('guide.faq.a4')}</p></details>
         </div>
 
         <div className="wm-guide-conclusion">
-          <h3>Conclusion</h3>
-          <p>Watermarking is a simple way to protect images, promote your brand, and maintain ownership visibility. When done right it enhances your content without distracting from it.</p>
-          <a href="/image-watermarker" className="wm-guide-cta" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-watermarker'); }}>Try the Image Watermarker →</a>
+          <h3>{t('guide.conclusionTitle', { defaultValue: 'Conclusion' })}</h3>
+          <p>{t('guide.conclusion')}</p>
+          <a href="/image-watermarker" className="wm-guide-cta" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-watermarker'); }}>{t('guide.ctaBtn')}</a>
         </div>
       </div>
     </div>

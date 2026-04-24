@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "홈",
+    "tools": "도구",
+    "pdf": "PDF",
+    "pdfCompressor": "PDF 압축기",
+    "pdfMerger": "PDF 합치기",
+    "pdfConverter": "PDF 변환기",
+    "pdfSplitter": "PDF 분할기",
+    "text": "텍스트",
+    "jsonFormatter": "JSON 포맷터",
+    "regexTester": "정규식 테스터",
+    "image": "이미지",
+    "imageResize": "크기 조정",
+    "imageWatermark": "워터마크",
+    "imageCollage": "콜라주",
+    "imageCrop": "자르기",
+    "imageMemeGenerator": "밈 생성기",
+    "imageConverter": "변환기",
+    "blog": "블로그",
+    "contactUs": "문의하기",
+    "openMenu": "메뉴 열기"
+  },
+  "footer": {
+    "copyright": "© {{year}} THRJTech. 모든 권리 보유.",
+    "aboutUs": "회사 소개",
+    "privacyPolicy": "개인정보 처리방침",
+    "termsOfService": "이용 약관"
+  },
+  "lang": {
+    "en": "KO",
+    "fr": "정말로",
+    "es": "ES",
+    "ko": "KO"
+  }
+}
