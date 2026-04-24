@@ -22,13 +22,17 @@ function naiveMarkdownToHtml(md) {
 }
 
 export default function BlogPage() {
-  const { t } = useTranslation('blogs')
+  const { t, i18n } = useTranslation('blogs')
   const { slug } = useParams()
   const [createdAt, setCreatedAt] = useState(null)
-  const [content, setContent] = useState(null)
-  const [title, setTitle] = useState(null)
+  const [blogData, setBlogData] = useState(null)
   const [error, setError] = useState(null)
 
+  const lang = i18n.resolvedLanguage || i18n.language || 'en'
+  const title = blogData ? ((lang !== 'en' && blogData[`title_${lang}`]) || blogData.title) : null
+  const content = blogData
+    ? naiveMarkdownToHtml((lang !== 'en' && blogData[`content_${lang}`]) || blogData.content)
+    : null
 
   useEffect(() => {
     const url = `/api/blogs/${slug}`
@@ -38,8 +42,7 @@ export default function BlogPage() {
         return res.json()
       })
       .then(data => {
-        setTitle(data.title)
-        setContent(naiveMarkdownToHtml(data.content))
+        setBlogData(data)
         setCreatedAt(data.createdAt)
       })
       .catch(err => setError(err.message))
@@ -49,7 +52,7 @@ export default function BlogPage() {
     const prev = document.title
     if (title) document.title = `${title} | THRJ Blog`
     return () => { document.title = prev }
-  }, [title])
+  }, [title, lang])
 
   return (
     <div className="page blog-post-page">
