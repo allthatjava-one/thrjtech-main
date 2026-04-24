@@ -8,7 +8,7 @@ import "./BlogsListPage.css";
 const DEFAULT_THUMB = '/images/blogs/default-thumb.svg'
 
 export default function BlogsListPage() {
-  const { t } = useTranslation('blogs')
+  const { t, i18n } = useTranslation('blogs')
   const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -60,23 +60,26 @@ export default function BlogsListPage() {
               <div>
                 {pageBlogs.map((b, idx) => {
                   const background = ((idx + 1) % 2 === 0) ? '#f8fafc' : '#e6e7eb'
+                  const lang = i18n.resolvedLanguage || i18n.language || 'en'
+                  const displayTitle = (lang !== 'en' && b[`title_${lang}`]) || b.title
+                  const displayDescription = (lang !== 'en' && b[`description_${lang}`]) || b.description
                   return (
                     <Link
                       to={`/blogs/${b.slug}`}
                       key={b.slug}
                       className="card blog-row"
                       style={{ display: 'flex', alignItems: 'center', gap: 16, padding: 16, borderBottom: '1px solid #e5e7eb', background }}
-                      aria-label={`Read blog: ${b.title}`}
+                      aria-label={`Read blog: ${displayTitle}`}
                     >
                       <img
                         src={b.thumbnail || DEFAULT_THUMB}
                         onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_THUMB }}
-                        alt={`Thumbnail for ${b.title}`}
+                        alt={`Thumbnail for ${displayTitle}`}
                         style={{ width: 120, height: 80, objectFit: 'cover', borderRadius: 6, flex: '0 0 auto' }}
                       />
                       <div style={{ flex: 1 }}>
-                        <h3 style={{ marginTop: 0, color: '#111827', fontWeight: 700 }}>{b.title}</h3>
-                        <p style={{ color: '#6b7280', marginBottom: 0 }}>{b.description}</p>
+                        <h3 style={{ marginTop: 0, color: '#111827', fontWeight: 700 }}>{displayTitle}</h3>
+                        <p style={{ color: '#6b7280', marginBottom: 0 }}>{displayDescription}</p>
                       </div>
                     </Link>
                   )
