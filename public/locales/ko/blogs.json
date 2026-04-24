@@ -11,7 +11,7 @@
   "last": "마지막",
   "perPage": "개가 한 페이지에 보이도록",
   "back": "← 블로그로 돌아가기",
-  "createdAt": "생성 날짜",
+  "createdAt": "생성 날짜: {{date}}",
   "loadingArticle": "로드 중…",
   "errorArticle": "오류: {{error}}"
 }
