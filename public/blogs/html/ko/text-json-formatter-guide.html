@@ -1,0 +1,74 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1>JSON 포맷터 — 온라인에서 JSON 정렬, 검증 및 탐색</h1>
+
+  <p>THRJ의 <strong>JSON 포맷터</strong> 도구 사용에 대한 완전한 가이드입니다. 이 페이지는 워크플로우, 유효성 검사 팁, 구조 탐색 및 개인 정보 보호 사항을 다룹니다. API 응답을 디버깅하는 개발자이든 JSON 내보내기를 검토하는 데이터 분석가이든 이 도구는 브라우저에서 즉시 JSON을 읽고 검증하는 데 도움을 줍니다. <a href="/json-formatter">JSON 포맷터 열기</a></p>
+
+  <p><img src="/screenshots/json-formatter/JSON_formatter001.png" alt="JSON Formatter screenshot" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <br>
+  <h2>개요</h2>
+  <p>JSON 포맷터는 브라우저에서 즉시 JSON을 정리, 검증, 시각화하는 데 도움을 줍니다. 정렬(예쁜 인쇄), 축소, 구문 유효성 검사, 기본 구조 탐색기를 지원합니다.</p>
+
+  <br>
+  <h2>빠른 단계</h2>
+  <ol>
+    <li>JSON 포맷터 페이지를 엽니다: <code>/json-formatter</code>.</li>
+    <li>JSON을 편집기에 붙여넣거나 드롭하세요.</li>
+    <li><strong>Format</strong>을 클릭하면 예쁜 인쇄, <strong>Minify</strong>를 클릭하면 압축됩니다.</li>
+    <li><strong>Validate</strong>를 사용하여 구문 오류 및 줄 번호를 확인하세요.</li>
+    <li>결과를 복사하거나 다운로드하세요.</li>
+  </ol>
+
+  <br>
+  <h2>스크린샷으로 보는 단계별 안내</h2>
+
+  <h3>1. JSON 붙여넣기 또는 로드</h3>
+  <p>원시 JSON을 편집기에 붙여넣거나 <code>.json</code> 파일을 편집기 영역에 드래그하세요.</p>
+  <p><img src="/screenshots/json-formatter/JSON_formatter002.png" alt="Load JSON" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <h3>2. 정렬 &amp; 유효성 검사</h3>
+  <p><strong>Format</strong>을 클릭하면 들여쓰기를 적용하여 예쁜 인쇄합니다. 구문 오류가 있으면 도구가 해당 줄을 강조 표시하고 오류 메시지를 보여줍니다.</p>
+  <p><img src="/screenshots/json-formatter/JSON_formatter003.png" alt="Format JSON" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <h3>3. 구조 탐색</h3>
+  <p>간단한 트리 보기를 사용하여 객체와 배열을 검사합니다. 섹션을 접고 펼친여 원하는 부분에 집중할 수 있습니다.</p>
+  <p><img src="/screenshots/json-formatter/JSON_formatter004.png" alt="Explore JSON" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;" /></p>
+
+  <br>
+  <h2>팁</h2>
+  <ul>
+    <li>대역폭이 중요한 네트워크를 통해 JSON을 전송할 때는 <strong>Minify</strong>를 사용하세요.</li>
+    <li>매우 큰 JSON 파일의 경우 브라우저에 성능 문제가 생기면 부분적으로 붙여넣거나 로드하세요.</li>
+    <li>대량 편집 전에 원본 JSON의 복사본을 보관하세요.</li>
+  </ul>
+
+  <br>
+  <h2>일반적인 JSON 유효성 검사 오류 및 수정 방법</h2>
+  <p>자주 발생하는 실수로는 후행 콤마, 큰따옴표 대신 작은따옴표 사용, 따옴표 없는 키, 주석, 잘못된 이스케이프 시퀀스 등이 있습니다. 유효성 검사기는 문제의 줄을 지정하여 각 문제를 수정하는 데 도움을 줍니다.</p>
+
+  <br>
+  <h2>JSON 포맷터 활용 사례</h2>
+  <ul>
+    <li><strong>API 응답 디버깅</strong>: 원시 응답을 붙여넣어 구조를 확인하고 오류를 빠르게 발견하세요.</li>
+    <li><strong>콘피그 파일 유효성 검사</strong>: 런타임 오류 전에 JSON 콘피그(package.json, tsconfig.json)를 확인하세요.</li>
+    <li><strong>JSON 객체 비교</strong>: 둘 다 예쁜 인쇄해서 diff로 차이점을 쉽게 찾을 수 있습니다.</li>
+    <li><strong>내보내기 정리</strong>: DB 또는 API 덤프에서 일관되지 않은 공백을 정리하세요.</li>
+    <li><strong>읽기 쉽는 데이터 공유</strong>: 채팅이나 문서에 붙여넣기 전에 JSON을 정렬하여 명확하게 보여주세요.</li>
+  </ul>
+
+  <br>
+  <h2>개인 정보 보호</h2>
+  <p>모든 처리는 브라우저에서 이루어집니다; 서버에 업로드되는 데이터는 없습니다. 민감한 데이터는 붙여넣기 전에 마스킹 또는 대체 처리를 고려하세요.</p>
+
+  <br>
+  <h2>자주 묻는 질문</h2>
+  <p><strong>포맷터가 처리할 수 있는 최대 JSON 크기는?</strong> 마이크로바이트 단위의 대부분 파일은 즉시 처리됩니다. 매우 큰 파일(50 MB 이상)은 기기에 따라 느릴 수 있습니다.</p>
+  <p><strong>JSON 파일을 직접 로드할 수 있나요?</strong> 네 — <code>.json</code> 파일을 편집기 영역에 드래그하면 내용이 로드됩니다.</p>
+  <p><strong>포맷터가 JSON5 또는 JSONC를 지원하나요?</strong> 이 도구는 표준 JSON만 검증합니다; 정렬 전에 주석/후행 콤마를 제거하세요.</p>
+  <p><strong>JSON을 CSV로 변환할 수 있나요?</strong> 이 도구는 정렬과 검증에 중점을 둠니다; 변환 기능은 제공하지 않습니다.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>
