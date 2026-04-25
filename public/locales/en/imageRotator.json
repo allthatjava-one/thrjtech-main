@@ -1,0 +1,143 @@
+{
+  "hero": {
+    "title": "Image Rotator",
+    "tagline": "Have you even been annoyed by rotated images? Look no further! Rotate one or more images 90°/180°/270° left or right. Preview the result instantly, then download your rotated image — or zip them all at once. No uploads, no server."
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "dropzone": {
+    "text": "Drag & drop images here, or click to browse",
+    "sub": "Supports JPG, PNG, WebP, GIF, AVIF and more"
+  },
+  "actions": {
+    "rotateLeft": "Rotate Left",
+    "rotateRight": "Rotate Right",
+    "applyAll": "Apply All",
+    "download": "Download",
+    "downloadAll": "Download All (ZIP)",
+    "downloading": "Downloading…",
+    "addMore": "+ Add More",
+    "clearAll": "Clear All",
+    "remove": "Remove"
+  },
+  "hint": {
+    "text": "Need to resize your image after rotating?",
+    "btn": "Try Image Resizer"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Image Rotator",
+      "body": "The Image Rotator lets you rotate one or multiple images by 90° increments directly in your browser. All processing is done locally — your files never leave your device."
+    },
+    "howWorks": {
+      "heading": "How rotation works",
+      "body": "Each image is drawn to an offscreen canvas with the selected rotation applied. The canvas output is then exported in the original file format, preserving image quality. For 90°, 180° and 270° rotations, the canvas dimensions are automatically adjusted to ensure the output has the correct aspect ratio."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Are my images uploaded to a server?",
+      "a1": "A: No — all rotation happens locally in your browser. Your images are never uploaded.",
+      "q2": "Q: Can I rotate multiple images at once?",
+      "a2": "A: Yes — drop multiple images, rotate each independently, then use Download All to get a ZIP.",
+      "q3": "Q: Is the original image modified?",
+      "a3": "A: No — the original file is unchanged. You download a new copy with the rotation baked in."
+    }
+  },
+  "howItWorks": {
+    "step1": "Upload one or more images by drag-and-drop or by browsing your files.",
+    "step2": "Pick an image from the thumbnail strip and rotate left or right.",
+    "step3": "Optionally enable Apply All to rotate every image together.",
+    "step4": "Download the current image or download all rotated images as a ZIP file."
+  },
+  "guide": {
+    "title": "Image Rotator – Rotate Images Online Instantly Without Losing Quality",
+    "lead": "Need to rotate a photo quickly? Our Image Rotator helps you rotate images online in seconds. Upload your image, choose the rotation angle, preview the result, and download instantly.",
+    "intro2": "Whether you need to fix phone photo orientation, prepare images for social media, or adjust scanned documents, rotating an image should be simple and fast.",
+    "why": {
+      "heading": "🔄 Why Rotate an Image?",
+      "body": "Images are often saved in the wrong orientation depending on the device used to capture them. Rotating helps correct alignment and improves presentation.",
+      "reasons": "Common reasons people rotate images:",
+      "item1": "📱 Fix sideways or upside-down photos",
+      "item2": "🌐 Prepare images for websites or blogs",
+      "item3": "📄 Correct scanned document orientation",
+      "item4": "🛍️ Improve product photos for ecommerce",
+      "item5": "📊 Adjust visuals for presentations or social media"
+    },
+    "how": {
+      "heading": "⚡ How to Rotate an Image Online",
+      "intro": "Using an online image rotator is simple:",
+      "step1": "📤 Upload your image file",
+      "step2": "↩️ Select the rotation direction",
+      "step3": "👀 Preview the rotated image",
+      "step4": "⬇️ Download the updated image instantly"
+    },
+    "formats": {
+      "heading": "🧩 Supported Image Formats",
+      "intro": "A good image rotator should support popular formats such as:",
+      "item1": "🖼️ JPG / JPEG",
+      "item2": "🎨 PNG",
+      "item3": "🌐 WEBP",
+      "item4": "🎞️ GIF",
+      "item5": "🧱 BMP",
+      "item6": "✏️ SVG",
+      "item7": "📷 HEIC"
+    },
+    "benefits": {
+      "heading": "🚀 Benefits of Using an Online Image Rotator",
+      "card1title": "No Software Installation",
+      "card1desc": "Rotate photos directly from your browser without downloading editing programs.",
+      "card2title": "Fast Processing",
+      "card2desc": "Upload and rotate within seconds.",
+      "card3title": "Privacy Friendly",
+      "card3desc": "Browser-based tools often process files locally, reducing upload risks.",
+      "card4title": "Works on Any Device",
+      "card4desc": "Use on desktop, tablet, or mobile.",
+      "card5title": "Easy for Everyone",
+      "card5desc": "No editing experience required."
+    },
+    "useCases": {
+      "heading": "🎯 Common Use Cases",
+      "intro": "Image rotation is useful across many scenarios:",
+      "item1": "Correcting vacation photos",
+      "item2": "Fixing portrait images from smartphones",
+      "item3": "Rotating scanned screenshots",
+      "item4": "Preparing marketplace product images",
+      "item5": "Aligning graphics for presentations",
+      "item6": "Social media content creation"
+    },
+    "faq": {
+      "heading": "❓ Frequently Asked Questions",
+      "q1": "Does rotating an image reduce quality?",
+      "a1": "Most modern image rotators preserve quality when rotating standard formats.",
+      "q2": "Can I rotate images by custom angles?",
+      "a2": "Some tools allow free-angle rotation beyond fixed 90° turns.",
+      "q3": "Is image rotation free?",
+      "a3": "Many browser-based image rotators are completely free to use.",
+      "q4": "Do I need to create an account?",
+      "a4": "Most online image rotators do not require registration."
+    },
+    "whyUs": {
+      "heading": "⭐ Why Use ThrjTech Image Rotator?",
+      "body": "Your Image Rotator tool offers a simple workflow focused on speed and ease of use. Instead of opening heavy editing software, users can quickly rotate images online and download the corrected version immediately.",
+      "greatFor": "Great for:",
+      "item1": "⚡ Quick image corrections",
+      "item2": "📅 Daily productivity tasks",
+      "item3": "🧰 Lightweight photo editing",
+      "item4": "👨‍💻 Casual and professional users"
+    },
+    "relatedTools": {
+      "heading": "🔗 Related Tools",
+      "tool1": "🖼️ Image Resizer",
+      "tool2": "✂️ Image Crop Tool",
+      "tool3": "📦 Image Compressor",
+      "tool4": "📄 PDF Compressor"
+    },
+    "conclusion": {
+      "heading": "Start Rotating Your Images Today",
+      "body": "Fixing image orientation has never been easier. Use ThrjTech Image Rotator to rotate images online instantly — no installs, no sign-up required.",
+      "ctaBtn": "Try the Image Rotator Tool →"
+    }
+  }
+}

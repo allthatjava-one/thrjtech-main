@@ -82,6 +82,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://thrjtech.com/image-rotator</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://thrjtech.com/blogs</loc>
     <lastmod>2026-04-04</lastmod>
     <changefreq>weekly</changefreq>
