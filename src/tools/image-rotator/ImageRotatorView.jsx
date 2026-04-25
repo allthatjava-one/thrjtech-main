@@ -255,6 +255,148 @@ export function ImageRotatorView({
         </div>
       )}
 
+      {/* SEO Guide Section */}
+      <div className="ic-guide">
+        <div className="ic-guide-intro">
+          <h2 className="ic-guide-title">{t('guide.title')}</h2>
+          <p className="ic-guide-lead">{t('guide.lead')}</p>
+          <p>{t('guide.intro2')}</p>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.why.heading')}</h3>
+          <p>{t('guide.why.body')}</p>
+          <p>{t('guide.why.reasons')}</p>
+          <ul style={{ paddingLeft: '1.5rem' }}>
+            <li>{t('guide.why.item1')}</li>
+            <li>{t('guide.why.item2')}</li>
+            <li>{t('guide.why.item3')}</li>
+            <li>{t('guide.why.item4')}</li>
+            <li>{t('guide.why.item5')}</li>
+          </ul>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.how.heading')}</h3>
+          <p>{t('guide.how.intro')}</p>
+          <ol style={{ paddingLeft: '1.5rem' }}>
+            <li>{t('guide.how.step1')}</li>
+            <li>{t('guide.how.step2')}</li>
+            <li>{t('guide.how.step3')}</li>
+            <li>{t('guide.how.step4')}</li>
+          </ol>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.formats.heading')}</h3>
+          <p>{t('guide.formats.intro')}</p>
+          <ul style={{ paddingLeft: '1.5rem' }}>
+            <li>{t('guide.formats.item1')}</li>
+            <li>{t('guide.formats.item2')}</li>
+            <li>{t('guide.formats.item3')}</li>
+            <li>{t('guide.formats.item4')}</li>
+            <li>{t('guide.formats.item5')}</li>
+            <li>{t('guide.formats.item6')}</li>
+            <li>{t('guide.formats.item7')}</li>
+          </ul>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.benefits.heading')}</h3>
+          <div className="ic-guide-cards">
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">💻</span>
+              <p><strong>{t('guide.benefits.card1title')}</strong> — {t('guide.benefits.card1desc')}</p>
+            </div>
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">⚡</span>
+              <p><strong>{t('guide.benefits.card2title')}</strong> — {t('guide.benefits.card2desc')}</p>
+            </div>
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">🔒</span>
+              <p><strong>{t('guide.benefits.card3title')}</strong> — {t('guide.benefits.card3desc')}</p>
+            </div>
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">📱</span>
+              <p><strong>{t('guide.benefits.card4title')}</strong> — {t('guide.benefits.card4desc')}</p>
+            </div>
+            <div className="ic-guide-card">
+              <span className="ic-guide-card-num">👤</span>
+              <p><strong>{t('guide.benefits.card5title')}</strong> — {t('guide.benefits.card5desc')}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.useCases.heading')}</h3>
+          <p>{t('guide.useCases.intro')}</p>
+          <div className="ic-guide-usecases">
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🧳</span><p>{t('guide.useCases.item1')}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">📸</span><p>{t('guide.useCases.item2')}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">📑</span><p>{t('guide.useCases.item3')}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">🛒</span><p>{t('guide.useCases.item4')}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">📈</span><p>{t('guide.useCases.item5')}</p></div>
+            <div className="ic-guide-usecase"><span className="ic-guide-usecase-icon">📲</span><p>{t('guide.useCases.item6')}</p></div>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.faq.heading')}</h3>
+          <div className="ic-guide-faq">
+            <details className="ic-guide-faq-item">
+              <summary>{t('guide.faq.q1')}</summary>
+              <p>{t('guide.faq.a1')}</p>
+            </details>
+            <details className="ic-guide-faq-item">
+              <summary>{t('guide.faq.q2')}</summary>
+              <p>{t('guide.faq.a2')}</p>
+            </details>
+            <details className="ic-guide-faq-item">
+              <summary>{t('guide.faq.q3')}</summary>
+              <p>{t('guide.faq.a3')}</p>
+            </details>
+            <details className="ic-guide-faq-item">
+              <summary>{t('guide.faq.q4')}</summary>
+              <p>{t('guide.faq.a4')}</p>
+            </details>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.whyUs.heading')}</h3>
+          <p>{t('guide.whyUs.body')}</p>
+          <p>{t('guide.whyUs.greatFor')}</p>
+          <ul style={{ paddingLeft: '1.5rem' }}>
+            <li>{t('guide.whyUs.item1')}</li>
+            <li>{t('guide.whyUs.item2')}</li>
+            <li>{t('guide.whyUs.item3')}</li>
+            <li>{t('guide.whyUs.item4')}</li>
+          </ul>
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.relatedTools.heading')}</h3>
+          <ul style={{ paddingLeft: '1.5rem' }}>
+            <li><a href="/image-resizer" onClick={(e) => { e.preventDefault(); window.location.href = '/image-resizer'; }}>{t('guide.relatedTools.tool1')}</a></li>
+            <li><a href="/image-crop" onClick={(e) => { e.preventDefault(); window.location.href = '/image-crop'; }}>{t('guide.relatedTools.tool2')}</a></li>
+            <li><a href="/image-compressor" onClick={(e) => { e.preventDefault(); window.location.href = '/image-compressor'; }}>{t('guide.relatedTools.tool3')}</a></li>
+            <li><a href="/pdf-compressor" onClick={(e) => { e.preventDefault(); window.location.href = '/pdf-compressor'; }}>{t('guide.relatedTools.tool4')}</a></li>
+          </ul>
+        </div>
+
+        <div className="ic-guide-conclusion">
+          <h3>{t('guide.conclusion.heading')}</h3>
+          <p>{t('guide.conclusion.body')}</p>
+          <a
+            href="/image-rotator"
+            className="ic-guide-cta"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          >
+            {t('guide.conclusion.ctaBtn')}
+          </a>
+        </div>
+      </div>
+
     </div>
   );
 }
