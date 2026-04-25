@@ -172,10 +172,16 @@ export default function MemeGeneratorView({ initialFile }) {
     const imgW = imageObj.width;
     const imgH = imageObj.height;
     const baseScale = Math.min(rect.width / imgW, rect.height / imgH);
+    const baseDrawW = Math.round(imgW * baseScale);
+    const baseDrawH = Math.round(imgH * baseScale);
     const totalScale = Math.max(0.01, baseScale * imgTransformRef.current.scale);
     const drawW = Math.round(imgW * totalScale);
     const drawH = Math.round(imgH * totalScale);
-    return { rect, imgW, imgH, baseScale, totalScale, drawW, drawH };
+    const centerX = rect.width / 2 + imgTransformRef.current.offsetX;
+    const centerY = rect.height / 2 + imgTransformRef.current.offsetY;
+    const imgLeft = centerX - drawW / 2;
+    const imgTop = centerY - drawH / 2;
+    return { rect, imgW, imgH, baseScale, baseDrawW, baseDrawH, totalScale, drawW, drawH, centerX, centerY, imgLeft, imgTop };
   }
 
   function computeFontSizes(layer) {
@@ -185,7 +191,9 @@ export default function MemeGeneratorView({ initialFile }) {
     // If we have an image, derive font from fontRatio (relative to original image height)
     if (metrics && layer.fontRatio && metrics.imgH) {
       const canvasPx = Math.max(10, Math.min(240, Math.round(layer.fontRatio * metrics.imgH)));
-      const cssPx = Math.max(10, Math.round(layer.fontRatio * metrics.drawH));
+      // Keep on-screen text stable while zooming the image by using base fitted image height,
+      // not the zoomed draw height.
+      const cssPx = Math.max(10, Math.round(layer.fontRatio * metrics.baseDrawH));
       const lineHeightCss = Math.round((cssPx + 6) * 0.82);
       const lineHeightCanvas = Math.round((canvasPx + 6) * 0.82);
       return { cssPx, canvasPx, lineHeightCss, lineHeightCanvas };
@@ -201,11 +209,40 @@ export default function MemeGeneratorView({ initialFile }) {
   useEffect(() => {
     const preview = previewRef.current;
     if (!preview) return;
+    const getLiveMetrics = () => {
+      const previewEl = previewRef.current;
+      const img = imageObjRef.current;
+      if (!previewEl || !img) return null;
+      const rect = previewEl.getBoundingClientRect();
+      const imgW = img.width;
+      const imgH = img.height;
+      const baseScale = Math.min(rect.width / imgW, rect.height / imgH);
+      const baseDrawH = Math.round(imgH * baseScale);
+      return { rect, imgW, imgH, baseScale, baseDrawH };
+    };
+
+    const getLayerCssPxLive = (layer, metrics) => {
+      if (!layer) return 30;
+      if (metrics && layer.fontRatio) {
+        return Math.max(10, Math.round(layer.fontRatio * metrics.baseDrawH));
+      }
+      return layer.fontSize || 30;
+    };
+
     const isOverDraggable = (x, y) => {
       try {
         const el = document.elementFromPoint(x, y);
         return el && el.closest && el.closest('.draggable-text');
       } catch (err) { return false; }
+    };
+    const getLayerIdAtPoint = (x, y) => {
+      try {
+        const el = document.elementFromPoint(x, y);
+        const layerEl = el && el.closest ? el.closest('.draggable-text') : null;
+        return layerEl && layerEl.dataset ? layerEl.dataset.layerId : null;
+      } catch (err) {
+        return null;
+      }
     };
 
     const onWheel = (e) => {
@@ -222,14 +259,14 @@ export default function MemeGeneratorView({ initialFile }) {
         // if no specific layer id available, fall back to selectedLayerIdRef
         const targetId = selId || selectedLayerIdRef.current;
         if (targetId) {
+          const metrics = getLiveMetrics();
           setLayers(prev => prev.map(l => {
             if (l.id !== targetId) return l;
-            // if there's an image, adjust fontRatio so sizes remain relative to original image height
-            if (imageObjRef.current && l.fontRatio && imageObjRef.current.height) {
-              const imgH = imageObjRef.current.height;
-              const currentCanvasPx = Math.max(10, Math.min(240, Math.round(l.fontRatio * imgH)));
-              const targetCanvasPx = Math.round(Math.max(10, Math.min(240, currentCanvasPx * fontFactor)));
-              const nextRatio = targetCanvasPx / imgH;
+            // Scale text in screen px so zoom in/out is reversible and consistent with slider behavior.
+            if (metrics && metrics.baseDrawH) {
+              const currentCssPx = getLayerCssPxLive(l, metrics);
+              const nextCssPx = Math.round(Math.max(10, Math.min(240, currentCssPx * fontFactor)));
+              const nextRatio = nextCssPx / metrics.baseDrawH;
               return { ...l, fontRatio: nextRatio };
             }
             const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * fontFactor)));
@@ -249,35 +286,43 @@ export default function MemeGeneratorView({ initialFile }) {
 
     let lastDist = null;
     const pinchModeRef = { current: null };
+    const pinchLayerIdRef = { current: null };
     const onTouchStart = (e) => {
       if (e.touches.length === 2) {
         lastDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-        // decide based on midpoint whether pinch is over a draggable text overlay
-        const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-        const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-        pinchModeRef.current = isOverDraggable(midX, midY) ? 'font' : 'image';
+        // Only treat pinch as text resize when BOTH fingers start on the SAME text layer.
+        // Otherwise pinch always zooms the image (prevents accidental text scaling on mobile).
+        const t1 = e.touches[0];
+        const t2 = e.touches[1];
+        const layer1 = getLayerIdAtPoint(t1.clientX, t1.clientY);
+        const layer2 = getLayerIdAtPoint(t2.clientX, t2.clientY);
+        if (layer1 && layer2 && layer1 === layer2) {
+          pinchModeRef.current = 'font';
+          pinchLayerIdRef.current = layer1;
+        } else {
+          pinchModeRef.current = 'image';
+          pinchLayerIdRef.current = null;
+        }
       }
     };
     const onTouchMove = (e) => {
-      if (e.touches.length === 2 && lastDist !== null) {
+      if (e.touches.length === 2) {
+        // Always prevent default for 2-finger touch so the browser never fires
+        // its own pinch-zoom, which would visually scale the whole page including text overlays.
         e.preventDefault();
+        if (lastDist === null) return;
         const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
         const ratio = dist / lastDist;
         if (pinchModeRef.current === 'font') {
-          // try to find a layer under the midpoint
-          const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-          const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-          const el = document.elementFromPoint(midX, midY);
-          const layerEl = el && el.closest ? el.closest('.draggable-text') : null;
-          const targetId = layerEl ? (layerEl.dataset && layerEl.dataset.layerId) || selectedLayerIdRef.current : selectedLayerIdRef.current;
+          const targetId = pinchLayerIdRef.current || selectedLayerIdRef.current;
           if (targetId) {
+            const metrics = getLiveMetrics();
             setLayers(prev => prev.map(l => {
               if (l.id !== targetId) return l;
-              if (imageObjRef.current && l.fontRatio && imageObjRef.current.height) {
-                const imgH = imageObjRef.current.height;
-                const currentCanvasPx = Math.max(10, Math.min(240, Math.round(l.fontRatio * imgH)));
-                const targetCanvasPx = Math.round(Math.max(10, Math.min(240, currentCanvasPx * ratio)));
-                const nextRatio = targetCanvasPx / imgH;
+              if (metrics && metrics.baseDrawH) {
+                const currentCssPx = getLayerCssPxLive(l, metrics);
+                const nextCssPx = Math.round(Math.max(10, Math.min(240, currentCssPx * ratio)));
+                const nextRatio = nextCssPx / metrics.baseDrawH;
                 return { ...l, fontRatio: nextRatio };
               }
               const nextSize = Math.round(Math.max(10, Math.min(240, l.fontSize * ratio)));
@@ -295,7 +340,13 @@ export default function MemeGeneratorView({ initialFile }) {
         lastDist = dist;
       }
     };
-    const onTouchEnd = (e) => { if (e.touches.length < 2) { lastDist = null; pinchModeRef.current = null; } };
+    const onTouchEnd = (e) => {
+      if (e.touches.length < 2) {
+        lastDist = null;
+        pinchModeRef.current = null;
+        pinchLayerIdRef.current = null;
+      }
+    };
     preview.addEventListener('wheel', onWheel, { passive: false });
     preview.addEventListener('touchstart', onTouchStart, { passive: false });
     preview.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -423,10 +474,8 @@ export default function MemeGeneratorView({ initialFile }) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     if (!imageObj) {
-      // blank canvas — use preview background so it blends seamlessly
+      // blank canvas
       ctx.clearRect(0, 0, rect.width, rect.height);
-      ctx.fillStyle = getComputedStyle(preview).backgroundColor || '#18181b';
-      ctx.fillRect(0, 0, rect.width, rect.height);
       return;
     }
 
@@ -442,58 +491,102 @@ export default function MemeGeneratorView({ initialFile }) {
     const centerY = rect.height / 2 + imgTransform.offsetY;
 
     ctx.clearRect(0, 0, rect.width, rect.height);
-    ctx.fillStyle = getComputedStyle(preview).backgroundColor || '#18181b';
-    ctx.fillRect(0, 0, rect.width, rect.height);
     ctx.drawImage(imageObj, centerX - drawW / 2, centerY - drawH / 2, drawW, drawH);
   }
 
-  // Render the meme onto an offscreen canvas at the ORIGINAL image resolution.
-  // Font sizes are fontRatio × original image height, positions are fractional × original dimensions.
-  // This ensures the downloaded file and popup preview match the relative proportions seen on-page.
-  function renderFullResCanvas() {
+  // Single renderer used by both preview popup and download.
+  // hiRes=true  → output at original image pixel density (for download).
+  // hiRes=false → output at screen CSS px (for popup preview).
+  // Both paths use the same visible-crop + text-position logic so they always match.
+  function renderOutputCanvas(hiRes = false) {
     if (!imageObj) return null;
-    const w = imageObj.width;
-    const h = imageObj.height;
+    const metrics = getImageDrawMetrics();
+    if (!metrics) return null;
+
+    const viewW = metrics.rect.width;
+    const viewH = metrics.rect.height;
+
+    // Visible image region in CSS px
+    const cropLeft = Math.max(0, metrics.imgLeft);
+    const cropTop  = Math.max(0, metrics.imgTop);
+    const cropRight  = Math.min(viewW, metrics.imgLeft + metrics.drawW);
+    const cropBottom = Math.min(viewH, metrics.imgTop + metrics.drawH);
+    const visCssW = Math.max(1, cropRight  - cropLeft);
+    const visCssH = Math.max(1, cropBottom - cropTop);
+    if (visCssW <= 1 || visCssH <= 1) return null;
+
+    // Scale from CSS px → output pixels.
+    // Preview mode should stay in CSS pixels so popup matches the on-screen canvas exactly,
+    // especially on mobile DPR screens.
+    const scaleX = hiRes ? (metrics.imgW / metrics.drawW) : 1;
+    const scaleY = hiRes ? (metrics.imgH / metrics.drawH) : 1;
+    const outW = Math.round(visCssW * scaleX);
+    const outH = Math.round(visCssH * scaleY);
+
     const offscreen = document.createElement('canvas');
-    offscreen.width = w;
-    offscreen.height = h;
+    offscreen.width  = outW;
+    offscreen.height = outH;
     const ctx = offscreen.getContext('2d');
-    ctx.drawImage(imageObj, 0, 0, w, h);
+    ctx.clearRect(0, 0, outW, outH);
+
+    if (hiRes) {
+      // Draw the visible slice of the original image at native resolution
+      const srcX = Math.round((cropLeft - metrics.imgLeft) / metrics.drawW * metrics.imgW);
+      const srcY = Math.round((cropTop  - metrics.imgTop)  / metrics.drawH * metrics.imgH);
+      const srcW = Math.round(visCssW / metrics.drawW * metrics.imgW);
+      const srcH = Math.round(visCssH / metrics.drawH * metrics.imgH);
+      ctx.drawImage(imageObj, srcX, srcY, srcW, srcH, 0, 0, outW, outH);
+    } else {
+      // Draw at screen resolution — shift image so visible crop starts at (0,0)
+      ctx.drawImage(imageObj,
+        metrics.imgLeft - cropLeft,
+        metrics.imgTop  - cropTop,
+        metrics.drawW, metrics.drawH
+      );
+    }
+
+    // Draw text layers — same coordinate math for both paths
     layers.forEach((layer) => {
       if (!layer.text) return;
-      // font size = fontRatio × original image height (keeps text proportional to the actual image)
-      const fontPx = layer.fontRatio
-        ? Math.max(10, Math.min(2400, Math.round(layer.fontRatio * h)))
-        : (layer.fontSize || 30);
-      const lineHeight = Math.round((fontPx + 6) * 0.82);
-      ctx.textAlign = 'left';
+      // On-screen text size from screen-space font system
+      const { cssPx, lineHeightCss } = computeFontSizes(layer);
+      const screenFontPx = cssPx || layer.fontSize || 30;
+      // Scale font and metrics to output resolution
+      const fontPx     = Math.max(4, Math.round(screenFontPx * scaleX));
+      const lineHeight  = Math.round(screenFontPx * scaleY * ((lineHeightCss || screenFontPx) / screenFontPx));
+
+      ctx.textAlign    = 'left';
       ctx.textBaseline = 'top';
-      ctx.font = `${fontPx}px Impact, Arial, sans-serif`;
-      ctx.lineWidth = Math.max(2, Math.floor(fontPx / 12));
-      ctx.fillStyle = layer.color;
-      ctx.strokeStyle = 'black';
-      const x = Math.round(layer.x * w);
-      const y = Math.round(layer.y * h);
-      const lines = layer.text.toUpperCase().split('\n');
+      ctx.font         = `${fontPx}px Impact, Arial, sans-serif`;
+      ctx.lineWidth    = Math.max(2, Math.floor(fontPx / 12));
+      ctx.fillStyle    = layer.color;
+      ctx.strokeStyle  = 'black';
+
+      // Convert preview-space position → output pixel position
+      const x = Math.round((layer.x * viewW - cropLeft) * scaleX);
+      const y = Math.round((layer.y * viewH - cropTop)  * scaleY);
+
+      const lines       = layer.text.toUpperCase().split('\n');
       const totalHeight = lines.length * lineHeight;
-      const startY = Math.round(y - totalHeight / 2);
+      const startY      = Math.round(y - totalHeight / 2);
       lines.forEach((line, i) => {
         ctx.strokeText(line, x, startY + i * lineHeight);
-        ctx.fillText(line, x, startY + i * lineHeight);
+        ctx.fillText(line,   x, startY + i * lineHeight);
       });
     });
+
     return offscreen;
   }
 
   function handlePreview() {
-    const offscreen = renderFullResCanvas();
+    const offscreen = renderOutputCanvas(false);
     if (!offscreen) return;
     setPreviewUrl(offscreen.toDataURL('image/png'));
     setPreviewOpen(true);
   }
 
   function handleDownload() {
-    const offscreen = renderFullResCanvas();
+    const offscreen = renderOutputCanvas(true);
     if (!offscreen) return;
     const url = offscreen.toDataURL('image/png');
     const a = document.createElement('a');
@@ -515,7 +608,15 @@ export default function MemeGeneratorView({ initialFile }) {
     const layer = layers.find(l => l.id === layerId);
     const origX = layer ? layer.x : 0;
     const origY = layer ? layer.y : 0;
-    dragging.current = { layerId, rect, startX: e.clientX, startY: e.clientY, origX, origY, active: false };
+    dragging.current = {
+      layerId,
+      rect,
+      startX: e.clientX,
+      startY: e.clientY,
+      origX,
+      origY,
+      active: false,
+    };
     // attach move/up listeners; we'll only update position after threshold is exceeded
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp, { once: true });
@@ -537,8 +638,8 @@ export default function MemeGeneratorView({ initialFile }) {
     }
     const { layerId, rect, origX, origY } = d;
     // Move by delta from the drag start so the text doesn't jump to the cursor
-    const x = origX + dx / rect.width;
-    const y = origY + dy / rect.height;
+    const x = origX + dx / Math.max(1, rect.width);
+    const y = origY + dy / Math.max(1, rect.height);
     const clamp = (v) => Math.max(0, Math.min(1, v));
     setLayers((prev) => prev.map((l) => (l.id === layerId ? { ...l, x: clamp(x), y: clamp(y) } : l)));
   }
@@ -591,10 +692,9 @@ export default function MemeGeneratorView({ initialFile }) {
     const sel = layers.find(l => l.id === selectedLayerId);
     if (!sel) return;
     const metrics = getImageDrawMetrics();
-    if (metrics && metrics.drawH) {
-      // convert slider px to ratio of displayed image height -> store as fontRatio relative to original image
-      // slider value is CSS px relative to preview; map to original image ratio
-      const ratio = value / metrics.drawH;
+    if (metrics && metrics.baseDrawH) {
+      // Slider controls on-screen text px relative to the base fitted image (zoom-independent).
+      const ratio = value / metrics.baseDrawH;
       updateSelectedLayer({ fontRatio: ratio });
     } else {
       updateSelectedLayer({ fontSize: value });
@@ -697,6 +797,11 @@ export default function MemeGeneratorView({ initialFile }) {
         <canvas ref={canvasRef} className="meme-canvas" />
         {!imageObj && (
           <div className="preview-placeholder">{t('canvas.placeholder')}</div>
+        )}
+        {imageObj && (
+          <div className="preview-interact-hint">
+            {t('canvas.interactionHint', { defaultValue: 'Alt+Scroll on text → resize text  ·  Alt+Scroll elsewhere → zoom image' })}
+          </div>
         )}
         {/* moved preview hint below the preview container so it doesn't overlap the image */}
         <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif" onChange={handleFile} style={{ display: 'none' }} />
