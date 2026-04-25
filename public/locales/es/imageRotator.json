@@ -45,6 +45,95 @@
       "a3": "R: No — el archivo original no se modifica. Descargas una nueva copia con la rotación aplicada."
     }
   },
+  "guide": {
+    "title": "Rotador de Imágenes – Rota Imágenes Online al Instante Sin Perder Calidad",
+    "lead": "¿Necesitas rotar una foto rápidamente? Nuestro Rotador de Imágenes te ayuda a rotar imágenes en línea en segundos. Sube tu imagen, elige el ángulo, previsualiza el resultado y descárgalo al instante.",
+    "intro2": "Ya sea que necesites corregir la orientación de fotos del teléfono, preparar imágenes para redes sociales o ajustar documentos escaneados, rotar una imagen debería ser simple y rápido.",
+    "why": {
+      "heading": "🔄 ¿Por qué rotar una imagen?",
+      "body": "Las imágenes a menudo se guardan en la orientación incorrecta dependiendo del dispositivo. Rotarlas corrige la alineación y mejora la presentación.",
+      "reasons": "Razones comunes para rotar imágenes:",
+      "item1": "📱 Corregir fotos giradas o invertidas",
+      "item2": "🌐 Preparar imágenes para sitios web o blogs",
+      "item3": "📄 Corregir la orientación de documentos escaneados",
+      "item4": "🛍️ Mejorar fotos de productos para ecommerce",
+      "item5": "📊 Ajustar visuales para presentaciones o redes sociales"
+    },
+    "how": {
+      "heading": "⚡ Cómo rotar una imagen online",
+      "intro": "Usar un rotador de imágenes en línea es sencillo:",
+      "step1": "📤 Sube tu archivo de imagen",
+      "step2": "↩️ Selecciona la dirección de rotación",
+      "step3": "👀 Previsualiza la imagen rotada",
+      "step4": "⬇️ Descarga la imagen actualizada al instante"
+    },
+    "formats": {
+      "heading": "🧩 Formatos de imagen compatibles",
+      "intro": "Un buen rotador de imágenes debe ser compatible con los formatos más populares:",
+      "item1": "🖼️ JPG / JPEG",
+      "item2": "🎨 PNG",
+      "item3": "🌐 WEBP",
+      "item4": "🎞️ GIF",
+      "item5": "🧱 BMP",
+      "item6": "✏️ SVG",
+      "item7": "📷 HEIC"
+    },
+    "benefits": {
+      "heading": "🚀 Ventajas de usar un rotador de imágenes online",
+      "card1title": "Sin instalación de software",
+      "card1desc": "Rota fotos directamente desde tu navegador sin descargar programas de edición.",
+      "card2title": "Procesamiento rápido",
+      "card2desc": "Sube y rota en segundos.",
+      "card3title": "Respetuoso con la privacidad",
+      "card3desc": "Las herramientas basadas en navegador procesan archivos localmente, reduciendo riesgos de subida.",
+      "card4title": "Funciona en cualquier dispositivo",
+      "card4desc": "Úsalo en escritorio, tablet o móvil.",
+      "card5title": "Fácil para todos",
+      "card5desc": "No se requiere experiencia en edición."
+    },
+    "useCases": {
+      "heading": "🎯 Casos de uso comunes",
+      "intro": "La rotación de imágenes es útil en muchos escenarios:",
+      "item1": "Corregir fotos de vacaciones",
+      "item2": "Corregir retratos tomados con smartphones",
+      "item3": "Rotar capturas de pantalla escaneadas",
+      "item4": "Preparar imágenes de productos para marketplaces",
+      "item5": "Alinear gráficos para presentaciones",
+      "item6": "Creación de contenido para redes sociales"
+    },
+    "faq": {
+      "heading": "❓ Preguntas frecuentes",
+      "q1": "¿Rotar una imagen reduce la calidad?",
+      "a1": "La mayoría de los rotadores modernos preservan la calidad al rotar formatos estándar.",
+      "q2": "¿Puedo rotar imágenes con ángulos personalizados?",
+      "a2": "Algunas herramientas permiten rotación libre más allá de los giros de 90°.",
+      "q3": "¿Es gratuita la rotación de imágenes?",
+      "a3": "Muchos rotadores de imágenes en línea son completamente gratuitos.",
+      "q4": "¿Necesito crear una cuenta?",
+      "a4": "La mayoría de los rotadores online no requieren registro."
+    },
+    "whyUs": {
+      "heading": "⭐ ¿Por qué usar ThrjTech Image Rotator?",
+      "body": "Nuestra herramienta ofrece un flujo de trabajo simple enfocado en velocidad y facilidad de uso. En lugar de abrir software pesado, los usuarios pueden rotar imágenes en línea y descargar la versión corregida de inmediato.",
+      "greatFor": "Ideal para:",
+      "item1": "⚡ Correcciones rápidas de imágenes",
+      "item2": "📅 Tareas de productividad diaria",
+      "item3": "🧰 Edición de fotos ligera",
+      "item4": "👨‍💻 Usuarios casuales y profesionales"
+    },
+    "relatedTools": {
+      "heading": "🔗 Herramientas relacionadas",
+      "tool1": "🖼️ Redimensionador de imágenes",
+      "tool2": "✂️ Herramienta de recorte",
+      "tool3": "📦 Compresor de imágenes",
+      "tool4": "📄 Compresor de PDF"
+    },
+    "conclusion": {
+      "heading": "Empieza a rotar tus imágenes hoy",
+      "body": "Corregir la orientación de una imagen nunca ha sido tan fácil. Usa ThrjTech Image Rotator para rotar imágenes en línea al instante — sin instalaciones, sin registro.",
+      "ctaBtn": "Probar el Rotador de Imágenes →"
+    }
+  },
   "howItWorks": {
     "step1": "Sube una o más imágenes arrastrándolas o buscándolas en tu dispositivo.",
     "step2": "Elige una imagen en la tira de miniaturas y gírala a la izquierda o a la derecha.",
