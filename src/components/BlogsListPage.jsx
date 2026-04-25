@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -9,6 +9,7 @@ const DEFAULT_THUMB = '/images/blogs/default-thumb.svg'
 
 export default function BlogsListPage() {
   const { t, i18n } = useTranslation('blogs')
+  const [searchParams, setSearchParams] = useSearchParams()
   const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -17,11 +18,17 @@ export default function BlogsListPage() {
   const [totalPages, setTotalPages] = useState(1)
   const [links, setLinks] = useState({})
 
+  const urlPage = parseInt(searchParams.get('page') || '1', 10)
+  const urlPageSize = searchParams.get('page_size') ? parseInt(searchParams.get('page_size'), 10) : null
+
   const fetchBlogs = (targetPage, targetPageSize) => {
     setLoading(true)
-    const url = targetPage && targetPageSize
-      ? `/api/blogs?page=${targetPage}&page_size=${targetPageSize}`
-      : '/api/blogs'
+    let url = '/api/blogs'
+    if (targetPage) {
+      const params = new URLSearchParams({ page: targetPage })
+      if (targetPageSize) params.set('page_size', targetPageSize)
+      url = `/api/blogs?${params.toString()}`
+    }
     fetch(url)
       .then(res => {
         if (!res.ok) throw new Error(`Failed to load blogs (${res.status})`)
@@ -38,10 +45,20 @@ export default function BlogsListPage() {
       .catch(err => { setError(err.message); setLoading(false) })
   }
 
-  useEffect(() => { fetchBlogs(null, null) }, [])
+  useEffect(() => {
+    fetchBlogs(urlPage, urlPageSize)
+  }, [urlPage, urlPageSize])
 
-  const goToPage = (n) => { if (n !== page) fetchBlogs(n, pageSize) }
-  const changePageSize = (newSize) => { fetchBlogs(1, newSize) }
+  const goToPage = (n) => {
+    if (n === page) return
+    const params = {}
+    if (n > 1) params.page = n
+    if (pageSize) params.page_size = pageSize
+    setSearchParams(params)
+  }
+  const changePageSize = (newSize) => {
+    setSearchParams({ page_size: newSize })
+  }
 
   const pageBlogs = blogs
 

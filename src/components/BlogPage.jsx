@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -24,6 +24,7 @@ function naiveMarkdownToHtml(md) {
 export default function BlogPage() {
   const { t, i18n } = useTranslation('blogs')
   const { slug } = useParams()
+  const navigate = useNavigate()
   const [createdAt, setCreatedAt] = useState(null)
   const [blogData, setBlogData] = useState(null)
   const [error, setError] = useState(null)
@@ -60,7 +61,7 @@ export default function BlogPage() {
       <main className="main">
         <div className="container">
           <div style={{ marginBottom: '1rem' }}>
-            <Link to="/blogs">{t('back')}</Link>
+            <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }}>{t('back')}</button>
           </div>
           <article className="card">
             <div style={{ color: '#000000' }}>{t('createdAt', { date: new Date(createdAt).toLocaleString() })}</div>
