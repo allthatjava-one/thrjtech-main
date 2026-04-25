@@ -174,19 +174,19 @@ export default function RegexTesterView() {
                 <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                   <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                     <li style={{ marginBottom: '0.75rem' }}>
-                      <img src="/screenshots/regex-tester/regex-tester-001.png" alt="Step 1" className="how-img" />
+                      <img src="/images/screenshots/regex-tester/regex-tester-001.png" alt="Step 1" className="how-img" />
                         <p>{t('howItWorks.step1')}</p>
                     </li>
                     <li style={{ marginBottom: '0.75rem' }}>
-                      <img src="/screenshots/regex-tester/regex-tester-002.png" alt="Step 2" className="how-img" />
+                      <img src="/images/screenshots/regex-tester/regex-tester-002.png" alt="Step 2" className="how-img" />
                         <p>{t('howItWorks.step2')}</p>
                     </li>
                     <li style={{ marginBottom: '0.75rem' }}>
-                      <img src="/screenshots/regex-tester/regex-tester-003.png" alt="Step 3" className="how-img" />
+                      <img src="/images/screenshots/regex-tester/regex-tester-003.png" alt="Step 3" className="how-img" />
                         <p>{t('howItWorks.step3')}</p>
                     </li>
                     <li>
-                      <img src="/screenshots/regex-tester/regex-tester-004.png" alt="Step 4" className="how-img" />
+                      <img src="/images/screenshots/regex-tester/regex-tester-004.png" alt="Step 4" className="how-img" />
                         <p>{t('howItWorks.step4')}</p>
                     </li>
                   </ol>

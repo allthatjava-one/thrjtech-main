@@ -16,7 +16,7 @@ Common reasons to crop an image include:
 
 Traditional desktop software like Photoshop or GIMP handles cropping excellently but requires installation and a learning curve. Browser-based tools like THRJ's Image Crop tool let you complete the same task in seconds from any device.
 
-![Crop tool screenshot](/screenshots/crop/crop_001.png)
+![Crop tool screenshot](/images/screenshots/crop/crop_001.png)
   
 ## Video walkthrough
 
@@ -36,21 +36,21 @@ Traditional desktop software like Photoshop or GIMP handles cropping excellently
 
 1. Load an image
 
-![Load image](/screenshots/crop/crop_001.png)
+![Load image](/images/screenshots/crop/crop_001.png)
 
 - Click the crop area or drag an image file onto it to load.
 - The image appears inside the crop window with a draggable selection box.
 
 2. Choose aspect & select region
 
-![Select region](/screenshots/crop/crop_002.png)
+![Select region](/images/screenshots/crop/crop_002.png)
 
 - Pick an aspect ratio from the dropdown (1:1, 16:9, 4:5) or choose Free for unconstrained cropping.
 - Drag the corners to resize the selection or drag the selection to move it.
 
 3. Zoom, rotate, flip
 
-![Zoom rotate flip](/screenshots/crop/crop_003.png)
+![Zoom rotate flip](/images/screenshots/crop/crop_003.png)
 
 - Use the Zoom slider or hold Alt + scroll to zoom the image inside the crop window.
 - Use the rotate buttons to rotate in 90° steps or enter a custom angle if available.
@@ -58,7 +58,7 @@ Traditional desktop software like Photoshop or GIMP handles cropping excellently
 
 4. Preview & download
 
-![Preview result](/screenshots/crop/crop_004.png)
+![Preview result](/images/screenshots/crop/crop_004.png)
 
 - Click **Preview** to render the cropped region and inspect it in the preview dialog.
 - When satisfied, click **Download** to save the cropped PNG to your device.

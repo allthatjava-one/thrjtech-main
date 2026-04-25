@@ -33,13 +33,13 @@ Image Converter runs entirely in your browser — no uploads required. It decode
 
 Drop a file onto the upload area or use the file picker. The tool auto-selects sensible defaults.
 
-![Upload](/screenshots/image-converter/image-converter-002.png)
+![Upload](/images/screenshots/image-converter/image-converter-002.png)
 
 ### 2. Choose a format and convert
 
 Select the target format and click **Convert**. The preview shows the converted result and supports pan and zoom.
 
-![Convert](/screenshots/image-converter/image-converter-003.png)
+![Convert](/images/screenshots/image-converter/image-converter-003.png)
   
 ## Tips
 

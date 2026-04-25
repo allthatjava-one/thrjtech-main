@@ -3,12 +3,12 @@ INSERT INTO blogs (slug, title, description, thumbnail, content, createdAt) VALU
   'json-formatter-guide',
   'JSON Formatter — Pretty-print, validate, and explore JSON',
   'A quick guide to using the JSON Formatter tool on THRJ. This page covers the basic workflow, validation tips, and privacy notes.',
-  'https://thrjtech.com/screenshots/json-formatter/JSON_formatter001.png',
+  'https://thrjtech.com/images/screenshots/json-formatter/JSON_formatter001.png',
   '# JSON Formatter — Pretty-print, validate, and explore JSON
 
 A quick guide to using the **JSON Formatter** tool on THRJ. This page covers the basic workflow, validation tips, and privacy notes. [Open the JSON Formatter](/json-formatter)
 
-![JSON Formatter screenshot](/screenshots/json-formatter/JSON_formatter001.png)
+![JSON Formatter screenshot](/images/screenshots/json-formatter/JSON_formatter001.png)
 
 ## Overview
 
@@ -28,19 +28,19 @@ JSON Formatter helps you clean, validate, and visualize JSON instantly in your b
 
 Paste raw JSON into the editor or drag a `.json` file onto the editor area.
 
-![Load JSON](/screenshots/json-formatter/JSON_formatter002.png)
+![Load JSON](/images/screenshots/json-formatter/JSON_formatter002.png)
 
 ### 2. Format & validate
 
 Click **Format** to pretty-print with indentation. If there are syntax errors, the tool highlights the line and shows an error message.
 
-![Format JSON](/screenshots/json-formatter/JSON_formatter003.png)
+![Format JSON](/images/screenshots/json-formatter/JSON_formatter003.png)
 
 ### 3. Explore structure
 
 Use the simple tree view to inspect objects and arrays. Collapse or expand sections to focus on the parts you care about.
 
-![Explore JSON](/screenshots/json-formatter/JSON_formatter004.png)
+![Explore JSON](/images/screenshots/json-formatter/JSON_formatter004.png)
 
 ## Tips
 
@@ -102,12 +102,12 @@ CURRENT_TIMESTAMP
   'image-converter-guide',
   'Image Converter — Convert images in the browser (JPG, PNG, WebP, AVIF, BMP, GIF, ICO)',
   'A short guide to the Image Converter on THRJ describing how to convert images between formats and create ICO files for favicons.',
-  'https://thrjtech.com/screenshots/image-converter/image-converter-003.png',
+  'https://thrjtech.com/images/screenshots/image-converter/image-converter-003.png',
   '# Image Converter — Convert images in the browser (JPG, PNG, WebP, AVIF, BMP, GIF, ICO)
 
 A short guide to the **Image Converter** on THRJ. This article explains how to convert images between formats, preserve transparency, and create ICO files for favicons. [Open the Image Converter](/image-converter)
 
-![Image Converter screenshot](/screenshots/image-converter/image-converter-001.png)
+![Image Converter screenshot](/images/screenshots/image-converter/image-converter-001.png)
 
 ## Overview
 
@@ -127,13 +127,13 @@ Image Converter runs entirely in your browser — no uploads. It decodes your im
 
 Drop a file onto the upload area or use the file picker. The tool auto-selects sensible defaults.
 
-![Upload](/screenshots/image-converter/image-converter-002.png)
+![Upload](/images/screenshots/image-converter/image-converter-002.png)
 
 ### 2. Choose a format and convert
 
 Select the target format and click **Convert**. The preview shows the converted result and supports pan and zoom.
 
-![Convert](/screenshots/image-converter/image-converter-003.png)
+![Convert](/images/screenshots/image-converter/image-converter-003.png)
 
 ## Tips
 

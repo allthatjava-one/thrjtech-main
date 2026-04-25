@@ -3,12 +3,12 @@ INSERT INTO blogs (slug, title, description, thumbnail, content, createdAt) VALU
   'meme-generator-guide',
   'How to create a meme with Meme Generator',
   'Step-by-step guide and tips for creating memes with THRJ''s Meme Generator.',
-  'https://thrjtech.com/screenshots/meme-generator/meme-generator004.png',
+  'https://thrjtech.com/images/screenshots/meme-generator/meme-generator004.png',
   '# Meme Generator Guide
 
 Learn how to create shareable memes quickly using the THRJ Meme Generator. This guide walks you through uploading an image, adding and positioning text layers, and exporting your finished meme. [Open the Meme Generator](/image-meme-generator)
 
-![Meme generator screenshot](/screenshots/meme-generator/meme-generator001.png)
+![Meme generator screenshot](/images/screenshots/meme-generator/meme-generator001.png)
 
 ## Quick Steps
 
@@ -32,7 +32,7 @@ Learn how to create shareable memes quickly using the THRJ Meme Generator. This 
 
 ## Examples
 
-![Step 2 edit caption](/screenshots/meme-generator/meme-generator002.png)
+![Step 2 edit caption](/images/screenshots/meme-generator/meme-generator002.png)
 
 Try creating a few variations — change font sizes and positions to get the best visual balance. When you''re happy with the result, download and share!
 
@@ -44,7 +44,7 @@ CURRENT_TIMESTAMP
   'pdf-merger-guide',
   'Guide to merge multiple PDF files',
   'How to combine multiple PDF files quickly and privately using THRJ''s PDF Merger.',
-  'https://thrjtech.com/screenshots/merger/merger-002.png',
+  'https://thrjtech.com/images/screenshots/merger/merger-002.png',
   '# PDF Merger — How it works
 
 This guide explains how the **PDF Merger** tool on THRJ works and shows short screenshots demonstrating the workflow. [Open the PDF Merger](/pdf-merger)
@@ -64,13 +64,13 @@ PDF Merger lets you combine multiple PDF files into a single PDF quickly and pri
 ## Screenshots
 
 ### Upload & list
-![Upload and list](/screenshots/merger/merger-001.png)
+![Upload and list](/images/screenshots/merger/merger-001.png)
 
 ### Reorder files
-![Reorder files](/screenshots/merger/merger-002.png)
+![Reorder files](/images/screenshots/merger/merger-002.png)
 
 ### Merge progress and download
-![Merge progress](/screenshots/merger/merger-003.png)
+![Merge progress](/images/screenshots/merger/merger-003.png)
 
 ## Tips
 
@@ -90,12 +90,12 @@ CURRENT_TIMESTAMP
   'image-crop-guide',
   'When you need to crop your images',
   'How to crop images quickly using THRJ''s Image Crop tool.',
-  '/screenshots/crop/crop_001.png',
+  '/images/screenshots/crop/crop_001.png',
   '# Image Crop Guide
 
 A short walkthrough for using the Image Crop tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots. [Open the Crop Image](/image-crop)
 
-![Crop tool screenshot](/screenshots/crop/crop_001.png)
+![Crop tool screenshot](/images/screenshots/crop/crop_001.png)
 
 ## Video walkthrough
 
@@ -115,21 +115,21 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 
 1. Load an image
 
-![Load image](/screenshots/crop/crop_001.png)
+![Load image](/images/screenshots/crop/crop_001.png)
 
 - Click the crop area or drag an image file onto it to load.
 - The image appears inside the crop window with a draggable selection box.
 
 2. Choose aspect & select region
 
-![Select region](/screenshots/crop/crop_002.png)
+![Select region](/images/screenshots/crop/crop_002.png)
 
 - Pick an aspect ratio from the dropdown (1:1, 16:9, 4:5) or choose Free for unconstrained cropping.
 - Drag the corners to resize the selection or drag the selection to move it.
 
 3. Zoom, rotate, flip
 
-![Zoom rotate flip](/screenshots/crop/crop_003.png)
+![Zoom rotate flip](/images/screenshots/crop/crop_003.png)
 
 - Use the Zoom slider or hold Alt + scroll to zoom the image inside the crop window.
 - Use the rotate buttons to rotate in 90° steps or enter a custom angle if available.
@@ -137,7 +137,7 @@ A short walkthrough for using the Image Crop tool on THRJ. This guide explains t
 
 4. Preview & download
 
-![Preview result](/screenshots/crop/crop_004.png)
+![Preview result](/images/screenshots/crop/crop_004.png)
 
 - Click **Preview** to render the cropped region and inspect it in the preview dialog.
 - When satisfied, click **Download** to save the cropped PNG to your device.

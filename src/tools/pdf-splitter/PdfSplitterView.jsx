@@ -133,15 +133,15 @@ export function PdfSplitterView({
           <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
             <ol style={{ margin: 0, paddingLeft: '1rem' }}>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/splitter/PDF-splitter-001.png" alt="Step 1" className="how-img" />
+                <img src="/images/screenshots/splitter/PDF-splitter-001.png" alt="Step 1" className="how-img" />
                 <p>{t('howItWorks.step1')}</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/splitter/PDF-splitter-002.png" alt="Step 2" className="how-img" />
+                <img src="/images/screenshots/splitter/PDF-splitter-002.png" alt="Step 2" className="how-img" />
                 <p>{t('howItWorks.step2')}</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/splitter/PDF-splitter-003.png" alt="Step 3" className="how-img" />
+                <img src="/images/screenshots/splitter/PDF-splitter-003.png" alt="Step 3" className="how-img" />
                 <p>{t('howItWorks.step3')}</p>
               </li>
               <li>

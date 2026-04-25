@@ -236,20 +236,20 @@ export function ImageConverterView({
           <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
             <ol style={{ margin: 0, paddingLeft: '1rem' }}>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/image-converter/image-converter-001.png" alt={t('howItWorks.imgAlt.step1', { defaultValue: 'Step 1' })} className="how-img" />
+                <img src="/images/screenshots/image-converter/image-converter-001.png" alt={t('howItWorks.imgAlt.step1', { defaultValue: 'Step 1' })} className="how-img" />
                 <p>{t('howItWorks.step1', { defaultValue: 'Drag & drop an image onto the upload area, or click it to browse for a file.' })}</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/image-converter/image-converter-002.png" alt={t('howItWorks.imgAlt.step2', { defaultValue: 'Step 2' })} className="how-img" />
+                <img src="/images/screenshots/image-converter/image-converter-002.png" alt={t('howItWorks.imgAlt.step2', { defaultValue: 'Step 2' })} className="how-img" />
                 <p>{t('howItWorks.step2', { defaultValue: 'Select your desired output format from the format buttons. The tool auto-selects a sensible default based on your input.' })}</p>
               </li>
               <li style={{ marginBottom: '0.75rem' }}>
-                <img src="/screenshots/image-converter/image-converter-003.png" alt={t('howItWorks.imgAlt.step3', { defaultValue: 'Step 3' })} className="how-img" />
+                <img src="/images/screenshots/image-converter/image-converter-003.png" alt={t('howItWorks.imgAlt.step3', { defaultValue: 'Step 3' })} className="how-img" />
                 <p dangerouslySetInnerHTML={{ __html: t('howItWorks.step3a', { defaultValue: 'Click <strong>Convert</strong> to process the image instantly in your browser.' }) }} />
                 <p dangerouslySetInnerHTML={{ __html: t('howItWorks.step3b', { defaultValue: 'Download your converted image with the <strong>Download</strong> button.' }) }} />
               </li>
               <li>
-                <img src="/screenshots/image-converter/image-converter-004.png" alt={t('howItWorks.imgAlt.step4', { defaultValue: 'Step 4' })} className="how-img" />
+                <img src="/images/screenshots/image-converter/image-converter-004.png" alt={t('howItWorks.imgAlt.step4', { defaultValue: 'Step 4' })} className="how-img" />
                 <p>{t('howItWorks.step4', { defaultValue: 'You can also convert multiple images at once by selecting more than one file.' })}</p>
               </li>
             </ol>

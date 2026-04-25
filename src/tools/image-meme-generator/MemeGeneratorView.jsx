@@ -666,19 +666,19 @@ export default function MemeGeneratorView({ initialFile }) {
             <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/meme-generator/meme-generator001.png" alt="Step 1" className="how-img" />
+                    <img src="/images/screenshots/meme-generator/meme-generator001.png" alt="Step 1" className="how-img" />
                     <p>{t('howItWorks.step1')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/meme-generator/meme-generator002.png" alt="Step 2" className="how-img" />
+                    <img src="/images/screenshots/meme-generator/meme-generator002.png" alt="Step 2" className="how-img" />
                     <p>{t('howItWorks.step2')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/meme-generator/meme-generator003.png" alt="Step 3" className="how-img" />
+                    <img src="/images/screenshots/meme-generator/meme-generator003.png" alt="Step 3" className="how-img" />
                     <p>{t('howItWorks.step3')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/meme-generator/meme-generator004.png" alt="Step 4" className="how-img" />
+                    <img src="/images/screenshots/meme-generator/meme-generator004.png" alt="Step 4" className="how-img" />
                     <p>{t('howItWorks.step4')}</p>
                   </li>
                 </ol>

@@ -301,19 +301,19 @@ export function ImageCropView(props) {
             <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_001.png" alt={t('howItWorks.imgAlt.step1', { defaultValue: 'Step 1' })} className="how-img" />
+                    <img src="/images/screenshots/crop/crop_001.png" alt={t('howItWorks.imgAlt.step1', { defaultValue: 'Step 1' })} className="how-img" />
                     <p>{t('howItWorks.step1', { defaultValue: 'Load an image by dragging and dropping it onto the crop area, or click to browse your files.' })}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_002.png" alt={t('howItWorks.imgAlt.step2', { defaultValue: 'Step 2' })} className="how-img" />
+                    <img src="/images/screenshots/crop/crop_002.png" alt={t('howItWorks.imgAlt.step2', { defaultValue: 'Step 2' })} className="how-img" />
                     <p>{t('howItWorks.step2', { defaultValue: 'Drag and resize the crop overlay to select the region you want to keep. Choose an aspect ratio preset or use Free mode.' })}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_003.png" alt={t('howItWorks.imgAlt.step3', { defaultValue: 'Step 3' })} className="how-img" />
+                    <img src="/images/screenshots/crop/crop_003.png" alt={t('howItWorks.imgAlt.step3', { defaultValue: 'Step 3' })} className="how-img" />
                     <p>{t('howItWorks.step3', { defaultValue: 'Optionally adjust zoom, rotation, and flip to fine-tune the framing before cropping.' })}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/screenshots/crop/crop_004.png" alt={t('howItWorks.imgAlt.step4', { defaultValue: 'Step 4' })} className="how-img" />
+                    <img src="/images/screenshots/crop/crop_004.png" alt={t('howItWorks.imgAlt.step4', { defaultValue: 'Step 4' })} className="how-img" />
                     <p>{t('howItWorks.step4', { defaultValue: 'Click Preview to generate the cropped image and inspect the result in the preview dialog.' })}</p>
                   </li>
                   <li>

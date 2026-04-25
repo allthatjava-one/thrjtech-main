@@ -2,7 +2,7 @@
 
 A short guide to using the **PDF Compressor** tool on THRJ. Learn the simple workflow, tips for best results, and privacy details. [Open the PDF Compressor](/pdf-compressor)
 
-![PDF Compressor screenshot](/screenshots/compressor/pdf-compressor-01.png)
+![PDF Compressor screenshot](/images/screenshots/compressor/pdf-compressor-01.png)
   
 ## Overview
 
@@ -33,7 +33,7 @@ Key benefits:
 
 Drop a PDF or click the upload area to select one from your device. The uploader shows filename, original size, and a brief preview when available.
 
-![Upload PDF](/screenshots/compressor/pdf-compressor-02.png)
+![Upload PDF](/images/screenshots/compressor/pdf-compressor-02.png)
   
 ### 2. Pick a preset
 
@@ -42,13 +42,13 @@ Choose a preset depending on how much quality you want to preserve:
 - **Balanced** — good quality with significant size savings.
 - **Maximum Compression** — largest size reduction, some visual loss possible.
 
-![Choose preset](/screenshots/compressor/pdf-compressor-03.png)
+![Choose preset](/images/screenshots/compressor/pdf-compressor-03.png)
   
 ### 3. Compress and download
 
 Click **Compress**. A progress indicator shows processing status. When finished, a download button appears for the compressed file.
 
-![Compress progress](/screenshots/compressor/pdf-compressor-04.png)
+![Compress progress](/images/screenshots/compressor/pdf-compressor-04.png)
   
 ## Tips for best results
 

@@ -3,12 +3,12 @@ INSERT INTO blogs (slug, title, description, thumbnail, content, createdAt) VALU
   'pdf-compressor-guide',
   'Shrink PDFs quickly',
   'A short guide for using the PDF Compressor on THRJ.',
-  'https://thrjtech.com/screenshots/compressor/pdf-compressor-01.png',
+  'https://thrjtech.com/images/screenshots/compressor/pdf-compressor-01.png',
   '# PDF Compressor — Reduce PDF file size quickly
 
 A short guide to using the **PDF Compressor** tool on THRJ. Learn the simple workflow, tips for best results, and privacy details. [Open the PDF Compressor](/pdf-compressor)
 
-![PDF Compressor screenshot](/screenshots/compressor/pdf-compressor-01.png)
+![PDF Compressor screenshot](/images/screenshots/compressor/pdf-compressor-01.png)
 
 ## Overview
 
@@ -39,7 +39,7 @@ Key benefits:
 
 Drop a PDF or click the upload area to select one from your device. The uploader shows filename, original size, and a brief preview when available.
 
-![Upload PDF](/screenshots/compressor/pdf-compressor-02.png)
+![Upload PDF](/images/screenshots/compressor/pdf-compressor-02.png)
   
 ### 2. Pick a preset
 
@@ -48,13 +48,13 @@ Choose a preset depending on how much quality you want to preserve:
 - **Balanced** — good quality with significant size savings.
 - **Maximum Compression** — largest size reduction, some visual loss possible.
 
-![Choose preset](/screenshots/compressor/pdf-compressor-03.png)
+![Choose preset](/images/screenshots/compressor/pdf-compressor-03.png)
   
 ### 3. Compress and download
 
 Click **Compress**. A progress indicator shows processing status. When finished, a download button appears for the compressed file.
 
-![Compress progress](/screenshots/compressor/pdf-compressor-04.png)
+![Compress progress](/images/screenshots/compressor/pdf-compressor-04.png)
   
 ## Tips for best results
 
@@ -82,12 +82,12 @@ INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
   'image-resizer-guide',
   'Resize images quickly',
   'A short walkthrough for using the Image Resizer tool on THRJ.',
-  'https://thrjtech.com/screenshots/resizer/Image-resizer001.png',
+  'https://thrjtech.com/images/screenshots/resizer/Image-resizer001.png',
   '# Image Resizer — Resize images quickly in your browser
 
 A short walkthrough for using the **Image Resizer** tool on THRJ. This guide covers the basic workflow, useful tips, and privacy notes so you can shrink or scale images fast. [Open the Image Resizer](/image-resizer)
 
-![Image Resizer screenshot](/screenshots/resizer/Image-resizer001.png)
+![Image Resizer screenshot](/images/screenshots/resizer/Image-resizer001.png)
 
 ## Overview
 
@@ -107,19 +107,19 @@ Image Resizer makes it easy to change image dimensions, scale for web or print, 
 
 Drop one or more images into the uploader or use the file picker. The uploader displays filename, dimensions, and original size.
 
-![Upload image](/screenshots/resizer/Image-resizer002.png)
+![Upload image](/images/screenshots/resizer/Image-resizer002.png)
 
 ### 2. Pick size or preset
 
 Select a preset for common destinations or type custom width and height. You can keep the aspect ratio locked to avoid distortion.
 
-![Choose size](/screenshots/resizer/Image-resizer003.png)
+![Choose size](/images/screenshots/resizer/Image-resizer003.png)
 
 ### 3. Adjust quality and resize
 
 Choose a compression/quality level if you want smaller files. Click **Resize** — a progress indicator appears and the resized image becomes available for download.
 
-![Resize and download](/screenshots/resizer/Image-resizer004.png)
+![Resize and download](/images/screenshots/resizer/Image-resizer004.png)
 
 ## Tips
 
@@ -142,12 +142,12 @@ INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
   'pdf-converter-guide',
   'Convert files to and from PDF',
   'A concise guide for using the PDF Converter on THRJ.',
-  'https://thrjtech.com/screenshots/converter/PDF-converter001.png',
+  'https://thrjtech.com/images/screenshots/converter/PDF-converter001.png',
   '# PDF Converter — Convert files to and from PDF
 
 I built the **PDF Converter** on THRJ to make it simple to turn documents and images into PDFs — and to pull content back out of PDFs when you need it. Try it now: [Open the PDF Converter](/pdf-converter).
 
-![PDF Converter screenshot](/screenshots/converter/PDF-converter001.png)
+![PDF Converter screenshot](/images/screenshots/converter/PDF-converter001.png)
 
 ## Overview
 
@@ -173,19 +173,19 @@ What you can do:
 
 Drag & drop files onto the converter or use the file selector. Supported types are shown in the upload area.
 
-![Upload files](/screenshots/converter/PDF-converter002.png)
+![Upload files](/images/screenshots/converter/PDF-converter002.png)
 
 ### 2. Select conversion options
 
 Pick the output format and any presets. For example, convert a `DOCX` to `PDF` with `Print Quality`, or choose `Extract Images` to pull images out of a PDF.
 
-![Choose options](/screenshots/converter/PDF-converter003.png)
+![Choose options](/images/screenshots/converter/PDF-converter003.png)
 
 ### 3. Convert and download
 
 Click **Convert**. The UI shows progress for each file. After conversion, each file has a download link or a combined ZIP for batch results.
 
-![Conversion progress](/screenshots/converter/PDF-converter004.png)
+![Conversion progress](/images/screenshots/converter/PDF-converter004.png)
 
 ## Making the most of conversions
 

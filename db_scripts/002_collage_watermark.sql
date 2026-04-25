@@ -3,12 +3,12 @@ INSERT INTO blogs (slug, title, description, thumbnail, content,createdAt) VALUE
   'image-collage-guide',
   'Want beautifully collaged images?',
   'A short walkthrough for using the Image Collage tool on THRJ.',
-  'https://thrjtech.com/screenshots/collage/image-collage004.png',
+  'https://thrjtech.com/images/screenshots/collage/image-collage004.png',
   '# Image Collage Guide
 
 A short walkthrough for using the Image Collage tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots. [Open the Image Collage](/image-collage)
 
-![Collage tool screenshot](/screenshots/collage/image-collage001.png)
+![Collage tool screenshot](/images/screenshots/collage/image-collage001.png)
 
 ## Quick Steps
 
@@ -22,28 +22,28 @@ A short walkthrough for using the Image Collage tool on THRJ. This guide explain
 
 1. Add images and choose the grid
 
-![Add images](/screenshots/collage/image-collage001.png)
+![Add images](/images/screenshots/collage/image-collage001.png)
 
 - Drag & drop or browse to add images. The tool places them into the grid in the order you add them.
 - Choose the number of rows and columns to control layout.
 
 2. Adjust spacing, border, and cell framing
 
-![Adjust grid](/screenshots/collage/image-collage002.png)
+![Adjust grid](/images/screenshots/collage/image-collage002.png)
 
 - Use the border gap control to add breathing room between tiles.
 - Click each image to pan and scale it inside its cell so the most important part is visible.
 
 3. Preview and finalize
 
-![Preview collage](/screenshots/collage/image-collage003.png)
+![Preview collage](/images/screenshots/collage/image-collage003.png)
 
 - Hit **Collage and Preview** to open the preview dialog with zoom and finalize controls.
 - Use the preview tools to reset offsets, change background/border color, or finalize the export resolution.
 
 4. Generate and download
 
-![Download collage](/screenshots/collage/image-collage004.png)
+![Download collage](/images/screenshots/collage/image-collage004.png)
 
 - Finalize the collage to render a single raster image and download it as a PNG (or convert to JPEG externally if you need smaller files).
 
@@ -64,12 +64,12 @@ INSERT INTO blogs (slug, title, description, thumbnail, content) VALUES
   'image-watermark-guide',
   'Let''s put a watermark on your images',
   'A short walkthrough for using the Image Watermarker tool on THRJ.',
-  'https://thrjtech.com/screenshots/watermarker/watermarker001.png',
+  'https://thrjtech.com/images/screenshots/watermarker/watermarker001.png',
   '# Image Watermark Guide
 
 A short walkthrough for using the Image Watermarker tool on THRJ. This guide explains the UI, key controls, and step-by-step instructions with screenshots. [Open the Image Watermarker](/image-watermarker)
 
-![Watermarker tool screenshot](/screenshots/watermarker/watermarker001.png)
+![Watermarker tool screenshot](/images/screenshots/watermarker/watermarker001.png)
 
 ## Quick Steps
 
@@ -84,28 +84,28 @@ A short walkthrough for using the Image Watermarker tool on THRJ. This guide exp
 
 ### 1. Load an image
 
-![Load an image](/screenshots/watermarker/watermarker001.png)
+![Load an image](/images/screenshots/watermarker/watermarker001.png)
 
 - Drag & drop or click the drop zone to select an image from your device.
 - Any common web format is supported: JPEG, PNG, WebP, and more.
 
 ### 2. Choose text or logo and configure
 
-![Set watermark options](/screenshots/watermarker/watermarker002.png)
+![Set watermark options](/images/screenshots/watermarker/watermarker002.png)
 
 - Select **Text Watermark** and type your text (e.g. your name, website, or copyright notice), or select **Logo Watermark** and upload a PNG/SVG graphic.
 - Use transparent-background PNG or SVG logos for the cleanest result.
 
 ### 3. Adjust position, size, and opacity
 
-![Adjust watermark placement](/screenshots/watermarker/watermarker003.png)
+![Adjust watermark placement](/images/screenshots/watermarker/watermarker003.png)
 
 - Use the position, scale, and opacity controls to fine-tune where and how strongly the watermark appears.
 - Placing the watermark in a corner is less likely to be cropped; full-frame or tiled placement gives stronger protection.
 
 ### 4. Preview and download
 
-![Download watermarked image](/screenshots/watermarker/watermarker004.png)
+![Download watermarked image](/images/screenshots/watermarker/watermarker004.png)
 
 - Click **Apply Watermark** to render the composite image and inspect it in the preview.
 - When satisfied, click **Download** to save the watermarked file to your device.

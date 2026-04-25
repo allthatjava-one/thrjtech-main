@@ -19,7 +19,7 @@ Most dedicated collage applications are either paid, ad-heavy, require account c
 
 For anyone who regularly needs to produce social media content, product listings, event recaps, travel journals, or real estate photo grids, a browser-based collage maker is one of the most practical tools to have bookmarked.
 
-![Collage tool screenshot](/screenshots/collage/image-collage001.png)  
+![Collage tool screenshot](/images/screenshots/collage/image-collage001.png)  
   
 ## Quick Steps
 
@@ -33,28 +33,28 @@ For anyone who regularly needs to produce social media content, product listings
 
 1. Add images and choose the grid
 
-![Add images](/screenshots/collage/image-collage001.png)
+![Add images](/images/screenshots/collage/image-collage001.png)
 
 - Drag & drop or browse to add images. The tool places them into the grid in the order you add them.
 - Choose the number of rows and columns to control layout.
 
 2. Adjust spacing, border, and cell framing
 
-![Adjust grid](/screenshots/collage/image-collage002.png)
+![Adjust grid](/images/screenshots/collage/image-collage002.png)
 
 - Use the border gap control to add breathing room between tiles.
 - Click each image to pan and scale it inside its cell so the most important part is visible.
 
 3. Preview and finalize
 
-![Preview collage](/screenshots/collage/image-collage003.png)
+![Preview collage](/images/screenshots/collage/image-collage003.png)
 
 - Hit **Collage and Preview** to open the preview dialog with zoom and finalize controls.
 - Use the preview tools to reset offsets, change background/border color, or finalize the export resolution.
 
 4. Generate and download
 
-![Download collage](/screenshots/collage/image-collage004.png)
+![Download collage](/images/screenshots/collage/image-collage004.png)
 
 - Finalize the collage to render a single raster image and download it as a PNG (or convert to JPEG externally if you need smaller files).  
   

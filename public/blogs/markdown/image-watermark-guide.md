@@ -15,7 +15,7 @@ A watermark is a visible or semi-transparent overlay — typically text or a log
 
 **What watermarks can and cannot do**: A visible watermark deters casual reuse and signals ownership. It does not prevent a technically skilled user from removing or cropping it. For stronger protection, consider positioning the watermark over a key area of the image (such as the subject's face or a product's central feature) where removal would destroy the image's value.
 
-![Watermarker tool screenshot](/screenshots/watermarker/watermarker001.png)
+![Watermarker tool screenshot](/images/screenshots/watermarker/watermarker001.png)
   
 ## Quick Steps
 
@@ -30,28 +30,28 @@ A watermark is a visible or semi-transparent overlay — typically text or a log
 
 ### 1. Load an image
 
-![Load an image](/screenshots/watermarker/watermarker001.png)
+![Load an image](/images/screenshots/watermarker/watermarker001.png)
 
 - Drag & drop or click the drop zone to select an image from your device.
 - Any common web format is supported: JPEG, PNG, WebP, and more.
 
 ### 2. Choose text or logo and configure
 
-![Set watermark options](/screenshots/watermarker/watermarker002.png)
+![Set watermark options](/images/screenshots/watermarker/watermarker002.png)
 
 - Select **Text Watermark** and type your text (e.g. your name, website, or copyright notice), or select **Logo Watermark** and upload a PNG/SVG graphic.
 - Use transparent-background PNG or SVG logos for the cleanest result.
 
 ### 3. Adjust position, size, and opacity
 
-![Adjust watermark placement](/screenshots/watermarker/watermarker003.png)
+![Adjust watermark placement](/images/screenshots/watermarker/watermarker003.png)
 
 - Use the position, scale, and opacity controls to fine-tune where and how strongly the watermark appears.
 - Placing the watermark in a corner is less likely to be cropped; full-frame or tiled placement gives stronger protection.
 
 ### 4. Preview and download
 
-![Download watermarked image](/screenshots/watermarker/watermarker004.png)
+![Download watermarked image](/images/screenshots/watermarker/watermarker004.png)
 
 - Click **Apply Watermark** to render the composite image and inspect it in the preview.
 - When satisfied, click **Download** to save the watermarked file to your device.
