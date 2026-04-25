@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Rotador de Imágenes",
+    "tagline": "¿Alguna vez te has sentido molesto por las imágenes rotadas? ¡No busques más! Rota una o más imágenes 90°/180°/270° a la izquierda o a la derecha. Previsualiza el resultado al instante y descarga la imagen rotada o comprímalas todas en un ZIP. Sin subidas ni servidor."
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "dropzone": {
+    "text": "Arrastra y suelta imágenes aquí, o haz clic para buscar",
+    "sub": "Compatible con JPG, PNG, WebP, GIF, AVIF y más"
+  },
+  "actions": {
+    "rotateLeft": "Rotar a la izquierda",
+    "rotateRight": "Rotar a la derecha",
+    "applyAll": "Aplicar a todos",
+    "download": "Descargar",
+    "downloadAll": "Descargar todo (ZIP)",
+    "downloading": "Descargando…",
+    "addMore": "+ Agregar más",
+    "clearAll": "Limpiar todo",
+    "remove": "Eliminar"
+  },
+  "hint": {
+    "text": "¿Necesitas redimensionar tu imagen después de rotarla?",
+    "btn": "Probar el Redimensionador"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es el Rotador de Imágenes?",
+      "body": "El Rotador de Imágenes te permite rotar una o varias imágenes en incrementos de 90 grados directamente en tu navegador. Todo el procesamiento se realiza localmente: tus archivos nunca abandonan tu dispositivo."
+    },
+    "howWorks": {
+      "heading": "Cómo funciona la rotación",
+      "body": "Cada imagen se dibuja en un canvas fuera de pantalla con la rotación seleccionada aplicada. La salida del canvas se exporta en el formato de archivo original, preservando la calidad. Para rotaciones de 90°, 180° y 270°, las dimensiones del canvas se ajustan automáticamente para garantizar que la salida tenga la proporción correcta."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Se suben mis imágenes a un servidor?",
+      "a1": "R: No — toda la rotación ocurre localmente en tu navegador.",
+      "q2": "P: ¿Puedo rotar varias imágenes a la vez?",
+      "a2": "R: Sí — suelta varias imágenes, rótalas de forma independiente y usa Descargar todo para obtener un ZIP.",
+      "q3": "P: ¿Se modifica el archivo original?",
+      "a3": "R: No — el archivo original no se modifica. Descargas una nueva copia con la rotación aplicada."
+    }
+  },
+  "howItWorks": {
+    "step1": "Sube una o más imágenes arrastrándolas o buscándolas en tu dispositivo.",
+    "step2": "Elige una imagen en la tira de miniaturas y gírala a la izquierda o a la derecha.",
+    "step3": "Si quieres, activa Aplicar a todos para rotar todas las imágenes al mismo tiempo.",
+    "step4": "Descarga la imagen actual o descarga todas las imágenes rotadas en un archivo ZIP."
+  }
+}

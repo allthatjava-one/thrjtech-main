@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Rotateur d'images",
+    "tagline": "Avez-vous déjà été ennuyé par des images tournées ? Ne cherchez plus ! Faites pivoter une ou plusieurs images de 90°/180°/270° vers la gauche ou la droite. Prévisualisez le résultat instantanément, puis téléchargez vos images ou compressez-les toutes en ZIP. Sans envoi ni serveur."
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "dropzone": {
+    "text": "Glissez-déposez des images ici, ou cliquez pour parcourir",
+    "sub": "Compatible avec JPG, PNG, WebP, GIF, AVIF et plus"
+  },
+  "actions": {
+    "rotateLeft": "Pivoter à gauche",
+    "rotateRight": "Pivoter à droite",
+    "applyAll": "Appliquer à tous",
+    "download": "Télécharger",
+    "downloadAll": "Tout télécharger (ZIP)",
+    "downloading": "Téléchargement…",
+    "addMore": "+ Ajouter",
+    "clearAll": "Tout effacer",
+    "remove": "Supprimer"
+  },
+  "hint": {
+    "text": "Besoin de redimensionner votre image après rotation ?",
+    "btn": "Essayer le Redimensionneur"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que le Rotateur d'images ?",
+      "body": "Le Rotateur d'images vous permet de faire pivoter une ou plusieurs images par incréments de 90 degrés directement dans votre navigateur. Tout le traitement s'effectue localement — vos fichiers ne quittent jamais votre appareil."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne la rotation",
+      "body": "Chaque image est dessinée sur un canvas hors écran avec la rotation sélectionnée. La sortie est exportée dans le format d'origine en préservant la qualité. Pour les rotations de 90°, 180° et 270°, les dimensions du canvas sont automatiquement ajustées."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Mes images sont-elles envoyées à un serveur ?",
+      "a1": "R : Non — toute la rotation s'effectue localement dans votre navigateur.",
+      "q2": "Q : Puis-je faire pivoter plusieurs images à la fois ?",
+      "a2": "R : Oui — déposez plusieurs images, faites-les pivoter indépendamment, puis utilisez Tout télécharger pour obtenir un ZIP.",
+      "q3": "Q : Le fichier original est-il modifié ?",
+      "a3": "R : Non — le fichier original reste inchangé. Vous téléchargez une nouvelle copie avec la rotation appliquée."
+    }
+  },
+  "howItWorks": {
+    "step1": "Importez une ou plusieurs images par glisser-déposer ou en parcourant vos fichiers.",
+    "step2": "Choisissez une image dans la bande de miniatures et faites-la pivoter à gauche ou à droite.",
+    "step3": "Activez éventuellement Appliquer à tous pour faire pivoter toutes les images en même temps.",
+    "step4": "Téléchargez l'image actuelle ou téléchargez toutes les images pivotées dans un fichier ZIP."
+  }
+}
