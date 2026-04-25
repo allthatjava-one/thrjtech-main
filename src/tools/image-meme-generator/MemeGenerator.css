@@ -42,7 +42,19 @@
 }
 .meme-controls .range-value { margin-left: 8px; white-space: nowrap; }
 .meme-controls .buttons { justify-content: flex-start; gap: 8px; }
-.meme-preview { flex: 1 1 400px; display: flex; justify-content: center; align-items: center; background: #18181b; border-radius: 14px; overflow: hidden; }
+.meme-preview {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.meme-preview { touch-action: none; }
 .meme-preview { position: relative; }
 .meme-canvas { max-width: 100%; border: none; background: transparent; display: block; z-index: 1; }
 
@@ -50,10 +62,27 @@
 .meme-preview .meme-canvas { border: none !important; background: transparent !important; box-shadow: none !important; width: 100% !important; height: 100% !important; display: block; }
 .meme-generator-page .preview-placeholder { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; color: #d1d5db; font-weight: 700; pointer-events: none; z-index: 4; font-size: 18px; text-align: center; padding: 1rem; }
 .meme-generator-page .preview-hint { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.45); color: #e5e7eb; font-size: 11px; padding: 3px 10px; border-radius: 20px; pointer-events: none; z-index: 4; white-space: nowrap; }
+.meme-generator-page .preview-interact-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+}
 .meme-generator-page .preview-hint-below {
   margin-top: 0.5rem;
   text-align: center;
-  color: #9ca3af;
+  color: var(--muted-text, #4b5563);
+  background: transparent;
   font-size: 0.85rem;
   pointer-events: none;
   /* Force the hint to occupy a full row below the preview inside the flex container */
@@ -154,15 +183,12 @@
 
 /* Drop zone styles (matches Image Collage feel) */
 .meme-preview.drop-zone {
-  border: 2px dashed #a0aec0;
-  border-radius: 12px;
-  padding: 8px;
-  box-sizing: border-box;
-  background: #fff;
+  border-color: #94a3b8;
+  background: transparent;
 }
 .meme-preview.drop-zone.dragging {
-  border-color: #3182ce;
-  background: #ebf8ff;
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.06);
 }
 .meme-preview.drop-zone-empty { min-height: 240px; display:flex; align-items:center; justify-content:center; }
 /* removed side instruction pseudo-element per user request */
