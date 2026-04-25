@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Image Rotator",
+    "tagline": "Have you even been annoyed by rotated images? Look no further! Rotate one or more images 90°/180°/270° left or right. Preview the result instantly, then download your rotated image — or zip them all at once. No uploads, no server."
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "dropzone": {
+    "text": "Drag & drop images here, or click to browse",
+    "sub": "Supports JPG, PNG, WebP, GIF, AVIF and more"
+  },
+  "actions": {
+    "rotateLeft": "Rotate Left",
+    "rotateRight": "Rotate Right",
+    "applyAll": "Apply All",
+    "download": "Download",
+    "downloadAll": "Download All (ZIP)",
+    "downloading": "Downloading…",
+    "addMore": "+ Add More",
+    "clearAll": "Clear All",
+    "remove": "Remove"
+  },
+  "hint": {
+    "text": "Need to resize your image after rotating?",
+    "btn": "Try Image Resizer"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Image Rotator",
+      "body": "The Image Rotator lets you rotate one or multiple images by 90° increments directly in your browser. All processing is done locally — your files never leave your device."
+    },
+    "howWorks": {
+      "heading": "How rotation works",
+      "body": "Each image is drawn to an offscreen canvas with the selected rotation applied. The canvas output is then exported in the original file format, preserving image quality. For 90°, 180° and 270° rotations, the canvas dimensions are automatically adjusted to ensure the output has the correct aspect ratio."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: Are my images uploaded to a server?",
+      "a1": "A: No — all rotation happens locally in your browser. Your images are never uploaded.",
+      "q2": "Q: Can I rotate multiple images at once?",
+      "a2": "A: Yes — drop multiple images, rotate each independently, then use Download All to get a ZIP.",
+      "q3": "Q: Is the original image modified?",
+      "a3": "A: No — the original file is unchanged. You download a new copy with the rotation baked in."
+    }
+  },
+  "howItWorks": {
+    "step1": "Upload one or more images by drag-and-drop or by browsing your files.",
+    "step2": "Pick an image from the thumbnail strip and rotate left or right.",
+    "step3": "Optionally enable Apply All to rotate every image together.",
+    "step4": "Download the current image or download all rotated images as a ZIP file."
+  }
+}

@@ -73,6 +73,7 @@ export default function Navbar() {
                       <Link to="/image-crop" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageCrop')}</Link>
                       <Link to="/image-meme-generator" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageMemeGenerator')}</Link>
                       <Link to="/image-converter" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageConverter')}</Link>
+                      <Link to="/image-rotator" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageRotator')}</Link>
                   </div>
                 </div>
               </div>
