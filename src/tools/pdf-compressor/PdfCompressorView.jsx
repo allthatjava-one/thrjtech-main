@@ -132,19 +132,19 @@ export function PdfCompressorView({
                         <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
                           <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                             <li style={{ marginBottom: '0.75rem' }}>
-                              <img src="/images/screenshots/compressor/pdf-compressor-01.png" alt="Step 1" className="how-img" />
+                              <img src="/screenshots/compressor/pdf-compressor-01.png" alt="Step 1" className="how-img" />
                               <p>{t('howItWorks.step1')}</p>
                             </li>
                             <li style={{ marginBottom: '0.75rem' }}>
-                              <img src="/images/screenshots/compressor/pdf-compressor-02.png" alt="Step 2" className="how-img" />
+                              <img src="/screenshots/compressor/pdf-compressor-02.png" alt="Step 2" className="how-img" />
                               <p>{t('howItWorks.step2')}</p>
                             </li>
                             <li style={{ marginBottom: '0.75rem' }}>
-                              <img src="/images/screenshots/compressor/pdf-compressor-03.png" alt="Step 3" className="how-img" />
+                              <img src="/screenshots/compressor/pdf-compressor-03.png" alt="Step 3" className="how-img" />
                               <p>{t('howItWorks.step3')}</p>
                             </li>
                             <li>
-                              <img src="/images/screenshots/compressor/pdf-compressor-04.png" alt="Step 4" className="how-img" />
+                              <img src="/screenshots/compressor/pdf-compressor-04.png" alt="Step 4" className="how-img" />
                               <p>{t('howItWorks.step4')}</p>
                             </li>
                           </ol>

@@ -29,22 +29,22 @@ const cards = [
     ],
     screenshots: [
       {
-        src: '/images/screenshots/compressor/pdf-compressor-01.png',
+        src: '/screenshots/compressor/pdf-compressor-01.png',
         alt: 'Step 1 — Drag and drop your PDF file onto the upload area',
         caption: '1. Drag & drop or browse for your PDF',
       },
       {
-        src: '/images/screenshots/compressor/pdf-compressor-02.png',
+        src: '/screenshots/compressor/pdf-compressor-02.png',
         alt: 'Step 2 — File selected, ready to compress',
         caption: '2. Review the file, then hit Compress PDF',
       },
       {
-        src: '/images/screenshots/compressor/pdf-compressor-03.png',
+        src: '/screenshots/compressor/pdf-compressor-03.png',
         alt: 'Step 3 — File uploading to R2 storage with a progress bar',
         caption: '3. Securely uploads & compresses in seconds',
       },
       {
-        src: '/images/screenshots/compressor/pdf-compressor-04.png',
+        src: '/screenshots/compressor/pdf-compressor-04.png',
         alt: 'Step 4 — Compression complete, download your file',
         caption: '4. Download your compressed PDF',
       },
@@ -76,22 +76,22 @@ const cards = [
     ],
     screenshots: [
       {
-        src: '/images/screenshots/merger/merger-001.png',
+        src: '/screenshots/merger/merger-001.png',
         alt: 'Step 1 — Drag and drop your PDF files onto the upload area',
         caption: '1. Drag & drop or browse for your PDFs',
       },
       {
-        src: '/images/screenshots/merger/merger-002.png',
+        src: '/screenshots/merger/merger-002.png',
         alt: 'Step 2 — Arrange the order of your files',
         caption: '2. Arrange the order of your files',
       },
       {
-        src: '/images/screenshots/merger/merger-003.png',
+        src: '/screenshots/merger/merger-003.png',
         alt: 'Step 3 — Click Merge PDF to combine files',
         caption: '3. Click Merge PDF to combine files',
       },
       {
-        src: '/images/screenshots/merger/merger-004.png',
+        src: '/screenshots/merger/merger-004.png',
         alt: 'Step 4 — Download your merged PDF',
         caption: '4. Download your merged PDF',
       },
@@ -123,22 +123,22 @@ const cards = [
     ],
     screenshots: [
       {
-        src: '/images/screenshots/converter/PDF-converter001.png',
+        src: '/screenshots/converter/PDF-converter001.png',
         alt: 'Step 1 — Drag and drop your PDF file onto the upload area',
         caption: '1. Drag & drop or browse for your PDF',
       },
       {
-        src: '/images/screenshots/converter/PDF-converter002.png',
+        src: '/screenshots/converter/PDF-converter002.png',
         alt: 'Step 2 — Select output format',
         caption: '2. Choose JPG or PNG',
       },
       {
-        src: '/images/screenshots/converter/PDF-converter003.png',
+        src: '/screenshots/converter/PDF-converter003.png',
         alt: 'Step 3 — Conversion progress and preview',
         caption: '3. Start conversion and watch progress',
       },
       {
-        src: '/images/screenshots/converter/PDF-converter004.png',
+        src: '/screenshots/converter/PDF-converter004.png',
         alt: 'Step 4 — Download your converted images',
         caption: '4. Download converted images to your device',
       },
@@ -169,22 +169,22 @@ const cards = [
     ],
     screenshots: [
       {
-        src: '/images/screenshots/json-formatter/JSON_formatter001.png',
+        src: '/screenshots/json-formatter/JSON_formatter001.png',
         alt: 'Step 1 — Paste or upload your JSON data',
         caption: '1. Paste or upload your JSON data',
       },
       {
-        src: '/images/screenshots/json-formatter/JSON_formatter002.png',
+        src: '/screenshots/json-formatter/JSON_formatter002.png',
         alt: 'Step 2 — Click Validate and Format JSON',
         caption: '2. Click Validate and Format JSON',
       },
       {
-        src: '/images/screenshots/json-formatter/JSON_formatter003.png',
+        src: '/screenshots/json-formatter/JSON_formatter003.png',
         alt: 'Step 3 — Instantly see errors with line numbers if your JSON is invalid',
         caption: '3. Instantly see errors with line numbers if your JSON is invalid',
       },
       {
-        src: '/images/screenshots/json-formatter/JSON_formatter004.png',
+        src: '/screenshots/json-formatter/JSON_formatter004.png',
         alt: 'Step 4 — Download or copy the beautified JSON',
         caption: '4. Download or copy the beautified JSON',
       },
@@ -213,22 +213,22 @@ const cards = [
     ],
     screenshots: [
       {
-        src: '/images/screenshots/watermarker/watermarker001.png',
+        src: '/screenshots/watermarker/watermarker001.png',
         alt: 'Step 1 — Drag and drop your image onto the upload area',
         caption: '1. Drag & drop or browse for your image',
       },
       {
-        src: '/images/screenshots/watermarker/watermarker002.png',
+        src: '/screenshots/watermarker/watermarker002.png',
         alt: 'Step 2 — Enter watermark text or upload logo',
         caption: '2. Enter watermark text or upload logo',
       },
       {
-        src: '/images/screenshots/watermarker/watermarker003.png',
+        src: '/screenshots/watermarker/watermarker003.png',
         alt: 'Step 3 — Preview the watermarked image',
         caption: '3. Preview the watermarked image',
       },
       {
-        src: '/images/screenshots/watermarker/watermarker004.png',
+        src: '/screenshots/watermarker/watermarker004.png',
         alt: 'Step 4 — Download your watermarked image',
         caption: '4. Download your watermarked image',
       },
@@ -258,22 +258,22 @@ const cards = [
     ],
     screenshots: [
       {
-        src: '/images/screenshots/resizer/Image-resizer001.png',
+        src: '/screenshots/resizer/Image-resizer001.png',
         alt: 'Step 1 — Drag and drop your image onto the upload area',
         caption: '1. Drag & drop or browse for your image',
       },
       {
-        src: '/images/screenshots/resizer/Image-resizer002.png',
+        src: '/screenshots/resizer/Image-resizer002.png',
         alt: 'Step 2 — Choose resize mode and set dimensions or zoom in/out',
         caption: '2. Choose resize mode and set dimensions or zoom in/out',
       },
       {
-        src: '/images/screenshots/resizer/Image-resizer003.png',
+        src: '/screenshots/resizer/Image-resizer003.png',
         alt: 'Step 3 — Preview the resized image',
         caption: '3. Preview the resized image',
       },
       {
-        src: '/images/screenshots/resizer/Image-resizer004.png',
+        src: '/screenshots/resizer/Image-resizer004.png',
         alt: 'Step 4 — Download your resized image',
         caption: '4. Download your resized image',
       },
@@ -305,22 +305,22 @@ const cards = [
     ],
     screenshots: [
       {
-        src: '/images/screenshots/collage/image-collage001.png',
+        src: '/screenshots/collage/image-collage001.png',
         alt: 'Step 1 — Drag and drop your images onto the upload area',
         caption: '1. Drag & drop or browse for your images',
       },
       {
-        src: '/images/screenshots/collage/image-collage002.png',
+        src: '/screenshots/collage/image-collage002.png',
         alt: 'Step 2 — Reorder images and set grid columns and rows',
         caption: '2. Arrange images and set the grid layout',
       },
       {
-        src: '/images/screenshots/collage/image-collage003.png',
+        src: '/screenshots/collage/image-collage003.png',
         alt: 'Step 3 — Preview the collage',
         caption: '3. Preview your collage instantly',
       },
       {
-        src: '/images/screenshots/collage/image-collage004.png',
+        src: '/screenshots/collage/image-collage004.png',
         alt: 'Step 4 — Download your finished collage',
         caption: '4. Download your finished collage',
       },
@@ -337,22 +337,22 @@ const cards = [
     features: ['Convert between JPG, PNG, and WebP', 'Auto-detects input format', 'Transparent PNGs get white background on JPG export', '100% local — files never leave your browser'],
     screenshots: [
       {
-        src: '/images/screenshots/image-converter/image-converter-001.png',
+        src: '/screenshots/image-converter/image-converter-001.png',
         alt: 'Step 1 — Drag and drop your images onto the upload area',
         caption: '1. Drag & drop or browse for your images',
       },
       {
-        src: '/images/screenshots/image-converter/image-converter-002.png',
+        src: '/screenshots/image-converter/image-converter-002.png',
         alt: 'Step 2 — Choose output format',
         caption: '2. Choose output format (JPG, PNG, or WebP)',
       },
       {
-        src: '/images/screenshots/image-converter/image-converter-003.png',
+        src: '/screenshots/image-converter/image-converter-003.png',
         alt: 'Step 3 — Preview the converted image',
         caption: '3. Preview your converted image',
       },
       {
-        src: '/images/screenshots/image-converter/image-converter-004.png',
+        src: '/screenshots/image-converter/image-converter-004.png',
         alt: 'Optional — Convert multiple images at once',
         caption: 'Optional — Convert multiple images at once',
       },

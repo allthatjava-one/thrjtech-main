@@ -2,7 +2,7 @@
 
 A complete walkthrough for using the **Image Resizer** tool on THRJ. This guide covers the basic workflow, useful tips, platform size references, and privacy notes so you can shrink or scale images fast without installing any software. [Open the Image Resizer](/image-resizer)
 
-![Image Resizer screenshot](/images/screenshots/resizer/Image-resizer001.png)
+![Image Resizer screenshot](/screenshots/resizer/Image-resizer001.png)
   
 ## Why Resize Images?
 
@@ -36,19 +36,19 @@ Image Resizer makes it easy to change image dimensions, scale for web or print, 
 
 Drop one or more images into the uploader or use the file picker. The uploader displays filename, dimensions, and original size.
 
-![Upload image](/images/screenshots/resizer/Image-resizer002.png)
+![Upload image](/screenshots/resizer/Image-resizer002.png)
 
 ### 2. Pick size or preset
 
 Select a preset for common destinations or type custom width and height. You can keep the aspect ratio locked to avoid distortion.
 
-![Choose size](/images/screenshots/resizer/Image-resizer003.png)
+![Choose size](/screenshots/resizer/Image-resizer003.png)
 
 ### 3. Adjust quality and resize
 
 Choose a compression/quality level if you want smaller files. Click **Resize** — a progress indicator appears and the resized image becomes available for download.
 
-![Resize and download](/images/screenshots/resizer/Image-resizer004.png)
+![Resize and download](/screenshots/resizer/Image-resizer004.png)
   
 ## Tips
 

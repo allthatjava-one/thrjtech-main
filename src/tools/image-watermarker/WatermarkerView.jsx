@@ -124,23 +124,23 @@ export function WatermarkerView({
             <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                 <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/images/screenshots/watermarker/watermarker001.png" alt="Step 1" className="how-img" />
+                    <img src="/screenshots/watermarker/watermarker001.png" alt="Step 1" className="how-img" />
                         <p>{t('howItWorks.step1')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/images/screenshots/watermarker/watermarker002.png" alt="Step 2" className="how-img" />
+                    <img src="/screenshots/watermarker/watermarker002.png" alt="Step 2" className="how-img" />
                         <p>{t('howItWorks.step2')}</p>
                   </li>
                   <li style={{ marginBottom: '0.75rem' }}>
-                    <img src="/images/screenshots/watermarker/watermarker003.png" alt="Step 3" className="how-img" />
+                    <img src="/screenshots/watermarker/watermarker003.png" alt="Step 3" className="how-img" />
                         <p>{t('howItWorks.step3')}</p>
                   </li>
                   <li>
-                    <img src="/images/screenshots/watermarker/watermarker004.png" alt="Step 4" className="how-img" />
+                    <img src="/screenshots/watermarker/watermarker004.png" alt="Step 4" className="how-img" />
                         <p>{t('howItWorks.step4')}</p>
                   </li>
                   <li>
-                    <img src="/images/screenshots/watermarker/watermarker005.png" alt="Step 5" className="how-img" />
+                    <img src="/screenshots/watermarker/watermarker005.png" alt="Step 5" className="how-img" />
                         <p>{t('howItWorks.step5')}</p>
                   </li>
                 </ol>

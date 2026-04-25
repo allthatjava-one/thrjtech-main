@@ -32,13 +32,13 @@ PDF Merger lets you combine multiple PDF files into a single PDF quickly and pri
 The screenshots below are taken from the live UI and illustrate the key steps.
 
 ### Upload & list
-![Upload and list](/images/screenshots/merger/merger-001.png)
+![Upload and list](/screenshots/merger/merger-001.png)
 
 ### Reorder files
-![Reorder files](/images/screenshots/merger/merger-002.png)
+![Reorder files](/screenshots/merger/merger-002.png)
 
 ### Merge progress and download
-![Merge progress](/images/screenshots/merger/merger-003.png)
+![Merge progress](/screenshots/merger/merger-003.png)
   
 ## Reordering Strategies
 

@@ -14,7 +14,7 @@ Memes are one of the most effective and widely shared forms of visual communicat
 
 Good memes combine a universally recognizable image format (or a fresh original photo) with concise, punchy text that lands immediately. The tool gets out of your way so you can focus on the creative side.
 
-![Meme generator screenshot](/images/screenshots/meme-generator/meme-generator001.png)
+![Meme generator screenshot](/screenshots/meme-generator/meme-generator001.png)
   
 ## Quick Steps
 
@@ -28,26 +28,26 @@ Good memes combine a universally recognizable image format (or a fresh original 
 
 1. Upload an image
 
-![Upload image](/images/screenshots/meme-generator/meme-generator001.png)
+![Upload image](/screenshots/meme-generator/meme-generator001.png)
 
 - Click or drop to load an image. The canvas will display a live preview.
 
 2. Add text layers and position
 
-![Add text](/images/screenshots/meme-generator/meme-generator002.png)
+![Add text](/screenshots/meme-generator/meme-generator002.png)
 
 - Click the ＋ button to add a new text layer. Type into the layer panel and drag the overlay directly on the canvas to place it.
 - Use multiple layers for title, subtitle, and small annotations.
 
 3. Style and size text
 
-![Style text](/images/screenshots/meme-generator/meme-generator003.png)
+![Style text](/screenshots/meme-generator/meme-generator003.png)
 
 - Open the Advanced panel to adjust font size and text color. Use stroke/shadow (if available) or high-contrast colors to keep text readable.
 
 4. Export your meme
 
-![Download meme](/images/screenshots/meme-generator/meme-generator004.png)
+![Download meme](/screenshots/meme-generator/meme-generator004.png)
 
 - Click **Download** to generate a PNG. The text is merged onto the image on an offscreen canvas for a single downloadable file.
   

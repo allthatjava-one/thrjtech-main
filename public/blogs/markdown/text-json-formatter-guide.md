@@ -10,7 +10,7 @@ When JSON comes directly from an API, database export, or log file, it is often 
 
 The THRJ JSON Formatter does this transformation instantly in your browser.
 
-![JSON Formatter screenshot](/images/screenshots/json-formatter/JSON_formatter001.png)
+![JSON Formatter screenshot](/screenshots/json-formatter/JSON_formatter001.png)
   
 ## Overview
 
@@ -30,19 +30,19 @@ JSON Formatter helps you clean, validate, and visualize JSON instantly in your b
 
 Paste raw JSON into the editor or drag a `.json` file onto the editor area.
 
-![Load JSON](/images/screenshots/json-formatter/JSON_formatter002.png)
+![Load JSON](/screenshots/json-formatter/JSON_formatter002.png)
 
 ### 2. Format & validate
 
 Click **Format** to pretty-print with indentation. If there are syntax errors, the tool highlights the line and shows an error message.
 
-![Format JSON](/images/screenshots/json-formatter/JSON_formatter003.png)
+![Format JSON](/screenshots/json-formatter/JSON_formatter003.png)
 
 ### 3. Explore structure
 
 Use the simple tree view to inspect objects and arrays. Collapse or expand sections to focus on the parts you care about.
 
-![Explore JSON](/images/screenshots/json-formatter/JSON_formatter004.png)
+![Explore JSON](/screenshots/json-formatter/JSON_formatter004.png)
   
 ## Tips
 

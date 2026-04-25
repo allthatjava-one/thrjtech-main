@@ -123,22 +123,22 @@ export function PdfConverterView({
                 <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
                     <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                       <li style={{ marginBottom: '0.75rem' }}>
-                        <img src="/images/screenshots/converter/PDF-converter001.png" alt="Upload PDF" className="how-img" />
+                        <img src="/screenshots/converter/PDF-converter001.png" alt="Upload PDF" className="how-img" />
                         <p>{t('howItWorks.step1')}</p>
                       </li>
 
                       <li style={{ marginBottom: '0.75rem' }}>
-                        <img src="/images/screenshots/converter/PDF-converter002.png" alt="Choose format" className="how-img" />
+                        <img src="/screenshots/converter/PDF-converter002.png" alt="Choose format" className="how-img" />
                         <p>{t('howItWorks.step2')}</p>
                       </li>
 
                       <li style={{ marginBottom: '0.75rem' }}>
-                        <img src="/images/screenshots/converter/PDF-converter003.png" alt="Start conversion" className="how-img" />
+                        <img src="/screenshots/converter/PDF-converter003.png" alt="Start conversion" className="how-img" />
                         <p>{t('howItWorks.step3')}</p>
                       </li>
 
                       <li style={{ marginBottom: '0.75rem' }}>
-                        <img src="/images/screenshots/converter/PDF-converter004.png" alt="Preview and download" className="how-img" />
+                        <img src="/screenshots/converter/PDF-converter004.png" alt="Preview and download" className="how-img" />
                         <p>{t('howItWorks.step4')}</p>
                       </li>
                     </ol>

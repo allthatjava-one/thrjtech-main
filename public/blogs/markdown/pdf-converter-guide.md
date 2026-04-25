@@ -2,7 +2,7 @@
 
 I built the **PDF Converter** on THRJ to make it simple to turn documents and images into PDFs — and to pull content back out of PDFs when you need it. Try it now: [Open the PDF Converter](/pdf-converter).
 
-![PDF Converter screenshot](/images/screenshots/converter/PDF-converter001.png)
+![PDF Converter screenshot](/screenshots/converter/PDF-converter001.png)
 
 ## Overview
 
@@ -28,19 +28,19 @@ What you can do:
 
 Drag & drop files onto the converter or use the file selector. Supported types are shown in the upload area.
 
-![Upload files](/images/screenshots/converter/PDF-converter002.png)
+![Upload files](/screenshots/converter/PDF-converter002.png)
 
 ### 2. Select conversion options
 
 Pick the output format and any presets. For example, convert a `DOCX` to `PDF` with `Print Quality`, or choose `Extract Images` to pull images out of a PDF.
 
-![Choose options](/images/screenshots/converter/PDF-converter003.png)
+![Choose options](/screenshots/converter/PDF-converter003.png)
 
 ### 3. Convert and download
 
 Click **Convert**. The UI shows progress for each file. After conversion, each file has a download link or a combined ZIP for batch results.
 
-![Conversion progress](/images/screenshots/converter/PDF-converter004.png)
+![Conversion progress](/screenshots/converter/PDF-converter004.png)
 
 ## Making the most of conversions
 
