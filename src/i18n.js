@@ -31,6 +31,7 @@ i18n
       'imageCrop',
       'imageMemeGenerator',
       'imageConverter',
+      'imageRotator',
     ],
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
