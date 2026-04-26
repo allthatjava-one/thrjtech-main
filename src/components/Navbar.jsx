@@ -76,6 +76,12 @@ export default function Navbar() {
                       <Link to="/image-rotator" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageRotator')}</Link>
                   </div>
                 </div>
+                  <div className="dropdown-col">
+                    <div className="dropdown-group">
+                      <div className="dropdown-group-title">{t('nav.video')}</div>
+                      <Link to="/screen-recorder" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.screenRecorder')}</Link>
+                    </div>
+                  </div>
               </div>
             )}
           </div>

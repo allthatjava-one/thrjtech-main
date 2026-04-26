@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "Screen Recorder",
+    "tagline": "Record your screen instantly — stays in your browser, private and free."
+  },
+  "actions": {
+    "start": "Start Recording",
+    "stop": "Stop Recording",
+    "download": "Download Recording"
+  },
+  "status": {
+    "recording": "Recording...",
+    "idle": "Ready"
+  },
+  "preview": {
+    "title": "Preview"
+  },
+  "warnings": {
+    "browserUnsupported": "Your browser does not support screen capture. Try Chrome, Edge, or Firefox on desktop.",
+    "desktopOnly": "Best used on desktop browsers."
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is this?",
+      "body": "A simple client-side screen recorder that saves recordings as WebM files in your browser."
+    }
+  },
+  "howItWorks": {
+    "step1": "Click Start Recording and choose a screen, window, or tab.",
+    "step2": "Stop Recording when finished; a preview and download link appear.",
+    "step3": "Download the WebM file to your machine."
+  }
+}
