@@ -1,6 +1,10 @@
 name = "thrjtech-main"
-main = "build/server/index.js"
+main = "worker.js"
 compatibility_date = "2026-03-13"
+
+[assets]
+directory = "./build/client"
+binding = "STATIC_ASSETS"
 
 [observability]
 enabled = false
