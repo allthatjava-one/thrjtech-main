@@ -9,6 +9,7 @@
     "build": "react-router build",
     "preview": "react-router-serve ./build/server/index.js",
     "deploy": "wrangler pages deploy ./build/client",
+    "publish": "npm run build && npm run deploy && npx wrangler deploy",
     "translate": "node translate-and-merge.js",
     "translate:fast": "node translate-and-merge-fast.js",
     "verify-translations": "node verify-translations.js"
