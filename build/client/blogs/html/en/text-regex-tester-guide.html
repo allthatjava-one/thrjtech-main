@@ -1,0 +1,110 @@
+<div class="blog-fragment" style="color:#222;line-height:1.6;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:820px;margin:0 auto;padding:18px;">
+  <h1 style="font-size:28px;margin-bottom:8px;color:#111;">Regex Tester — Build and Test Regular Expressions Quickly</h1>
+
+  <p style="margin-top:0;margin-bottom:18px;color:#333;">Regular expressions are one of the most powerful text-processing tools — and one of the most intimidating to write. The <strong>Regex Tester</strong> on THRJ gives you a live environment to write, test, and debug patterns with real-time match highlighting and replacement previews. <a href="/regex-tester">Open the Regex Tester</a>.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">What Is a Regular Expression?</h2>
+  <p>A <strong>regular expression</strong> (regex) is a sequence of characters that defines a search pattern. It can match email addresses, phone numbers in many formats, line anchors, repeated patterns, optional groups, and much more. Regex is supported in JavaScript, Python, Java, Go, Ruby, and many editors and CLI tools.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Overview</h2>
+  <p>Regex Tester provides a live environment to write regular expressions, test them against sample text, and visualize matches. It shows capture groups, replacement previews, and supports common flags like <code>g</code>, <code>i</code>, <code>m</code>, <code>s</code>, and <code>u</code>.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Quick Steps</h2>
+  <ol>
+    <li>Open the Regex Tester page: <a href="/regex-tester">/regex-tester</a>.</li>
+    <li>Enter or paste sample text into the input area.</li>
+    <li>Type your regular expression into the pattern field.</li>
+    <li>Toggle flags like <code>i</code> (ignore case) or <code>g</code> (global) as needed.</li>
+    <li>See matches highlighted live and use replacement preview to test substitutions.</li>
+  </ol>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Features</h2>
+  <ul>
+    <li>Live highlighting of matches and capture groups</li>
+    <li>Replacement preview to test substitutions safely</li>
+    <li>Flag toggles and common pattern snippets</li>
+    <li>Export your pattern and sample text for sharing</li>
+  </ul>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Understanding Regex Flags</h2>
+  <table style="width:100%;border-collapse:collapse;margin:10px 0 18px 0;">
+    <thead>
+      <tr style="text-align:left;color:#111;border-bottom:1px solid #e6e6e6;"><th style="padding:8px 6px;">Flag</th><th style="padding:8px 6px;">Symbol</th><th style="padding:8px 6px;">Effect</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Global</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">g</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Find all matches, not just the first</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Ignore case</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">i</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Match regardless of case</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Multiline</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">m</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">^ and $ match line starts/ends</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Dot all</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">s</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">. matches newline characters too</td></tr>
+      <tr><td style="padding:8px 6px;">Unicode</td><td style="padding:8px 6px;">u</td><td style="padding:8px 6px;">Enable full Unicode matching</td></tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Common Regex Patterns Reference</h2>
+  <table style="width:100%;border-collapse:collapse;margin:10px 0 18px 0;">
+    <thead>
+      <tr style="text-align:left;color:#111;border-bottom:1px solid #e6e6e6;"><th style="padding:8px 6px;">Pattern</th><th style="padding:8px 6px;">Purpose</th><th style="padding:8px 6px;">Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Email address</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">user@example.com</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">https?:\/\/[^^\s]+</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">URL (http or https)</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">https://example.com/path</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">\+?[\d\s\-().]{7,15}</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Phone number (flexible)</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">+1 (555) 123-4567</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">\b\d{4}-\d{2}-\d{2}\b</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">ISO date (YYYY-MM-DD)</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">2024-07-15</td></tr>
+      <tr><td style="padding:8px 6px;">^\s*$</td><td style="padding:8px 6px;">Blank line</td><td style="padding:8px 6px;">Lines with only spaces</td></tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">How to Use Replacement Mode</h2>
+  <p>Replacement preview lets you test <code>String.replace()</code> or sed-style substitutions before applying them.</p>
+  <p><strong>Example — Normalize dates:</strong></p>
+  <pre style="background:#fafafa;border:1px solid #eee;padding:10px;border-radius:6px;">Pattern: (\d{4})-(\d{2})-(\d{2})
+Replacement: $2/$3/$1
+Result: 2024-07-15 → 07/15/2024</pre>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Step-by-Step Scenarios</h2>
+  <h3 style="font-size:18px;margin-top:10px;color:#111;">Validating a form field pattern</h3>
+  <ol>
+    <li>Paste sample values into the input area.</li>
+    <li>Write your validation regex (e.g., ZIP code).</li>
+    <li>Toggle the <code>g</code> flag to see all matches.</li>
+    <li>Adjust until only valid entries are highlighted.</li>
+  </ol>
+
+  <h3 style="font-size:18px;margin-top:10px;color:#111;">Cleaning up copied data</h3>
+  <ol>
+    <li>Paste messy text from a spreadsheet.</li>
+    <li>Write a pattern to match unwanted prefixes.</li>
+    <li>Use replacement mode with an empty replacement to strip them out.</li>
+    <li>Copy the cleaned result.</li>
+  </ol>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Tips &amp; Common Mistakes</h2>
+  <ul>
+    <li>Start simple and add complexity progressively.</li>
+    <li>Escape literal special characters like <code>.</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>(</code>, <code>)</code>.</li>
+    <li>If you see no matches, check your flags — especially <code>g</code>.</li>
+    <li>Use named capture groups (<code>(?&lt;name&gt;...)</code>) for clarity in complex replacements.</li>
+  </ul>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Privacy</h2>
+  <p>All processing is local to your browser. Your patterns and test text never leave your device. Avoid pasting sensitive data if you are concerned about clipboard history.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">Frequently Asked Questions</h2>
+  <p><strong>Do I need programming knowledge?</strong><br/>No. The tester is usable by developers and non-developers alike. The quick-reference above covers common use cases.</p>
+
+  <p><strong>What's the difference between a match and a capture group?</strong><br/>A match is the full text the pattern matched; capture groups (parentheses) extract sub-parts of that match.</p>
+
+  <hr style="border:none;border-top:1px solid #eee;margin:18px 0;"/>
+  <p style="color:#666;font-size:13px;margin-bottom:0;">Published by THRJ Tech</p>
+</div>

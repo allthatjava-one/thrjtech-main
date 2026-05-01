@@ -1,0 +1,173 @@
+{
+  "hero": {
+    "title": "Formateur JSON",
+    "icon": "{}",
+    "tagline": "Collez votre JSON ci-dessous, cliquez sur Formater et obtenez instantanément un résultat propre et lisible — sans inscription requise.",
+    "blogLink": "Apprenez à formater du JSON →"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que JSON",
+      "body": "JSON (JavaScript Object Notation) est un format de texte léger utilisé pour représenter des données structurées. Il est à la fois lisible par l'humain et analysable par les machines, et constitue le format dominant d'échange de données dans les API REST."
+    },
+    "whenToUse": {
+      "heading": "Quand utiliser JSON",
+      "body": "Utilisez JSON lorsque vous avez besoin d'une façon simple et interopérable de sérialiser des données structurées pour la transmission ou le stockage."
+    },
+    "howFormatterWorks": {
+      "heading": "Comment fonctionne le formateur JSON",
+      "body": "Le formateur analyse l'entrée brute en JSON, puis la sérialise avec un niveau d'indentation configurable. Si l'analyse échoue, l'erreur est signalée avec le numéro de ligne approximatif."
+    },
+    "prettyFormat": {
+      "heading": "JSON en format lisible",
+      "body": "Le JSON mis en forme insère des sauts de ligne entre les paires clé-valeur et indente les objets et tableaux imbriqués."
+    },
+    "usefulWhen": {
+      "heading": "Utile quand",
+      "item1": "Débogage de réponses API renvoyées en JSON minifié.",
+      "item2": "Revue d'objets de configuration avant le déploiement.",
+      "item3": "Détection d'erreurs structurelles dans le JSON."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Le formatage modifie-t-il les données ?",
+      "a1": "R : Non — le formatage modifie uniquement les espaces ; toutes les valeurs restent identiques.",
+      "q2": "Q : Le formateur peut-il corriger le JSON cassé ?",
+      "a2": "R : Non — il signale la ligne approximative de l'erreur mais ne peut pas réparer l'entrée malformée.",
+      "q3": "Q : Quelle indentation est utilisée ?",
+      "a3": "R : Deux espaces, la convention la plus répandue pour JSON.",
+      "q4": "Q : Le JSON est-il traité sur mon appareil ?",
+      "a4": "R : Oui — toute l'analyse et le formatage s'exécutent dans le navigateur ; aucune donnée n'est envoyée à un serveur.",
+      "q5": "Q : Pourquoi le formateur signale-t-il une erreur sur une ligne différente de celle attendue ?",
+      "a5": "R : Les analyseurs JSON continuent parfois au-delà d'une erreur avant d'échouer ; la ligne signalée est la meilleure approximation."
+    }
+  },
+  "howItWorks": {
+    "step1": "Collez ou saisissez du JSON brut dans le panneau de saisie.",
+    "step2": "Cliquez sur Valider et Formater (ou appuyez sur Ctrl+Entrée).",
+    "step3": "Examinez la sortie formatée, copiez ou téléchargez selon vos besoins.",
+    "step4": "Corrigez les erreurs d'analyse indiquées et reformatez."
+  },
+  "howToUse": {
+    "heading": "Comment utiliser",
+    "step1": "1 : Collez ou saisissez votre JSON dans le champ de saisie ci-dessous.",
+    "step2": "2 : Cliquez sur Formater JSON (ou appuyez sur Ctrl+Entrée).",
+    "step3": "3 : Examinez la sortie formatée et cliquez sur Copier."
+  },
+  "input": {
+    "label": "JSON d'entrée",
+    "clearBtn": "Effacer",
+    "clearTitle": "Tout effacer",
+    "placeholder": "Collez votre JSON ici…\n\nExemple :\n{\n  \"nom\": \"Jean\",\n  \"age\": 30\n}",
+    "errorLine": "Problème détecté près de la ligne {{line}}.",
+    "ariaLabel": "Saisie JSON"
+  },
+  "formatBtn": "Valider et Formater JSON",
+  "output": {
+    "label": "Sortie formatée",
+    "copyBtn": "Copier",
+    "copiedBtn": "✓ Copié !",
+    "copyTitle": "Copier dans le presse-papiers",
+    "placeholder": "Le JSON formaté apparaîtra ici…",
+    "ariaLabel": "Sortie JSON formatée"
+  },
+  "errors": {
+    "invalid": "JSON invalide : {{message}}",
+    "empty": "Veuillez saisir du JSON à formater."
+  },
+  "guide": {
+    "title": "Comment lire et réparer JSON plus rapidement (un guide pratique pour les développeurs)",
+    "intro": "Si vous avez déjà travaillé avec des API, des journaux ou des fichiers de configuration, vous avez vu du JSON minifié et désordonné. Techniquement correct… mais pénible à lire. C'est là qu'un formateur JSON devient indispensable.",
+    "cta": "👉 Dans ce guide, vous apprendrez comment transformer un JSON désordonné en une structure lisible, déboguer les erreurs plus rapidement et travailler plus efficacement avec les données API.",
+    "whatIs": {
+      "heading": "📦 Qu'est-ce que JSON (rafraîchissement rapide)",
+      "body": "JSON (JavaScript Object Notation) est un format de données léger utilisé pour échanger des données structurées entre les systèmes. Il est utilisé dans les API, les services backend, les fichiers de configuration et les bases de données. Les machines aiment JSON – les humains, pas tellement (quand c'est compliqué)."
+    },
+    "whatDoes": {
+      "heading": "🔍 Que fait un formateur JSON ?",
+      "body": "Un formateur JSON prend du JSON brut ou minifié et ajoute une indentation, organise les structures imbriquées et rend les données lisibles. Cela ne change pas les données, mais seulement leur apparence.",
+      "beforeLabel": "Avant:",
+      "afterLabel": "Après:"
+    },
+    "whySlows": {
+      "heading": "😵 Pourquoi Raw JSON vous ralentit",
+      "item1": "🔍 Difficile à numériser : les objets imbriqués deviennent denses, déroutants et faciles à mal lire.",
+      "item2": "🐞 Le débogage devient pénible : une virgule ou un crochet manquant casse tout et est difficile à localiser.",
+      "item3": "⏱ Temps perdu – vous passez plus de temps à lire la structure au lieu de résoudre les problèmes."
+    },
+    "whenToUse": {
+      "heading": "⚡ Quand utiliser un formateur JSON",
+      "item1": "🔌 Réponses API — la plupart des API renvoient du JSON minifié ; le formatage révèle immédiatement la structure.",
+      "item2": "🐞 Erreurs de débogage — le formateur + le validateur montre exactement où JSON se casse.",
+      "item3": "⚙️ Fichiers de configuration – une structure plus propre signifie moins d'erreurs dans les paramètres .json.",
+      "item4": "📄 Analyse des journaux : le formatage des blobs JSON imbriqués dans les journaux permet de détecter rapidement les problèmes."
+    },
+    "commonErrors": {
+      "heading": "🧪 Erreurs JSON courantes",
+      "item1": "❌ Virgule finale",
+      "item2": "❌ Citations manquantes sur les clés",
+      "item3": "❌ Citations simples",
+      "item4": "❌ Supports non fermés"
+    },
+    "stepByStep": {
+      "heading": "🪜 Étape par étape : formatez facilement JSON",
+      "step1": "📋 Collez votre JSON",
+      "step2": "⚙️ Cliquez sur Format",
+      "step3": "👀 Examiner la sortie structurée",
+      "step4": "❗ Corrigez toutes les erreurs affichées",
+      "step5": "📄 Copiez du JSON propre"
+    },
+    "bestPractices": {
+      "heading": "🚀 Meilleures pratiques pour travailler avec JSON",
+      "item1": "✅ Gardez-le valide : utilisez toujours des guillemets doubles et faites correspondre correctement les parenthèses.",
+      "item2": "✅ Formatez avant le débogage – ne déboguez pas le JSON brut ; formatez toujours en premier.",
+      "item3": "✅ Utilisez une indentation cohérente – 2 espaces est la norme la plus courante.",
+      "item4": "✅ Évitez la sur-imbrication – l’imbrication profonde est difficile à lire et à entretenir.",
+      "item5": "✅ Validez tôt : détectez les erreurs avant d'utiliser JSON dans le code."
+    },
+    "comparison": {
+      "heading": "🧰 Formateur JSON vs validateur JSON",
+      "col1": "Fonctionnalité",
+      "col2": "Formateur",
+      "col3": "Validateur",
+      "row1col1": "But",
+      "row1col2": "Améliorer la lisibilité",
+      "row1col3": "Vérifier l'exactitude",
+      "row2col1": "Corriger les erreurs",
+      "row2col2": "❌ Non",
+      "row2col3": "✅ Oui",
+      "row3col1": "Sortir",
+      "row3col2": "Structure propre",
+      "row3col3": "Messages d'erreur",
+      "workflow": "Meilleur flux de travail : Formater → Valider → Corriger."
+    },
+    "proTips": {
+      "heading": "⚡ Conseils de pro",
+      "item1": "🔍 Formater avant d'enregistrer un gros JSON",
+      "item2": "🧩 Divisez le grand JSON en parties plus petites",
+      "item3": "📋 Copiez uniquement ce dont vous avez besoin",
+      "item4": "⚡ Utilisez le formateur + l'outil de comparaison ensemble"
+    },
+    "safety": {
+      "heading": "🔐 Est-il sûr d'utiliser les formateurs JSON en ligne ?",
+      "body": "La plupart des outils modernes s'exécutent directement dans votre navigateur et n'envoient pas de données aux serveurs. Évitez néanmoins de coller des clés API ou des données de production sensibles."
+    },
+    "faq": {
+      "heading": "❓FAQ",
+      "q1": "Le formatage modifie-t-il mes données JSON ?",
+      "a1": "Non, cela change seulement l'apparence, pas le contenu.",
+      "q2": "Un formateur peut-il corriger un JSON invalide ?",
+      "a2": "Non, mais cela vous aide à voir où se situe le problème.",
+      "q3": "Quel est le meilleur style d’indentation ?",
+      "a3": "2 espaces est la norme la plus courante.",
+      "q4": "Pourquoi mon JSON ne parvient-il pas à se formater ?",
+      "a4": "Probablement en raison d'erreurs de syntaxe, de crochets manquants ou d'un style de guillemet incorrect."
+    },
+    "conclusion": "Travailler avec du JSON brut ne doit pas être frustrant. Avec un formateur JSON, vous pouvez lire les données instantanément, déboguer plus rapidement et réduire les erreurs : l'un des outils les plus simples pouvant améliorer considérablement votre flux de travail.",
+    "ctaBtn": "👉 Essayez-le ici : outil de formatage JSON"
+  }
+}

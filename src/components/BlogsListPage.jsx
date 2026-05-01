@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -9,17 +9,21 @@ const DEFAULT_THUMB = '/images/blogs/default-thumb.svg'
 
 export default function BlogsListPage() {
   const { t, i18n } = useTranslation('blogs')
+  const loaderData = useLoaderData() ?? {}
   const [searchParams, setSearchParams] = useSearchParams()
-  const [blogs, setBlogs] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [blogs, setBlogs] = useState(loaderData.items ?? [])
+  const [loading, setLoading] = useState(!loaderData.items)
   const [error, setError] = useState(null)
-  const [page, setPage] = useState(null)
-  const [pageSize, setPageSize] = useState(null)
-  const [totalPages, setTotalPages] = useState(1)
-  const [links, setLinks] = useState({})
+  const [page, setPage] = useState(loaderData.page ?? null)
+  const [pageSize, setPageSize] = useState(loaderData.page_size ?? null)
+  const [totalPages, setTotalPages] = useState(loaderData.total_pages ?? 1)
+  const [links, setLinks] = useState(loaderData.links ?? {})
 
   const urlPage = parseInt(searchParams.get('page') || '1', 10)
   const urlPageSize = searchParams.get('page_size') ? parseInt(searchParams.get('page_size'), 10) : null
+  const loaderHasItems = Array.isArray(loaderData.items)
+  const loaderPage = loaderData.page ?? 1
+  const loaderPageSize = loaderData.page_size ?? null
 
   const fetchBlogs = (targetPage, targetPageSize) => {
     setLoading(true)
@@ -46,8 +50,10 @@ export default function BlogsListPage() {
   }
 
   useEffect(() => {
+    // Skip client fetch when server loader already provided data for the same page
+    if (loaderHasItems && urlPage === loaderPage && (urlPageSize ?? null) === loaderPageSize) return
     fetchBlogs(urlPage, urlPageSize)
-  }, [urlPage, urlPageSize])
+  }, [urlPage, urlPageSize, loaderHasItems, loaderPage, loaderPageSize])
 
   const goToPage = (n) => {
     if (n === page) return
@@ -75,6 +81,9 @@ export default function BlogsListPage() {
             <div style={{ border: '1px solid #e5e7eb', borderRadius: 8, overflow: 'hidden' }}>
               <div style={{ background: '#f9fafb', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', fontWeight: 700, color: '#111827' }}>{t('articlesHeader')}</div>
               <div>
+                {pageBlogs.length === 0 && (
+                  <div style={{ padding: '16px', color: '#6b7280' }}>{t('noArticles')}</div>
+                )}
                 {pageBlogs.map((b, idx) => {
                   const background = ((idx + 1) % 2 === 0) ? '#f8fafc' : '#e6e7eb'
                   const lang = i18n.resolvedLanguage || i18n.language || 'en'

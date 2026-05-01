@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams, Link, useNavigate, useLoaderData } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -23,11 +23,12 @@ function naiveMarkdownToHtml(md) {
 
 export default function BlogPage() {
   const { t, i18n } = useTranslation('blogs')
+  const loaderData = useLoaderData() ?? {}
   const { slug } = useParams()
   const navigate = useNavigate()
-  const [createdAt, setCreatedAt] = useState(null)
-  const [blogData, setBlogData] = useState(null)
-  const [error, setError] = useState(null)
+  const [createdAt, setCreatedAt] = useState(loaderData.createdAt ?? null)
+  const [blogData, setBlogData] = useState(loaderData.slug ? loaderData : null)
+  const [error, setError] = useState(loaderData.error ?? null)
 
   const lang = i18n.resolvedLanguage || i18n.language || 'en'
   const title = blogData ? ((lang !== 'en' && blogData[`title_${lang}`]) || blogData.title) : null
@@ -36,6 +37,8 @@ export default function BlogPage() {
     : null
 
   useEffect(() => {
+    // Skip client fetch when server loader already provided data for this slug
+    if (loaderData.slug && loaderData.slug === slug) return
     const url = `/api/blogs/${slug}`
     fetch(url)
       .then(res => {

@@ -1,0 +1,13 @@
+{
+  "title": "Blog",
+  "loading": "Loading articles…",
+  "error": "Error: {{error}}",
+  "articlesHeader": "Articles",
+  "first": "First",
+  "last": "Last",
+  "perPage": "Per page:",
+  "back": "← Back to Blog",
+  "createdAt": "Created at: {{date}}",
+  "loadingArticle": "Loading…",
+  "errorArticle": "Error: {{error}}"
+}

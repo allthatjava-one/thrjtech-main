@@ -1,0 +1,14 @@
+{
+  "title": "Contact Us",
+  "intro": "We love hearing from our users — your feedback is what drives us to keep improving. Whether you've spotted a bug, have a feature request, or just want to share your experience, we genuinely want to know. Drop us a message using the form below and we'll get back to you as soon as possible. Every message is read by a real person, and we do our best to respond promptly. Thank you for taking the time to reach out!",
+  "signature": "- The THRJTech Team",
+  "emailLabel": "Email Address",
+  "emailPlaceholder": "your@email.com",
+  "messageLabel": "Message",
+  "messagePlaceholder": "How can we help you?",
+  "submitBtn": "Submit",
+  "sendingBtn": "Sending…",
+  "successMsg": "Thank you! We received your message.",
+  "errorMsg": "Sorry, something went wrong. Please try again.",
+  "honeypotLabel": "Leave this field empty"
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Conditions d'utilisation",
+  "lastUpdated": "Dernière mise à jour : avril 2026",
+  "freeService": {
+    "heading": "Service gratuit",
+    "body": "Tous les outils sur THRJTech sont fournis gratuitement. Nous nous réservons le droit de modifier, suspendre ou interrompre toute partie du service à tout moment sans préavis."
+  },
+  "privacyCore": {
+    "heading": "La confidentialité comme valeur fondamentale",
+    "body": "La plupart de nos outils fonctionnent entièrement dans votre navigateur — aucun fichier n'est chargé sur nos serveurs. Pour les outils nécessitant un traitement côté serveur (comme la compression ou la fusion de PDF), les fichiers sont traités sur une infrastructure éphémère et sont définitivement et automatiquement supprimés dans les 30 minutes. Nous ne consultons pas, ne stockons pas et ne partageons pas le contenu des fichiers chargés."
+  },
+  "acceptableUse": {
+    "heading": "Utilisation acceptable",
+    "body": "Vous acceptez d'utiliser ce site légalement et de ne pas charger ni traiter du contenu qui enfreint les droits d'auteur, contient des logiciels malveillants ou viole les droits d'autrui."
+  },
+  "noWarranty": {
+    "heading": "Absence de garantie",
+    "body": "Les outils sont fournis « tels quels » sans aucune garantie d'exactitude, de fiabilité ou d'adéquation à un usage particulier."
+  },
+  "limitedLiability": {
+    "heading": "Limitation de responsabilité",
+    "body": "THRJTech n'est pas responsable de toute perte de données ou dommage résultant de votre utilisation de ces outils."
+  },
+  "changes": {
+    "heading": "Modifications",
+    "body": "Nous pouvons mettre à jour ces conditions à tout moment. L'utilisation continue du site constitue une acceptation de toute révision."
+  },
+  "contact": {
+    "heading": "Contact",
+    "body": "Des questions ? Contactez-nous via le formulaire disponible sur ce site."
+  }
+}

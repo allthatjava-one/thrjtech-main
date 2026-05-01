@@ -1,0 +1,198 @@
+{
+  "hero": {
+    "title": "Recadrage d'image",
+    "tagline": "Sélectionnez et recadrez une partie de votre image. Choisissez parmi les rapports d'aspect standard ou définissez-en un personnalisé, faites pivoter et retournez selon vos besoins, puis téléchargez le résultat recadré.",
+    "blogLink": "Apprenez à recadrer votre image →"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "hint": {
+    "text": "Souhaitez-vous ajouter du texte à votre image avant de la recadrer ?",
+    "btn": "Essayer le Générateur de mèmes"
+  },
+  "dropZone": {
+    "text": "Glissez-déposez une image ici, ou cliquez pour sélectionner"
+  },
+  "fileRow": {
+    "loaded": "Image chargée",
+    "change": "Changer l'image",
+    "clear": "Effacer"
+  },
+  "controls": {
+    "zoom": "Zoom",
+    "rotation": "Rotation",
+    "rotateLeft": "⟲",
+    "rotateRight": "⟳",
+    "rotateLeftAria": "rotation-gauche",
+    "rotateRightAria": "rotation-droite",
+    "degrees": "{{rotation}}°",
+    "flip": "Retourner",
+    "horizontal": "Horizontal",
+    "vertical": "Verticale",
+    "aspect": "Aspect",
+    "ratio": "Rapport",
+    "ratioSeparator": ":"
+  },
+  "aspectOptions": {
+    "custom": "Utiliser un rapport d'aspect personnalisé",
+    "profile": "1:1 (Profil)",
+    "standard": "4:3 (standard)",
+    "widescreen": "16:9 (Grand écran / YouTube)",
+    "story": "9h16 (Histoire / Bobines)",
+    "instagram": "4:5 (Publication Instagram)",
+    "pinterest": "2:3 (Épingle Pinterest)",
+    "blog": "3:1 (Image à la une de blog)",
+    "facebook": "1.91:1 (Publication Facebook)"
+  },
+  "actions": {
+    "preview": "Aperçu",
+    "processing": "Traitement en cours...",
+    "reset": "Réinitialiser",
+    "download": "Télécharger"
+  },
+  "sendToMeme": {
+    "text": "Souhaitez-vous ajouter du texte à l'image recadrée ?",
+    "btn": "Envoyer au Générateur de mèmes"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que le recadrage d'image ?",
+      "body": "L'outil de recadrage d'image permet de sélectionner et d'exporter de manière interactive une portion rectangulaire d'une image. Il propose des commandes de zoom, de rotation et de retournement, des préréglages de rapport d'aspect pour des usages courants (réseaux sociaux, profil, bannières) et une étape de prévisualisation pour confirmer le recadrage avant le téléchargement. Toutes les transformations et exportations s'effectuent dans votre navigateur via un canvas hors écran ; votre fichier original ne quitte pas votre appareil sauf si vous choisissez explicitement de le partager ou de le télécharger."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne le recadrage",
+      "body": "Après avoir chargé une image, l'éditeur affiche une superposition de recadrage redimensionnable. Vous pouvez la déplacer pour la repositionner, la redimensionner à l'aide des poignées ou choisir l'un des rapports d'aspect proposés pour obtenir des dimensions exactes. Le zoom et la rotation permettent d'affiner le cadrage ; les retournements reflètent l'image horizontalement ou verticalement. En cliquant sur Aperçu ou Télécharger, la zone sélectionnée est rendue dans un canvas hors écran avec les transformations appliquées, puis le résultat est exporté en PNG."
+    },
+    "presets": {
+      "heading": "Préréglages et précision",
+      "item1": { "title": "1:1 (Profil)", "body": "Idéal pour les avatars et les photos de profil." },
+      "item2": { "title": "16:9 (Grand écran)", "body": "Utile pour les vignettes vidéo, les bannières et les présentations grand écran." },
+      "item3": { "title": "4:5 (Portrait)", "body": "Format courant pour les flux sociaux et les contenus orientés portrait." },
+      "item4": { "title": "Libre", "body": "Aucune contrainte : recadrez selon les dimensions dont vous avez besoin." }
+    },
+    "practical": {
+      "heading": "Conseils pratiques",
+      "item1": "Utilisez le verrouillage du rapport pour conserver des proportions exactes lors du redimensionnement de la zone de recadrage.",
+      "item2": "Pour des exportations parfaites au pixel, définissez la résolution de sortie souhaitée après avoir choisi la zone de recadrage, puis prévisualisez à 100 % si possible.",
+      "item3": "Si vous devez recadrer de nombreuses images de la même manière, notez les valeurs des préréglages pour reproduire le processus de manière cohérente."
+    },
+    "useful": {
+      "heading": "Utile lorsque",
+      "item1": "préparer des photos de profil ou des éléments pour les réseaux sociaux avec des dimensions précises.",
+      "item2": "supprimer des bordures non désirées, l'arrière-plan ou des éléments distrayants d'une photo.",
+      "item3": "recadrer une capture d'écran à une région spécifique pour la documentation ou des présentations.",
+      "item4": "re-cadrer rapidement une photo sans ouvrir un éditeur d'images de bureau."
+    },
+    "accessibility": {
+      "heading": "Accessibilité et confidentialité",
+      "body": "Les contrôles sont conçus en tenant compte de l'accessibilité (cibles larges, prise en charge du clavier). La boîte de prévisualisation aide les utilisateurs de tous appareils à confirmer les modifications. Comme le recadrage s'effectue localement, vos images restent privées sauf si vous choisissez de les télécharger ou de les partager."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Mon image sera-t-elle téléchargée quelque part ?",
+      "a1": "R : Non — tout le recadrage s'exécute côté client dans votre navigateur. Votre image ne quitte jamais votre appareil.",
+      "q2": "Q : Quels formats sont pris en charge ?",
+      "a2": "R : Vous pouvez charger tout format d'image pris en charge par le navigateur (JPEG, PNG, WebP, GIF, etc.). La sortie recadrée est toujours exportée en PNG.",
+      "q3": "Q : Puis-je annuler un recadrage ?",
+      "a3": "R : Oui — ajustez simplement la sélection de recadrage et cliquez de nouveau sur Aperçu pour régénérer la sortie avant de télécharger.",
+      "q4": "Q : Pourquoi le bouton Télécharger reste-t-il grisé ?",
+      "a4": "R : Cliquez d'abord sur Aperçu pour générer l'image recadrée ; le bouton Télécharger deviendra alors actif."
+    }
+  },
+  "howItWorks": {
+    "step1": "Chargez une image en la faisant glisser dans la zone de recadrage ou cliquez pour parcourir vos fichiers.",
+    "step2": "Faites glisser et redimensionnez la superposition de recadrage pour sélectionner la zone à conserver. Choisissez un préréglage de rapport d'aspect ou utilisez le mode Libre.",
+    "step3": "Ajustez éventuellement le zoom, la rotation et le retournement pour affiner le cadrage avant le recadrage.",
+    "step4": "Cliquez sur Aperçu pour générer l'image recadrée et inspecter le résultat dans la boîte de prévisualisation.",
+    "step5": "Cliquez sur Télécharger pour enregistrer le PNG recadré sur votre appareil.",
+    "imgAlt": { "step1": "Étape 1", "step2": "Étape 2", "step3": "Étape 3", "step4": "Étape 4" }
+  },
+  "guide": {
+    "title": "Comment recadrer parfaitement les images (sans perte de qualité ou de composition)",
+    "lead": "Le recadrage d'une image est l'une des modifications les plus simples que vous puissiez effectuer, mais cela a un impact énorme sur l'apparence et la communication de votre image.",
+    "learnLabel": "Dans ce guide, vous apprendrez :",
+    "learnItems": {
+      "item1": "Comment fonctionne le recadrage d'image",
+      "item2": "Quand l'utiliser",
+      "item3": "Comment recadrer correctement sans gâcher la qualité"
+    },
+    "whatIs": {
+      "heading": "Qu’est-ce que le recadrage d’image ?",
+      "body": "Le recadrage d'image est le processus de suppression des zones extérieures indésirables d'une image pour améliorer la composition ou ajuster la taille. Au lieu de redimensionner l'intégralité de l'image, le recadrage vous permet de supprimer les parties inutiles, de vous concentrer sur le sujet et de modifier le rapport hauteur/largeur.",
+      "analogy": "Considérez-le comme un cadrage de votre image une fois qu'elle est déjà prise."
+    },
+    "why": {
+      "heading": "Pourquoi le recadrage est important",
+      "focus": "Concentrez-vous sur le sujet — Le recadrage supprime les distractions et met en évidence la partie la plus importante de l'image.",
+      "composition": "Améliorer la composition — Utilisez le recadrage pour équilibrer l'image, appliquer la règle des tiers et créer une mise en page plus nette.",
+      "platform": "Ajuster les exigences de la plate-forme – Différentes plates-formes nécessitent des tailles différentes ; recadrez au carré, à la verticale ou en paysage pour éviter toute distorsion."
+    },
+    "croppingVsResizing": {
+      "heading": "Recadrage ou redimensionnement",
+      "col1": "Fonctionnalité",
+      "col2": "Recadrage",
+      "col3": "Redimensionnement",
+      "row1col1": "Ce que ça fait",
+      "row1col2": "Supprime une partie de l'image",
+      "row1col3": "Redimensionne l'image entière",
+      "row2col1": "Conserve l'intégralité du contenu",
+      "row2col2": "Non",
+      "row2col3": "Oui",
+      "row3col1": "Modifications de la composition",
+      "row3col2": "Oui",
+      "row3col3": "Non",
+      "row4col1": "Cas d'utilisation",
+      "row4col2": "Mise au point / cadrage",
+      "row4col3": "Taille/dimensions du fichier",
+      "tip": "Bonne pratique : recadrez d'abord → puis redimensionnez si nécessaire."
+    },
+    "bestPractices": {
+      "heading": "Meilleures pratiques de recadrage",
+      "item1": "Gardez le sujet clair — Assurez-vous que le sujet principal est centré ou bien positionné et qu'il n'est pas mal coupé.",
+      "item2": "Conserver les proportions – Utilisez des proportions fixes (1:1, 16:9, 4:5) lorsque vous ciblez des plates-formes spécifiques.",
+      "item3": "Ne recadrez pas trop — Un recadrage excessif réduit la résolution et peut rendre les images floues.",
+      "item4": "Laissez un espace de respiration — Évitez les recadrages serrés : laissez un léger espacement autour du sujet pour un aspect naturel.",
+      "item5": "Conserver l'original — Enregistrez toujours l'image originale ; les zones cultivées ne peuvent pas être récupérées."
+    },
+    "mistakes": {
+      "heading": "Les erreurs courantes à éviter.",
+      "item1": "❌ Découper les parties importantes (visages, bords, texte)",
+      "item2": "❌ Recadrage sans but",
+      "item3": "❌ Ignorer les proportions",
+      "item4": "❌ Sur-recadrage d'images basse résolution",
+      "item5": "❌ Utilisation de tailles de recadrage aléatoires sur toutes les plateformes"
+    },
+    "stepByStep": {
+      "heading": "Étape par étape : comment recadrer une image",
+      "step1": "Téléchargez votre image",
+      "step2": "Sélectionnez la zone que vous souhaitez conserver",
+      "step3": "Ajuster la zone de recadrage (faire glisser les bords)",
+      "step4": "Choisissez le rapport hauteur/largeur (facultatif)",
+      "step5": "Appliquer la culture",
+      "step6": "Téléchargez l'image finale"
+    },
+    "useCases": {
+      "heading": "Cas d'utilisation réels",
+      "social": "📱 Publications sur les réseaux sociaux — Recadrez au carré ou à la verticale pour améliorer l'engagement.",
+      "website": "🌐 Images du site Web — Supprimez l'espace inutile et rendez les images cohérentes sur toutes les pages.",
+      "profile": "👤 Photos de profil — Recadrez étroitement autour du visage et au centre pour une meilleure visibilité.",
+      "product": "🛍️ Images du produit — Supprimez l'encombrement de l'arrière-plan et mettez clairement le produit en évidence."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Le recadrage réduit-il la qualité de l’image ?",
+      "a1": "Oui, car les pixels sont supprimés, mais si cela est fait avec soin, la perte de qualité n'est généralement pas perceptible.",
+      "q2": "Puis-je annuler le recadrage ?",
+      "a2": "Uniquement si votre outil prend en charge l'édition non destructive ou si vous avez conservé l'image originale.",
+      "q3": "Quel est le meilleur rapport hauteur/largeur ?",
+      "a3": "Dépend de l'utilisation : Instagram → 1:1 ou 4:5 ; YouTube → 16:9 ; Sites Web → varie.",
+      "q4": "Est-il préférable de recadrer plutôt que de redimensionner ?",
+      "a4": "Ils servent à différentes fins : le recadrage modifie la composition, le redimensionnement modifie les dimensions."
+    },
+    "conclusionTitle": "Conclusion",
+    "conclusion": "Le recadrage d'images est un moyen simple mais puissant d'améliorer la composition, de mettre en évidence le contenu important et d'adapter les images à n'importe quelle plate-forme. Utilisez les bonnes techniques pour transformer une image moyenne en une image nette et professionnelle.",
+    "ctaBtn": "Essayez l'outil de recadrage d'image →"
+  }
+}

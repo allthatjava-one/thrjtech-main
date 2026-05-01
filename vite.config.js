@@ -1,21 +1,14 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { reactRouter } from '@react-router/dev/vite'
+import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
+import { getLoadContext } from './app/load-context'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    cloudflareDevProxy({ getLoadContext }),
+    reactRouter(),
+  ],
   server: {
     port: 5173,
-    proxy: {
-      '/r2-presign': 'http://127.0.0.1:8789',
-      '^/api/blogs': {
-        target: 'https://preview.api-gateway.thrjtech.com',
-        // target: 'http://localhost:8788',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/blogs/, '/api/v1/blogs'),
-      },
-    },
-  },
-  build: {
-    outDir: 'dist',
   },
 })

@@ -1,0 +1,177 @@
+{
+  "hero": {
+    "title": "Redimensionador de imagen",
+    "tagline": "Redimensione imágenes por ancho, alto o porcentaje sin subir archivos a servidores.",
+    "blogLink": "Aprenda a redimensionar imágenes →"
+  },
+  "hint": {
+    "text": "¿También desea recortar la imagen?",
+    "btn": "Probar Recortador de imagen"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "howItWorksSteps": {
+    "step1": "Cargue una imagen.",
+    "step2": "Elija modo de redimensionamiento.",
+    "step3": "Ajuste dimensiones o porcentaje.",
+    "step4": "Previsualice y descargue la salida."
+  },
+  "dropZone": {
+    "text": "Arrastre y suelte su imagen aquí",
+    "or": "o",
+    "browse": "Explorar imagen",
+    "hint": "Alt+Desplazarse para hacer zoom · Pellizcar en el móvil · {{percent}}%"
+  },
+  "controls": {
+    "mode": "Modo",
+    "byDimensions": "Por dimensiones",
+    "byPercent": "Por porcentaje",
+    "width": "Ancho",
+    "height": "Alto",
+    "percent": "Porcentaje",
+    "maintainAspect": "Mantener relación de aspecto"
+  },
+  "buttons": {
+    "changeImage": "Cambiar imagen",
+    "clear": "Borrar",
+    "preview": "Vista previa",
+    "download": "Descargar"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es el cambio de tamaño de imagen?",
+      "body": "Image Resizer le permite cambiar las dimensiones en píxeles de una imagen mediante una escala porcentual o especificando el ancho y alto exactos. Realiza escalado del lado del cliente utilizando un lienzo fuera de la pantalla para que la imagen original permanezca en su dispositivo y la salida redimensionada se produzca instantáneamente para su descarga."
+    },
+    "howWorks": {
+      "heading": "Cómo funciona el cambio de tamaño",
+      "body": "Cambiar el tamaño decodifica la imagen de origen en el navegador, la dibuja en un lienzo en las dimensiones de destino y luego exporta el contenido del lienzo como un nuevo archivo de imagen. La reducción de tamaño reduce el tamaño del archivo y al mismo tiempo preserva la fidelidad visual en la mayoría de los casos; la ampliación no puede agregar detalles reales y, a menudo, producirá resultados más suaves."
+    },
+    "quality": {
+      "heading": "Calidad, interpolación y compensaciones.",
+      "item1": "Reducción de escala: preserva la calidad percibida y reduce los bytes; adecuado para miniaturas y entrega web.",
+      "item2": "Ampliación de escala: limitada por la resolución de la fuente; evite una ampliación excesiva (por ejemplo, >2x) para evitar la pixelación.",
+      "item3": "Interpolación: los navegadores utilizan remuestreo integrado; Los resultados varían según el motor."
+    },
+    "practical": {
+      "heading": "Consejos prácticos",
+      "item1": "Para la web, busque dimensiones moderadas (por ejemplo, 1200–2048 px en el borde largo) para equilibrar la calidad y el rendimiento.",
+      "item2": "Utilice el modo de porcentaje para una escala proporcional rápida; utilice dimensiones exactas cuando se requiera un tamaño de píxel preciso.",
+      "item3": "Guarde una copia del archivo original si espera volver a editarlo o exportarlo en tamaños más grandes más adelante."
+    },
+    "whenToUse": {
+      "heading": "cuando usar",
+      "body": "Utilice el cambio de tamaño cuando necesite preparar imágenes para contextos de visualización específicos (páginas web, correo electrónico, miniaturas), reducir el peso del archivo para cargas más rápidas o ajustar imágenes para cumplir con los requisitos de la plataforma."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Puedo conservar la relación de aspecto?",
+      "a1": "R: Sí, habilite el bloqueo de aspecto para mantener las proporciones mientras cambia una dimensión.",
+      "q2": "P: ¿El cambio de tamaño es local?",
+      "a2": "R: Sí, el cambio de tamaño se produce en su navegador a través de un lienzo fuera de la pantalla; Los archivos no se cargan.",
+      "q3": "P: ¿El tamaño del archivo siempre disminuirá?",
+      "a3": "R: Generalmente cuando se reduce la escala, pero el tamaño del archivo también depende del formato y la configuración de compresión.",
+      "q4": "P: ¿Puedo cambiar el tamaño por lotes?",
+      "a4": "R: Esta interfaz de usuario se centra en operaciones de una sola imagen; para muchas imágenes utilice una herramienta por lotes o un script."
+    }
+  },
+  "howItWorks": {
+    "step1": "Elija una imagen de origen arrastrando y soltando o navegando.",
+    "step2": "Seleccione porcentaje o ancho/alto explícito y bloquee la relación de aspecto si es necesario. Puede usar Alt+Desplazarse o Pellizcar para hacer zoom en el dispositivo móvil en la vista previa.",
+    "step3": "Haga clic en Cambiar tamaño para ejecutar el escalado del lado del cliente y generar el archivo de salida.",
+    "step4": "Obtenga una vista previa y descargue la imagen redimensionada."
+  },
+  "fileRow": {
+    "name": "Cambiar imagen",
+    "clear": "Borrar"
+  },
+  "resizeMode": {
+    "percentage": "Cambiar tamaño por porcentaje",
+    "dimensions": "Cambiar tamaño por ancho y alto"
+  },
+  "percentInput": {
+    "placeholder": "Introduzca el porcentaje (por ejemplo, 50)",
+    "suffix": "%"
+  },
+  "dimensionInputs": {
+    "width": "Ancho (px)",
+    "height": "Altura (px)",
+    "unlinkAria": "Desvincular ancho y alto",
+    "linkAria": "Ancho y alto."
+  },
+  "previewBtn": "Vista previa",
+  "processingBtn": "Tratamiento...",
+  "downloadBtn": "Descargar",
+  "watermarkPrompt": {
+    "text": "¿Le gustaría poner una marca de agua privada en la imagen redimensionada?",
+    "yes": "Sí",
+    "preparing": "Preparando...",
+    "error": "Error al enviar la imagen a la herramienta de marca de agua."
+  },
+  "guide": {
+    "title": "La guía completa para cambiar el tamaño de las imágenes sin perder calidad",
+    "lead": "Cambiar el tamaño de las imágenes parece sencillo, hasta que terminas con resultados borrosos, pixelados o distorsionados. Ya sea que esté subiendo fotos a un sitio web, enviando imágenes por correo electrónico u optimizando el rendimiento, cambiar el tamaño de la manera correcta es más importante de lo que la mayoría de la gente piensa.",
+    "learn": "En esta guía aprenderás:",
+    "learnItems": {
+      "item1": "Cómo funciona realmente el cambio de tamaño de la imagen",
+      "item2": "¿Por qué ocurre la pérdida de calidad?",
+      "item3": "Las mejores formas de cambiar el tamaño de las imágenes sin arruinarlas",
+      "item4": "Consejos prácticos que puedes utilizar inmediatamente"
+    },
+    "whatMeans": {
+      "heading": "¿Qué significa realmente \"cambiar el tamaño de una imagen\"?",
+      "body": "Cambiar el tamaño de una imagen significa cambiar sus dimensiones, generalmente el ancho y el alto en píxeles.",
+      "example": "Original: 4000 × 3000 px → Redimensionado: 800 × 600 px",
+      "resampling": "Este proceso se llama remuestreo y afecta directamente la calidad."
+    },
+    "whyLoseQuality": {
+      "heading": "¿Por qué las imágenes pierden calidad?",
+      "pixel": "Pérdida de píxeles: al reducir el tamaño, los píxeles se eliminan permanentemente. Si se hace mal, los bordes se vuelven irregulares y los detalles finos desaparecen.",
+      "resampling": "Método de remuestreo deficiente: no todos los algoritmos de cambio de tamaño son iguales. El vecino más cercano es rápido pero bloqueable. Bilineal es más suave. Bicúbico es mejor para la mayoría de los casos.",
+      "repeated": "Cambio de tamaño repetido: cada cambio de tamaño descarta más datos. Cambie siempre el tamaño desde la imagen original, nunca desde una copia previamente redimensionada."
+    },
+    "bestPractices": {
+      "heading": "Mejores prácticas para cambiar el tamaño sin perder calidad",
+      "aspectRatio": "Mantener relación de aspecto: mantenga siempre proporcionales el ancho y el alto.",
+      "resizeOnce": "Cambiar el tamaño una vez: comience con el original → cambie el tamaño una vez → guarde la versión final.",
+      "format": "Elija el formato correcto: JPEG: tamaño más pequeño, ligera pérdida. PNG: archivo más grande y de mayor calidad. WebP: mejor equilibrio.",
+      "compression": "Evite la sobrecompresión: busque el equilibrio, no la compresión máxima."
+    },
+    "useCases": {
+      "heading": "Casos de uso comunes",
+      "website": "Cargas de sitios web: cambie el tamaño de las imágenes grandes (4000 px → 1200 px) para mejorar drásticamente la velocidad de carga de la página.",
+      "social": "Redes sociales: cambiar el tamaño garantiza que no haya problemas de recorte y una mejor calidad visual en perfiles, publicaciones y miniaturas.",
+      "email": "Archivos adjuntos de correo electrónico: las imágenes grandes ralentizan el envío y pueden ser rechazadas. Cambiar el tamaño mantiene los archivos manejables."
+    },
+    "mistakes": {
+      "heading": "Errores a evitar",
+      "item1": "❌ Estirar imágenes (relación de aspecto incorrecta)",
+      "item2": "❌ Guardar repetidamente en JPEG",
+      "item3": "❌ Usar herramientas con algoritmos de remuestreo deficientes",
+      "item4": "❌ Mejorar imágenes pequeñas esperando una mayor calidad"
+    },
+    "stepByStep": {
+      "heading": "Guía rápida paso a paso",
+      "step1": "Sube tu imagen",
+      "step2": "Elija el ancho o alto deseado",
+      "step3": "Mantener la relación de aspecto habilitada",
+      "step4": "Seleccione el formato de salida (JPEG / PNG / WebP)",
+      "step5": "Descargar imagen redimensionada"
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "¿El cambio de tamaño reduce la calidad?",
+      "a1": "Sí, pero si se hace correctamente, la pérdida es mínima y, a menudo, imperceptible para el ojo humano.",
+      "q2": "¿Puedo cambiar el tamaño sin perder calidad?",
+      "a2": "Sólo si no estás reduciendo el tamaño significativamente. De lo contrario, es inevitable que se pierdan algunos datos.",
+      "q3": "¿Cuál es el mejor formato después de cambiar el tamaño?",
+      "a3": "Web: WebP o JPEG. Archivo de alta calidad: PNG.",
+      "q4": "¿Es mejor cambiar el tamaño o comprimir?",
+      "a4": "Sirven para diferentes propósitos. Cambiar tamaño cambia las dimensiones; Comprimir reduce el tamaño del archivo. Los mejores resultados se obtienen si se utilizan ambos con cuidado."
+    },
+    "conclusionTitle": "Conclusión",
+    "conclusion": "Cambiar el tamaño de las imágenes no se trata sólo de hacerlas más pequeñas, sino de hacerlo correctamente para preservar la claridad y la usabilidad. Si mantiene la relación de aspecto, cambia el tamaño una vez con respecto al original y elige el formato correcto, puede mejorar significativamente tanto la calidad como el rendimiento de la imagen.",
+    "ctaBtn": "Pruebe el cambio de tamaño de imagen →"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "title": "Enregistreur d'écran",
+    "tagline": "Enregistrez votre écran instantanément — reste dans votre navigateur, privé et gratuit."
+  },
+  "actions": {
+    "start": "Démarrer l'enregistrement",
+    "stop": "Arrêter l'enregistrement",
+    "download": "Télécharger l'enregistrement"
+  },
+  "status": {
+    "recording": "Enregistrement...",
+    "idle": "Prêt"
+  },
+  "preview": {
+    "title": "Aperçu"
+  },
+  "warnings": {
+    "browserUnsupported": "Votre navigateur ne prend pas en charge la capture d'écran. Essayez Chrome, Edge ou Firefox sur ordinateur.",
+    "desktopOnly": "Mieux utilisé sur les navigateurs de bureau."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "title": "화면 녹화기",
+    "tagline": "브라우저에서 즉시 화면을 녹화하세요 — 브라우저에만 저장되어 개인 정보가 보호됩니다."
+  },
+  "actions": {
+    "start": "녹화 시작",
+    "stop": "녹화 중지",
+    "download": "녹화 다운로드"
+  },
+  "status": {
+    "recording": "녹화 중...",
+    "idle": "준비 완료"
+  },
+  "preview": {
+    "title": "미리보기"
+  },
+  "warnings": {
+    "browserUnsupported": "사용 중인 브라우저는 화면 캡처를 지원하지 않습니다. 데스크톱의 Chrome, Edge 또는 Firefox를 시도하세요.",
+    "desktopOnly": "데스크톱 브라우저에서 사용하는 것이 가장 좋습니다."
+  }
+}

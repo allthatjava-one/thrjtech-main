@@ -3,9 +3,8 @@ main = "worker.js"
 compatibility_date = "2026-03-13"
 
 [assets]
-directory = "./dist"
-binding = "ASSETS"
-not_found_handling = "single-page-application"
+directory = "./build/client"
+binding = "STATIC_ASSETS"
 
 [observability]
 enabled = false

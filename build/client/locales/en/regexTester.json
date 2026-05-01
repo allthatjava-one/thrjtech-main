@@ -1,0 +1,213 @@
+{
+  "hero": {
+    "title": "Regex Tester",
+    "icon": ".*",
+    "tagline": "Paste text below, enter a search pattern, and see live match highlights instantly — no sign-up required. Toggle Regex for full JavaScript regex syntax with capture groups, or leave it off for plain-text search.",
+    "blogLink": "Learn how to use the Regex Tester →"
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Regex",
+      "body": "A regular expression (regex) is a pattern that specifies a set of strings. In JavaScript, regexes are objects (RegExp) that can be applied to strings to test for matches, extract matches, or perform substitutions."
+    },
+    "whenToUse": {
+      "heading": "When to use Regex",
+      "body": "Regex is appropriate when you need to find, validate, or transform text based on a structural pattern rather than a fixed string — for example, validating an email address format, extracting numbers from logs, or replacing all occurrences of a pattern."
+    },
+    "flags": {
+      "heading": "Regex Flags",
+      "g": "g — global: always active. All non-overlapping matches are returned (not just the first).",
+      "i": "i — case-insensitive: a matches A, B matches b.",
+      "m": "m — multiline: ^ and $ match start/end of each line, not just the whole string."
+    },
+    "captureGroups": {
+      "heading": "Capture Groups & Replacements",
+      "body": "Parentheses in a regex pattern create capture groups: (\\w+). In a replacement string, $1 refers to the first group, $2 to the second, and so on."
+    },
+    "usefulWhen": {
+      "heading": "Useful when",
+      "item1": "Validating user input against a required format (email, phone, URL).",
+      "item2": "Extracting structured fields (dates, IDs, tokens) from unstructured text.",
+      "item3": "Performing batch find-and-replace on text with complex rules."
+    },
+    "faq": {
+      "heading": "FAQs",
+      "q1": "Q: What regex flavor does this tester use?",
+      "a1": "A: JavaScript (ECMAScript) regex, as executed by the browser's built-in RegExp engine.",
+      "q2": "Q: Why does the match count include overlapping matches?",
+      "a2": "A: It doesn't — the global flag returns non-overlapping matches in left-to-right order.",
+      "q3": "Q: Why doesn't my pattern match across lines?",
+      "a3": "A: Enable the m flag. By default, ^ and $ only match the start and end of the whole string."
+    }
+  },
+  "howItWorks": {
+    "step1": "Paste or type the text you want to search in the Input Text panel on the left.",
+    "step2": "Type a search pattern in the Search field. Toggle Regex to use JavaScript regex syntax, or leave it off for a plain-text search.",
+    "step3": "Matches are highlighted live in the Match Preview panel on the right. The match count updates automatically.",
+    "step4": "Enter a replacement in the Replace field and click Replace All to see the result. Copy it from the output section that appears below."
+  },
+  "howToUse": {
+    "heading": "How to use",
+    "step1": "1. Paste your text in the Input Text panel.",
+    "step2": "2. Type a pattern in the Search field.",
+    "step3": "3. Matches highlight live in the Match Preview panel.",
+    "step4": "4. Use Replace All to replace matches."
+  },
+  "controls": {
+    "searchPlaceholder": "Search pattern…",
+    "searchAriaLabel": "Search pattern",
+    "regexLabel": "Regex",
+    "regexTitle": "Toggle regular expression mode",
+    "flagI": "i",
+    "flagITitle": "Case-insensitive",
+    "flagM": "m",
+    "flagMTitle": "Multiline",
+    "clearBtn": "Clear",
+    "matchCount": "{{count}} match(es)",
+    "noMatches": "No matches",
+    "replaceToggleOpen": "▾ Replace with…",
+    "replaceToggleClose": "▸ Replace with…",
+    "replacePlaceholder": "Replacement (supports $1, $2…)",
+    "replaceAriaLabel": "Replacement text",
+    "replaceAllBtn": "Replace All",
+    "patternError": "Pattern error: {{message}}"
+  },
+  "input": {
+    "label": "Input Text",
+    "placeholder": "Paste or type text here…\n\nExample:\nHello World 123\nfoo@bar.com",
+    "ariaLabel": "Input text"
+  },
+  "preview": {
+    "label": "Match Preview"
+  },
+  "output": {
+    "label": "Replaced Output",
+    "copyBtn": "Copy",
+    "copiedBtn": "✓ Copied!"
+  },
+  "guide": {
+    "title": "How to Test and Debug Regex Quickly (Without Losing Your Mind)",
+    "intro": "Regular expressions are powerful… but notoriously frustrating. You write a pattern expecting it to match perfectly — and instead it matches too much, nothing, or partially works.",
+    "cta": "👉 The key to mastering regex isn't memorization — it's testing and iteration.",
+    "learnItems": {
+      "item1": "🧪 Test regex patterns effectively",
+      "item2": "🐞 Debug common issues",
+      "item3": "👁 Understand what your pattern is actually doing",
+      "item4": "🚀 Build regex with confidence"
+    },
+    "whatIs": {
+      "heading": "🔍 What Is a Regex Tester?",
+      "body": "A regex tester is an interactive tool that lets you write a pattern, provide sample text, and instantly see matches — turning regex from guessing into visual feedback."
+    },
+    "whyDifficult": {
+      "heading": "🧠 Why Regex Feels Difficult",
+      "item1": "😵 Compact — a small pattern can represent a lot of logic and be hard to read.",
+      "item2": "🔄 Sensitive — one character change can break everything or completely change behavior.",
+      "item3": "🧩 Abstract — patterns don't always \"look like\" what they match."
+    },
+    "whyUse": {
+      "heading": "⚡ Why You Should Always Use a Regex Tester",
+      "item1": "👀 Instant Feedback — see matches as you type; no guessing, no running code repeatedly.",
+      "item2": "🐞 Faster Debugging — quickly identify wrong groups, missing escapes, incorrect boundaries.",
+      "item3": "🎯 Better Accuracy — test against real input data and edge cases.",
+      "item4": "🚀 Faster Learning — experimentation helps you understand patterns and remember syntax naturally."
+    },
+    "example": {
+      "heading": "🧪 Example: Regex in Action",
+      "goal": "Goal: Match email addresses",
+      "testInput": "Test input:",
+      "result": "A regex tester highlights ✅ valid matches and ❌ invalid ones — making debugging much easier."
+    },
+    "mistakes": {
+      "heading": "🛠 Common Regex Mistakes",
+      "item1": "❌ Forgetting to escape characters",
+      "item1Wrong": "// Wrong — matches ANY character",
+      "item1Right": "// Correct — matches literal dot",
+      "item2": "❌ Greedy matching",
+      "item2Wrong": "// Wrong — matches too much",
+      "item2Right": "// Correct — non-greedy",
+      "item3": "❌ Missing anchors",
+      "item3Wrong": "// Matches anywhere in string",
+      "item3Right": "// Correct — anchored to full string",
+      "item4": "❌ Incorrect character classes",
+      "item4Wrong": "// Wrong — lowercase only",
+      "item4Right": "// Correct — letters and digits"
+    },
+    "stepByStep": {
+      "heading": "🪜 Step-by-Step: How to Test Regex",
+      "step1": "✍️ Enter your regex pattern",
+      "step2": "📄 Paste sample text",
+      "step3": "👀 Observe matches",
+      "step4": "🔧 Adjust pattern",
+      "step5": "🔁 Repeat until correct"
+    },
+    "bestPractices": {
+      "heading": "🧠 Best Practices for Writing Regex",
+      "item1": "✅ Start simple — build patterns step by step, add complexity gradually.",
+      "item2": "✅ Test real data — use actual user input and real-world examples.",
+      "item3": "✅ Use comments when possible — break complex regex into understandable parts.",
+      "item4": "✅ Avoid over-optimization — readable regex beats \"clever\" regex.",
+      "item5": "✅ Validate edge cases — test empty input and unexpected formats."
+    },
+    "useCases": {
+      "heading": "🧑‍💻 Real-World Use Cases",
+      "item1": "📧 Email Validation — check input format before submission",
+      "item2": "🔐 Password Rules — enforce complexity requirements",
+      "item3": "📄 Data Extraction — extract IDs, URLs, numbers from text",
+      "item4": "📊 Log Parsing — analyze and filter system logs"
+    },
+    "pitfalls": {
+      "heading": "⚠️ Common Pitfalls",
+      "item1": "❌ Writing entire regex at once",
+      "item2": "❌ Not testing edge cases",
+      "item3": "❌ Copy-pasting regex without understanding it",
+      "item4": "❌ Ignoring readability"
+    },
+    "comparison": {
+      "heading": "🔍 Regex Tester vs Code Execution",
+      "col1": "Feature",
+      "col2": "Regex Tester",
+      "col3": "Code",
+      "row1col1": "Speed",
+      "row1col2": "Instant",
+      "row1col3": "Slower",
+      "row2col1": "Debugging",
+      "row2col2": "Visual",
+      "row2col3": "Manual",
+      "row3col1": "Learning",
+      "row3col2": "Easy",
+      "row3col3": "Harder"
+    },
+    "proTips": {
+      "heading": "🚀 Pro Tips",
+      "item1": "🔍 Test small parts of regex first",
+      "item2": "🧩 Break complex patterns into chunks",
+      "item3": "⚡ Use non-greedy matching when needed",
+      "item4": "📋 Keep sample inputs saved for reuse"
+    },
+    "safety": {
+      "heading": "🔐 Is It Safe to Use a Regex Tester?",
+      "body": "Most modern tools:",
+      "item1": "✅ Run directly in your browser",
+      "item2": "✅ Don't store input",
+      "warning": "👉 Still avoid pasting sensitive data or production secrets."
+    },
+    "faq": {
+      "heading": "❓ FAQ",
+      "q1": "Why is my regex not matching anything?",
+      "a1": "Possible reasons: missing anchors, incorrect syntax, or wrong test input.",
+      "q2": "Why does my regex match too much?",
+      "a2": "Likely due to greedy patterns like .*. Try .*? instead.",
+      "q3": "Can I learn regex without memorizing everything?",
+      "a3": "Yes — practice with testing tools is the fastest way.",
+      "q4": "What's the best way to improve regex skills?",
+      "a4": "Build + test + iterate repeatedly."
+    },
+    "conclusion": "Regex doesn't have to be frustrating. With the right approach and a good tester, you can build patterns faster, debug with confidence, and truly understand what your regex is doing.",
+    "ctaBtn": "👉 Try your regex here: Regex Tester Tool"
+  }
+}

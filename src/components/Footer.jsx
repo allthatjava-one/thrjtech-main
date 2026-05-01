@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <p className="footer-copy">&copy; {t('footer.copyright', { year: new Date().getFullYear() })}</p>
+        <p className="footer-copy">{t('footer.copyright', { year: new Date().getFullYear() })}</p>
         <nav className="footer-links" aria-label="Legal">
           <Link to="/about/us" className="footer-link-btn">{t('footer.aboutUs')}</Link>
           <span className="footer-link-sep" aria-hidden="true">·</span>

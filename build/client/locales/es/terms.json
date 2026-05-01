@@ -1,0 +1,32 @@
+{
+  "title": "Términos de servicio",
+  "lastUpdated": "Última actualización: abril de 2026",
+  "freeService": {
+    "heading": "Servicio gratuito",
+    "body": "Todas las herramientas en THRJTech se proporcionan de forma gratuita. Nos reservamos el derecho de modificar, suspender o descontinuar cualquier parte del servicio en cualquier momento sin previo aviso."
+  },
+  "privacyCore": {
+    "heading": "Privacidad como valor fundamental",
+    "body": "La mayoría de nuestras herramientas operan completamente en su navegador — no se cargan archivos a nuestros servidores. Para herramientas que requieren procesamiento del lado del servidor, los archivos se procesan en infraestructura de corta duración y se eliminan permanente y automáticamente dentro de los 30 minutos."
+  },
+  "acceptableUse": {
+    "heading": "Uso aceptable",
+    "body": "Acepta usar este sitio de manera legal y no cargar ni procesar contenido que infrinja derechos de autor, contenga malware o viole los derechos de otros."
+  },
+  "noWarranty": {
+    "heading": "Sin garantía",
+    "body": "Las herramientas se proporcionan 'tal cual' sin ninguna garantía de precisión, confiabilidad o idoneidad para un propósito particular."
+  },
+  "limitedLiability": {
+    "heading": "Limitación de responsabilidad",
+    "body": "THRJTech no es responsable de ninguna pérdida de datos o daños derivados del uso de estas herramientas."
+  },
+  "changes": {
+    "heading": "Cambios",
+    "body": "Podemos actualizar estos términos en cualquier momento. El uso continuado del sitio constituye la aceptación de cualquier revisión."
+  },
+  "contact": {
+    "heading": "Contacto",
+    "body": "¿Preguntas? Contáctenos usando el formulario disponible en este sitio web."
+  }
+}

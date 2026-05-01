@@ -1,0 +1,33 @@
+{
+  "title": "Acerca de nosotros",
+  "whoWeAre": {
+    "heading": "Quiénes somos",
+    "body": "THRJTech es un pequeño equipo independiente de desarrolladores apasionados por simplificar las tareas digitales cotidianas para todos. Creamos herramientas gratuitas basadas en el navegador para que pueda realizar sus tareas sin instalar software, crear cuentas ni pagar suscripciones."
+  },
+  "ourMission": {
+    "heading": "Nuestra misión",
+    "body": "Creemos que las herramientas potentes y prácticas deben ser gratuitas y accesibles para todos. Nuestro objetivo es brindarle una forma rápida, privada y sin complicaciones de realizar sus tareas directamente en su navegador."
+  },
+  "builtForEveryone": {
+    "heading": "Construido para todos",
+    "body": "Nuestros usuarios van desde estudiantes y autónomos hasta pequeñas empresas y desarrolladores. Lo que todos tienen en común es la necesidad de realizar tareas rápidamente sin complicaciones."
+  },
+  "privacyFirst": {
+    "heading": "Privacidad primero",
+    "body": "Cada herramienta que creamos está diseñada con su privacidad en mente. Siempre que sea posible, todo el procesamiento ocurre localmente en su dispositivo. Para funciones que requieren procesamiento del lado del servidor, los archivos se manejan en infraestructura de corta duración y se eliminan automáticamente en 30 minutos.",
+    "privacyLink": "Política de privacidad"
+  },
+  "alwaysFree": {
+    "heading": "Siempre gratuito",
+    "body": "Todas nuestras herramientas son completamente gratuitas sin costos ocultos, sin registro requerido y sin límites de uso. Sustentamos el servicio a través de asociaciones publicitarias transparentes y no intrusivas (incluido Google AdSense)."
+  },
+  "constantlyImproving": {
+    "heading": "En constante mejora",
+    "body": "Publicamos actualizaciones regularmente basadas en los comentarios de los usuarios y nuestro propio uso diario de las herramientas."
+  },
+  "getInTouch": {
+    "heading": "Contáctenos",
+    "body": "Siempre buscamos mejorar. Si tiene sugerencias, comentarios o encuentra un error, comuníquese con nosotros — leemos todos los mensajes.",
+    "contactLink": "Contáctenos →"
+  }
+}

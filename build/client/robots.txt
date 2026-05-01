@@ -1,0 +1,14 @@
+# robots.txt for site discovery by search engines
+# Replace "example.com" with your real domain before publishing
+
+User-agent: *
+Allow: /
+
+# Explicitly allow Googlebot (optional, same as above)
+User-agent: Googlebot
+Allow: /
+
+# Point to your sitemap (replace with the full URL for your site)
+Sitemap: https://thrjtech.com/sitemap.xml
+
+# End of file
