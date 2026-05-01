@@ -5,7 +5,7 @@ pages_build_output_dir = "./build/client"
 
 [assets]
 directory = "./build/client"
-binding = "ASSETS"
+binding = "STATIC_ASSETS"
 
 [observability]
 enabled = false

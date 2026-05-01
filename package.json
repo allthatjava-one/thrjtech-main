@@ -8,8 +8,8 @@
     "pages:dev": "wrangler pages dev --port 5173 --proxy 4173 -- react-router dev --port 4173 --strictPort",
     "build": "react-router build",
     "preview": "react-router-serve ./build/server/index.js",
-    "deploy": "wrangler pages deploy ./build/client",
-    "publish": "npm run build && npm run deploy && npx wrangler deploy",
+    "deploy": "wrangler pages deploy ./build/client --project-name thrjtech-main",
+    "publish": "npm run build && npm run deploy",
     "translate": "node translate-and-merge.js",
     "translate:fast": "node translate-and-merge-fast.js",
     "verify-translations": "node verify-translations.js"

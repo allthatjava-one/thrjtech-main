@@ -54,12 +54,12 @@ export default {
       })
     }
 
-    const assetResponse = await env.ASSETS.fetch(request)
+    const assetResponse = await env.STATIC_ASSETS.fetch(request)
     if (assetResponse.status !== 404 || !isHtmlRequest(request)) {
       return assetResponse
     }
 
     const indexUrl = new URL('/index.html', request.url)
-    return env.ASSETS.fetch(new Request(indexUrl, request))
+    return env.STATIC_ASSETS.fetch(new Request(indexUrl, request))
   },
 }
