@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "react-router dev",
     "pages:dev": "wrangler pages dev --port 5173 --proxy 4173 -- react-router dev --port 4173 --strictPort",
-    "build": "react-router build",
+    "build": "react-router build && node scripts/postbuild.mjs",
     "preview": "react-router-serve ./build/server/index.js",
     "deploy": "wrangler pages deploy ./build/client --project-name thrjtech-main",
     "publish": "npm run build && npm run deploy",
