@@ -2,6 +2,7 @@
   "title": "Blogue",
   "loading": "Chargement des articles…",
   "error": "Erreur : {{error}}",
+  "noArticles": "Aucun article disponible pour le moment.",
   "articlesHeader": "Articles",
   "first": "Premier",
   "last": "Dernier",

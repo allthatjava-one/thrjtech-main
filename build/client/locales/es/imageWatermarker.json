@@ -1,0 +1,179 @@
+{
+  "hero": {
+    "title": "Marca de agua en imagen",
+    "tagline": "Agregue una marca de agua de texto o logotipo a sus imágenes en segundos.",
+    "blogLink": "Aprenda a poner marca de agua →"
+  },
+  "hint": {
+    "text": "¿Necesita cambiar el tamaño antes de marcar?",
+    "btn": "Probar Redimensionador"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "howItWorksSteps": {
+    "step1": "Cargue su imagen.",
+    "step2": "Ingrese texto o cargue una marca de agua de logotipo.",
+    "step3": "Ajuste posición y opacidad.",
+    "step4": "Previsualice y descargue la imagen final."
+  },
+  "dropZone": {
+    "text": "Arrastre y suelte su imagen aquí",
+    "or": "o",
+    "browse": "Explorar imagen"
+  },
+  "controls": {
+    "watermarkType": "Tipo de marca de agua",
+    "text": "Texto",
+    "logo": "Logotipo",
+    "watermarkText": "Texto de la marca de agua",
+    "opacity": "Opacidad",
+    "size": "Tamaño",
+    "position": "Posición"
+  },
+  "buttons": {
+    "changeImage": "Cambiar imagen",
+    "clear": "Borrar",
+    "preview": "Vista previa",
+    "download": "Descargar"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es la marca de agua de imagen?",
+      "body": "Un marcador de agua de imagen aplica una superposición visible (ya sea texto o logotipo) sobre una imagen para indicar propiedad, marca o procedencia. La herramienta admite ajustes de ubicación, escala, opacidad y estilo simple para que pueda hacer que la marca de agua sea sutil o claramente visible según sus objetivos."
+    },
+    "howWorks": {
+      "heading": "Cómo funciona la marca de agua",
+      "body": "Después de seleccionar una imagen de origen, puede elegir una marca de agua de texto o cargar un logotipo. El editor representa la marca de agua en un lienzo fuera de la pantalla en la posición y opacidad elegidas y luego exporta la composición como un nuevo archivo de imagen para descargar. El procesamiento se realiza localmente en el navegador."
+    },
+    "choosing": {
+      "heading": "Elegir la marca de agua adecuada",
+      "item1": "El texto semitransparente es un buen equilibrio para la marca sin abrumar la imagen.",
+      "item2": "Los logotipos (PNG/SVG) mantienen la transparencia y proporcionan una marca de marca más limpia; utilice logotipos vectoriales o PNG de alta resolución siempre que sea posible.",
+      "item3": "Considere la ubicación: es menos probable que las esquinas queden recortadas, mientras que las marcas de agua en mosaico o de fotograma completo ofrecen una mayor protección pero impactan la estética."
+    },
+    "practical": {
+      "heading": "Consejos prácticos",
+      "item1": "Utilice una opacidad más baja y una escala más pequeña para lograr una marca de marca sutil; aumente la opacidad y el tamaño para una protección visible más fuerte.",
+      "item2": "Para uso por lotes, estandarice la posición y el tamaño de la marca de agua para garantizar una marca consistente en todas las imágenes.",
+      "item3": "Obtenga una vista previa en el tamaño de exportación real para confirmar la legibilidad y el equilibrio visual antes de descargar."
+    },
+    "usefulWhen": {
+      "heading": "Útil cuando",
+      "item1": "Necesita proteger sus imágenes con una marca de agua visible.",
+      "item2": "desea mantener el control sobre la ubicación, el tamaño y la opacidad de la marca de agua.",
+      "item3": "preparar imágenes para compartir en línea o con fines de marca."
+    },
+    "privacy": {
+      "heading": "Privacidad, retención y limitaciones",
+      "body": "Debido a que la marca de agua se ejecuta en su navegador, sus imágenes permanecen en su dispositivo a menos que las cargue explícitamente. Tenga en cuenta que las marcas de agua visibles disuaden la reutilización casual, pero no son una protección de derechos de autor infalible; determinados actores pueden eliminarlos o recortarlos."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Puedo utilizar un logotipo?",
+      "a1": "R: Sí: cargue un logotipo PNG o SVG para aplicarlo como marca de agua; Se admiten fondos transparentes.",
+      "q2": "P: ¿Esto cambiará mi imagen original?",
+      "a2": "R: No: la herramienta crea un nuevo archivo con marca de agua y no sobrescribe el archivo original.",
+      "q3": "P: ¿La imagen sale de mi navegador?",
+      "a3": "R: No: la marca de agua se ejecuta en su navegador y no carga la imagen original de forma predeterminada.",
+      "q4": "P: ¿Puedo controlar la opacidad, el tamaño y la posición?",
+      "a4": "R: Sí: utilice los controles para ajustar la opacidad, la escala y la ubicación de la marca de agua.",
+      "q5": "P: ¿La marca de agua funciona con todos los formatos de imagen?",
+      "a5": "R: Se admiten los formatos web comunes (JPEG, PNG, WebP)."
+    }
+  },
+  "howItWorks": {
+    "step1": "Importe una imagen a una marca de agua mediante arrastrar y soltar o seleccionar un archivo.",
+    "step2": "Elija una marca de agua de texto o logotipo y ajuste la posición, el tamaño y la opacidad.",
+    "step3": "Aplique la vista previa de la marca de agua y ajuste la ubicación.",
+    "step4": "Exporte y descargue la imagen con marca de agua.",
+    "step5": "Opcional: puede aplicar marcas de agua en varios archivos a la vez."
+  },
+  "fileRow": {
+    "count": "{{count}} imágenes seleccionadas",
+    "changeOne": "Cambiar imagen",
+    "changeMany": "Cambiar imágenes",
+    "clear": "Borrar"
+  },
+  "type": {
+    "label": "Tipo:",
+    "text": "Texto",
+    "logo": "Logo"
+  },
+  "textInput": {
+    "placeholder": "Introduce el texto de la marca de agua"
+  },
+  "logoBtn": "Elige logotipo",
+  "position": {
+    "label": "Posición:",
+    "default": "Predeterminado (centro + diagonal)",
+    "center": "Centro",
+    "topLeft": "Arriba a la izquierda",
+    "topRight": "Arriba a la derecha",
+    "bottomLeft": "Abajo a la izquierda",
+    "bottomRight": "Abajo a la derecha"
+  },
+  "repeated": "Repetido",
+  "opacity": "Opacidad:",
+  "applyBtn": "Aplicar a {{count}} imágenes",
+  "processingBtn": "Tratamiento...",
+  "downloadBtn": "Descargar",
+  "downloadAllBtn": "Descargar todo",
+  "popup": {
+    "prev": "Anterior",
+    "next": "Próximo",
+    "close": "×"
+  },
+  "guide": {
+    "title": "Cómo agregar marcas de agua a las imágenes (proteja su trabajo y desarrolle su marca)",
+    "lead": "Si compartes imágenes en línea, ya sean fotos, diseños o capturas de pantalla, probablemente te preocupe que otras personas las utilicen sin permiso. Ahí es donde entra en juego la marca de agua.",
+    "whatIs": {
+      "heading": "¿Qué es una marca de agua?",
+      "body": "Una marca de agua es una superposición visible (texto o logotipo) colocada en una imagen para indicar propiedad u origen. Los tipos comunes incluyen marcas de agua de texto (nombre, sitio web), marcas de agua de logotipo (identidad de marca) y marcas de agua de patrón (repetidas en la imagen)."
+    },
+    "why": {
+      "heading": "Por qué debería utilizar marcas de agua",
+      "item1": "Proteja su contenido: las marcas de agua desalientan la reutilización casual al mostrar claramente la propiedad.",
+      "item2": "Genere reconocimiento de marca: cada imagen compartida lleva consigo su nombre o logotipo.",
+      "item3": "Evite el robo de contenido: dificulta la eliminación y reduce la copia ocasional.",
+      "item4": "Agregue identidad profesional: las imágenes con marcas de agua parecen intencionales y autorizadas."
+    },
+    "types": {
+      "heading": "Tipos de marcas de agua",
+      "text": "🔤 Marca de agua de texto: simple y rápida, buena para blogs y herramientas (por ejemplo, \"thrjtech.com\").",
+      "logo": "🖼 Logo Watermark: marca sólida, ideal para empresas; utilice PNG/SVG para transparencia.",
+      "repeated": "🔁 Marca de agua repetida: en mosaico a lo largo de la imagen: mejor para contenido de alto valor, pero menos limpio visualmente."
+    },
+    "bestPractices": {
+      "heading": "Mejores prácticas",
+      "item1": "Manténgalo visible pero que no distraiga (opacidad ~20–60%).",
+      "item2": "Elija la posición correcta: esquina para una protección sutil, centro para una protección fuerte.",
+      "item3": "Utilice una marca coherente (fuente, logotipo, ubicación).",
+      "item4": "Evite dominar la imagen: el equilibrio es la clave.",
+      "item5": "Haga coincidir el color de la marca de agua con el brillo de la imagen para mayor legibilidad."
+    },
+    "stepByStep": {
+      "heading": "Paso a paso",
+      "step1": "Sube tu(s) imagen(es)",
+      "step2": "Ingrese texto o cargue un logotipo",
+      "step3": "Ajustar tamaño, posición y opacidad",
+      "step4": "Vista previa de la marca de agua",
+      "step5": "Descarga la imagen final"
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "¿Puedes poner marcas de agua en varias imágenes a la vez?",
+      "a1": "Sí, puedes seleccionar varias imágenes y aplicarles la misma marca de agua a todas simultáneamente.",
+      "q2": "¿Se pueden eliminar las marcas de agua?",
+      "a2": "Sí, las herramientas avanzadas pueden eliminar las marcas de agua, pero las marcas bien colocadas dificultan la eliminación.",
+      "q3": "¿Qué opacidad debo usar?",
+      "a3": "Generalmente entre el 30% y el 60% dependiendo del origen.",
+      "q4": "¿Debo colocar una marca de agua en el centro?",
+      "a4": "La ubicación central ofrece una protección más fuerte; Las esquinas son más sutiles: elige según tu objetivo."
+    },
+    "conclusionTitle": "Conclusión",
+    "conclusion": "La marca de agua es una forma sencilla de proteger imágenes, promocionar su marca y mantener la visibilidad de la propiedad. Cuando se hace correctamente, mejora su contenido sin distraerse de él.",
+    "ctaBtn": "Pruebe el marcador de agua de imagen →"
+  }
+}

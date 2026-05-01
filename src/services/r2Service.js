@@ -4,7 +4,7 @@
  * and returns the presigned metadata including a backend URL field when present.
  */
 export async function uploadToR2(file, tool = 'pdf-compressor') {
-  const res = await fetch('/r2-presign', {
+  const res = await fetch('/api/r2-presign', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ filename: file.name, contentType: file.type || 'application/pdf', tool }),

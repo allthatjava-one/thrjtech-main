@@ -2,6 +2,7 @@
   "title": "Blog",
   "loading": "Loading articles…",
   "error": "Error: {{error}}",
+  "noArticles": "No articles available right now.",
   "articlesHeader": "Articles",
   "first": "First",
   "last": "Last",

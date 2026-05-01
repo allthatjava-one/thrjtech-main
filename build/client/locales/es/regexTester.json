@@ -1,0 +1,233 @@
+{
+  "hero": {
+    "title": "Tester de Regex",
+    "tagline": "Pruebe expresiones regulares con coincidencias en vivo, grupos y reemplazo — directamente en su navegador.",
+    "blogLink": "Aprenda a probar regex →",
+    "icon": ".*"
+  },
+  "hint": {
+    "text": "¿Necesita limpiar salida JSON también?",
+    "btn": "Probar Formateador JSON"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es probar regex?",
+      "body": "Una herramienta de prueba regex le permite verificar cómo se comporta un patrón contra texto de muestra antes de usarlo en código o flujos de trabajo de datos."
+    },
+    "whatItDoes": {
+      "heading": "Qué hace",
+      "item1": "Resalta coincidencias en tiempo real.",
+      "item2": "Muestra grupos capturados.",
+      "item3": "Previsualiza resultados de reemplazo."
+    },
+    "usefulWhen": {
+      "heading": "Útil cuando",
+      "item1": "valida entradas de formulario.",
+      "item2": "extrae patrones de registros o texto.",
+      "item3": "depura errores de patrón en scripts."
+    },
+    "whenToUse": {
+      "heading": "Cuando usar expresiones regulares",
+      "body": "Regex es apropiado cuando necesita buscar, validar o transformar texto basándose en un patrón estructural en lugar de una cadena fija; por ejemplo, validar un formato de dirección de correo electrónico, extraer números de registros o reemplazar todas las apariciones de un patrón."
+    },
+    "flags": {
+      "heading": "Banderas de expresiones regulares",
+      "g": "g - global: siempre activo. Se devuelven todas las coincidencias que no se superponen (no solo la primera).",
+      "i": "i - no distingue entre mayúsculas y minúsculas: a coincide con A, B coincide con b.",
+      "m": "m — multilínea: ^ y $ coinciden con el inicio/final de cada línea, no solo con toda la cadena."
+    },
+    "captureGroups": {
+      "heading": "Captura de grupos y reemplazos",
+      "body": "Los paréntesis en un patrón de expresiones regulares crean grupos de captura: (\\w+). En una cadena de reemplazo, $1 se refiere al primer grupo, $2 al segundo, y así sucesivamente."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Qué tipo de expresión regular utiliza este probador?",
+      "a1": "R: expresión regular de JavaScript (ECMAScript), ejecutada por el motor RegExp integrado del navegador.",
+      "q2": "P: ¿Por qué el recuento de coincidencias incluye coincidencias superpuestas?",
+      "a2": "R: No es así: la bandera global devuelve coincidencias que no se superponen en orden de izquierda a derecha.",
+      "q3": "P: ¿Por qué mi patrón no coincide entre líneas?",
+      "a3": "R: Habilite la bandera m. De forma predeterminada, ^ y $ solo coinciden con el inicio y el final de toda la cadena."
+    }
+  },
+  "howItWorks": {
+    "step1": "Ingrese su patrón regex.",
+    "step2": "Pegue texto de prueba.",
+    "step3": "Ajuste indicadores y opciones de reemplazo.",
+    "step4": "Revise coincidencias y salida al instante."
+  },
+  "patternLabel": "Patrón",
+  "flagsLabel": "Indicadores",
+  "textLabel": "Texto de prueba",
+  "replaceLabel": "Reemplazar con",
+  "placeholderPattern": "Ingrese regex...",
+  "placeholderText": "Ingrese texto de prueba...",
+  "placeholderReplace": "Ingrese texto de reemplazo...",
+  "matchesLabel": "Coincidencias",
+  "noMatches": "Sin coincidencias",
+  "clearBtn": "Borrar",
+  "howToUse": {
+    "heading": "como usar",
+    "step1": "1. Pegue su texto en el panel Entrada de texto.",
+    "step2": "2. Escriba un patrón en el campo Buscar.",
+    "step3": "3. Los partidos se resaltan en vivo en el panel Vista previa del partido.",
+    "step4": "4. Utilice Reemplazar todo para reemplazar coincidencias."
+  },
+  "controls": {
+    "searchPlaceholder": "Patrón de búsqueda…",
+    "searchAriaLabel": "Patrón de búsqueda",
+    "regexLabel": "expresión regular",
+    "regexTitle": "Alternar el modo de expresión regular",
+    "flagI": "i",
+    "flagITitle": "No distingue entre mayúsculas y minúsculas",
+    "flagM": "m",
+    "flagMTitle": "multilínea",
+    "clearBtn": "Borrar",
+    "matchCount": "{{count}} coincidencias",
+    "noMatches": "No hay coincidencias",
+    "replaceToggleOpen": "▾ Reemplazar con…",
+    "replaceToggleClose": "▸ Reemplazar con…",
+    "replacePlaceholder": "Reemplazo (admite $1, $2…)",
+    "replaceAriaLabel": "Texto de reemplazo",
+    "replaceAllBtn": "Reemplazar todo",
+    "patternError": "Error de patrón: {{mensaje}}"
+  },
+  "input": {
+    "label": "Texto de entrada",
+    "placeholder": "Pegue o escriba texto aquí...\n\nEjemplo:\nHola mundo 123\nfoo@bar.com",
+    "ariaLabel": "Texto de entrada"
+  },
+  "preview": {
+    "label": "Vista previa del partido"
+  },
+  "output": {
+    "label": "Salida reemplazada",
+    "copyBtn": "Copiar",
+    "copiedBtn": "✓ ¡Copiado!"
+  },
+  "guide": {
+    "title": "Cómo probar y depurar expresiones regulares rápidamente (sin perder la cabeza)",
+    "intro": "Las expresiones regulares son poderosas... pero notoriamente frustrantes. Escribes un patrón esperando que coincida perfectamente y, en cambio, coincide demasiado, nada o funciona parcialmente.",
+    "cta": "👉 La clave para dominar las expresiones regulares no es la memorización, sino las pruebas y la iteración.",
+    "learnItems": {
+      "item1": "🧪 Pruebe los patrones de expresiones regulares de forma eficaz",
+      "item2": "🐞 Depurar problemas comunes",
+      "item3": "👁 Comprenda qué está haciendo realmente su patrón",
+      "item4": "🚀 Construya expresiones regulares con confianza"
+    },
+    "whatIs": {
+      "heading": "🔍 ¿Qué es un probador de expresiones regulares?",
+      "body": "Un probador de expresiones regulares es una herramienta interactiva que le permite escribir un patrón, proporcionar texto de muestra y ver coincidencias instantáneamente, convirtiendo las expresiones regulares de conjeturas en comentarios visuales."
+    },
+    "whyDifficult": {
+      "heading": "🧠 Por qué Regex se siente difícil",
+      "item1": "😵 Compacto: un patrón pequeño puede representar mucha lógica y ser difícil de leer.",
+      "item2": "🔄 Sensible: un cambio de carácter puede arruinarlo todo o cambiar completamente el comportamiento.",
+      "item3": "🧩 Resumen: los patrones no siempre \"se parecen\" a lo que combinan."
+    },
+    "whyUse": {
+      "heading": "⚡ Por qué debería utilizar siempre un probador de expresiones regulares",
+      "item1": "👀 Comentarios instantáneos: vea coincidencias mientras escribe; sin adivinar, sin ejecutar código repetidamente.",
+      "item2": "🐞 Depuración más rápida: identifique rápidamente grupos incorrectos, escapes faltantes y límites incorrectos.",
+      "item3": "🎯 Mejor precisión: pruebe con datos de entrada reales y casos extremos.",
+      "item4": "🚀 Aprendizaje más rápido: la experimentación le ayuda a comprender patrones y recordar la sintaxis de forma natural."
+    },
+    "example": {
+      "heading": "🧪 Ejemplo: expresiones regulares en acción",
+      "goal": "Objetivo: hacer coincidir las direcciones de correo electrónico",
+      "testInput": "Entrada de prueba:",
+      "result": "Un probador de expresiones regulares destaca ✅ coincidencias válidas y ❌ no válidas, lo que facilita mucho la depuración."
+    },
+    "mistakes": {
+      "heading": "🛠 Errores comunes de expresiones regulares",
+      "item1": "❌ Olvidarse de escapar de los personajes.",
+      "item1Wrong": "// Incorrecto: coincide con CUALQUIER carácter",
+      "item1Right": "// Correcto: coincide con el punto literal",
+      "item2": "❌ Coincidencia codiciosa",
+      "item2Wrong": "// Incorrecto: coincide demasiado",
+      "item2Right": "// Correcto - no codicioso",
+      "item3": "❌ Anclas faltantes",
+      "item3Wrong": "// Coincide en cualquier parte de la cadena",
+      "item3Right": "// Correcto: anclado a la cadena completa",
+      "item4": "❌ Clases de personajes incorrectas",
+      "item4Wrong": "// Incorrecto: solo minúsculas",
+      "item4Right": "// Correcto: letras y dígitos"
+    },
+    "stepByStep": {
+      "heading": "🪜 Paso a paso: cómo probar Regex",
+      "step1": "✍️ Ingrese su patrón de expresiones regulares",
+      "step2": "📄 Pegar texto de muestra",
+      "step3": "👀 Observar partidos",
+      "step4": "🔧 Ajustar patrón",
+      "step5": "🔁 Repetir hasta corregir"
+    },
+    "bestPractices": {
+      "heading": "🧠 Mejores prácticas para escribir expresiones regulares",
+      "item1": "✅ Comience de manera simple: cree patrones paso a paso y agregue complejidad gradualmente.",
+      "item2": "✅ Pruebe datos reales: utilice aportaciones reales del usuario y ejemplos del mundo real.",
+      "item3": "✅ Utilice comentarios cuando sea posible: divida expresiones regulares complejas en partes comprensibles.",
+      "item4": "✅ Evite la optimización excesiva: la expresión regular legible supera a la expresión regular \"inteligente\".",
+      "item5": "✅ Validar casos extremos: probar entradas vacías y formatos inesperados."
+    },
+    "useCases": {
+      "heading": "🧑‍💻 Casos de uso del mundo real",
+      "item1": "📧 Validación de correo electrónico: verifique el formato de entrada antes de enviarlo",
+      "item2": "🔐 Reglas de contraseña: aplica requisitos de complejidad",
+      "item3": "📄 Extracción de datos: extraiga ID, URL y números del texto",
+      "item4": "📊 Análisis de registros: analiza y filtra registros del sistema"
+    },
+    "pitfalls": {
+      "heading": "⚠️ Errores comunes",
+      "item1": "❌ Escribir expresiones regulares completas a la vez",
+      "item2": "❌ No probar casos extremos",
+      "item3": "❌ Copiar y pegar expresiones regulares sin entenderlas",
+      "item4": "❌ Ignorar la legibilidad"
+    },
+    "comparison": {
+      "heading": "🔍 Probador de expresiones regulares frente a ejecución de código",
+      "col1": "Característica",
+      "col2": "Probador de expresiones regulares",
+      "col3": "Código",
+      "row1col1": "Velocidad",
+      "row1col2": "Instante",
+      "row1col3": "Más lento",
+      "row2col1": "Depuración",
+      "row2col2": "Visual",
+      "row2col3": "Manual",
+      "row3col1": "Aprendiendo",
+      "row3col2": "Fácil",
+      "row3col3": "Más difícil"
+    },
+    "proTips": {
+      "heading": "🚀 Consejos profesionales",
+      "item1": "🔍 Pruebe primero partes pequeñas de expresiones regulares",
+      "item2": "🧩 Divida patrones complejos en trozos",
+      "item3": "⚡ Utilice coincidencias no codiciosas cuando sea necesario",
+      "item4": "📋 Mantenga las entradas de muestra guardadas para su reutilización"
+    },
+    "safety": {
+      "heading": "🔐 ¿Es seguro utilizar un probador de expresiones regulares?",
+      "body": "Herramientas más modernas:",
+      "item1": "✅ Ejecutar directamente en tu navegador",
+      "item2": "✅ No almacene entradas",
+      "warning": "👉 Aún así, evite pegar datos confidenciales o secretos de producción."
+    },
+    "faq": {
+      "heading": "❓ Preguntas frecuentes",
+      "q1": "¿Por qué mi expresión regular no coincide con nada?",
+      "a1": "Posibles motivos: anclajes faltantes, sintaxis incorrecta o entrada de prueba incorrecta.",
+      "q2": "¿Por qué mi expresión regular coincide demasiado?",
+      "a2": "Probablemente debido a patrones codiciosos como .*. Intentar .*? en cambio.",
+      "q3": "¿Puedo aprender expresiones regulares sin memorizarlo todo?",
+      "a3": "Sí, practicar con herramientas de prueba es la forma más rápida.",
+      "q4": "¿Cuál es la mejor manera de mejorar las habilidades de expresiones regulares?",
+      "a4": "Construir + probar + iterar repetidamente."
+    },
+    "conclusion": "Regex no tiene por qué ser frustrante. Con el enfoque correcto y un buen evaluador, puede crear patrones más rápido, depurar con confianza y comprender realmente lo que está haciendo su expresión regular.",
+    "ctaBtn": "👉 Pruebe su expresión regular aquí: Herramienta de prueba de expresiones regulares"
+  }
+}

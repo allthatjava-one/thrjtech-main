@@ -1,5 +1,4 @@
 import { useState, useRef, useCallback } from 'react'
-import { PDFDocument } from 'pdf-lib'
 
 function parseSegments(cleaned) {
   return cleaned.split(',').map((token) => {
@@ -78,6 +77,7 @@ export function usePdfSplitter() {
       setErrorMsg('')
 
       const arrayBuffer = await file.arrayBuffer()
+      const { PDFDocument } = await import('pdf-lib')
       const sourcePdf = await PDFDocument.load(arrayBuffer)
       setProgress(30)
 

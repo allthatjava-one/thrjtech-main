@@ -29,7 +29,7 @@ import PrivacyPolicyPage from './components/about/PrivacyPolicyPage';
 import TermsOfServicePage from './components/about/TermsOfServicePage';
 import ContactUsPage from './components/ContactUsPage';
 
-function HomePage() {
+export function HomePage() {
   const { t } = useTranslation('home')
 
   useEffect(() => {

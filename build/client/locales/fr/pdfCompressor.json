@@ -1,0 +1,201 @@
+{
+  "hero": {
+    "title": "Compresseur PDF",
+    "tagline": "Déposez et c'est parti - Réduisez la taille de votre fichier PDF sans perdre en qualité. Chargez votre fichier, compressez-le en quelques secondes et téléchargez le résultat plus petit.",
+    "blogLink": "Apprendre à compresser un PDF →"
+  },
+  "hint": {
+    "text": "Avez-vous besoin de diviser les PDF avant de les compresser ?",
+    "btn": "Essayer le diviseur PDF"
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça fonctionne"
+  },
+  "details": {
+    "whatIsCompression": {
+      "heading": "Qu'est-ce que la compression PDF",
+      "body": "La compression PDF est le processus de réduction de l'empreinte de stockage d'un fichier PDF en optimisant et ré-encodant ses ressources internes — principalement les images, les polices intégrées et les objets flux — tout en visant à préserver l'apparence visible du document. La compression est utile lorsque vous avez besoin de transferts plus rapides, de coûts de stockage réduits ou de respecter des limites de pièces jointes sans avoir à modifier ou recréer manuellement le document dans des applications externes."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne la compression",
+      "body": "Sous le capot, un compresseur inspecte l'arborescence d'objets du PDF, identifie les binaires intégrés volumineux (par exemple, les images raster et les sous-ensembles de polices redondants) et réécrit ces ressources avec des encodages plus efficaces. Il existe deux grandes stratégies : les optimisations sans perte (qui réemballent les flux et suppriment les objets inutilisés sans altérer les données de pixels) et la recompression d'image avec perte (qui réduit la fidélité de l'image en échange d'économies de taille significatives). De bons compresseurs choisissent l'option la moins destructive en fonction du type de contenu et des objectifs de qualité configurés."
+    },
+    "tradeoffs": {
+      "heading": "Compromis de conception",
+      "item1": "Qualité vs. Taille : Une recompression agressive avec perte réduit les octets mais peut affecter visiblement les photographies et les documents numérisés. Pour les actifs d'archivage ou prêts à l'impression, préférez des étapes conservatrices sans perte ; pour la livraison web, des paramètres plus agressifs sont souvent appropriés.",
+      "item2": "Vitesse et utilisation des ressources : La compression de PDF volumineux riches en images est intensive en CPU et en mémoire — le traitement côté serveur peut offrir des performances plus cohérentes pour les très grands fichiers que les approches client uniquement.",
+      "item3": "Prévisibilité : Différents producteurs PDF intègrent les ressources différemment ; les résultats varient selon la façon dont l'original a été généré."
+    },
+    "practical": {
+      "heading": "Recommandations pratiques",
+      "item1": "Préférez les étapes sans perte lorsque la fidélité visuelle exacte est requise (contenu juridique, réglementé ou d'archivage).",
+      "item2": "Pour les PDF numérisés ou photographiques, essayez d'abord une légère recompression avec perte et vérifiez visuellement la sortie avant de réduire davantage.",
+      "item3": "Conservez une copie du fichier original jusqu'à ce que vous confirmiez que la sortie compressée répond à vos besoins."
+    },
+    "whatItDoes": {
+      "heading": "Ce qu'il fait",
+      "item1": "Compresse les PDF en optimisant les images et flux intégrés.",
+      "item2": "Réduit la taille du fichier tout en préservant le texte et les métadonnées structurelles dans la mesure du possible.",
+      "item3": "Produit un PDF plus petit et téléchargeable adapté au partage et au stockage."
+    },
+    "usefulWhen": {
+      "heading": "Utile lorsque",
+      "item1": "vous devez envoyer un fichier PDF mais sa taille dépasse les limites des pièces jointes.",
+      "item2": "vous souhaitez économiser de l'espace disque.",
+      "item3": "vous préparez des documents pour l'email ou la publication web."
+    },
+    "comparison": {
+      "heading": "Comparaison",
+      "item1": "Rapide et facile — aucun logiciel local requis.",
+      "item2": "Le traitement côté serveur peut être plus cohérent pour les PDF volumineux ou complexes.",
+      "item3": "Pas un éditeur complet — pour des modifications avancées, utilisez des outils bureau."
+    },
+    "privacy": {
+      "heading": "Confidentialité et conservation",
+      "body": "Les fichiers chargés sont traités sur une infrastructure éphémère et supprimés conformément à la politique de conservation de l'application. Si vous traitez des documents hautement sensibles, préférez les outils bureau locaux ou une solution sur site correspondant à vos exigences de conformité."
+    },
+    "whenToUse": {
+      "heading": "Quand utiliser la compression PDF",
+      "body": "Utilisez la compression lorsque vous souhaitez optimiser des documents pour l'email, la publication Web ou pour économiser du stockage. La compression est particulièrement utile pour les documents numérisés, les rapports riches en photos ou tout contenu où les images intégrées dominent la taille du fichier."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Mon fichier est-il privé ?",
+      "a1": "R : Les fichiers sont traités temporairement et supprimés automatiquement conformément à la politique de l'application.",
+      "q2": "Q : La compression modifiera-t-elle la mise en page ou le texte consultable ?",
+      "a2": "R : Non — la compression se concentre sur les images et les flux tout en préservant le contenu textuel et la mise en page dans la plupart des cas.",
+      "q3": "Q : Puis-je contrôler le niveau de compression ?",
+      "a3": "R : Cette interface applique des heuristiques automatiques ; des préréglages avancés sont disponibles en modes pro ou expert dans d'autres outils.",
+      "q4": "Q : Que faire si le résultat semble pire ?",
+      "a4": "R : Conservez l'original et réessayez avec des paramètres plus doux ou utilisez des options sans perte uniquement."
+    }
+  },
+  "howItWorks": {
+    "step1": "Chargez un PDF par glisser-déposer ou via le bouton Parcourir.",
+    "step2": "Le fichier est envoyé au compresseur sans serveur qui optimise les images et flux intégrés.",
+    "step3": "La progression de la compression est affichée et le fichier compressé devient disponible au téléchargement.",
+    "step4": "Téléchargez le PDF compressé avant qu'il ne soit supprimé du stockage temporaire."
+  },
+  "badges": {
+    "instant": "⚡ Instantané",
+    "secure": "🔒 Sécurisé",
+    "autoDeleted": "🗑️ Suppression auto"
+  },
+  "dropZone": {
+    "icon": "📂",
+    "text": "Glissez-déposez votre PDF ici",
+    "or": "ou",
+    "browse": "Parcourir le fichier",
+    "removeTitle": "Supprimer le fichier"
+  },
+  "quality": {
+    "label": "Qualité",
+    "hq": "Haute qualité — perte visuelle minimale, réduction de taille modeste.",
+    "balanced": "Équilibré — bonne qualité avec des économies de taille significatives.",
+    "max": "Compression maximale — réduction de taille la plus grande, quelques pertes visuelles possibles."
+  },
+  "compressBtn": "Compresser le PDF",
+  "progress": {
+    "uploading": "Chargement vers le stockage R2…",
+    "compressing": "Compression du PDF…"
+  },
+  "result": {
+    "icon": "✅",
+    "title": "Compression terminée !",
+    "originalLabel": "Original",
+    "sizeLabel": "Taille",
+    "compressedLabel": "Compressé",
+    "download": "Télécharger le PDF compressé",
+    "another": "Compresser un autre fichier"
+  },
+  "note": "Remarque : Le fichier compressé sera stocké dans le stockage Cloudflare R2 pendant 30 min. Veuillez le télécharger dans ce délai. Après 30 min, le fichier sera automatiquement supprimé.",
+  "guide": {
+    "title": "Comment réduire la taille d'un fichier PDF sans perdre en qualité (Guide rapide et simple)",
+    "intro": "Vous avez probablement rencontré ce problème : « La taille du fichier dépasse la limite », l'email n'envoie pas votre PDF, ou un chargement échoue. Les PDF volumineux sont frustrants — mais vous n'avez pas besoin de recréer votre fichier. Ce court guide explique pourquoi les PDF deviennent volumineux, comment fonctionne la compression et comment réduire la taille du fichier sans ruiner la qualité.",
+    "whyLarge": {
+      "heading": "Pourquoi les fichiers PDF sont-ils si volumineux ?",
+      "body": "Un PDF peut contenir bien plus que du texte. Raisons courantes pour les fichiers volumineux :",
+      "item1": "Images haute résolution — les images utilisent souvent la pleine résolution et ne sont pas optimisées.",
+      "item2": "Polices intégrées — les PDF peuvent inclure plusieurs ensembles de polices complets.",
+      "item3": "Documents numérisés — les PDF numérisés sont des images enregistrées comme pages et peuvent être très volumineux.",
+      "item4": "Éléments non compressés — les fichiers créés sans optimisation contiennent des données supplémentaires."
+    },
+    "whatDoes": {
+      "heading": "Que fait la compression PDF ?",
+      "body": "La compression réduit la taille du fichier en abaissant la résolution des images, en supprimant les données inutiles et en optimisant la structure interne — visant un fichier plus petit tout en maintenant une qualité visuelle acceptable."
+    },
+    "whenToCompress": {
+      "heading": "Quand devriez-vous compresser un PDF ?",
+      "item1": "Envoi par email — évitez les limites de pièces jointes de 20–25 Mo.",
+      "item2": "Chargement sur des sites web — les portails d'emploi, formulaires et soumissions limitent souvent la taille des fichiers.",
+      "item3": "Économie de stockage — les fichiers plus petits économisent l'espace disque et accélèrent les sauvegardes.",
+      "item4": "Amélioration des performances — les PDF plus petits s'ouvrent et se chargent plus rapidement sur tous les appareils."
+    },
+    "bestPractices": {
+      "heading": "Meilleures pratiques pour la compression PDF",
+      "item1": "Choisissez le bon niveau de compression — une compression faible maintient la qualité, une compression élevée réduit davantage la taille.",
+      "item2": "Optimisez d'abord les images — redimensionnez/compressez les images avant de créer le PDF si possible.",
+      "item3": "Évitez les compressions répétées — conservez toujours une copie originale ; les recompressions répétées dégradent la qualité.",
+      "item4": "Connaissez votre usage — l'impression nécessite une qualité plus élevée ; le partage peut être plus petit.",
+      "item5": "Utilisez un outil fiable — équilibrez taille et qualité ; essayez ce compresseur pour des résultats rapides."
+    },
+    "mistakes": {
+      "heading": "Erreurs courantes à éviter",
+      "item1": "Sur-compresser des documents importants",
+      "item2": "Compresser des PDF déjà optimisés",
+      "item3": "Ignorer la lisibilité après la compression",
+      "item4": "Utiliser des numérisations de faible qualité comme entrée",
+      "item5": "Ne pas vérifier la sortie finale"
+    },
+    "stepByStep": {
+      "heading": "Étape par étape : Comment compresser un PDF",
+      "step1": "Chargez votre fichier PDF",
+      "step2": "Choisissez le niveau de compression",
+      "step3": "Démarrez la compression",
+      "step4": "Prévisualisez le résultat",
+      "step5": "Téléchargez le fichier optimisé"
+    },
+    "useCases": {
+      "heading": "Cas d'utilisation réels",
+      "item1": "Candidatures — chargez des CV dans les limites",
+      "item2": "Documents professionnels — partagez des rapports efficacement",
+      "item3": "Devoirs étudiants — soumettez sans erreurs de chargement",
+      "item4": "Partage mobile — évitez les longs délais de téléchargement"
+    },
+    "comparison": {
+      "heading": "Compression PDF vs Division de fichier",
+      "col1": "Fonctionnalité",
+      "col2": "Compression",
+      "col3": "Division",
+      "row1col1": "Objectif",
+      "row1col2": "Réduire la taille",
+      "row1col3": "Diviser en parties",
+      "row2col1": "Garde le fichier intact",
+      "row2col2": "✅ Oui",
+      "row2col3": "❌ Non",
+      "row3col1": "Meilleur pour",
+      "row3col2": "Email, chargements",
+      "row3col3": "Partage de grands documents"
+    },
+    "tips": {
+      "heading": "Conseils pour de meilleurs résultats",
+      "item1": "Utilisez des originaux clairs et de haute qualité",
+      "item2": "Évitez les images inutiles",
+      "item3": "Gardez un formatage simple",
+      "item4": "Testez différents niveaux de compression"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "La compression PDF réduit-elle la qualité ?",
+      "a1": "Oui — mais les bons outils minimisent la perte perceptible.",
+      "q2": "Combien puis-je réduire la taille du fichier ?",
+      "a2": "Cela dépend du contenu : les PDF riches en images voient de grandes réductions ; les PDF texte uniquement voient de plus petits changements.",
+      "q3": "Puis-je annuler la compression ?",
+      "a3": "Non — la compression est généralement permanente. Conservez les originaux."
+    },
+    "conclusionTitle": "Conclusion",
+    "conclusion": "Les PDF volumineux n'ont pas à vous ralentir. Utilisez des techniques de compression appropriées pour partager des fichiers, respecter les limites de chargement et améliorer les performances sans sacrifier la convivialité.",
+    "ctaBtn": "👉 Compressez votre PDF ici : Outil Compresseur PDF"
+  }
+}

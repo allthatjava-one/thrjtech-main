@@ -1,0 +1,45 @@
+{
+  "title": "Política de privacidad",
+  "lastUpdated": "Última actualización: abril de 2026",
+  "overview": {
+    "heading": "Resumen",
+    "body": "THRJTech respeta su privacidad. Esta política explica cómo se recopila y utiliza la información cuando visita este sitio. Todas las herramientas de procesamiento de imágenes y PDF se ejecutan completamente en su navegador — sus archivos nunca se cargan a nuestros servidores a menos que se indique explícitamente."
+  },
+  "googleAdsense": {
+    "heading": "Google AdSense y Publicidad",
+    "body1": "Utilizamos Google AdSense para mostrar anuncios en este sitio. Google, como proveedor externo, usa cookies para mostrar anuncios basados en sus visitas anteriores a este sitio web y otros sitios de Internet.",
+    "body2Pre": "Puede optar por no recibir publicidad personalizada visitando",
+    "googleAdsLink": "Configuración de anuncios de Google",
+    "body2Mid": ". Alternativamente, puede optar por no recibir cookies de terceros visitando",
+    "aboutadsLink": "acerca deads.info",
+    "body2Post": "."
+  },
+  "cookies": {
+    "heading": "Galletas",
+    "body": "No establecemos cookies de seguimiento propias. Los socios publicitarios de terceros (Google AdSense) pueden establecer cookies en su dispositivo sujetas a sus propias políticas de privacidad."
+  },
+  "userConsent": {
+    "heading": "Consentimiento del usuario",
+    "body": "Utilizamos una Plataforma de Gestión de Consentimiento (CMP) para obtener y registrar el consentimiento del usuario donde lo requieren las leyes locales. Puede revisar o cambiar sus preferencias de consentimiento a través de los controles de privacidad del sitio."
+  },
+  "dataWeCollect": {
+    "heading": "Datos que recopilamos",
+    "body": "No recopilamos, almacenamos ni compartimos ninguna información de identificación personal. Los archivos que procesa con nuestras herramientas permanecen en su dispositivo y no se nos transmiten. Los archivos cargados para procesamiento del lado del servidor se procesan en memoria, nunca son vistos por humanos y se eliminan permanentemente de nuestros servidores automáticamente dentro de los 30 minutos."
+  },
+  "googleAnalytics": {
+    "heading": "Google Analytics",
+    "body": "Utilizamos Google Analytics (GA4) para recopilar datos de uso anonimizados como vistas de página, eventos y métricas de rendimiento para ayudar a mejorar el sitio web."
+  },
+  "thirdPartyLinks": {
+    "heading": "Enlaces de terceros",
+    "body": "Este sitio puede contener enlaces a sitios web externos. No somos responsables de las prácticas de privacidad o el contenido de esos sitios."
+  },
+  "californiaRights": {
+    "heading": "Derechos de privacidad de California (CCPA/CPRA)",
+    "body": "Si es residente de California, tiene derecho a optar por no participar en la 'venta' o 'intercambio' de su información personal. No vendemos sus datos personales."
+  },
+  "contact": {
+    "heading": "Contacto",
+    "body": "Si tiene preguntas sobre esta Política de privacidad, comuníquese con nosotros en privacy@thjrtech.com"
+  }
+}

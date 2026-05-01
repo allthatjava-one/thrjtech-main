@@ -1,0 +1,110 @@
+<div class="blog-fragment" style="color:#222;line-height:1.6;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:820px;margin:0 auto;padding:18px;">
+  <h1 style="font-size:28px;margin-bottom:8px;color:#111;">정규식 테스터 — 정규 표현식을 빠르게 작성하고 테스트하기</h1>
+
+  <p style="margin-top:0;margin-bottom:18px;color:#333;">정규 표현식은 가장 강력한 텍스트 처리 도구 중 하나이지만 — 작성하기가 가장 어렵기도 합니다. THRJ의 <strong>정규식 테스터</strong>는 실시간 일치 강조 표시와 대체 미리보기를 통해 패턴을 작성, 테스트, 디버그할 수 있는 실시간 환경을 제공합니다. <a href="/regex-tester">정규식 테스터 열기</a>.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">정규 표현식이란?</h2>
+  <p><strong>정규 표현식</strong>(regex)은 검색 패턴을 정의하는 문자들의 시퀀스입니다. 이메일 주소, 다양한 형식의 전화번호, 줄 앵커, 반복 패턴, 선택적 그룹 등 훨씬 더 많은 것을 일치시킬 수 있습니다. Regex는 JavaScript, Python, Java, Go, Ruby 및 많은 편집기와 CLI 도구에서 지원됩니다.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">개요</h2>
+  <p>정규식 테스터는 정규 표현식을 작성하고, 샘플 텍스트에 대해 테스트하고, 일치 결과를 시각화하는 실시간 환경을 제공합니다. 캡처 그룹, 대체 미리보기를 표시하고 <code>g</code>, <code>i</code>, <code>m</code>, <code>s</code>, <code>u</code> 같은 일반적인 플래그를 지원합니다.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">빠른 단계</h2>
+  <ol>
+    <li>정규식 테스터 페이지 열기: <a href="/regex-tester">/regex-tester</a>.</li>
+    <li>입력 영역에 샘플 텍스트를 입력하거나 붙여넣으세요.</li>
+    <li>패턴 필드에 정규 표현식을 입력하세요.</li>
+    <li>필요에 따라 <code>i</code>(대소문자 무시) 또는 <code>g</code>(전체) 등의 플래그를 전환하세요.</li>
+    <li>일치 결과가 실시간으로 강조 표시되고 대체 미리보기를 사용하여 치환을 테스트하세요.</li>
+  </ol>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">기능</h2>
+  <ul>
+    <li>일치 결과 및 캡처 그룹의 실시간 강조 표시</li>
+    <li>안전하게 치환을 테스트하는 대체 미리보기</li>
+    <li>플래그 전환 및 일반 패턴 스니펫</li>
+    <li>공유를 위한 패턴 및 샘플 텍스트 내보내기</li>
+  </ul>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">정규식 플래그 이해하기</h2>
+  <table style="width:100%;border-collapse:collapse;margin:10px 0 18px 0;">
+    <thead>
+      <tr style="text-align:left;color:#111;border-bottom:1px solid #e6e6e6;"><th style="padding:8px 6px;">플래그</th><th style="padding:8px 6px;">기호</th><th style="padding:8px 6px;">효과</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Global</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">g</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">모든 일치 찾기 (첫 번째만이 아닌)</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Ignore case</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">i</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">대소문자 무시</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Multiline</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">m</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">^ 와 $ 가 줄 시작/끝 매칭</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">Dot all</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">s</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">. 가 줄바꿈도 매칭</td></tr>
+      <tr><td style="padding:8px 6px;">Unicode</td><td style="padding:8px 6px;">u</td><td style="padding:8px 6px;">전체 유니코드 매칭 활성화</td></tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">일반적인 정규식 패턴 참조</h2>
+  <table style="width:100%;border-collapse:collapse;margin:10px 0 18px 0;">
+    <thead>
+      <tr style="text-align:left;color:#111;border-bottom:1px solid #e6e6e6;"><th style="padding:8px 6px;">패턴</th><th style="padding:8px 6px;">목적</th><th style="padding:8px 6px;">예시</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">이메일 주소</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">user@example.com</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">https?:\/\/[^^\s]+</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">URL (http 또는 https)</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">https://example.com/path</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">\+?[\d\s\-().]{7,15}</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">전화번호 (유연)</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">+1 (555) 123-4567</td></tr>
+      <tr><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">\b\d{4}-\d{2}-\d{2}\b</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">ISO 날짜 (YYYY-MM-DD)</td><td style="padding:8px 6px;border-bottom:1px solid #f3f3f3;">2024-07-15</td></tr>
+      <tr><td style="padding:8px 6px;">^\s*$</td><td style="padding:8px 6px;">빈 줄</td><td style="padding:8px 6px;">공백만 있는 줄</td></tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">대체 모드 사용 방법</h2>
+  <p>대체 미리보기를 통해 <code>String.replace()</code> 또는 sed 스타일 치환을 적용하기 전에 테스트할 수 있습니다.</p>
+  <p><strong>예시 — 날짜 정규화:</strong></p>
+  <pre style="background:#fafafa;border:1px solid #eee;padding:10px;border-radius:6px;">Pattern: (\d{4})-(\d{2})-(\d{2})
+Replacement: $2/$3/$1
+Result: 2024-07-15 → 07/15/2024</pre>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">단계별 시나리오</h2>
+  <h3 style="font-size:18px;margin-top:10px;color:#111;">폼 필드 패턴 유효성 검사</h3>
+  <ol>
+    <li>입력 영역에 샘플 값을 붙여넣으세요.</li>
+    <li>유효성 검사 정규식을 작성하세요 (예: 우편번호).</li>
+    <li><code>g</code> 플래그를 전환하여 모든 일치를 확인하세요.</li>
+    <li>유효한 항목만 강조 표시될 때까지 조정하세요.</li>
+  </ol>
+
+  <h3 style="font-size:18px;margin-top:10px;color:#111;">복사한 데이터 정리</h3>
+  <ol>
+    <li>스프레드시트에서 복잡한 텍스트를 붙여넣으세요.</li>
+    <li>원하지 않는 접두사와 일치하는 패턴을 작성하세요.</li>
+    <li>빈 대체로 대체 모드를 사용하여 제거하세요.</li>
+    <li>정리된 결과를 복사하세요.</li>
+  </ol>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">팁 및 일반적인 실수</h2>
+  <ul>
+    <li>단순하게 시작하고 점진적으로 복잡성을 추가하세요.</li>
+    <li><code>.</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>(</code>, <code>)</code>와 같은 특수 문자는 이스케이프하세요.</li>
+    <li>일치가 없으면 플래그를 확인하세요 — 특히 <code>g</code>를 확인하세요.</li>
+    <li>복잡한 대체에서 명확성을 위해 명명된 캡처 그룹(<code>(?&lt;name&gt;...)</code>)을 사용하세요.</li>
+  </ul>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">개인 정보 보호</h2>
+  <p>모든 처리는 브라우저에서 로컬로 이루어집니다. 패턴과 테스트 텍스트는 기기 밖으로 나가지 않습니다. 클립보드 기록이 걱정된다면 민감한 데이터는 붙여넣기를 피하세요.</p>
+
+  <br>
+  <h2 style="font-size:20px;margin-top:6px;color:#111;">자주 묻는 질문</h2>
+  <p><strong>프로그래밍 지식이 필요한가요?</strong><br/>아니요. 테스터는 개발자와 비개발자 모두 사용할 수 있습니다. 위의 빠른 참조가 일반적인 사용 사례를 다룹니다.</p>
+
+  <p><strong>일치와 캡처 그룹의 차이점은?</strong><br/>일치는 패턴이 일치시킨 전체 텍스트이고, 캡처 그룹(괄호)은 해당 일치의 하위 부분을 추출합니다.</p>
+
+  <hr style="border:none;border-top:1px solid #eee;margin:18px 0;"/>
+  <p style="color:#666;font-size:13px;margin-bottom:0;">Published by THRJ Tech</p>
+</div>

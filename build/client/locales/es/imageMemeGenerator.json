@@ -1,0 +1,206 @@
+{
+  "hero": {
+    "title": "Generador de memes",
+    "tagline": "Cree memes en segundos agregando capas de texto sobre cualquier imagen.",
+    "blogLink": "Aprenda a crear memes →"
+  },
+  "hint": {
+    "text": "¿Necesita recortar la imagen del meme primero?",
+    "btn": "Probar Recortador de imagen"
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "howItWorksSteps": {
+    "step1": "Cargue una imagen base.",
+    "step2": "Agregue una o más capas de texto.",
+    "step3": "Ajuste posición, tamaño y color.",
+    "step4": "Previsualice y descargue su meme."
+  },
+  "canvas": {
+    "placeholder": "Cargue una imagen para comenzar",
+    "previewHint": "Use arrastrar y soltar para posicionar el texto"
+  },
+  "fileRow": {
+    "change": "Cambiar imagen",
+    "clear": "Borrar",
+    "loaded": "Imagen cargada"
+  },
+  "layers": {
+    "label": "Capas de texto",
+    "add": "Agregar capa",
+    "addAria": "Agregar capa de texto",
+    "removeAria": "Eliminar capa de texto",
+    "topPlaceholder": "Texto superior",
+    "bottomPlaceholder": "Texto inferior",
+    "newPlaceholder": "Nuevo texto"
+  },
+  "advanced": {
+    "label": "Opciones avanzadas",
+    "fontSize": "Tamaño de fuente",
+    "textColor": "Color del texto",
+    "toggleOpen": "▾",
+    "toggleClosed": "▸",
+    "fontSizePx": "{{tamaño}}px"
+  },
+  "buttons": {
+    "reset": "Restablecer",
+    "preview": "Vista previa",
+    "download": "Descargar"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es un generador de memes?",
+      "body": "Un generador de memes es un editor creativo liviano que le permite colocar superposiciones de texto en imágenes para producir gráficos humorísticos, informativos o expresivos rápidamente. Admite múltiples capas de texto, posicionamiento libre, tamaño de fuente, selección de color y controles de exportación simples para que puedas crear una imagen lista para compartir en segundos."
+    },
+    "howWorks": {
+      "heading": "Cómo funciona el generador",
+      "body": "Cargue o suelte una imagen en el área del lienzo, luego agregue una o más capas de texto usando los controles. Cada capa se puede colocar arrastrándola, cambiar su tamaño mediante los controles avanzados y aplicar estilo con un selector de color. El área de vista previa refleja los cambios en tiempo real."
+    },
+    "whyBrowser": {
+      "heading": "¿Por qué utilizar una herramienta basada en navegador?",
+      "body": "Los editores de memes basados ​​en navegador son instantáneos y accesibles: no requieren instalaciones, se ejecutan sin conexión una vez cargados y mantienen las imágenes locales en su dispositivo."
+    },
+    "tips": {
+      "heading": "Consejos para mejores memes",
+      "item1": "Utilice subtítulos breves y contundentes y escriba el texto en mayúsculas para los estilos de memes clásicos.",
+      "item2": "Mantenga un buen contraste entre el texto y el fondo; agregue trazos o sombras si es necesario para facilitar la lectura.",
+      "item3": "Utilice varias capas para diseños complejos: títulos, subtítulos o pequeñas anotaciones funcionan bien."
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "P: ¿Mi imagen se cargará en algún lugar?",
+      "a1": "R: No, todo se ejecuta en el lado del cliente en su navegador.",
+      "q2": "P: ¿Puedo agregar más de dos líneas de texto?",
+      "a2": "R: Sí, use el botón ＋ para agregar tantas capas de texto como necesite.",
+      "q3": "P: ¿Qué formatos de imagen son compatibles?",
+      "a3": "R: Cualquier formato de imagen que admita su navegador (JPEG, PNG, WebP, GIF, etc.)."
+    }
+    ,
+    "accessibility": {
+      "heading": "Accesibilidad y privacidad",
+      "body": "Los controles están diseñados pensando en la accesibilidad (objetivos grandes, soporte de teclado). Dado que la composición se realiza localmente, sus imágenes no se transmiten fuera de su dispositivo a menos que elija cargarlas o compartirlas."
+    }
+  },
+  "howItWorks": {
+    "step1": "Cargue una imagen haciendo clic en el área del lienzo o arrastrando y soltando un archivo en él.",
+    "step2": "Haga clic en el botón ＋ para agregar una capa de texto y escriba su título en el cuadro de texto en el panel izquierdo.",
+    "step3": "Arrastra el texto superpuesto en el lienzo para posicionarlo. Utilice la sección Avanzado para ajustar el tamaño y el color de la fuente.",
+    "step4": "Agregue más capas de texto según sea necesario, luego haga clic en Descargar para guardar su meme como PNG."
+  },
+  "actions": {
+    "reset": "Restablecimiento",
+    "preview": "Vista previa",
+    "download": "Descargar"
+  },
+  "popup": {
+    "close": "×"
+  },
+  "guide": {
+    "title": "Cómo crear memes que realmente se vuelvan virales (guía sencilla para principiantes)",
+    "intro": "Los memes están por todas partes. Desde las redes sociales hasta los chats grupales, los memes se han convertido en una de las formas más rápidas de comunicar ideas, humor y opiniones.",
+    "learnItems": {
+      "item1": "¿Qué hace que un meme funcione?",
+      "item2": "Cómo crear uno desde cero",
+      "item3": "Errores comunes a evitar",
+      "item4": "Consejos para hacer que tus memes sean más atractivos"
+    },
+    "whatIs": {
+      "heading": "¿Qué es un meme (de verdad)?",
+      "body": "Un meme es una pieza de contenido, generalmente una imagen con texto, diseñada para ser compartida y adaptada por otros. A diferencia de las imágenes normales, los memes son identificables, rápidos de entender y fáciles de compartir.",
+      "tip": "👉 Un buen meme transmite su mensaje en segundos."
+    },
+    "why": {
+      "heading": "Por qué los memes son tan populares",
+      "item1": "Comunicación instantánea: los memes comprimen ideas en una imagen y unas pocas palabras, más rápido que los párrafos.",
+      "item2": "Relación: los mejores memes hacen que la gente piense \"Ese soy exactamente yo\".",
+      "item3": "Capacidad de compartir: los memes están diseñados para volver a publicarse y modificarse.",
+      "item4": "Bajo esfuerzo, alto impacto: no necesita habilidades de diseño ni herramientas costosas; simplemente una buena idea."
+    },
+    "anatomy": {
+      "heading": "Anatomía de un buen meme",
+      "image": "Imagen: Reconocible o expresiva, apoya el mensaje.",
+      "text": "Texto: Corto y claro, fácil de leer.",
+      "punchline": "Remate: El giro o el humor que hace que la gente comparta."
+    },
+    "types": {
+      "heading": "Tipos de memes que puedes crear",
+      "item1": "😂 Memes relacionados — situaciones cotidianas",
+      "item2": "🔥 Memes basados ​​en tendencias: utilice formatos actuales",
+      "item3": "💼 Memes de nicho: diríjase a audiencias específicas",
+      "item4": "🧠 Memes informativos: mezcla humor con información útil"
+    },
+    "bestPractices": {
+      "heading": "Mejores prácticas",
+      "item1": "Mantenga el texto breve: de 2 a 3 segundos para leer.",
+      "item2": "Utilice fuentes claras y en negrita con alto contraste.",
+      "item3": "Haga coincidir el texto con la imagen para reforzar el mensaje.",
+      "item4": "Manténgase relevante: los formatos de tendencia funcionan mejor.",
+      "item5": "Conozca a su audiencia y adapte el humor."
+    },
+    "mistakes": {
+      "heading": "Errores comunes a evitar",
+      "item1": "demasiado texto",
+      "item2": "Mensaje poco claro",
+      "item3": "Usar formatos obsoletos",
+      "item4": "Imágenes de baja calidad",
+      "item5": "Tratando demasiado de ser gracioso"
+    },
+    "stepByStep": {
+      "heading": "Paso a paso: cómo crear un meme",
+      "step1": "Sube o elige una imagen",
+      "step2": "Agregar texto superior y/o inferior",
+      "step3": "Ajustar el tamaño y la posición de la fuente",
+      "step4": "Vista previa de tu meme",
+      "step5": "Descargar y compartir"
+    },
+    "useCases": {
+      "heading": "Casos de uso en el mundo real",
+      "item1": "📱 Contenido de redes sociales: aumenta la participación",
+      "item2": "💼 Marketing: hacer que las marcas se sientan humanas",
+      "item3": "🧑‍💻 Humor del desarrollador: crea una comunidad",
+      "item4": "👥 Chats grupales: reacciona más rápido que escribir"
+    },
+    "tips": {
+      "heading": "Consejos para hacer que tus memes se destaquen",
+      "item1": "Usa giros inesperados",
+      "item2": "Combina dos ideas de forma creativa",
+      "item3": "Mantenlo simple pero inteligente",
+      "item4": "Pruebe diferentes variaciones"
+    },
+    "comparison": {
+      "heading": "Generador de memes vs editor de imágenes",
+      "col1": "Característica",
+      "col2": "Generador de memes",
+      "col3": "Editor de imágenes",
+      "row1col1": "Objetivo",
+      "row1col2": "Creación rápida de memes",
+      "row1col3": "Edición general",
+      "row2col1": "Velocidad",
+      "row2col2": "Rápido",
+      "row2col3": "Más lento",
+      "row3col1": "Facilidad de uso",
+      "row3col2": "muy facil",
+      "row3col3": "Moderado",
+      "row4col1": "Enfocar",
+      "row4col2": "Texto + imagen",
+      "row4col3": "Personalización completa"
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "¿Necesito habilidades de diseño?",
+      "a1": "No, sólo una buena idea y un mensaje claro.",
+      "q2": "¿Puedo usar cualquier imagen?",
+      "a2": "Puedes hacerlo, pero ten en cuenta los derechos de autor y prefiere formatos de memes comunes cuando sea posible.",
+      "q3": "¿Por qué mis memes no generan interacción?",
+      "a3": "Posibles motivos: demasiado texto, no identificable, formato desactualizado."
+    },
+    "conclusion": "Crear memes no se trata de un diseño complejo, se trata de comunicación y sincronización. Concéntrese en ideas claras, texto simple y relacionabilidad.",
+    "ctaBtn": "Generador de memes de imágenes →",
+    "lead2": "Pero crear un meme que la gente realmente comparta? Esa es otra historia.",
+    "learnIntro": "En esta guía, aprenderás:",
+    "conclusionTitle": "Conclusión",
+    "tryIt": "Prueba a crear el tuyo aquí:"
+  }
+}

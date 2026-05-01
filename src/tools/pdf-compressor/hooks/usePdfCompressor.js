@@ -58,7 +58,11 @@ export function usePdfCompressor() {
       setProgress(60)
       setStatus('compressing')
 
-      const backendUrl = pdfCompressorBackendUrl || import.meta.env.VITE_PDF_COMPRESSOR_BACKEND_URL
+      // Prefer backend URL returned by the presign endpoint; fallback to
+      // the local proxy `/api/pdf-compressor` which forwards to the
+      // server-side backend configured in `.dev.vars` (accessible via
+      // `context.cloudflare.env` in the proxy route).
+      const backendUrl = pdfCompressorBackendUrl || '/api/pdf-compressor'
       if (!backendUrl) {
         throw new Error('PDF compressor backend URL is not configured.')
       }

@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "title": "Grabadora de pantalla",
+    "tagline": "Graba tu pantalla al instante: permanece en tu navegador, privada y gratuita."
+  },
+  "actions": {
+    "start": "Iniciar grabación",
+    "stop": "Detener grabación",
+    "download": "Descargar grabación"
+  },
+  "status": {
+    "recording": "Grabando...",
+    "idle": "Listo"
+  },
+  "preview": {
+    "title": "Vista previa"
+  },
+  "warnings": {
+    "browserUnsupported": "Tu navegador no admite la captura de pantalla. Prueba Chrome, Edge o Firefox en escritorio.",
+    "desktopOnly": "Mejor usar en navegadores de escritorio."
+  }
+}

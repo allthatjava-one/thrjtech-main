@@ -1,11 +1,10 @@
 name = "thrjtech-main"
-main = "worker.js"
+main = "build/server/index.js"
 compatibility_date = "2026-03-13"
 
 [assets]
-directory = "./dist"
+directory = "./build/client"
 binding = "ASSETS"
-not_found_handling = "single-page-application"
 
 [observability]
 enabled = false

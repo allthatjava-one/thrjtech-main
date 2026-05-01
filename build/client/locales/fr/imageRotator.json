@@ -1,0 +1,143 @@
+{
+  "hero": {
+    "title": "Rotateur d'images",
+    "tagline": "Avez-vous déjà été ennuyé par des images tournées ? Ne cherchez plus ! Faites pivoter une ou plusieurs images de 90°/180°/270° vers la gauche ou la droite. Prévisualisez le résultat instantanément, puis téléchargez vos images ou compressez-les toutes en ZIP. Sans envoi ni serveur."
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "dropzone": {
+    "text": "Glissez-déposez des images ici, ou cliquez pour parcourir",
+    "sub": "Compatible avec JPG, PNG, WebP, GIF, AVIF et plus"
+  },
+  "actions": {
+    "rotateLeft": "Pivoter à gauche",
+    "rotateRight": "Pivoter à droite",
+    "applyAll": "Appliquer à tous",
+    "download": "Télécharger",
+    "downloadAll": "Tout télécharger (ZIP)",
+    "downloading": "Téléchargement…",
+    "addMore": "+ Ajouter",
+    "clearAll": "Tout effacer",
+    "remove": "Supprimer"
+  },
+  "hint": {
+    "text": "Besoin de redimensionner votre image après rotation ?",
+    "btn": "Essayer le Redimensionneur"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que le Rotateur d'images ?",
+      "body": "Le Rotateur d'images vous permet de faire pivoter une ou plusieurs images par incréments de 90 degrés directement dans votre navigateur. Tout le traitement s'effectue localement — vos fichiers ne quittent jamais votre appareil."
+    },
+    "howWorks": {
+      "heading": "Comment fonctionne la rotation",
+      "body": "Chaque image est dessinée sur un canvas hors écran avec la rotation sélectionnée. La sortie est exportée dans le format d'origine en préservant la qualité. Pour les rotations de 90°, 180° et 270°, les dimensions du canvas sont automatiquement ajustées."
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Q : Mes images sont-elles envoyées à un serveur ?",
+      "a1": "R : Non — toute la rotation s'effectue localement dans votre navigateur.",
+      "q2": "Q : Puis-je faire pivoter plusieurs images à la fois ?",
+      "a2": "R : Oui — déposez plusieurs images, faites-les pivoter indépendamment, puis utilisez Tout télécharger pour obtenir un ZIP.",
+      "q3": "Q : Le fichier original est-il modifié ?",
+      "a3": "R : Non — le fichier original reste inchangé. Vous téléchargez une nouvelle copie avec la rotation appliquée."
+    }
+  },
+  "guide": {
+    "title": "Outil de rotation d'images – Faites pivoter vos images en ligne instantanément sans perte de qualité",
+    "lead": "Besoin de faire pivoter une photo rapidement ? Notre outil vous aide à faire pivoter des images en quelques secondes. Importez votre image, choisissez l'angle, prévisualisez le résultat et téléchargez-le instantanément.",
+    "intro2": "Que vous ayez besoin de corriger l'orientation d'une photo prise avec un téléphone, de préparer des images pour les réseaux sociaux ou d'ajuster des documents numérisés, faire pivoter une image doit être simple et rapide.",
+    "why": {
+      "heading": "🔄 Pourquoi faire pivoter une image ?",
+      "body": "Les images sont souvent enregistrées dans le mauvais sens selon l'appareil utilisé. La rotation corrige l'alignement et améliore la présentation.",
+      "reasons": "Raisons courantes de faire pivoter une image :",
+      "item1": "📱 Corriger des photos prises de côté ou à l'envers",
+      "item2": "🌐 Préparer des images pour des sites web ou blogs",
+      "item3": "📄 Corriger l'orientation de documents numérisés",
+      "item4": "🛍️ Améliorer les photos produits pour l'e-commerce",
+      "item5": "📊 Ajuster les visuels pour des présentations ou réseaux sociaux"
+    },
+    "how": {
+      "heading": "⚡ Comment faire pivoter une image en ligne",
+      "intro": "Utiliser un outil de rotation en ligne est simple :",
+      "step1": "📤 Importez votre fichier image",
+      "step2": "↩️ Sélectionnez le sens de rotation",
+      "step3": "👀 Prévisualisez l'image pivotée",
+      "step4": "⬇️ Téléchargez l'image mise à jour instantanément"
+    },
+    "formats": {
+      "heading": "🧩 Formats d'image pris en charge",
+      "intro": "Un bon outil de rotation devrait prendre en charge les formats courants :",
+      "item1": "🖼️ JPG / JPEG",
+      "item2": "🎨 PNG",
+      "item3": "🌐 WEBP",
+      "item4": "🎞️ GIF",
+      "item5": "🧱 BMP",
+      "item6": "✏️ SVG",
+      "item7": "📷 HEIC"
+    },
+    "benefits": {
+      "heading": "🚀 Avantages d'un outil de rotation en ligne",
+      "card1title": "Aucune installation requise",
+      "card1desc": "Faites pivoter des photos directement depuis votre navigateur, sans télécharger de logiciel.",
+      "card2title": "Traitement rapide",
+      "card2desc": "Importez et faites pivoter en quelques secondes.",
+      "card3title": "Respectueux de la vie privée",
+      "card3desc": "Les outils basés sur le navigateur traitent souvent les fichiers localement, réduisant les risques d'envoi.",
+      "card4title": "Fonctionne sur tous les appareils",
+      "card4desc": "Utilisable sur ordinateur, tablette ou mobile.",
+      "card5title": "Facile pour tous",
+      "card5desc": "Aucune expérience en retouche photo requise."
+    },
+    "useCases": {
+      "heading": "🎯 Cas d'utilisation courants",
+      "intro": "La rotation d'image est utile dans de nombreuses situations :",
+      "item1": "Corriger des photos de vacances",
+      "item2": "Corriger des portraits pris avec un smartphone",
+      "item3": "Faire pivoter des captures d'écran numérisées",
+      "item4": "Préparer des images produits pour les marketplaces",
+      "item5": "Aligner des graphiques pour des présentations",
+      "item6": "Créer du contenu pour les réseaux sociaux"
+    },
+    "faq": {
+      "heading": "❓ Questions fréquentes",
+      "q1": "La rotation réduit-elle la qualité de l'image ?",
+      "a1": "La plupart des outils modernes préservent la qualité lors de la rotation des formats courants.",
+      "q2": "Puis-je faire pivoter une image selon un angle personnalisé ?",
+      "a2": "Certains outils permettent une rotation libre au-delà des incréments de 90°.",
+      "q3": "La rotation d'image est-elle gratuite ?",
+      "a3": "De nombreux outils de rotation en ligne sont entièrement gratuits.",
+      "q4": "Dois-je créer un compte ?",
+      "a4": "La plupart des outils en ligne ne nécessitent pas d'inscription."
+    },
+    "whyUs": {
+      "heading": "⭐ Pourquoi utiliser ThrjTech Image Rotator ?",
+      "body": "Notre outil offre un flux de travail simple axé sur la rapidité et la facilité d'utilisation. Au lieu d'ouvrir un logiciel lourd, faites pivoter vos images en ligne et téléchargez la version corrigée immédiatement.",
+      "greatFor": "Idéal pour :",
+      "item1": "⚡ Corrections rapides d'images",
+      "item2": "📅 Tâches de productivité quotidiennes",
+      "item3": "🧰 Retouche photo légère",
+      "item4": "👨‍💻 Utilisateurs occasionnels et professionnels"
+    },
+    "relatedTools": {
+      "heading": "🔗 Outils associés",
+      "tool1": "🖼️ Redimensionneur d'images",
+      "tool2": "✂️ Outil de recadrage",
+      "tool3": "📦 Compresseur d'images",
+      "tool4": "📄 Compresseur PDF"
+    },
+    "conclusion": {
+      "heading": "Commencez à faire pivoter vos images aujourd'hui",
+      "body": "Corriger l'orientation d'une image n'a jamais été aussi facile. Utilisez ThrjTech Image Rotator pour faire pivoter des images en ligne instantanément — sans installation, sans inscription.",
+      "ctaBtn": "Essayer l'outil de rotation →"
+    }
+  },
+  "howItWorks": {
+    "step1": "Importez une ou plusieurs images par glisser-déposer ou en parcourant vos fichiers.",
+    "step2": "Choisissez une image dans la bande de miniatures et faites-la pivoter à gauche ou à droite.",
+    "step3": "Activez éventuellement Appliquer à tous pour faire pivoter toutes les images en même temps.",
+    "step4": "Téléchargez l'image actuelle ou téléchargez toutes les images pivotées dans un fichier ZIP."
+  }
+}

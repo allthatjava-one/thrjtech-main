@@ -1,0 +1,1 @@
+import{r as m}from"./chunk-EVOBXE3Y-B7j9GB9p.js";function a({title:t,description:n}){return m.useEffect(()=>{if(t&&(document.title=t),n){let e=document.querySelector('meta[name="description"]');e||(e=document.createElement("meta"),e.name="description",document.head.appendChild(e)),e.content=n}},[t,n]),null}export{a as S};

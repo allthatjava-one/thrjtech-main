@@ -1,5 +1,4 @@
 import { useMemo, useRef, useState, useCallback } from 'react'
-import { PDFDocument } from 'pdf-lib'
 import { uploadToR2 } from '../../../services/r2Service'
 
 function makeFileEntry(file) {
@@ -136,6 +135,7 @@ export function usePdfMerger() {
       setProgress(10)
 
       // --- Step 1: Merge PDFs in the browser using pdf-lib ---
+      const { PDFDocument } = await import('pdf-lib')
       const mergedPdf = await PDFDocument.create()
 
       for (let index = 0; index < files.length; index += 1) {
@@ -186,7 +186,10 @@ export function usePdfMerger() {
         setStatus('compressing')
         setProgress(90)
 
-        const backendUrl = pdfCompressorBackendUrl || import.meta.env.VITE_PDF_COMPRESSOR_BACKEND_URL
+        // Prefer backend URL returned by the presign endpoint; fallback to
+        // the local proxy `/api/pdf-compressor` which forwards the request
+        // to the configured backend in the worker environment.
+        const backendUrl = pdfCompressorBackendUrl || '/api/pdf-compressor'
         if (!backendUrl) {
           throw new Error('PDF compressor backend URL is not configured.')
         }
