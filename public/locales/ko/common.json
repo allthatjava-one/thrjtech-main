@@ -18,6 +18,8 @@
     "imageMemeGenerator": "밈 생성기",
     "imageConverter": "변환기",    
     "imageRotator": "회전",    
+    "video": "동영상",
+    "screenRecorder": "빠른 화면 녹화기",
     "blog": "블로그",
     "contactUs": "문의하기",
     "openMenu": "메뉴 열기"

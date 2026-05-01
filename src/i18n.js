@@ -32,6 +32,7 @@ i18n
       'imageMemeGenerator',
       'imageConverter',
       'imageRotator',
+      'screenRecorder',
     ],
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
