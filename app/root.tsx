@@ -8,7 +8,6 @@ import {
   useLocation,
 } from 'react-router'
 import type { LinksFunction } from 'react-router'
-import i18n from '../src/i18n'
 import GtagRouteTracker from '../src/services/GtagRouteTracker'
 import appCss from '../src/App.css?url'
 import indexCss from '../src/index.css?url'
@@ -102,9 +101,14 @@ function ClientLanguageSync() {
 
     // Run after hydration commit to avoid mismatching server-rendered HTML.
     const id = window.setTimeout(() => {
-      if (preferred && preferred !== i18n.resolvedLanguage && preferred !== i18n.language) {
-        void i18n.changeLanguage(preferred)
-      }
+      // Dynamic import keeps i18next-http-backend out of the server bundle
+      // (avoids global-scope fetch() which is disallowed in Workers).
+      import('../src/i18n').then((mod) => {
+        const i18n = mod.default
+        if (preferred && preferred !== i18n.resolvedLanguage && preferred !== i18n.language) {
+          void i18n.changeLanguage(preferred)
+        }
+      })
     }, 0)
 
     return () => window.clearTimeout(id)
