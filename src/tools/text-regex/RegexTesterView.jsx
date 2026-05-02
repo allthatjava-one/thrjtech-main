@@ -104,17 +104,15 @@ export default function RegexTesterView() {
   }
 
   return (
-    <section className="rt-section">
-      <div className="rt-container">
-        <div className="card">
+    <>
 
-          {/* ── Hero ── */}
-          <div className="rt-hero">
-            <div className="rt-tool-icon" aria-hidden="true">{t('hero.icon')}</div>
-            <h1 className="rt-hero-title">{t('hero.title')}</h1>
-            <p className="rt-hero-subtitle">
-              {t('hero.tagline')} <Link to="/blogs/regex-tester-guide">{t('hero.blogLink')}</Link>
-            </p>
+      {/* ── Hero ── */}
+      <div className="rt-hero">
+        <div className="rt-tool-icon" aria-hidden="true">{t('hero.icon')}</div>
+        <h1 className="rt-hero-title">{t('hero.title')}</h1>
+        <p className="rt-hero-subtitle">
+          {t('hero.tagline')} <Link to="/blogs/regex-tester-guide">{t('hero.blogLink')}</Link>
+        </p>
 
             {/* Collapsible Details / How it works — mirrors JsonFormatterView exactly */}
             <div className="details-row" data-open={openPanel}>
@@ -500,8 +498,6 @@ export default function RegexTesterView() {
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
+    </>
   )
 }
