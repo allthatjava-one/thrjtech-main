@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useSsrData } from '../SsrDataContext.js'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import './BlogPage.css'
@@ -25,9 +26,19 @@ export default function BlogPage() {
   const { t, i18n } = useTranslation('blogs')
   const { slug } = useParams()
   const navigate = useNavigate()
-  const [createdAt, setCreatedAt] = useState(null)
-  const [blogData, setBlogData] = useState(null)
+  const ssrData = useSsrData()
+  // Consume window.__INITIAL_DATA__ exactly once (cleared so remounts don't reuse stale data)
+  const [serverBlog] = useState(() => {
+    if (ssrData?.blog) return ssrData.blog
+    if (typeof window === 'undefined') return null
+    const data = window.__INITIAL_DATA__?.blog ?? null
+    if (data) window.__INITIAL_DATA__ = null
+    return data
+  })
+  const [createdAt, setCreatedAt] = useState(serverBlog?.createdAt ?? null)
+  const [blogData, setBlogData] = useState(serverBlog)
   const [error, setError] = useState(null)
+  const initialDataUsed = useRef(!!serverBlog)
 
   const lang = i18n.resolvedLanguage || i18n.language || 'en'
   const title = blogData ? ((lang !== 'en' && blogData[`title_${lang}`]) || blogData.title) : null
@@ -36,6 +47,10 @@ export default function BlogPage() {
     : null
 
   useEffect(() => {
+    if (initialDataUsed.current) {
+      initialDataUsed.current = false
+      return
+    }
     const url = `/api/blogs/${slug}`
     fetch(url)
       .then(res => {

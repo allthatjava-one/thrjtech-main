@@ -1,24 +1,43 @@
-/* ── Section wrapper ─────────────────────────────────────────── */
-.rt-section {
-  flex: 1;
-  padding: 2.5rem 0 3rem;
+/* ── Page shell ─────────────────────────────────────────────── */
+.regex-tester-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.rt-container {
+.regex-tester-page .main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.regex-tester-page .main .container {
+  display: flex;
+  justify-content: center;
+}
+
+.regex-tester-page .container {
+  width: 100%;
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
 }
 
 /* ── Card wrapper ────────────────────────────────────────────── */
-.rt-container .card {
+.regex-tester-page .card {
   background: #ffffff;
   border-radius: 20px;
   border: 1px solid #e2e6f0;
   padding: 2rem;
+  width: 100%;
+  max-width: 860px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  box-sizing: border-box;
 }
 
 /* ── Hero ────────────────────────────────────────────────────── */
@@ -64,8 +83,8 @@
   color: var(--color-text);
 }
 
-/* ── Details / How it works — scoped to rt-container ─────────── */
-.rt-container .details-row {
+/* ── Details / How it works ──────────────────────────────────── */
+.regex-tester-page .details-row {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -75,7 +94,7 @@
   margin-top: 0.75rem;
 }
 
-.rt-container .details-controls {
+.regex-tester-page .details-controls {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
@@ -83,7 +102,7 @@
   margin-bottom: 0.5rem;
 }
 
-.rt-container .tab-btn {
+.regex-tester-page .tab-btn {
   padding: 0.35rem 1rem;
   border-radius: var(--btn-radius, 6px);
   border: 1px solid var(--color-border);
@@ -96,22 +115,22 @@
   font-family: inherit;
 }
 
-.rt-container .tab-btn:hover {
+.regex-tester-page .tab-btn:hover {
   color: var(--color-text);
   border-color: var(--color-muted);
 }
 
-.rt-container .tab-btn.active {
+.regex-tester-page .tab-btn.active {
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
 }
 
-.rt-container .shared-collapse {
+.regex-tester-page .shared-collapse {
   width: 100%;
 }
 
-.rt-container .panel-hidden {
+.regex-tester-page .panel-hidden {
   display: none;
 }
 
@@ -448,6 +467,90 @@
   min-height: 140px;
 }
 
+/* ── Guide block ─────────────────────────────────────────────── */
+.rt-guide {
+  margin-top: 28px;
+  border-top: 2px solid #ff6b2b22;
+  padding-top: 24px;
+  padding-bottom: 4px;
+  color: #111;
+  box-sizing: border-box;
+}
+
+.rt-guide,
+.rt-guide * {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.rt-guide-content,
+.rt-guide-content p,
+.rt-guide-content h2,
+.rt-guide-content h3,
+.rt-guide-content li,
+.rt-guide-content ul,
+.rt-guide-content ol,
+.rt-guide-content table,
+.rt-guide-content td,
+.rt-guide-content th,
+.rt-guide-content code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.rt-guide-content table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+.rt-guide-content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+.rt-guide-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.rt-guide-icon {
+  flex: 0 0 56px;
+  font-size: 30px;
+  line-height: 1;
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-weight: 900;
+  color: #ff6b2b;
+  letter-spacing: -1px;
+}
+
+.rt-guide-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.rt-guide-content pre {
+  overflow-x: auto;
+}
+
+@media (max-width: 720px) {
+  .rt-guide {
+    padding: 12px 0 4px;
+  }
+  .rt-guide-row {
+    flex-direction: column;
+  }
+  .rt-guide-icon {
+    flex: 0 0 auto;
+    margin-bottom: 8px;
+  }
+  .rt-guide-content h2 { font-size: 18px; }
+  .rt-guide-content pre { font-size: 12px; padding: 8px; }
+}
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .rt-panels {
@@ -474,11 +577,31 @@
   }
 }
 
-@media (max-width: 480px) {
-  .rt-section {
-    padding: 1.5rem 0 2rem;
+@media (max-width: 640px) {
+  .regex-tester-page .card {
+    padding: 1.4rem;
   }
+}
 
+@media (max-width: 740px) {
+  .regex-tester-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .regex-tester-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .regex-tester-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
   .rt-textarea,
   .rt-preview-output {
     min-height: 260px;

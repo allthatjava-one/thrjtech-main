@@ -104,17 +104,15 @@ export default function RegexTesterView() {
   }
 
   return (
-    <section className="rt-section">
-      <div className="rt-container">
-        <div className="card">
+    <>
 
-          {/* ── Hero ── */}
-          <div className="rt-hero">
-            <div className="rt-tool-icon" aria-hidden="true">{t('hero.icon')}</div>
-            <h1 className="rt-hero-title">{t('hero.title')}</h1>
-            <p className="rt-hero-subtitle">
-              {t('hero.tagline')} <Link to="/blogs/regex-tester-guide">{t('hero.blogLink')}</Link>
-            </p>
+      {/* ── Hero ── */}
+      <div className="rt-hero">
+        <div className="rt-tool-icon" aria-hidden="true">{t('hero.icon')}</div>
+        <h1 className="rt-hero-title">{t('hero.title')}</h1>
+        <p className="rt-hero-subtitle">
+          {t('hero.tagline')} <Link to="/blogs/regex-tester-guide">{t('hero.blogLink')}</Link>
+        </p>
 
             {/* Collapsible Details / How it works — mirrors JsonFormatterView exactly */}
             <div className="details-row" data-open={openPanel}>
@@ -339,10 +337,10 @@ export default function RegexTesterView() {
           )}
 
           {/* Regex guide - orange/terminal design */}
-          <div style={{ marginTop: 28, borderTop: '2px solid #ff6b2b22', paddingTop: 24, color: '#111' }}>
-            <div style={{ display: 'flex', gap: 12 }}>
-              <div style={{ flex: '0 0 56px', fontSize: 30, lineHeight: 1, fontFamily: 'monospace', fontWeight: 900, color: '#ff6b2b', letterSpacing: -1 }}>{t('hero.icon')}</div>
-              <div style={{ flex: 1 }}>
+          <div className="rt-guide">
+            <div className="rt-guide-row">
+              <div className="rt-guide-icon">{t('hero.icon')}</div>
+              <div className="rt-guide-content">
                 <h2 style={{ margin: 0, fontSize: 22 }}>{t('guide.title')}</h2>
                 <p style={{ marginTop: 8 }}>{t('guide.intro')}</p>
                 <p style={{ marginTop: 6, fontWeight: 700 }}>{t('guide.cta')}</p>
@@ -500,8 +498,6 @@ export default function RegexTesterView() {
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
+    </>
   )
 }

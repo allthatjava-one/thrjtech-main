@@ -3,7 +3,11 @@ THRJ Tech main site
 # Start in local
 ```
 # For Local test
-npm run pages:dev
+# npm run pages:dev
+
+# serves dist/ + runs worker.js with API routes
+> npm run build
+> wrangler dev 
 
 # For mobile testing
 npm run dev -- --host

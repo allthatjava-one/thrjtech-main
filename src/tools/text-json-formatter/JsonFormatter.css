@@ -1,18 +1,28 @@
-/* ── Section wrapper ─────────────────────────────────────────── */
-.formatter-section {
-  flex: 1;
-  padding: 2.5rem 0 3rem;
+/* ── Page shell ──────────────────────────────────────────────── */
+.json-formatter-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.jf-container {
+.json-formatter-page .main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.json-formatter-page .main .container {
+  display: flex;
+  justify-content: center;
+}
+
+.json-formatter-page .container {
+  width: 100%;
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Prevent the card from overflowing small viewports */
-.jf-container,
-.jf-container .card {
+  padding: 0 1.25rem;
   box-sizing: border-box;
 }
 
@@ -274,23 +284,14 @@ kbd {
 }
 
 @media (max-width: 480px) {
-  .formatter-section {
-    padding: 1.5rem 0 2rem;
+  .json-formatter-page .card {
+    padding: 1rem;
+    overflow-x: visible;
   }
 
   .jf-json-textarea,
   .jf-json-output {
     min-height: 260px;
-  }
-
-  /* Reduce padding and avoid horizontal scroll on very small screens */
-  .jf-container {
-    padding: 0 1rem;
-  }
-
-  .jf-container .card {
-    padding: 1rem;
-    overflow-x: visible;
   }
 }
 
@@ -334,61 +335,71 @@ kbd {
 }
 
 /* Tool details (collapsible) */
-.jf-container .tool-details {
+.json-formatter-page .tool-details {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   text-align: left;
   color: #4b5563;
 }
-.jf-container .tool-details summary {
+.json-formatter-page .tool-details summary {
   display: block;
   cursor: pointer;
   font-weight: 600;
   color: #4b5563;
   padding: 0;
-  margin: 0 auto 0; /* ensure it's directly under the subtitle */
+  margin: 0 auto 0;
   text-align: center;
   position: relative;
 }
-.jf-container .tool-details summary::after {
+.json-formatter-page .tool-details summary::after {
   content: "▾";
   display: inline-block;
   margin-left: 0.5rem;
   transition: transform 0.18s ease;
 }
-.jf-container .tool-details[open] summary::after {
+.json-formatter-page .tool-details[open] summary::after {
   transform: rotate(180deg);
 }
-.jf-container .tool-details summary::-webkit-details-marker { display: none; }
-.jf-container .tool-details summary::marker { display: none; }
-.jf-container .tool-details > div {
+.json-formatter-page .tool-details summary::-webkit-details-marker { display: none; }
+.json-formatter-page .tool-details summary::marker { display: none; }
+.json-formatter-page .tool-details > div {
   margin-top: 0.5rem;
   padding-left: 0.25rem;
   color: #4b5563;
 }
 
 /* Card wrapper to match other tool pages */
-.jf-container .card {
+.json-formatter-page .card {
   background: #ffffff;
   border-radius: 20px;
   border: 1px solid #e2e6f0;
   padding: 2rem;
+  width: 100%;
+  max-width: 860px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  box-sizing: border-box;
 }
 
+@media (max-width: 640px) {
+  .json-formatter-page .card {
+    padding: 1.4rem;
+  }
+}
+
+
 /* Ensure Details matches the hero subtitle color inside the card */
-.jf-container .card .jf-hero-subtitle,
-.jf-container .card .tool-details,
-.jf-container .card .tool-details summary,
-.jf-container .card .tool-details > div {
+.json-formatter-page .card .jf-hero-subtitle,
+.json-formatter-page .card .tool-details,
+.json-formatter-page .card .tool-details summary,
+.json-formatter-page .card .tool-details > div {
   color: #4b5563;
 }
 
 /* When Details is opened, wrap its content in a rounded card-like box */
-.jf-container .card .tool-details[open] > div {
-  background: #f8f9ff; /* subtle surface color */
+.json-formatter-page .card .tool-details[open] > div {
+  background: #f8f9ff;
   border: 1px solid #e2e6f0;
   border-radius: 12px;
   padding: 1rem;
@@ -397,7 +408,7 @@ kbd {
 }
 
 /* Place Details and How it works side-by-side where space allows */
-.jf-container .details-row {
+.json-formatter-page .details-row {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -405,23 +416,34 @@ kbd {
   width: 100%;
   box-sizing: border-box;
 }
-.jf-container .details-row .tool-details {
+.json-formatter-page .details-row .tool-details {
   flex: 1 1 300px;
-  min-width: 240px;
+  min-width: 0;
   max-width: 48%;
   box-sizing: border-box;
 }
-/* allow flex children to shrink below their content's min-width */
-.jf-container .details-row .tool-details {
-  min-width: 0;
-}
 @media (max-width: 740px) {
-  .jf-container .details-row .tool-details {
+  .json-formatter-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .json-formatter-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .json-formatter-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .json-formatter-page .details-row .tool-details {
     max-width: 100%;
     flex-basis: 100%;
   }
 }
-.jf-container .how-img {
+.json-formatter-page .how-img {
   width: 100%;
   border-radius: 8px;
   border: 1px solid #e2e6f0;
@@ -429,30 +451,30 @@ kbd {
   display: block;
   margin-bottom: 0.5rem;
 }
-.jf-container .details-row .tool-details img {
+.json-formatter-page .details-row .tool-details img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
 /* Ensure collapsible content fills its column */
-.jf-container .details-row .tool-details > div {
+.json-formatter-page .details-row .tool-details > div {
   width: 100%;
   box-sizing: border-box;
 }
-.jf-container .details-row .tool-details[open] > div {
+.json-formatter-page .details-row .tool-details[open] > div {
   width: 100%;
   max-height: 46vh;
   overflow: auto;
 }
-.jf-container .details-row[data-open="details"] .tool-details {
+.json-formatter-page .details-row[data-open="details"] .tool-details {
   flex-basis: 100% !important;
   max-width: 100% !important;
 }
-.jf-container .details-row[data-open="details"] .tool-details.tool-howitworks {
+.json-formatter-page .details-row[data-open="details"] .tool-details.tool-howitworks {
   display: none !important;
 }
-.jf-container .details-row[data-open="howitworks"] .tool-details {
+.json-formatter-page .details-row[data-open="howitworks"] .tool-details {
 }
 
 /* Guide block responsiveness (bottom content inside the card) */
