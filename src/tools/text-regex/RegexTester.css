@@ -1,24 +1,43 @@
-/* ── Section wrapper ─────────────────────────────────────────── */
-.rt-section {
-  flex: 1;
-  padding: 2.5rem 0 3rem;
+/* ── Page shell ─────────────────────────────────────────────── */
+.regex-tester-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.rt-container {
+.regex-tester-page .main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.regex-tester-page .main .container {
+  display: flex;
+  justify-content: center;
+}
+
+.regex-tester-page .container {
+  width: 100%;
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
 }
 
 /* ── Card wrapper ────────────────────────────────────────────── */
-.rt-container .card {
+.regex-tester-page .card {
   background: #ffffff;
   border-radius: 20px;
   border: 1px solid #e2e6f0;
   padding: 2rem;
+  width: 100%;
+  max-width: 860px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  box-sizing: border-box;
 }
 
 /* ── Hero ────────────────────────────────────────────────────── */
@@ -64,8 +83,8 @@
   color: var(--color-text);
 }
 
-/* ── Details / How it works — scoped to rt-container ─────────── */
-.rt-container .details-row {
+/* ── Details / How it works ──────────────────────────────────── */
+.regex-tester-page .details-row {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -75,7 +94,7 @@
   margin-top: 0.75rem;
 }
 
-.rt-container .details-controls {
+.regex-tester-page .details-controls {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
@@ -83,7 +102,7 @@
   margin-bottom: 0.5rem;
 }
 
-.rt-container .tab-btn {
+.regex-tester-page .tab-btn {
   padding: 0.35rem 1rem;
   border-radius: var(--btn-radius, 6px);
   border: 1px solid var(--color-border);
@@ -96,22 +115,22 @@
   font-family: inherit;
 }
 
-.rt-container .tab-btn:hover {
+.regex-tester-page .tab-btn:hover {
   color: var(--color-text);
   border-color: var(--color-muted);
 }
 
-.rt-container .tab-btn.active {
+.regex-tester-page .tab-btn.active {
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
 }
 
-.rt-container .shared-collapse {
+.regex-tester-page .shared-collapse {
   width: 100%;
 }
 
-.rt-container .panel-hidden {
+.regex-tester-page .panel-hidden {
   display: none;
 }
 
@@ -474,11 +493,31 @@
   }
 }
 
-@media (max-width: 480px) {
-  .rt-section {
-    padding: 1.5rem 0 2rem;
+@media (max-width: 640px) {
+  .regex-tester-page .card {
+    padding: 1.4rem;
   }
+}
 
+@media (max-width: 740px) {
+  .regex-tester-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .regex-tester-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .regex-tester-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
   .rt-textarea,
   .rt-preview-output {
     min-height: 260px;
