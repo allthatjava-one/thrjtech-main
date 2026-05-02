@@ -67,10 +67,10 @@
     }
   },
   "howItWorks": {
-    "step1": "Add images via drag & drop or the file browser.",
-    "step2": "Adjust rows, columns, and spacing to arrange the grid.",
-    "step3": "Preview the collage and reposition images if needed.",
-    "step4": "Finalize collaged image and download it."
+    "step1": "Select a template",
+    "step2": "Upload images and arrange them as you like",
+    "step3": "Swap images by dragging them to each other's position",
+    "step4": "Change border color and thickness for a custom look and download your collage"
   },
   "dropZone": {
     "text": "Drag & drop images here, or click to add. The grid will expand as needed."
@@ -96,9 +96,11 @@
   "finalSize": "Final Collage Size: {{width}} x {{height}} px",
   "downloadBtn": "Download",
   "downloadingBtn": "Downloading...",
+  "resetBtn": "Reset",
   "watermarkPrompt": {
-    "text": "Would you like to put a private watermark on the collaged image?",
+    "text": "Would you like to put a watermark on the collaged image?",
     "yes": "Yes",
+    "sendToWatermarker": "Send to Watermarker",
     "preparing": "Preparing...",
     "error": "Failed to send image to watermark tool."
   },

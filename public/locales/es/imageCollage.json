@@ -102,10 +102,10 @@
     }
   },
   "howItWorks": {
-    "step1": "Añade imágenes a través de arrastrar y soltar o del navegador de archivos.",
-    "step2": "Ajuste las filas, las columnas y el espaciado para organizar la cuadrícula.",
-    "step3": "Obtenga una vista previa del collage y cambie la posición de las imágenes si es necesario.",
-    "step4": "Finalice la imagen collage y descárguela."
+    "step1": "Selecciona una plantilla",
+    "step2": "Sube imágenes y organízalas como desees",
+    "step3": "Intercambia imágenes arrastrándolas a la posición de otra",
+    "step4": "Cambia el color y el grosor del borde para un aspecto personalizado y descarga tu collage"
   },
   "fileRow": {
     "count": "{{count}} imágenes seleccionadas",
@@ -118,9 +118,11 @@
   "finalSize": "Tamaño final del collage: {{width}} x {{height}} px",
   "downloadBtn": "Descargar",
   "downloadingBtn": "Descargando...",
+  "resetBtn": "Restablecer",
   "watermarkPrompt": {
     "text": "¿Le gustaría poner una marca de agua privada en la imagen collage?",
     "yes": "Sí",
+    "sendToWatermarker": "Enviar a Marca de Agua",
     "preparing": "Preparando...",
     "error": "Error al enviar la imagen a la herramienta de marca de agua."
   },

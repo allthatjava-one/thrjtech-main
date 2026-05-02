@@ -4,35 +4,42 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import useImageCollage from "./hooks/useImageCollage";
 import ImageFileList from "./ImageFileList";
+import TemplateSelector from "./TemplateSelector";
+import { TEMPLATES } from "./templates";
+import { computeCanvasSize } from "./hooks/useImageCollage";
 import './ImageCollage.css'
 
 const ImageCollageView = ({
-  columns,
-  setColumns,
-  rows,
-  setRows,
-  width,
-  setWidth,
-  height,
-  setHeight,
+  selectedTemplate,
+  onTemplateChange,
   images,
   setImages,
-  collageUrl,
-  setCollageUrl,
+  cellWidth,
+  setCellWidth,
+  cellHeight,
+  setCellHeight,
 }) => {
   const { t } = useTranslation('imageCollage');
   const fileInputRef = useRef(null);
-  const [totalWidth, setTotalWidth] = useState(1200);
-  const [totalHeight, setTotalHeight] = useState(1200);
-  const [lockRatio, setLockRatio] = useState(false);
-  const ratioRef = useRef(1);
   const navigate = useNavigate();
   const [sendStatus, setSendStatus] = useState('idle');
+
+  const { rows, cols } = selectedTemplate;
+
+  const {
+    addFiles,
+    handleFileChange,
+    handleCollage,
+    handleDownload,
+    downloading,
+  } = useImageCollage({ rows, cols, cellWidth, cellHeight, images, setImages, fileInputRef });
 
   const handleSendToWatermark = async () => {
     setSendStatus('processing');
     try {
-      const response = await fetch(collageUrl);
+      const dataUrl = await handleCollage(offsets, scales, bgColor, previewGap);
+      if (!dataUrl) { setSendStatus('error'); return; }
+      const response = await fetch(dataUrl);
       const blob = await response.blob();
       const file = new File([blob], 'collage.png', { type: 'image/png' });
       navigate('/image-watermarker', { state: { mainImage: file } });
@@ -41,76 +48,16 @@ const ImageCollageView = ({
     }
   };
 
-  const {
-    handleDrop,
-    handleFileChange,
-    handleCollage,
-    isDragging,
-    expectedWidth,
-    expectedHeight,
-    canCollage,
-    downloading,
-    handleDownload,
-  } = useImageCollage({
-    columns,
-    setColumns,
-    rows,
-    setRows,
-    width,
-    height,
-    images,
-    setImages,
-    setCollageUrl,
-    fileInputRef,
-    collageUrl,
-  });
-
-  // Sync totalWidth/totalHeight to the computed collage size whenever it changes
-  useEffect(() => {
-    if (images.length > 0) {
-      setTotalWidth(expectedWidth);
-      setTotalHeight(expectedHeight);
-      if (expectedHeight > 0) ratioRef.current = expectedWidth / expectedHeight;
-    }
-  }, [expectedWidth, expectedHeight]);
-
-  const handleTotalWidthChange = val => {
-    if (!Number.isFinite(val) || val <= 0) return;
-    if (lockRatio && ratioRef.current > 0) {
-      setTotalWidth(val);
-      setTotalHeight(Math.max(1, Math.round(val / ratioRef.current)));
-    } else {
-      setTotalWidth(val);
-    }
-  };
-
-  const handleTotalHeightChange = val => {
-    if (!Number.isFinite(val) || val <= 0) return;
-    if (lockRatio && ratioRef.current > 0) {
-      setTotalHeight(val);
-      setTotalWidth(Math.max(1, Math.round(val * ratioRef.current)));
-    } else {
-      setTotalHeight(val);
-    }
-  };
-
-  const handleMove = (from, to) => {
-    if (to < 0 || to >= images.length) return;
-    const newImages = images.slice();
-    const [moved] = newImages.splice(from, 1);
-    newImages.splice(to, 0, moved);
-    setImages(newImages);
-  };
-
   const handleRemove = idx => {
-    const newImages = images.slice();
-    newImages.splice(idx, 1);
-    setImages(newImages);
+    setImages(prev => {
+      const next = [...prev];
+      next.splice(idx, 1);
+      return next;
+    });
   };
 
   // preview and draggable offsets
   const [showDialog, setShowDialog] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
   const [previewUrls, setPreviewUrls] = useState([]);
   const [previewMeta, setPreviewMeta] = useState([]);
@@ -120,38 +67,40 @@ const ImageCollageView = ({
   const [scales, setScales] = useState([]);
   const previewRef = useRef(null);
   const [previewScale, setPreviewScale] = useState(1);
-  const [previewScaledSize, setPreviewScaledSize] = useState({ w: 0, h: 0 });
-  const [previewContentSize, setPreviewContentSize] = useState({ w: 0, h: 0 });
+  const [previewContentW, setPreviewContentW] = useState(0);
+  const [previewContentH, setPreviewContentH] = useState(0);
   const [previewGap, setPreviewGap] = useState(10);
-  const previewWrapperRef = useRef(null);
-  const previewOverlayRef = useRef(null);
-  const [previewBtnStyle, setPreviewBtnStyle] = useState({ padding: '0.55rem 0.9rem', fontSize: '1rem', minWidth: 64 });
-  const previewHeaderRef = useRef(null);
-  const previewInfoRef = useRef(null);
   const [bgColor, setBgColor] = useState('#ffffff');
-  // (reverted) no background color picker — keep default white preview frame
+
+  // Drag-to-reorder state
+  const dragSrcCellRef = useRef(null);
+  const dragCounterRef = useRef(0);
+  const [dragOverCell, setDragOverCell] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Build preview URLs and reset offsets when images change
   useEffect(() => {
     previewUrls.forEach(u => {
       try { if (u && typeof u === 'string' && u.startsWith('blob:')) URL.revokeObjectURL(u); } catch (e) {}
     });
-    const urls = images.map(f => URL.createObjectURL(f));
+    const urls = images.map(f => f ? URL.createObjectURL(f) : null);
     setPreviewUrls(urls);
     setPreviewErrors(images.map(() => false));
     previewDataUrlAttempted.current = images.map(() => false);
-    setOffsets(images.map(() => ({ x: 0, y: 0 })));
-    setScales(images.map(() => 1));
+    setOffsets(prev => images.map((_, i) => prev[i] || { x: 0, y: 0 }));
+    setScales(prev => images.map((_, i) => prev[i] || 1));
     // load natural sizes for exact cover calculations
     Promise.all(
       urls.map(
         u =>
-          new Promise(resolve => {
-            const img = new window.Image();
+          u
+            ? new Promise(resolve => {
+                const img = new window.Image();
             img.onload = () => resolve({ w: img.naturalWidth, h: img.naturalHeight });
             img.onerror = () => resolve({ w: 1, h: 1 });
             img.src = u;
           })
+            : Promise.resolve({ w: 1, h: 1 })
       )
     ).then(meta => setPreviewMeta(meta));
 
@@ -181,43 +130,23 @@ const ImageCollageView = ({
     reader.readAsDataURL(file);
   };
 
-  // compute a scale so the preview content fits the available wrapper (or 1)
+  // compute a scale so the preview content fits the available container (always visible)
   useEffect(() => {
-    if (!showPreview) return;
     const compute = () => {
-      // Measure from the preview pane directly — it fills remaining flex space
       const ref = previewRef.current;
       if (!ref) return;
-      const rect = ref.getBoundingClientRect();
-      if (rect.width < 10 || rect.height < 10) return; // not painted yet
-      const availW = Math.max(1, rect.width - 2);
-      const availH = Math.max(1, rect.height - 2);
-      // Simpler, fixed-gap preview: match earlier behavior using a
-      // consistent inner gap (previewGap) and a fixed outer border.
-      const borderPx = 6;
+      const availW = ref.offsetWidth;
+      if (availW < 10) return;
       const gap = previewGap ?? 10;
-      const contentW = columns * width + (columns + 1) * gap;
-      const contentH = rows * height + (rows + 1) * gap;
-      const scaleFit = Math.min(availW / Math.max(1, contentW), availH / Math.max(1, contentH), 1);
+      const contentW = cols * cellWidth + (cols + 1) * gap;
+      const contentH = rows * cellHeight + (rows + 1) * gap;
+      const scaleFit = Math.min(availW / Math.max(1, contentW), 1);
       setPreviewScale(scaleFit);
-      setPreviewContentSize({ w: contentW, h: contentH });
-      // keep fractional scaled sizes
-      setPreviewScaledSize({ w: Math.max(1, contentW * scaleFit), h: Math.max(1, contentH * scaleFit) });
-      // responsive button sizing based on wrapper width
-      const wrapEl = previewWrapperRef.current;
-      const wrapW = wrapEl ? wrapEl.getBoundingClientRect().width : availW;
-      if (wrapW < 360) {
-        setPreviewBtnStyle({ padding: '0.3rem 0.45rem', fontSize: '0.78rem', minWidth: 44 });
-      } else if (wrapW < 500) {
-        setPreviewBtnStyle({ padding: '0.4rem 0.6rem', fontSize: '0.88rem', minWidth: 54 });
-      } else {
-        setPreviewBtnStyle({ padding: '0.55rem 0.9rem', fontSize: '1rem', minWidth: 64 });
-      }
+      setPreviewContentW(contentW);
+      setPreviewContentH(contentH);
     };
-    // run immediately then once more after layout paint
     compute();
     let rafId = requestAnimationFrame(compute);
-    // watch for size changes (orientation change, resize)
     let ro = null;
     if (typeof window !== 'undefined' && 'ResizeObserver' in window && previewRef.current) {
       try {
@@ -232,7 +161,7 @@ const ImageCollageView = ({
       try { cancelAnimationFrame(rafId); } catch (e) {}
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showPreview, expectedWidth, expectedHeight, rows, columns, width, height, previewGap]);
+  }, [rows, cols, cellWidth, cellHeight, previewGap]);
 
   // Unified per-cell pointer handling: 1 finger = drag, 2 fingers on same cell = pinch zoom.
   // Using React's own onPointerDown/Move/Up with setPointerCapture avoids window-listener
@@ -397,29 +326,6 @@ const ImageCollageView = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Also attach a capture-phase listener on the overlay so we reliably
-  // intercept wheel events before the browser scrolls the container (Chrome)
-  useEffect(() => {
-    const el = previewOverlayRef.current;
-    if (!el) return;
-    const handler = e => { if (e.altKey) e.preventDefault(); };
-    el.addEventListener('wheel', handler, { passive: false, capture: true });
-    return () => el.removeEventListener('wheel', handler, { capture: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Fallback: listen on the document at capture phase to ensure we can
-  // prevent wheel-driven scrolling in Chrome even if other listeners intervene.
-  useEffect(() => {
-    const docHandler = e => {
-      if (!showPreview || !e.altKey) return;
-      e.preventDefault();
-    };
-    document.addEventListener('wheel', docHandler, { passive: false, capture: true });
-    return () => document.removeEventListener('wheel', docHandler, { capture: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showPreview]);
-
   const handleResetOffset = idx => {
     const n = offsets.slice();
     n[idx] = { x: 0, y: 0 };
@@ -429,15 +335,36 @@ const ImageCollageView = ({
     setScales(s);
   };
 
-  const onCollageAndPreview = async () => {
-    if (!canCollage) return;
-    if (!showPreview) {
-      setShowPreview(true);
-      return;
-    }
-    // finalize using offsets
-    await handleCollage(totalWidth, totalHeight, offsets, scales);
-    setShowPreview(false);
+  const handleResetAll = () => {
+    setOffsets(images.map(() => ({ x: 0, y: 0 })));
+    setScales(images.map(() => 1));
+    setBgColor('#ffffff');
+    setPreviewGap(10);
+  };
+
+  const swapCells = (a, b) => {
+    if (a === b || a < 0 || b < 0) return;
+    const maxIdx = Math.max(a, b);
+    setImages(prev => {
+      const next = [...prev];
+      while (next.length <= maxIdx) next.push(null);
+      [next[a], next[b]] = [next[b], next[a]];
+      // trim trailing nulls
+      while (next.length > 0 && next[next.length - 1] == null) next.pop();
+      return next;
+    });
+    setOffsets(prev => {
+      const next = [...prev];
+      while (next.length <= maxIdx) next.push({ x: 0, y: 0 });
+      [next[a], next[b]] = [next[b], next[a]];
+      return next;
+    });
+    setScales(prev => {
+      const next = [...prev];
+      while (next.length <= maxIdx) next.push(1);
+      [next[a], next[b]] = [next[b], next[a]];
+      return next;
+    });
   };
 
   return (
@@ -544,122 +471,238 @@ const ImageCollageView = ({
           </div>
       </div>
 
+      {/* Template selector */}
+      <TemplateSelector templates={TEMPLATES} selectedId={selectedTemplate.id} onSelect={onTemplateChange} />
+
+      {/* Hidden file input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*,.heic,.heif"
+        multiple
+        style={{ display: "none" }}
+        onChange={handleFileChange}
+      />
+
+      {/* Gesture tip */}
+      {images.filter(Boolean).length > 0 && (
+        <p className="collage-gesture-tip">Tip: drag a cell onto another to swap images. Use Alt+scroll (or pinch) inside a cell to zoom. Drag the ⠿ handle to reorder.</p>
+      )}
+
+      {/* Live preview — doubles as drop target */}
       <div
-        className={`drop-zone${isDragging ? " dragging" : ""}`}
-        onDrop={handleDrop}
+        ref={previewRef}
+        className={`collage-live-preview${isDragging ? ' collage-live-preview--drag-active' : ''}`}
+        onDrop={e => {
+          e.preventDefault();
+          dragCounterRef.current = 0;
+          setIsDragging(false);
+          if (dragSrcCellRef.current !== null) { dragSrcCellRef.current = null; return; }
+          addFiles(e.dataTransfer.files);
+        }}
         onDragOver={e => e.preventDefault()}
-        onDragEnter={e => e.preventDefault()}
-        onDragLeave={e => e.preventDefault()}
-        onClick={() => fileInputRef.current && fileInputRef.current.click()}
+        onDragEnter={() => { dragCounterRef.current++; setIsDragging(true); }}
+        onDragLeave={() => { dragCounterRef.current--; if (dragCounterRef.current <= 0) { dragCounterRef.current = 0; setIsDragging(false); } }}
       >
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*,.heic,.heif"
-          multiple
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-        <span className="hero-tagline">{t('dropZone.text')}</span>
-        {images.length > 0 && (
-          <ImageFileList images={images} onMove={handleMove} onRemove={handleRemove} onReset={handleResetOffset} />
+        {previewContentW > 0 && previewContentH > 0 ? (
+          <div style={{ width: Math.max(1, Math.floor(previewContentW * previewScale)), height: Math.max(1, Math.floor(previewContentH * previewScale)), overflow: 'hidden', position: 'relative' }}>
+            <div style={{ width: previewContentW, height: previewContentH, transform: `scale(${previewScale})`, transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, background: bgColor }}>
+              {Array.from({ length: rows * cols }).map((_, idx) => {
+                const col = idx % cols;
+                const row = Math.floor(idx / cols);
+                const gap = typeof previewGap === 'number' ? previewGap : 10;
+                const cellLeft = col * (cellWidth + gap) + gap;
+                const cellTop = row * (cellHeight + gap) + gap;
+                const file = images[idx] || null;
+                const url = previewUrls[idx] || null;
+                const meta = previewMeta[idx] || { w: 1, h: 1 };
+                const off = offsets[idx] || { x: 0, y: 0 };
+                const imgRatio = meta.w / meta.h;
+                const cellRatio = cellWidth / cellHeight;
+                let drawW0, drawH0;
+                if (imgRatio > cellRatio) {
+                  drawH0 = cellHeight;
+                  drawW0 = cellHeight * imgRatio;
+                } else {
+                  drawW0 = cellWidth;
+                  drawH0 = cellWidth / imgRatio;
+                }
+                const scale = scales[idx] || 1;
+                const drawW = Math.round(drawW0 * scale);
+                const drawH = Math.round(drawH0 * scale);
+
+                return (
+                  <div
+                    key={idx}
+                    className={`collage-cell${!file ? ' collage-cell--empty' : ''}${dragOverCell === idx ? ' collage-cell--drag-over' : ''}`}
+                    style={{ position: 'absolute', left: cellLeft, top: cellTop, width: cellWidth, height: cellHeight, overflow: 'hidden', background: file ? bgColor : undefined }}
+                    onDragOver={e => { e.preventDefault(); e.stopPropagation(); setDragOverCell(idx); }}
+                    onDragLeave={e => { e.stopPropagation(); setDragOverCell(prev => prev === idx ? null : prev); }}
+                    onDrop={e => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      dragCounterRef.current = 0;
+                      setIsDragging(false);
+                      setDragOverCell(null);
+                      if (dragSrcCellRef.current !== null) {
+                        if (dragSrcCellRef.current !== idx) swapCells(dragSrcCellRef.current, idx);
+                        dragSrcCellRef.current = null;
+                      } else if (e.dataTransfer.files?.length > 0) {
+                        addFiles(e.dataTransfer.files);
+                      }
+                    }}
+                    onClick={() => { if (!file) fileInputRef.current?.click(); }}
+                  >
+                    {file ? (
+                      <>
+                        {/* Drag handle — triggers cell-to-cell reorder */}
+                        <div
+                          className="collage-cell-drag-handle"
+                          draggable
+                          onDragStart={e => { e.stopPropagation(); dragSrcCellRef.current = idx; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', String(idx)); }}
+                          onDragEnd={() => { dragSrcCellRef.current = null; setDragOverCell(null); }}
+                        >⠿</div>
+                        {/* Remove button */}
+                        <button
+                          className="collage-cell-remove"
+                          type="button"
+                          onClick={e => { e.stopPropagation(); handleRemove(idx); }}
+                          title="Remove"
+                        >✕</button>
+                        {/* Interactive image (pan / pinch-zoom) */}
+                        <div
+                          style={{ position: 'absolute', inset: 0, touchAction: 'none' }}
+                          onPointerDown={e => onCellPointerDown(e, idx, cellWidth, cellHeight, cellLeft, cellTop, meta)}
+                          onPointerMove={e => onCellPointerMove(e, idx)}
+                          onPointerUp={e => onCellPointerUp(e, idx)}
+                          onPointerCancel={e => onCellPointerUp(e, idx)}
+                          onWheel={e => onImageWheel(e, idx, meta, off, cellWidth, cellHeight, cellLeft, cellTop)}
+                        >
+                          {!previewErrors[idx] && url ? (
+                            <img
+                              src={url}
+                              alt={file.name}
+                              draggable={false}
+                              onError={() => tryPreviewDataUrl(idx, previewUrls, previewErrors)}
+                              style={{ position: 'absolute', left: off.x + (cellWidth - drawW) / 2, top: off.y + (cellHeight - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }}
+                            />
+                          ) : previewErrors[idx] ? (
+                            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#999', fontSize: 12 }}>{t('preview.noPreview')}</div>
+                          ) : null}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="collage-cell-empty-content">
+                        <div className="collage-cell-plus">+</div>
+                        <div className="collage-cell-hint">Drop here</div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="collage-preview-empty-msg">
+            Drop images here or{' '}
+            <button type="button" className="ic-change-btn" onClick={() => fileInputRef.current?.click()}>Browse</button>
+          </div>
         )}
       </div>
 
-      {/* File row: count + Change Images + Clear */}
-      {images.length > 0 && (
-        <div className="ic-file-row">
-          <span className="ic-file-name">
-            {images.length === 1 ? images[0].name : t('fileRow.count', { count: images.length })}
-          </span>
-          <button
-            type="button"
-            className="ic-change-btn"
-            onClick={() => fileInputRef.current && fileInputRef.current.click()}
-          >
-            {images.length === 1 ? t('fileRow.changeOne') : t('fileRow.changeMany')}
-          </button>
-          <button
-            type="button"
-            className="ic-clear-btn"
-            onClick={() => { setImages([]); setCollageUrl(null); }}
-          >
-            {t('fileRow.clear')}
-          </button>
+      {/* File row */}
+      <div className="ic-file-row">
+        <button
+          type="button"
+          className="ic-change-btn"
+          onClick={() => fileInputRef.current?.click()}
+        >
+          {images.length > 0 ? t('fileRow.changeMany') : 'Add Photos'}
+        </button>
+        {images.length > 0 && (
+          <>
+            <span className="ic-file-name">
+              {images.length === 1 ? images[0]?.name : t('fileRow.count', { count: images.length })}
+            </span>
+            <button
+              type="button"
+              className="ic-clear-btn"
+              onClick={() => setImages([])}
+            >
+              {t('fileRow.clear')}
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Overflow notice */}
+      {images.filter(Boolean).length > rows * cols && (
+        <div style={{ fontSize: '0.88rem', color: '#c05c00', background: '#fff8f0', border: '1px solid #fcd3a1', borderRadius: 6, padding: '0.4rem 0.7rem', marginBottom: 8 }}>
+          {images.filter(Boolean).length - rows * cols} image(s) won't appear in the current {rows}×{cols} layout. Switch to a larger template or remove extra images.
         </div>
       )}
 
+      {/* Customization controls */}
       <div className="collage-options">
         <div className="collage-controls-row">
-          <label className="collage-inline-label">
-            {t('controls.columns')}
-          </label>
-          <input type="number" min={1} max={10} value={columns} onChange={e => setColumns(Number(e.target.value))} />
-
-          <label className="collage-inline-label">
-            {t('controls.rows')}
-          </label>
-          <input type="number" min={1} max={10} value={rows} onChange={e => setRows(Number(e.target.value))} />
-        </div>
-        <div className="collage-controls-row">
-          <label className="collage-inline-label">
-            {t('controls.widthHeight')}
-          </label>
-            <div className="px-input">
-              <input type="number" placeholder={t('controls.widthPlaceholder')} min={50} value={totalWidth} onChange={e => handleTotalWidthChange(Number(e.target.value))} />
-              <span className="px-suffix">px</span>
-            </div>
-
-          <button
-            type="button"
-            aria-label={lockRatio ? t('controls.unlinkAria') : t('controls.linkAria')}
-            onClick={() => {
-              const newLock = !lockRatio;
-              setLockRatio(newLock);
-              if (newLock && totalHeight > 0) ratioRef.current = totalWidth / totalHeight;
-            }}
-            className="ratio-lock-btn"
-            title={lockRatio ? t('controls.unlinkAria') : t('controls.linkAria')}
-          >
-            {lockRatio ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1 0 7 5 5 0 0 1-7 0l-1-1"/><path d="M14 11a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/></svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 7a5 5 0 0 0-7 0l-1 1a5 5 0 0 0 0 7 5 5 0 0 0 7 0l1-1"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
-            )}
-          </button>
-
+          <label className="collage-inline-label">Cell size</label>
           <div className="px-input">
-            <input type="number" placeholder={t('controls.heightPlaceholder')} min={50} value={totalHeight} onChange={e => handleTotalHeightChange(Number(e.target.value))} />
+            <input type="number" min={50} max={2000} value={cellWidth} onChange={e => setCellWidth(Math.max(50, Number(e.target.value)))} />
+            <span className="px-suffix">px</span>
+          </div>
+          <span style={{ margin: '0 4px', color: '#666' }}>×</span>
+          <div className="px-input">
+            <input type="number" min={50} max={2000} value={cellHeight} onChange={e => setCellHeight(Math.max(50, Number(e.target.value)))} />
             <span className="px-suffix">px</span>
           </div>
         </div>
-      </div>
-
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, background: '#eef4ff', border: '1px solid #b8d0f7', borderRadius: 8, padding: '0.55rem 0.85rem', marginBottom: 8, fontSize: '0.92rem', color: '#2d5fa6' }}>
-        <span style={{ fontSize: '1rem', flexShrink: 0 }}>ℹ️</span>
-        <span>{t('infoBanner')}</span>
-      </div>
-      <button className="collage-btn" onClick={onCollageAndPreview} disabled={!canCollage}>{t('collageBtn')}</button>
-
-      {collageUrl && (
-        <>
-          <div className="collage-preview-outer"><div className="collage-preview"><img src={collageUrl} alt="Collage Preview" style={{ cursor: 'pointer' }} onClick={() => setShowDialog(true)} /></div></div>
-          <div style={{ textAlign: 'center', marginTop: '0.5rem', fontSize: '1rem', color: '#444' }}>{t('finalSize', { width: totalWidth, height: totalHeight })}</div>
-          <button className="download-btn" onClick={handleDownload} disabled={downloading} style={{ margin: '1.2rem auto 0 auto', display: 'block' }}>{downloading ? t('downloadingBtn') : t('downloadBtn')}</button>
-          <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, border: '1.5px solid #e2e6f0', borderRadius: 10, background: '#f7f8fa', padding: '1rem 1.2rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', minHeight: 64 }}>
-            <span style={{ fontWeight: 600, color: '#222', fontSize: '1.08rem', flex: 1, display: 'block', alignSelf: 'center' }}>{t('watermarkPrompt.text')}</span>
-            <button className="collage-btn" style={{ minWidth: 64, padding: '0.35rem 1.1rem', fontSize: '0.98rem', marginLeft: 12, alignSelf: 'center' }} onClick={handleSendToWatermark} disabled={sendStatus === 'processing'}>{sendStatus === 'processing' ? t('watermarkPrompt.preparing') : t('watermarkPrompt.yes')}</button>
+        <div className="collage-controls-row collage-controls-color-row">
+          <label className="collage-inline-label">{t('preview.borderColor')}</label>
+          <input type="color" value={bgColor} onChange={e => setBgColor(e.target.value)} style={{ width: 42, height: 28, padding: 0, border: 'none', background: 'none', cursor: 'pointer' }} />
+          <div className="collage-thickness-group">
+            <label className="collage-inline-label">{t('preview.borderThickness')}</label>
+            <input type="range" min={0} max={100} value={previewGap} onChange={e => setPreviewGap(Number(e.target.value))} style={{ width: 90, cursor: 'pointer', accentColor: '#4f8ef7' }} />
+            <span style={{ minWidth: 28, fontSize: '0.9rem', color: '#444' }}>{previewGap}px</span>
           </div>
-          {sendStatus === 'error' && (<div className="error-msg" style={{ marginTop: 8 }}>{t('watermarkPrompt.error')}</div>)}
-          {showDialog && (
-            <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }} onClick={() => setShowDialog(false)}>
-              <img src={collageUrl} alt="Collage Full Preview" style={{ maxWidth: '90vw', maxHeight: '90vh', boxShadow: '0 0 24px #000', background: '#fff', borderRadius: '8px' }} onClick={e => e.stopPropagation()} />
-              <button style={{ position: 'fixed', top: 24, right: 32, fontSize: '2rem', background: 'none', color: '#fff', border: 'none', cursor: 'pointer', zIndex: 1001 }} onClick={() => setShowDialog(false)} aria-label={t('preview.closeAria')}>×</button>
-            </div>
-          )}
-        </>
+        </div>
+        <div style={{ fontSize: '0.85rem', color: '#666', marginTop: 4 }}>
+          {(() => { const s = computeCanvasSize(rows, cols, cellWidth, cellHeight, previewGap); return `Output: ${s.width} × ${s.height}px`; })()}
+        </div>
+      </div>
+
+      {/* Action buttons */}
+      <div className="collage-actions">
+        <button
+          className="collage-reset-btn"
+          onClick={handleResetAll}
+          disabled={!images.filter(Boolean).length}
+        >
+          {t('resetBtn', { defaultValue: 'Reset' })}
+        </button>
+        <button
+          className="download-btn"
+          onClick={() => handleDownload(offsets, scales, bgColor, previewGap)}
+          disabled={downloading || !images.filter(Boolean).length}
+          style={{ margin: 0 }}
+        >
+          {downloading ? t('downloadingBtn') : t('downloadBtn')}
+        </button>
+      </div>
+
+      {/* Watermark prompt */}
+      {images.filter(Boolean).length > 0 && (
+        <div className="collage-watermark-prompt">
+          <span className="collage-watermark-prompt-text">{t('watermarkPrompt.text')}</span>
+          <button
+            className="collage-btn collage-watermark-prompt-btn"
+            onClick={handleSendToWatermark}
+            disabled={sendStatus === 'processing'}
+          >
+            {sendStatus === 'processing' ? t('watermarkPrompt.preparing') : t('watermarkPrompt.sendToWatermarker')}
+          </button>
+          {sendStatus === 'error' && <span className="error-msg">{t('watermarkPrompt.error')}</span>}
+        </div>
       )}
-      
 
       {/* --- Image Collage Guide --- */}
       <div className="ic-guide">
@@ -740,85 +783,6 @@ const ImageCollageView = ({
           </div>
         </section>
       </div>
-
-      {showPreview && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 20 }} onClick={() => setShowPreview(false)} ref={previewOverlayRef}>
-          <div ref={previewWrapperRef} style={{ background: '#fff', borderRadius: 8, padding: 12, width: 'min(95vw, 880px)', maxWidth: '95vw', height: '90vh', maxHeight: '90vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }} onClick={e => e.stopPropagation()}>
-            <div ref={previewHeaderRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, zIndex: 2 }}>
-              <div style={{ color: '#222', fontWeight: 600 }}>{t('preview.header')}</div>
-              <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
-                <button onClick={() => { setOffsets(images.map(()=>({x:0,y:0}))); setScales(images.map(()=>1)); setBgColor('#ffffff'); setPreviewGap(10); }} className="collage-btn" style={{ ...previewBtnStyle }}>{t('preview.reset')}</button>
-                <button onClick={async () => { await handleCollage(totalWidth, totalHeight, offsets, scales, bgColor); setShowPreview(false); }} className="collage-btn" style={{ ...previewBtnStyle }}>{t('preview.finalize')}</button>
-                <button onClick={() => setShowPreview(false)} className="collage-btn" style={{ ...previewBtnStyle, marginLeft: 8, background: '#ff6b6b', borderColor: '#ff6b6b', color: '#fff' }}>{t('preview.close')}</button>
-              </div>
-            </div>
-
-            <div ref={previewInfoRef} style={{ color: '#444', fontSize: '0.95rem', lineHeight: '1.35', marginBottom: 8 }}>
-              <div>{t('preview.hint1')}</div>
-              <div>{t('preview.hint2')}</div>
-              
-                <label style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#333', fontWeight: 500 }}>
-                  {t('preview.borderColor')}
-                  <input type="color" value={bgColor} onChange={e => setBgColor(e.target.value)} style={{ width: 42, height: 28, padding: 0, border: 'none', background: 'none' }} />
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#333', fontWeight: 500 }}>
-                  {t('preview.borderThickness')}
-                  <input type="range" min={0} max={100} value={previewGap} onChange={e => setPreviewGap(Number(e.target.value))} style={{ width: 90, cursor: 'pointer', accentColor: '#4f8ef7' }} />
-                  <span style={{ minWidth: 24, textAlign: 'right', fontSize: '0.9rem' }}>{previewGap}</span>
-                </label>
-            </div>
-
-            <div ref={previewRef} onWheel={handlePreviewWheel} style={{ flex: 1, minHeight: 0, width: '100%', overflow: 'auto', position: 'relative', background: '#e8eaf2', border: '1px solid #d8dbe8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {/* CSS padding on frame-wrapper creates equal border on ALL 4 sides without
-                  any transform / subpixel issues. Overflow clip sits on a separate wrapper. */}
-              <div style={{ padding: 6, flexShrink: 0, lineHeight: 0 }}>
-                <div style={{ width: Math.floor(previewScaledSize.w), height: Math.floor(previewScaledSize.h), overflow: 'hidden', position: 'relative' }}>
-                  <div style={{ width: previewContentSize.w || expectedWidth, height: previewContentSize.h || expectedHeight, transform: `scale(${previewScale})`, transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, boxSizing: 'border-box', background: bgColor }}>
-                    {/* Render grid cells */}
-                    {Array.from({ length: rows * columns }).map((_, idx) => {
-                      const col = idx % columns;
-                      const row = Math.floor(idx / columns);
-                      const cellW = width;
-                      const cellH = height;
-                      const gap = typeof previewGap === 'number' ? previewGap : 10;
-                      const left = col * (cellW + gap) + gap;
-                      const top = row * (cellH + gap) + gap;
-                      const file = images[idx];
-                      const url = previewUrls[idx];
-                      const meta = previewMeta[idx] || { w: 1, h: 1 };
-                      const off = offsets[idx] || { x: 0, y: 0 };
-
-                      const imgRatio = meta.w / meta.h;
-                      const cellRatio = cellW / cellH;
-                      let drawW0, drawH0;
-                      if (imgRatio > cellRatio) {
-                        drawH0 = cellH;
-                        drawW0 = cellH * imgRatio;
-                      } else {
-                        drawW0 = cellW;
-                        drawH0 = cellW / imgRatio;
-                      }
-                      const scale = (scales && scales[idx]) || 1;
-                      const drawW = Math.round(drawW0 * scale);
-                      const drawH = Math.round(drawH0 * scale);
-
-                      return (
-                        <div key={idx} style={{ position: 'absolute', left, top, width: cellW, height: cellH, overflow: 'hidden', background: bgColor, display: 'flex', alignItems: 'center', justifyContent: 'center', touchAction: 'none' }} onPointerDown={e => onCellPointerDown(e, idx, cellW, cellH, left, top, meta)} onPointerMove={e => onCellPointerMove(e, idx)} onPointerUp={e => onCellPointerUp(e, idx)} onPointerCancel={e => onCellPointerUp(e, idx)} onWheel={e => onImageWheel(e, idx, meta, off, cellW, cellH, left, top)}>
-                          {file && url && !previewErrors[idx] ? (
-                            <img src={url} data-idx={idx} alt={file.name} draggable={false} onError={() => tryPreviewDataUrl(idx, previewUrls, previewErrors)} style={{ position: 'absolute', left: off.x + (cellW - drawW) / 2, top: off.y + (cellH - drawH) / 2, width: drawW, height: drawH, userSelect: 'none', pointerEvents: 'none' }} />
-                          ) : file ? (
-                            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: 12, padding: 6, textAlign: 'center' }}>{t('preview.noPreview')}</div>
-                          ) : null}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-export default function ImageFileList({ images, onMove, onRemove, onReset }) {
+export default function ImageFileList({ images, onRemove, onReset }) {
   const [urls, setUrls] = useState([]);
   const [errors, setErrors] = useState([]);
   // Track which indices have already attempted the data-URL fallback so we
@@ -64,22 +64,6 @@ export default function ImageFileList({ images, onMove, onRemove, onReset }) {
             />
           )}
           <div className="image-file-actions">
-            <button
-              type="button"
-              disabled={idx === 0}
-              onClick={e => { e.stopPropagation(); onMove(idx, idx - 1); }}
-              title="Move Left"
-            >
-              ◀
-            </button>
-            <button
-              type="button"
-              disabled={idx === images.length - 1}
-              onClick={e => { e.stopPropagation(); onMove(idx, idx + 1); }}
-              title="Move Right"
-            >
-              ▶
-            </button>
             <button
               type="button"
               onClick={e => { e.stopPropagation(); onReset && onReset(idx); }}
