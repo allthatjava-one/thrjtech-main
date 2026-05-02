@@ -335,7 +335,6 @@ export function ImageCropView(props) {
           onDragLeave={handleDragLeave}
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
           ref={cropContainerRef}
-          onWheel={handleWheel}
         >
           {imageSrc ? (
             <div
