@@ -156,6 +156,10 @@
       "heading": "¿Qué es un collage de imágenes?",
       "body": "Un collage de imágenes es una colección de múltiples imágenes dispuestas en una composición unificada. En lugar de ver las fotos individualmente, un collage te permite presentarlas juntas, crear significado a través de la disposición y resaltar las conexiones entre las imágenes."
     },
+    "best": {
+      "example": "Mejores ejemplos de collages de imágenes",
+      "example-desc": "Hecho con la plantilla 'Tira de 3' y tamaño de celda 200px x 400px."
+    },
     "why": {
       "heading": "¿Por qué usar collages de imágenes?",
       "item1": "Cuenta una historia completa: una sola imagen muestra un momento. Un collage muestra antes y después, diferentes ángulos o una secuencia de eventos.",

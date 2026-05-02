@@ -725,6 +725,12 @@ const ImageCollageView = ({
         </section>
 
         <section className="ic-section">
+          <h3>{t('guide.best.example', { defaultValue: 'Best examples of image collages' })}</h3>
+          <img src="/images/tools/collage/collage_example.png" alt="Example collage 1" className="how-img" />
+          <p>{t('guide.best.example-desc', { defaultValue: 'An image collage is a collection of multiple images arranged into one unified composition. Instead of viewing photos individually, a collage lets you present them together, create meaning through arrangement, and highlight connections between images.' })}</p>
+        </section>
+
+        <section className="ic-section">
           <h3>{t('guide.why.heading', { defaultValue: 'Why Use Image Collages?' })}</h3>
           <ol className="ic-list">
             <li>{t('guide.why.item1', { defaultValue: 'Tell a Complete Story — A single image shows one moment. A collage shows before and after, different angles, or a sequence of events.' })}</li>
