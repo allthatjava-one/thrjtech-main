@@ -67,10 +67,10 @@
     }
   },
   "howItWorks": {
-    "step1": "Ajoutez des images via glisser-déposer ou le navigateur de fichiers.",
-    "step2": "Ajustez les lignes, colonnes et l'espacement pour organiser la grille.",
-    "step3": "Prévisualisez le collage et repositionnez les images si nécessaire.",
-    "step4": "Finalisez l'image du collage et téléchargez-la."
+    "step1": "Sélectionnez un modèle",
+    "step2": "Téléchargez des images et organisez-les comme vous le souhaitez",
+    "step3": "Échangez les images en les faisant glisser à la position de l'autre",
+    "step4": "Changez la couleur et l'épaisseur de la bordure pour un look personnalisé et téléchargez votre collage"
   },
   "dropZone": {
     "text": "Glissez-déposez des images ici, ou cliquez pour en ajouter. La grille s'agrandira selon les besoins."
@@ -96,9 +96,11 @@
   "finalSize": "Taille finale du collage : {{width}} x {{height}} px",
   "downloadBtn": "Télécharger",
   "downloadingBtn": "Téléchargement...",
+  "resetBtn": "Réinitialiser",
   "watermarkPrompt": {
     "text": "Souhaitez-vous ajouter un filigrane privé à l'image du collage ?",
     "yes": "Oui",
+    "sendToWatermarker": "Envoyer au Filigrane",
     "preparing": "Préparation...",
     "error": "Échec de l'envoi de l'image à l'outil de filigrane."
   },

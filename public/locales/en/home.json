@@ -119,10 +119,10 @@
       "feature3": "Auto-expands grid to fit all your images",
       "feature4": "Set custom output width and height",
       "feature5": "No watermarks, no sign-up needed",
-      "step1": "1. Drag & drop or browse for your images",
-      "step2": "2. Arrange images and set the grid layout",
-      "step3": "3. Preview your collage instantly",
-      "step4": "4. Download your finished collage"
+      "step1": "1. Select a template",
+      "step2": "2. Upload images and arrange them as you like",
+      "step3": "3. Swap images by dragging them to each other's position",
+      "step4": "4. Change border color and thickness for a custom look and download your collage"
     },
     "imageConverter": {
       "title": "Image Converter",
