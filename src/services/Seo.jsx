@@ -1,19 +1,10 @@
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 export default function Seo({ title, description }) {
-  useEffect(() => {
-    if (title) document.title = title
-
-    if (description) {
-      let meta = document.querySelector('meta[name="description"]')
-      if (!meta) {
-        meta = document.createElement('meta')
-        meta.name = 'description'
-        document.head.appendChild(meta)
-      }
-      meta.content = description
-    }
-  }, [title, description])
-
-  return null
+  return (
+    <Helmet>
+      {title && <title>{title}</title>}
+      {description && <meta name="description" content={description} />}
+    </Helmet>
+  )
 }
