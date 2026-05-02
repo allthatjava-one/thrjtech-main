@@ -119,10 +119,10 @@
       "feature3": "Grille auto-extensible pour accueillir toutes vos images",
       "feature4": "Définissez une largeur et une hauteur de sortie personnalisées",
       "feature5": "Sans filigrane ni inscription",
-      "step1": "1. Glissez-déposez ou parcourez vos images",
-      "step2": "2. Arrangez les images et définissez la disposition en grille",
-      "step3": "3. Prévisualisez votre collage instantanément",
-      "step4": "4. Téléchargez votre collage terminé"
+      "step1": "1. Sélectionnez un modèle",
+      "step2": "2. Téléchargez des images et organisez-les comme vous le souhaitez",
+      "step3": "3. Échangez des images en les faisant glisser à la position de l'autre",
+      "step4": "4. Changez la couleur et l'épaisseur des bordures pour un look personnalisé et téléchargez votre collage"
     },
     "imageConverter": {
       "title": "Convertisseur d'image",
