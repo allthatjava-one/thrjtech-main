@@ -150,6 +150,20 @@ try {
   if (res.ok) {
     blogsPageData = await res.json()
     blogSlugs = (blogsPageData.items ?? []).map(b => b.slug)
+
+    // Fetch remaining pages if the API paginates
+    const totalPages = blogsPageData.total_pages ?? 1
+    for (let page = 2; page <= totalPages; page++) {
+      const pageRes = await fetch(`${BLOG_API}?page=${page}`)
+      if (pageRes.ok) {
+        const pageData = await pageRes.json()
+        blogSlugs.push(...(pageData.items ?? []).map(b => b.slug))
+      } else {
+        console.warn(`Blog API page ${page} returned ${pageRes.status} — stopping pagination`)
+        break
+      }
+    }
+
     console.log(`Found ${blogSlugs.length} blog(s): ${blogSlugs.join(', ')}`)
   } else {
     console.warn(`Blog API returned ${res.status} — skipping blog prerender`)
