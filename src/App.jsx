@@ -1,6 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -142,7 +142,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <GtagRouteTracker />
       <Routes>
@@ -168,6 +168,6 @@ export default function App() {
         <Route path="/about/terms" element={<TermsOfServicePage />} />
         <Route path="/contact" element={<ContactUsPage />} />
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }

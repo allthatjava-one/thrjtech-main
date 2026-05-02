@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useSsrData } from '../SsrDataContext.js'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import "./BlogsListPage.css";
@@ -10,13 +11,23 @@ const DEFAULT_THUMB = '/images/blogs/default-thumb.svg'
 export default function BlogsListPage() {
   const { t, i18n } = useTranslation('blogs')
   const [searchParams, setSearchParams] = useSearchParams()
-  const [blogs, setBlogs] = useState([])
-  const [loading, setLoading] = useState(true)
+  const ssrData = useSsrData()
+  // Consume window.__INITIAL_DATA__ exactly once (cleared so remounts don't reuse stale page-1 data)
+  const [initialData] = useState(() => {
+    if (ssrData) return ssrData
+    if (typeof window === 'undefined') return null
+    const data = window.__INITIAL_DATA__ ?? null
+    if (data) window.__INITIAL_DATA__ = null
+    return data
+  })
+  const [blogs, setBlogs] = useState(initialData?.items ?? [])
+  const [loading, setLoading] = useState(!initialData)
   const [error, setError] = useState(null)
-  const [page, setPage] = useState(null)
-  const [pageSize, setPageSize] = useState(null)
-  const [totalPages, setTotalPages] = useState(1)
-  const [links, setLinks] = useState({})
+  const [page, setPage] = useState(initialData?.page ?? null)
+  const [pageSize, setPageSize] = useState(initialData?.page_size ?? null)
+  const [totalPages, setTotalPages] = useState(initialData?.total_pages ?? 1)
+  const [links, setLinks] = useState(initialData?.links ?? {})
+  const initialDataUsed = useRef(!!initialData)
 
   const urlPage = parseInt(searchParams.get('page') || '1', 10)
   const urlPageSize = searchParams.get('page_size') ? parseInt(searchParams.get('page_size'), 10) : null
@@ -46,6 +57,10 @@ export default function BlogsListPage() {
   }
 
   useEffect(() => {
+    if (initialDataUsed.current) {
+      initialDataUsed.current = false
+      return
+    }
     fetchBlogs(urlPage, urlPageSize)
   }, [urlPage, urlPageSize])
 
