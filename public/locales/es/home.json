@@ -119,10 +119,10 @@
       "feature3": "Se expande automáticamente para ajustar todas las imágenes",
       "feature4": "Establezca ancho y alto personalizados",
       "feature5": "Sin marcas de agua, sin registro",
-      "step1": "1. Arrastre y suelte o busque sus imágenes",
-      "step2": "2. Organice imágenes y establezca el diseño de cuadrícula",
-      "step3": "3. Vista previa de su collage al instante",
-      "step4": "4. Descargue su collage terminado"
+      "step1": "1. Seleccione una plantilla",
+      "step2": "2. Suba imágenes y organícelas como desee",
+      "step3": "3. Intercambie imágenes arrastrándolas a la posición de otra",
+      "step4": "4. Cambie el color y el grosor del borde para un aspecto personalizado y descargue su collage"
     },
     "imageConverter": {
       "title": "Conversor de imágenes",
