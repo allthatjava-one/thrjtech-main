@@ -467,6 +467,90 @@
   min-height: 140px;
 }
 
+/* ── Guide block ─────────────────────────────────────────────── */
+.rt-guide {
+  margin-top: 28px;
+  border-top: 2px solid #ff6b2b22;
+  padding-top: 24px;
+  padding-bottom: 4px;
+  color: #111;
+  box-sizing: border-box;
+}
+
+.rt-guide,
+.rt-guide * {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.rt-guide-content,
+.rt-guide-content p,
+.rt-guide-content h2,
+.rt-guide-content h3,
+.rt-guide-content li,
+.rt-guide-content ul,
+.rt-guide-content ol,
+.rt-guide-content table,
+.rt-guide-content td,
+.rt-guide-content th,
+.rt-guide-content code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.rt-guide-content table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+.rt-guide-content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+.rt-guide-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.rt-guide-icon {
+  flex: 0 0 56px;
+  font-size: 30px;
+  line-height: 1;
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-weight: 900;
+  color: #ff6b2b;
+  letter-spacing: -1px;
+}
+
+.rt-guide-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.rt-guide-content pre {
+  overflow-x: auto;
+}
+
+@media (max-width: 720px) {
+  .rt-guide {
+    padding: 12px 0 4px;
+  }
+  .rt-guide-row {
+    flex-direction: column;
+  }
+  .rt-guide-icon {
+    flex: 0 0 auto;
+    margin-bottom: 8px;
+  }
+  .rt-guide-content h2 { font-size: 18px; }
+  .rt-guide-content pre { font-size: 12px; padding: 8px; }
+}
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .rt-panels {
