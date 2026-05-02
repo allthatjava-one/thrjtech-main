@@ -134,6 +134,10 @@
       "heading": "What Is an Image Collage?",
       "body": "An image collage is a collection of multiple images arranged into one unified composition. Instead of viewing photos individually, a collage lets you present them together, create meaning through arrangement, and highlight connections between images."
     },
+    "best": {
+      "example": "Best examples of image collages",
+      "example-desc": "Made with template 'Strip of 3' and Cell size 200px x 400px."
+    },
     "why": {
       "heading": "Why Use Image Collages?",
       "item1": "Tell a Complete Story — A single image shows one moment. A collage shows before and after, different angles, or a sequence of events.",
