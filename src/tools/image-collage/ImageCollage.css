@@ -183,7 +183,7 @@
   padding: 0.3rem 0.5rem;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
-  width: 70px;
+  width: 90px;
 }
 
 /* Row layout for controls on desktop */
@@ -201,6 +201,7 @@
   color: #374151;
 }
 .collage-controls-spacer { flex: 1 1 20px; }
+.collage-thickness-group { display: flex; align-items: center; gap: 12px; }
 .px-input { display: inline-flex; align-items: center; gap: 6px; }
 .px-suffix { font-size: 0.95rem; color: #6b7280; }
 .ratio-lock-btn {
@@ -320,8 +321,11 @@
     font-size: 0.98rem;
   }
   .collage-options input {
-    width: 50px;
+    width: 72px;
   }
+  /* Break border-thickness onto its own line on mobile */
+  .collage-controls-color-row { flex-wrap: wrap; }
+  .collage-thickness-group { flex-basis: 100%; }
 }
 
 /* tool-details / details-row / how-img are in image-tools-shared.css */
@@ -407,4 +411,225 @@
 @media (max-width: 720px) {
   .ic-layouts { flex-direction: column }
   .ic-guide { padding: 16px }
+}
+
+/* ── Template Selector ───────────────────────── */
+.collage-template-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.template-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border: 2px solid #d8dbe8;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  color: #374151;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.template-card:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+.template-card--active {
+  border-color: #6366f1;
+  background: #eef0ff;
+  color: #4338ca;
+}
+.template-card-name {
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+/* ── Live Preview ─────────────────────────────── */
+.collage-live-preview {
+  width: 100%;
+  background: #f5f7fc;
+  border: 2px dashed #c8d4ea;
+  border-radius: 10px;
+  padding: 14px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  position: relative;
+  transition: border-color 0.2s, background 0.2s;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.collage-live-preview--drag-active {
+  border-color: #6366f1;
+  background: #eef0ff;
+}
+
+.collage-preview-empty-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* ── Individual Cell ──────────────────────────── */
+.collage-cell {
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.collage-cell--empty {
+  border: 2px dashed #c8d4ea;
+  border-radius: 4px;
+  cursor: pointer;
+  background: rgba(248, 250, 255, 0.9);
+}
+.collage-cell--empty:hover {
+  border-color: #6366f1;
+  background: #eef0ff;
+}
+.collage-cell--drag-over {
+  outline: 3px solid #6366f1;
+  outline-offset: -3px;
+  background: rgba(99, 102, 241, 0.1) !important;
+}
+
+.collage-cell-empty-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #a0aec0;
+  pointer-events: none;
+  user-select: none;
+}
+.collage-cell-plus {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.collage-cell-hint {
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+/* Drag handle (top-left corner of filled cell) */
+.collage-cell-drag-handle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  font-size: 14px;
+  z-index: 10;
+  user-select: none;
+  line-height: 1;
+}
+.collage-cell-drag-handle:active {
+  cursor: grabbing;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* Remove button (top-right corner of filled cell) */
+.collage-cell-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 0;
+  line-height: 1;
+  font-family: inherit;
+}
+.collage-cell-remove:hover {
+  background: rgba(220, 38, 38, 0.75);
+}
+
+/* Gesture tip below file list */
+.collage-gesture-tip {
+  font-size: 0.8rem;
+  color: #b0bac8;
+  margin: 4px 0 8px;
+  line-height: 1.5;
+}
+
+/* ── Watermark prompt notification ───────────── */
+.collage-watermark-prompt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #eef4ff;
+  border: 1px solid #b8d0f7;
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  color: #2d5fa6;
+}
+.collage-watermark-prompt-text {
+  flex: 1;
+  min-width: 0;
+}
+.collage-watermark-prompt-btn {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.45rem 1rem;
+}
+
+/* ── Action buttons row ───────────────────────── */
+.collage-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1rem;
+}
+.collage-actions .download-btn {
+  margin: 0;
+}
+.collage-reset-btn {
+  background: none;
+  border: 1px solid #d1d5db;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+}
+.collage-reset-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+.collage-reset-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
