@@ -122,7 +122,7 @@
 .dropdown-columns {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1rem;
   min-width: 420px;
   padding: 1rem 1.2rem 1rem 1.2rem;
   box-sizing: border-box;
@@ -136,6 +136,7 @@
 }
 .dropdown-group a {
   padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
 }
 /* ── Dropdown Grouping ───────────────────────────────────── */
 .dropdown-group {
@@ -235,15 +236,15 @@
 }
 
 .dropdown-content {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 6px);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 56px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   box-shadow: var(--shadow);
   min-width: 180px;
-  overflow: hidden;
   z-index: 200;
 }
 

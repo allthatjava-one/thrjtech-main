@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function ScreenRecorderView({ isSupported, recording, videoUrl, error, startRecording, stopRecording, recordSound, setRecordSound }) {
+  const { t } = useTranslation('screenRecorder')
   const [openPanel, setOpenPanel] = useState('')
 
   const togglePanel = (panel) => {
@@ -11,10 +13,8 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
     <>
       {/* Hero */}
       <div className="hero-section">
-        <h1 className="hero-title">Screen Recorder</h1>
-        <p className="hero-tagline">
-          Record your screen instantly — stays in your browser, private and free.
-        </p>
+        <h1 className="hero-title">{t('hero.title')}</h1>
+        <p className="hero-tagline">{t('hero.tagline')}</p>
 
         <div className="details-controls">
           <button
@@ -23,7 +23,7 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
             aria-expanded={openPanel === 'details'}
             type="button"
           >
-            Details
+            {t('tabs.details')}
           </button>
           <button
             className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
@@ -31,74 +31,66 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
             aria-expanded={openPanel === 'howitworks'}
             type="button"
           >
-            How it works
+            {t('tabs.howItWorks')}
           </button>
         </div>
 
         <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
           <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
-            <h3>What is Screen Recording?</h3>
-            <p>Screen recording captures everything displayed on your screen — your desktop, a specific window, or a browser tab — as a video file.</p>
+            <h3>{t('details.whatIs.heading')}</h3>
+            <p>{t('details.whatIs.body')}</p>
 
-            <h3>How it works</h3>
-            <p>This tool uses the browser's built-in Screen Capture API. No software to install, no data sent to a server.</p>
+            <h3>{t('details.howItWorks.heading')}</h3>
+            <p>{t('details.howItWorks.body')}</p>
 
-            <h3>Privacy</h3>
-            <p>The recording is processed entirely in your browser. Nothing is uploaded. The video file stays on your device.</p>
+            <h3>{t('details.privacy.heading')}</h3>
+            <p>{t('details.privacy.body')}</p>
 
-            <h3>When to use</h3>
+            <h3>{t('details.whenToUse.heading')}</h3>
             <ul>
-              <li>Creating tutorials or walkthroughs</li>
-              <li>Reporting bugs with a visual example</li>
-              <li>Capturing a presentation or demo</li>
-              <li>Recording gameplay or app usage</li>
+              <li>{t('details.whenToUse.item1')}</li>
+              <li>{t('details.whenToUse.item2')}</li>
+              <li>{t('details.whenToUse.item3')}</li>
+              <li>{t('details.whenToUse.item4')}</li>
             </ul>
 
-            <h3>FAQ</h3>
+            <h3>{t('details.faq.heading')}</h3>
             <ul>
-              <li><strong>Which browsers are supported?</strong> Chrome, Edge, and Firefox on desktop.</li>
-              <li><strong>What format is the recording?</strong> WebM (supported by all modern browsers).</li>
-              <li><strong>Is there a time limit?</strong> No — record as long as you need.</li>
-              <li><strong>Can I record audio?</strong> System audio capture depends on your browser and OS.</li>
+              <li><strong>{t('details.faq.q1')}</strong> {t('details.faq.a1')}</li>
+              <li><strong>{t('details.faq.q2')}</strong> {t('details.faq.a2')}</li>
+              <li><strong>{t('details.faq.q3')}</strong> {t('details.faq.a3')}</li>
+              <li><strong>{t('details.faq.q4')}</strong> {t('details.faq.a4')}</li>
             </ul>
           </div>
 
           <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
             <ol style={{ margin: 0, paddingLeft: '1rem' }}>
-              <li style={{ marginBottom: '0.75rem' }}>
-                <p>Click <strong>Start Recording</strong> and pick the screen, window, or tab to share.</p>
-              </li>
-              <li style={{ marginBottom: '0.75rem' }}>
-                <p>Your browser will prompt you to select what to capture. Choose and confirm.</p>
-              </li>
-              <li style={{ marginBottom: '0.75rem' }}>
-                <p>Click <strong>Stop Recording</strong> when you are done.</p>
-              </li>
-              <li>
-                <p>A preview will appear below. Use the <strong>Download</strong> button to save your recording.</p>
-              </li>
+              <li style={{ marginBottom: '0.75rem' }}><p>{t('howItWorks.step1')}</p></li>
+              <li style={{ marginBottom: '0.75rem' }}><p>{t('howItWorks.step2')}</p></li>
+              <li style={{ marginBottom: '0.75rem' }}><p>{t('howItWorks.step3')}</p></li>
+              <li><p>{t('howItWorks.step4')}</p></li>
             </ol>
           </div>
         </div>
 
         <div className="hero-badges">
-          <span className="hero-badge">⚡ Instant</span>
-          <span className="hero-badge">🔒 Browser-only</span>
-          <span className="hero-badge">🕵️ Private</span>
+          <span className="hero-badge">{t('badges.instant')}</span>
+          <span className="hero-badge">{t('badges.browserOnly')}</span>
+          <span className="hero-badge">{t('badges.private')}</span>
         </div>
       </div>
 
       {/* Browser support warning */}
       {!isSupported && (
         <div className="alert-box alert-warning">
-          Your browser does not support screen capture. Try Chrome, Edge, or Firefox on desktop.
+          {t('alerts.browserUnsupported')}
         </div>
       )}
 
       {/* Tip: avoid capturing the browser notification bar */}
       {isSupported && !recording && !videoUrl && (
         <div className="alert-box alert-tip">
-          <strong>Tip:</strong> In the sharing dialog, choose <em>Window</em> or <em>Tab</em> instead of <em>Entire Screen</em> to avoid capturing the browser's recording notification bar.
+          <strong>{t('alerts.tipLabel')}</strong>{' '}{t('alerts.tip')}
         </div>
       )}
 
@@ -111,7 +103,7 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
               checked={recordSound}
               onChange={(e) => setRecordSound(e.target.checked)}
             />
-            Record sound (microphone)
+            {t('actions.recordSound')}
           </label>
         )}
         {!recording ? (
@@ -120,17 +112,17 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
             onClick={startRecording}
             disabled={!isSupported}
           >
-            ● Start Recording
+            {t('actions.start')}
           </button>
         ) : (
           <button
             className="btn btn-danger action-btn"
             onClick={stopRecording}
           >
-            ■ Stop Recording
+            {t('actions.stop')}
           </button>
         )}
-        {recording && <span className="recording-indicator">● Recording in progress…</span>}
+        {recording && <span className="recording-indicator">{t('actions.recordingInProgress')}</span>}
       </div>
 
       {/* Error */}
@@ -141,14 +133,14 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
       {/* Preview */}
       {videoUrl && (
         <div className="preview-section">
-          <h3 className="preview-title">Preview</h3>
+          <h3 className="preview-title">{t('preview.title')}</h3>
           <video src={videoUrl} controls className="preview-video" />
           <a
             href={videoUrl}
             download="screen-recording.webm"
             className="btn btn-primary download-btn"
           >
-            ⬇ Download Recording
+            {t('actions.download')}
           </a>
         </div>
       )}
@@ -156,8 +148,204 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
       {/* Note */}
       <div className="note">
         <span className="note-icon">⚠️</span>
-        The recording is kept temporarily in your browser. Refreshing or closing the page will erase it. Download before navigating away.
+        {t('note')}
       </div>
+
+      {/* SEO guide section */}
+      <section className="sr-guide">
+        <h2>{t('guide.howToVideoTitle')}</h2>
+        <div style={{ position: 'relative', width: '90%', paddingBottom: '56.25%', height: 0, overflow: 'hidden', margin: '0 auto' }}>
+          <iframe src="https://www.youtube.com/embed/oEdJuGS0uE8?si=rURKHSN9EAPy8WJf"
+            title="Quick Screen recording" frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}></iframe>
+        </div>
+
+        <h2>{t('guide.mainTitle')}</h2>
+        <p>{t('guide.intro1')}</p>
+        <p>{t('guide.intro2')}</p>
+        <p>{t('guide.intro3')}</p>
+
+        <hr />
+
+        <h2>{t('guide.whyUse.heading')}</h2>
+        <p>{t('guide.whyUse.body')}</p>
+        <h3>{t('guide.keyBenefits.heading')}</h3>
+        <ul>
+          <li>{t('guide.keyBenefits.item1')}</li>
+          <li>{t('guide.keyBenefits.item2')}</li>
+          <li>{t('guide.keyBenefits.item3')}</li>
+          <li>{t('guide.keyBenefits.item4')}</li>
+          <li>{t('guide.keyBenefits.item5')}</li>
+          <li>{t('guide.keyBenefits.item6')}</li>
+          <li>{t('guide.keyBenefits.item7')}</li>
+        </ul>
+        <p>{t('guide.keyBenefits.note')}</p>
+
+        <hr />
+
+        <h2>{t('guide.features.heading')}</h2>
+
+        <h3>{t('guide.features.fullScreen.heading')}</h3>
+        <p>{t('guide.features.fullScreen.body')}</p>
+        <ul>
+          <li>{t('guide.features.fullScreen.item1')}</li>
+          <li>{t('guide.features.fullScreen.item2')}</li>
+          <li>{t('guide.features.fullScreen.item3')}</li>
+          <li>{t('guide.features.fullScreen.item4')}</li>
+          <li>{t('guide.features.fullScreen.item5')}</li>
+        </ul>
+
+        <h3>{t('guide.features.mic.heading')}</h3>
+        <p>{t('guide.features.mic.body')}</p>
+        <ul>
+          <li>{t('guide.features.mic.item1')}</li>
+          <li>{t('guide.features.mic.item2')}</li>
+          <li>{t('guide.features.mic.item3')}</li>
+          <li>{t('guide.features.mic.item4')}</li>
+        </ul>
+
+        <h3>{t('guide.features.webcam.heading')}</h3>
+        <p>{t('guide.features.webcam.body')}</p>
+        <ul>
+          <li>{t('guide.features.webcam.item1')}</li>
+          <li>{t('guide.features.webcam.item2')}</li>
+          <li>{t('guide.features.webcam.item3')}</li>
+          <li>{t('guide.features.webcam.item4')}</li>
+        </ul>
+
+        <h3>{t('guide.features.privacy.heading')}</h3>
+        <p>{t('guide.features.privacy.body')}</p>
+
+        <h3>{t('guide.features.noInstall.heading')}</h3>
+        <p>{t('guide.features.noInstall.body')}</p>
+
+        <hr />
+
+        <h2>{t('guide.comparison.heading')}</h2>
+        <div className="sr-table-wrap">
+          <table className="sr-table">
+            <thead>
+              <tr>
+                <th>{t('guide.comparison.col1')}</th>
+                <th>{t('guide.comparison.col2')}</th>
+                <th>{t('guide.comparison.col3')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>{t('guide.comparison.row1feature')}</td><td>{t('guide.comparison.row1browser')}</td><td>{t('guide.comparison.row1desktop')}</td></tr>
+              <tr><td>{t('guide.comparison.row2feature')}</td><td>{t('guide.comparison.row2browser')}</td><td>{t('guide.comparison.row2desktop')}</td></tr>
+              <tr><td>{t('guide.comparison.row3feature')}</td><td>{t('guide.comparison.row3browser')}</td><td>{t('guide.comparison.row3desktop')}</td></tr>
+              <tr><td>{t('guide.comparison.row4feature')}</td><td>{t('guide.comparison.row4browser')}</td><td>{t('guide.comparison.row4desktop')}</td></tr>
+              <tr><td>{t('guide.comparison.row5feature')}</td><td>{t('guide.comparison.row5browser')}</td><td>{t('guide.comparison.row5desktop')}</td></tr>
+              <tr><td>{t('guide.comparison.row6feature')}</td><td>{t('guide.comparison.row6browser')}</td><td>{t('guide.comparison.row6desktop')}</td></tr>
+              <tr><td>{t('guide.comparison.row7feature')}</td><td>{t('guide.comparison.row7browser')}</td><td>{t('guide.comparison.row7desktop')}</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr />
+
+        <h2>{t('guide.modes.heading')}</h2>
+        <div className="sr-table-wrap">
+          <table className="sr-table">
+            <thead>
+              <tr>
+                <th>{t('guide.modes.col1')}</th>
+                <th>{t('guide.modes.col2')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>{t('guide.modes.row1mode')}</td><td>{t('guide.modes.row1use')}</td></tr>
+              <tr><td>{t('guide.modes.row2mode')}</td><td>{t('guide.modes.row2use')}</td></tr>
+              <tr><td>{t('guide.modes.row3mode')}</td><td>{t('guide.modes.row3use')}</td></tr>
+              <tr><td>{t('guide.modes.row4mode')}</td><td>{t('guide.modes.row4use')}</td></tr>
+              <tr><td>{t('guide.modes.row5mode')}</td><td>{t('guide.modes.row5use')}</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr />
+
+        <h2>{t('guide.useCases.heading')}</h2>
+
+        <h3>{t('guide.useCases.devs.heading')}</h3>
+        <p>{t('guide.useCases.devs.body')}</p>
+        <ul>
+          <li>{t('guide.useCases.devs.item1')}</li>
+          <li>{t('guide.useCases.devs.item2')}</li>
+          <li>{t('guide.useCases.devs.item3')}</li>
+          <li>{t('guide.useCases.devs.item4')}</li>
+        </ul>
+
+        <h3>{t('guide.useCases.teachers.heading')}</h3>
+        <p>{t('guide.useCases.teachers.body')}</p>
+        <ul>
+          <li>{t('guide.useCases.teachers.item1')}</li>
+          <li>{t('guide.useCases.teachers.item2')}</li>
+          <li>{t('guide.useCases.teachers.item3')}</li>
+          <li>{t('guide.useCases.teachers.item4')}</li>
+        </ul>
+
+        <h3>{t('guide.useCases.teams.heading')}</h3>
+        <p>{t('guide.useCases.teams.body')}</p>
+        <ul>
+          <li>{t('guide.useCases.teams.item1')}</li>
+          <li>{t('guide.useCases.teams.item2')}</li>
+          <li>{t('guide.useCases.teams.item3')}</li>
+          <li>{t('guide.useCases.teams.item4')}</li>
+        </ul>
+
+        <h3>{t('guide.useCases.gamers.heading')}</h3>
+        <p>{t('guide.useCases.gamers.body')}</p>
+        <ul>
+          <li>{t('guide.useCases.gamers.item1')}</li>
+          <li>{t('guide.useCases.gamers.item2')}</li>
+          <li>{t('guide.useCases.gamers.item3')}</li>
+          <li>{t('guide.useCases.gamers.item4')}</li>
+        </ul>
+
+        <hr />
+
+        <h2>{t('guide.howTo.heading')}</h2>
+        <ol>
+          <li>{t('guide.howTo.step1')}</li>
+          <li>{t('guide.howTo.step2')}</li>
+          <li>{t('guide.howTo.step3')}</li>
+          <li>{t('guide.howTo.step4')}</li>
+          <li>{t('guide.howTo.step5')}</li>
+          <li>{t('guide.howTo.step6')}</li>
+          <li>{t('guide.howTo.step7')}</li>
+          <li>{t('guide.howTo.step8')}</li>
+        </ol>
+
+        <hr />
+
+        <h2>{t('guide.growing.heading')}</h2>
+        <p>{t('guide.growing.body')}</p>
+
+        <hr />
+
+        <h2>{t('guide.faq.heading')}</h2>
+
+        <h3>{t('guide.faq.q1')}</h3>
+        <p>{t('guide.faq.a1')}</p>
+
+        <h3>{t('guide.faq.q2')}</h3>
+        <p>{t('guide.faq.a2')}</p>
+
+        <h3>{t('guide.faq.q3')}</h3>
+        <p>{t('guide.faq.a3')}</p>
+
+        <h3>{t('guide.faq.q4')}</h3>
+        <p>{t('guide.faq.a4')}</p>
+
+        <hr />
+
+        <h2>{t('guide.final.heading')}</h2>
+        <p>{t('guide.final.body1')}</p>
+        <p><strong>{t('guide.final.body2')}</strong></p>
+      </section>
     </>
   )
 }
