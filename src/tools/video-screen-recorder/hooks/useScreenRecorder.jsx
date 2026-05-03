@@ -8,7 +8,7 @@ export default function useScreenRecorder() {
   const [recording, setRecording] = useState(false)
   const [videoUrl, setVideoUrl] = useState(null)
   const [error, setError] = useState(null)
-  const [recordSound, setRecordSound] = useState(false)
+  const [recordSound, setRecordSound] = useState(true)
 
   const isSupported = typeof navigator !== 'undefined' && !!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia && window.MediaRecorder)
 

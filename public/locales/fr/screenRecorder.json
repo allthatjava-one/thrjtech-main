@@ -3,20 +3,233 @@
     "title": "Enregistreur d'écran",
     "tagline": "Enregistrez votre écran instantanément — reste dans votre navigateur, privé et gratuit."
   },
-  "actions": {
-    "start": "Démarrer l'enregistrement",
-    "stop": "Arrêter l'enregistrement",
-    "download": "Télécharger l'enregistrement"
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
   },
-  "status": {
-    "recording": "Enregistrement...",
-    "idle": "Prêt"
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que l'enregistrement d'écran ?",
+      "body": "L'enregistrement d'écran capture tout ce qui s'affiche sur votre écran — votre bureau, une fenêtre spécifique ou un onglet de navigateur — sous forme de fichier vidéo."
+    },
+    "howItWorks": {
+      "heading": "Comment ça fonctionne",
+      "body": "Cet outil utilise l'API Screen Capture intégrée au navigateur. Aucun logiciel à installer, aucune donnée envoyée à un serveur."
+    },
+    "privacy": {
+      "heading": "Confidentialité",
+      "body": "L'enregistrement est traité entièrement dans votre navigateur. Rien n'est téléchargé. Le fichier vidéo reste sur votre appareil."
+    },
+    "whenToUse": {
+      "heading": "Quand l'utiliser",
+      "item1": "Créer des tutoriels ou des démonstrations",
+      "item2": "Signaler des bugs avec un exemple visuel",
+      "item3": "Capturer une présentation ou une démo",
+      "item4": "Enregistrer du gameplay ou de l'utilisation d'app"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Quels navigateurs sont pris en charge ?",
+      "a1": "Chrome, Edge et Firefox sur ordinateur.",
+      "q2": "Quel est le format de l'enregistrement ?",
+      "a2": "WebM (pris en charge par tous les navigateurs modernes).",
+      "q3": "Y a-t-il une limite de temps ?",
+      "a3": "Non — enregistrez aussi longtemps que nécessaire.",
+      "q4": "Puis-je enregistrer le son ?",
+      "a4": "La capture du son système dépend de votre navigateur et de votre OS."
+    }
+  },
+  "howItWorks": {
+    "step1": "Cliquez sur Démarrer l'enregistrement et choisissez l'écran, la fenêtre ou l'onglet à partager.",
+    "step2": "Votre navigateur vous demandera de sélectionner ce à capturer. Choisissez et confirmez.",
+    "step3": "Cliquez sur Arrêter l'enregistrement lorsque vous avez terminé.",
+    "step4": "Un aperçu apparaîtra ci-dessous. Utilisez le bouton Télécharger pour sauvegarder votre enregistrement."
+  },
+  "badges": {
+    "instant": "⚡ Instantané",
+    "browserOnly": "🔒 Navigateur uniquement",
+    "private": "🕵️ Privé"
+  },
+  "alerts": {
+    "browserUnsupported": "Votre navigateur ne prend pas en charge la capture d'écran. Essayez Chrome, Edge ou Firefox sur ordinateur.",
+    "tipLabel": "Conseil :",
+    "tip": "Dans la boîte de dialogue de partage, choisissez Fenêtre ou Onglet plutôt qu'Écran entier pour éviter de capturer la barre de notification d'enregistrement du navigateur."
+  },
+  "actions": {
+    "recordSound": "Enregistrer le son (microphone)",
+    "start": "● Démarrer l'enregistrement",
+    "stop": "■ Arrêter l'enregistrement",
+    "recordingInProgress": "● Enregistrement en cours…",
+    "download": "⬇ Télécharger l'enregistrement"
   },
   "preview": {
     "title": "Aperçu"
   },
-  "warnings": {
-    "browserUnsupported": "Votre navigateur ne prend pas en charge la capture d'écran. Essayez Chrome, Edge ou Firefox sur ordinateur.",
-    "desktopOnly": "Mieux utilisé sur les navigateurs de bureau."
+  "note": "L'enregistrement est conservé temporairement dans votre navigateur. Actualiser ou fermer la page l'effacera. Téléchargez-le avant de naviguer ailleurs.",
+  "guide": {
+    "howToVideoTitle": "Vidéo de démonstration rapide",
+    "mainTitle": "Enregistreur d'écran en ligne gratuit – Enregistrez votre écran instantanément sans téléchargement",
+    "intro1": "🎥 Besoin d'enregistrer votre écran pour des tutoriels, des rapports de bugs, des présentations ou du gameplay ?",
+    "intro2": "Un enregistreur d'écran basé sur navigateur vous permet de capturer votre écran instantanément sans installer de logiciel lourd. Votre enregistrement s'exécute directement dans le navigateur, le rendant rapide, privé et facile à utiliser.",
+    "intro3": "Que vous soyez développeur, enseignant, créateur de contenu ou travailleur à distance, un enregistreur d'écran en ligne est l'un des outils de productivité les plus rapides disponibles.",
+    "whyUse": {
+      "heading": "Pourquoi utiliser un enregistreur d'écran en ligne ?",
+      "body": "Les enregistreurs de bureau traditionnels nécessitent souvent une installation, une configuration, des autorisations et des téléchargements importants. Les enregistreurs basés sur navigateur simplifient tout."
+    },
+    "keyBenefits": {
+      "heading": "Avantages clés",
+      "item1": "✅ Aucune installation de logiciel",
+      "item2": "✅ Enregistrement rapide dans le navigateur",
+      "item3": "✅ Enregistrez l'écran entier, un onglet ou une fenêtre d'app",
+      "item4": "✅ Capturez l'audio du microphone",
+      "item5": "✅ Superposition webcam optionnelle",
+      "item6": "✅ Téléchargement instantané après enregistrement",
+      "item7": "✅ Traitement local axé sur la confidentialité",
+      "note": "De nombreux enregistreurs d'écran modernes fonctionnent directement dans le navigateur grâce aux API Screen Capture et à la technologie MediaRecorder."
+    },
+    "features": {
+      "heading": "🚀 Fonctionnalités de notre enregistreur d'écran gratuit",
+      "fullScreen": {
+        "heading": "🎬 Enregistrez tout votre écran",
+        "body": "Capturez tout ce qui se passe sur votre écran. Parfait pour :",
+        "item1": "Tutoriels",
+        "item2": "Démonstrations de produits",
+        "item3": "Réunions en ligne",
+        "item4": "Démonstrations",
+        "item5": "Moments forts de jeu"
+      },
+      "mic": {
+        "heading": "🎤 Enregistrez avec le microphone",
+        "body": "Narrez votre enregistrement en temps réel. Idéal pour :",
+        "item1": "Vidéos éducatives",
+        "item2": "Démonstrations de support client",
+        "item3": "Explications de développeurs",
+        "item4": "Collaboration d'équipe"
+      },
+      "webcam": {
+        "heading": "📷 Superposition webcam",
+        "body": "Ajoutez votre visage aux enregistrements pour une touche plus personnelle. Idéal pour :",
+        "item1": "Vidéos YouTube",
+        "item2": "Cours en ligne",
+        "item3": "Présentations",
+        "item4": "Entretiens"
+      },
+      "privacy": {
+        "heading": "🔒 Enregistrement axé sur la confidentialité",
+        "body": "Votre vidéo reste sur votre appareil au lieu d'être téléchargée sur des serveurs cloud. De nombreux enregistreurs basés sur navigateur traitent les enregistrements localement pour une meilleure confidentialité."
+      },
+      "noInstall": {
+        "heading": "⚡ Aucune installation requise",
+        "body": "Évitez les téléchargements, extensions, formulaires d'inscription et applications lourdes. Ouvrez simplement la page et commencez à enregistrer."
+      }
+    },
+    "comparison": {
+      "heading": "📊 Comparaison des enregistreurs d'écran",
+      "col1": "Fonctionnalité",
+      "col2": "Enregistreur navigateur",
+      "col3": "Logiciel d'enregistrement bureau",
+      "row1feature": "Installation requise",
+      "row1browser": "❌ Non",
+      "row1desktop": "✅ Oui",
+      "row2feature": "Démarrage rapide",
+      "row2browser": "✅ Instantané",
+      "row2desktop": "❌ Configuration nécessaire",
+      "row3feature": "Fonctionne dans le navigateur",
+      "row3browser": "✅ Oui",
+      "row3desktop": "❌ Non",
+      "row4feature": "Confidentialité locale",
+      "row4browser": "✅ Souvent traitement local",
+      "row4desktop": "⚠ Variable",
+      "row5feature": "Léger",
+      "row5browser": "✅ Très léger",
+      "row5desktop": "❌ Lourd",
+      "row6feature": "Adapté aux débutants",
+      "row6browser": "✅ Facile",
+      "row6desktop": "⚠ Moyen",
+      "row7feature": "Utilisation du stockage",
+      "row7browser": "✅ Minimal",
+      "row7desktop": "❌ Plus important"
+    },
+    "modes": {
+      "heading": "🧩 Modes d'enregistrement disponibles",
+      "col1": "Mode d'enregistrement",
+      "col2": "Meilleur cas d'utilisation",
+      "row1mode": "Écran entier",
+      "row1use": "Présentations et tutoriels",
+      "row2mode": "Onglet du navigateur",
+      "row2use": "Démonstrations de sites web",
+      "row3mode": "Fenêtre d'application",
+      "row3use": "Démonstration de logiciel",
+      "row4mode": "Webcam uniquement",
+      "row4use": "Enregistrement du visage",
+      "row5mode": "Écran + Webcam",
+      "row5use": "Vidéos éducatives"
+    },
+    "useCases": {
+      "heading": "💡 Cas d'utilisation populaires",
+      "devs": {
+        "heading": "👨‍💻 Développeurs",
+        "body": "Enregistrez les bugs visuellement plutôt que de les expliquer par du texte. Utile pour :",
+        "item1": "Rapports QA",
+        "item2": "Démonstrations de fonctionnalités",
+        "item3": "Étapes de reproduction",
+        "item4": "Communication client"
+      },
+      "teachers": {
+        "heading": "🎓 Enseignants et étudiants",
+        "body": "Créez facilement du contenu pédagogique. Exemples :",
+        "item1": "Enregistrements de cours",
+        "item2": "Explication de devoirs",
+        "item3": "Vidéos d'apprentissage en ligne",
+        "item4": "Démonstration de matériel d'étude"
+      },
+      "teams": {
+        "heading": "🏢 Équipes à distance",
+        "body": "Améliorez la communication via la vidéo asynchrone. Utilisations courantes :",
+        "item1": "Démonstrations de produits",
+        "item2": "Mises à jour d'équipe",
+        "item3": "Retours sur l'écran",
+        "item4": "Révision de design"
+      },
+      "gamers": {
+        "heading": "🎮 Joueurs et créateurs",
+        "body": "Capturez instantanément du gameplay ou des réactions. Parfait pour :",
+        "item1": "Clips de streaming",
+        "item2": "Moments forts",
+        "item3": "Tutoriels",
+        "item4": "Vidéos pour réseaux sociaux"
+      }
+    },
+    "howTo": {
+      "heading": "🛠 Comment enregistrer votre écran en ligne",
+      "step1": "Ouvrez l'enregistreur d'écran",
+      "step2": "Choisissez le mode d'enregistrement",
+      "step3": "Sélectionnez les options audio",
+      "step4": "Cliquez sur Démarrer l'enregistrement",
+      "step5": "Choisissez votre écran / fenêtre / onglet",
+      "step6": "Enregistrez votre contenu",
+      "step7": "Arrêtez l'enregistrement",
+      "step8": "Téléchargez instantanément"
+    },
+    "growing": {
+      "heading": "🔥 Pourquoi l'enregistrement d'écran basé sur navigateur se développe",
+      "body": "Les outils d'enregistrement d'écran en ligne sont devenus populaires car les utilisateurs veulent un flux de travail plus rapide, une meilleure confidentialité, moins de logiciels encombrants, une compatibilité multi-plateforme et une UX simple. Les API web modernes permettent désormais un enregistrement d'écran sécurisé directement dans les navigateurs."
+    },
+    "faq": {
+      "heading": "❓ Questions fréquentes",
+      "q1": "L'enregistrement d'écran en ligne est-il sûr ?",
+      "a1": "Oui. De nombreux outils modernes enregistrent localement dans votre navigateur sans télécharger de fichiers.",
+      "q2": "L'enregistrement d'écran fonctionne-t-il sur mobile ?",
+      "a2": "Les navigateurs de bureau offrent généralement une meilleure compatibilité. Les navigateurs mobiles peuvent avoir des limitations selon l'OS et le navigateur.",
+      "q3": "Puis-je enregistrer le son avec l'enregistrement d'écran ?",
+      "a3": "Oui. La plupart des enregistreurs prennent en charge l'audio du microphone, l'audio de l'onglet et le son système.",
+      "q4": "Dans quel format la vidéo est-elle sauvegardée ?",
+      "a4": "Les formats courants incluent WebM et MP4."
+    },
+    "final": {
+      "heading": "Conclusion",
+      "body1": "Un enregistreur d'écran basé sur navigateur offre aux utilisateurs le moyen le plus rapide de capturer et partager du contenu sans configuration compliquée. Que vous enseigniez, déboguiez, présentiez ou créiez des vidéos, l'enregistrement d'écran en ligne simplifie le flux de travail.",
+      "body2": "Rapide. Privé. Léger. Prêt instantanément."
+    }
   }
 }

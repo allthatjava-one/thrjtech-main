@@ -1,22 +1,235 @@
 {
   "hero": {
-    "title": "Grabadora de pantalla",
-    "tagline": "Graba tu pantalla al instante: permanece en tu navegador, privada y gratuita."
+    "title": "Grabador de pantalla",
+    "tagline": "Graba tu pantalla al instante — se queda en tu navegador, privado y gratuito."
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es la grabación de pantalla?",
+      "body": "La grabación de pantalla captura todo lo que se muestra en tu pantalla — tu escritorio, una ventana específica o una pestaña del navegador — como archivo de vídeo."
+    },
+    "howItWorks": {
+      "heading": "Cómo funciona",
+      "body": "Esta herramienta utiliza la API Screen Capture integrada en el navegador. Sin software que instalar, sin datos enviados a un servidor."
+    },
+    "privacy": {
+      "heading": "Privacidad",
+      "body": "La grabación se procesa completamente en tu navegador. Nada se sube. El archivo de vídeo permanece en tu dispositivo."
+    },
+    "whenToUse": {
+      "heading": "Cuándo usarlo",
+      "item1": "Crear tutoriales o demostraciones",
+      "item2": "Reportar errores con un ejemplo visual",
+      "item3": "Capturar una presentación o demo",
+      "item4": "Grabar gameplay o uso de aplicaciones"
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "q1": "¿Qué navegadores son compatibles?",
+      "a1": "Chrome, Edge y Firefox en escritorio.",
+      "q2": "¿En qué formato se guarda la grabación?",
+      "a2": "WebM (compatible con todos los navegadores modernos).",
+      "q3": "¿Hay un límite de tiempo?",
+      "a3": "No — graba el tiempo que necesites.",
+      "q4": "¿Puedo grabar audio?",
+      "a4": "La captura de audio del sistema depende de tu navegador y sistema operativo."
+    }
+  },
+  "howItWorks": {
+    "step1": "Haz clic en Iniciar grabación y elige la pantalla, ventana o pestaña a compartir.",
+    "step2": "Tu navegador te pedirá que selecciones qué capturar. Elige y confirma.",
+    "step3": "Haz clic en Detener grabación cuando hayas terminado.",
+    "step4": "Aparecerá una vista previa abajo. Usa el botón Descargar para guardar tu grabación."
+  },
+  "badges": {
+    "instant": "⚡ Instantáneo",
+    "browserOnly": "🔒 Solo navegador",
+    "private": "🕵️ Privado"
+  },
+  "alerts": {
+    "browserUnsupported": "Tu navegador no admite la captura de pantalla. Prueba Chrome, Edge o Firefox en escritorio.",
+    "tipLabel": "Consejo:",
+    "tip": "En el cuadro de diálogo de uso compartido, elige Ventana o Pestaña en lugar de Pantalla completa para evitar capturar la barra de notificación de grabación del navegador."
   },
   "actions": {
-    "start": "Iniciar grabación",
-    "stop": "Detener grabación",
-    "download": "Descargar grabación"
-  },
-  "status": {
-    "recording": "Grabando...",
-    "idle": "Listo"
+    "recordSound": "Grabar sonido (micrófono)",
+    "start": "● Iniciar grabación",
+    "stop": "■ Detener grabación",
+    "recordingInProgress": "● Grabación en curso…",
+    "download": "⬇ Descargar grabación"
   },
   "preview": {
     "title": "Vista previa"
   },
-  "warnings": {
-    "browserUnsupported": "Tu navegador no admite la captura de pantalla. Prueba Chrome, Edge o Firefox en escritorio.",
-    "desktopOnly": "Mejor usar en navegadores de escritorio."
+  "note": "La grabación se conserva temporalmente en tu navegador. Actualizar o cerrar la página la borrará. Descárgala antes de navegar a otro lugar.",
+  "guide": {
+    "howToVideoTitle": "Vídeo de demostración rápida",
+    "mainTitle": "Grabador de pantalla en línea gratuito – Graba tu pantalla al instante sin descargas",
+    "intro1": "🎥 ¿Necesitas grabar tu pantalla para tutoriales, informes de errores, presentaciones o gameplay?",
+    "intro2": "Un grabador de pantalla basado en navegador te permite capturar tu pantalla al instante sin instalar software pesado. Tu grabación se ejecuta directamente dentro del navegador, siendo rápida, privada y fácil de usar.",
+    "intro3": "Ya seas desarrollador, profesor, creador de contenido o trabajador remoto, un grabador de pantalla en línea es una de las herramientas de productividad más rápidas disponibles.",
+    "whyUse": {
+      "heading": "¿Por qué usar un grabador de pantalla en línea?",
+      "body": "Los grabadores de escritorio tradicionales a menudo requieren instalación, configuración, permisos y descargas grandes. Los grabadores basados en navegador simplifican todo."
+    },
+    "keyBenefits": {
+      "heading": "Beneficios clave",
+      "item1": "✅ Sin instalación de software",
+      "item2": "✅ Grabación rápida en el navegador",
+      "item3": "✅ Graba pantalla completa, pestaña o ventana de app",
+      "item4": "✅ Captura audio del micrófono",
+      "item5": "✅ Superposición de webcam opcional",
+      "item6": "✅ Descarga instantánea tras la grabación",
+      "item7": "✅ Procesamiento local centrado en la privacidad",
+      "note": "Muchos grabadores de pantalla modernos funcionan directamente en el navegador usando las API Screen Capture y la tecnología MediaRecorder."
+    },
+    "features": {
+      "heading": "🚀 Características de nuestro grabador de pantalla gratuito",
+      "fullScreen": {
+        "heading": "🎬 Graba toda tu pantalla",
+        "body": "Captura todo lo que ocurre en tu pantalla. Perfecto para:",
+        "item1": "Tutoriales",
+        "item2": "Demostraciones de productos",
+        "item3": "Reuniones en línea",
+        "item4": "Demostraciones",
+        "item5": "Momentos destacados de juegos"
+      },
+      "mic": {
+        "heading": "🎤 Graba con audio del micrófono",
+        "body": "Narra tu grabación en tiempo real. Ideal para:",
+        "item1": "Vídeos educativos",
+        "item2": "Demostraciones de soporte al cliente",
+        "item3": "Explicaciones de desarrolladores",
+        "item4": "Colaboración en equipo"
+      },
+      "webcam": {
+        "heading": "📷 Superposición de webcam",
+        "body": "Añade tu cara a las grabaciones para un toque más personal. Ideal para:",
+        "item1": "Vídeos de YouTube",
+        "item2": "Cursos en línea",
+        "item3": "Presentaciones",
+        "item4": "Entrevistas"
+      },
+      "privacy": {
+        "heading": "🔒 Grabación con privacidad primero",
+        "body": "Tu vídeo permanece en tu dispositivo en lugar de subirse a servidores en la nube. Muchos grabadores basados en navegador procesan grabaciones localmente para mayor privacidad."
+      },
+      "noInstall": {
+        "heading": "⚡ Sin instalación requerida",
+        "body": "Evita descargas, extensiones, formularios de registro y aplicaciones pesadas. Solo abre la página y comienza a grabar."
+      }
+    },
+    "comparison": {
+      "heading": "📊 Comparación de grabadores de pantalla",
+      "col1": "Característica",
+      "col2": "Grabador de navegador",
+      "col3": "Software de grabación de escritorio",
+      "row1feature": "Instalación requerida",
+      "row1browser": "❌ No",
+      "row1desktop": "✅ Sí",
+      "row2feature": "Inicio rápido",
+      "row2browser": "✅ Instantáneo",
+      "row2desktop": "❌ Configuración necesaria",
+      "row3feature": "Funciona en navegador",
+      "row3browser": "✅ Sí",
+      "row3desktop": "❌ No",
+      "row4feature": "Privacidad local",
+      "row4browser": "✅ A menudo procesamiento local",
+      "row4desktop": "⚠ Depende",
+      "row5feature": "Ligero",
+      "row5browser": "✅ Muy ligero",
+      "row5desktop": "❌ Pesado",
+      "row6feature": "Apto para principiantes",
+      "row6browser": "✅ Fácil",
+      "row6desktop": "⚠ Medio",
+      "row7feature": "Uso de almacenamiento",
+      "row7browser": "✅ Mínimo",
+      "row7desktop": "❌ Mayor"
+    },
+    "modes": {
+      "heading": "🧩 Modos de grabación disponibles",
+      "col1": "Modo de grabación",
+      "col2": "Mejor caso de uso",
+      "row1mode": "Pantalla completa",
+      "row1use": "Presentaciones y tutoriales",
+      "row2mode": "Pestaña del navegador",
+      "row2use": "Demostraciones de sitios web",
+      "row3mode": "Ventana de aplicación",
+      "row3use": "Tutorial de software",
+      "row4mode": "Solo webcam",
+      "row4use": "Grabación de cara",
+      "row5mode": "Pantalla + Webcam",
+      "row5use": "Vídeos educativos"
+    },
+    "useCases": {
+      "heading": "💡 Casos de uso populares para la grabación de pantalla",
+      "devs": {
+        "heading": "👨‍💻 Desarrolladores",
+        "body": "Graba errores visualmente en lugar de explicarlos con texto largo. Útil para:",
+        "item1": "Informes QA",
+        "item2": "Demostraciones de funciones",
+        "item3": "Pasos de reproducción",
+        "item4": "Comunicación con clientes"
+      },
+      "teachers": {
+        "heading": "🎓 Profesores y estudiantes",
+        "body": "Crea contenido educativo fácilmente. Ejemplos:",
+        "item1": "Grabaciones de clases",
+        "item2": "Explicación de tareas",
+        "item3": "Vídeos de aprendizaje en línea",
+        "item4": "Demostración de material de estudio"
+      },
+      "teams": {
+        "heading": "🏢 Equipos remotos",
+        "body": "Mejora la comunicación a través de vídeo asíncrono. Usos comunes:",
+        "item1": "Demostraciones de productos",
+        "item2": "Actualizaciones del equipo",
+        "item3": "Comentarios sobre pantalla",
+        "item4": "Revisión de diseño"
+      },
+      "gamers": {
+        "heading": "🎮 Jugadores y creadores",
+        "body": "Captura gameplay o reacciones al instante. Perfecto para:",
+        "item1": "Clips de streaming",
+        "item2": "Momentos destacados",
+        "item3": "Tutoriales",
+        "item4": "Vídeos para redes sociales"
+      }
+    },
+    "howTo": {
+      "heading": "🛠 Cómo grabar tu pantalla en línea",
+      "step1": "Abre el grabador de pantalla",
+      "step2": "Elige el modo de grabación",
+      "step3": "Selecciona las opciones de audio",
+      "step4": "Haz clic en Iniciar grabación",
+      "step5": "Elige tu pantalla / ventana / pestaña",
+      "step6": "Graba tu contenido",
+      "step7": "Detén la grabación",
+      "step8": "Descarga instantáneamente"
+    },
+    "growing": {
+      "heading": "🔥 Por qué crece la grabación de pantalla basada en navegador",
+      "body": "Las herramientas de grabación de pantalla en línea se han vuelto populares porque los usuarios quieren un flujo de trabajo más rápido, mejor privacidad, sin desorden de software, soporte multiplataforma y una UX simple. Las API web modernas ahora permiten la grabación segura de pantalla directamente en los navegadores."
+    },
+    "faq": {
+      "heading": "❓ Preguntas frecuentes",
+      "q1": "¿Es segura la grabación de pantalla en línea?",
+      "a1": "Sí. Muchas herramientas modernas graban localmente en tu navegador sin subir archivos.",
+      "q2": "¿Funciona la grabación de pantalla en móvil?",
+      "a2": "Los navegadores de escritorio generalmente ofrecen mejor compatibilidad. Los navegadores móviles pueden tener limitaciones según el sistema operativo y el navegador.",
+      "q3": "¿Puedo grabar audio con la grabación de pantalla?",
+      "a3": "Sí. La mayoría de los grabadores admiten audio del micrófono, audio de pestañas del navegador y sonido del sistema.",
+      "q4": "¿En qué formato se guarda el vídeo?",
+      "a4": "Los formatos comunes incluyen WebM y MP4."
+    },
+    "final": {
+      "heading": "Conclusión",
+      "body1": "Un grabador de pantalla basado en navegador ofrece a los usuarios la forma más rápida de capturar y compartir contenido sin configuraciones complicadas. Ya sea que estés enseñando, depurando, presentando o creando vídeos, la grabación de pantalla en línea hace que el flujo de trabajo sea simple y eficiente.",
+      "body2": "Rápido. Privado. Ligero. Listo al instante."
+    }
   }
 }
