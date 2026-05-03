@@ -131,7 +131,7 @@ const staticRoutes = [
   '/image-crop',
   '/image-converter',
   '/image-rotator',
-  '/screen-recorder',
+  '/video-screen-recorder',
   '/about/us',
   '/about/policy',
   '/about/terms',

@@ -21,7 +21,7 @@ import ImageMemeGeneratorPage from './tools/image-meme-generator';
 import ImageCropPage from './tools/image-crop';
 import ImageConverterPage from './tools/image-converter';
 import ImageRotatorPage from './tools/image-rotator';
-import ScreenRecorderPage from './tools/screen-recorder';
+import ScreenRecorderPage from './tools/video-screen-recorder';
 import BlogsListPage from './components/BlogsListPage';
 import BlogPage from './components/BlogPage';
 import AboutUsPage from './components/about/AboutUsPage';

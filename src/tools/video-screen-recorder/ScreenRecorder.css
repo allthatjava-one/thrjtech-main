@@ -1,0 +1,350 @@
+/* ── Page shell ──────────────────────────────────────── */
+.screen-recorder-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.screen-recorder-page .container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.screen-recorder-page .main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.screen-recorder-page .main .container {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.screen-recorder-page .card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e6f0;
+  padding: 2.5rem 2.5rem 2rem;
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Hero Section ────────────────────────────────────── */
+.screen-recorder-page .hero-section {
+  text-align: left;
+  padding-bottom: 0.25rem;
+}
+
+.screen-recorder-page .hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1e1e2e;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.screen-recorder-page .hero-tagline {
+  font-size: 1rem;
+  color: #4b5563;
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.screen-recorder-page .hero-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.screen-recorder-page .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6366f1;
+  background: #eef0ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.screen-recorder-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  font-family: inherit;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.screen-recorder-page .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.screen-recorder-page .btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.screen-recorder-page .btn-primary:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.screen-recorder-page .btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+}
+
+.screen-recorder-page .btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.45);
+}
+
+.screen-recorder-page .action-btn {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+}
+
+.screen-recorder-page .download-btn {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* ── Action area ─────────────────────────────────────── */
+.screen-recorder-page .action-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.screen-recorder-page .sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+.screen-recorder-page .sound-toggle input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+
+/* ── Recording indicator ─────────────────────────────── */
+.screen-recorder-page .recording-indicator {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  animation: blink 1.2s step-start infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── Alert boxes ─────────────────────────────────────── */
+.screen-recorder-page .alert-box {
+  font-size: 0.875rem;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  line-height: 1.55;
+}
+
+.screen-recorder-page .alert-warning {
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+  color: #7c6000;
+}
+
+.screen-recorder-page .alert-error {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+}
+
+.screen-recorder-page .alert-tip {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  color: #075985;
+}
+
+/* ── Preview section ─────────────────────────────────── */
+.screen-recorder-page .preview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.screen-recorder-page .preview-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e1e2e;
+  margin: 0;
+}
+
+.screen-recorder-page .preview-video {
+  width: 100%;
+  max-height: 480px;
+  background: #000;
+  border-radius: 10px;
+  border: 1px solid #e2e6f0;
+}
+
+/* ── Note ────────────────────────────────────────────── */
+.screen-recorder-page .note {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  line-height: 1.55;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.screen-recorder-page .note-icon {
+  flex-shrink: 0;
+}
+
+/* ── Tab controls ────────────────────────────────────── */
+.screen-recorder-page .details-controls {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.screen-recorder-page .tab-btn {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 0.5rem 0 0;
+  min-width: 0 !important;
+  height: auto !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  font-weight: 600;
+  color: #374151 !important;
+  display: inline;
+  line-height: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+.screen-recorder-page .tab-btn::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.25rem;
+  transition: transform 0.18s ease;
+  font-size: 0.85em;
+}
+
+.screen-recorder-page .tab-btn.active::after {
+  transform: rotate(180deg);
+}
+
+.screen-recorder-page .tab-btn:focus {
+  outline: none !important;
+  text-decoration: underline !important;
+}
+
+/* ── Collapsible panel ───────────────────────────────── */
+.screen-recorder-page .shared-collapse {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  border: 1px solid #e2e6f0;
+  padding: 0.75rem;
+  overflow: visible;
+}
+
+.screen-recorder-page .tool-details-open,
+.screen-recorder-page .tool-howitworks-open {
+  color: #374151 !important;
+  opacity: 1 !important;
+  text-align: left !important;
+}
+
+.screen-recorder-page .tool-details-open h3,
+.screen-recorder-page .tool-howitworks-open h3 {
+  margin-top: 0.5rem;
+  color: #374151 !important;
+}
+
+.screen-recorder-page .tool-details-open p,
+.screen-recorder-page .tool-howitworks-open p,
+.screen-recorder-page .tool-details-open li,
+.screen-recorder-page .tool-howitworks-open li {
+  color: #374151 !important;
+}
+
+.screen-recorder-page .tool-details-open ul,
+.screen-recorder-page .tool-howitworks-open ul,
+.screen-recorder-page .tool-howitworks-open ol {
+  margin: 0.5rem 0 0 1.25rem;
+  padding-left: 1.25rem;
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media (max-width: 740px) {
+  .screen-recorder-page .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .screen-recorder-page .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .screen-recorder-page .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
