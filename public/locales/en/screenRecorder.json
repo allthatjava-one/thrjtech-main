@@ -3,31 +3,233 @@
     "title": "Screen Recorder",
     "tagline": "Record your screen instantly — stays in your browser, private and free."
   },
-  "actions": {
-    "start": "Start Recording",
-    "stop": "Stop Recording",
-    "download": "Download Recording"
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
   },
-  "status": {
-    "recording": "Recording...",
-    "idle": "Ready"
+  "details": {
+    "whatIs": {
+      "heading": "What is Screen Recording?",
+      "body": "Screen recording captures everything displayed on your screen — your desktop, a specific window, or a browser tab — as a video file."
+    },
+    "howItWorks": {
+      "heading": "How it works",
+      "body": "This tool uses the browser's built-in Screen Capture API. No software to install, no data sent to a server."
+    },
+    "privacy": {
+      "heading": "Privacy",
+      "body": "The recording is processed entirely in your browser. Nothing is uploaded. The video file stays on your device."
+    },
+    "whenToUse": {
+      "heading": "When to use",
+      "item1": "Creating tutorials or walkthroughs",
+      "item2": "Reporting bugs with a visual example",
+      "item3": "Capturing a presentation or demo",
+      "item4": "Recording gameplay or app usage"
+    },
+    "faq": {
+      "heading": "FAQ",
+      "q1": "Which browsers are supported?",
+      "a1": "Chrome, Edge, and Firefox on desktop.",
+      "q2": "What format is the recording?",
+      "a2": "WebM (supported by all modern browsers).",
+      "q3": "Is there a time limit?",
+      "a3": "No — record as long as you need.",
+      "q4": "Can I record audio?",
+      "a4": "System audio capture depends on your browser and OS."
+    }
+  },
+  "howItWorks": {
+    "step1": "Click Start Recording and pick the screen, window, or tab to share.",
+    "step2": "Your browser will prompt you to select what to capture. Choose and confirm.",
+    "step3": "Click Stop Recording when you are done.",
+    "step4": "A preview will appear below. Use the Download button to save your recording."
+  },
+  "badges": {
+    "instant": "⚡ Instant",
+    "browserOnly": "🔒 Browser-only",
+    "private": "🕵️ Private"
+  },
+  "alerts": {
+    "browserUnsupported": "Your browser does not support screen capture. Try Chrome, Edge, or Firefox on desktop.",
+    "tipLabel": "Tip:",
+    "tip": "In the sharing dialog, choose Window or Tab instead of Entire Screen to avoid capturing the browser's recording notification bar."
+  },
+  "actions": {
+    "recordSound": "Record sound (microphone)",
+    "start": "● Start Recording",
+    "stop": "■ Stop Recording",
+    "recordingInProgress": "● Recording in progress…",
+    "download": "⬇ Download Recording"
   },
   "preview": {
     "title": "Preview"
   },
-  "warnings": {
-    "browserUnsupported": "Your browser does not support screen capture. Try Chrome, Edge, or Firefox on desktop.",
-    "desktopOnly": "Best used on desktop browsers."
-  },
-  "details": {
-    "whatIs": {
-      "heading": "What is this?",
-      "body": "A simple client-side screen recorder that saves recordings as WebM files in your browser."
+  "note": "The recording is kept temporarily in your browser. Refreshing or closing the page will erase it. Download before navigating away.",
+  "guide": {
+    "howToVideoTitle": "Quick How-To Video",
+    "mainTitle": "Free Online Screen Recorder – Record Your Screen Instantly Without Downloads",
+    "intro1": "🎥 Need to record your screen for tutorials, bug reports, presentations, or gameplay?",
+    "intro2": "A browser-based screen recorder lets you capture your screen instantly without installing heavy software. Your screen recording runs directly inside the browser, making it fast, private, and easy to use.",
+    "intro3": "Whether you're a developer, teacher, content creator, or remote worker, an online screen recorder is one of the fastest productivity tools available.",
+    "whyUse": {
+      "heading": "Why Use an Online Screen Recorder?",
+      "body": "Traditional desktop recorders often require installation, setup, permissions, and large downloads. Modern browser-based screen recorders simplify everything."
+    },
+    "keyBenefits": {
+      "heading": "Key Benefits",
+      "item1": "✅ No software installation",
+      "item2": "✅ Fast recording inside browser",
+      "item3": "✅ Record full screen, tab, or app window",
+      "item4": "✅ Capture microphone audio",
+      "item5": "✅ Optional webcam overlay",
+      "item6": "✅ Instant download after recording",
+      "item7": "✅ Privacy-focused local processing",
+      "note": "Many modern screen recorders now work directly in-browser using Screen Capture APIs and MediaRecorder technology."
+    },
+    "features": {
+      "heading": "🚀 Features of Our Free Screen Recorder",
+      "fullScreen": {
+        "heading": "🎬 Record Your Entire Screen",
+        "body": "Capture everything happening on your display. Perfect for:",
+        "item1": "Tutorials",
+        "item2": "Product walkthroughs",
+        "item3": "Online meetings",
+        "item4": "Demonstrations",
+        "item5": "Gaming highlights"
+      },
+      "mic": {
+        "heading": "🎤 Record with Microphone Audio",
+        "body": "Narrate your recording in real-time. Great for:",
+        "item1": "Educational videos",
+        "item2": "Customer support walkthroughs",
+        "item3": "Developer explanations",
+        "item4": "Team collaboration"
+      },
+      "webcam": {
+        "heading": "📷 Webcam Overlay Support",
+        "body": "Add your face to recordings for a more personal touch. Ideal for:",
+        "item1": "YouTube videos",
+        "item2": "Online courses",
+        "item3": "Presentations",
+        "item4": "Interviews"
+      },
+      "privacy": {
+        "heading": "🔒 Privacy First Recording",
+        "body": "Your video stays on your device instead of uploading to cloud servers. Many browser-based recorders process recordings locally for improved privacy."
+      },
+      "noInstall": {
+        "heading": "⚡ No Installation Required",
+        "body": "Skip downloads, extensions, signup forms, and heavy desktop apps. Just open the page and start recording."
+      }
+    },
+    "comparison": {
+      "heading": "📊 Screen Recorder Feature Comparison",
+      "col1": "Feature",
+      "col2": "Browser Screen Recorder",
+      "col3": "Desktop Recorder Software",
+      "row1feature": "Installation Required",
+      "row1browser": "❌ No",
+      "row1desktop": "✅ Yes",
+      "row2feature": "Quick Start",
+      "row2browser": "✅ Instant",
+      "row2desktop": "❌ Setup Needed",
+      "row3feature": "Works in Browser",
+      "row3browser": "✅ Yes",
+      "row3desktop": "❌ No",
+      "row4feature": "Local Privacy",
+      "row4browser": "✅ Often Local Processing",
+      "row4desktop": "⚠ Depends",
+      "row5feature": "Lightweight",
+      "row5browser": "✅ Very",
+      "row5desktop": "❌ Heavy",
+      "row6feature": "Beginner Friendly",
+      "row6browser": "✅ Easy",
+      "row6desktop": "⚠ Medium",
+      "row7feature": "Device Storage Usage",
+      "row7browser": "✅ Minimal",
+      "row7desktop": "❌ Larger"
+    },
+    "modes": {
+      "heading": "🧩 Recording Modes You Can Use",
+      "col1": "Recording Mode",
+      "col2": "Best Use Case",
+      "row1mode": "Entire Screen",
+      "row1use": "Presentations & tutorials",
+      "row2mode": "Browser Tab",
+      "row2use": "Website demos",
+      "row3mode": "Application Window",
+      "row3use": "Software walkthrough",
+      "row4mode": "Webcam Only",
+      "row4use": "Face recording",
+      "row5mode": "Screen + Webcam",
+      "row5use": "Educational videos"
+    },
+    "useCases": {
+      "heading": "💡 Popular Use Cases for Screen Recording",
+      "devs": {
+        "heading": "👨‍💻 Developers",
+        "body": "Record bugs visually instead of explaining through long text. Useful for:",
+        "item1": "QA reports",
+        "item2": "Feature demonstrations",
+        "item3": "Reproduction steps",
+        "item4": "Client communication"
+      },
+      "teachers": {
+        "heading": "🎓 Teachers & Students",
+        "body": "Create learning content easily. Examples:",
+        "item1": "Lecture recordings",
+        "item2": "Homework explanation",
+        "item3": "Online learning videos",
+        "item4": "Study material walkthrough"
+      },
+      "teams": {
+        "heading": "🏢 Remote Teams",
+        "body": "Improve communication through async video. Common uses:",
+        "item1": "Product demos",
+        "item2": "Team updates",
+        "item3": "Screen feedback",
+        "item4": "Design review"
+      },
+      "gamers": {
+        "heading": "🎮 Gamers & Creators",
+        "body": "Capture gameplay or reactions instantly. Perfect for:",
+        "item1": "Streaming clips",
+        "item2": "Highlights",
+        "item3": "Tutorials",
+        "item4": "Social media videos"
+      }
+    },
+    "howTo": {
+      "heading": "🛠 How to Record Your Screen Online",
+      "step1": "Open the screen recorder",
+      "step2": "Choose recording mode",
+      "step3": "Select audio options",
+      "step4": "Click Start Recording",
+      "step5": "Choose your screen / window / tab",
+      "step6": "Record your content",
+      "step7": "Stop recording",
+      "step8": "Download instantly"
+    },
+    "growing": {
+      "heading": "🔥 Why Browser-Based Screen Recording Is Growing",
+      "body": "Online screen recording tools have become popular because users want faster workflow, better privacy, no software clutter, cross-platform support, and a simple UX. Modern web APIs now allow secure screen recording directly inside browsers."
+    },
+    "faq": {
+      "heading": "❓ Frequently Asked Questions",
+      "q1": "Is online screen recording safe?",
+      "a1": "Yes. Many modern tools record locally in your browser without uploading files.",
+      "q2": "Does screen recording work on mobile?",
+      "a2": "Desktop browsers generally provide better support. Mobile browsers may have limitations depending on OS and browser.",
+      "q3": "Can I record audio with screen recording?",
+      "a3": "Yes. Most screen recorders support microphone audio, browser tab audio, and system sound.",
+      "q4": "What format is the video saved as?",
+      "a4": "Common formats include WebM and MP4."
+    },
+    "final": {
+      "heading": "Final Thoughts",
+      "body1": "A browser-based screen recorder gives users the fastest way to capture and share content without complicated setup. Whether you're teaching, debugging, presenting, or creating videos, online screen recording makes the workflow simple and efficient.",
+      "body2": "Fast. Private. Lightweight. Ready instantly."
     }
-  },
-  "howItWorks": {
-    "step1": "Click Start Recording and choose a screen, window, or tab.",
-    "step2": "Stop Recording when finished; a preview and download link appear.",
-    "step3": "Download the WebM file to your machine."
   }
 }
