@@ -3,6 +3,7 @@ import { usePdfCompressor } from './hooks/usePdfCompressor';
 import { PdfCompressorView } from './PdfCompressorView';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import '../tools-shared.css';
 import './PdfCompressor.css';
 
 export default function PdfCompressorPage() {

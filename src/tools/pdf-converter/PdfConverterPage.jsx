@@ -2,6 +2,7 @@ import { usePdfConverter } from './hooks/usePdfConverter'
 import { PdfConverterView } from './PdfConverterView'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import '../tools-shared.css'
 import './PdfConverter.css'
 
 export default function PdfConverterPage() {

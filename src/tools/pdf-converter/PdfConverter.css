@@ -42,47 +42,7 @@
   padding-bottom: 0.25rem;
 }
 
-.pdf-converter-page .hero-title {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #1e1e2e;
-  margin: 0 0 0.5rem;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-align: left;
-}
-
-.pdf-converter-page .hero-tagline {
-  font-size: 1rem;
-  color: #4b5563;
-  margin: 0 0 1rem;
-  line-height: 1.6;
-  text-align: left;
-}
-
-.pdf-converter-page .hero-badges {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.pdf-converter-page .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #6366f1;
-  background: #eef0ff;
-  border: 1px solid #c7d2fe;
-  border-radius: 999px;
-  padding: 0.25rem 0.75rem;
-  letter-spacing: 0.01em;
-}
+/* .hero-title, .hero-tagline, .hero-badges, .hero-badge → tools-shared.css */
 
 .pdf-converter-page .drop-zone {
   border-width: 2px;
@@ -123,139 +83,13 @@
   background: #f5f6ff;
 }
 
-.pdf-converter-page .file-input {
-  display: none;
-}
+/* .file-input, .drop-content, .drop-icon, .drop-text, .drop-sub → tools-shared.css */
 
-.pdf-converter-page .drop-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  width: 100%;
-}
+/* .file-info, .file-icon, .file-details, .file-name, .file-size → tools-shared.css */
 
-.pdf-converter-page .drop-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.25rem;
-}
+/* .remove-btn, .remove-btn:hover → tools-shared.css */
 
-.pdf-converter-page .drop-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #374151;
-}
-
-.pdf-converter-page .drop-sub {
-  font-size: 0.875rem;
-  color: #9ca3af;
-}
-
-.pdf-converter-page .file-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.pdf-converter-page .file-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-}
-
-.pdf-converter-page .file-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  min-width: 0;
-}
-
-.pdf-converter-page .file-name {
-  font-weight: 600;
-  color: #1e1e2e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.pdf-converter-page .file-size {
-  font-size: 0.85rem;
-  color: #6b7280;
-}
-
-.pdf-converter-page .remove-btn {
-  background: none;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  color: #9ca3af;
-  font-size: 0.875rem;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pdf-converter-page .remove-btn:hover {
-  background: #fee2e2;
-  border-color: #fca5a5;
-  color: #ef4444;
-}
-
-.pdf-converter-page .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--btn-padding);
-  border-radius: var(--btn-radius);
-  font-size: var(--btn-font-size);
-  font-weight: var(--btn-font-weight);
-  cursor: pointer;
-  transition: var(--btn-transition);
-  border: none;
-  text-decoration: none;
-  text-align: center;
-  font-family: inherit;
-  box-sizing: border-box;
-  line-height: 1;
-}
-
-.pdf-converter-page .btn-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
-}
-
-.pdf-converter-page .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
-}
-
-.pdf-converter-page .btn-outline {
-  background: transparent;
-  color: #6366f1;
-  border: 2px solid #6366f1;
-}
-
-.pdf-converter-page .btn-outline:hover {
-  background: #eef0ff;
-}
-
-.pdf-converter-page .btn-ghost {
-  background: transparent;
-  color: #6b7280;
-}
-
-.pdf-converter-page .btn-ghost:hover {
-  background: #f3f4f6;
-  color: #374151;
-}
+/* .btn, .btn-primary, .btn-outline, .btn-ghost → tools-shared.css */
 
 .pdf-converter-page .compress-btn,
 .pdf-converter-page .download-btn {
@@ -264,31 +98,7 @@
   font-size: 1rem;
 }
 
-.pdf-converter-page .progress-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.pdf-converter-page .progress-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #6366f1;
-}
-
-.pdf-converter-page .progress-bar {
-  height: 8px;
-  background: #e5e7eb;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.pdf-converter-page .progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  border-radius: 999px;
-  transition: width 0.4s ease;
-}
+/* .progress-section, .progress-label, .progress-bar, .progress-fill → tools-shared.css */
 
 .pdf-converter-page .result-section {
   display: flex;
@@ -386,127 +196,7 @@
   }
 }
 
-/* Tool details (collapsible) */
-.pdf-converter-page .tool-details {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  color: #4b5563;
-}
-.pdf-converter-page .tool-details summary {
-  display: block;
-  cursor: pointer;
-  font-weight: 600;
-  color: #4b5563;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  position: relative;
-}
-.pdf-converter-page .tool-details summary::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform 0.18s ease;
-}
-.pdf-converter-page .tool-details[open] summary::after {
-  transform: rotate(180deg);
-}
-.pdf-converter-page .tool-details summary::-webkit-details-marker { display: none; }
-.pdf-converter-page .tool-details summary::marker { display: none; }
-.pdf-converter-page .tool-details > div {
-  margin-top: 0.5rem;
-  padding-left: 0.25rem;
-  color: #4b5563;
-}
-
-.pdf-converter-page .card .tool-details[open] > div,
-.pdf-converter-page .tool-details[open] > div {
-  background: #f8f9ff;
-  border: 1px solid #e2e6f0;
-  border-radius: 12px;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-}
-
-.pdf-converter-page .details-row {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
-}
-.pdf-converter-page .details-row .tool-details {
-  flex: 1 1 300px;
-  min-width: 240px;
-  max-width: 48%;
-  box-sizing: border-box;
-}
-.pdf-converter-page .details-row .tool-details {
-  min-width: 0;
-}
-@media (max-width: 740px) {
-  .pdf-converter-page .details-row .tool-details {
-    max-width: 100%;
-    flex-basis: 100%;
-  }
-}
-.pdf-converter-page .how-img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #e2e6f0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.pdf-converter-page .details-row .tool-details img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.pdf-converter-page .details-row .tool-details > div {
-  width: 100%;
-  box-sizing: border-box;
-}
-.pdf-converter-page .details-row .tool-details[open] > div {
-  width: 100%;
-  max-height: 46vh;
-  overflow: auto;
-}
-.pdf-converter-page .details-row .tool-details {
-  flex: 1 1 48%;
-  max-width: 48%;
-  box-sizing: border-box;
-}
-@media (max-width: 740px) {
-  .pdf-converter-page .details-row .tool-details {
-    max-width: 100%;
-    flex-basis: 100%;
-  }
-}
-
-.pdf-converter-page .details-row[data-open="details"] .tool-details[open],
-.pdf-converter-page .details-row[data-open="howitworks"] .tool-details[open] {
-  flex: 1 1 60%;
-  max-width: 60%;
-}
-.pdf-converter-page .details-row[data-open="details"] .tool-details:not([open]),
-.pdf-converter-page .details-row[data-open="howitworks"] .tool-details:not([open]) {
-  flex: 1 1 38%;
-  max-width: 38%;
-}
-
-.pdf-converter-page .details-row[data-open="details"] .tool-details.tool-howitworks > div,
-.pdf-converter-page .details-row[data-open="howitworks"] .tool-details:not(.tool-howitworks) > div {
-  max-height: 0 !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  margin-top: 0 !important;
-}
+/* .tool-details, .details-row, .how-img → legacy (unused) or tools-shared.css */
 
 .pdf-converter-page .details-controls {
   display: block;
@@ -519,75 +209,7 @@
   margin-bottom: 0.75rem;
 }
 
-.pdf-converter-page .tab-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 0.5rem 0 0;
-  cursor: pointer;
-  font-weight: 600;
-  color: inherit;
-  display: inline;
-  line-height: inherit;
-}
-
-.pdf-converter-page .tab-btn:focus {
-  outline: none;
-  text-decoration: underline;
-}
-
-.pdf-converter-page .tab-btn::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.25rem;
-  transition: transform 0.18s ease;
-  font-size: 0.85em;
-  color: currentColor;
-}
-
-.pdf-converter-page .details-controls .tab-btn {
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  min-width: 0 !important;
-  height: auto !important;
-  box-shadow: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-.pdf-converter-page .details-controls .tab-btn:focus {
-  outline: none !important;
-  text-decoration: underline !important;
-}
-
-.pdf-converter-page .details-controls .tab-btn,
-.pdf-converter-page .details-controls .tab-btn.active {
-  color: #374151 !important;
-}
-
-.pdf-converter-page .tab-btn.active {
-  color: #374151;
-}
-
-.pdf-converter-page .tab-btn.active::after {
-  transform: rotate(180deg);
-}
-
-.pdf-converter-page .shared-collapse {
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-  border: 1px solid #e2e6f0;
-  padding: 0.75rem;
-  max-height: none;
-  overflow: visible;
-}
-
-.tool-details-open h3,
-.tool-howitworks-open h3 {
-  margin-top: 0.5rem;
-}
+/* .tab-btn, .shared-collapse → tools-shared.css */
 
 .pdf-converter-page .shared-collapse .tool-details-open,
 .pdf-converter-page .shared-collapse .tool-howitworks-open,

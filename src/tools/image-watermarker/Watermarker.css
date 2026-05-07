@@ -67,7 +67,7 @@
 }
 
 /* ── Hero Section ───────────────────────────────────────────── */
-/* hero-title / hero-tagline are in image-tools-shared.css */
+/* hero-title / hero-tagline are in tools-shared.css */
 .watermarker-page .hero-title {
   margin: 0 0 0.5rem;
   /* color override: watermarker keeps same gradient */
@@ -370,7 +370,7 @@
   background: #4f46e5;
 }
 
-/* tool-details / details-row / how-img are in image-tools-shared.css */
+/* tool-details / details-row / how-img are in tools-shared.css */
 
 /* When Details is opened, wrap its content in a rounded box */
 .watermarker-page .card .tool-details[open] > div,
@@ -383,7 +383,7 @@
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }
 
-/* details-row / how-img are in image-tools-shared.css */
+/* details-row / how-img are in tools-shared.css */
 
 /* Button-controlled shared collapse (consistent with compressor styles) */
 .watermarker-page .details-controls {

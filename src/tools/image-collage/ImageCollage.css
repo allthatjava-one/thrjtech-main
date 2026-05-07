@@ -328,7 +328,7 @@
   .collage-thickness-group { flex-basis: 100%; }
 }
 
-/* tool-details / details-row / how-img are in image-tools-shared.css */
+/* tool-details / details-row / how-img are in tools-shared.css */
 
 /* When Details is opened, wrap its content in a rounded box */
 .image-collage-page .card .tool-details[open] > div {
@@ -340,7 +340,7 @@
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }
 
-/* details-row / how-img are in image-tools-shared.css */
+/* details-row / how-img are in tools-shared.css */
 
 /* Shared collapse controls to match compressor design */
 .image-collage-page .details-controls {

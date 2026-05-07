@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import MemeGeneratorView from "./MemeGeneratorView";
 import { useLocation } from 'react-router-dom';
-import '../image-tools-shared.css';
+import '../tools-shared.css';
 import "./MemeGenerator.css";
 
 export default function MemeGeneratorPage() {

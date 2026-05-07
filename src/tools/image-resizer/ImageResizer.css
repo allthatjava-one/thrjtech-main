@@ -281,13 +281,13 @@
   pointer-events: none;
 }
 
-/* popup styles are in image-tools-shared.css */
+/* popup styles are in tools-shared.css */
 
-/* tool-details styles are in image-tools-shared.css */
+/* tool-details styles are in tools-shared.css */
 
-/* details-row / how-img styles are in image-tools-shared.css */
+/* details-row / how-img styles are in tools-shared.css */
 
-/* tab-btn / shared-collapse / details-content styles are in image-tools-shared.css */
+/* tab-btn / shared-collapse / details-content styles are in tools-shared.css */
 
 /* ── Guide Article Section ── */
 .ir-guide {

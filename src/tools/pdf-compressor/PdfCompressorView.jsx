@@ -44,13 +44,10 @@ export function PdfCompressorView({
                     {t('hero.tagline')} <Link to="/blogs/pdf-compressor-guide">{t('hero.blogLink')}</Link>
                   </p>
                   
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
-                  <span style={{ fontSize: 18 }}>🖼️</span>
-                  <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>{t('hint.text')}</span>
-                  <Link
-                    to="/pdf-splitter"
-                    style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
-                  >{t('hint.btn')}</Link>
+                <div className="hint-banner">
+                  <span className="hint-banner-icon">🖼️</span>
+                  <span className="hint-banner-text">{t('hint.text')}</span>
+                  <Link to="/pdf-splitter" className="hint-banner-btn">{t('hint.btn')}</Link>
                 </div>
 
                   <div className="details-controls">

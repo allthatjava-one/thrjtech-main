@@ -1,5 +1,5 @@
 /*
- * image-tools-shared.css
+ * tools-shared.css
  * Layout helpers shared across ALL tool pages.
  * Each rule is intentionally unscoped here so any tool
  * that imports this file can use these classes in its JSX.

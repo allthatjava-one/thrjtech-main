@@ -1,6 +1,7 @@
 import JsonFormatterView from './JsonFormatterView';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import '../tools-shared.css';
 import './JsonFormatter.css';
 
 export default function JsonFormatterPage() {
