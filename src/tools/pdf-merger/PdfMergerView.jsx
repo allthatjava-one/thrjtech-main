@@ -50,6 +50,7 @@ export function PdfMergerView({
             </div>
 
 
+            <div className="details-row" data-open={openPanel}>
             <div className="details-controls">
               <button
                 className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
@@ -137,6 +138,7 @@ export function PdfMergerView({
                       </ol>
                   </div>
                 </div>
+            </div>
             <div className="hero-badges">
               <span className="hero-badge">{t('badges.fast')}</span>
               <span className="hero-badge">{t('badges.secure')}</span>

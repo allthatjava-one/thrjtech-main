@@ -200,7 +200,6 @@
 
 .pdf-converter-page .details-controls {
   display: block;
-  margin-top: 1rem;
 }
 
 .pdf-converter-page .details-buttons {
@@ -211,18 +210,6 @@
 
 /* .tab-btn, .shared-collapse → tools-shared.css */
 
-.pdf-converter-page .shared-collapse .tool-details-open,
-.pdf-converter-page .shared-collapse .tool-howitworks-open,
-.pdf-converter-page .shared-collapse .tool-details-open h3,
-.pdf-converter-page .shared-collapse .tool-howitworks-open h3,
-.pdf-converter-page .shared-collapse .tool-details-open p,
-.pdf-converter-page .shared-collapse .tool-howitworks-open p,
-.pdf-converter-page .shared-collapse .tool-details-open li,
-.pdf-converter-page .shared-collapse .tool-howitworks-open li {
-  color: #374151 !important;
-  opacity: 1 !important;
-}
-
 .pdf-converter-page .details-content,
 .pdf-converter-page .howitworks-content {
   color: #374151 !important;
@@ -231,24 +218,18 @@
 
 .pdf-converter-page .details-content,
 .pdf-converter-page .howitworks-content,
-.pdf-converter-page .tool-details-open,
-.pdf-converter-page .tool-howitworks-open,
 .pdf-converter-page .shared-collapse {
   text-align: left !important;
 }
 
 .pdf-converter-page .details-content ul,
-.pdf-converter-page .howitworks-content ul,
-.pdf-converter-page .tool-details-open ul,
-.pdf-converter-page .tool-howitworks-open ul {
+.pdf-converter-page .howitworks-content ul {
   margin: 0.5rem 0 0 1.25rem;
   padding-left: 1.25rem;
 }
 
 .pdf-converter-page .details-content p,
-.pdf-converter-page .howitworks-content p,
-.pdf-converter-page .tool-details-open p,
-.pdf-converter-page .tool-howitworks-open p {
+.pdf-converter-page .howitworks-content p {
   text-align: left !important;
 }
 

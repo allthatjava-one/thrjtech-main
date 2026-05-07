@@ -83,30 +83,29 @@
 
 .pdf-splitter-page .details-controls {
   display: block;
-  margin-top: 1rem;
 }
 
 .pdf-splitter-page .panel-hidden {
   display: none !important;
 }
 
-.pdf-splitter-page .shared-collapse .tool-details-open,
-.pdf-splitter-page .shared-collapse .tool-howitworks-open,
-.pdf-splitter-page .shared-collapse .tool-details-open h3,
-.pdf-splitter-page .shared-collapse .tool-howitworks-open h3,
-.pdf-splitter-page .shared-collapse .tool-details-open p,
-.pdf-splitter-page .shared-collapse .tool-howitworks-open p,
-.pdf-splitter-page .shared-collapse .tool-details-open li,
-.pdf-splitter-page .shared-collapse .tool-howitworks-open li {
+.pdf-splitter-page .shared-collapse .details-content,
+.pdf-splitter-page .shared-collapse .howitworks-content,
+.pdf-splitter-page .shared-collapse .details-content h3,
+.pdf-splitter-page .shared-collapse .howitworks-content h3,
+.pdf-splitter-page .shared-collapse .details-content p,
+.pdf-splitter-page .shared-collapse .howitworks-content p,
+.pdf-splitter-page .shared-collapse .details-content li,
+.pdf-splitter-page .shared-collapse .howitworks-content li {
   color: #374151 !important;
   opacity: 1 !important;
   text-align: left;
 }
 
-.pdf-splitter-page .shared-collapse .tool-details-open ul,
-.pdf-splitter-page .shared-collapse .tool-howitworks-open ul,
-.pdf-splitter-page .shared-collapse .tool-details-open ol,
-.pdf-splitter-page .shared-collapse .tool-howitworks-open ol {
+.pdf-splitter-page .shared-collapse .details-content ul,
+.pdf-splitter-page .shared-collapse .howitworks-content ul,
+.pdf-splitter-page .shared-collapse .details-content ol,
+.pdf-splitter-page .shared-collapse .howitworks-content ol {
   margin: 0.5rem 0 0 1.25rem;
   padding-left: 1.25rem;
 }

@@ -227,29 +227,29 @@
   overflow: visible;
 }
 
-.screen-recorder-page .tool-details-open,
-.screen-recorder-page .tool-howitworks-open {
+.screen-recorder-page .details-content,
+.screen-recorder-page .howitworks-content {
   color: #374151 !important;
   opacity: 1 !important;
   text-align: left !important;
 }
 
-.screen-recorder-page .tool-details-open h3,
-.screen-recorder-page .tool-howitworks-open h3 {
+.screen-recorder-page .details-content h3,
+.screen-recorder-page .howitworks-content h3 {
   margin-top: 0.5rem;
   color: #374151 !important;
 }
 
-.screen-recorder-page .tool-details-open p,
-.screen-recorder-page .tool-howitworks-open p,
-.screen-recorder-page .tool-details-open li,
-.screen-recorder-page .tool-howitworks-open li {
+.screen-recorder-page .details-content p,
+.screen-recorder-page .howitworks-content p,
+.screen-recorder-page .details-content li,
+.screen-recorder-page .howitworks-content li {
   color: #374151 !important;
 }
 
-.screen-recorder-page .tool-details-open ul,
-.screen-recorder-page .tool-howitworks-open ul,
-.screen-recorder-page .tool-howitworks-open ol {
+.screen-recorder-page .details-content ul,
+.screen-recorder-page .howitworks-content ul,
+.screen-recorder-page .howitworks-content ol {
   margin: 0.5rem 0 0 1.25rem;
   padding-left: 1.25rem;
 }

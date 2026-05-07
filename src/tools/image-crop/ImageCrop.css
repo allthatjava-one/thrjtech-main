@@ -189,10 +189,7 @@
 .image-crop-view .image-popup-img { max-width:90vw; max-height:80vh; display:block; }
 .image-crop-view .close-popup-btn { position:absolute; right:6px; top:6px; background:none; border:none; font-size:1.6rem; }
 
-.image-crop-view .details-controls .tab-btn,
-.image-crop-view .details-controls .tab-btn.active {
-  color: #374151 !important;
-}
+/* details-controls .tab-btn color → tools-shared.css */
 
 /* Send-to-meme action block (placed at bottom of main content) */
 .send-action {

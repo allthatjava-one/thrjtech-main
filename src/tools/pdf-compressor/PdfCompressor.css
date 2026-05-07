@@ -202,7 +202,6 @@
 
 .pdf-compressor-page .details-controls {
   display: block;
-  margin-top: 1rem;
 }
 
 .pdf-compressor-page .details-buttons {
@@ -213,26 +212,12 @@
 
 /* .tab-btn, .shared-collapse → tools-shared.css */
 
-.tool-details-open h3,
-.tool-howitworks-open h3 {
+.details-content h3,
+.howitworks-content h3 {
   margin-top: 0.5rem;
 }
 
-/* Ensure collapsed content matches the page description color and is fully opaque.
-   Use high-specificity selectors to override theme or global rules. */
-.pdf-compressor-page .shared-collapse .tool-details-open,
-.pdf-compressor-page .shared-collapse .tool-howitworks-open,
-.pdf-compressor-page .shared-collapse .tool-details-open h3,
-.pdf-compressor-page .shared-collapse .tool-howitworks-open h3,
-.pdf-compressor-page .shared-collapse .tool-details-open p,
-.pdf-compressor-page .shared-collapse .tool-howitworks-open p,
-.pdf-compressor-page .shared-collapse .tool-details-open li,
-.pdf-compressor-page .shared-collapse .tool-howitworks-open li {
-  color: #374151 !important; /* exact page description color */
-  opacity: 1 !important;
-}
-
-/* Backwards-compatible simpler class names (if used elsewhere) */
+/* Ensure collapsed content matches the page description color and is fully opaque. */
 .pdf-compressor-page .details-content,
 .pdf-compressor-page .howitworks-content {
   color: #374151 !important;
@@ -242,24 +227,18 @@
 /* Left-align collapsible content and improve list spacing */
 .pdf-compressor-page .details-content,
 .pdf-compressor-page .howitworks-content,
-.pdf-compressor-page .tool-details-open,
-.pdf-compressor-page .tool-howitworks-open,
 .pdf-compressor-page .shared-collapse {
   text-align: left !important;
 }
 
 .pdf-compressor-page .details-content ul,
-.pdf-compressor-page .howitworks-content ul,
-.pdf-compressor-page .tool-details-open ul,
-.pdf-compressor-page .tool-howitworks-open ul {
+.pdf-compressor-page .howitworks-content ul {
   margin: 0.5rem 0 0 1.25rem;
   padding-left: 1.25rem;
 }
 
 .pdf-compressor-page .details-content p,
-.pdf-compressor-page .howitworks-content p,
-.pdf-compressor-page .tool-details-open p,
-.pdf-compressor-page .tool-howitworks-open p {
+.pdf-compressor-page .howitworks-content p {
   text-align: left !important;
 }
 

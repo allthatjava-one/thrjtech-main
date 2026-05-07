@@ -383,65 +383,8 @@
   box-shadow: 0 6px 18px rgba(15,23,42,0.04);
 }
 
+/* details-controls, tab-btn, shared-collapse, details-content, howitworks-content → tools-shared.css */
 /* details-row / how-img are in tools-shared.css */
-
-/* Button-controlled shared collapse (consistent with compressor styles) */
-.watermarker-page .details-controls {
-  display: block;
-}
-.watermarker-page .tab-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 0.5rem 0 0;
-  cursor: pointer;
-  font-weight: 600;
-  color: inherit;
-  display: inline;
-  line-height: inherit;
-}
-.watermarker-page .tab-btn::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.25rem;
-  transition: transform 0.18s ease;
-  font-size: 0.85em;
-}
-.watermarker-page .tab-btn.active::after { transform: rotate(180deg); }
-.watermarker-page .details-controls .tab-btn {
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  min-width: 0 !important;
-  height: auto !important;
-  box-shadow: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-.watermarker-page .details-controls .tab-btn:focus { outline: none !important; text-decoration: underline !important; }
-.watermarker-page .details-controls .tab-btn,
-.watermarker-page .details-controls .tab-btn.active { color: #374151 !important; }
-
-.watermarker-page .shared-collapse {
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-  border: 1px solid #e2e6f0;
-  padding: 0.75rem;
-  max-height: none;
-  overflow: visible;
-}
-.watermarker-page .details-content,
-.watermarker-page .howitworks-content {
-  color: #374151 !important;
-  opacity: 1 !important;
-  text-align: left !important;
-}
-.watermarker-page .details-content ul,
-.watermarker-page .howitworks-content ul { margin: 0.5rem 0 0 1.25rem; padding-left: 1.25rem; }
-.watermarker-page .details-content p,
-.watermarker-page .howitworks-content p { text-align: left !important; }
 /* Mobile: remove horizontal padding so the card fills the full screen width */
 @media (max-width: 740px) {
   .watermarker-page .main {

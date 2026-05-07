@@ -292,61 +292,10 @@
   font-size: 1rem;
 }
 
-/* Details / How it works collapsible */
-.meme-generator-page .details-controls {
-  display: block;
-  margin-top: 1rem;
-}
-.meme-generator-page .tab-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 0.5rem 0 0;
-  cursor: pointer;
-  font-weight: 600;
-  color: #374151;
-  display: inline;
-  line-height: inherit;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  min-width: 0 !important;
-  box-shadow: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-.meme-generator-page .tab-btn::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.25rem;
-  transition: transform 0.18s ease;
-  font-size: 0.85em;
-}
-.meme-generator-page .tab-btn.active::after { transform: rotate(180deg); }
-.meme-generator-page .tab-btn:focus { outline: none !important; text-decoration: underline !important; }
-.meme-generator-page .shared-collapse {
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-  background: #fff;
-  border: 1px solid #e2e6f0;
-  padding: 0.75rem;
-  max-height: none;
-  overflow: visible;
-}
-.meme-generator-page .details-content,
-.meme-generator-page .howitworks-content {
-  color: #374151 !important;
-  opacity: 1 !important;
-  text-align: left !important;
-}
-.meme-generator-page .details-content ul,
-.meme-generator-page .howitworks-content ul { margin: 0.5rem 0 0 1.25rem; padding-left: 1.25rem; }
-.meme-generator-page .details-content p,
-.meme-generator-page .howitworks-content p { text-align: left !important; }
+/* details-controls, tab-btn, shared-collapse, details-content, howitworks-content → tools-shared.css */
 .meme-generator-page .details-row {
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 1rem;
 }
 
 /* Meme preview popup */
