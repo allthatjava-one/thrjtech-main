@@ -44,15 +44,13 @@ export function PdfCompressorView({
                     {t('hero.tagline')} <Link to="/blogs/pdf-compressor-guide">{t('hero.blogLink')}</Link>
                   </p>
                   
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
-                  <span style={{ fontSize: 18 }}>🖼️</span>
-                  <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>{t('hint.text')}</span>
-                  <Link
-                    to="/pdf-splitter"
-                    style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
-                  >{t('hint.btn')}</Link>
+                <div className="hint-banner">
+                  <span className="hint-banner-icon">🖼️</span>
+                  <span className="hint-banner-text">{t('hint.text')}</span>
+                  <Link to="/pdf-splitter" className="hint-banner-btn">{t('hint.btn')}</Link>
                 </div>
 
+                  <div className="details-row" data-open={openPanel}>
                   <div className="details-controls">
                     <button
                       className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
@@ -72,7 +70,7 @@ export function PdfCompressorView({
                     </button>
                   </div>
                   <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
-                      <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
+                      <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                                   <h3>{t('details.whatIsCompression.heading')}</h3>
                                   <p>{t('details.whatIsCompression.body')}</p>
 
@@ -129,7 +127,7 @@ export function PdfCompressorView({
                                   </ul>
                             </div>
 
-                        <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
+                        <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
                           <ol style={{ margin: 0, paddingLeft: '1rem' }}>
                             <li style={{ marginBottom: '0.75rem' }}>
                               <img src="/screenshots/compressor/pdf-compressor-01.png" alt="Step 1" className="how-img" />
@@ -149,6 +147,7 @@ export function PdfCompressorView({
                             </li>
                           </ol>
                         </div>
+                  </div>
                   </div>
                 <div className="hero-badges">
                   <span className="hero-badge">{t('badges.instant')}</span>

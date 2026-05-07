@@ -16,6 +16,7 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
         <h1 className="hero-title">{t('hero.title')}</h1>
         <p className="hero-tagline">{t('hero.tagline')}</p>
 
+        <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button
             className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
@@ -36,7 +37,7 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
         </div>
 
         <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
-          <div className={openPanel !== 'details' ? 'tool-details-open panel-hidden' : 'tool-details-open'}>
+          <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
             <h3>{t('details.whatIs.heading')}</h3>
             <p>{t('details.whatIs.body')}</p>
 
@@ -63,7 +64,7 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
             </ul>
           </div>
 
-          <div className={openPanel !== 'howitworks' ? 'tool-howitworks-open panel-hidden' : 'tool-howitworks-open'}>
+          <div className={openPanel !== 'howitworks' ? 'howitworks-content panel-hidden' : 'howitworks-content'}>
             <ol style={{ margin: 0, paddingLeft: '1rem' }}>
               <li style={{ marginBottom: '0.75rem' }}><p>{t('howItWorks.step1')}</p></li>
               <li style={{ marginBottom: '0.75rem' }}><p>{t('howItWorks.step2')}</p></li>
@@ -71,6 +72,7 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
               <li><p>{t('howItWorks.step4')}</p></li>
             </ol>
           </div>
+        </div>
         </div>
 
         <div className="hero-badges">

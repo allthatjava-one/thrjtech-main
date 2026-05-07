@@ -3,6 +3,7 @@ import { usePdfMerger } from './hooks/usePdfMerger';
 import { PdfMergerView } from './PdfMergerView';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import '../tools-shared.css';
 import './PdfMerger.css';
 
 export default function PdfMergerPage() {

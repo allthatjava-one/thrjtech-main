@@ -2,7 +2,7 @@ import { useImageConverter } from './hooks/useImageConverter';
 import { ImageConverterView } from './ImageConverterView';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import '../image-tools-shared.css';
+import '../tools-shared.css';
 import './ImageConverter.css';
 
 export default function ImageConverterPage() {

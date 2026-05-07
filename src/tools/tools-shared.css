@@ -1,15 +1,15 @@
 /*
- * image-tools-shared.css
- * Layout helpers shared across ALL image tool view pages.
- * Each rule is intentionally unscoped here so any image tool
+ * tools-shared.css
+ * Layout helpers shared across ALL tool pages.
+ * Each rule is intentionally unscoped here so any tool
  * that imports this file can use these classes in its JSX.
  *
  * Imported by:
- *   ImageResizerPage.jsx
- *   ImageCropPage.jsx
- *   ImageCollagePage.jsx
- *   WatermarkerPage.jsx
- *   MemeGeneratorPage.jsx
+ *   ImageResizerPage.jsx, ImageCropPage.jsx, ImageCollagePage.jsx
+ *   WatermarkerPage.jsx, MemeGeneratorPage.jsx, ImageRotatorPage.jsx
+ *   ImageConverterPage.jsx, ScreenRecorderPage.jsx
+ *   PdfCompressorPage.jsx, PdfMergerPage.jsx, PdfConverterPage.jsx
+ *   PdfSplitterPage.jsx, JsonFormatterPage.jsx, RegexTesterPage.jsx
  */
 
 /* ── Hero ───────────────────────────────────────────────────── */
@@ -19,6 +19,7 @@
   letter-spacing: -0.03em;
   color: #1e1e2e;
   margin: 0 0 0.5rem;
+  text-align: left;
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -27,7 +28,8 @@
 
 .hero-tagline {
   font-size: 1rem;
-  color: #6b7280;
+  color: #4b5563;
+  text-align: left;
   margin-bottom: 1.5rem;
 }
 
@@ -122,6 +124,7 @@
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
+  /* gap: 1rem; */
   width: 100%;
   box-sizing: border-box;
 }
@@ -272,4 +275,243 @@
   padding: 1rem;
   margin-top: 0.5rem;
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* ── Hint banner ─────────────────────────────────────────────── */
+.hint-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.hint-banner-icon {
+  font-size: 18px;
+}
+
+.hint-banner-text {
+  flex: 1;
+  font-size: 14px;
+  color: #7c6000;
+}
+
+.hint-banner-btn {
+  white-space: nowrap;
+  background: #faad14;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ── Hero badges ─────────────────────────────────────────────── */
+.hero-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  justify-content: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6366f1;
+  background: #eef0ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Drop zone inner content (shared by all tools) ───────────── */
+.file-input {
+  display: none;
+}
+
+.drop-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.drop-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.drop-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.drop-sub {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* ── File info panel (used by PDF tools) ─────────────────────── */
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.file-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.file-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #1e1e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-size {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.remove-btn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+/* ── Shared button system ────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  cursor: pointer;
+  transition: var(--btn-transition);
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  font-family: inherit;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #6366f1;
+  border: 2px solid #6366f1;
+}
+
+.btn-outline:hover {
+  background: #eef0ff;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #6b7280;
+}
+
+.btn-ghost:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+}
+
+.btn-danger:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.45);
+}
+
+/* ── Progress bar ────────────────────────────────────────────── */
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6366f1;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 999px;
+  transition: width 0.4s ease;
 }

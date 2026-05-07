@@ -43,35 +43,33 @@ export function PdfMergerView({
               {t('hero.tagline')} <Link to="/blogs/pdf-merger-guide">{t('hero.blogLink')}</Link>
             </p>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
-              <span style={{ fontSize: 18 }}>🖼️</span>
-              <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>{t('hint.text')}</span>
-              <Link
-                to="/pdf-splitter"
-                style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
-              >{t('hint.btn')}</Link>
+            <div className="hint-banner">
+              <span className="hint-banner-icon">🖼️</span>
+              <span className="hint-banner-text">{t('hint.text')}</span>
+              <Link to="/pdf-splitter" className="hint-banner-btn">{t('hint.btn')}</Link>
             </div>
 
+
             <div className="details-row" data-open={openPanel}>
-              <div className="details-controls">
-                <button
-                  className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
-                  onClick={() => setOpenPanel(prev => (prev === 'details' ? '' : 'details'))}
-                  aria-expanded={openPanel === 'details'}
-                  type="button"
-                >
-                  {t('tabs.details')}
-                </button>
-                <button
-                  className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
-                  onClick={() => setOpenPanel(prev => (prev === 'howitworks' ? '' : 'howitworks'))}
-                  aria-expanded={openPanel === 'howitworks'}
-                  type="button"
-                >
-                  {t('tabs.howItWorks')}
-                </button>
-              </div>
-              <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
+            <div className="details-controls">
+              <button
+                className={`tab-btn ${openPanel === 'details' ? 'active' : ''}`}
+                onClick={() => setOpenPanel(prev => (prev === 'details' ? '' : 'details'))}
+                aria-expanded={openPanel === 'details'}
+                type="button"
+              >
+                {t('tabs.details')}
+              </button>
+              <button
+                className={`tab-btn ${openPanel === 'howitworks' ? 'active' : ''}`}
+                onClick={() => setOpenPanel(prev => (prev === 'howitworks' ? '' : 'howitworks'))}
+                aria-expanded={openPanel === 'howitworks'}
+                type="button"
+              >
+                {t('tabs.howItWorks')}
+              </button>
+            </div>
+            <div className={`shared-collapse${!openPanel ? ' panel-hidden' : ''}`}>
                   <div className={openPanel !== 'details' ? 'details-content panel-hidden' : 'details-content'}>
                       <h3>{t('details.howMergeWorks.heading')}</h3>
                       <p>{t('details.howMergeWorks.body')}</p>
@@ -314,13 +312,10 @@ export function PdfMergerView({
       )}
       
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#fffbe6', border: '1px solid #ffe58f', borderRadius: 8, padding: '10px 16px', marginBottom: 12 }}>
-        <span style={{ fontSize: 18 }}>🖼️</span>
-        <span style={{ flex: 1, fontSize: 14, color: '#7c6000' }}>{t('lowerHint.text')}</span>
-        <Link
-          to="/pdf-compressor"
-          style={{ whiteSpace: 'nowrap', background: '#faad14', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 600, textDecoration: 'none', cursor: 'pointer' }}
-        >{t('lowerHint.btn')}</Link>
+      <div className="hint-banner">
+        <span className="hint-banner-icon">🖼️</span>
+        <span className="hint-banner-text">{t('lowerHint.text')}</span>
+        <Link to="/pdf-compressor" className="hint-banner-btn">{t('lowerHint.btn')}</Link>
       </div>
 
       {/* Merger guide - different visual vibe */}

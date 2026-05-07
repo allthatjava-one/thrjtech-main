@@ -84,22 +84,14 @@
 }
 
 /* ── Details / How it works ──────────────────────────────────── */
-.regex-tester-page .details-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 0.75rem;
-}
+/* .details-row layout → tools-shared.css */
+
 
 .regex-tester-page .details-controls {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
   width: 100%;
-  margin-bottom: 0.5rem;
 }
 
 .regex-tester-page .tab-btn {

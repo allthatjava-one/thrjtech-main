@@ -2,7 +2,7 @@ import { useImageRotator } from './hooks/useImageRotator';
 import { ImageRotatorView } from './ImageRotatorView';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import '../image-tools-shared.css';
+import '../tools-shared.css';
 import './ImageRotator.css';
 
 export default function ImageRotatorPage() {
