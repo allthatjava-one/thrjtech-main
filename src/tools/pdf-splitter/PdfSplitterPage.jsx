@@ -2,6 +2,7 @@ import { usePdfSplitter } from './hooks/usePdfSplitter'
 import { PdfSplitterView } from './PdfSplitterView'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import '../tools-shared.css'
 import './PdfSplitter.css'
 
 export default function PdfSplitterPage() {

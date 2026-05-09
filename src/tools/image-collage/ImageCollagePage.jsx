@@ -3,7 +3,7 @@ import ImageCollageView from "./ImageCollageView";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { TEMPLATES } from "./templates";
-import '../image-tools-shared.css';
+import '../tools-shared.css';
 import "./ImageCollage.css";
 
 export default function ImageCollagePage() {

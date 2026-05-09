@@ -1,6 +1,7 @@
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import RegexTesterView from './RegexTesterView'
+import '../tools-shared.css'
 import './RegexTester.css'
 
 export default function RegexTesterPage() {

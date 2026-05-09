@@ -9,7 +9,7 @@
     "howItWorks": "How it works"
   },
   "hint": {
-    "text": "Would you like to crop your image before creating a meme?",
+    "text": "Would you like to crop or change aspect ratio of your image before creating a meme?",
     "btn": "Try Image Crop"
   },
   "details": {

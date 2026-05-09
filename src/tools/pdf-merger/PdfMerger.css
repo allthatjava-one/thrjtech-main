@@ -40,50 +40,11 @@
 
 /* ── Hero Section ────────────────────────────────────── */
 .pdf-merger-page .hero-section {
-  text-align: left;
+  text-align: center;
   padding-bottom: 0.25rem;
 }
 
-.pdf-merger-page .hero-title {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #1e1e2e;
-  margin: 0 0 0.5rem;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-align: left;
-}
-
-.pdf-merger-page .hero-tagline {
-  font-size: 1rem;
-  color: #4b5563;
-  margin: 0 0 1rem;
-  line-height: 1.6;
-}
-
-.pdf-merger-page .hero-badges {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.pdf-merger-page .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #6366f1;
-  background: #eef0ff;
-  border: 1px solid #c7d2fe;
-  border-radius: 999px;
-  padding: 0.25rem 0.75rem;
-  letter-spacing: 0.01em;
-}
+/* .hero-title, .hero-tagline, .hero-badges, .hero-badge → tools-shared.css */
 
 /* ── Drop Zone ───────────────────────────────────────── */
 
@@ -112,169 +73,7 @@
   }
 }
 
-/* Tool details (collapsible) */
-.pdf-merger-page .tool-details {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  color: #4b5563;
-}
-.pdf-merger-page .tool-details summary {
-  display: block;
-  cursor: pointer;
-  font-weight: 600;
-  color: #4b5563;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  position: relative;
-}
-.pdf-merger-page .tool-details summary::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform 0.18s ease;
-}
-.pdf-merger-page .tool-details[open] summary::after {
-  transform: rotate(180deg);
-}
-.pdf-merger-page .tool-details summary::-webkit-details-marker { display: none; }
-.pdf-merger-page .tool-details summary::marker { display: none; }
-.pdf-merger-page .tool-details > div {
-  margin-top: 0.5rem;
-  padding-left: 0.25rem;
-  color: #4b5563;
-}
-
-/* When Details is opened, wrap its content in a rounded box */
-.pdf-merger-page .card .tool-details[open] > div,
-.pdf-merger-page .tool-details[open] > div {
-  background: #f8f9ff;
-  border: 1px solid #e2e6f0;
-  border-radius: 12px;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-}
-
-/* Place Details and How it works side-by-side where space allows */
-.pdf-merger-page .details-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
-}
-.pdf-merger-page .details-row .tool-details {
-  flex: 1 1 300px;
-  min-width: 240px;
-  max-width: 48%;
-  box-sizing: border-box;
-}
-/* allow flex children to shrink below their content's min-width */
-.pdf-merger-page .details-row .tool-details {
-  min-width: 0;
-}
-@media (max-width: 740px) {
-  .pdf-merger-page .details-row .tool-details {
-    max-width: 100%;
-    flex-basis: 100%;
-  }
-}
-.pdf-merger-page .how-img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #e2e6f0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.pdf-merger-page .details-row .tool-details img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Ensure collapsible content fills its column */
-.pdf-merger-page .details-row .tool-details > div {
-  width: 100%;
-  box-sizing: border-box;
-}
-.pdf-merger-page .details-row .tool-details[open] > div {
-  width: 100%;
-  max-height: 46vh;
-  overflow: auto;
-}
-.pdf-merger-page .details-row[data-open="details"] .tool-details {
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
-.pdf-merger-page .details-row[data-open="details"] .tool-details.tool-howitworks {
-  display: none !important;
-}
-.pdf-merger-page .details-row[data-open="howitworks"] .tool-details {
-  display: none !important;
-}
-.pdf-merger-page .details-row[data-open="howitworks"] .tool-details.tool-howitworks {
-  display: block !important;
-  flex-basis: 100% !important;
-  max-width: 100% !important;
-}
-
-/* Button-controlled shared collapse styles (match compressor) */
-.pdf-merger-page .details-controls {
-  display: block;
-}
-.pdf-merger-page .tab-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 0.5rem 0 0;
-  cursor: pointer;
-  font-weight: 600;
-  color: inherit;
-  display: inline;
-  line-height: inherit;
-}
-.pdf-merger-page .tab-btn::after {
-  content: "▾";
-  display: inline-block;
-  margin-left: 0.25rem;
-  transition: transform 0.18s ease;
-  font-size: 0.85em;
-}
-.pdf-merger-page .tab-btn.active::after { transform: rotate(180deg); }
-.pdf-merger-page .details-controls .tab-btn {
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  min-width: 0 !important;
-  height: auto !important;
-  box-shadow: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-.pdf-merger-page .details-controls .tab-btn:focus { outline: none !important; text-decoration: underline !important; }
-.pdf-merger-page .details-controls .tab-btn,
-.pdf-merger-page .details-controls .tab-btn.active { color: #374151 !important; }
-
-.pdf-merger-page .shared-collapse {
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-  border: 1px solid #e2e6f0;
-  padding: 0.75rem;
-  max-height: none;
-  overflow: visible;
-}
-.pdf-merger-page .details-content,
-.pdf-merger-page .howitworks-content { color: #374151 !important; opacity: 1 !important; text-align: left !important; }
-.pdf-merger-page .details-content ul,
-.pdf-merger-page .howitworks-content ul { margin: 0.5rem 0 0 1.25rem; padding-left: 1.25rem; }
-.pdf-merger-page .details-content p,
-.pdf-merger-page .howitworks-content p { text-align: left !important; }
+/* .tool-details, .details-row, .how-img, .tab-btn, .shared-collapse, .details-content, .howitworks-content → tools-shared.css */
 
 .pdf-merger-page .drop-zone:hover,
 .pdf-merger-page .drop-zone.dragging {
@@ -289,35 +88,7 @@
   background: #f5f6ff;
 }
 
-.pdf-merger-page .file-input {
-  display: none;
-}
-
-.pdf-merger-page .drop-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  width: 100%;
-}
-
-.pdf-merger-page .drop-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.pdf-merger-page .drop-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #374151;
-}
-
-.pdf-merger-page .drop-sub {
-  font-size: 0.875rem;
-  color: #9ca3af;
-}
+/* .file-input, .drop-content, .drop-icon, .drop-text, .drop-sub → tools-shared.css */
 
 /* ── File Info & List ────────────────────────────────── */
 .pdf-merger-page .file-info {
@@ -452,27 +223,7 @@
   cursor: not-allowed;
 }
 
-.pdf-merger-page .remove-btn {
-  background: none;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  color: #9ca3af;
-  font-size: 0.875rem;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pdf-merger-page .remove-btn:hover {
-  background: #fee2e2;
-  border-color: #fca5a5;
-  color: #ef4444;
-}
+/* .remove-btn, .remove-btn:hover → tools-shared.css */
 
 /* ── Compress checkbox ───────────────────────────────── */
 .pdf-merger-page .compress-option {
@@ -493,55 +244,7 @@
   cursor: pointer;
 }
 
-/* ── Buttons ─────────────────────────────────────────── */
-.pdf-merger-page .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--btn-padding);
-  border-radius: var(--btn-radius);
-  font-size: var(--btn-font-size);
-  font-weight: var(--btn-font-weight);
-  cursor: pointer;
-  transition: var(--btn-transition);
-  border: none;
-  text-decoration: none;
-  text-align: center;
-  font-family: inherit;
-  box-sizing: border-box;
-  line-height: 1;
-}
-
-.pdf-merger-page .btn-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
-}
-
-.pdf-merger-page .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
-}
-
-.pdf-merger-page .btn-outline {
-  background: transparent;
-  color: #6366f1;
-  border: 2px solid #6366f1;
-}
-
-.pdf-merger-page .btn-outline:hover {
-  background: #eef0ff;
-}
-
-.pdf-merger-page .btn-ghost {
-  background: transparent;
-  color: #6b7280;
-}
-
-.pdf-merger-page .btn-ghost:hover {
-  background: #f3f4f6;
-  color: #374151;
-}
+/* ── Buttons ── .btn, .btn-primary, .btn-outline, .btn-ghost → tools-shared.css */
 
 .pdf-merger-page .compress-btn,
 .pdf-merger-page .download-btn {
@@ -550,32 +253,7 @@
   font-size: 1rem;
 }
 
-/* ── Progress ────────────────────────────────────────── */
-.pdf-merger-page .progress-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.pdf-merger-page .progress-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #6366f1;
-}
-
-.pdf-merger-page .progress-bar {
-  height: 8px;
-  background: #e5e7eb;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.pdf-merger-page .progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  border-radius: 999px;
-  transition: width 0.4s ease;
-}
+/* ── Progress ── .progress-section, .progress-label, .progress-bar, .progress-fill → tools-shared.css */
 
 /* ── Result Section ──────────────────────────────────── */
 .pdf-merger-page .result-section {
