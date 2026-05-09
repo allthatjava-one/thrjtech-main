@@ -813,7 +813,7 @@ export default function MemeGeneratorView({ initialFile }) {
           <div
             key={layer.id}
             data-layer-id={layer.id}
-            className={`draggable-text layer-overlay ${layer.id === selectedLayerId ? 'selected' : ''}`}
+            className={`draggable-text layer-overlay ${layer.id === selectedLayerId ? 'selected' : ''}${!layer.text ? ' is-placeholder' : ''}`}
             style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${cssPx}px`, lineHeight: `${lineHeightCss}px`, color: layer.color, whiteSpace: 'pre' }}
             onPointerDown={(e) => startDrag(e, layer.id)}
           >

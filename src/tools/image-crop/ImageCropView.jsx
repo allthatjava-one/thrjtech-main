@@ -525,10 +525,10 @@ export function ImageCropView(props) {
 
       {/* Bottom action block: appears only after a crop output is generated */}
       {(outputUrl || hasCropEdited) && (
-        <div className="send-action">
-          <span className="send-text">{t('sendToMeme.text')}</span>
+        <div className="ir-tip-banner">
+          <span className="ir-tip-text">{t('sendToMeme.text')}</span>
           <button
-            className="send-btn"
+            className="ir-tip-btn"
             onClick={handleSendToMeme}
             disabled={!(outputUrl || hasCropEdited)}
           >

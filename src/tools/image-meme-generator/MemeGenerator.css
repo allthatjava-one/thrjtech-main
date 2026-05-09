@@ -147,6 +147,7 @@
 }
 .meme-generator-page .draggable-text.top-text { top: 8%; }
 .meme-generator-page .draggable-text.bottom-text { top: 92%; }
+.meme-generator-page .draggable-text.is-placeholder { opacity: 0.35; }
 .meme-generator-page .btn { padding: var(--btn-padding); border: 1px solid #ccc; background: white; cursor: pointer; border-radius: var(--btn-radius); font-size: var(--btn-font-size); font-weight: var(--btn-font-weight); font-family: inherit; }
 .meme-generator-page .btn.primary { background: var(--accent, #3b82f6); color: white; border-color: transparent; }
 
