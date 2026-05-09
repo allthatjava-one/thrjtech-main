@@ -527,28 +527,12 @@ export function ImageResizerView({
       {errorMsg && <div className="error-msg">{errorMsg}</div>}
       {outputUrl && (
         <div className="output-section">
-          <div
-            style={{
-              marginTop: '1.5rem',
-              width: '100%',
-              boxSizing: 'border-box',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: 12,
-              border: '1.5px solid #e2e6f0',
-              borderRadius: 10,
-              background: '#f7f8fa',
-              padding: '1rem 1.2rem',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-              minHeight: 64,
-            }}
-          >
-            <span style={{ fontWeight: 600, color: '#222', fontSize: '1.08rem', marginBottom: 0, textAlign: 'left', flex: 1, display: 'block', alignSelf: 'center' }}>
+          <div className="ir-tip-banner">
+            <span className="ir-tip-text">
             {t('watermarkPrompt.text')}
             </span>
             <button
-              className="resize-btn"
+              className="ir-tip-btn"
               onClick={handleSendToWatermark}
               disabled={sendStatus === 'processing'}
             >
