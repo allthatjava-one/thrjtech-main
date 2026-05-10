@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Générateur de mèmes",
-    "tagline": "Créez des mèmes amusants en ajoutant du texte personnalisé à n'importe quelle image. Faites glisser le texte n'importe où sur le canevas, ajustez la taille et la couleur de la police, puis téléchargez votre mème en un clic.",
+    "tagline": "Créez des mèmes amusants en ajoutant du texte personnalisé à n'importe quelle image. Faites glisser le texte n'importe où sur le canevas, ajustez la taille et la couleur de la police, puis téléchargez votre mème terminé en un clic. Fonctionne sur les images fixes et les GIF animés.",
     "blogLink": "Apprenez à utiliser le Générateur de mèmes →"
   },
   "tabs": {

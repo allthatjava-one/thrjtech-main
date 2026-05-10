@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Meme Generator",
-    "tagline": "Create fun memes by adding custom text to any image. Drag text anywhere on the canvas, adjust font size and color, then download your finished meme with one click.",
+    "tagline": "Create fun memes by adding custom text to any image. Drag text anywhere on the canvas, adjust font size and color, then download your finished meme with one click. Works on both still images and animated GIFs.",
     "blogLink": "Learn how to use the Meme Generator →"
   },
   "tabs": {
