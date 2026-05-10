@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export default function VideoToGifView({
@@ -28,8 +28,42 @@ export default function VideoToGifView({
   const fileInputRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
+  const [startTimeStr, setStartTimeStr] = useState(() => secsToTime(startTime))
+  const [endTimeStr, setEndTimeStr] = useState(() => secsToTime(endTime))
+
+  useEffect(() => { setStartTimeStr(secsToTime(startTime)) }, [startTime])
+  useEffect(() => { setEndTimeStr(secsToTime(endTime)) }, [endTime])
 
   const togglePanel = (panel) => setOpenPanel((prev) => (prev === panel ? '' : panel))
+
+  function secsToTime(sec) {
+    if (!sec || !isFinite(sec)) return '00:00:00'
+    const h = Math.floor(sec / 3600)
+    const m = Math.floor((sec % 3600) / 60)
+    const s = Math.floor(sec % 60)
+    return [h, m, s].map(v => String(v).padStart(2, '0')).join(':')
+  }
+
+  function timeToSecs(str) {
+    const parts = str.trim().split(':').map(Number)
+    if (parts.some(isNaN)) return null
+    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2]
+    if (parts.length === 2) return parts[0] * 60 + parts[1]
+    if (parts.length === 1 && !isNaN(parts[0])) return parts[0]
+    return null
+  }
+
+  function handleStartTimeBlur() {
+    const secs = timeToSecs(startTimeStr)
+    if (secs === null) { setStartTimeStr(secsToTime(startTime)); return }
+    clampStart(secs)
+  }
+
+  function handleEndTimeBlur() {
+    const secs = timeToSecs(endTimeStr)
+    if (secs === null) { setEndTimeStr(secsToTime(endTime)); return }
+    clampEnd(secs)
+  }
 
   function formatSize(bytes) {
     if (bytes == null) return ''
@@ -68,8 +102,10 @@ export default function VideoToGifView({
   }
 
   function clampStart(val) {
-    const v = Math.max(0, Math.min(val, endTime - 0.1))
+    const v = Math.max(0, Math.min(val, videoDuration - 0.1))
     setStartTime(parseFloat(v.toFixed(1)))
+    const newEnd = Math.min(parseFloat((v + 2).toFixed(1)), videoDuration)
+    setEndTime(newEnd)
   }
 
   function clampEnd(val) {
@@ -197,16 +233,14 @@ export default function VideoToGifView({
                 {t('controls.startTime')}
                 <div className="vtg-input-row">
                   <input
-                    type="number"
+                    type="text"
                     className="vtg-input"
-                    value={startTime}
-                    min={0}
-                    max={Math.max(0, endTime - 0.1)}
-                    step={0.1}
-                    onChange={(e) => clampStart(parseFloat(e.target.value) || 0)}
+                    value={startTimeStr}
+                    onChange={(e) => setStartTimeStr(e.target.value)}
+                    onBlur={handleStartTimeBlur}
                     disabled={isEncoding}
+                    placeholder="hh:mm:ss"
                   />
-                  <span className="vtg-input-suffix">s</span>
                 </div>
               </label>
 
@@ -214,16 +248,14 @@ export default function VideoToGifView({
                 {t('controls.endTime')}
                 <div className="vtg-input-row">
                   <input
-                    type="number"
+                    type="text"
                     className="vtg-input"
-                    value={endTime}
-                    min={Math.min(videoDuration, startTime + 0.1)}
-                    max={videoDuration}
-                    step={0.1}
-                    onChange={(e) => clampEnd(parseFloat(e.target.value) || 0)}
+                    value={endTimeStr}
+                    onChange={(e) => setEndTimeStr(e.target.value)}
+                    onBlur={handleEndTimeBlur}
                     disabled={isEncoding}
+                    placeholder="hh:mm:ss"
                   />
-                  <span className="vtg-input-suffix">s</span>
                 </div>
               </label>
 
