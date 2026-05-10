@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "Video a GIF",
+    "tagline": "Convierte cualquier clip de video en un GIF animado — gratis, instantáneo y privado."
+  },
+  "tabs": {
+    "details": "Detalles",
+    "howItWorks": "Cómo funciona"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "¿Qué es Video a GIF?",
+      "body": "Esta herramienta extrae fotogramas de un clip de video y los codifica como GIF animado, todo dentro de tu navegador. No se sube ningún dato a ningún servidor."
+    },
+    "privacy": {
+      "heading": "Privacidad",
+      "body": "Tu archivo de video nunca abandona tu dispositivo. Todo el procesamiento ocurre localmente usando las APIs del navegador."
+    },
+    "limitations": {
+      "heading": "Limitaciones",
+      "body": "Los GIFs admiten un máximo de 256 colores por fotograma, por lo que son más adecuados para clips cortos (menos de 15 segundos)."
+    }
+  },
+  "howItWorks": {
+    "step1": "Arrastra o selecciona un archivo de video (MP4, WebM, MOV, AVI).",
+    "step2": "Establece el rango del clip con Inicio y Fin.",
+    "step3": "Elige FPS y ancho máximo, luego haz clic en Convertir a GIF.",
+    "step4": "Previsualiza el resultado y haz clic en Descargar para guardar tu GIF."
+  },
+  "badges": {
+    "clientSide": "🔒 En el navegador",
+    "noUpload": "⚡ Sin subida",
+    "free": "🆓 Gratis"
+  },
+  "dropzone": {
+    "prompt": "Arrastra un archivo de video aquí",
+    "hint": "Compatible con MP4, WebM, MOV, AVI",
+    "browse": "Seleccionar archivo"
+  },
+  "actions": {
+    "changeVideo": "Cambiar video",
+    "clear": "Borrar",
+    "convert": "Convertir a GIF",
+    "encoding": "Convirtiendo… {{progress}}%",
+    "cancel": "Cancelar"
+  },
+  "controls": {
+    "startTime": "Tiempo de inicio",
+    "endTime": "Tiempo de fin",
+    "duration": "Duración",
+    "fps": "Fotogramas por segundo",
+    "maxWidth": "Ancho máximo",
+    "original": "Original",
+    "estimatedFrames": "~{{count}} fotogramas",
+    "largeWarning": "esto puede tardar y generar un archivo grande"
+  },
+  "output": {
+    "title": "Tu GIF",
+    "download": "⬇ Descargar GIF",
+    "reconvert": "Reconvertir"
+  }
+}

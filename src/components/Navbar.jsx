@@ -80,6 +80,7 @@ export default function Navbar() {
                     <div className="dropdown-group">
                       <div className="dropdown-group-title">{t('nav.video')}</div>
                       <Link to="/screen-recorder" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.screenRecorder')}</Link>
+                      <Link to="/video-to-gif" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.videoToGif')}</Link>
                     </div>
                   </div>
               </div>

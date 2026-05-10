@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "동영상을 GIF로",
+    "tagline": "동영상 클립을 애니메이션 GIF로 변환하세요 — 무료, 즉시, 개인정보 보호."
+  },
+  "tabs": {
+    "details": "상세 정보",
+    "howItWorks": "사용 방법"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "동영상 → GIF란?",
+      "body": "이 도구는 동영상 클립에서 프레임을 추출해 애니메이션 GIF로 인코딩합니다. 모든 처리가 브라우저 내에서 이루어지며 데이터가 서버로 전송되지 않습니다."
+    },
+    "privacy": {
+      "heading": "개인정보 보호",
+      "body": "동영상 파일은 기기를 떠나지 않습니다. 모든 처리는 브라우저 API를 사용하여 로컬에서 수행됩니다."
+    },
+    "limitations": {
+      "heading": "제한 사항",
+      "body": "GIF는 프레임당 최대 256색을 지원하므로 짧은 클립(15초 미만)에 가장 적합합니다."
+    }
+  },
+  "howItWorks": {
+    "step1": "동영상 파일(MP4, WebM, MOV, AVI)을 드롭하거나 선택하세요.",
+    "step2": "시작 시간과 종료 시간으로 클립 범위를 설정하세요.",
+    "step3": "FPS와 최대 너비를 선택한 후 GIF로 변환을 클릭하세요.",
+    "step4": "결과를 미리 보고 다운로드를 클릭하여 GIF를 저장하세요."
+  },
+  "badges": {
+    "clientSide": "🔒 브라우저 전용",
+    "noUpload": "⚡ 업로드 없음",
+    "free": "🆓 무료"
+  },
+  "dropzone": {
+    "prompt": "동영상 파일을 여기에 드롭하세요",
+    "hint": "MP4, WebM, MOV, AVI 지원",
+    "browse": "파일 찾기"
+  },
+  "actions": {
+    "changeVideo": "동영상 변경",
+    "clear": "초기화",
+    "convert": "GIF로 변환",
+    "encoding": "인코딩 중… {{progress}}%",
+    "cancel": "취소"
+  },
+  "controls": {
+    "startTime": "시작 시간",
+    "endTime": "종료 시간",
+    "duration": "길이",
+    "fps": "초당 프레임",
+    "maxWidth": "최대 너비",
+    "original": "원본",
+    "estimatedFrames": "~{{count}}개 프레임",
+    "largeWarning": "시간이 걸리고 파일이 클 수 있습니다"
+  },
+  "output": {
+    "title": "생성된 GIF",
+    "download": "⬇ GIF 다운로드",
+    "reconvert": "다시 변환"
+  }
+}
