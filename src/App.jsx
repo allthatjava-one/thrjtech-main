@@ -22,6 +22,7 @@ import ImageCropPage from './tools/image-crop';
 import ImageConverterPage from './tools/image-converter';
 import ImageRotatorPage from './tools/image-rotator';
 import ScreenRecorderPage from './tools/video-screen-recorder';
+import VideoToGifPage from './tools/video-to-gif';
 import BlogsListPage from './components/BlogsListPage';
 import BlogPage from './components/BlogPage';
 import AboutUsPage from './components/about/AboutUsPage';
@@ -160,6 +161,7 @@ export default function App() {
         <Route path="/image-converter" element={<><Seo title="Image Converter — THRJ" description="Convert images between JPG, PNG, WebP and more instantly in your browser." /><ImageConverterPage /></>} />
         <Route path="/image-rotator" element={<><Seo title="Image Rotator — THRJ" description="Rotate images 90° left or right online — free, fast, and private." /><ImageRotatorPage /></>} />
         <Route path="/screen-recorder" element={<><Seo title="Quick Screen Recorder — THRJ" description="Record your screen instantly in the browser. 100% client-side and private." /><ScreenRecorderPage /></>} />
+        <Route path="/video-to-gif" element={<><Seo title="Video to GIF Converter — THRJ" description="Convert video clips to GIF online, free and private. Runs entirely in your browser." /><VideoToGifPage /></>} />
         <Route path="/pdf-splitter" element={<><Seo title="PDF Splitter — THRJ" description="Split PDF files into page ranges or combined outputs." /><PdfSplitterPage /></>} />
         <Route path="/blogs" element={<><Seo title="Blog — THRJ" description="THRJ blog" /><BlogsListPage /></>} />
         <Route path="/blogs/:slug" element={<><Seo title="Blog post — THRJ" description="Blog post" /><BlogPage /></>} />

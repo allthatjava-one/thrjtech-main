@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "Vidéo en GIF",
+    "tagline": "Convertissez n'importe quel clip vidéo en GIF animé — gratuit, instantané et privé."
+  },
+  "tabs": {
+    "details": "Détails",
+    "howItWorks": "Comment ça marche"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "Qu'est-ce que Vidéo en GIF ?",
+      "body": "Cet outil extrait des images d'un clip vidéo et les encode en GIF animé, entièrement dans votre navigateur. Aucune donnée n'est envoyée à un serveur."
+    },
+    "privacy": {
+      "heading": "Confidentialité",
+      "body": "Votre fichier vidéo ne quitte jamais votre appareil. Tout le traitement s'effectue localement via les API du navigateur."
+    },
+    "limitations": {
+      "heading": "Limitations",
+      "body": "Les GIFs supportent au maximum 256 couleurs par image, ils sont donc mieux adaptés aux clips courts (moins de 15 secondes)."
+    }
+  },
+  "howItWorks": {
+    "step1": "Déposez ou sélectionnez un fichier vidéo (MP4, WebM, MOV, AVI).",
+    "step2": "Définissez la plage du clip avec Début et Fin.",
+    "step3": "Choisissez le FPS et la largeur maximale, puis cliquez sur Convertir en GIF.",
+    "step4": "Prévisualisez le résultat et cliquez sur Télécharger pour enregistrer votre GIF."
+  },
+  "badges": {
+    "clientSide": "🔒 Navigateur uniquement",
+    "noUpload": "⚡ Sans envoi",
+    "free": "🆓 Gratuit"
+  },
+  "dropzone": {
+    "prompt": "Déposez un fichier vidéo ici",
+    "hint": "Compatible MP4, WebM, MOV, AVI",
+    "browse": "Parcourir"
+  },
+  "actions": {
+    "changeVideo": "Changer la vidéo",
+    "clear": "Effacer",
+    "convert": "Convertir en GIF",
+    "encoding": "Encodage… {{progress}}%",
+    "cancel": "Annuler"
+  },
+  "controls": {
+    "startTime": "Début",
+    "endTime": "Fin",
+    "duration": "Durée",
+    "fps": "Images par seconde",
+    "maxWidth": "Largeur max",
+    "original": "Original",
+    "estimatedFrames": "~{{count}} images",
+    "largeWarning": "cela peut prendre du temps et produire un fichier volumineux"
+  },
+  "output": {
+    "title": "Votre GIF",
+    "download": "⬇ Télécharger le GIF",
+    "reconvert": "Reconvertir"
+  }
+}
