@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export default function VideoToGifView({
@@ -26,10 +26,72 @@ export default function VideoToGifView({
 }) {
   const { t } = useTranslation('videoToGif')
   const fileInputRef = useRef(null)
+  const trimBarRef = useRef(null)
+  const playheadRef = useRef(null)
+  const rafRef = useRef(null)
+  const onTrimMoveRef = useRef(null)
+  const videoDurationRef = useRef(videoDuration)
   const [isDragging, setIsDragging] = useState(false)
   const [openPanel, setOpenPanel] = useState('')
+  const [startTimeStr, setStartTimeStr] = useState(() => secsToTime(startTime))
+  const [endTimeStr, setEndTimeStr] = useState(() => secsToTime(endTime))
+
+  useEffect(() => { videoDurationRef.current = videoDuration }, [videoDuration])
+  useEffect(() => { setStartTimeStr(secsToTime(startTime)) }, [startTime])
+  useEffect(() => { setEndTimeStr(secsToTime(endTime)) }, [endTime])
+
+  // RAF loop: keep playhead in sync with video currentTime
+  useEffect(() => {
+    if (!videoUrl) return
+    const tick = () => {
+      const video = videoRef.current
+      const playhead = playheadRef.current
+      const dur = videoDurationRef.current
+      if (video && playhead && dur > 0) {
+        playhead.style.left = `${(video.currentTime / dur) * 100}%`
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    }
+    rafRef.current = requestAnimationFrame(tick)
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
+  }, [videoUrl])
+
+  useEffect(() => {
+    return () => {
+      if (onTrimMoveRef.current) window.removeEventListener('pointermove', onTrimMoveRef.current)
+    }
+  }, [])
 
   const togglePanel = (panel) => setOpenPanel((prev) => (prev === panel ? '' : panel))
+
+  function secsToTime(sec) {
+    if (!sec || !isFinite(sec)) return '00:00:00'
+    const h = Math.floor(sec / 3600)
+    const m = Math.floor((sec % 3600) / 60)
+    const s = Math.floor(sec % 60)
+    return [h, m, s].map(v => String(v).padStart(2, '0')).join(':')
+  }
+
+  function timeToSecs(str) {
+    const parts = str.trim().split(':').map(Number)
+    if (parts.some(isNaN)) return null
+    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2]
+    if (parts.length === 2) return parts[0] * 60 + parts[1]
+    if (parts.length === 1 && !isNaN(parts[0])) return parts[0]
+    return null
+  }
+
+  function handleStartTimeBlur() {
+    const secs = timeToSecs(startTimeStr)
+    if (secs === null) { setStartTimeStr(secsToTime(startTime)); return }
+    clampStart(secs)
+  }
+
+  function handleEndTimeBlur() {
+    const secs = timeToSecs(endTimeStr)
+    if (secs === null) { setEndTimeStr(secsToTime(endTime)); return }
+    clampEnd(secs)
+  }
 
   function formatSize(bytes) {
     if (bytes == null) return ''
@@ -68,13 +130,60 @@ export default function VideoToGifView({
   }
 
   function clampStart(val) {
-    const v = Math.max(0, Math.min(val, endTime - 0.1))
+    const v = Math.max(0, Math.min(val, videoDuration - 0.1))
     setStartTime(parseFloat(v.toFixed(1)))
+    const newEnd = Math.min(parseFloat((v + 2).toFixed(1)), videoDuration)
+    setEndTime(newEnd)
   }
 
   function clampEnd(val) {
     const v = Math.max(startTime + 0.1, Math.min(val, videoDuration))
     setEndTime(parseFloat(v.toFixed(1)))
+  }
+
+  function onTrackPointerDown(e) {
+    if (isEncoding) return
+    // Don't steal clicks that originated on a handle
+    if (e.target.closest('.vtg-trim-handle')) return
+    e.preventDefault()
+    const bar = trimBarRef.current
+    if (!bar || !videoDuration || !videoRef.current) return
+    const rect = bar.getBoundingClientRect()
+    const padding = 8
+    const trackLeft = rect.left + padding
+    const trackWidth = rect.width - padding * 2
+    const ratio = Math.max(0, Math.min(1, (e.clientX - trackLeft) / trackWidth))
+    videoRef.current.currentTime = ratio * videoDuration
+  }
+
+  function onTrimPointerDown(e, handle) {
+    if (isEncoding) return
+    e.preventDefault()
+    const moveHandler = (moveEvent) => {
+      const bar = trimBarRef.current
+      if (!bar || !videoDuration) return
+      const rect = bar.getBoundingClientRect()
+      const padding = 8
+      const trackLeft = rect.left + padding
+      const trackWidth = rect.width - padding * 2
+      const ratio = Math.max(0, Math.min(1, (moveEvent.clientX - trackLeft) / trackWidth))
+      const time = ratio * videoDuration
+      if (handle === 'start') {
+        const v = Math.max(0, Math.min(time, endTime - 0.1))
+        setStartTime(parseFloat(v.toFixed(1)))
+        if (videoRef.current) videoRef.current.currentTime = v
+      } else {
+        const v = Math.max(startTime + 0.1, Math.min(time, videoDuration))
+        setEndTime(parseFloat(v.toFixed(1)))
+        if (videoRef.current) videoRef.current.currentTime = v
+      }
+    }
+    onTrimMoveRef.current = moveHandler
+    window.addEventListener('pointermove', moveHandler)
+    window.addEventListener('pointerup', () => {
+      window.removeEventListener('pointermove', moveHandler)
+      onTrimMoveRef.current = null
+    }, { once: true })
   }
 
   const highFrameCount = estimatedFrames > 150
@@ -164,8 +273,8 @@ export default function VideoToGifView({
       {/* Video loaded state */}
       {videoUrl && (
         <>
-          {/* Video preview + file bar grouped with no gap between them */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {/* Video preview */}
+          <div className="vtg-video-wrap">
             <video
                 ref={videoRef}
                 src={videoUrl}
@@ -174,20 +283,65 @@ export default function VideoToGifView({
                 preload="metadata"
                 onLoadedMetadata={handleVideoLoaded}
             />
+          </div>
 
-            {/* Hidden canvas for frame extraction */}
-            <canvas ref={canvasRef} style={{ display: 'none' }} />
-            
-            {/* File info bar */}
-            <div className="vtg-file-bar">
-                <span className="vtg-file-name">{videoFile?.name || 'Video loaded'}</span>
-                <button type="button" className="vtg-btn vtg-btn--ghost vtg-btn--sm" onClick={() => fileInputRef.current?.click()} disabled={isEncoding}>
-                {t('actions.changeVideo')}
-                </button>
-                <button type="button" className="vtg-btn vtg-btn--ghost vtg-btn--sm vtg-btn--danger" onClick={handleClear} disabled={isEncoding}>
-                {t('actions.clear')}
-                </button>
+          {/* Hidden canvas for frame extraction */}
+          <canvas ref={canvasRef} style={{ display: 'none' }} />
+
+          {/* Trim timeline — sits between video and file bar */}
+          {videoDuration > 0 && (
+            <div className="vtg-trim-bar" ref={trimBarRef} onPointerDown={onTrackPointerDown}>
+              <div className="vtg-trim-track">
+                <div
+                  className="vtg-trim-range"
+                  style={{
+                    left: `${(startTime / videoDuration) * 100}%`,
+                    width: `${((endTime - startTime) / videoDuration) * 100}%`,
+                  }}
+                />
+                {/* Playback position cursor */}
+                <div className="vtg-trim-playhead" ref={playheadRef} style={{ left: '0%' }} />
+              </div>
+              {/* Start handle */}
+              <div
+                className="vtg-trim-handle vtg-trim-handle--start"
+                style={{ left: `${(startTime / videoDuration) * 100}%` }}
+                onPointerDown={(e) => onTrimPointerDown(e, 'start')}
+                role="slider"
+                aria-label="Start time"
+                aria-valuenow={startTime}
+                aria-valuemin={0}
+                aria-valuemax={videoDuration}
+                tabIndex={0}
+              >
+                <span className="vtg-trim-label">{secsToTime(startTime)}</span>
+              </div>
+              {/* End handle */}
+              <div
+                className="vtg-trim-handle vtg-trim-handle--end"
+                style={{ left: `${(endTime / videoDuration) * 100}%` }}
+                onPointerDown={(e) => onTrimPointerDown(e, 'end')}
+                role="slider"
+                aria-label="End time"
+                aria-valuenow={endTime}
+                aria-valuemin={0}
+                aria-valuemax={videoDuration}
+                tabIndex={0}
+              >
+                <span className="vtg-trim-label">{secsToTime(endTime)}</span>
+              </div>
             </div>
+          )}
+
+          {/* File info bar */}
+          <div className="vtg-file-bar">
+              <span className="vtg-file-name">{videoFile?.name || 'Video loaded'}</span>
+              <button type="button" className="vtg-btn vtg-btn--ghost vtg-btn--sm" onClick={() => fileInputRef.current?.click()} disabled={isEncoding}>
+              {t('actions.changeVideo')}
+              </button>
+              <button type="button" className="vtg-btn vtg-btn--ghost vtg-btn--sm vtg-btn--danger" onClick={handleClear} disabled={isEncoding}>
+              {t('actions.clear')}
+              </button>
           </div>
 
           {/* Controls */}
@@ -197,16 +351,14 @@ export default function VideoToGifView({
                 {t('controls.startTime')}
                 <div className="vtg-input-row">
                   <input
-                    type="number"
+                    type="text"
                     className="vtg-input"
-                    value={startTime}
-                    min={0}
-                    max={Math.max(0, endTime - 0.1)}
-                    step={0.1}
-                    onChange={(e) => clampStart(parseFloat(e.target.value) || 0)}
+                    value={startTimeStr}
+                    onChange={(e) => setStartTimeStr(e.target.value)}
+                    onBlur={handleStartTimeBlur}
                     disabled={isEncoding}
+                    placeholder="hh:mm:ss"
                   />
-                  <span className="vtg-input-suffix">s</span>
                 </div>
               </label>
 
@@ -214,16 +366,14 @@ export default function VideoToGifView({
                 {t('controls.endTime')}
                 <div className="vtg-input-row">
                   <input
-                    type="number"
+                    type="text"
                     className="vtg-input"
-                    value={endTime}
-                    min={Math.min(videoDuration, startTime + 0.1)}
-                    max={videoDuration}
-                    step={0.1}
-                    onChange={(e) => clampEnd(parseFloat(e.target.value) || 0)}
+                    value={endTimeStr}
+                    onChange={(e) => setEndTimeStr(e.target.value)}
+                    onBlur={handleEndTimeBlur}
                     disabled={isEncoding}
+                    placeholder="hh:mm:ss"
                   />
-                  <span className="vtg-input-suffix">s</span>
                 </div>
               </label>
 

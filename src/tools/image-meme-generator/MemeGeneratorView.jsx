@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import "./MemeGenerator.css";
 import { normalizeImageFile } from '../../commons/normalizeImageFiles';
 import { useTranslation } from 'react-i18next';
+import { decodeGif, isAnimatedGif } from './gifDecoder.js';
 
 export default function MemeGeneratorView({ initialFile }) {
   const canvasRef = useRef(null);
@@ -38,10 +39,24 @@ export default function MemeGeneratorView({ initialFile }) {
   const wasDraggingRef = useRef(false);
   const [isFileDragging, setIsFileDragging] = useState(false);
   const [imageFileName, setImageFileName] = useState(null);
+  const [gifBuffer, setGifBuffer] = useState(null);
+  const [isGifAnimated, setIsGifAnimated] = useState(false);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState('');
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [isGifPreview, setIsGifPreview] = useState(false);
+  const [popupGifH, setPopupGifH] = useState(0);
+  const popupGifRef = useRef(null);
+
+  // Measure popup GIF image height after it renders so text overlays scale correctly
+  useEffect(() => {
+    if (!previewOpen || !isGifPreview) { setPopupGifH(0); return; }
+    const raf = requestAnimationFrame(() => {
+      if (popupGifRef.current) setPopupGifH(popupGifRef.current.clientHeight || 0);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [previewOpen, isGifPreview]);
 
   // Keep refs in sync with state
   useEffect(() => { imageObjRef.current = imageObj; }, [imageObj]);
@@ -362,8 +377,20 @@ export default function MemeGeneratorView({ initialFile }) {
   async function handleFile(e) {
     const raw = e.target.files && e.target.files[0];
     if (!raw) return;
-    const file = await normalizeImageFile(raw);
+    const mightBeGif = raw.type === 'image/gif' || /\.gif$/i.test(raw.name || '');
+    let file;
+    let buf = null;
+    let animated = false;
+    if (mightBeGif) {
+      file = raw;
+      buf = await file.arrayBuffer();
+      try { animated = isAnimatedGif(buf); } catch (err) { animated = false; }
+    } else {
+      file = await normalizeImageFile(raw);
+    }
     setImageFileName(file.name || null);
+    setGifBuffer(animated ? buf : null);
+    setIsGifAnimated(animated);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
@@ -373,6 +400,8 @@ export default function MemeGeneratorView({ initialFile }) {
     setImageSrc(null);
     setImageObj(null);
     setImageFileName(null);
+    setGifBuffer(null);
+    setIsGifAnimated(false);
     setImgTransform({ offsetX: 0, offsetY: 0, scale: 1 });
     imgTransformRef.current = { offsetX: 0, offsetY: 0, scale: 1 };
     if (fileInputRef.current) fileInputRef.current.value = '';
@@ -438,8 +467,20 @@ export default function MemeGeneratorView({ initialFile }) {
     setIsFileDragging(false);
     const raw = (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) || null;
     if (!raw) return;
-    const file = await normalizeImageFile(raw);
+    const mightBeGif = raw.type === 'image/gif' || /\.gif$/i.test(raw.name || '');
+    let file;
+    let buf = null;
+    let animated = false;
+    if (mightBeGif) {
+      file = raw;
+      buf = await file.arrayBuffer();
+      try { animated = isAnimatedGif(buf); } catch (err) { animated = false; }
+    } else {
+      file = await normalizeImageFile(raw);
+    }
     setImageFileName(file.name || null);
+    setGifBuffer(animated ? buf : null);
+    setIsGifAnimated(animated);
     const reader = new FileReader();
     reader.onload = (ev) => setImageSrc(ev.target.result);
     reader.readAsDataURL(file);
@@ -491,6 +532,8 @@ export default function MemeGeneratorView({ initialFile }) {
     const centerY = rect.height / 2 + imgTransform.offsetY;
 
     ctx.clearRect(0, 0, rect.width, rect.height);
+    // For animated GIFs the <img> element shows the animation; keep canvas transparent
+    if (isGifAnimated) return;
     ctx.drawImage(imageObj, centerX - drawW / 2, centerY - drawH / 2, drawW, drawH);
   }
 
@@ -579,6 +622,13 @@ export default function MemeGeneratorView({ initialFile }) {
   }
 
   function handlePreview() {
+    if (isGifAnimated) {
+      setIsGifPreview(true);
+      setPreviewUrl(imageSrc);
+      setPreviewOpen(true);
+      return;
+    }
+    setIsGifPreview(false);
     const offscreen = renderOutputCanvas(false);
     if (!offscreen) return;
     setPreviewUrl(offscreen.toDataURL('image/png'));
@@ -586,6 +636,7 @@ export default function MemeGeneratorView({ initialFile }) {
   }
 
   function handleDownload() {
+    if (isGifAnimated) { handleDownloadAnimatedGif(); return; }
     const offscreen = renderOutputCanvas(true);
     if (!offscreen) return;
     const url = offscreen.toDataURL('image/png');
@@ -595,6 +646,59 @@ export default function MemeGeneratorView({ initialFile }) {
     document.body.appendChild(a);
     a.click();
     a.remove();
+  }
+
+  async function handleDownloadAnimatedGif() {
+    if (!gifBuffer || !imageObj) return;
+    const { GIFEncoder, quantize, applyPalette } = await import('gifenc');
+    let gifData;
+    try { gifData = decodeGif(gifBuffer); } catch (err) { console.error('GIF decode error:', err); return; }
+    const { width, height, frames } = gifData;
+    const encoder = GIFEncoder();
+    const imgH = imageObj.height || height;
+    for (const frame of frames) {
+      const offscreen = document.createElement('canvas');
+      offscreen.width = width;
+      offscreen.height = height;
+      const ctx = offscreen.getContext('2d');
+      ctx.putImageData(new ImageData(frame.rgba, width, height), 0, 0);
+      // Draw text layers at native GIF resolution
+      layers.forEach((layer) => {
+        if (!layer.text) return;
+        const fontPx = Math.max(4, Math.round((layer.fontRatio || 0.05) * imgH));
+        const lineHeight = Math.round((fontPx + 6) * 0.82);
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.font = `${fontPx}px Impact, Arial, sans-serif`;
+        ctx.lineWidth = Math.max(2, Math.floor(fontPx / 12));
+        ctx.fillStyle = layer.color;
+        ctx.strokeStyle = 'black';
+        const x = Math.round(layer.x * width);
+        const y = Math.round(layer.y * height);
+        const lines = layer.text.toUpperCase().split('\n');
+        const totalHeight = lines.length * lineHeight;
+        const startY = Math.round(y - totalHeight / 2);
+        lines.forEach((line, i) => {
+          ctx.strokeText(line, x, startY + i * lineHeight);
+          ctx.fillText(line, x, startY + i * lineHeight);
+        });
+      });
+      const pixels = ctx.getImageData(0, 0, width, height).data;
+      const palette = quantize(pixels, 256);
+      const index = applyPalette(pixels, palette);
+      encoder.writeFrame(index, width, height, { palette, delay: frame.delay });
+    }
+    encoder.finish();
+    const bytes = encoder.bytes();
+    const blob = new Blob([bytes], { type: 'image/gif' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (imageFileName ? imageFileName.replace(/\.[^.]+$/, '') + '-meme' : 'meme') + '.gif';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
   }
 
 
@@ -794,7 +898,16 @@ export default function MemeGeneratorView({ initialFile }) {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <canvas ref={canvasRef} className="meme-canvas" />
+        <canvas ref={canvasRef} className="meme-canvas" style={isGifAnimated ? { display: 'none' } : undefined} />
+        {/* Animated GIF preview — replaces canvas as flex item so text layers (z-index:2) sit on top */}
+        {isGifAnimated && imageSrc && (
+          <img
+            src={imageSrc}
+            alt="Animated GIF"
+            className="meme-gif-fg"
+            draggable={false}
+          />
+        )}
         {!imageObj && (
           <div className="preview-placeholder">{t('canvas.placeholder')}</div>
         )}
@@ -804,7 +917,7 @@ export default function MemeGeneratorView({ initialFile }) {
           </div>
         )}
         {/* moved preview hint below the preview container so it doesn't overlap the image */}
-        <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif" onChange={handleFile} style={{ display: 'none' }} />
+        <input ref={fileInputRef} type="file" accept="image/*,.heic,.heif,.gif" onChange={handleFile} style={{ display: 'none' }} />
 
         {/* Draggable overlay previews (HTML) to allow interactive positioning */}
         {layers.map((layer) => {
@@ -938,7 +1051,34 @@ export default function MemeGeneratorView({ initialFile }) {
     {previewOpen && previewUrl && (
       <div className="meme-popup-overlay" onClick={() => setPreviewOpen(false)}>
         <div className="meme-popup-dialog" onClick={e => e.stopPropagation()}>
-          <img src={previewUrl} alt="Meme preview" className="meme-popup-img" />
+          {isGifPreview ? (
+            <div className="meme-popup-gif-wrap">
+              <img
+                ref={popupGifRef}
+                src={previewUrl}
+                alt="Meme preview"
+                className="meme-popup-gif-img"
+                draggable={false}
+                onLoad={() => { if (popupGifRef.current) setPopupGifH(popupGifRef.current.clientHeight || 0); }}
+              />
+              {popupGifH > 0 && layers.map((layer) => {
+                if (!layer.text) return null;
+                const fontPx = Math.max(8, Math.round((layer.fontRatio || 0.05) * popupGifH));
+                const lineHeight = Math.round((fontPx + 6) * 0.82);
+                return (
+                  <div
+                    key={layer.id}
+                    className="meme-popup-text-layer"
+                    style={{ left: `${layer.x * 100}%`, top: `${layer.y * 100}%`, fontSize: `${fontPx}px`, lineHeight: `${lineHeight}px`, color: layer.color }}
+                  >
+                    {(layer.text || '').toUpperCase()}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <img src={previewUrl} alt="Meme preview" className="meme-popup-img" />
+          )}
           <button className="meme-popup-close" onClick={() => setPreviewOpen(false)}>&times;</button>
         </div>
       </div>
