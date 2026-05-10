@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "Video to GIF",
+    "tagline": "Convert any video clip to an animated GIF — free, instant, and private."
+  },
+  "tabs": {
+    "details": "Details",
+    "howItWorks": "How it works"
+  },
+  "details": {
+    "whatIs": {
+      "heading": "What is Video to GIF?",
+      "body": "This tool extracts frames from a video clip and encodes them as an animated GIF — entirely inside your browser. No data is uploaded to any server."
+    },
+    "privacy": {
+      "heading": "Privacy",
+      "body": "Your video file never leaves your device. All processing happens locally using browser APIs."
+    },
+    "limitations": {
+      "heading": "Limitations",
+      "body": "GIFs support a maximum of 256 colors per frame, so they are best suited for short clips (under 15 seconds). Large or high-frame-count conversions may take a moment to process."
+    }
+  },
+  "howItWorks": {
+    "step1": "Drop or browse for a video file (MP4, WebM, MOV, AVI).",
+    "step2": "Set the clip range using Start Time and End Time.",
+    "step3": "Choose FPS and output width, then click Convert to GIF.",
+    "step4": "Preview the result and click Download to save your GIF."
+  },
+  "badges": {
+    "clientSide": "🔒 Client-side",
+    "noUpload": "⚡ No upload",
+    "free": "🆓 Free"
+  },
+  "dropzone": {
+    "prompt": "Drop a video file here",
+    "hint": "Supports MP4, WebM, MOV, AVI",
+    "browse": "Browse file"
+  },
+  "actions": {
+    "changeVideo": "Change video",
+    "clear": "Clear",
+    "convert": "Convert to GIF",
+    "encoding": "Encoding… {{progress}}%",
+    "cancel": "Cancel"
+  },
+  "controls": {
+    "startTime": "Start time",
+    "endTime": "End time",
+    "duration": "Duration",
+    "fps": "Frame rate",
+    "maxWidth": "Max width",
+    "original": "Original",
+    "estimatedFrames": "~{{count}} frames",
+    "largeWarning": "this may take a while and produce a large file"
+  },
+  "output": {
+    "title": "Your GIF",
+    "download": "⬇ Download GIF",
+    "reconvert": "Re-convert"
+  }
+}
