@@ -132,6 +132,7 @@ const staticRoutes = [
   '/image-converter',
   '/image-rotator',
   '/screen-recorder',
+  '/video-to-gif',
   '/about/us',
   '/about/policy',
   '/about/terms',
