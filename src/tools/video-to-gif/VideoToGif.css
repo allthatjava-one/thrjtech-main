@@ -517,6 +517,11 @@
   margin: 0.3rem 0 0.6rem;
 }
 
+.video-to-gif-page .vtg-guide-cta-btn {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.95rem;
+}
+
 .video-to-gif-page .vtg-guide ul,
 .video-to-gif-page .vtg-guide ol {
   margin: 0.3rem 0 0.75rem 1.25rem;
