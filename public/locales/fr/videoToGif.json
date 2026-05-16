@@ -58,5 +58,105 @@
     "title": "Votre GIF",
     "download": "⬇ Télécharger le GIF",
     "reconvert": "Reconvertir"
+  },
+  "guide": {
+    "mainTitle": "Convertisseur Vidéo en GIF - Transformez n'importe quelle vidéo en GIF partageable",
+    "intro1": "Les GIF animés sont partout : réactions sur les réseaux sociaux, tutoriels, rapports de bugs, démos produit, mèmes, et même e-mails marketing. Un bon GIF capte l'attention plus vite qu'une image statique tout en restant plus léger et plus facile à partager qu'une vidéo complète.",
+    "intro2": "Avec l'outil Vidéo en GIF de THRJTech, vous pouvez convertir rapidement des formats MP4, MOV, WebM et autres en GIF de haute qualité, directement dans votre navigateur.",
+    "whyConvertTitle": "Pourquoi convertir des vidéos en GIF ?",
+    "whyConvertBody": "Les GIF sont populaires car ils se lancent automatiquement presque partout et sont faciles à intégrer dans des sites web, chats, blogs et réseaux sociaux. De nombreux outils modernes misent désormais sur la conversion dans le navigateur avec réglages FPS, découpe et taille.",
+    "commonUseCasesTitle": "Cas d'usage courants",
+    "commonUseCases": {
+      "item1": "🎬 Mèmes et GIF de réaction",
+      "item2": "🧑‍🏫 Extraits de tutoriels pour blogs ou documentation",
+      "item3": "🐞 Démonstrations de bugs d'interface",
+      "item4": "🛍️ Animations de présentation produit",
+      "item5": "📧 Aperçus d'e-mails animés",
+      "item6": "🎮 Moments forts de jeux vidéo"
+    },
+    "featuresTitle": "Fonctionnalités clés de THRJTech Vidéo en GIF",
+    "feature1": {
+      "title": "1. Conversion rapide dans le navigateur",
+      "body": "L'outil fonctionne directement dans votre navigateur, sans téléversement vers un serveur. Cette approche améliore la confidentialité et réduit l'attente. Les convertisseurs modernes utilisent de plus en plus le traitement local avec WebAssembly et des technologies basées sur FFmpeg.",
+      "benefitsTitle": "Avantages",
+      "benefit1": "🔒 Meilleure confidentialité",
+      "benefit2": "⚡ Traitement plus rapide",
+      "benefit3": "☁️ Pas de délai d'envoi serveur",
+      "benefit4": "📱 Fonctionne sur navigateurs desktop et mobile"
+    },
+    "feature2": {
+      "title": "2. Découpez le moment exact",
+      "lead": "Personne ne veut d'un GIF de 2 minutes.",
+      "body": "Choisissez exactement la portion de vidéo à convertir. Les clips plus courts produisent généralement des fichiers plus légers, une lecture plus fluide et une meilleure compatibilité sur les réseaux sociaux. La plupart des workflows professionnels recommandent de découper avant export."
+    },
+    "feature3": {
+      "title": "3. Contrôlez les FPS et la taille du fichier",
+      "body": "Le nombre d'images par seconde (FPS) a un impact majeur sur la qualité et la taille d'un GIF. De nombreux outils exposent ce réglage car l'optimisation est cruciale pour le partage."
+    },
+    "recommendedSettings": {
+      "title": "Réglages recommandés",
+      "colUseCase": "Cas d'usage",
+      "colFps": "FPS recommandés",
+      "row1UseCase": "GIF de réaction simple",
+      "row1Fps": "8-12 FPS",
+      "row2UseCase": "Démonstration d'interface",
+      "row2Fps": "10-15 FPS",
+      "row3UseCase": "Clip gaming",
+      "row3Fps": "15-20 FPS",
+      "row4UseCase": "Priorité petite taille",
+      "row4Fps": "5-10 FPS"
+    },
+    "feature4": {
+      "title": "4. Redimensionnez les dimensions de sortie",
+      "body": "Les gros GIF peuvent devenir très volumineux rapidement. Réduire la largeur de 1080 px à 480 px peut fortement diminuer la taille tout en conservant une netteté suffisante pour les messageries et les sites web."
+    },
+    "widthOptionsTitle": "Largeurs typiques",
+    "widthOptions": {
+      "item1": "📏 320px - Petites réactions",
+      "item2": "📣 480px - Partage social",
+      "item3": "📘 640px - Tutoriels et démos",
+      "item4": "🖼️ Taille d'origine - Qualité maximale"
+    },
+    "howToTitle": "Comment convertir une vidéo en GIF",
+    "howTo": {
+      "step1Title": "Étape 1 - Importez votre vidéo",
+      "step1Body": "Les formats pris en charge incluent généralement MP4, MOV, AVI, WebM et MKV. La plupart des outils modernes prennent en charge le glisser-déposer.",
+      "step2Title": "Étape 2 - Sélectionnez l'extrait",
+      "step2Body": "Découpez uniquement la partie utile. Les clips courts créent généralement des GIF plus fluides, plus légers et plus rapides à exporter.",
+      "step3Title": "Étape 3 - Ajustez les paramètres",
+      "step3Body": "Personnalisez FPS, largeur, durée et qualité.",
+      "step4Title": "Étape 4 - Exportez et téléchargez",
+      "step4Body": "Générez le GIF puis téléchargez-le instantanément."
+    },
+    "tipsTitle": "Conseils pour une meilleure qualité GIF",
+    "tips": {
+      "keepShortTitle": "Gardez des GIF courts",
+      "keepShortBody": "La zone idéale est généralement entre 2 et 6 secondes. Les GIF longs deviennent lourds, plus lents à charger et souvent moins qualitatifs.",
+      "reduceFpsTitle": "Réduisez les FPS pour des fichiers plus légers",
+      "reduceFpsBody": "Un GIF n'a pas besoin de 60 FPS. 10-15 FPS suffisent généralement pour les tutoriels, réactions et démos.",
+      "cropTitle": "Rognez les zones inutiles",
+      "cropBody": "Supprimer les zones d'écran inutiles réduit la taille du fichier et le temps d'encodage.",
+      "useMp4Title": "Utilisez MP4 au lieu de GIF si possible",
+      "useMp4Body1": "De nombreux clips type \"GIF\" en ligne sont en réalité des vidéos MP4, car le format GIF a des limites techniques (palette limitée et compression inefficace).",
+      "useMp4Body2": "Les GIF restent néanmoins utiles car ils s'autolancent presque partout, ne nécessitent pas de contrôles vidéo et sont faciles à intégrer."
+    },
+    "growthTitle": "Pourquoi les outils GIF dans le navigateur se développent",
+    "growthBody1": "La demande augmente pour des workflows sans envoi, des outils axés confidentialité, une édition légère et des conversions rapides. Les créateurs et développeurs signalent souvent leur frustration face aux convertisseurs traditionnels lourds et dépendants du téléversement.",
+    "growthBody2": "C'est pourquoi les outils modernes privilégient le traitement local, la conversion instantanée, une interface simple et l'absence de compte obligatoire.",
+    "faqTitle": "FAQ Vidéo en GIF",
+    "faq": {
+      "q1": "L'outil envoie-t-il mes vidéos ?",
+      "a1": "Les convertisseurs basés navigateur peuvent traiter les fichiers localement sans envoi vers des serveurs distants. C'est un avantage majeur de confidentialité.",
+      "q2": "Quel est le meilleur FPS pour un GIF ?",
+      "a2": "En général, 10-15 FPS pour un usage courant et 15-20 FPS pour un mouvement plus fluide. Des FPS élevés augmentent fortement la taille du fichier.",
+      "q3": "Pourquoi mon GIF est-il flou ?",
+      "a3": "Causes possibles : faible résolution, compression excessive, FPS trop faible, ou redimensionnement agressif d'une source très grande.",
+      "q4": "Puis-je convertir des vidéos YouTube en GIF ?",
+      "a4": "Certains outils permettent l'import par URL, d'autres exigent de télécharger la vidéo d'abord."
+    },
+    "finalTitle": "Conclusion",
+    "finalBody1": "Un simple clip vidéo peut devenir un mème viral, un extrait de tutoriel, un rapport de bug, une vitrine produit ou une réaction pour les réseaux sociaux.",
+    "finalBody2": "Un convertisseur léger dans le navigateur rend le processus plus rapide et plus privé qu'un logiciel de montage desktop traditionnel.",
+    "cta": "Essayez-le ici : outil Vidéo en GIF THRJTech"
   }
 }

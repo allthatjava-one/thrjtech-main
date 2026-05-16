@@ -465,6 +465,113 @@ export default function VideoToGifView({
           )}
         </>
       )}
+
+      {/* SEO guide section */}
+      <section className="vtg-guide">
+        <h2>{t('guide.mainTitle')}</h2>
+        <p>{t('guide.intro1')}</p>
+        <p>{t('guide.intro2')}</p>
+
+        <h2>{t('guide.whyConvertTitle')}</h2>
+        <p>{t('guide.whyConvertBody')}</p>
+
+        <h3>{t('guide.commonUseCasesTitle')}</h3>
+        <ul>
+          <li>{t('guide.commonUseCases.item1')}</li>
+          <li>{t('guide.commonUseCases.item2')}</li>
+          <li>{t('guide.commonUseCases.item3')}</li>
+          <li>{t('guide.commonUseCases.item4')}</li>
+          <li>{t('guide.commonUseCases.item5')}</li>
+          <li>{t('guide.commonUseCases.item6')}</li>
+        </ul>
+
+        <h2>{t('guide.featuresTitle')}</h2>
+        <h3>{t('guide.feature1.title')}</h3>
+        <p>{t('guide.feature1.body')}</p>
+        <h4>{t('guide.feature1.benefitsTitle')}</h4>
+        <ul>
+          <li>{t('guide.feature1.benefit1')}</li>
+          <li>{t('guide.feature1.benefit2')}</li>
+          <li>{t('guide.feature1.benefit3')}</li>
+          <li>{t('guide.feature1.benefit4')}</li>
+        </ul>
+
+        <h3>{t('guide.feature2.title')}</h3>
+        <p>{t('guide.feature2.lead')}</p>
+        <p>{t('guide.feature2.body')}</p>
+
+        <h3>{t('guide.feature3.title')}</h3>
+        <p>{t('guide.feature3.body')}</p>
+
+        <h4>{t('guide.recommendedSettings.title')}</h4>
+        <div className="vtg-table-wrap">
+          <table className="vtg-table">
+            <thead>
+              <tr>
+                <th>{t('guide.recommendedSettings.colUseCase')}</th>
+                <th>{t('guide.recommendedSettings.colFps')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>{t('guide.recommendedSettings.row1UseCase')}</td><td>{t('guide.recommendedSettings.row1Fps')}</td></tr>
+              <tr><td>{t('guide.recommendedSettings.row2UseCase')}</td><td>{t('guide.recommendedSettings.row2Fps')}</td></tr>
+              <tr><td>{t('guide.recommendedSettings.row3UseCase')}</td><td>{t('guide.recommendedSettings.row3Fps')}</td></tr>
+              <tr><td>{t('guide.recommendedSettings.row4UseCase')}</td><td>{t('guide.recommendedSettings.row4Fps')}</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>{t('guide.feature4.title')}</h3>
+        <p>{t('guide.feature4.body')}</p>
+
+        <h4>{t('guide.widthOptionsTitle')}</h4>
+        <ul>
+          <li>{t('guide.widthOptions.item1')}</li>
+          <li>{t('guide.widthOptions.item2')}</li>
+          <li>{t('guide.widthOptions.item3')}</li>
+          <li>{t('guide.widthOptions.item4')}</li>
+        </ul>
+
+        <h2>{t('guide.howToTitle')}</h2>
+        <h3>{t('guide.howTo.step1Title')}</h3>
+        <p>{t('guide.howTo.step1Body')}</p>
+        <h3>{t('guide.howTo.step2Title')}</h3>
+        <p>{t('guide.howTo.step2Body')}</p>
+        <h3>{t('guide.howTo.step3Title')}</h3>
+        <p>{t('guide.howTo.step3Body')}</p>
+        <h3>{t('guide.howTo.step4Title')}</h3>
+        <p>{t('guide.howTo.step4Body')}</p>
+
+        <h2>{t('guide.tipsTitle')}</h2>
+        <h3>{t('guide.tips.keepShortTitle')}</h3>
+        <p>{t('guide.tips.keepShortBody')}</p>
+        <h3>{t('guide.tips.reduceFpsTitle')}</h3>
+        <p>{t('guide.tips.reduceFpsBody')}</p>
+        <h3>{t('guide.tips.cropTitle')}</h3>
+        <p>{t('guide.tips.cropBody')}</p>
+        <h3>{t('guide.tips.useMp4Title')}</h3>
+        <p>{t('guide.tips.useMp4Body1')}</p>
+        <p>{t('guide.tips.useMp4Body2')}</p>
+
+        <h2>{t('guide.growthTitle')}</h2>
+        <p>{t('guide.growthBody1')}</p>
+        <p>{t('guide.growthBody2')}</p>
+
+        <h2>{t('guide.faqTitle')}</h2>
+        <h3>{t('guide.faq.q1')}</h3>
+        <p>{t('guide.faq.a1')}</p>
+        <h3>{t('guide.faq.q2')}</h3>
+        <p>{t('guide.faq.a2')}</p>
+        <h3>{t('guide.faq.q3')}</h3>
+        <p>{t('guide.faq.a3')}</p>
+        <h3>{t('guide.faq.q4')}</h3>
+        <p>{t('guide.faq.a4')}</p>
+
+        <h2>{t('guide.finalTitle')}</h2>
+        <p>{t('guide.finalBody1')}</p>
+        <p>{t('guide.finalBody2')}</p>
+        <p><strong>{t('guide.cta')}</strong></p>
+      </section>
     </>
   )
 }

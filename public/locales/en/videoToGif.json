@@ -58,5 +58,105 @@
     "title": "Your GIF",
     "download": "⬇ Download GIF",
     "reconvert": "Re-convert"
+  },
+  "guide": {
+    "mainTitle": "Video to GIF Converter - Turn Any Video Into a Shareable GIF",
+    "intro1": "Animated GIFs are everywhere: social media reactions, tutorials, bug reports, product demos, memes, and even marketing emails. A good GIF captures attention faster than static images while staying lighter and easier to share than full videos.",
+    "intro2": "With THRJTech Video to GIF Tool, you can quickly convert MP4, MOV, WebM, and other video formats into high-quality GIFs directly in your browser.",
+    "whyConvertTitle": "Why Convert Videos to GIFs?",
+    "whyConvertBody": "GIFs are popular because they autoplay almost everywhere and are easy to embed into websites, chats, blogs, and social media platforms. Many modern tools now focus on browser-based conversion with customizable FPS, trimming, and size controls.",
+    "commonUseCasesTitle": "Common Use Cases",
+    "commonUseCases": {
+      "item1": "🎬 Meme and reaction GIFs",
+      "item2": "🧑‍🏫 Tutorial snippets for blogs or documentation",
+      "item3": "🐞 UI bug demonstrations",
+      "item4": "🛍️ Product showcase animations",
+      "item5": "📧 Animated email previews",
+      "item6": "🎮 Gaming highlights"
+    },
+    "featuresTitle": "Key Features of THRJTech Video to GIF",
+    "feature1": {
+      "title": "1. Fast Browser-Based Conversion",
+      "body": "The tool works directly in your browser, meaning your files do not need to be uploaded to a server. This approach improves privacy and reduces waiting time. Modern converters increasingly use browser-side processing with WebAssembly and FFmpeg-based technology.",
+      "benefitsTitle": "Benefits",
+      "benefit1": "🔒 Better privacy",
+      "benefit2": "⚡ Faster processing",
+      "benefit3": "☁️ No server upload delay",
+      "benefit4": "📱 Works across desktop and mobile browsers"
+    },
+    "feature2": {
+      "title": "2. Trim the Exact Moment",
+      "lead": "Nobody wants a 2-minute GIF.",
+      "body": "Choose the exact section of your video you want to convert. Shorter clips usually produce smaller file sizes, smoother playback, and better social media compatibility. Most professional GIF workflows recommend trimming before export."
+    },
+    "feature3": {
+      "title": "3. Control FPS and File Size",
+      "body": "Frame rate (FPS) has a huge impact on GIF quality and size. Many converters now expose FPS tuning because GIF optimization is critical for sharing platforms."
+    },
+    "recommendedSettings": {
+      "title": "Recommended Settings",
+      "colUseCase": "Use Case",
+      "colFps": "Suggested FPS",
+      "row1UseCase": "Simple reaction GIF",
+      "row1Fps": "8-12 FPS",
+      "row2UseCase": "UI demonstration",
+      "row2Fps": "10-15 FPS",
+      "row3UseCase": "Gaming clip",
+      "row3Fps": "15-20 FPS",
+      "row4UseCase": "Small file size priority",
+      "row4Fps": "5-10 FPS"
+    },
+    "feature4": {
+      "title": "4. Resize Output Dimensions",
+      "body": "Large GIFs can become massive quickly. Reducing width from 1080px to 480px can dramatically shrink file size while still looking sharp enough for messaging apps or websites."
+    },
+    "widthOptionsTitle": "Typical Width Options",
+    "widthOptions": {
+      "item1": "📏 320px - Small reactions",
+      "item2": "📣 480px - Social sharing",
+      "item3": "📘 640px - Tutorials and demos",
+      "item4": "🖼️ Original size - Maximum quality"
+    },
+    "howToTitle": "How to Convert a Video to GIF",
+    "howTo": {
+      "step1Title": "Step 1 - Upload Your Video",
+      "step1Body": "Supported formats usually include MP4, MOV, AVI, WebM, and MKV. Most modern converters support drag-and-drop uploads.",
+      "step2Title": "Step 2 - Select the Clip",
+      "step2Body": "Trim only the important part. Short clips generally create smoother GIFs, smaller files, and faster exports.",
+      "step3Title": "Step 3 - Adjust Settings",
+      "step3Body": "Customize FPS, width, duration, and quality.",
+      "step4Title": "Step 4 - Export and Download",
+      "step4Body": "Generate the GIF and instantly download it."
+    },
+    "tipsTitle": "Tips for Better GIF Quality",
+    "tips": {
+      "keepShortTitle": "Keep GIFs Short",
+      "keepShortBody": "The sweet spot is usually 2 to 6 seconds. Long GIFs become huge in size, slower to load, and often lower in quality.",
+      "reduceFpsTitle": "Reduce FPS for Smaller Files",
+      "reduceFpsBody": "GIFs do not need 60 FPS. 10-15 FPS is usually enough for tutorials, reactions, and demos.",
+      "cropTitle": "Crop Unnecessary Areas",
+      "cropBody": "Removing unused screen space reduces file size and encoding time.",
+      "useMp4Title": "Use MP4 Instead of GIF When Possible",
+      "useMp4Body1": "Many GIF-like clips online today are actually MP4 videos because GIF format has technical limitations, including restricted colors and inefficient compression.",
+      "useMp4Body2": "GIFs still remain useful because they autoplay almost everywhere, require no video controls, and are easy to embed."
+    },
+    "growthTitle": "Why Browser-Based GIF Tools Are Growing",
+    "growthBody1": "There is increasing demand for no-upload workflows, privacy-focused tools, lightweight editing, and fast conversions. Developers and creators frequently mention frustration with traditional upload-heavy converters and large editing software.",
+    "growthBody2": "That is why modern tools focus on local processing, instant conversion, simple UI, and no account requirements.",
+    "faqTitle": "Video to GIF FAQ",
+    "faq": {
+      "q1": "Does the tool upload my videos?",
+      "a1": "Browser-based converters can process files locally without sending them to remote servers. Many modern tools highlight this as a major privacy advantage.",
+      "q2": "What is the best FPS for GIFs?",
+      "a2": "Usually 10-15 FPS for general use and 15-20 FPS for smoother motion. Higher FPS increases file size significantly.",
+      "q3": "Why is my GIF blurry?",
+      "a3": "Possible reasons include low resolution, too much compression, extremely low FPS, or an oversized source video scaled down too aggressively.",
+      "q4": "Can I convert YouTube videos to GIFs?",
+      "a4": "Some tools support direct URL import while others require downloading the video first."
+    },
+    "finalTitle": "Final Thoughts",
+    "finalBody1": "A simple video clip can become a viral meme, a tutorial snippet, a bug report, a product showcase, or a social media reaction.",
+    "finalBody2": "Using a lightweight browser-based converter makes the process much faster and more private than traditional desktop editing software.",
+    "cta": "Try it here: THRJTech Video to GIF Tool"
   }
 }
