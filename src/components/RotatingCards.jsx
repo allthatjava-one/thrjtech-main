@@ -359,29 +359,50 @@ const cards = [
     ],
   },
   // Video to GIF
-  // {
-  //   key: 'video-to-gif',
-  //   i18nKey: 'videoToGif',
-  //   icon: (
-  //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
-  //       <polygon points="23 7 16 12 23 17 23 7"/>
-  //       <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-  //       <line x1="8" y1="12" x2="8" y2="12"/>
-  //       <line x1="12" y1="12" x2="12" y2="12"/>
-  //     </svg>
-  //   ),
-  //   title: 'Video to GIF',
-  //   link: '/video-to-gif',
-  //   btn: 'Open Video to GIF',
-  //   description: 'Turn any video clip into an animated GIF right in your browser. Trim the clip, pick your frame rate, and download — no uploads, no account required.',
-  //   features: [
-  //     'Supports MP4, WebM, MOV, and AVI',
-  //     'Set start/end time to trim your clip',
-  //     'Choose frame rate and output width',
-  //     '100% local — video never leaves your browser',
-  //   ],
-  //   screenshots: [],
-  // },
+  {
+    key: 'video-to-gif',
+    i18nKey: 'videoToGif',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width: 26, height: 26}}>
+        <polygon points="23 7 16 12 23 17 23 7"/>
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        <line x1="8" y1="12" x2="8" y2="12"/>
+        <line x1="12" y1="12" x2="12" y2="12"/>
+      </svg>
+    ),
+    title: 'Video to GIF',
+    link: '/video-to-gif',
+    btn: 'Open Video to GIF',
+    description: 'Turn any video clip into an animated GIF right in your browser. Trim the clip, pick your frame rate, and download — no uploads, no account required.',
+    features: [
+      'Supports MP4, WebM, MOV, and AVI',
+      'Set start/end time to trim your clip',
+      'Choose frame rate and output width',
+      '100% local — video never leaves your browser',
+    ],
+    screenshots: [
+      {
+        src: '/screenshots/video-to-gif/video-to-gif_001.png',
+        alt: 'Step 1 — Select your video file',
+        caption: '1. Select your video file (MP4, WebM, MOV, AVI)',
+      },
+      {
+        src: '/screenshots/video-to-gif/video-to-gif_002.png',
+        alt: 'Step 2 — Trim your video clip',
+        caption: '2. Trim your video clip by setting start and end times',
+      },
+      {
+        src: '/screenshots/video-to-gif/video-to-gif_003.png',
+        alt: 'Step 3 — Choose frame rate and output width',
+        caption: '3. Check the preview, then click Download GIF to convert your video clip into an animated GIF',
+      },
+      {
+        src: '/screenshots/video-to-gif/video-to-gif_004.png',
+        alt: 'Step 4 — Convert multiple videos at once',
+        caption: '4. Or you can pass the converted Gif to Meme Generator to add captions and stickers and make it your own',
+      }
+    ],
+  },
 ];
 
 function RotatingCards() {
