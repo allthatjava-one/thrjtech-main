@@ -208,6 +208,10 @@ export default function VideoToGifView({
   const isEncoding = status === 'encoding'
   const isDone = status === 'done'
 
+  function handleScrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       {/* Hero */}
@@ -605,7 +609,11 @@ export default function VideoToGifView({
         <h2>{t('guide.finalTitle')}</h2>
         <p>{t('guide.finalBody1')}</p>
         <p>{t('guide.finalBody2')}</p>
-        <p><strong>{t('guide.cta')}</strong></p>
+        <p>
+          <button type="button" className="vtg-btn vtg-btn--primary vtg-guide-cta-btn" onClick={handleScrollToTop}>
+            {t('guide.cta')}
+          </button>
+        </p>
       </section>
     </>
   )

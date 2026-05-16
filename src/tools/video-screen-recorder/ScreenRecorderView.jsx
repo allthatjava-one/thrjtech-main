@@ -9,6 +9,10 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
     setOpenPanel((prev) => (prev === panel ? '' : panel))
   }
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       {/* Hero */}
@@ -346,7 +350,11 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
 
         <h2>{t('guide.final.heading')}</h2>
         <p>{t('guide.final.body1')}</p>
-        <p><strong>{t('guide.final.body2')}</strong></p>
+        <p>
+          <button type="button" className="btn btn-primary" onClick={handleScrollToTop}>
+            {t('guide.final.body2')}
+          </button>
+        </p>
       </section>
     </>
   )
