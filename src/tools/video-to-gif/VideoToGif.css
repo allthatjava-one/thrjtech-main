@@ -479,6 +479,10 @@
   flex-wrap: wrap;
 }
 
+.vtg-btn--push-right {
+  margin-left: auto;
+}
+
 /* ── SEO guide section ───────────────────────────────── */
 .video-to-gif-page .vtg-guide {
   margin-top: 1rem;

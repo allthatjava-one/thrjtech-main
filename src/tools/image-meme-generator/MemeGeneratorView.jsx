@@ -147,16 +147,36 @@ export default function MemeGeneratorView({ initialFile }) {
     img.src = imageSrc;
   }, [imageSrc]);
 
+  async function ingestSourceFile(rawFile) {
+    if (!rawFile) return;
+    const mightBeGif = rawFile.type === 'image/gif' || /\.gif$/i.test(rawFile.name || '');
+    let file;
+    let buf = null;
+    let animated = false;
+
+    if (mightBeGif) {
+      file = rawFile;
+      buf = await file.arrayBuffer();
+      try { animated = isAnimatedGif(buf); } catch (err) { animated = false; }
+    } else {
+      file = await normalizeImageFile(rawFile);
+    }
+
+    setImageFileName(file.name || null);
+    setGifBuffer(animated ? buf : null);
+    setIsGifAnimated(animated);
+
+    const reader = new FileReader();
+    reader.onload = (ev) => setImageSrc(ev.target.result);
+    reader.readAsDataURL(file);
+  }
+
   // If a File was passed via router state, load it as dataURL
   useEffect(() => {
     if (!initialFile) return;
-    try {
-      const reader = new FileReader();
-      reader.onload = (ev) => setImageSrc(ev.target.result);
-      reader.readAsDataURL(initialFile);
-    } catch (err) {
+    ingestSourceFile(initialFile).catch(() => {
       // ignore
-    }
+    });
   }, [initialFile]);
 
   // If the user clicks/taps outside the preview area, ensure touch scrolling is re-enabled
@@ -377,23 +397,7 @@ export default function MemeGeneratorView({ initialFile }) {
   async function handleFile(e) {
     const raw = e.target.files && e.target.files[0];
     if (!raw) return;
-    const mightBeGif = raw.type === 'image/gif' || /\.gif$/i.test(raw.name || '');
-    let file;
-    let buf = null;
-    let animated = false;
-    if (mightBeGif) {
-      file = raw;
-      buf = await file.arrayBuffer();
-      try { animated = isAnimatedGif(buf); } catch (err) { animated = false; }
-    } else {
-      file = await normalizeImageFile(raw);
-    }
-    setImageFileName(file.name || null);
-    setGifBuffer(animated ? buf : null);
-    setIsGifAnimated(animated);
-    const reader = new FileReader();
-    reader.onload = (ev) => setImageSrc(ev.target.result);
-    reader.readAsDataURL(file);
+    await ingestSourceFile(raw);
   }
 
   function handleClearImage() {
@@ -467,23 +471,7 @@ export default function MemeGeneratorView({ initialFile }) {
     setIsFileDragging(false);
     const raw = (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) || null;
     if (!raw) return;
-    const mightBeGif = raw.type === 'image/gif' || /\.gif$/i.test(raw.name || '');
-    let file;
-    let buf = null;
-    let animated = false;
-    if (mightBeGif) {
-      file = raw;
-      buf = await file.arrayBuffer();
-      try { animated = isAnimatedGif(buf); } catch (err) { animated = false; }
-    } else {
-      file = await normalizeImageFile(raw);
-    }
-    setImageFileName(file.name || null);
-    setGifBuffer(animated ? buf : null);
-    setIsGifAnimated(animated);
-    const reader = new FileReader();
-    reader.onload = (ev) => setImageSrc(ev.target.result);
-    reader.readAsDataURL(file);
+    await ingestSourceFile(raw);
   }
 
   function drawCanvas() {

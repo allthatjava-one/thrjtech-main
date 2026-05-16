@@ -136,6 +136,19 @@
       "step2": "2. Choose output format (JPG, PNG, or WebP)",
       "step3": "3. Preview your converted image",
       "step4": "Optional — Convert multiple images at once"
+    },
+    "videoToGif": {
+      "title": "Video to GIF",
+      "btn": "Open Video to GIF",
+      "description": "Turn any video clip into an animated GIF right in your browser. Trim the clip, pick your frame rate, and download — no uploads, no account required.",
+      "feature1": "Supports MP4, WebM, MOV, and AVI",
+      "feature2": "Set start/end time to trim your clip",
+      "feature3": "Choose frame rate and output width",
+      "feature4": "100% local — video never leaves your browser",
+      "step1": "1. Select your video file (MP4, WebM, MOV, AVI)",
+      "step2": "2. Trim your video clip by setting start and end times",
+      "step3": "3. Check the preview, then click Download GIF to convert your video clip into an animated GIF",
+      "step4": "4. Or you can pass the converted Gif to Meme Generator to add captions and stickers and make it your own"
     }
   }
 }

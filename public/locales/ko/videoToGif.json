@@ -57,7 +57,8 @@
   "output": {
     "title": "생성된 GIF",
     "download": "⬇ GIF 다운로드",
-    "reconvert": "다시 변환"
+    "reconvert": "다시 변환",
+    "addTextOnGif": "GIF에 텍스트 추가"
   },
   "guide": {
     "mainTitle": "비디오 to GIF 변환기 - 어떤 영상이든 공유 가능한 GIF로",

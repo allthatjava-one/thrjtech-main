@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 export default function VideoToGifView({
   videoRef,
@@ -25,6 +26,7 @@ export default function VideoToGifView({
   download,
 }) {
   const { t } = useTranslation('videoToGif')
+  const navigate = useNavigate()
   const fileInputRef = useRef(null)
   const trimBarRef = useRef(null)
   const playheadRef = useRef(null)
@@ -139,6 +141,22 @@ export default function VideoToGifView({
   function clampEnd(val) {
     const v = Math.max(startTime + 0.1, Math.min(val, videoDuration))
     setEndTime(parseFloat(v.toFixed(1)))
+  }
+
+  async function handleAddTextOnGif() {
+    if (!gifUrl) return
+    try {
+      const response = await fetch(gifUrl)
+      const blob = await response.blob()
+      const baseName = (videoFile?.name || 'video')
+        .replace(/\.[^/.]+$/, '')
+        .trim() || 'video'
+      const gifFile = new File([blob], `${baseName}.gif`, { type: 'image/gif', lastModified: Date.now() })
+      navigate('/image-meme-generator', { state: { mainImage: gifFile } })
+    } catch (err) {
+      // If conversion to File fails, stay on page and avoid breaking primary flow.
+      console.error('Failed to pass GIF to meme generator:', err)
+    }
   }
 
   function onTrackPointerDown(e) {
@@ -459,6 +477,9 @@ export default function VideoToGifView({
                 </button>
                 <button type="button" className="vtg-btn vtg-btn--ghost" onClick={() => { setStartTime(startTime); convert() }}>
                   {t('output.reconvert')}
+                </button>
+                <button type="button" className="vtg-btn vtg-btn--ghost vtg-btn--push-right" onClick={handleAddTextOnGif}>
+                  {t('output.addTextOnGif')}
                 </button>
               </div>
             </div>

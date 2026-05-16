@@ -57,7 +57,8 @@
   "output": {
     "title": "Votre GIF",
     "download": "⬇ Télécharger le GIF",
-    "reconvert": "Reconvertir"
+    "reconvert": "Reconvertir",
+    "addTextOnGif": "Ajouter du texte au GIF"
   },
   "guide": {
     "mainTitle": "Convertisseur Vidéo en GIF - Transformez n'importe quelle vidéo en GIF partageable",

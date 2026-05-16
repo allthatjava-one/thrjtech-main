@@ -57,7 +57,8 @@
   "output": {
     "title": "Your GIF",
     "download": "⬇ Download GIF",
-    "reconvert": "Re-convert"
+    "reconvert": "Re-convert",
+    "addTextOnGif": "Add text on GIF"
   },
   "guide": {
     "mainTitle": "Video to GIF Converter - Turn Any Video Into a Shareable GIF",
