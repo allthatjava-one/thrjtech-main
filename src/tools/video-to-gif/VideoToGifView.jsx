@@ -493,6 +493,8 @@ export default function VideoToGifView({
         <p>{t('guide.intro1')}</p>
         <p>{t('guide.intro2')}</p>
 
+        <hr />
+
         <h2>{t('guide.whyConvertTitle')}</h2>
         <p>{t('guide.whyConvertBody')}</p>
 
@@ -505,6 +507,8 @@ export default function VideoToGifView({
           <li>{t('guide.commonUseCases.item5')}</li>
           <li>{t('guide.commonUseCases.item6')}</li>
         </ul>
+        
+        <hr />
 
         <h2>{t('guide.featuresTitle')}</h2>
         <h3>{t('guide.feature1.title')}</h3>
@@ -553,6 +557,8 @@ export default function VideoToGifView({
           <li>{t('guide.widthOptions.item4')}</li>
         </ul>
 
+        <hr />
+
         <h2>{t('guide.howToTitle')}</h2>
         <h3>{t('guide.howTo.step1Title')}</h3>
         <p>{t('guide.howTo.step1Body')}</p>
@@ -562,6 +568,8 @@ export default function VideoToGifView({
         <p>{t('guide.howTo.step3Body')}</p>
         <h3>{t('guide.howTo.step4Title')}</h3>
         <p>{t('guide.howTo.step4Body')}</p>
+
+        <hr />
 
         <h2>{t('guide.tipsTitle')}</h2>
         <h3>{t('guide.tips.keepShortTitle')}</h3>
@@ -574,9 +582,13 @@ export default function VideoToGifView({
         <p>{t('guide.tips.useMp4Body1')}</p>
         <p>{t('guide.tips.useMp4Body2')}</p>
 
+        <hr />
+
         <h2>{t('guide.growthTitle')}</h2>
         <p>{t('guide.growthBody1')}</p>
         <p>{t('guide.growthBody2')}</p>
+
+        <hr />
 
         <h2>{t('guide.faqTitle')}</h2>
         <h3>{t('guide.faq.q1')}</h3>
@@ -588,6 +600,8 @@ export default function VideoToGifView({
         <h3>{t('guide.faq.q4')}</h3>
         <p>{t('guide.faq.a4')}</p>
 
+        <hr />
+        
         <h2>{t('guide.finalTitle')}</h2>
         <p>{t('guide.finalBody1')}</p>
         <p>{t('guide.finalBody2')}</p>
