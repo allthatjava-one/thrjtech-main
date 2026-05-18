@@ -79,7 +79,7 @@ function injectHtml(template, renderedHtml, helmet, ssrData, urlPath, titleOverr
   }
 
   // 3. Update canonical URL
-  const canonicalHref = `https://thrjtech.com${urlPath === '/' ? '' : urlPath}`
+  const canonicalHref = `https://thrjtech.com${urlPath === '/' ? '' : urlPath.replace(/\/+$/, '')}`
   html = html.replace(
     /<link rel="canonical"[^>]*>/,
     `<link rel="canonical" href="${canonicalHref}" />`
@@ -180,12 +180,13 @@ async function prerenderRoute(urlPath, ssrData = null, titleOverride = null, des
     const { html: renderedHtml, helmet } = render(urlPath, ssrData)
     const finalHtml = injectHtml(template, renderedHtml, helmet, ssrData, urlPath, titleOverride, descOverride)
 
-    const outDir = urlPath === '/'
-      ? distDir
-      : path.resolve(distDir, urlPath.replace(/^\//, ''))
+    const normalizedPath = urlPath === '/' ? '/' : urlPath.replace(/\/+$/, '')
+    const outFile = normalizedPath === '/'
+      ? path.resolve(distDir, 'index.html')
+      : path.resolve(distDir, `${normalizedPath.replace(/^\//, '')}.html`)
 
-    fs.mkdirSync(outDir, { recursive: true })
-    fs.writeFileSync(path.resolve(outDir, 'index.html'), finalHtml)
+    fs.mkdirSync(path.dirname(outFile), { recursive: true })
+    fs.writeFileSync(outFile, finalHtml)
     console.log(`  ✓  ${urlPath}`)
   } catch (err) {
     console.warn(`  ✗  ${urlPath}: ${err.message}`)

@@ -5,9 +5,32 @@ function isHtmlRequest(request) {
   return request.method === 'GET' && accept.includes('text/html')
 }
 
+function hasFileExtension(pathname) {
+  const lastSegment = pathname.split('/').pop() || ''
+  return lastSegment.includes('.')
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
+
+    if (isHtmlRequest(request)) {
+      // Keep non-trailing-slash URLs as canonical for route pages.
+      if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
+        const canonicalUrl = new URL(request.url)
+        canonicalUrl.pathname = canonicalUrl.pathname.replace(/\/+$/, '')
+        return Response.redirect(canonicalUrl.toString(), 308)
+      }
+
+      // Serve prerendered route pages from dist/*.html (e.g. /image-rotator -> /image-rotator.html).
+      if (url.pathname !== '/' && !hasFileExtension(url.pathname)) {
+        const htmlUrl = new URL(`${url.pathname}.html`, request.url)
+        const htmlResponse = await env.ASSETS.fetch(new Request(htmlUrl, request))
+        if (htmlResponse.status !== 404) {
+          return htmlResponse
+        }
+      }
+    }
 
     if (url.pathname === '/r2-presign' && request.method === 'POST') {
       return onRequestPost({ request, env })
