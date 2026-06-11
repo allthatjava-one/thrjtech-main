@@ -165,10 +165,10 @@ export default function App() {
         <Route path="/pdf-splitter" element={<><Seo title="PDF Splitter — THRJ" description="Split PDF files into page ranges or combined outputs." /><PdfSplitterPage /></>} />
         <Route path="/blogs" element={<><Seo title="Blog — THRJ" description="THRJ blog" /><BlogsListPage /></>} />
         <Route path="/blogs/:slug" element={<><Seo title="Blog post — THRJ" description="Blog post" /><BlogPage /></>} />
-        <Route path="/about/us" element={<AboutUsPage />} />
-        <Route path="/about/policy" element={<PrivacyPolicyPage />} />
-        <Route path="/about/terms" element={<TermsOfServicePage />} />
-        <Route path="/contact" element={<ContactUsPage />} />
+        <Route path="/about/us" element={<><Seo noindex /><AboutUsPage /></>} />
+        <Route path="/about/policy" element={<><Seo noindex /><PrivacyPolicyPage /></>} />
+        <Route path="/about/terms" element={<><Seo noindex /><TermsOfServicePage /></>} />
+        <Route path="/contact" element={<><Seo noindex /><ContactUsPage /></>} />
       </Routes>
     </>
   )
