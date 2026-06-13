@@ -8,6 +8,7 @@
     "pdfConverter": "PDF Converter",
     "pdfSplitter": "PDF Splitter",
     "text": "Text",
+    "developer": "Developer",
     "jsonFormatter": "JSON Formatter",
     "regexTester": "Regex Tester",
     "image": "Image",

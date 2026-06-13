@@ -34,6 +34,7 @@ i18n
       'imageRotator',
       'screenRecorder',
       'videoToGif',
+      'toolsLanding',
     ],
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
