@@ -634,6 +634,306 @@ main.tools-landing-main {
   text-decoration: underline;
 }
 
+/* ── PDF landing informational content ─────────────────────── */
+.pdf-tools-guide-content {
+  margin-top: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: var(--color-text);
+}
+
+.pdf-tools-guide-content h2,
+.pdf-tools-guide-content h3 {
+  margin: 0 0 0.75rem;
+  color: var(--color-text);
+}
+
+.pdf-tools-guide-content h2 {
+  font-size: 1.35rem;
+}
+
+.pdf-tools-guide-content h3 {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.pdf-tools-guide-content p,
+.pdf-tools-guide-content li {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.pdf-tools-guide-content ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.pdf-tools-table-wrap {
+  overflow-x: auto;
+}
+
+.pdf-tools-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.pdf-tools-compare-table th,
+.pdf-tools-compare-table td {
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  padding: 0.65rem 0.45rem;
+}
+
+.pdf-tools-compare-table th {
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.pdf-tools-compare-table td a,
+.pdf-tools-guide-content a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.pdf-tools-compare-table td a:hover,
+.pdf-tools-guide-content a:hover {
+  text-decoration: underline;
+}
+
+.pdf-tools-workflow-list p {
+  margin: 0.25rem 0;
+}
+
+.pdf-tools-workflow-list p + p {
+  margin-bottom: 0.7rem;
+}
+
+/* ── Image landing informational content ───────────────────── */
+.image-tools-guide-content {
+  margin-top: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: var(--color-text);
+}
+
+.image-tools-guide-content h2,
+.image-tools-guide-content h3 {
+  margin: 0 0 0.75rem;
+  color: var(--color-text);
+}
+
+.image-tools-guide-content h2 {
+  font-size: 1.35rem;
+}
+
+.image-tools-guide-content h3 {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.image-tools-guide-content p,
+.image-tools-guide-content li {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.image-tools-guide-content ul {
+  margin: 0.35rem 0 0.75rem;
+  padding-left: 1.2rem;
+}
+
+.image-tools-category-list p {
+  margin: 0.65rem 0 0;
+}
+
+.image-tools-table-wrap {
+  overflow-x: auto;
+}
+
+.image-tools-format-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.image-tools-format-table th,
+.image-tools-format-table td {
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  padding: 0.65rem 0.45rem;
+}
+
+.image-tools-format-table th {
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.image-tools-guide-content a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.image-tools-guide-content a:hover {
+  text-decoration: underline;
+}
+
+.image-tools-seo-note {
+  margin-top: 0.9rem;
+  font-style: italic;
+}
+
+.image-tools-workflow-list p {
+  margin: 0.25rem 0;
+}
+
+.image-tools-workflow-list p + p {
+  margin-bottom: 0.7rem;
+}
+
+/* ── Developer landing informational content ───────────────── */
+.developer-tools-guide-content {
+  margin-top: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: var(--color-text);
+}
+
+.developer-tools-guide-content h2,
+.developer-tools-guide-content h3,
+.developer-tools-guide-content h4 {
+  margin: 0 0 0.75rem;
+  color: var(--color-text);
+}
+
+.developer-tools-guide-content h2 {
+  font-size: 1.35rem;
+}
+
+.developer-tools-guide-content h3 {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.developer-tools-guide-content h4 {
+  margin-top: 0.95rem;
+  font-size: 0.97rem;
+}
+
+.developer-tools-guide-content p,
+.developer-tools-guide-content li {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.developer-tools-guide-content ul {
+  margin: 0.35rem 0 0.75rem;
+  padding-left: 1.2rem;
+}
+
+.developer-tools-code-block {
+  margin: 0.5rem 0 0.9rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #111827;
+  color: #e5e7eb;
+  overflow-x: auto;
+}
+
+.developer-tools-code-block code {
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+/* ── Video landing informational content ───────────────────── */
+.video-tools-guide-content {
+  margin-top: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: var(--color-text);
+}
+
+.video-tools-guide-content h2,
+.video-tools-guide-content h3,
+.video-tools-guide-content h4 {
+  margin: 0 0 0.75rem;
+  color: var(--color-text);
+}
+
+.video-tools-guide-content h2 {
+  font-size: 1.35rem;
+}
+
+.video-tools-guide-content h3 {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.video-tools-guide-content h4 {
+  margin-top: 0.95rem;
+  font-size: 0.97rem;
+}
+
+.video-tools-guide-content p,
+.video-tools-guide-content li {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.video-tools-guide-content ul {
+  margin: 0.35rem 0 0.75rem;
+  padding-left: 1.2rem;
+}
+
+.video-tools-table-wrap {
+  overflow-x: auto;
+}
+
+.video-tools-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.video-tools-compare-table th,
+.video-tools-compare-table td {
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  padding: 0.65rem 0.45rem;
+}
+
+.video-tools-compare-table th {
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.video-tools-guide-content a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.video-tools-guide-content a:hover {
+  text-decoration: underline;
+}
+
+.video-tools-workflow-list p {
+  margin: 0.25rem 0;
+}
+
+.video-tools-workflow-list p + p {
+  margin-bottom: 0.7rem;
+}
+
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .tools-landing-hero-wrap {
@@ -645,5 +945,17 @@ main.tools-landing-main {
   }
   .tools-landing-grid {
     grid-template-columns: 1fr;
+  }
+  .pdf-tools-guide-content {
+    padding: 1rem;
+  }
+  .image-tools-guide-content {
+    padding: 1rem;
+  }
+  .developer-tools-guide-content {
+    padding: 1rem;
+  }
+  .video-tools-guide-content {
+    padding: 1rem;
   }
 }
