@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "PDF Compressor",
-    "tagline": "Just Drop and Go - Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, and download the smaller result.",
+    "tagline": "Just Drop and Go - Reduce your PDF file size without losing quality. Upload your file, compress it in seconds, and download the smaller result. (Currently, we only support up to 5mb PDF files. For larger files, please use desktop software or an online service that supports big uploads for now.)",
     "blogLink": "Learn how to compress PDF →"
   },
   "hint": {
