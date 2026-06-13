@@ -137,6 +137,10 @@ const staticRoutes = [
   '/about/policy',
   '/about/terms',
   '/contact',
+  '/pdf-tools',
+  '/image-tools',
+  '/developer-tools',
+  '/video-tools',
 ]
 
 // ── fetch blog list ───────────────────────────────────────────────────────────

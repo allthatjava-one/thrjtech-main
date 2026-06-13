@@ -1,0 +1,87 @@
+{
+  "useTool": "Utiliser l'outil",
+  "pdf": {
+    "title": "Outils PDF",
+    "description": "Tous les outils PDF dont vous avez besoin, directement dans votre navigateur. Réduisez la taille avant d'envoyer, combinez des pages éparses en un seul document, extrayez des sections spécifiques ou exportez des pages en images — sans inscription, sans téléchargement, rien ne quitte votre appareil.",
+    "tools": {
+      "compressor": {
+        "name": "Compresseur PDF",
+        "desc": "Réduisez la taille des fichiers PDF tout en maintenant la qualité. Idéal pour envoyer des documents par e-mail ou économiser de l'espace."
+      },
+      "merger": {
+        "name": "Fusionneur PDF",
+        "desc": "Combinez plusieurs fichiers PDF en un seul document en quelques secondes. Glissez, déposez et fusionnez."
+      },
+      "converter": {
+        "name": "Convertisseur PDF",
+        "desc": "Convertissez des pages PDF en images haute qualité comme PNG ou JPEG rapidement et en toute confidentialité."
+      },
+      "splitter": {
+        "name": "Diviseur PDF",
+        "desc": "Divisez un PDF en pages individuelles ou extrayez une plage personnalisée de pages facilement."
+      }
+    }
+  },
+  "image": {
+    "title": "Outils Image",
+    "description": "Une boîte à outils complète pour l'édition d'images, directement dans votre navigateur. Redimensionnez pour n'importe quelle plateforme, protégez vos photos avec des filigranes, créez des collages, recadrez avec précision, générez des mèmes, convertissez des formats ou corrigez l'orientation — en quelques secondes, en toute confidentialité.",
+    "tools": {
+      "resizer": {
+        "name": "Redimensionneur d'image",
+        "desc": "Redimensionnez les images aux dimensions souhaitées tout en préservant le rapport d'aspect et la qualité."
+      },
+      "watermarker": {
+        "name": "Filigrane d'image",
+        "desc": "Protégez vos photos en ajoutant des filigranes texte ou image directement dans votre navigateur."
+      },
+      "collage": {
+        "name": "Créateur de collage",
+        "desc": "Combinez plusieurs images en un beau collage avec des mises en page personnalisables."
+      },
+      "crop": {
+        "name": "Recadrage d'image",
+        "desc": "Recadrez les images à une sélection précise ou un rapport d'aspect fixe avec une interface intuitive."
+      },
+      "meme": {
+        "name": "Générateur de mèmes",
+        "desc": "Créez des mèmes personnalisés en ajoutant des légendes à n'importe quelle image. Rapide, amusant et côté client."
+      },
+      "converter": {
+        "name": "Convertisseur d'image",
+        "desc": "Convertissez des images entre JPG, PNG, WebP et d'autres formats instantanément dans votre navigateur."
+      },
+      "rotator": {
+        "name": "Rotateur d'image",
+        "desc": "Faites pivoter les images de 90° à gauche ou à droite, ou retournez-les horizontalement et verticalement."
+      }
+    }
+  },
+  "developer": {
+    "title": "Outils Développeur",
+    "description": "Des utilitaires essentiels basés sur le navigateur pour le développement au quotidien. Formatez, embellissez et validez instantanément du JSON avec coloration syntaxique, ou testez et déboguez des expressions régulières avec mise en évidence en direct et rechercher & remplacer — sans configuration, sans installation.",
+    "tools": {
+      "jsonFormatter": {
+        "name": "Formateur JSON",
+        "desc": "Formatez, embellissez et validez des données JSON instantanément. Supporte la coloration syntaxique et la détection d'erreurs."
+      },
+      "regexTester": {
+        "name": "Testeur Regex",
+        "desc": "Testez et déboguez des expressions régulières avec la mise en évidence en direct des correspondances et le support rechercher & remplacer."
+      }
+    }
+  },
+  "video": {
+    "title": "Outils Vidéo",
+    "description": "Capturez votre écran ou transformez des clips vidéo en GIF animés légers — le tout traité directement dans votre navigateur. Aucune extension à installer, aucun compte à créer, et rien n'est jamais téléchargé sur un serveur.",
+    "tools": {
+      "screenRecorder": {
+        "name": "Enregistreur d'écran rapide",
+        "desc": "Enregistrez votre écran ou onglet de navigateur instantanément sans extensions ni logiciels à installer."
+      },
+      "videoToGif": {
+        "name": "Convertisseur Vidéo en GIF",
+        "desc": "Convertissez des clips vidéo en GIF animés entièrement dans votre navigateur. Rapide, gratuit et privé."
+      }
+    }
+  }
+}

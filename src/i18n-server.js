@@ -8,7 +8,7 @@ const namespaces = [
   'pdfCompressor', 'pdfMerger', 'pdfConverter', 'pdfSplitter',
   'jsonFormatter', 'regexTester', 'imageWatermarker', 'imageResizer',
   'imageCollage', 'imageCrop', 'imageMemeGenerator', 'imageConverter',
-  'imageRotator', 'screenRecorder', 'videoToGif',
+  'imageRotator', 'screenRecorder', 'videoToGif', 'toolsLanding',
 ]
 
 // Resolve relative to cwd (workspace root) so the path works both in source
