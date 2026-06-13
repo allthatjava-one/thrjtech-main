@@ -1,0 +1,87 @@
+{
+  "useTool": "Use Tool",
+  "pdf": {
+    "title": "PDF Tools",
+    "description": "All the PDF tools you need, running directly in your browser. Reduce file size before sending, combine scattered pages into one document, extract specific sections, or export pages as images — no sign-up, no uploads, nothing leaves your device.",
+    "tools": {
+      "compressor": {
+        "name": "PDF Compressor",
+        "desc": "Reduce PDF file size while maintaining quality. Great for emailing documents or saving storage space."
+      },
+      "merger": {
+        "name": "PDF Merger",
+        "desc": "Combine multiple PDF files into a single document in seconds. Simply drag, drop, and merge."
+      },
+      "converter": {
+        "name": "PDF Converter",
+        "desc": "Convert PDF pages into high-quality images such as PNG or JPEG quickly and privately."
+      },
+      "splitter": {
+        "name": "PDF Splitter",
+        "desc": "Split a PDF into individual pages or extract a custom range of pages with ease."
+      }
+    }
+  },
+  "image": {
+    "title": "Image Tools",
+    "description": "A complete image editing toolkit that runs entirely in your browser. Resize for any platform, protect photos with watermarks, build collages, crop to exact dimensions, generate memes, convert between formats, or fix orientation — all in seconds, all private, nothing uploaded.",
+    "tools": {
+      "resizer": {
+        "name": "Image Resizer",
+        "desc": "Resize images to any dimensions you need while preserving aspect ratio and quality."
+      },
+      "watermarker": {
+        "name": "Image Watermarker",
+        "desc": "Protect your photos by adding text or image watermarks directly in your browser."
+      },
+      "collage": {
+        "name": "Image Collage Maker",
+        "desc": "Combine multiple images into a beautiful collage with customizable layouts."
+      },
+      "crop": {
+        "name": "Image Crop",
+        "desc": "Crop images to a precise selection or a fixed aspect ratio with an intuitive drag interface."
+      },
+      "meme": {
+        "name": "Meme Generator",
+        "desc": "Create custom memes by adding captions to any image. Fast, fun, and entirely client-side."
+      },
+      "converter": {
+        "name": "Image Converter",
+        "desc": "Convert images between JPG, PNG, WebP, and other formats instantly in your browser."
+      },
+      "rotator": {
+        "name": "Image Rotator",
+        "desc": "Rotate images 90° left or right, or flip them horizontally and vertically."
+      }
+    }
+  },
+  "developer": {
+    "title": "Developer Tools",
+    "description": "Essential browser-based utilities for everyday development. Instantly format, beautify, and validate JSON with syntax highlighting, or test and debug regular expressions with live match highlighting and search & replace — no setup, no installs, just open and use.",
+    "tools": {
+      "jsonFormatter": {
+        "name": "JSON Formatter",
+        "desc": "Format, beautify, and validate JSON data instantly. Supports syntax highlighting and error detection."
+      },
+      "regexTester": {
+        "name": "Regex Tester",
+        "desc": "Test and debug regular expressions with live match highlighting and search & replace support."
+      }
+    }
+  },
+  "video": {
+    "title": "Video Tools",
+    "description": "Capture your screen or transform video clips into lightweight animated GIFs — processed entirely in your browser. No extensions to install, no accounts to create, and nothing is ever uploaded to a server.",
+    "tools": {
+      "screenRecorder": {
+        "name": "Quick Screen Recorder",
+        "desc": "Record your screen or browser tab instantly without any extensions or software installs."
+      },
+      "videoToGif": {
+        "name": "Video to GIF Converter",
+        "desc": "Convert video clips to animated GIFs entirely in your browser. Fast, free, and private."
+      }
+    }
+  }
+}

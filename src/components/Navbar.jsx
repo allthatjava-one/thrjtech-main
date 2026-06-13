@@ -52,7 +52,7 @@ export default function Navbar() {
             >
               <div className="dropdown-col">
                 <div className="dropdown-group">
-                  <div className="dropdown-group-title">{t('nav.pdf')}</div>
+                  <Link to="/pdf-tools" className="dropdown-group-title dropdown-group-title-link" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.pdf')} ›</Link>
                   <Link to="/pdf-compressor" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.pdfCompressor')}</Link>
                   <Link to="/pdf-merger" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.pdfMerger')}</Link>
                   <Link to="/pdf-converter" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.pdfConverter')}</Link>
@@ -61,14 +61,14 @@ export default function Navbar() {
               </div>
               <div className="dropdown-col">
                 <div className="dropdown-group">
-                  <div className="dropdown-group-title">{t('nav.text')}</div>
+                  <Link to="/developer-tools" className="dropdown-group-title dropdown-group-title-link" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.developer')} ›</Link>
                   <Link to="/json-formatter" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.jsonFormatter')}</Link>
                   <Link to="/regex-tester" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.regexTester')}</Link>
                 </div>
               </div>
               <div className="dropdown-col">
                 <div className="dropdown-group">
-                  <div className="dropdown-group-title">{t('nav.image')}</div>
+                  <Link to="/image-tools" className="dropdown-group-title dropdown-group-title-link" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.image')} ›</Link>
                   <Link to="/image-resizer" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageResize')}</Link>
                   <Link to="/image-watermarker" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageWatermark')}</Link>
                   <Link to="/image-collage" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.imageCollage')}</Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
               </div>
               <div className="dropdown-col">
                 <div className="dropdown-group">
-                  <div className="dropdown-group-title">{t('nav.video')}</div>
+                  <Link to="/video-tools" className="dropdown-group-title dropdown-group-title-link" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.video')} ›</Link>
                   <Link to="/screen-recorder" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.screenRecorder')}</Link>
                   <Link to="/video-to-gif" onClick={() => { setToolsOpen(false); setMobileMenuOpen(false); }}>{t('nav.videoToGif')}</Link>
                 </div>

@@ -1,0 +1,87 @@
+{
+  "useTool": "Usar herramienta",
+  "pdf": {
+    "title": "Herramientas PDF",
+    "description": "Todas las herramientas PDF que necesitas, funcionando directamente en tu navegador. Reduce el tamaño antes de enviar, combina páginas dispersas en un solo documento, extrae secciones específicas o exporta páginas como imágenes — sin registro, sin subidas, nada sale de tu dispositivo.",
+    "tools": {
+      "compressor": {
+        "name": "Compresor PDF",
+        "desc": "Reduce el tamaño de los archivos PDF manteniendo la calidad. Ideal para enviar documentos por correo o ahorrar espacio de almacenamiento."
+      },
+      "merger": {
+        "name": "Fusionador PDF",
+        "desc": "Combina varios archivos PDF en un solo documento en segundos. Solo arrastra, suelta y fusiona."
+      },
+      "converter": {
+        "name": "Conversor PDF",
+        "desc": "Convierte páginas PDF en imágenes de alta calidad como PNG o JPEG de forma rápida y privada."
+      },
+      "splitter": {
+        "name": "Divisor PDF",
+        "desc": "Divide un PDF en páginas individuales o extrae un rango personalizado de páginas fácilmente."
+      }
+    }
+  },
+  "image": {
+    "title": "Herramientas de Imagen",
+    "description": "Un conjunto completo de herramientas de edición de imágenes que funciona enteramente en tu navegador. Redimensiona para cualquier plataforma, protege fotos con marcas de agua, crea collages, recorta con precisión, genera memes, convierte formatos o corrige la orientación — todo en segundos, todo privado.",
+    "tools": {
+      "resizer": {
+        "name": "Redimensionador de imagen",
+        "desc": "Redimensiona imágenes a las dimensiones que necesites manteniendo la relación de aspecto y calidad."
+      },
+      "watermarker": {
+        "name": "Marca de agua en imagen",
+        "desc": "Protege tus fotos añadiendo marcas de agua de texto o imagen directamente en tu navegador."
+      },
+      "collage": {
+        "name": "Creador de collage",
+        "desc": "Combina varias imágenes en un hermoso collage con diseños personalizables."
+      },
+      "crop": {
+        "name": "Recorte de imagen",
+        "desc": "Recorta imágenes con una selección precisa o una relación de aspecto fija con una interfaz intuitiva."
+      },
+      "meme": {
+        "name": "Generador de memes",
+        "desc": "Crea memes personalizados añadiendo leyendas a cualquier imagen. Rápido, divertido y completamente en el cliente."
+      },
+      "converter": {
+        "name": "Conversor de imagen",
+        "desc": "Convierte imágenes entre JPG, PNG, WebP y otros formatos al instante en tu navegador."
+      },
+      "rotator": {
+        "name": "Rotador de imagen",
+        "desc": "Rota imágenes 90° a la izquierda o derecha, o voltéalas horizontal y verticalmente."
+      }
+    }
+  },
+  "developer": {
+    "title": "Herramientas para Desarrolladores",
+    "description": "Utilidades esenciales basadas en el navegador para el desarrollo diario. Formatea, embellece y valida JSON al instante con resaltado de sintaxis, o prueba y depura expresiones regulares con resaltado de coincidencias en vivo y buscar & reemplazar — sin configuración, sin instalaciones.",
+    "tools": {
+      "jsonFormatter": {
+        "name": "Formateador JSON",
+        "desc": "Formatea, embellece y valida datos JSON al instante. Compatible con resaltado de sintaxis y detección de errores."
+      },
+      "regexTester": {
+        "name": "Tester de Expresiones Regulares",
+        "desc": "Prueba y depura expresiones regulares con resaltado de coincidencias en vivo y soporte de buscar y reemplazar."
+      }
+    }
+  },
+  "video": {
+    "title": "Herramientas de Vídeo",
+    "description": "Captura tu pantalla o transforma clips de vídeo en GIF animados ligeros — procesado completamente en tu navegador. Sin extensiones que instalar, sin cuentas que crear y nada se sube nunca a un servidor.",
+    "tools": {
+      "screenRecorder": {
+        "name": "Grabadora de pantalla rápida",
+        "desc": "Graba tu pantalla o pestaña del navegador al instante sin necesidad de extensiones o software."
+      },
+      "videoToGif": {
+        "name": "Conversor de vídeo a GIF",
+        "desc": "Convierte clips de vídeo en GIF animados completamente en tu navegador. Rápido, gratuito y privado."
+      }
+    }
+  }
+}

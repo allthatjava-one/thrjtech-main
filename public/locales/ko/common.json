@@ -8,6 +8,7 @@
     "pdfConverter": "PDF 변환기",
     "pdfSplitter": "PDF 분할기",
     "text": "텍스트",
+    "developer": "개발자",
     "jsonFormatter": "JSON 포맷터",
     "regexTester": "정규식 테스터",
     "image": "이미지",

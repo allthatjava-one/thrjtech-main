@@ -29,6 +29,10 @@ import AboutUsPage from './components/about/AboutUsPage';
 import PrivacyPolicyPage from './components/about/PrivacyPolicyPage';
 import TermsOfServicePage from './components/about/TermsOfServicePage';
 import ContactUsPage from './components/ContactUsPage';
+import PdfToolsPage from './tools/PdfToolsPage';
+import ImageToolsPage from './tools/ImageToolsPage';
+import DeveloperToolsPage from './tools/DeveloperToolsPage';
+import VideoToolsPage from './tools/VideoToolsPage';
 
 function HomePage() {
   const { t } = useTranslation('home')
@@ -169,6 +173,10 @@ export default function App() {
         <Route path="/about/policy" element={<><Seo noindex /><PrivacyPolicyPage /></>} />
         <Route path="/about/terms" element={<><Seo noindex /><TermsOfServicePage /></>} />
         <Route path="/contact" element={<><Seo noindex /><ContactUsPage /></>} />
+        <Route path="/pdf-tools" element={<><Seo title="PDF Tools — THRJ" description="Free online PDF tools: compress, merge, convert, and split PDFs in your browser." /><PdfToolsPage /></>} />
+        <Route path="/image-tools" element={<><Seo title="Image Tools — THRJ" description="Free online image tools: resize, crop, watermark, collage, convert, and more — all in your browser." /><ImageToolsPage /></>} />
+        <Route path="/developer-tools" element={<><Seo title="Developer Tools — THRJ" description="Free browser-based developer tools: JSON formatter, regex tester, and more." /><DeveloperToolsPage /></>} />
+        <Route path="/video-tools" element={<><Seo title="Video Tools — THRJ" description="Free browser-based video tools: screen recorder and video to GIF converter." /><VideoToolsPage /></>} />
       </Routes>
     </>
   )
