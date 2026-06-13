@@ -85,6 +85,9 @@
     gap: 0.5rem;
     align-items: stretch;
   }
+  .dropdown-content.prerender-closed {
+    display: none !important;
+  }
   .dropdown-content.dropdown-columns {
     position: static !important;
     transform: none !important;
@@ -114,7 +117,7 @@
   .dropdown-group-title {
     padding-left: 0.5rem;
   }
-  .dropdown-content a {
+  .dropdown-content a:not(.dropdown-group-title) {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
     font-size: 1rem;
@@ -135,8 +138,8 @@
   flex-direction: column;
   gap: 0.2rem;
 }
-.dropdown-group a {
-  padding-left: 2.5rem !important;
+.dropdown-group a:not(.dropdown-group-title) {
+  padding-left: 3.25rem !important;
   padding-right: 2.5rem !important;
 }
 /* ── Dropdown Grouping ───────────────────────────────────── */
