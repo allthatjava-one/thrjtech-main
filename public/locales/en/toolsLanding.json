@@ -20,6 +20,45 @@
         "name": "PDF Splitter",
         "desc": "Split a PDF into individual pages or extract a custom range of pages with ease."
       }
+    },
+    "guide": {
+      "heading": "What Are PDF Tools?",
+      "intro": "PDF files are portable document files designed to look the same across devices, operating systems, and apps. They are widely used for resumes, contracts, invoices, reports, and document sharing because formatting stays consistent. Common PDF problems include large file sizes, combining separate files, extracting only specific pages, and pulling images from pages.",
+      "examplesHeading": "Examples",
+      "examples": {
+        "item1": "File too large for email",
+        "item2": "Need to combine documents",
+        "item3": "Need to extract specific pages",
+        "item4": "Need images from PDF pages"
+      },
+      "comparisonHeading": "Tool Comparison Table",
+      "table": {
+        "tool": "Tool",
+        "bestFor": "Best For",
+        "row1": "Reduce file size",
+        "row2": "Combine multiple PDFs",
+        "row3": "Extract pages",
+        "row4": "Convert pages to images"
+      },
+      "workflowsHeading": "Common PDF Workflows",
+      "workflows": {
+        "usePrefix": "Use",
+        "email": {
+          "title": "Sending Documents by Email"
+        },
+        "report": {
+          "title": "Combining Reports"
+        },
+        "contract": {
+          "title": "Extracting a Contract Page"
+        }
+      },
+      "relatedHeading": "Related Guides",
+      "related": {
+        "compression": "PDF compression guide",
+        "conversion": "PDF conversion guide",
+        "whyLarge": "Why PDFs become large"
+      }
     }
   },
   "image": {
@@ -54,6 +93,53 @@
         "name": "Image Rotator",
         "desc": "Rotate images 90° left or right, or flip them horizontally and vertically."
       }
+    },
+    "guide": {
+      "heading": "What Are Image Editing Tools?",
+      "intro": "Image editing tools help you prepare visuals for real-world publishing needs. They solve common problems around image formats, file sizes, social media requirements, and website optimization.",
+      "categoriesHeading": "Tool Categories",
+      "categories": {
+        "optimization": {
+          "title": "Image Optimization",
+          "item1": "Image Resizer",
+          "item2": "Image Crop"
+        },
+        "conversion": {
+          "title": "Format Conversion",
+          "item1": "Image Converter"
+        },
+        "creative": {
+          "title": "Creative Tools",
+          "item1": "Image Collage",
+          "item2": "Meme Generator",
+          "item3": "Watermarker"
+        }
+      },
+      "formatHeading": "Choosing the Right Image Format",
+      "formatTable": {
+        "format": "Format",
+        "bestUse": "Best Use",
+        "jpg": "JPG",
+        "jpgUse": "Photos",
+        "png": "PNG",
+        "pngUse": "Graphics",
+        "webp": "WebP",
+        "webpUse": "Websites"
+      },
+      "seoNote": "This kind of content ranks surprisingly well.",
+      "scenariosHeading": "Common Scenarios",
+      "scenarios": {
+        "usePrefix": "Use",
+        "social": {
+          "title": "Resize for Social Media"
+        },
+        "branding": {
+          "title": "Add Branding"
+        },
+        "marketing": {
+          "title": "Create Marketing Graphics"
+        }
+      }
     }
   },
   "developer": {
@@ -68,6 +154,47 @@
         "name": "Regex Tester",
         "desc": "Test and debug regular expressions with live match highlighting and search & replace support."
       }
+    },
+    "guide": {
+      "heading": "Why Developer Utilities Matter",
+      "intro": "Developer utilities reduce friction during daily coding by helping with debugging, API testing, data validation, and overall productivity.",
+      "highlights": {
+        "item1": "Debugging",
+        "item2": "API testing",
+        "item3": "Data validation",
+        "item4": "Productivity"
+      },
+      "overviewHeading": "Tool Overview",
+      "json": {
+        "item1": "Pretty printing",
+        "item2": "Debugging APIs",
+        "item3": "Validating responses"
+      },
+      "regex": {
+        "item1": "Pattern matching",
+        "item2": "Validation",
+        "item3": "Testing expressions"
+      },
+      "examplesHeading": "Practical Examples",
+      "examples": {
+        "email": {
+          "title": "Validate Email Addresses",
+          "label": "Regex example.",
+          "code": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
+        },
+        "api": {
+          "title": "Read API Responses",
+          "label": "JSON example.",
+          "code": "{\n  \"userId\": 42,\n  \"status\": \"active\",\n  \"roles\": [\"admin\", \"editor\"]\n}"
+        }
+      },
+      "mistakesHeading": "Common Developer Mistakes",
+      "seoNote": "This is exactly the kind of content Google likes.",
+      "mistakes": {
+        "item1": "Invalid JSON",
+        "item2": "Overcomplicated regex",
+        "item3": "Poor escaping"
+      }
     }
   },
   "video": {
@@ -81,6 +208,52 @@
       "videoToGif": {
         "name": "Video to GIF Converter",
         "desc": "Convert video clips to animated GIFs entirely in your browser. Fast, free, and private."
+      }
+    },
+    "guide": {
+      "heading": "Why Video Formats Matter",
+      "intro": "Choosing the right format affects performance, quality, and delivery. Video workflows usually balance MP4 and GIF outputs based on file size, compatibility, and sharing needs.",
+      "highlights": {
+        "item1": "MP4",
+        "item2": "GIF",
+        "item3": "File size",
+        "item4": "Compatibility"
+      },
+      "overviewHeading": "Tool Overview",
+      "useCasesLabel": "Use cases:",
+      "videoToGif": {
+        "item1": "Tutorials",
+        "item2": "Social media",
+        "item3": "Documentation"
+      },
+      "screenRecorder": {
+        "item1": "Bug reporting",
+        "item2": "Demos",
+        "item3": "Training materials"
+      },
+      "comparisonHeading": "GIF vs Video",
+      "table": {
+        "feature": "Feature",
+        "gif": "GIF",
+        "mp4": "MP4",
+        "size": "Size",
+        "row1gif": "Larger",
+        "row1mp4": "Smaller",
+        "audio": "Audio",
+        "row2gif": "No",
+        "row2mp4": "Yes",
+        "sharing": "Sharing",
+        "row3gif": "Easy",
+        "row3mp4": "Easy"
+      },
+      "workflowsHeading": "Common Workflows",
+      "workflows": {
+        "bug": {
+          "title": "Record a Bug"
+        },
+        "animation": {
+          "title": "Share a Quick Animation"
+        }
       }
     }
   }

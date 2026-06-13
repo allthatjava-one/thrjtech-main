@@ -54,6 +54,51 @@ export default function DeveloperToolsPage() {
                 </Link>
               ))}
             </div>
+
+            <div className="developer-tools-guide-content">
+              <h2>{t('developer.guide.heading')}</h2>
+              <p>{t('developer.guide.intro')}</p>
+              <ul>
+                <li>{t('developer.guide.highlights.item1')}</li>
+                <li>{t('developer.guide.highlights.item2')}</li>
+                <li>{t('developer.guide.highlights.item3')}</li>
+                <li>{t('developer.guide.highlights.item4')}</li>
+              </ul>
+
+              <h3>{t('developer.guide.overviewHeading')}</h3>
+
+              <h4>{t('developer.tools.jsonFormatter.name')}</h4>
+              <ul>
+                <li>{t('developer.guide.json.item1')}</li>
+                <li>{t('developer.guide.json.item2')}</li>
+                <li>{t('developer.guide.json.item3')}</li>
+              </ul>
+
+              <h4>{t('developer.tools.regexTester.name')}</h4>
+              <ul>
+                <li>{t('developer.guide.regex.item1')}</li>
+                <li>{t('developer.guide.regex.item2')}</li>
+                <li>{t('developer.guide.regex.item3')}</li>
+              </ul>
+
+              <h3>{t('developer.guide.examplesHeading')}</h3>
+
+              <h4>{t('developer.guide.examples.email.title')}</h4>
+              <p>{t('developer.guide.examples.email.label')}</p>
+              <pre className="developer-tools-code-block"><code>{t('developer.guide.examples.email.code')}</code></pre>
+
+              <h4>{t('developer.guide.examples.api.title')}</h4>
+              <p>{t('developer.guide.examples.api.label')}</p>
+              <pre className="developer-tools-code-block"><code>{t('developer.guide.examples.api.code')}</code></pre>
+
+              <h3>{t('developer.guide.mistakesHeading')}</h3>
+              <p>{t('developer.guide.seoNote')}</p>
+              <ul>
+                <li>{t('developer.guide.mistakes.item1')}</li>
+                <li>{t('developer.guide.mistakes.item2')}</li>
+                <li>{t('developer.guide.mistakes.item3')}</li>
+              </ul>
+            </div>
           </div>
         </section>
       </main>

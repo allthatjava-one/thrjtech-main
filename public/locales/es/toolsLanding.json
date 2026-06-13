@@ -20,6 +20,45 @@
         "name": "Divisor PDF",
         "desc": "Divide un PDF en páginas individuales o extrae un rango personalizado de páginas fácilmente."
       }
+    },
+    "guide": {
+      "heading": "¿Qué son las herramientas PDF?",
+      "intro": "Los archivos PDF son documentos portátiles diseñados para verse igual en distintos dispositivos, sistemas y aplicaciones. Se usan mucho para CV, contratos, facturas, informes y compartir documentos. Los problemas más comunes son el tamaño, combinar archivos, extraer páginas específicas y sacar imágenes de páginas PDF.",
+      "examplesHeading": "Ejemplos",
+      "examples": {
+        "item1": "Archivo demasiado grande para correo",
+        "item2": "Necesidad de combinar documentos",
+        "item3": "Necesidad de extraer páginas específicas",
+        "item4": "Necesidad de obtener imágenes de páginas PDF"
+      },
+      "comparisonHeading": "Tabla comparativa de herramientas",
+      "table": {
+        "tool": "Herramienta",
+        "bestFor": "Mejor para",
+        "row1": "Reducir tamaño de archivo",
+        "row2": "Combinar varios PDF",
+        "row3": "Extraer páginas",
+        "row4": "Convertir páginas a imágenes"
+      },
+      "workflowsHeading": "Flujos de trabajo PDF comunes",
+      "workflows": {
+        "usePrefix": "Usa",
+        "email": {
+          "title": "Enviar documentos por correo"
+        },
+        "report": {
+          "title": "Combinar reportes"
+        },
+        "contract": {
+          "title": "Extraer una página de contrato"
+        }
+      },
+      "relatedHeading": "Guías relacionadas",
+      "related": {
+        "compression": "Guía de compresión PDF",
+        "conversion": "Guía de conversión PDF",
+        "whyLarge": "Por qué los PDF se vuelven grandes"
+      }
     }
   },
   "image": {
@@ -54,6 +93,53 @@
         "name": "Rotador de imagen",
         "desc": "Rota imágenes 90° a la izquierda o derecha, o voltéalas horizontal y verticalmente."
       }
+    },
+    "guide": {
+      "heading": "¿Qué son las herramientas de edición de imágenes?",
+      "intro": "Las herramientas de edición de imágenes te ayudan a preparar recursos visuales para casos reales. Resuelven problemas de formatos, tamaño de archivo, requisitos de redes sociales y optimización web.",
+      "categoriesHeading": "Categorías de herramientas",
+      "categories": {
+        "optimization": {
+          "title": "Optimización de imágenes",
+          "item1": "Redimensionador de imagen",
+          "item2": "Recorte de imagen"
+        },
+        "conversion": {
+          "title": "Conversión de formato",
+          "item1": "Conversor de imagen"
+        },
+        "creative": {
+          "title": "Herramientas creativas",
+          "item1": "Collage de imágenes",
+          "item2": "Generador de memes",
+          "item3": "Marca de agua"
+        }
+      },
+      "formatHeading": "Elegir el formato de imagen correcto",
+      "formatTable": {
+        "format": "Formato",
+        "bestUse": "Mejor uso",
+        "jpg": "JPG",
+        "jpgUse": "Fotos",
+        "png": "PNG",
+        "pngUse": "Gráficos",
+        "webp": "WebP",
+        "webpUse": "Sitios web"
+      },
+      "seoNote": "Este tipo de contenido posiciona sorprendentemente bien.",
+      "scenariosHeading": "Escenarios comunes",
+      "scenarios": {
+        "usePrefix": "Usa",
+        "social": {
+          "title": "Redimensionar para redes sociales"
+        },
+        "branding": {
+          "title": "Agregar branding"
+        },
+        "marketing": {
+          "title": "Crear gráficos de marketing"
+        }
+      }
     }
   },
   "developer": {
@@ -68,6 +154,47 @@
         "name": "Tester de Expresiones Regulares",
         "desc": "Prueba y depura expresiones regulares con resaltado de coincidencias en vivo y soporte de buscar y reemplazar."
       }
+    },
+    "guide": {
+      "heading": "Por qué importan las utilidades para desarrolladores",
+      "intro": "Las utilidades para desarrolladores reducen fricción en el trabajo diario gracias a depuración, pruebas de API, validación de datos y productividad.",
+      "highlights": {
+        "item1": "Depuración",
+        "item2": "Pruebas de API",
+        "item3": "Validación de datos",
+        "item4": "Productividad"
+      },
+      "overviewHeading": "Resumen de herramientas",
+      "json": {
+        "item1": "Formato legible",
+        "item2": "Depuración de APIs",
+        "item3": "Validación de respuestas"
+      },
+      "regex": {
+        "item1": "Coincidencia de patrones",
+        "item2": "Validación",
+        "item3": "Prueba de expresiones"
+      },
+      "examplesHeading": "Ejemplos prácticos",
+      "examples": {
+        "email": {
+          "title": "Validar direcciones de correo",
+          "label": "Ejemplo de regex.",
+          "code": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
+        },
+        "api": {
+          "title": "Leer respuestas de API",
+          "label": "Ejemplo JSON.",
+          "code": "{\n  \"userId\": 42,\n  \"status\": \"active\",\n  \"roles\": [\"admin\", \"editor\"]\n}"
+        }
+      },
+      "mistakesHeading": "Errores comunes de desarrolladores",
+      "seoNote": "Este es exactamente el tipo de contenido que le gusta a Google.",
+      "mistakes": {
+        "item1": "JSON inválido",
+        "item2": "Regex demasiado compleja",
+        "item3": "Escape deficiente"
+      }
     }
   },
   "video": {
@@ -81,6 +208,52 @@
       "videoToGif": {
         "name": "Conversor de vídeo a GIF",
         "desc": "Convierte clips de vídeo en GIF animados completamente en tu navegador. Rápido, gratuito y privado."
+      }
+    },
+    "guide": {
+      "heading": "Por qué importan los formatos de video",
+      "intro": "Elegir el formato correcto afecta el rendimiento, la calidad y la distribución. Los flujos de video suelen equilibrar MP4 y GIF según tamaño, compatibilidad y uso compartido.",
+      "highlights": {
+        "item1": "MP4",
+        "item2": "GIF",
+        "item3": "Tamaño de archivo",
+        "item4": "Compatibilidad"
+      },
+      "overviewHeading": "Resumen de herramientas",
+      "useCasesLabel": "Casos de uso:",
+      "videoToGif": {
+        "item1": "Tutoriales",
+        "item2": "Redes sociales",
+        "item3": "Documentación"
+      },
+      "screenRecorder": {
+        "item1": "Reporte de bugs",
+        "item2": "Demos",
+        "item3": "Materiales de capacitación"
+      },
+      "comparisonHeading": "GIF vs Video",
+      "table": {
+        "feature": "Característica",
+        "gif": "GIF",
+        "mp4": "MP4",
+        "size": "Tamaño",
+        "row1gif": "Más grande",
+        "row1mp4": "Más pequeño",
+        "audio": "Audio",
+        "row2gif": "No",
+        "row2mp4": "Sí",
+        "sharing": "Compartir",
+        "row3gif": "Fácil",
+        "row3mp4": "Fácil"
+      },
+      "workflowsHeading": "Flujos comunes",
+      "workflows": {
+        "bug": {
+          "title": "Grabar un bug"
+        },
+        "animation": {
+          "title": "Compartir una animación rápida"
+        }
       }
     }
   }
