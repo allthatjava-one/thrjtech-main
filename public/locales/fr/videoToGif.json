@@ -23,9 +23,9 @@
   },
   "howItWorks": {
     "step1": "Déposez ou sélectionnez un fichier vidéo (MP4, WebM, MOV, AVI).",
-    "step2": "Définissez la plage du clip avec Début et Fin.",
-    "step3": "Choisissez le FPS et la largeur maximale, puis cliquez sur Convertir en GIF.",
-    "step4": "Prévisualisez le résultat et cliquez sur Télécharger pour enregistrer votre GIF."
+    "step2": "Définissez la plage du clip en utilisant le Temps de début, le Temps de fin, la Largeur de l'image, puis cliquez sur 'Convertir en GIF'.",
+    "step3": "Prévisualisez le GIF généré. Si nécessaire, ajustez les paramètres et reconvertissez jusqu'à ce que vous soyez satisfait du résultat.",
+    "step4": "Cliquez sur 'Ajouter du texte au GIF' (optionnel) pour ouvrir l'éditeur de GIF où vous pouvez ajouter des légendes, des autocollants et plus encore. Ensuite, téléchargez votre GIF final."
   },
   "badges": {
     "clientSide": "🔒 Navigateur uniquement",
