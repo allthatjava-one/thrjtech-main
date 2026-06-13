@@ -20,6 +20,45 @@
         "name": "PDF 분할기",
         "desc": "PDF를 개별 페이지로 분할하거나 사용자 정의 페이지 범위를 쉽게 추출하세요."
       }
+    },
+    "guide": {
+      "heading": "PDF 도구란 무엇인가요?",
+      "intro": "PDF는 다양한 기기, 운영체제, 앱에서 동일한 형태로 보이도록 설계된 휴대용 문서 형식입니다. 이력서, 계약서, 청구서, 보고서, 문서 공유에 널리 사용됩니다. 자주 겪는 문제로는 큰 파일 용량, 여러 문서 결합, 특정 페이지 추출, 페이지 이미지 추출이 있습니다.",
+      "examplesHeading": "예시",
+      "examples": {
+        "item1": "이메일 첨부용으로 파일이 너무 큼",
+        "item2": "문서를 하나로 합쳐야 함",
+        "item3": "특정 페이지만 추출해야 함",
+        "item4": "PDF 페이지에서 이미지를 추출해야 함"
+      },
+      "comparisonHeading": "도구 비교 표",
+      "table": {
+        "tool": "도구",
+        "bestFor": "적합한 용도",
+        "row1": "파일 크기 줄이기",
+        "row2": "여러 PDF 합치기",
+        "row3": "페이지 추출",
+        "row4": "페이지를 이미지로 변환"
+      },
+      "workflowsHeading": "일반적인 PDF 워크플로우",
+      "workflows": {
+        "usePrefix": "사용:",
+        "email": {
+          "title": "이메일로 문서 보내기"
+        },
+        "report": {
+          "title": "보고서 합치기"
+        },
+        "contract": {
+          "title": "계약서 페이지 추출"
+        }
+      },
+      "relatedHeading": "관련 가이드",
+      "related": {
+        "compression": "PDF 압축 가이드",
+        "conversion": "PDF 변환 가이드",
+        "whyLarge": "PDF 용량이 커지는 이유"
+      }
     }
   },
   "image": {
@@ -54,6 +93,53 @@
         "name": "이미지 회전",
         "desc": "이미지를 좌우로 90° 회전하거나 수평 및 수직으로 뒤집으세요."
       }
+    },
+    "guide": {
+      "heading": "이미지 편집 도구란 무엇인가요?",
+      "intro": "이미지 편집 도구는 실제 배포 환경에 맞게 시각 자료를 준비하도록 도와줍니다. 이미지 형식, 파일 크기, 소셜 미디어 요구사항, 웹 최적화 문제를 해결합니다.",
+      "categoriesHeading": "도구 카테고리",
+      "categories": {
+        "optimization": {
+          "title": "이미지 최적화",
+          "item1": "이미지 크기 조정",
+          "item2": "이미지 자르기"
+        },
+        "conversion": {
+          "title": "형식 변환",
+          "item1": "이미지 변환기"
+        },
+        "creative": {
+          "title": "크리에이티브 도구",
+          "item1": "이미지 콜라주",
+          "item2": "밈 생성기",
+          "item3": "워터마크"
+        }
+      },
+      "formatHeading": "올바른 이미지 형식 선택",
+      "formatTable": {
+        "format": "형식",
+        "bestUse": "주요 용도",
+        "jpg": "JPG",
+        "jpgUse": "사진",
+        "png": "PNG",
+        "pngUse": "그래픽",
+        "webp": "WebP",
+        "webpUse": "웹사이트"
+      },
+      "seoNote": "이런 유형의 콘텐츠는 검색 순위에 의외로 잘 반영됩니다.",
+      "scenariosHeading": "일반적인 시나리오",
+      "scenarios": {
+        "usePrefix": "사용:",
+        "social": {
+          "title": "소셜 미디어용 크기 조정"
+        },
+        "branding": {
+          "title": "브랜딩 추가"
+        },
+        "marketing": {
+          "title": "마케팅 그래픽 제작"
+        }
+      }
     }
   },
   "developer": {
@@ -68,6 +154,47 @@
         "name": "정규식 테스터",
         "desc": "실시간 일치 강조 및 검색 & 교체 지원으로 정규 표현식을 테스트하고 디버그하세요."
       }
+    },
+    "guide": {
+      "heading": "개발자 유틸리티가 중요한 이유",
+      "intro": "개발자 유틸리티는 디버깅, API 테스트, 데이터 검증, 생산성을 통해 일상적인 개발 마찰을 줄여줍니다.",
+      "highlights": {
+        "item1": "디버깅",
+        "item2": "API 테스트",
+        "item3": "데이터 검증",
+        "item4": "생산성"
+      },
+      "overviewHeading": "도구 개요",
+      "json": {
+        "item1": "가독성 좋은 포맷팅",
+        "item2": "API 디버깅",
+        "item3": "응답 검증"
+      },
+      "regex": {
+        "item1": "패턴 매칭",
+        "item2": "검증",
+        "item3": "식 테스트"
+      },
+      "examplesHeading": "실전 예시",
+      "examples": {
+        "email": {
+          "title": "이메일 주소 검증",
+          "label": "정규식 예시.",
+          "code": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
+        },
+        "api": {
+          "title": "API 응답 읽기",
+          "label": "JSON 예시.",
+          "code": "{\n  \"userId\": 42,\n  \"status\": \"active\",\n  \"roles\": [\"admin\", \"editor\"]\n}"
+        }
+      },
+      "mistakesHeading": "흔한 개발자 실수",
+      "seoNote": "이것이 바로 Google이 선호하는 콘텐츠 유형입니다.",
+      "mistakes": {
+        "item1": "잘못된 JSON",
+        "item2": "지나치게 복잡한 정규식",
+        "item3": "부적절한 이스케이프 처리"
+      }
     }
   },
   "video": {
@@ -81,6 +208,52 @@
       "videoToGif": {
         "name": "동영상 → GIF 변환기",
         "desc": "브라우저에서 완전히 동영상 클립을 애니메이션 GIF로 변환하세요. 빠르고 무료이며 안전합니다."
+      }
+    },
+    "guide": {
+      "heading": "동영상 형식이 중요한 이유",
+      "intro": "올바른 형식을 선택하면 성능, 품질, 전달 효율이 달라집니다. 영상 워크플로우는 파일 크기, 호환성, 공유 목적에 따라 MP4와 GIF를 균형 있게 사용합니다.",
+      "highlights": {
+        "item1": "MP4",
+        "item2": "GIF",
+        "item3": "파일 크기",
+        "item4": "호환성"
+      },
+      "overviewHeading": "도구 개요",
+      "useCasesLabel": "활용 사례:",
+      "videoToGif": {
+        "item1": "튜토리얼",
+        "item2": "소셜 미디어",
+        "item3": "문서화"
+      },
+      "screenRecorder": {
+        "item1": "버그 리포팅",
+        "item2": "데모",
+        "item3": "교육 자료"
+      },
+      "comparisonHeading": "GIF vs 비디오",
+      "table": {
+        "feature": "항목",
+        "gif": "GIF",
+        "mp4": "MP4",
+        "size": "크기",
+        "row1gif": "더 큼",
+        "row1mp4": "더 작음",
+        "audio": "오디오",
+        "row2gif": "없음",
+        "row2mp4": "있음",
+        "sharing": "공유",
+        "row3gif": "쉬움",
+        "row3mp4": "쉬움"
+      },
+      "workflowsHeading": "일반적인 워크플로우",
+      "workflows": {
+        "bug": {
+          "title": "버그 녹화하기"
+        },
+        "animation": {
+          "title": "짧은 애니메이션 공유"
+        }
       }
     }
   }

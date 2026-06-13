@@ -58,6 +58,74 @@ export default function VideoToolsPage() {
                 </Link>
               ))}
             </div>
+
+            <div className="video-tools-guide-content">
+              <h2>{t('video.guide.heading')}</h2>
+              <p>{t('video.guide.intro')}</p>
+              <ul>
+                <li>{t('video.guide.highlights.item1')}</li>
+                <li>{t('video.guide.highlights.item2')}</li>
+                <li>{t('video.guide.highlights.item3')}</li>
+                <li>{t('video.guide.highlights.item4')}</li>
+              </ul>
+
+              <h3>{t('video.guide.overviewHeading')}</h3>
+
+              <h4>{t('video.tools.videoToGif.name')}</h4>
+              <p>{t('video.guide.useCasesLabel')}</p>
+              <ul>
+                <li>{t('video.guide.videoToGif.item1')}</li>
+                <li>{t('video.guide.videoToGif.item2')}</li>
+                <li>{t('video.guide.videoToGif.item3')}</li>
+              </ul>
+
+              <h4>{t('video.tools.screenRecorder.name')}</h4>
+              <p>{t('video.guide.useCasesLabel')}</p>
+              <ul>
+                <li>{t('video.guide.screenRecorder.item1')}</li>
+                <li>{t('video.guide.screenRecorder.item2')}</li>
+                <li>{t('video.guide.screenRecorder.item3')}</li>
+              </ul>
+
+              <h3>{t('video.guide.comparisonHeading')}</h3>
+              <div className="video-tools-table-wrap">
+                <table className="video-tools-compare-table">
+                  <thead>
+                    <tr>
+                      <th>{t('video.guide.table.feature')}</th>
+                      <th>{t('video.guide.table.gif')}</th>
+                      <th>{t('video.guide.table.mp4')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{t('video.guide.table.size')}</td>
+                      <td>{t('video.guide.table.row1gif')}</td>
+                      <td>{t('video.guide.table.row1mp4')}</td>
+                    </tr>
+                    <tr>
+                      <td>{t('video.guide.table.audio')}</td>
+                      <td>{t('video.guide.table.row2gif')}</td>
+                      <td>{t('video.guide.table.row2mp4')}</td>
+                    </tr>
+                    <tr>
+                      <td>{t('video.guide.table.sharing')}</td>
+                      <td>{t('video.guide.table.row3gif')}</td>
+                      <td>{t('video.guide.table.row3mp4')}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3>{t('video.guide.workflowsHeading')}</h3>
+              <div className="video-tools-workflow-list">
+                <p><strong>{t('video.guide.workflows.bug.title')}</strong></p>
+                <p><Link to="/screen-recorder">{t('video.tools.screenRecorder.name')}</Link>.</p>
+
+                <p><strong>{t('video.guide.workflows.animation.title')}</strong></p>
+                <p><Link to="/video-to-gif">{t('video.tools.videoToGif.name')}</Link>.</p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
