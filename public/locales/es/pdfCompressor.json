@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Compresor PDF",
-    "tagline": "Solo suelte y listo - Reduzca el tamaño de su archivo PDF sin perder calidad. Cargue su archivo, comprímalo en segundos y descargue el resultado más pequeño.",
+    "tagline": "Solo suelte y listo - Reduzca el tamaño de su archivo PDF sin perder calidad. Cargue su archivo, comprímalo en segundos y descargue el resultado más pequeño. (Actualmente, solo admitimos archivos PDF de hasta 5 MB. Para archivos más grandes, utilice software de escritorio o un servicio en línea que admita cargas grandes por ahora.)",
     "blogLink": "Aprenda a comprimir PDF →"
   },
   "hint": {
