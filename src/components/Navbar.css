@@ -264,3 +264,10 @@
   color: var(--color-text);
   text-decoration: none;
 }
+
+/* When dropdown is rendered for prerender but should be hidden on-screen */
+.dropdown-content.prerender-closed {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

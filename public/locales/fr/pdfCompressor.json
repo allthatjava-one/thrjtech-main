@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Compresseur PDF",
-    "tagline": "Déposez et c'est parti - Réduisez la taille de votre fichier PDF sans perdre en qualité. Chargez votre fichier, compressez-le en quelques secondes et téléchargez le résultat plus petit.",
+    "tagline": "Déposez et c'est parti - Réduisez la taille de votre fichier PDF sans perdre en qualité. Chargez votre fichier, compressez-le en quelques secondes et téléchargez le résultat plus petit. (Actuellement, nous ne prenons en charge que les fichiers PDF jusqu'à 5 Mo. Pour les fichiers plus volumineux, veuillez utiliser un logiciel de bureau ou un service en ligne qui prend en charge les gros téléchargements pour le moment.)",
     "blogLink": "Apprendre à compresser un PDF →"
   },
   "hint": {
