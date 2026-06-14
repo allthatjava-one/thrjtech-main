@@ -58,6 +58,44 @@
         "compression": "Guide de compression PDF",
         "conversion": "Guide de conversion PDF",
         "whyLarge": "Pourquoi les PDF deviennent volumineux"
+      },
+      "privacy": {
+        "heading": "Vos fichiers ne quittent jamais votre appareil",
+        "intro": "La confidentialité est intégrée à chaque outil de ce site. Contrairement aux services PDF en ligne qui envoient vos documents vers des serveurs externes, tout le traitement s'effectue localement dans votre navigateur via JavaScript et WebAssembly. Voici ce que cela signifie concrètement :",
+        "point1": "Aucun fichier n'est jamais envoyé à un serveur — tout s'exécute sur votre CPU et en mémoire.",
+        "point2": "Fermer l'onglet efface immédiatement toutes les données sans laisser de trace.",
+        "point3": "Aucun compte, identifiant ou e-mail n'est requis pour aucun outil.",
+        "point4": "Les documents confidentiels — contrats, rapports financiers, dossiers médicaux — peuvent être traités en toute sécurité sans les exposer à une infrastructure tierce."
+      },
+      "tips": {
+        "heading": "Conseils pour de meilleurs résultats",
+        "intro": "Quelques habitudes simples peuvent améliorer significativement la qualité de vos résultats et réduire la nécessité de retraiter un fichier :",
+        "tip1": { "title": "Conservez toujours l'original.", "body": "Avant de compresser, fusionner ou diviser, sauvegardez une copie de secours. Les opérations ne peuvent pas être annulées une fois la session du navigateur fermée." },
+        "tip2": { "title": "Vérifiez l'orientation avant de fusionner.", "body": "Mélanger des pages portrait et paysage dans un seul PDF crée une expérience de lecture incohérente. Faites pivoter les pages au préalable si nécessaire." },
+        "tip3": { "title": "Utilisez des noms de fichiers explicites.", "body": "Des noms comme rapport_2026-06_final.pdf sont bien plus faciles à gérer que document(3).pdf, surtout lorsque vous gérez plusieurs versions." },
+        "tip4": { "title": "Prévisualisez avant de télécharger.", "body": "La plupart des outils affichent un aperçu du résultat. Faites défiler pour confirmer le nombre de pages, l'ordre et la lisibilité avant d'enregistrer." },
+        "tip5": { "title": "Adaptez le format à la destination.", "body": "Les exports PNG du convertisseur PDF sont idéaux pour les présentations et la documentation ; le JPEG est préférable quand la taille du fichier prime sur la netteté parfaite." }
+      },
+      "faq": {
+        "heading": "Questions fréquentes",
+        "q1": "Y a-t-il une limite de taille de fichier ?",
+        "a1": "Il n'y a pas de limite stricte côté serveur car votre fichier ne quitte jamais votre appareil. La limite pratique dépend de votre navigateur et de la RAM disponible. La plupart des navigateurs modernes gèrent des PDFs de plusieurs centaines de mégaoctets sans problème.",
+        "q2": "La compression affecte-t-elle la lisibilité du texte ?",
+        "a2": "Le texte dans les PDFs est stocké sous forme de données vectorielles et n'est pas affecté par les paramètres de compression d'image. Seules les images intégrées dans le document sont compressées. Un contrat ou rapport à forte teneur en texte restera parfaitement net quel que soit le niveau de compression choisi.",
+        "q3": "Puis-je fusionner des PDFs de tailles de page différentes ?",
+        "a3": "Oui. Le fusionneur accepte des PDFs quelle que soit leur dimension de page. Si la cohérence visuelle est importante, pensez à standardiser les tailles de page au préalable.",
+        "q4": "Quelle est la différence entre diviser et extraire ?",
+        "a4": "Diviser sépare un PDF en plusieurs fichiers distincts, généralement un par page ou selon une plage définie. Extraire déplace un ensemble spécifique de pages dans un nouveau fichier sans modifier l'original. Les deux opérations sont possibles avec l'outil Diviseur PDF.",
+        "q5": "Quel format d'image choisir lors de la conversion de pages PDF ?",
+        "a5": "Le PNG est recommandé pour les documents avec du texte, des diagrammes, des graphiques et des captures d'écran car il utilise une compression sans perte. Le JPEG convient mieux aux pages dominées par des photos où la taille du fichier prime sur la précision des pixels."
+      },
+      "useCases": {
+        "heading": "Qui utilise ces outils PDF ?",
+        "intro": "Les outils PDF sont nécessaires dans de nombreuses professions et situations quotidiennes. Voici quelques-uns des scénarios les plus courants :",
+        "case1": { "title": "Freelances et prestataires.", "body": "Compressez les factures avant de les envoyer par e-mail, divisez un contrat cadre pour ne partager que les clauses pertinentes, et convertissez les pages signées en images pour votre portfolio." },
+        "case2": { "title": "Étudiants et enseignants.", "body": "Fusionnez notes de cours, fiches d'exercices et pages de référence en un seul document d'étude. Divisez de longs dossiers de lecture en modules par séance. Extrayez des pages précises de manuels ou d'articles de recherche." },
+        "case3": { "title": "Employés de bureau et administrateurs.", "body": "Réduisez la taille des rapports avant de les téléverser sur des intranets ou des disques partagés. Combinez les mises à jour hebdomadaires de plusieurs contributeurs. Extrayez la page de signature d'un contrat pour un classement rapide." },
+        "case4": { "title": "Designers et créateurs de contenu.", "body": "Convertissez des pages de présentations PDF en images haute résolution pour des articles de blog, des réseaux sociaux ou des dossiers clients. Fusionnez tableaux d'inspiration et fiches de référence en un PDF de brief partageable." }
       }
     }
   },
@@ -67,77 +105,157 @@
     "tools": {
       "resizer": {
         "name": "Redimensionneur d'image",
-        "desc": "Redimensionnez les images aux dimensions souhaitées tout en préservant le rapport d'aspect et la qualité."
+        "desc": "Mise à l'échelle d'image de qualité professionnelle qui vous permet de modifier les dimensions en pixels ou la taille en pourcentage. Parfait pour respecter les exigences de téléchargement strictes pour les sites web, les e-mails ou les réseaux sociaux tout en maintenant une fidélité visuelle nette."
       },
       "watermarker": {
         "name": "Filigrane d'image",
-        "desc": "Protégez vos photos en ajoutant des filigranes texte ou image directement dans votre navigateur."
+        "desc": "Sécurisez vos actifs numériques avec des filigranes personnalisés. Ajoutez votre logo de marque ou un texte personnalisé avec une opacité, une position et une échelle réglables. Essentiel pour les photographes et créateurs qui partagent leur travail en ligne."
       },
       "collage": {
         "name": "Créateur de collage",
-        "desc": "Combinez plusieurs images en un beau collage avec des mises en page personnalisables."
+        "desc": "Transformez votre collection de photos en un récit visuel époustouflant. Choisissez parmi plusieurs dispositions de grille, ajustez l'espacement des bordures et personnalisez les couleurs d'arrière-plan pour créer le point fort parfait."
       },
       "crop": {
         "name": "Recadrage d'image",
-        "desc": "Recadrez les images à une sélection précise ou un rapport d'aspect fixe avec une interface intuitive."
+        "desc": "Outils de recadrage de précision pour toutes les situations. Utilisez des rapports d'aspect fixes pour les photos de profil et les en-têtes, ou une sélection libre pour éliminer les distractions et zoomer sur les détails les plus importants."
       },
       "meme": {
         "name": "Générateur de mèmes",
-        "desc": "Créez des mèmes personnalisés en ajoutant des légendes à n'importe quelle image. Rapide, amusant et côté client."
+        "desc": "Le moyen le plus rapide de transformer vos idées en contenu viral. Utilisez des polices de mèmes classiques, ajoutez plusieurs couches de texte et personnalisez les couleurs. Entièrement côté client, vos idées restent privées."
       },
       "converter": {
         "name": "Convertisseur d'image",
-        "desc": "Convertissez des images entre JPG, PNG, WebP et d'autres formats instantanément dans votre navigateur."
+        "desc": "Moteur de conversion multiformato pour le web moderne. Basculez instantanément entre JPG, PNG, WebP et plus. Optimisez la taille de vos fichiers pour les performances web ou convertissez-les en formats sans perte."
       },
       "rotator": {
         "name": "Rotateur d'image",
-        "desc": "Faites pivoter les images de 90° à gauche ou à droite, ou retournez-les horizontalement et verticalement."
+        "desc": "Corrigez instantanément les problèmes d'orientation. Faites pivoter les photos par incréments de 90 degrés ou retournez-les horizontalement et verticalement pour corriger les effets de miroir ou les téléchargements mobiles de côté."
       }
     },
     "guide": {
-      "heading": "Que sont les outils d'édition d'image ?",
-      "intro": "Les outils d'édition d'image vous aident à préparer des visuels pour des usages réels. Ils répondent aux problèmes de formats, de taille de fichier, d'exigences des réseaux sociaux et d'optimisation web.",
-      "categoriesHeading": "Catégories d'outils",
+      "heading": "Le guide complet de l'édition d'images en ligne",
+      "sections": {
+        "foundation": { "title": "1. Comprendre l'édition d'images via navigateur" },
+        "categories": { "title": "2. Catégories modernes d'outils d'image" },
+        "formats": { "title": "3. Choisir le bon format d'image" },
+        "scenarios": { "title": "4. Flux de travail créatifs courants" },
+        "privacy": { "title": "5. Pourquoi la confidentialité côté client est importante" },
+        "tips": { "title": "6. Conseils de pro pour des visuels de haute qualité" },
+        "faq": { "title": "7. Foire aux questions" },
+        "useCases": { "title": "8. Cas d'utilisation réels" }
+      },
+      "intro": "À l'ère du numérique, les images sont le principal vecteur de communication. Que vous soyez influenceur, professionnel du marketing ou développeur, vous avez besoin d'outils fiables pour manipuler des images rapidement. Notre plateforme propose une suite d'outils d'image qui s'exécutent entièrement dans votre navigateur web. Cela signifie que vous n'avez pas besoin de télécharger des logiciels lourds comme Photoshop pour des tâches simples. En utilisant des technologies web modernes comme l'API Canvas et WebAssembly, nous offrons une expérience d'édition fluide, rapide et sécurisée. Nos outils sont intuitifs : glissez-déposez votre fichier, appliquez vos modifications et téléchargez le résultat. Comme le traitement se fait sur votre propre ordinateur, il n'y a pas d'attente pour le téléchargement vers un serveur central, ce qui accélère considérablement le flux de travail.",
+      "categoriesHeading": "Explorez nos catégories spécialisées d'édition d'images conçues pour tous les besoins possibles.",
       "categories": {
         "optimization": {
           "title": "Optimisation d'image",
           "item1": "Redimensionneur d'image",
-          "item2": "Recadrage d'image"
+          "desc1": "Ajustez les dimensions en pixels de vos images pour répondre aux exigences spécifiques des plateformes tout en maintenant le rapport d'aspect.",
+          "item2": "Recadrage d'image",
+          "desc2": "Concentrez-vous sur l'essentiel de votre photo en supprimant les bords inutiles ou en ajustant des rectangles spécifiques."
         },
         "conversion": {
           "title": "Conversion de format",
-          "item1": "Convertisseur d'image"
+          "item1": "Convertisseur d'image",
+          "desc1": "Transformez vos fichiers en toute sécurité entre les formats populaires pour équilibrer taille de fichier, transparence et qualité visuelle."
         },
         "creative": {
           "title": "Outils créatifs",
           "item1": "Collage d'images",
+          "desc1": "Racontez une histoire en fusionnant plusieurs photos dans une mise en page cohérente avec un espacement et des couleurs personnalisés.",
           "item2": "Générateur de mèmes",
-          "item3": "Filigrane"
+          "desc2": "Engagez votre audience avec l'humour viral en ajoutant des légendes supérieures et inférieures à n'importe quel modèle.",
+          "item3": "Filigrane",
+          "desc3": "Protégez votre propriété intellectuelle en superposant du texte ou des logos semi-transparents, garantissant que votre marque reste avec votre travail."
         }
       },
-      "formatHeading": "Choisir le bon format d'image",
+      "formatHeading": "La compréhension des différences techniques entre les formats d'image est essentielle pour la performance web et la qualité visuelle.",
       "formatTable": {
-        "format": "Format",
-        "bestUse": "Meilleur usage",
-        "jpg": "JPG",
-        "jpgUse": "Photos",
-        "png": "PNG",
-        "pngUse": "Graphiques",
-        "webp": "WebP",
-        "webpUse": "Sites web"
+        "format": "Nom du format",
+        "bestUse": "Cas d'utilisation optimal",
+        "jpg": "JPEG (Joint Photographic Experts Group)",
+        "jpgUse": "Idéal pour les photographies et les images réalistes avec des dégradés doux. Offre une compression élevée mais pas de transparence.",
+        "png": "PNG (Portable Network Graphics)",
+        "pngUse": "Idéal pour les logos, les icônes et les graphiques nécessitant des fonds transparents ou une précision au pixel près.",
+        "webp": "WebP (Google Web Format)",
+        "webpUse": "Standard moderne pour le web. Offre une compression supérieure avec support de la transparence."
       },
-      "seoNote": "Ce type de contenu se positionne étonnamment bien.",
-      "scenariosHeading": "Scénarios courants",
+      "seoNote": "L'optimisation des images pour le web réduit les temps de chargement des pages et améliore considérablement les classements SEO.",
+      "scenariosHeading": "Comment nos utilisateurs combinent fréquemment ces outils pour des résultats professionnels.",
       "scenarios": {
-        "usePrefix": "Utiliser",
+        "usePrefix": "Essayez de les combiner avec",
         "social": {
-          "title": "Redimensionner pour les réseaux sociaux"
+          "title": "Création de contenu pour les réseaux sociaux",
+          "desc": "Préparez une publication Instagram parfaite en cadrant d'abord au format carré 1:1, puis en redimensionnant à 1080x1080 pixels."
         },
         "branding": {
-          "title": "Ajouter du branding"
+          "title": "Branding pour les photographes",
+          "desc": "Réduisez vos exports RAW haute résolution à des largeurs de 2000px et appliquez un filigrane de logo avant de partager."
         },
         "marketing": {
-          "title": "Créer des visuels marketing"
+          "title": "Actifs de campagne marketing",
+          "desc": "Convertissez des captures d'écran PNG lourdes en formats WebP optimisés pour économiser de la bande passante tout en gardant une grande clarté."
+        }
+      },
+      "privacy": {
+        "intro": "Contrairement à de nombreux sites qui vous obligent à télécharger vos photos sur leurs serveurs, nos outils gèrent tout localement. Cette approche présente plusieurs avantages :",
+        "point1": "Sécurité : Vos images ne quittent jamais votre appareil. Aucun risque d'interception ou de stockage non autorisé.",
+        "point2": "Confidentialité : Nous ne voyons pas ce que vous éditez. Vos données restent les vôtres.",
+        "point3": "Conformité : Notre architecture s'aligne naturellement sur les réglementations strictes comme le RGPD ou la CCPA.",
+        "point4": "Vitesse : Les grandes images 4K n'ont pas besoin d'être téléchargées vers un serveur, ce qui fait gagner du temps."
+      },
+      "tips": {
+        "intro": "Tirez le meilleur parti de nos outils avec ces conseils d'édition d'images de pro.",
+        "tip1": {
+          "title": "Préservez la qualité :",
+          "body": "Commencez toujours par la source de la plus haute résolution possible. Il est facile de réduire la taille, mais l'augmenter rendra l'image floue."
+        },
+        "tip2": {
+          "title": "Respectez le rapport d'aspect :",
+          "body": "Lors du redimensionnement, verrouillez toujours le rapport d'aspect à moins que vous ne vouliez déformer l'image."
+        },
+        "tip3": {
+          "title": "Utilisez le WebP pour le web :",
+          "body": "Les fichiers WebP sont généralement 25 à 35 % plus petits que les JPEG pour une qualité identique."
+        },
+        "tip4": {
+          "title": "Optimisez l'opacité du filigrane :",
+          "body": "Un filigrane doit protéger votre travail sans distraire l'œil. Visez 20 à 40 % d'opacité."
+        },
+        "tip5": {
+          "title": "Utilisez le contraste pour les mèmes :",
+          "body": "Pour les mèmes, utilisez du texte blanc avec un contour noir. Cela garantit la lisibilité sur toutes les couleurs de fond."
+        }
+      },
+      "faq": {
+        "q1": "Y a-t-il une limite de taille de fichier ?",
+        "a1": "La limite dépend principalement de la RAM de votre ordinateur. La plupart des appareils modernes gèrent facilement jusqu'à 50-100 Mo.",
+        "q2": "Mes images seront-elles floues après redimensionnement ?",
+        "a2": "Nous utilisons des algorithmes d'interpolation de haute qualité pour garantir que la réduction de taille reste très nette.",
+        "q3": "Puis-je convertir du WebP vers JPG ?",
+        "a3": "Oui ! Notre convertisseur prend en charge la conversion bidirectionnelle entre la plupart des formats populaires.",
+        "q4": "Les outils sont-ils gratuits pour un usage commercial ?",
+        "a4": "Absolument. Tous les outils de cette plateforme sont gratuits pour un usage personnel et professionnel sans frais cachés.",
+        "q5": "Le créateur de collage permet-il des mises en page personnalisées ?",
+        "a5": "Nous proposons plusieurs préréglages de grille qui s'adaptent automatiquement au nombre d'images que vous téléchargez."
+      },
+      "useCases": {
+        "intro": "Notre kit d'outils est utilisé par des milliers de personnes chaque jour pour diverses applications réelles.",
+        "case1": {
+          "title": "E-commerçants :",
+          "body": "Redimensionnent en masse les photos de produits et les convertissent en WebP pour accélérer leur boutique en ligne."
+        },
+        "case2": {
+          "title": "Gestionnaires de réseaux sociaux :",
+          "body": "Génèrent des mèmes rapides sur des sujets tendance ou ajoutent des logos de marque à du contenu viral."
+        },
+        "case3": {
+          "title": "Développeurs web :",
+          "body": "Recadrent les images hero à des rapports d'aspect spécifiques et optimisent la qualité pour de meilleurs Core Web Vitals."
+        },
+        "case4": {
+          "title": "Utilisateurs particuliers :",
+          "body": "Combinent les photos de vacances en collage ou font pivoter les photos de téléphone prises de travers."
         }
       }
     }
@@ -157,43 +275,87 @@
     },
     "guide": {
       "heading": "Pourquoi les utilitaires développeur sont importants",
-      "intro": "Les utilitaires développeur réduisent les frictions au quotidien grâce au débogage, aux tests d'API, à la validation des données et à la productivité.",
+      "sections": {
+        "foundation": { "title": "1) Bénéfices clés du flux de travail" },
+        "overview": { "title": "2) Présentation outil par outil" },
+        "examples": { "title": "3) Exemples prêts à l'emploi" },
+        "pitfalls": { "title": "4) Erreurs fréquentes et comment les éviter" },
+        "privacy": { "title": "5) Vos données restent dans le navigateur" },
+        "tips": { "title": "6) Conseils pour une utilisation plus efficace" },
+        "faq": { "title": "7) Questions fréquentes" },
+        "useCases": { "title": "8) Qui utilise ces outils ?" }
+      },
+      "intro": "Chaque développeur rencontre les mêmes frictions quotidiennes : une réponse JSON arrive d'une API sous forme d'une seule ligne illisible, ou un pattern regex fonctionne dans la documentation mais échoue dans le code. Ouvrir le bon outil dans le navigateur élimine cette friction avec un espace de travail zéro installation qui s'ouvre instantanément et ne nécessite jamais d'envoyer des données à un tiers inconnu.",
       "highlights": {
-        "item1": "Débogage",
-        "item2": "Test d'API",
-        "item3": "Validation des données",
-        "item4": "Productivité"
+        "item1": "Déboguez les réponses API plus rapidement en collant du JSON brut et en lisant un arbre structuré avec coloration syntaxique plutôt qu'une chaîne plate illisible.",
+        "item2": "Testez les contrats API en vérifiant que le corps de votre requête correspond au schéma attendu avant d'atteindre le serveur.",
+        "item3": "Validez les patterns de saisie de formulaires en écrivant et affinant des expressions régulières sur des chaînes d'exemple réelles en temps réel.",
+        "item4": "Réduisez les frictions du flux de travail en gardant les tâches courantes de développement dans l'onglet du navigateur où vous travaillez déjà."
       },
       "overviewHeading": "Aperçu des outils",
       "json": {
-        "item1": "Mise en forme lisible",
-        "item2": "Débogage d'API",
-        "item3": "Validation des réponses"
+        "item1": "Mettez en forme du JSON compact ou minifié en une structure indentée et lisible avec coloration syntaxique pour que les clés, valeurs et objets imbriqués soient immédiatement lisibles.",
+        "item2": "Déboguez les réponses API en collant des payloads bruts directement depuis votre onglet réseau ou le presse-papiers et en inspectant la structure sans écrire de code.",
+        "item3": "Validez la syntaxe JSON avant de soumettre des données à un serveur ou de les stocker dans un fichier de configuration, en détectant instantanément les erreurs comme les virgules superflues ou les crochets non appariés."
       },
       "regex": {
-        "item1": "Correspondance de motifs",
-        "item2": "Validation",
-        "item3": "Test d'expressions"
+        "item1": "Faites correspondre des patterns sur du texte multi-lignes avec une mise en évidence visuelle immédiate de chaque groupe de capture et de la région de correspondance globale.",
+        "item2": "Validez les formats de saisie courants tels que les e-mails, numéros de téléphone, URLs et dates en testant sur des chaînes réelles incluant les cas limites.",
+        "item3": "Testez la logique de recherche et remplacement avant de l'utiliser dans du code, un script ou une migration de base de données afin de confirmer que la substitution fonctionne exactement comme prévu."
       },
       "examplesHeading": "Exemples pratiques",
       "examples": {
         "email": {
           "title": "Valider des adresses e-mail",
-          "label": "Exemple regex.",
+          "label": "Collez ce pattern dans le Testeur Regex et entrez une liste d'adresses dans le champ de test. Les correspondances sont mises en évidence ; les lignes sans correspondance restent sans style. Ajustez le pattern pour prendre en charge les sous-domaines, l'adressage avec le signe plus ou les TLD internationaux selon les besoins.",
           "code": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
         },
         "api": {
           "title": "Lire des réponses API",
-          "label": "Exemple JSON.",
+          "label": "Collez un corps de réponse API brut dans le Formateur JSON pour voir instantanément une vue structurée et indentée. Utilisez-le pour confirmer quels champs sont présents, vérifier les types de données et identifier les valeurs nulles inattendues avant d'écrire du code pour traiter la réponse.",
           "code": "{\n  \"userId\": 42,\n  \"status\": \"active\",\n  \"roles\": [\"admin\", \"editor\"]\n}"
         }
       },
       "mistakesHeading": "Erreurs fréquentes des développeurs",
-      "seoNote": "C'est exactement le type de contenu que Google apprécie.",
+      "seoNote": "Les petites erreurs de formatage et les patterns non testés sont parmi les causes les plus fréquentes de bugs difficiles à tracer. Les détecter tôt avec les bons outils économise plus de temps de débogage qu'il n'en faut pour ajouter la vérification.",
       "mistakes": {
-        "item1": "JSON invalide",
-        "item2": "Regex trop complexe",
-        "item3": "Échappement incorrect"
+        "item1": "Soumettre un JSON invalide à une API parce qu'une virgule superflue a été laissée dans un fichier de configuration ou le corps de la requête — le formateur le détecte instantanément avant toute requête.",
+        "item2": "Écrire une regex trop complexe avec des groupes imbriqués qui fonctionne pour un cas mais échoue silencieusement pour des entrées valides — tester sur un ensemble d'exemples diversifiés l'évite.",
+        "item3": "Oublier d'échapper les caractères spéciaux comme les points, crochets ou barres obliques dans les patterns regex, les faisant correspondre bien plus largement que prévu."
+      },
+      "privacy": {
+        "intro": "Les deux outils fonctionnent entièrement dans votre navigateur. Aucune donnée n'est envoyée à un serveur à aucun moment. C'est particulièrement important dans les flux de développement car les payloads contiennent souvent des informations sensibles :",
+        "point1": "Les réponses API peuvent inclure des tokens d'authentification, des ID utilisateurs ou des données personnelles qui ne doivent jamais quitter votre environnement contrôlé.",
+        "point2": "Les fichiers de configuration JSON embarquent parfois des identifiants, des clés API ou des URLs d'endpoints internes qui ne doivent pas être collés dans des outils en ligne publics.",
+        "point3": "Les chaînes de test regex contiennent souvent des données utilisateurs réelles extraites de logs ou de bases de données soumises à des réglementations sur la vie privée.",
+        "point4": "Fermer l'onglet du navigateur efface immédiatement tout le contenu sans laisser de trace, et aucun compte ni identifiant n'est requis pour utiliser l'un ou l'autre outil."
+      },
+      "tips": {
+        "intro": "Quelques habitudes rendent ces outils bien plus utiles dans un vrai flux de développement :",
+        "tip1": { "title": "Utilisez des données réelles, pas des exemples fictifs.", "body": "Tester un regex ou un schéma JSON sur un exemple synthétique rate souvent les cas limites. Collez des payloads réels ou des saisies de formulaires réels pour détecter immédiatement les échecs inattendus." },
+        "tip2": { "title": "Testez délibérément les cas limites.", "body": "Pour les regex, incluez toujours au moins une entrée proche mais non valide. Pour le JSON, essayez un objet vide, une structure très imbriquée et un tableau à la racine." },
+        "tip3": { "title": "Formatez avant de lire.", "body": "Ne jamais tenter d'interpréter du JSON minifié à l'œil. Un seul collage dans le formateur économise plus de temps qu'il n'en faut et élimine une source majeure d'erreurs de lecture." },
+        "tip4": { "title": "Utilisez des groupes de capture nommés.", "body": "Dans les patterns regex utilisés pour l'analyse, préférez les groupes nommés aux positionnels. Ils rendent l'intention claire lorsque vous revenez sur le pattern des semaines plus tard." },
+        "tip5": { "title": "Sauvegardez vos patterns.", "body": "Les patterns regex pour les formats courants comme les dates ISO, les UUID et les versions sémantiques valent la peine d'être conservés. Construisez une référence personnelle pour ne pas réécrire les mêmes patterns à répétition." }
+      },
+      "faq": {
+        "q1": "Le Formateur JSON prend-il en charge de très larges payloads ?",
+        "a1": "Oui. Le traitement étant effectué localement dans votre navigateur, les seules limites pratiques sont la mémoire du navigateur et les performances du moteur JavaScript. Les réponses API typiques de plusieurs mégaoctets se formatent en moins d'une seconde.",
+        "q2": "Puis-je utiliser des flags regex comme insensible à la casse ou le mode multiligne ?",
+        "a2": "Le Testeur Regex prend en charge les flags JavaScript standard, notamment insensible à la casse (i), global (g), multiligne (m) et dotAll (s). Vous pouvez combiner les flags directement dans le champ de saisie du pattern avec la notation slash standard.",
+        "q3": "Le Formateur JSON détecte-t-il et explique-t-il les erreurs ?",
+        "a3": "Oui. Lorsque vous collez un JSON invalide, le formateur surligne la position de l'erreur de syntaxe et affiche un message décrivant le problème. Les erreurs courantes comme les virgules superflues, les guillemets simples au lieu de doubles et les clés sans guillemets sont détectées immédiatement.",
+        "q4": "Le Testeur Regex est-il compatible avec les patterns d'autres langages ?",
+        "a4": "Le testeur utilise le moteur regex de JavaScript, compatible avec la plupart des patterns courants. Les patterns Python, Ruby, PHP et Java sont généralement portables avec des ajustements mineurs.",
+        "q5": "Puis-je partager un pattern ou un exemple JSON avec un collègue ?",
+        "a5": "Les outils n'ont pas actuellement de fonction de lien partageable, mais vous pouvez copier-coller des patterns et des exemples JSON dans un document partagé, un message Slack ou un commentaire de pull request. Les outils s'ouvrent en quelques secondes, un collègue peut donc coller et vérifier immédiatement."
+      },
+      "useCases": {
+        "intro": "Ces utilitaires sont utiles dans l'ensemble des rôles et tâches de développement :",
+        "case1": { "title": "Ingénieurs backend.", "body": "Formatez et inspectez les réponses API lors des travaux d'intégration, validez les payloads de requêtes avant d'écrire le code de traitement et testez les patterns d'extraction de données sur des échantillons de logs." },
+        "case2": { "title": "Développeurs frontend.", "body": "Déboguez les données API provenant des endpoints avant de créer les composants UI, validez les patterns des champs de formulaires et confirmez que les objets d'état ont la structure attendue." },
+        "case3": { "title": "Ingénieurs QA et testeurs.", "body": "Vérifiez que les réponses API sont conformes aux schémas documentés, créez et testez des patterns de validation des entrées pour les cas de test et inspectez les payloads de cas limites." },
+        "case4": { "title": "Ingénieurs DevOps et plateforme.", "body": "Validez et formatez les fichiers de configuration avant le déploiement, testez les patterns grep ou sed sur des lignes de log d'exemple avant de les exécuter en production et inspectez les logs structurés pour identifier les anomalies." }
       }
     }
   },
@@ -203,56 +365,135 @@
     "tools": {
       "screenRecorder": {
         "name": "Enregistreur d'écran rapide",
-        "desc": "Enregistrez votre écran ou onglet de navigateur instantanément sans extensions ni logiciels à installer."
+        "desc": "Un utilitaire d'enregistrement basé sur le navigateur, sans configuration, conçu pour un usage immédiat. Capturez votre bureau, une fenêtre d'application spécifique ou un onglet du navigateur avec une clarté haute définition. Parfait pour créer des tutoriels et des démonstrations sans installations."
       },
       "videoToGif": {
         "name": "Convertisseur Vidéo en GIF",
-        "desc": "Convertissez des clips vidéo en GIF animés entièrement dans votre navigateur. Rapide, gratuit et privé."
+        "desc": "Transformez des clips vidéo haute résolution en GIFs animés légers et faciles à partager. Notre convertisseur s'exécute localement, vous permettant d'ajuster le taux de rafraîchissement et la qualité pour optimiser la taille du fichier."
       }
     },
     "guide": {
-      "heading": "Pourquoi les formats vidéo comptent",
-      "intro": "Le choix du bon format impacte les performances, la qualité et la diffusion. Les flux vidéo équilibrent souvent MP4 et GIF selon la taille, la compatibilité et le partage.",
-      "highlights": {
-        "item1": "MP4",
-        "item2": "GIF",
-        "item3": "Taille de fichier",
-        "item4": "Compatibilité"
+      "heading": "Le guide complet des utilitaires vidéo dans le navigateur",
+      "sections": {
+        "foundation": { "title": "1. Enregistrement et conversion modernes dans le navigateur" },
+        "categories": { "title": "2. Capacités des outils vidéo" },
+        "formats": { "title": "3. Comparaison des formats GIF vs. MP4" },
+        "scenarios": { "title": "4. Flux de travail professionnels courants" },
+        "privacy": { "title": "5. Pourquoi le traitement vidéo local est important" },
+        "tips": { "title": "6. Conseils professionnels pour des captures de haute qualité" },
+        "faq": { "title": "7. Questions fréquemment posées" },
+        "useCases": { "title": "8. Cas d'utilisation du monde réel" }
       },
-      "overviewHeading": "Aperçu des outils",
-      "useCasesLabel": "Cas d'usage :",
+      "intro": "Le contenu vidéo est le média le plus engageant sur le web, mais le créer et le partager peut être un défi technique. Notre plateforme simplifie cela en fournissant des outils vidéo robustes qui ne nécessitent aucune installation. En exploitant les API modernes du navigateur comme MediaDevices et les convertisseurs basés sur WebAssembly, nous apportons le traitement vidéo haute performance directement dans votre fenêtre de navigateur. Cela élimine le besoin d'abonnements coûteux ou de convertisseurs cloud envahissants pour la vie privée. Tout le traitement se fait sur votre CPU et GPU local, garantissant que vos données ne quittent jamais votre appareil.",
+      "highlights": {
+        "item1": "Sans installation",
+        "desc1": "Aucune extension de navigateur ou application de bureau. Tout s'exécute dans les navigateurs modernes standard.",
+        "item2": "Capture sans perte",
+        "desc2": "Enregistrez votre écran à la résolution native pour des tutoriels et des présentations parfaits au pixel près.",
+        "item3": "Conversion rapide",
+        "desc3": "Convertissez des parties de vidéos en GIFs en quelques secondes à l'aide d'algorithmes de codage locaux efficaces.",
+        "item4": "Partage universel",
+        "desc4": "Générez des formats compatibles avec toutes les plateformes sociales, clients de messagerie et outils de documentation."
+      },
+      "overviewHeading": "Répartition détaillée de nos principales capacités de traitement vidéo.",
+      "useCasesLabel": "Principaux cas d'utilisation pour cet outil :",
       "videoToGif": {
-        "item1": "Tutoriels",
-        "item2": "Réseaux sociaux",
-        "item3": "Documentation"
+        "item1": "Création de résumés de fonctionnalités animés pour les pages de destination et les e-mails marketing.",
+        "item2": "Ajout de démos en boucle aux sites de documentation comme GitBook ou Readme.io.",
+        "item3": "Capture de segments amusants ou informatifs de vidéos longues pour les partager sur les réseaux sociaux."
       },
       "screenRecorder": {
-        "item1": "Signalement de bugs",
-        "item2": "Démos",
-        "item3": "Supports de formation"
+        "item1": "Enregistrement de bugs techniques pour les partager avec les équipes de développement pour un débogage plus rapide.",
+        "item2": "Création de guides vidéo 'comment faire' pour l'intégration des nouveaux employés ou utilisateurs.",
+        "item3": "Capture de présentations en direct ou de webinaires pour révision et archivage ultérieurs."
       },
-      "comparisonHeading": "GIF vs Vidéo",
+      "comparisonHeading": "Comprendre quand choisir le GIF plutôt que le MP4 est essentiel pour optimiser les performances web.",
       "table": {
-        "feature": "Fonctionnalité",
-        "gif": "GIF",
-        "mp4": "MP4",
-        "size": "Taille",
-        "row1gif": "Plus grand",
-        "row1mp4": "Plus petit",
-        "audio": "Audio",
-        "row2gif": "Non",
-        "row2mp4": "Oui",
-        "sharing": "Partage",
-        "row3gif": "Facile",
-        "row3mp4": "Facile"
+        "feature": "Capacité",
+        "gif": "GIF Animé",
+        "mp4": "MP4 (H.264/H.265)",
+        "size": "Taille du fichier",
+        "row1gif": "Élevée (Mieux pour les clips courts)",
+        "row1mp4": "Faible (Haute compression, mieux pour les vidéos longues)",
+        "audio": "Support audio",
+        "row2gif": "Non (Strictement visuel)",
+        "row2mp4": "Oui (Audio stéréo haute fidélité)",
+        "sharing": "Support de lecture automatique",
+        "row3gif": "Universel (Lecture automatique dans tous les environnements)",
+        "row3mp4": "Conditionnel (Nécessite souvent le mode muet pour la lecture automatique)"
       },
-      "workflowsHeading": "Flux de travail courants",
+      "workflowsHeading": "Guides étape par étape pour les tâches vidéo professionnelles courantes.",
       "workflows": {
         "bug": {
-          "title": "Enregistrer un bug"
+          "title": "Documenter un bug logiciel",
+          "desc": "Lancez l'enregistreur d'écran, capturez les étapes exactes et enregistrez-le en MP4 pour le joindre à votre ticket Jira ou GitHub."
         },
         "animation": {
-          "title": "Partager une animation rapide"
+          "title": "Créer une animation d'interface utilisateur",
+          "desc": "Enregistrez un court clip d'une transition d'interface utilisateur et utilisez l'outil Vidéo en GIF pour créer une boucle légère."
+        }
+      },
+      "privacy": {
+        "intro": "Les fichiers vidéo sont souvent volumineux et contiennent des informations sensibles. Notre approche locale garantit une sécurité maximale :",
+        "point1": "Enregistrement local en mémoire : Votre enregistrement est stocké dans la mémoire temporaire du navigateur, jamais sur nos serveurs.",
+        "point2": "Pas de suivi : Nous ne suivons pas ce que vous enregistrez ou convertissez. Vos réunions privées restent confidentielles.",
+        "point3": "Capacité hors ligne : Une fois l'outil chargé, vous pouvez enregistrer et convertir même sans connexion Internet.",
+        "point4": "Pas de filigrane : Nous ne forçons pas de filigrane sur votre contenu professionnel, garantissant que votre marque est à l'honneur."
+      },
+      "tips": {
+        "intro": "Maîtrisez la vidéo dans le navigateur avec ces stratégies d'enregistrement et de conversion.",
+        "tip1": {
+          "title": "Faites attention à votre zone d'enregistrement :",
+          "body": "Dans la mesure du possible, enregistrez une 'Fenêtre' ou un 'Onglet' plutôt que tout votre écran pour éviter les fuites accidentelles."
+        },
+        "tip2": {
+          "title": "Optimisez pour la résolution GIF :",
+          "body": "Lors de la conversion en GIF, utilisez une résolution plus petite (ex. 640px de large) pour maintenir des tailles de fichiers faibles."
+        },
+        "tip3": {
+          "title": "Vérifiez l'audio du système :",
+          "body": "Les navigateurs modernes permettent de capturer l'audio de l'onglet. Assurez-vous que le volume est équilibré."
+        },
+        "tip4": {
+          "title": "Utilisez moins de FPS pour la documentation :",
+          "body": "Pour les démos de logiciels, 10-15 FPS sont souvent suffisants pour les GIFs, ce qui réduit considérablement la taille."
+        },
+        "tip5": {
+          "title": "Nettoyez l'interface de votre navigateur :",
+          "body": "Avant d'enregistrer, cachez votre barre de favoris et vos extensions pour rendre la vidéo plus professionnelle."
+        }
+      },
+      "faq": {
+        "q1": "Combien de temps puis-je enregistrer mon écran ?",
+        "a1": "Il n'y a pas de limite stricte, mais les enregistrements sont stockés en RAM, donc cela dépend de la mémoire de votre appareil.",
+        "q2": "Quels formats vidéo sont pris en charge pour la conversion en GIF ?",
+        "a2": "La plupart des formats que votre navigateur peut lire, y compris MP4, WebM et MOV.",
+        "q3": "L'audio du micro est-il pris en charge dans l'enregistreur ?",
+        "a3": "Oui ! Vous pouvez choisir d'inclure votre micro, l'audio du système, ou les deux.",
+        "q4": "Pourquoi mon fichier GIF est-il si volumineux ?",
+        "a4": "Les GIFs ne sont pas compressés. Essayez de réduire la durée, les FPS ou la résolution pendant la conversion.",
+        "q5": "Est-ce que cela fonctionne sur mobile ?",
+        "a5": "L'enregistrement d'écran est mieux pris en charge sur les navigateurs de bureau en raison des restrictions de sécurité des OS mobiles.",
+        "q6": "Ces outils sont-ils gratuits pour un usage commercial ?",
+        "a6": "Oui, nos outils vidéo sont entièrement gratuits pour les projets personnels et professionnels."
+      },
+      "useCases": {
+        "intro": "Notre boîte à outils est utilisée par des professionnels de divers secteurs pour sa rapidité et sa confidentialité.",
+        "case1": {
+          "title": "Ingénieurs QA :",
+          "body": "Enregistrent des reproductions de bugs en haute définition et les partagent instantanément avec les développeurs."
+        },
+        "case2": {
+          "title": "Créateurs de contenu :",
+          "body": "Convertissent des extraits saillants en GIFs pour les réseaux sociaux sur des plateformes comme Twitter et Instagram."
+        },
+        "case3": {
+          "title": "Éducateurs à distance :",
+          "body": "Enregistrent rapidement de courts extraits pédagogiques pour expliquer des concepts complexes aux étudiants."
+        },
+        "case4": {
+          "title": "Designers de produits :",
+          "body": "Capturent des transitions UI/UX fluides pour montrer aux développeurs exactement comment les animations doivent être ressenties."
         }
       }
     }

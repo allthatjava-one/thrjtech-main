@@ -24,6 +24,31 @@
     "guide": {
       "heading": "What Are PDF Tools?",
       "intro": "PDF files are portable document files designed to look the same across devices, operating systems, and apps. They are widely used for resumes, contracts, invoices, reports, and document sharing because formatting stays consistent. Common PDF problems include large file sizes, combining separate files, extracting only specific pages, and pulling images from pages.",
+      "deepDiveHeading": "Complete Guide to Practical PDF Workflows",
+      "deepDive": {
+        "sections": {
+          "fundamentals": {
+            "title": "Start With Outcome and Size Constraints"
+          },
+          "structure": {
+            "title": "Organize Document Flow and Audience Scope"
+          },
+          "output": {
+            "title": "Choose Export Format and Version Discipline"
+          },
+          "qa": {
+            "title": "Apply Fast Quality Checks and Repeatable Playbooks"
+          }
+        },
+        "paragraph1": "When people search for PDF tools, they usually are not looking for a technical tutorial. They are trying to finish a task quickly: send an attachment that is too large, merge signed pages, isolate one section of a long report, or convert pages into images for a presentation. That is why a useful PDF workflow starts with the outcome, not the feature list. First define the exact destination of the file and the audience who will consume it. A contract being reviewed on mobile has different constraints than a print-ready brochure. A monthly report shared internally has different expectations than a portfolio sent to a client. If you name the outcome first, every step after that becomes easier. You can choose the right tool, set realistic quality targets, and avoid unnecessary reprocessing that wastes time and can reduce quality.",
+        "paragraph2": "Compression is usually the best first step because file size affects almost every channel. Email systems, job portals, messaging apps, and document management platforms all have upload limits. Even when they do not enforce strict limits, smaller files load faster on slower connections and are less frustrating for recipients. Smart compression means balancing readability against byte size. Text-heavy PDFs can often be reduced significantly while staying crisp, but scanned image-based PDFs need more careful settings. If scans become blurry, signatures and stamps may lose clarity, and tables can become hard to read. A practical method is to create one compressed version, inspect key pages at 100 percent zoom, and keep the original as a fallback. This simple two-copy approach gives you speed without losing reliability when a legal, financial, or archival version is required.",
+        "paragraph3": "Merging is most effective when you treat document order as information architecture rather than just stacking files. The first pages should establish context, the middle should provide evidence, and the ending should support action. For example, in a business proposal, start with the summary and pricing snapshot, then include details, then append references. In project documentation, begin with scope and timeline, then include technical notes, then add supplementary logs. Naming files before merging also helps avoid mistakes: prefixes such as 01_, 02_, and 03_ reduce accidental reordering. If sources come from different teams, check page size and orientation consistency before final export. A clean merge reduces reader effort, which directly improves approval speed, review completion rates, and overall communication quality.",
+        "paragraph4": "Splitting is often underrated, but it can be the most strategic operation when sharing sensitive or role-specific information. Large PDFs often combine sections intended for different audiences. A finance team needs invoices and totals, legal needs terms and signatures, and operations needs schedules. Sending everyone the full file increases confusion and can expose unnecessary details. By splitting documents into focused subsets, you improve clarity and lower risk at the same time. Splitting is also useful for structured review cycles: assign one chunk to each stakeholder, collect feedback faster, then consolidate revisions later. For education, onboarding, and policy documents, splitting long packs into short modules makes material less intimidating and easier to navigate. In short, splitting is not just editing; it is communication design applied to documents.",
+        "paragraph5": "Conversion from PDF to images is ideal when your destination does not need selectable text but does need dependable visual presentation. Slide decks, social posts, design reviews, and product documentation often need page snapshots that render consistently everywhere. Images also prevent accidental text reflow in systems with limited PDF support. The key is choosing a format based on purpose. PNG works well for crisp graphics, diagrams, and interface captures. JPEG is usually better for photo-heavy content where smaller size matters more than pixel-perfect edges. Before exporting, decide whether you need the full page, a cropped section, or only a few pages. Exporting everything by default creates clutter and extra storage use. A selective conversion workflow keeps asset libraries cleaner and helps teams locate the correct visual faster.",
+        "paragraph6": "For collaborative environments, version discipline matters as much as tooling. A practical naming convention can prevent duplicate work and mistaken uploads. Include project code, date, purpose, and status, such as proposal_2026-06_client-review_v2.pdf. Keep originals in one folder and processed outputs in a clearly separate folder, then archive superseded versions instead of deleting them immediately. If approvals are involved, preserve a checkpoint copy before each major transformation. This is especially valuable when compression or conversion settings need to be revisited. Teams that adopt lightweight version habits spend less time asking which file is current and more time making decisions. Even solo users benefit: clear filenames and folders turn a chaotic download directory into a reliable document workspace.",
+        "paragraph7": "Quality control should be intentional but fast. You do not need a long checklist, but you do need a repeatable one. After any PDF operation, verify four things: legibility, completeness, order, and accessibility. Legibility means text and key visuals remain clear at normal zoom. Completeness means no pages are missing and no unwanted pages were included. Order means the narrative flows as intended and bookmarks or references still make sense. Accessibility includes practical considerations like whether page orientation is correct and whether recipients on mobile can read the content without constant pinching and scrolling. This quick review takes a minute or two and catches most high-impact issues before they reach clients, hiring managers, legal reviewers, or leadership teams.",
+        "paragraph8": "The most efficient long-term strategy is to think in reusable workflows rather than one-off fixes. Build simple playbooks for recurring tasks: one for sending files externally, one for combining weekly reports, one for extracting contract pages, and one for turning selected pages into publishable visuals. Each playbook can be just a short sequence: prepare source files, run the right tool, perform a two-minute quality check, then save with consistent naming. Over time these routines remove guesswork and reduce stress, especially under deadline pressure. PDF tools are powerful, but the real productivity gain comes from consistent decisions. If you define your output goal first, choose the smallest necessary operation, and preserve clear versions, document handling becomes predictable, fast, and professional every time."
+      },
       "examplesHeading": "Examples",
       "examples": {
         "item1": "File too large for email",
@@ -58,6 +83,44 @@
         "compression": "PDF compression guide",
         "conversion": "PDF conversion guide",
         "whyLarge": "Why PDFs become large"
+      },
+      "privacy": {
+        "heading": "Your Files Never Leave Your Device",
+        "intro": "Privacy is built into every tool on this site. Unlike cloud-based PDF services that upload your documents to external servers, all processing happens locally in your browser using JavaScript and WebAssembly. Here is what that means in practice:",
+        "point1": "No file is ever sent to a server — everything runs on your CPU and memory.",
+        "point2": "Closing the tab immediately discards all data with no trace left behind.",
+        "point3": "No account, login, or email is required for any tool.",
+        "point4": "Confidential documents — contracts, financial reports, medical records — can be processed safely without exposing them to third-party infrastructure."
+      },
+      "tips": {
+        "heading": "Tips for Best Results",
+        "intro": "A few simple habits can significantly improve your output quality and reduce the chance of having to reprocess a file:",
+        "tip1": { "title": "Always keep your original.", "body": "Before compressing, merging, or splitting, save a backup copy. Operations cannot be undone once the browser session closes." },
+        "tip2": { "title": "Check page orientation before merging.", "body": "Mixing portrait and landscape pages in a single PDF creates an inconsistent reading experience. Rotate pages first if needed." },
+        "tip3": { "title": "Use meaningful file names.", "body": "Names like report_2026-06_final.pdf are far easier to manage than document(3).pdf, especially when handling multiple versions." },
+        "tip4": { "title": "Preview before downloading.", "body": "Most tools display a preview of the result. Scroll through it to confirm page count, order, and readability before saving." },
+        "tip5": { "title": "Match format to destination.", "body": "PNG exports from PDF Converter are ideal for presentations and documentation; JPEG is better when file size matters more than pixel-perfect sharpness." }
+      },
+      "faq": {
+        "heading": "Frequently Asked Questions",
+        "q1": "Is there a file size limit?",
+        "a1": "There is no hard server-side limit because your file never leaves your device. The practical limit depends on your browser and available RAM. Most modern browsers handle PDFs up to several hundred megabytes without issues.",
+        "q2": "Will compression affect text readability?",
+        "a2": "Text in PDFs is stored as vector data and is not affected by image compression settings. Only embedded images inside the document are compressed. A text-heavy contract or report will remain perfectly sharp regardless of the compression level chosen.",
+        "q3": "Can I merge PDFs with different page sizes?",
+        "a3": "Yes. The merger accepts PDFs regardless of their page dimensions. If visual consistency matters, consider standardizing page sizes beforehand — most word processors and print dialogs can export to a fixed paper size.",
+        "q4": "What is the difference between splitting and extracting?",
+        "a4": "Splitting divides one PDF into multiple separate files, typically one per page or by a defined range. Extraction pulls a specific set of pages into a new single file while leaving the original unchanged. Both outcomes are achievable with the PDF Splitter tool.",
+        "q5": "Which image format should I choose when converting PDF pages?",
+        "a5": "PNG is recommended for documents with text, diagrams, charts, and interface screenshots because it uses lossless compression and preserves sharp edges. JPEG is a better choice for pages dominated by photographs where a smaller output file size is more important than pixel-perfect rendering."
+      },
+      "useCases": {
+        "heading": "Who Uses These PDF Tools?",
+        "intro": "PDF tools are needed across a wide range of professions and daily situations. Here are some of the most common real-world scenarios:",
+        "case1": { "title": "Freelancers and contractors.", "body": "Compress invoices before emailing them to clients, split a master service agreement to share only relevant clauses, and convert signed pages to images for portfolio use." },
+        "case2": { "title": "Students and educators.", "body": "Merge lecture notes, assignment sheets, and reference pages into a single study document. Split long reading packs into per-session modules. Extract specific pages from textbooks or research papers." },
+        "case3": { "title": "Office workers and administrators.", "body": "Reduce report file sizes before uploading to intranets or shared drives. Combine weekly updates from multiple contributors. Extract the signature page from a contract for quick filing." },
+        "case4": { "title": "Designers and content creators.", "body": "Convert PDF presentation pages into high-resolution images for use in blog posts, social media, or client decks. Merge mood boards and reference sheets into a shareable PDF brief." }
       }
     }
   },
@@ -67,77 +130,157 @@
     "tools": {
       "resizer": {
         "name": "Image Resizer",
-        "desc": "Resize images to any dimensions you need while preserving aspect ratio and quality."
+        "desc": "Professional-grade image scaling that allows you to change pixel dimensions or percentage size. Perfect for fitting strict upload requirements for websites, emails, or social media while maintaining crisp visual fidelity."
       },
       "watermarker": {
         "name": "Image Watermarker",
-        "desc": "Protect your photos by adding text or image watermarks directly in your browser."
+        "desc": "Secure your digital assets with custom watermarks. Add your brand logo or custom text with adjustable opacity, position, and scale. Essential for photographers and creators who share their work online."
       },
       "collage": {
         "name": "Image Collage Maker",
-        "desc": "Combine multiple images into a beautiful collage with customizable layouts."
+        "desc": "Transform your collection of photos into a stunning visual narrative. Choose from multiple grid layouts, adjust border spacing, and customize background colors to create the perfect highlight reel."
       },
       "crop": {
         "name": "Image Crop",
-        "desc": "Crop images to a precise selection or a fixed aspect ratio with an intuitive drag interface."
+        "desc": "Precision cropping tools for any situation. Use fixed aspect ratios for profile pictures and headers, or free-form selection to eliminate distractions and zoom in on the most important details of your shots."
       },
       "meme": {
         "name": "Meme Generator",
-        "desc": "Create custom memes by adding captions to any image. Fast, fun, and entirely client-side."
+        "desc": "The fastest way to turn your ideas into viral content. Use classic meme fonts, add multiple text layers, and customize colors. Completely client-side, so your funny ideas stay private until you share them."
       },
       "converter": {
         "name": "Image Converter",
-        "desc": "Convert images between JPG, PNG, WebP, and other formats instantly in your browser."
+        "desc": "Multi-format conversion engine for the modern web. Instantly switch between JPG, PNG, WebP, and more. Optimize your file sizes for web performance or convert to lossless formats for archiving and editing."
       },
       "rotator": {
         "name": "Image Rotator",
-        "desc": "Rotate images 90° left or right, or flip them horizontally and vertically."
+        "desc": "Correct orientation issues instantly. Rotate photos by 90-degree increments or flip them horizontally and vertically to fix mirror effects or sideways mobile uploads with zero loss in quality."
       }
     },
     "guide": {
-      "heading": "What Are Image Editing Tools?",
-      "intro": "Image editing tools help you prepare visuals for real-world publishing needs. They solve common problems around image formats, file sizes, social media requirements, and website optimization.",
-      "categoriesHeading": "Tool Categories",
+      "heading": "The Complete Guide to Online Image Editing",
+      "sections": {
+        "foundation": { "title": "1. Understanding Browser-Based Image Editing" },
+        "categories": { "title": "2. Modern Image Tool Categories" },
+        "formats": { "title": "3. Choosing the Right Image Format" },
+        "scenarios": { "title": "4. Common Creative Workflows" },
+        "privacy": { "title": "5. Why Client-Side Privacy Matters" },
+        "tips": { "title": "6. Pro Tips for High-Quality Visuals" },
+        "faq": { "title": "7. Frequently Asked Questions" },
+        "useCases": { "title": "8. Real-World Use Cases" }
+      },
+      "intro": "In the digital age, images are the primary medium of communication. Whether you are a social media influencer, a marketing professional, or a developer, you need reliable tools to manipulate images quickly. Our platform offers a suite of image tools that run entirely in your web browser. This means you don't need to download heavy software like Photoshop or GIMP for simple tasks. By utilizing modern web technologies like the Canvas API and WebAssembly, we provide a smooth, fast, and secure editing experience. Our tools are designed to be intuitive: just drag and drop your file, apply your changes, and download the result. Because the processing happens on your own computer, there is no waiting for uploads or downloads to a central server, making the workflow significantly faster for batch operations or high-resolution files. This decentralized approach also means you can work even if your internet connection is slow, as long as the initial page has loaded.",
+      "categoriesHeading": "Explore our specialized image editing categories designed for every possible need.",
       "categories": {
         "optimization": {
           "title": "Image Optimization",
           "item1": "Image Resizer",
-          "item2": "Image Crop"
+          "desc1": "Adjust the pixel dimensions of your images to fit specific platform requirements while maintaining the aspect ratio to prevent distortion.",
+          "item2": "Image Crop",
+          "desc2": "Focus on the most important part of your photo by removing unwanted edges or fitting specific rectangles like square profile pictures."
         },
         "conversion": {
           "title": "Format Conversion",
-          "item1": "Image Converter"
+          "item1": "Image Converter",
+          "desc1": "Safely transform your files between popular formats like PNG, JPG, and WebP to balance file size against visual transparency and quality."
         },
         "creative": {
           "title": "Creative Tools",
           "item1": "Image Collage",
+          "desc1": "Tell a story by merging multiple photos into a single, cohesive layout with custom spacing and arrangement colors.",
           "item2": "Meme Generator",
-          "item3": "Watermarker"
+          "desc2": "Engage your audience with viral humor by adding top and bottom captions to any image template or your own uploaded photos.",
+          "item3": "Watermarker",
+          "desc3": "Protect your intellectual property by overlaying semi-transparent text or logos, ensuring your brand stays with your work."
         }
       },
-      "formatHeading": "Choosing the Right Image Format",
+      "formatHeading": "Understanding the technical differences between image formats is key to web performance and visual quality.",
       "formatTable": {
-        "format": "Format",
-        "bestUse": "Best Use",
-        "jpg": "JPG",
-        "jpgUse": "Photos",
-        "png": "PNG",
-        "pngUse": "Graphics",
-        "webp": "WebP",
-        "webpUse": "Websites"
+        "format": "Format Name",
+        "bestUse": "Optimal Use Case",
+        "jpg": "JPEG (Joint Photographic Experts Group)",
+        "jpgUse": "Best for photographs and realistic images with smooth gradients. Offers high compression but lacks transparency.",
+        "png": "PNG (Portable Network Graphics)",
+        "pngUse": "Ideal for logos, icons, and graphics that require transparent backgrounds or pixel-perfect precision.",
+        "webp": "WebP (Google Web Format)",
+        "webpUse": "Modern standard for the web. Provides superior compression for both lossy and lossless images with transparency support."
       },
-      "seoNote": "This kind of content ranks surprisingly well.",
-      "scenariosHeading": "Common Scenarios",
+      "seoNote": "Optimizing images for the web reduces page load times and improves SEO rankings significantly.",
+      "scenariosHeading": "How our users frequently combine these tools for professional results.",
       "scenarios": {
-        "usePrefix": "Use",
+        "usePrefix": "Try combining these with",
         "social": {
-          "title": "Resize for Social Media"
+          "title": "Social Media Content Creation",
+          "desc": "Prepare a perfect Instagram post by first cropping to a 1:1 square, then resizing to 1080x1080 pixels, and finally adding a subtle watermark."
         },
         "branding": {
-          "title": "Add Branding"
+          "title": "Branding for Photographers",
+          "desc": "Scale down high-resolution RAW exports to web-friendly 2000px widths and apply a semi-transparent logo watermark before sharing with clients."
         },
         "marketing": {
-          "title": "Create Marketing Graphics"
+          "title": "Marketing Campaign Assets",
+          "desc": "Convert heavy PNG screenshots into optimized WebP formats to save bandwidth on your landing page while maintaining high clarity."
+        }
+      },
+      "privacy": {
+        "intro": "Unlike many online converters that require you to upload your personal photos to their servers, our tools handle everything locally. This 'client-side' approach has several major benefits:",
+        "point1": "Security: Your images never leave your device. There is no risk of them being intercepted during transit or stored in a database without your permission.",
+        "point2": "Privacy: We don't see what you edit. Whether it's personal family photos or sensitive business documents, your data remains yours alone.",
+        "point3": "Compliance: Our architecture naturally aligns with strict data protection regulations like GDPR and CCPA by design.",
+        "point4": "Speed: Large 4K images don't need to be uploaded, which can save minutes on slow connections."
+      },
+      "tips": {
+        "intro": "Get the most out of our tools with these pro-level image editing tips.",
+        "tip1": {
+          "title": "Preserve Asset Quality:",
+          "body": "Always start with the highest resolution source available. It is easy to scale down, but scaling up will always result in blurriness."
+        },
+        "tip2": {
+          "title": "Understand Aspect Ratio:",
+          "body": "When resizing, always lock the aspect ratio unless you deliberately want to stretch or squish the image."
+        },
+        "tip3": {
+          "title": "Use WebP for Modern Browsers:",
+          "body": "WebP files are typically 25-35% smaller than JPEGs at the same quality level, making your websites much faster."
+        },
+        "tip4": {
+          "title": "Optimize Watermark Opacity:",
+          "body": "A watermark should protect your work without distracting from it. Aim for 20-40% opacity for a professional look."
+        },
+        "tip5": {
+          "title": "Leverage Contrast for Memes:",
+          "body": "When making memes, use white text with a black outline. This ensures the text is readable over any color in the background."
+        }
+      },
+      "faq": {
+        "q1": "Is there a file size limit for the image tools?",
+        "a1": "Since the processing happens in your browser, the limit is mostly determined by your computer's RAM. Most modern devices can easily handle images up to 50MB-100MB.",
+        "q2": "Will my images look blurry after resizing?",
+        "a2": "Our resizer uses high-quality interpolation algorithms (like Lanczos) to ensure that scaling down remains sharp while scaling up is as smooth as possible.",
+        "q3": "Can I convert images back to JPG from WebP?",
+        "a3": "Yes! Our converter supports bi-directional conversion. You can convert to WebP for your website and back to JPG if you need to print them later.",
+        "q4": "Are the tools free to use for commercial projects?",
+        "a4": "Absolutely. All tools on this platform are free for both personal and professional use without any hidden costs or accounts.",
+        "q5": "Does the collage maker support custom layouts?",
+        "a5": "We offer several popular grid presets that automatically adapt to the number of images you upload, giving you a balanced look every time."
+      },
+      "useCases": {
+        "intro": "Our image toolkit is used by thousands of people every day for various real-world applications.",
+        "case1": {
+          "title": "E-commerce Owners:",
+          "body": "Batch resize product photos to uniform dimensions and convert them to WebP to ensure their online store loads instantly for customers."
+        },
+        "case2": {
+          "title": "Social Media Managers:",
+          "body": "Quickly generate memes for trending topics or add brand logos to viral content before posting it to Twitter or Instagram."
+        },
+        "case3": {
+          "title": "Web Developers:",
+          "body": "Crop hero images to specific aspect ratios (like 16:9 or 21:9) and optimize the quality-to-size ratio for better Core Web Vitals."
+        },
+        "case4": {
+          "title": "General Users:",
+          "body": "Combine vacation photos into a collage for sharing with family, or simply rotate and flip accidentally sideways phone photos."
         }
       }
     }
@@ -157,43 +300,103 @@
     },
     "guide": {
       "heading": "Why Developer Utilities Matter",
-      "intro": "Developer utilities reduce friction during daily coding by helping with debugging, API testing, data validation, and overall productivity.",
+      "sections": {
+        "foundation": {
+          "title": "1) Core Workflow Benefits"
+        },
+        "overview": {
+          "title": "2) Tool-by-Tool Overview"
+        },
+        "examples": {
+          "title": "3) Copy-and-Use Examples"
+        },
+        "pitfalls": {
+          "title": "4) Common Pitfalls and How to Avoid Them"
+        },
+        "privacy": {
+          "title": "5) Your Data Stays in Your Browser"
+        },
+        "tips": {
+          "title": "6) Tips for More Effective Use"
+        },
+        "faq": {
+          "title": "7) Frequently Asked Questions"
+        },
+        "useCases": {
+          "title": "8) Who Uses These Tools?"
+        }
+      },
+      "intro": "Every developer encounters the same daily friction: a JSON payload arrives from an API as a single unreadable line, or a regex pattern works in the documentation but fails in the codebase. Stopping to install a desktop tool or write a quick test script costs far more time than the task itself. Browser-based utilities eliminate that friction by giving you a reliable, zero-install workspace that opens instantly and never requires you to hand data to an unknown third party.",
       "highlights": {
-        "item1": "Debugging",
-        "item2": "API testing",
-        "item3": "Data validation",
-        "item4": "Productivity"
+        "item1": "Debug API responses faster by pasting raw JSON and reading a structured, syntax-highlighted tree instead of an unreadable flat string.",
+        "item2": "Test API contracts by verifying that your request body matches the expected schema before it ever reaches the server.",
+        "item3": "Validate form input patterns by writing and refining regex expressions against real sample strings in real time.",
+        "item4": "Reduce workflow friction by keeping common developer tasks inside the browser tab where you are already working, without switching to a separate tool."
       },
       "overviewHeading": "Tool Overview",
       "json": {
-        "item1": "Pretty printing",
-        "item2": "Debugging APIs",
-        "item3": "Validating responses"
+        "item1": "Pretty-print compact or minified JSON into an indented, readable structure with syntax coloring so keys, values, and nested objects are immediately scannable.",
+        "item2": "Debug API responses by pasting raw payloads directly from your network tab or clipboard and inspecting the structure without writing any code.",
+        "item3": "Validate JSON syntax before submitting data to a server or storing it in a config file, catching errors like trailing commas or mismatched brackets instantly."
       },
       "regex": {
-        "item1": "Pattern matching",
-        "item2": "Validation",
-        "item3": "Testing expressions"
+        "item1": "Match patterns across multi-line sample text with immediate visual highlighting of every capture group and the overall match region.",
+        "item2": "Validate common input formats such as emails, phone numbers, URLs, and dates by testing against real-world strings that include edge cases.",
+        "item3": "Test find-and-replace logic before using it in code, a script, or a database migration so you can confirm the substitution works exactly as intended."
       },
       "examplesHeading": "Practical Examples",
       "examples": {
         "email": {
           "title": "Validate Email Addresses",
-          "label": "Regex example.",
+          "label": "Paste this pattern into the Regex Tester and enter a list of addresses in the test input. Matches are highlighted; non-matching lines stay unstyled. Adjust the pattern to support sub-domains, plus-addressing, or international TLDs as needed.",
           "code": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
         },
         "api": {
           "title": "Read API Responses",
-          "label": "JSON example.",
+          "label": "Paste a raw API response body into JSON Formatter to instantly see a structured, indented view. Use this to confirm which fields are present, check data types, and identify unexpected null values or extra nesting before writing any parsing code.",
           "code": "{\n  \"userId\": 42,\n  \"status\": \"active\",\n  \"roles\": [\"admin\", \"editor\"]\n}"
         }
       },
       "mistakesHeading": "Common Developer Mistakes",
-      "seoNote": "This is exactly the kind of content Google likes.",
+      "seoNote": "Small formatting errors and untested patterns are among the most common causes of bugs that are difficult to trace. Catching them early with the right tooling saves more debugging time than it takes to add the check.",
       "mistakes": {
-        "item1": "Invalid JSON",
-        "item2": "Overcomplicated regex",
-        "item3": "Poor escaping"
+        "item1": "Submitting invalid JSON to an API because a trailing comma was left in a config file or request body — the formatter catches this instantly before any request is made.",
+        "item2": "Writing an overly complex regex with nested groups that works for one case but silently fails for valid inputs — testing against a diverse sample set prevents this.",
+        "item3": "Forgetting to escape special characters like dots, brackets, or slashes in regex patterns, causing them to match far more broadly than intended and introducing hard-to-debug logic errors."
+      },
+      "privacy": {
+        "intro": "Both tools run entirely in your browser. No data is sent to any server at any point during use. This matters especially in developer workflows because payloads often contain sensitive information:",
+        "point1": "API responses may include authentication tokens, user IDs, or personal data that should never leave your controlled environment.",
+        "point2": "JSON config files sometimes embed credentials, API keys, or internal endpoint URLs that should not be pasted into public online tools.",
+        "point3": "Regex test strings often contain real user data extracted from logs or databases that is subject to privacy regulations.",
+        "point4": "Closing the browser tab immediately discards all content with no trace, and no account or login is required to use either tool."
+      },
+      "tips": {
+        "intro": "A few habits make these tools significantly more useful in a real development workflow:",
+        "tip1": { "title": "Use real data, not placeholders.", "body": "Testing a regex or JSON schema against a synthetic example often misses edge cases. Paste actual payloads or real form inputs to surface unexpected failures immediately." },
+        "tip2": { "title": "Test edge cases deliberately.", "body": "For regex, always include at least one near-miss input — a string that looks valid but should not match. For JSON, try an empty object, a deeply nested structure, and an array at the root level." },
+        "tip3": { "title": "Format before reading.", "body": "Never try to interpret minified JSON by eye. One paste into the formatter saves more time than it takes and eliminates a major source of misreading." },
+        "tip4": { "title": "Keep named capture groups.", "body": "In regex patterns used for parsing, prefer named groups over positional ones. They make intent clear when you revisit the pattern weeks later." },
+        "tip5": { "title": "Bookmark your patterns.", "body": "Regex patterns for common formats like ISO dates, UUIDs, and semantic version strings are worth saving. Build a personal reference so you are not rewriting the same patterns repeatedly." }
+      },
+      "faq": {
+        "q1": "Does the JSON Formatter support very large payloads?",
+        "a1": "Yes. Because processing is done locally in your browser, the only practical limits are browser memory and JavaScript engine performance. Typical API responses of several megabytes format in under a second.",
+        "q2": "Can I use regex flags like case-insensitive or multiline mode?",
+        "a2": "The Regex Tester supports standard JavaScript regex flags including case-insensitive (i), global (g), multiline (m), and dotAll (s). You can combine flags directly in the pattern input field using the standard slash notation.",
+        "q3": "Does JSON Formatter detect and explain errors?",
+        "a3": "Yes. When you paste invalid JSON, the formatter highlights the position of the syntax error and shows a message describing the problem. Common errors like trailing commas, single quotes instead of double quotes, and unquoted keys are caught immediately.",
+        "q4": "Is the Regex Tester compatible with patterns from other languages?",
+        "a4": "The tester uses the JavaScript regex engine, which is compatible with most common patterns. Patterns from Python, Ruby, PHP, and Java are usually portable with minor adjustments.",
+        "q5": "Can I share a pattern or a JSON example with a teammate?",
+        "a5": "The tools do not currently have a shareable link feature, but you can copy and paste patterns and JSON samples into a shared document, Slack message, or pull request comment. The tools open in seconds so a colleague can paste and verify immediately."
+      },
+      "useCases": {
+        "intro": "These utilities are useful across the full range of development roles and tasks:",
+        "case1": { "title": "Backend engineers.", "body": "Format and inspect API responses during integration work, validate request payloads before writing parsing code, and test data extraction patterns against log file samples." },
+        "case2": { "title": "Frontend developers.", "body": "Debug API data coming from endpoints before building UI components around it, validate form field patterns, and confirm that state objects have the expected structure." },
+        "case3": { "title": "QA engineers and testers.", "body": "Verify that API responses conform to documented schemas, build and test input validation patterns to use in test cases, and inspect edge-case payloads that trigger specific code paths." },
+        "case4": { "title": "DevOps and platform engineers.", "body": "Validate and format config files before deploying, test grep or sed patterns against sample log lines before running in production, and inspect structured log output to identify anomalies." }
       }
     }
   },
@@ -203,56 +406,135 @@
     "tools": {
       "screenRecorder": {
         "name": "Quick Screen Recorder",
-        "desc": "Record your screen or browser tab instantly without any extensions or software installs."
+        "desc": "A zero-setup, browser-based recording utility designed for immediate use. Capture your choice of the entire desktop, a specialized application window, or a single browser tab with high-definition clarity. Perfect for creating tutorials, demos, and bug reports without the bloat of traditional recording software."
       },
       "videoToGif": {
         "name": "Video to GIF Converter",
-        "desc": "Convert video clips to animated GIFs entirely in your browser. Fast, free, and private."
+        "desc": "Transform high-resolution video clips into lightweight, shareable animated GIFs. Our converter runs entirely on your local machine, allowing you to fine-tune frame rates and quality settings to strike the perfect balance between file size and visual smoothness for web delivery."
       }
     },
     "guide": {
-      "heading": "Why Video Formats Matter",
-      "intro": "Choosing the right format affects performance, quality, and delivery. Video workflows usually balance MP4 and GIF outputs based on file size, compatibility, and sharing needs.",
-      "highlights": {
-        "item1": "MP4",
-        "item2": "GIF",
-        "item3": "File size",
-        "item4": "Compatibility"
+      "heading": "The Comprehensive Guide to Browser-Based Video Utilities",
+      "sections": {
+        "foundation": { "title": "1. Modern Browser Recording & Conversion" },
+        "categories": { "title": "2. Video Tool Capabilities" },
+        "formats": { "title": "3. Comparing GIF vs. MP4 Video Formats" },
+        "scenarios": { "title": "4. Common Professional Workflows" },
+        "privacy": { "title": "5. Why Client-Side Video Processing Matters" },
+        "tips": { "title": "6. Pro Tips for High-Quality Captures" },
+        "faq": { "title": "7. Frequently Asked Questions" },
+        "useCases": { "title": "8. Real-World Use Cases" }
       },
-      "overviewHeading": "Tool Overview",
-      "useCasesLabel": "Use cases:",
+      "intro": "Video content is the most engaging medium on the web, but creating and sharing it can often be technically challenging. Our platform simplifies this by providing robust video tools that require no installation. By leveraging modern browser APIs such as MediaDevices and WebAssembly-powered converters, we bring high-performance video processing directly to your browser window. This eliminates the need for expensive subscriptions or privacy-invasive 'cloud' converters. Whether you are capturing a software bug, creating a product demo, or converting an MP4 into a looping GIF for a GitHub README, our tools offer a frictionless, high-speed experience. All processing happens on your local CPU and GPU, ensuring that your data never leaves your device while providing the near-instant performance modern professionals demand.",
+      "highlights": {
+        "item1": "Zero Installation",
+        "desc1": "No browser extensions, desktop apps, or plugins required. Everything runs in standard modern browsers.",
+        "item2": "Lossless Capture",
+        "desc2": "Record your screen at the native resolution of your display for pixel-perfect tutorials and presentations.",
+        "item3": "Fast Conversion",
+        "desc3": "Convert portions of videos to GIFs in seconds using efficient client-side encoding algorithms.",
+        "item4": "Universal Sharing",
+        "desc4": "Generate formats that are compatible with every major social platform, email client, and documentation tool."
+      },
+      "overviewHeading": "Detailed breakdown of our core video processing capabilities.",
+      "useCasesLabel": "Primary use cases for this tool:",
       "videoToGif": {
-        "item1": "Tutorials",
-        "item2": "Social media",
-        "item3": "Documentation"
+        "item1": "Creating animated feature highlights for landing pages and marketing emails.",
+        "item2": "Adding looping demonstrations to documentation sites like GitBook or Readme.io.",
+        "item3": "Capturing funny or informative segments from long videos for social sharing."
       },
       "screenRecorder": {
-        "item1": "Bug reporting",
-        "item2": "Demos",
-        "item3": "Training materials"
+        "item1": "Recording technical bugs to share with development teams for faster debugging.",
+        "item2": "Creating 'how-to' video guides for onboarding new employees or users.",
+        "item3": "Capturing live presentations or webinars for later review and archiving."
       },
-      "comparisonHeading": "GIF vs Video",
+      "comparisonHeading": "Understanding when to choose GIF over MP4 is essential for optimizing web performance.",
       "table": {
-        "feature": "Feature",
-        "gif": "GIF",
-        "mp4": "MP4",
-        "size": "Size",
-        "row1gif": "Larger",
-        "row1mp4": "Smaller",
-        "audio": "Audio",
-        "row2gif": "No",
-        "row2mp4": "Yes",
-        "sharing": "Sharing",
-        "row3gif": "Easy",
-        "row3mp4": "Easy"
+        "feature": "Capability",
+        "gif": "Animated GIF",
+        "mp4": "MP4 (H.264/H.265)",
+        "size": "File Size",
+        "row1gif": "High (Limited compression, best for short clips)",
+        "row1mp4": "Low (High compression, best for long videos)",
+        "audio": "Audio Support",
+        "row2gif": "No (Strictly visual)",
+        "row2mp4": "Yes (High-fidelity stereo audio)",
+        "sharing": "Auto-Play Support",
+        "row3gif": "Universal (Plays automatically in all environments)",
+        "row3mp4": "Conditional (Often requires mute for auto-play)"
       },
-      "workflowsHeading": "Common Workflows",
+      "workflowsHeading": "Step-by-step guides for common professional video tasks.",
       "workflows": {
         "bug": {
-          "title": "Record a Bug"
+          "title": "Documenting a Software Bug",
+          "desc": "Start the screen recorder, capture the exact steps to reproduce the issue, and save it as an MP4 to attach directly to your Jira or GitHub issue ticket."
         },
         "animation": {
-          "title": "Share a Quick Animation"
+          "title": "Creating a Looping UI Animation",
+          "desc": "Record a short clip of a new UI transition, then use the Video to GIF tool to create a lightweight loop for your design portfolio or product update."
+        }
+      },
+      "privacy": {
+        "intro": "Video files are often large and contain sensitive personal or business information. Our client-side approach ensures maximum security:",
+        "point1": "Local In-Memory Recording: Your screen recording is stored in your browser's temporary memory, never on our servers.",
+        "point2": "No Tracking: We don't track what you record or convert. Your tutorials and private meetings remain 100% confidential.",
+        "point3": "Offline Capability: Once the tool is loaded, you can record and convert even if you lose your internet connection.",
+        "point4": "No Watermarks: We don't force watermarks on your professional content, ensuring your brand stays front and center."
+      },
+      "tips": {
+        "intro": "Master browser-based video with these professional recording and conversion strategies.",
+        "tip1": {
+          "title": "Curate Your Recording Area:",
+          "body": "Whenever possible, record a 'Window' or 'Tab' instead of the 'Entire Screen' to avoid accidental leaks of notifications or desktop icons."
+        },
+        "tip2": {
+          "title": "Optimize for GIF Resolution:",
+          "body": "When converting to GIF, use a smaller resolution (e.g., 640px width). This keeps file sizes low enough for email and Slack."
+        },
+        "tip3": {
+          "title": "Check Your System Audio:",
+          "body": "Modern browsers allow you to capture tab audio. Ensure your volume is balanced before starting a long recording session."
+        },
+        "tip4": {
+          "title": "Use Lower Frame Rates for Documentation:",
+          "body": "For software demos, 10-15 FPS is often enough for GIFs, dramatically reducing the file size without sacrificing clarity."
+        },
+        "tip5": {
+          "title": "Clean Up Your Browser UI:",
+          "body": "Before recording a web tutorial, hide your bookmarks bar and extensions to make the video look cleaner and more professional."
+        }
+      },
+      "faq": {
+        "q1": "How long can I record my screen for?",
+        "a1": "There is no hard limit set by the tool. However, recordings are stored in RAM, so very long sessions (over 1 hour) may depend on your device's memory.",
+        "q2": "What video formats are supported for GIF conversion?",
+        "a2": "Our tool supports most common formats that your browser can play, including MP4, WebM, and MOV (on supported platforms).",
+        "q3": "Is microphone audio supported in the recorder?",
+        "a3": "Yes! You can choose to include your microphone, system audio, or both depending on your browser's security settings.",
+        "q4": "Why is my GIF file so large?",
+        "a4": "GIFs are an uncompressed format from the 1980s. To reduce size, try lowering the duration, frame rate, or resolution during conversion.",
+        "q5": "Does this work on mobile devices?",
+        "a5": "Screen recording is best supported on Desktop browsers like Chrome, Edge, and Firefox due to OS-level security restrictions on mobile.",
+        "q6": "Are these tools free for commercial use?",
+        "a6": "Yes, our video tools are completely free for both personal and professional projects with no hidden costs."
+      },
+      "useCases": {
+        "intro": "Our video toolkit is trusted by professionals across various industries for its speed and privacy.",
+        "case1": {
+          "title": "Quality Assurance Engineers:",
+          "body": "Record high-definition bug reproductions and share them instantly with developers to reduce turnaround time."
+        },
+        "case2": {
+          "title": "Content Creators:",
+          "body": "Convert highlight clips into GIFs for social media engagement and 'teaser' content on platforms like Twitter and Instagram."
+        },
+        "case3": {
+          "title": "Remote Educators:",
+          "body": "Quickly record short instructional 'snippets' to explain complex concepts to students without needing complex video editing suites."
+        },
+        "case4": {
+          "title": "Product Designers:",
+          "body": "Capture smooth UI/UX transitions and embed them as loops in Figma or other design tools to show developers exactly how animations should feel."
         }
       }
     }

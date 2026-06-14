@@ -61,15 +61,18 @@ export default function VideoToolsPage() {
 
             <div className="video-tools-guide-content">
               <h2>{t('video.guide.heading')}</h2>
+              
+              <h3>{t('video.guide.sections.foundation.title')}</h3>
               <p>{t('video.guide.intro')}</p>
               <ul>
-                <li>{t('video.guide.highlights.item1')}</li>
-                <li>{t('video.guide.highlights.item2')}</li>
-                <li>{t('video.guide.highlights.item3')}</li>
-                <li>{t('video.guide.highlights.item4')}</li>
+                <li><strong>{t('video.guide.highlights.item1')}</strong>: {t('video.guide.highlights.desc1')}</li>
+                <li><strong>{t('video.guide.highlights.item2')}</strong>: {t('video.guide.highlights.desc2')}</li>
+                <li><strong>{t('video.guide.highlights.item3')}</strong>: {t('video.guide.highlights.desc3')}</li>
+                <li><strong>{t('video.guide.highlights.item4')}</strong>: {t('video.guide.highlights.desc4')}</li>
               </ul>
 
-              <h3>{t('video.guide.overviewHeading')}</h3>
+              <h3>{t('video.guide.sections.categories.title')}</h3>
+              <p>{t('video.guide.overviewHeading')}</p>
 
               <h4>{t('video.tools.videoToGif.name')}</h4>
               <p>{t('video.guide.useCasesLabel')}</p>
@@ -87,7 +90,8 @@ export default function VideoToolsPage() {
                 <li>{t('video.guide.screenRecorder.item3')}</li>
               </ul>
 
-              <h3>{t('video.guide.comparisonHeading')}</h3>
+              <h3>{t('video.guide.sections.formats.title')}</h3>
+              <p>{t('video.guide.comparisonHeading')}</p>
               <div className="video-tools-table-wrap">
                 <table className="video-tools-compare-table">
                   <thead>
@@ -117,14 +121,59 @@ export default function VideoToolsPage() {
                 </table>
               </div>
 
-              <h3>{t('video.guide.workflowsHeading')}</h3>
+              <h3>{t('video.guide.sections.scenarios.title')}</h3>
+              <p>{t('video.guide.workflowsHeading')}</p>
               <div className="video-tools-workflow-list">
                 <p><strong>{t('video.guide.workflows.bug.title')}</strong></p>
+                <p>{t('video.guide.workflows.bug.desc')}</p>
                 <p><Link to="/screen-recorder">{t('video.tools.screenRecorder.name')}</Link>.</p>
 
                 <p><strong>{t('video.guide.workflows.animation.title')}</strong></p>
+                <p>{t('video.guide.workflows.animation.desc')}</p>
                 <p><Link to="/video-to-gif">{t('video.tools.videoToGif.name')}</Link>.</p>
               </div>
+
+              <h3>{t('video.guide.sections.privacy.title')}</h3>
+              <p>{t('video.guide.privacy.intro')}</p>
+              <ul>
+                <li>{t('video.guide.privacy.point1')}</li>
+                <li>{t('video.guide.privacy.point2')}</li>
+                <li>{t('video.guide.privacy.point3')}</li>
+                <li>{t('video.guide.privacy.point4')}</li>
+              </ul>
+
+              <h3>{t('video.guide.sections.tips.title')}</h3>
+              <p>{t('video.guide.tips.intro')}</p>
+              <ul>
+                <li><strong>{t('video.guide.tips.tip1.title')}</strong> {t('video.guide.tips.tip1.body')}</li>
+                <li><strong>{t('video.guide.tips.tip2.title')}</strong> {t('video.guide.tips.tip2.body')}</li>
+                <li><strong>{t('video.guide.tips.tip3.title')}</strong> {t('video.guide.tips.tip3.body')}</li>
+                <li><strong>{t('video.guide.tips.tip4.title')}</strong> {t('video.guide.tips.tip4.body')}</li>
+                <li><strong>{t('video.guide.tips.tip5.title')}</strong> {t('video.guide.tips.tip5.body')}</li>
+              </ul>
+
+              <h3>{t('video.guide.sections.faq.title')}</h3>
+              <div className="video-tools-faq-list">
+                <p><strong>{t('video.guide.faq.q1')}</strong></p>
+                <p>{t('video.guide.faq.a1')}</p>
+                <p><strong>{t('video.guide.faq.q2')}</strong></p>
+                <p>{t('video.guide.faq.a2')}</p>
+                <p><strong>{t('video.guide.faq.q3')}</strong></p>
+                <p>{t('video.guide.faq.a3')}</p>
+                <p><strong>{t('video.guide.faq.q4')}</strong></p>
+                <p>{t('video.guide.faq.a4')}</p>
+                <p><strong>{t('video.guide.faq.q5')}</strong></p>
+                <p>{t('video.guide.faq.a5')}</p>
+              </div>
+
+              <h3>{t('video.guide.sections.useCases.title')}</h3>
+              <p>{t('video.guide.useCases.intro')}</p>
+              <ul>
+                <li><strong>{t('video.guide.useCases.case1.title')}</strong> {t('video.guide.useCases.case1.body')}</li>
+                <li><strong>{t('video.guide.useCases.case2.title')}</strong> {t('video.guide.useCases.case2.body')}</li>
+                <li><strong>{t('video.guide.useCases.case3.title')}</strong> {t('video.guide.useCases.case3.body')}</li>
+                <li><strong>{t('video.guide.useCases.case4.title')}</strong> {t('video.guide.useCases.case4.body')}</li>
+              </ul>
             </div>
           </div>
         </section>

@@ -19,6 +19,51 @@ const TOOLS = [
   },
 ]
 
+const HIGHLIGHT_KEYS = [
+  'developer.guide.highlights.item1',
+  'developer.guide.highlights.item2',
+  'developer.guide.highlights.item3',
+  'developer.guide.highlights.item4',
+]
+
+const TOOL_OVERVIEW_SECTIONS = [
+  {
+    titleKey: 'developer.tools.jsonFormatter.name',
+    itemKeys: [
+      'developer.guide.json.item1',
+      'developer.guide.json.item2',
+      'developer.guide.json.item3',
+    ],
+  },
+  {
+    titleKey: 'developer.tools.regexTester.name',
+    itemKeys: [
+      'developer.guide.regex.item1',
+      'developer.guide.regex.item2',
+      'developer.guide.regex.item3',
+    ],
+  },
+]
+
+const EXAMPLE_SECTIONS = [
+  {
+    titleKey: 'developer.guide.examples.email.title',
+    labelKey: 'developer.guide.examples.email.label',
+    codeKey: 'developer.guide.examples.email.code',
+  },
+  {
+    titleKey: 'developer.guide.examples.api.title',
+    labelKey: 'developer.guide.examples.api.label',
+    codeKey: 'developer.guide.examples.api.code',
+  },
+]
+
+const MISTAKE_KEYS = [
+  'developer.guide.mistakes.item1',
+  'developer.guide.mistakes.item2',
+  'developer.guide.mistakes.item3',
+]
+
 export default function DeveloperToolsPage() {
   const { t } = useTranslation('toolsLanding')
 
@@ -57,46 +102,86 @@ export default function DeveloperToolsPage() {
 
             <div className="developer-tools-guide-content">
               <h2>{t('developer.guide.heading')}</h2>
+              <h3>{t('developer.guide.sections.foundation.title')}</h3>
               <p>{t('developer.guide.intro')}</p>
               <ul>
-                <li>{t('developer.guide.highlights.item1')}</li>
-                <li>{t('developer.guide.highlights.item2')}</li>
-                <li>{t('developer.guide.highlights.item3')}</li>
-                <li>{t('developer.guide.highlights.item4')}</li>
+                {HIGHLIGHT_KEYS.map((highlightKey) => (
+                  <li key={highlightKey}>{t(highlightKey)}</li>
+                ))}
               </ul>
 
-              <h3>{t('developer.guide.overviewHeading')}</h3>
+              <h3>{t('developer.guide.sections.overview.title')}</h3>
+              <p>{t('developer.guide.overviewHeading')}</p>
+              {TOOL_OVERVIEW_SECTIONS.map((section) => (
+                <div key={section.titleKey}>
+                  <h4>{t(section.titleKey)}</h4>
+                  <ul>
+                    {section.itemKeys.map((itemKey) => (
+                      <li key={itemKey}>{t(itemKey)}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
 
-              <h4>{t('developer.tools.jsonFormatter.name')}</h4>
-              <ul>
-                <li>{t('developer.guide.json.item1')}</li>
-                <li>{t('developer.guide.json.item2')}</li>
-                <li>{t('developer.guide.json.item3')}</li>
-              </ul>
+              <h3>{t('developer.guide.sections.examples.title')}</h3>
+              <p>{t('developer.guide.examplesHeading')}</p>
+              {EXAMPLE_SECTIONS.map((example) => (
+                <div key={example.titleKey}>
+                  <h4>{t(example.titleKey)}</h4>
+                  <p>{t(example.labelKey)}</p>
+                  <pre className="developer-tools-code-block"><code>{t(example.codeKey)}</code></pre>
+                </div>
+              ))}
 
-              <h4>{t('developer.tools.regexTester.name')}</h4>
-              <ul>
-                <li>{t('developer.guide.regex.item1')}</li>
-                <li>{t('developer.guide.regex.item2')}</li>
-                <li>{t('developer.guide.regex.item3')}</li>
-              </ul>
-
-              <h3>{t('developer.guide.examplesHeading')}</h3>
-
-              <h4>{t('developer.guide.examples.email.title')}</h4>
-              <p>{t('developer.guide.examples.email.label')}</p>
-              <pre className="developer-tools-code-block"><code>{t('developer.guide.examples.email.code')}</code></pre>
-
-              <h4>{t('developer.guide.examples.api.title')}</h4>
-              <p>{t('developer.guide.examples.api.label')}</p>
-              <pre className="developer-tools-code-block"><code>{t('developer.guide.examples.api.code')}</code></pre>
-
-              <h3>{t('developer.guide.mistakesHeading')}</h3>
+              <h3>{t('developer.guide.sections.pitfalls.title')}</h3>
+              <p>{t('developer.guide.mistakesHeading')}</p>
               <p>{t('developer.guide.seoNote')}</p>
               <ul>
-                <li>{t('developer.guide.mistakes.item1')}</li>
-                <li>{t('developer.guide.mistakes.item2')}</li>
-                <li>{t('developer.guide.mistakes.item3')}</li>
+                {MISTAKE_KEYS.map((mistakeKey) => (
+                  <li key={mistakeKey}>{t(mistakeKey)}</li>
+                ))}
+              </ul>
+
+              <h3>{t('developer.guide.sections.privacy.title')}</h3>
+              <p>{t('developer.guide.privacy.intro')}</p>
+              <ul>
+                <li>{t('developer.guide.privacy.point1')}</li>
+                <li>{t('developer.guide.privacy.point2')}</li>
+                <li>{t('developer.guide.privacy.point3')}</li>
+                <li>{t('developer.guide.privacy.point4')}</li>
+              </ul>
+
+              <h3>{t('developer.guide.sections.tips.title')}</h3>
+              <p>{t('developer.guide.tips.intro')}</p>
+              <ul>
+                <li><strong>{t('developer.guide.tips.tip1.title')}</strong> {t('developer.guide.tips.tip1.body')}</li>
+                <li><strong>{t('developer.guide.tips.tip2.title')}</strong> {t('developer.guide.tips.tip2.body')}</li>
+                <li><strong>{t('developer.guide.tips.tip3.title')}</strong> {t('developer.guide.tips.tip3.body')}</li>
+                <li><strong>{t('developer.guide.tips.tip4.title')}</strong> {t('developer.guide.tips.tip4.body')}</li>
+                <li><strong>{t('developer.guide.tips.tip5.title')}</strong> {t('developer.guide.tips.tip5.body')}</li>
+              </ul>
+
+              <h3>{t('developer.guide.sections.faq.title')}</h3>
+              <div className="developer-tools-faq-list">
+                <p><strong>{t('developer.guide.faq.q1')}</strong></p>
+                <p>{t('developer.guide.faq.a1')}</p>
+                <p><strong>{t('developer.guide.faq.q2')}</strong></p>
+                <p>{t('developer.guide.faq.a2')}</p>
+                <p><strong>{t('developer.guide.faq.q3')}</strong></p>
+                <p>{t('developer.guide.faq.a3')}</p>
+                <p><strong>{t('developer.guide.faq.q4')}</strong></p>
+                <p>{t('developer.guide.faq.a4')}</p>
+                <p><strong>{t('developer.guide.faq.q5')}</strong></p>
+                <p>{t('developer.guide.faq.a5')}</p>
+              </div>
+
+              <h3>{t('developer.guide.sections.useCases.title')}</h3>
+              <p>{t('developer.guide.useCases.intro')}</p>
+              <ul>
+                <li><strong>{t('developer.guide.useCases.case1.title')}</strong> {t('developer.guide.useCases.case1.body')}</li>
+                <li><strong>{t('developer.guide.useCases.case2.title')}</strong> {t('developer.guide.useCases.case2.body')}</li>
+                <li><strong>{t('developer.guide.useCases.case3.title')}</strong> {t('developer.guide.useCases.case3.body')}</li>
+                <li><strong>{t('developer.guide.useCases.case4.title')}</strong> {t('developer.guide.useCases.case4.body')}</li>
               </ul>
             </div>
           </div>
