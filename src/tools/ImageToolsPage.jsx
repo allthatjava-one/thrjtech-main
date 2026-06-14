@@ -87,30 +87,34 @@ export default function ImageToolsPage() {
 
             <div className="image-tools-guide-content">
               <h2>{t('image.guide.heading')}</h2>
+              
+              <h3>{t('image.guide.sections.foundation.title')}</h3>
               <p>{t('image.guide.intro')}</p>
 
-              <h3>{t('image.guide.categoriesHeading')}</h3>
+              <h3>{t('image.guide.sections.categories.title')}</h3>
+              <p>{t('image.guide.categoriesHeading')}</p>
               <div className="image-tools-category-list">
                 <p><strong>{t('image.guide.categories.optimization.title')}</strong></p>
                 <ul>
-                  <li><Link to="/image-resizer">{t('image.guide.categories.optimization.item1')}</Link></li>
-                  <li><Link to="/image-crop">{t('image.guide.categories.optimization.item2')}</Link></li>
+                  <li><Link to="/image-resizer">{t('image.guide.categories.optimization.item1')}</Link> {t('image.guide.categories.optimization.desc1')}</li>
+                  <li><Link to="/image-crop">{t('image.guide.categories.optimization.item2')}</Link> {t('image.guide.categories.optimization.desc2')}</li>
                 </ul>
 
                 <p><strong>{t('image.guide.categories.conversion.title')}</strong></p>
                 <ul>
-                  <li><Link to="/image-converter">{t('image.guide.categories.conversion.item1')}</Link></li>
+                  <li><Link to="/image-converter">{t('image.guide.categories.conversion.item1')}</Link> {t('image.guide.categories.conversion.desc1')}</li>
                 </ul>
 
                 <p><strong>{t('image.guide.categories.creative.title')}</strong></p>
                 <ul>
-                  <li><Link to="/image-collage">{t('image.guide.categories.creative.item1')}</Link></li>
-                  <li><Link to="/image-meme-generator">{t('image.guide.categories.creative.item2')}</Link></li>
-                  <li><Link to="/image-watermarker">{t('image.guide.categories.creative.item3')}</Link></li>
+                  <li><Link to="/image-collage">{t('image.guide.categories.creative.item1')}</Link> {t('image.guide.categories.creative.desc1')}</li>
+                  <li><Link to="/image-meme-generator">{t('image.guide.categories.creative.item2')}</Link> {t('image.guide.categories.creative.desc2')}</li>
+                  <li><Link to="/image-watermarker">{t('image.guide.categories.creative.item3')}</Link> {t('image.guide.categories.creative.desc3')}</li>
                 </ul>
               </div>
 
-              <h3>{t('image.guide.formatHeading')}</h3>
+              <h3>{t('image.guide.sections.formats.title')}</h3>
+              <p>{t('image.guide.formatHeading')}</p>
               <div className="image-tools-table-wrap">
                 <table className="image-tools-format-table">
                   <thead>
@@ -138,17 +142,63 @@ export default function ImageToolsPage() {
 
               <p className="image-tools-seo-note">{t('image.guide.seoNote')}</p>
 
-              <h3>{t('image.guide.scenariosHeading')}</h3>
+              <h3>{t('image.guide.sections.scenarios.title')}</h3>
+              <p>{t('image.guide.scenariosHeading')}</p>
               <div className="image-tools-workflow-list">
                 <p><strong>{t('image.guide.scenarios.social.title')}</strong></p>
+                <p>{t('image.guide.scenarios.social.desc')}</p>
                 <p>{t('image.guide.scenarios.usePrefix')} <Link to="/image-resizer">{t('image.guide.categories.optimization.item1')}</Link>.</p>
 
                 <p><strong>{t('image.guide.scenarios.branding.title')}</strong></p>
+                <p>{t('image.guide.scenarios.branding.desc')}</p>
                 <p>{t('image.guide.scenarios.usePrefix')} <Link to="/image-watermarker">{t('image.guide.categories.creative.item3')}</Link>.</p>
 
                 <p><strong>{t('image.guide.scenarios.marketing.title')}</strong></p>
+                <p>{t('image.guide.scenarios.marketing.desc')}</p>
                 <p>{t('image.guide.scenarios.usePrefix')} <Link to="/image-collage">{t('image.guide.categories.creative.item1')}</Link>.</p>
               </div>
+
+              <h3>{t('image.guide.sections.privacy.title')}</h3>
+              <p>{t('image.guide.privacy.intro')}</p>
+              <ul>
+                <li>{t('image.guide.privacy.point1')}</li>
+                <li>{t('image.guide.privacy.point2')}</li>
+                <li>{t('image.guide.privacy.point3')}</li>
+                <li>{t('image.guide.privacy.point4')}</li>
+              </ul>
+
+              <h3>{t('image.guide.sections.tips.title')}</h3>
+              <p>{t('image.guide.tips.intro')}</p>
+              <ul>
+                <li><strong>{t('image.guide.tips.tip1.title')}</strong> {t('image.guide.tips.tip1.body')}</li>
+                <li><strong>{t('image.guide.tips.tip2.title')}</strong> {t('image.guide.tips.tip2.body')}</li>
+                <li><strong>{t('image.guide.tips.tip3.title')}</strong> {t('image.guide.tips.tip3.body')}</li>
+                <li><strong>{t('image.guide.tips.tip4.title')}</strong> {t('image.guide.tips.tip4.body')}</li>
+                <li><strong>{t('image.guide.tips.tip5.title')}</strong> {t('image.guide.tips.tip5.body')}</li>
+              </ul>
+
+              <h3>{t('image.guide.sections.faq.title')}</h3>
+              <div className="image-tools-faq-list">
+                <p><strong>{t('image.guide.faq.q1')}</strong></p>
+                <p>{t('image.guide.faq.a1')}</p>
+                <p><strong>{t('image.guide.faq.q2')}</strong></p>
+                <p>{t('image.guide.faq.a2')}</p>
+                <p><strong>{t('image.guide.faq.q3')}</strong></p>
+                <p>{t('image.guide.faq.a3')}</p>
+                <p><strong>{t('image.guide.faq.q4')}</strong></p>
+                <p>{t('image.guide.faq.a4')}</p>
+                <p><strong>{t('image.guide.faq.q5')}</strong></p>
+                <p>{t('image.guide.faq.a5')}</p>
+              </div>
+
+              <h3>{t('image.guide.sections.useCases.title')}</h3>
+              <p>{t('image.guide.useCases.intro')}</p>
+              <ul>
+                <li><strong>{t('image.guide.useCases.case1.title')}</strong> {t('image.guide.useCases.case1.body')}</li>
+                <li><strong>{t('image.guide.useCases.case2.title')}</strong> {t('image.guide.useCases.case2.body')}</li>
+                <li><strong>{t('image.guide.useCases.case3.title')}</strong> {t('image.guide.useCases.case3.body')}</li>
+                <li><strong>{t('image.guide.useCases.case4.title')}</strong> {t('image.guide.useCases.case4.body')}</li>
+              </ul>
             </div>
           </div>
         </section>
