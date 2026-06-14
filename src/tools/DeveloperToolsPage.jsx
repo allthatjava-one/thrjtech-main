@@ -183,6 +183,9 @@ export default function DeveloperToolsPage() {
                 <li><strong>{t('developer.guide.useCases.case3.title')}</strong> {t('developer.guide.useCases.case3.body')}</li>
                 <li><strong>{t('developer.guide.useCases.case4.title')}</strong> {t('developer.guide.useCases.case4.body')}</li>
               </ul>
+
+              <h3>{t('developer.guide.why-thrj.heading')}</h3>
+              <p>{t('developer.guide.why-thrj.body')}</p>
             </div>
           </div>
         </section>
