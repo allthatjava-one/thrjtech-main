@@ -31,37 +31,6 @@ const TOOLS = [
   },
 ]
 
-const DEEP_DIVE_SECTIONS = [
-  {
-    titleKey: 'pdf.guide.deepDive.sections.fundamentals.title',
-    paragraphKeys: [
-      'pdf.guide.deepDive.paragraph1',
-      'pdf.guide.deepDive.paragraph2',
-    ],
-  },
-  {
-    titleKey: 'pdf.guide.deepDive.sections.structure.title',
-    paragraphKeys: [
-      'pdf.guide.deepDive.paragraph3',
-      'pdf.guide.deepDive.paragraph4',
-    ],
-  },
-  {
-    titleKey: 'pdf.guide.deepDive.sections.output.title',
-    paragraphKeys: [
-      'pdf.guide.deepDive.paragraph5',
-      'pdf.guide.deepDive.paragraph6',
-    ],
-  },
-  {
-    titleKey: 'pdf.guide.deepDive.sections.qa.title',
-    paragraphKeys: [
-      'pdf.guide.deepDive.paragraph7',
-      'pdf.guide.deepDive.paragraph8',
-    ],
-  },
-]
-
 export default function PdfToolsPage() {
   const { t } = useTranslation('toolsLanding')
 
@@ -101,16 +70,6 @@ export default function PdfToolsPage() {
             <div className="pdf-tools-guide-content">
               <h2>{t('pdf.guide.heading')}</h2>
               <p>{t('pdf.guide.intro')}</p>
-
-              <h3>{t('pdf.guide.deepDiveHeading')}</h3>
-              {DEEP_DIVE_SECTIONS.map((section) => (
-                <div key={section.titleKey}>
-                  <h4>{t(section.titleKey)}</h4>
-                  {section.paragraphKeys.map((paragraphKey) => (
-                    <p key={paragraphKey}>{t(paragraphKey)}</p>
-                  ))}
-                </div>
-              ))}
 
               <h3>{t('pdf.guide.examplesHeading')}</h3>
               <ul>
