@@ -96,6 +96,10 @@
         "case2": { "title": "Students and educators.", "body": "Merge lecture notes, assignment sheets, and reference pages into a single study document. Split long reading packs into per-session modules. Extract specific pages from textbooks or research papers." },
         "case3": { "title": "Office workers and administrators.", "body": "Reduce report file sizes before uploading to intranets or shared drives. Combine weekly updates from multiple contributors. Extract the signature page from a contract for quick filing." },
         "case4": { "title": "Designers and content creators.", "body": "Convert PDF presentation pages into high-resolution images for use in blog posts, social media, or client decks. Merge mood boards and reference sheets into a shareable PDF brief." }
+      },
+      "why-thrj": {
+        "heading": "Why Use THRJ Tech PDF Tools?",
+        "body": "THRJ Tech provides free PDF utilities that help you compress large files, merge multiple documents, split pages, and convert PDFs into images. The tools are designed to be simple, fast, and accessible from any modern browser without installing desktop software."
       }
     }
   },
@@ -257,6 +261,10 @@
           "title": "General Users:",
           "body": "Combine vacation photos into a collage for sharing with family, or simply rotate and flip accidentally sideways phone photos."
         }
+      },
+      "why-thrj": {
+        "heading": "Why Use THRJ Tech Image Tools?",
+        "body": "Whether you need to resize photos, crop images, create collages, add watermarks, or convert between formats, THRJ Tech's image tools are built to streamline common image-editing tasks directly in your browser."
       }
     }
   },
@@ -372,6 +380,10 @@
         "case2": { "title": "Frontend developers.", "body": "Debug API data coming from endpoints before building UI components around it, validate form field patterns, and confirm that state objects have the expected structure." },
         "case3": { "title": "QA engineers and testers.", "body": "Verify that API responses conform to documented schemas, build and test input validation patterns to use in test cases, and inspect edge-case payloads that trigger specific code paths." },
         "case4": { "title": "DevOps and platform engineers.", "body": "Validate and format config files before deploying, test grep or sed patterns against sample log lines before running in production, and inspect structured log output to identify anomalies." }
+      },
+      "why-thrj": {
+        "heading": "Why Use THRJ Tech Developer Tools?",
+        "body": "THRJ Tech offers lightweight utilities for developers working with APIs, JSON data, regular expressions, and other common development tasks. These tools are designed to help validate, debug, and format data more efficiently."
       }
     }
   },
@@ -511,6 +523,10 @@
           "title": "Product Designers:",
           "body": "Capture smooth UI/UX transitions and embed them as loops in Figma or other design tools to show developers exactly how animations should feel."
         }
+      },
+      "why-thrj": {
+        "heading": "Why Use THRJ Tech Video Tools?",
+        "body": "From creating GIFs to recording your screen, THRJ Tech video tools help you produce shareable visual content quickly and without installing additional software."
       }
     }
   }
