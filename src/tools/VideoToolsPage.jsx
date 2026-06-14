@@ -174,6 +174,9 @@ export default function VideoToolsPage() {
                 <li><strong>{t('video.guide.useCases.case3.title')}</strong> {t('video.guide.useCases.case3.body')}</li>
                 <li><strong>{t('video.guide.useCases.case4.title')}</strong> {t('video.guide.useCases.case4.body')}</li>
               </ul>
+
+              <h3>{t('video.guide.why-thrj.heading')}</h3>
+              <p>{t('video.guide.why-thrj.body')}</p>
             </div>
           </div>
         </section>

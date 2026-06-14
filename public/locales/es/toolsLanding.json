@@ -96,6 +96,10 @@
         "case2": { "title": "Estudiantes y docentes.", "body": "Fusiona apuntes, hojas de tareas y páginas de referencia en un solo documento de estudio. Divide grandes paquetes de lectura en módulos por sesión. Extrae páginas específicas de libros de texto o artículos de investigación." },
         "case3": { "title": "Trabajadores de oficina y administrativos.", "body": "Reduce el tamaño de los informes antes de subirlos a intranets o unidades compartidas. Combina actualizaciones semanales de varios colaboradores. Extrae la página de firma de un contrato para archivarla rápidamente." },
         "case4": { "title": "Diseñadores y creadores de contenido.", "body": "Convierte páginas de presentaciones PDF en imágenes de alta resolución para blogs, redes sociales o dossiers de clientes. Fusiona tableros de inspiración y hojas de referencia en un breve PDF compartible." }
+      },
+      "why-thrj": {
+        "heading": "Por qué usar las herramientas PDF de THRJ Tech?",
+        "body": "THRJ Tech ofrece utilidades PDF gratuitas que te ayudan a comprimir archivos grandes, fusionar múltiples documentos, dividir páginas y convertir PDFs en imágenes. Las herramientas están diseñadas para ser simples, rápidas y accesibles desde cualquier navegador moderno sin necesidad de instalar software de escritorio."
       }
     }
   },
@@ -257,6 +261,10 @@
           "title": "Usuarios generales:",
           "body": "Combinan fotos de vacaciones en un collage o simplemente rotan fotos del teléfono que salieron de lado."
         }
+      },
+      "why-thrj": {
+        "heading": "Por qué usar las herramientas de imagen de THRJ Tech?",
+        "body": "Ya sea que necesite redimensionar fotos, recortar imágenes, crear collages, agregar marcas de agua o convertir entre formatos, las herramientas de imagen de THRJ Tech están diseñadas para agilizar las tareas comunes de edición de imágenes directamente en su navegador."
       }
     }
   },
@@ -356,6 +364,10 @@
         "case2": { "title": "Desarrolladores frontend.", "body": "Depura datos de API que provienen de endpoints antes de construir componentes de UI, valida patrones de campos de formulario y confirma que los objetos de estado tienen la estructura esperada." },
         "case3": { "title": "Ingenieros de QA y testers.", "body": "Verifica que las respuestas de API cumplen con los esquemas documentados, construye y prueba patrones de validación de entrada para casos de prueba e inspecciona cargas de casos extremos." },
         "case4": { "title": "Ingenieros de DevOps y plataforma.", "body": "Valida y formatea archivos de configuración antes de desplegar, prueba patrones de grep o sed contra líneas de registro de muestra antes de ejecutarlos en producción e inspecciona registros estructurados para identificar anomalías." }
+      },
+      "why-thrj": {
+        "heading": "Por qué usar las herramientas de desarrollo de THRJ Tech?",
+        "body": "THRJ Tech ofrece utilidades ligeras para desarrolladores que trabajan con APIs, datos JSON, expresiones regulares y otras tareas comunes de desarrollo. Estas herramientas están diseñadas para ayudar a validar, depurar y formatear datos de manera más eficiente."
       }
     }
   },
@@ -495,6 +507,10 @@
           "title": "Diseñadores de producto:",
           "body": "Capturan transiciones de UI/UX fluidas para mostrar a los desarrolladores exactamente cómo deben sentirse las animaciones."
         }
+      },
+      "why-thrj": {
+        "heading": "Por qué usar las herramientas de video de THRJ Tech?",
+        "body": "Desde crear GIFs hasta grabar su pantalla, las herramientas de video de THRJ Tech le ayudan a producir contenido visual compartible de manera rápida y sin instalar software adicional."
       }
     }
   }
