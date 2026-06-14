@@ -58,6 +58,44 @@
         "compression": "Guía de compresión PDF",
         "conversion": "Guía de conversión PDF",
         "whyLarge": "Por qué los PDF se vuelven grandes"
+      },
+      "privacy": {
+        "heading": "Tus archivos nunca salen de tu dispositivo",
+        "intro": "La privacidad está integrada en cada herramienta de este sitio. A diferencia de los servicios PDF en la nube que suben tus documentos a servidores externos, todo el procesamiento ocurre localmente en tu navegador usando JavaScript y WebAssembly. Esto es lo que significa en la práctica:",
+        "point1": "Ningún archivo se envía jamás a un servidor: todo se ejecuta en tu CPU y memoria.",
+        "point2": "Cerrar la pestaña descarta inmediatamente todos los datos sin dejar rastro.",
+        "point3": "No se requiere cuenta, inicio de sesión ni correo electrónico para ninguna herramienta.",
+        "point4": "Documentos confidenciales —contratos, informes financieros, expedientes médicos— pueden procesarse de forma segura sin exponerlos a infraestructura de terceros."
+      },
+      "tips": {
+        "heading": "Consejos para mejores resultados",
+        "intro": "Algunos hábitos simples pueden mejorar significativamente la calidad de los resultados y reducir la necesidad de reprocesar un archivo:",
+        "tip1": { "title": "Conserva siempre el original.", "body": "Antes de comprimir, fusionar o dividir, guarda una copia de respaldo. Las operaciones no se pueden deshacer una vez cerrada la sesión del navegador." },
+        "tip2": { "title": "Comprueba la orientación antes de fusionar.", "body": "Mezclar páginas verticales y horizontales en un solo PDF genera una experiencia de lectura inconsistente. Rota las páginas primero si es necesario." },
+        "tip3": { "title": "Usa nombres de archivo descriptivos.", "body": "Nombres como informe_2026-06_final.pdf son mucho más fáciles de gestionar que documento(3).pdf, especialmente con varias versiones." },
+        "tip4": { "title": "Previsualiza antes de descargar.", "body": "La mayoría de las herramientas muestran una vista previa del resultado. Desplázate para confirmar el número de páginas, el orden y la legibilidad antes de guardar." },
+        "tip5": { "title": "Adapta el formato al destino.", "body": "Las exportaciones PNG del conversor PDF son ideales para presentaciones y documentación; el JPEG es mejor cuando el tamaño del archivo importa más que la nitidez perfecta." }
+      },
+      "faq": {
+        "heading": "Preguntas frecuentes",
+        "q1": "¿Hay un límite de tamaño de archivo?",
+        "a1": "No hay un límite estricto en el servidor porque el archivo nunca sale de tu dispositivo. El límite práctico depende de tu navegador y la RAM disponible. La mayoría de los navegadores modernos manejan PDFs de varios cientos de megabytes sin problemas.",
+        "q2": "¿Afecta la compresión a la legibilidad del texto?",
+        "a2": "El texto en los PDFs se almacena como datos vectoriales y no se ve afectado por la configuración de compresión de imágenes. Solo se comprimen las imágenes incrustadas en el documento. Un contrato o informe con mucho texto seguirá siendo perfectamente nítido independientemente del nivel de compresión elegido.",
+        "q3": "¿Puedo fusionar PDFs con diferentes tamaños de página?",
+        "a3": "Sí. El fusionador acepta PDFs independientemente de sus dimensiones de página. Si la consistencia visual es importante, considera estandarizar los tamaños de página previamente.",
+        "q4": "¿Cuál es la diferencia entre dividir y extraer?",
+        "a4": "Dividir separa un PDF en múltiples archivos, generalmente uno por página o por un rango definido. Extraer lleva un conjunto específico de páginas a un nuevo archivo sin modificar el original. Ambos resultados son posibles con la herramienta Divisor PDF.",
+        "q5": "¿Qué formato de imagen debo elegir al convertir páginas PDF?",
+        "a5": "Se recomienda PNG para documentos con texto, diagramas, gráficos y capturas de pantalla, ya que usa compresión sin pérdida. El JPEG es mejor para páginas dominadas por fotografías donde el tamaño del archivo importa más que la precisión de píxeles."
+      },
+      "useCases": {
+        "heading": "¿Quién usa estas herramientas PDF?",
+        "intro": "Las herramientas PDF son necesarias en una amplia variedad de profesiones y situaciones cotidianas. Estos son algunos de los escenarios más comunes:",
+        "case1": { "title": "Freelancers y contratistas.", "body": "Comprime facturas antes de enviarlas por correo, divide un contrato maestro para compartir solo las cláusulas relevantes y convierte páginas firmadas en imágenes para el portafolio." },
+        "case2": { "title": "Estudiantes y docentes.", "body": "Fusiona apuntes, hojas de tareas y páginas de referencia en un solo documento de estudio. Divide grandes paquetes de lectura en módulos por sesión. Extrae páginas específicas de libros de texto o artículos de investigación." },
+        "case3": { "title": "Trabajadores de oficina y administrativos.", "body": "Reduce el tamaño de los informes antes de subirlos a intranets o unidades compartidas. Combina actualizaciones semanales de varios colaboradores. Extrae la página de firma de un contrato para archivarla rápidamente." },
+        "case4": { "title": "Diseñadores y creadores de contenido.", "body": "Convierte páginas de presentaciones PDF en imágenes de alta resolución para blogs, redes sociales o dossiers de clientes. Fusiona tableros de inspiración y hojas de referencia en un breve PDF compartible." }
       }
     }
   },
@@ -67,77 +105,157 @@
     "tools": {
       "resizer": {
         "name": "Redimensionador de imagen",
-        "desc": "Redimensiona imágenes a las dimensiones que necesites manteniendo la relación de aspecto y calidad."
+        "desc": "Escalado de imagen de nivel profesional que le permite cambiar las dimensiones de píxeles o el tamaño porcentual. Perfecto para cumplir con requisitos de carga estrictos para sitios web, correos electrónicos o redes sociales, manteniendo una fidelidad visual nítida."
       },
       "watermarker": {
         "name": "Marca de agua en imagen",
-        "desc": "Protege tus fotos añadiendo marcas de agua de texto o imagen directamente en tu navegador."
+        "desc": "Asegure sus activos digitales con marcas de agua personalizadas. Agregue el logotipo de su marca o texto con opacidad, posición y escala ajustables. Esencial para fotógrafos y creadores que comparten su trabajo en línea."
       },
       "collage": {
         "name": "Creador de collage",
-        "desc": "Combina varias imágenes en un hermoso collage con diseños personalizables."
+        "desc": "Transforme su colección de fotos en una impresionante narrativa visual. Elija entre múltiples diseños de cuadrícula, ajuste el espaciado de los bordes y personalice los colores de fondo para crear el resumen perfecto."
       },
       "crop": {
         "name": "Recorte de imagen",
-        "desc": "Recorta imágenes con una selección precisa o una relación de aspecto fija con una interfaz intuitiva."
+        "desc": "Herramientas de recorte de precisión para cualquier situación. Utilice relaciones de aspecto fijas para fotos de perfil y encabezados, o una selección libre para eliminar distracciones y enfocarse en los detalles más importantes."
       },
       "meme": {
         "name": "Generador de memes",
-        "desc": "Crea memes personalizados añadiendo leyendas a cualquier imagen. Rápido, divertido y completamente en el cliente."
+        "desc": "La forma más rápida de convertir sus ideas en contenido viral. Utilice fuentes de memes clásicas, añada múltiples capas de texto y personalice colores. Completamente local, por lo que sus ideas divertidas son privadas hasta que las comparta."
       },
       "converter": {
         "name": "Conversor de imagen",
-        "desc": "Convierte imágenes entre JPG, PNG, WebP y otros formatos al instante en tu navegador."
+        "desc": "Motor de conversión multiformato para la web moderna. Cambie instantáneamente entre JPG, PNG, WebP y más. Optimice el tamaño de sus archivos para el rendimiento web o convierta a formatos sin pérdida para archivo."
       },
       "rotator": {
         "name": "Rotador de imagen",
-        "desc": "Rota imágenes 90° a la izquierda o derecha, o voltéalas horizontal y verticalmente."
+        "desc": "Corrija problemas de orientación al instante. Rote fotos en incrementos de 90 grados o voltéelas horizontal y verticalmente para corregir efectos de espejo o cargas de móviles de lado sin pérdida de calidad."
       }
     },
     "guide": {
-      "heading": "¿Qué son las herramientas de edición de imágenes?",
-      "intro": "Las herramientas de edición de imágenes te ayudan a preparar recursos visuales para casos reales. Resuelven problemas de formatos, tamaño de archivo, requisitos de redes sociales y optimización web.",
-      "categoriesHeading": "Categorías de herramientas",
+      "heading": "La guía completa para la edición de imágenes en línea",
+      "sections": {
+        "foundation": { "title": "1. Entendiendo la edición de imágenes en el navegador" },
+        "categories": { "title": "2. Categorías modernas de herramientas de imagen" },
+        "formats": { "title": "3. Elegir el formato de imagen correcto" },
+        "scenarios": { "title": "4. Flujos de trabajo creativos comunes" },
+        "privacy": { "title": "5. Por qué importa la privacidad en el cliente" },
+        "tips": { "title": "6. Consejos profesionales para visuales de alta calidad" },
+        "faq": { "title": "7. Preguntas frecuentes" },
+        "useCases": { "title": "8. Casos de uso del mundo real" }
+      },
+      "intro": "En la era digital, las imágenes son el medio principal de comunicación. Ya sea que sea un influencer, un profesional del marketing o un desarrollador, necesita herramientas confiables para manipular imágenes rápidamente. Nuestra plataforma ofrece un conjunto de herramientas de imagen que se ejecutan completamente en su navegador web. Esto significa que no necesita descargar software pesado como Photoshop para tareas simples. Al utilizar tecnologías web modernas como la API Canvas y WebAssembly, ofrecemos una experiencia de edición fluida, rápida y segura. Nuestras herramientas están diseñadas para ser intuitivas: simplemente arrastre y suelte su archivo, aplique los cambios y descargue el resultado. Debido a que el procesamiento ocurre en su propia computadora, no hay espera para cargas o descargas a un servidor central, lo que hace que el flujo de trabajo sea significativamente más rápido para operaciones por lotes o archivos de alta resolución.",
+      "categoriesHeading": "Explore nuestras categorías especializadas de edición de imágenes diseñadas para cada necesidad posible.",
       "categories": {
         "optimization": {
           "title": "Optimización de imágenes",
           "item1": "Redimensionador de imagen",
-          "item2": "Recorte de imagen"
+          "desc1": "Ajuste las dimensiones de píxeles de sus imágenes para adaptarse a los requisitos específicos de la plataforma manteniendo la relación de aspecto.",
+          "item2": "Recorte de imagen",
+          "desc2": "Concéntrese en la parte más importante de su foto eliminando bordes no deseados o ajustando rectángulos específicos."
         },
         "conversion": {
-          "title": "Conversión de formato",
-          "item1": "Conversor de imagen"
+          "title": "Format conversión",
+          "item1": "Conversor de imagen",
+          "desc1": "Transforme sus archivos de forma segura entre formatos populares para equilibrar el tamaño del archivo con la transparencia y la calidad visual."
         },
         "creative": {
           "title": "Herramientas creativas",
           "item1": "Collage de imágenes",
+          "desc1": "Cuente una historia fusionando varias fotos en un diseño cohesivo con espaciado y colores personalizados.",
           "item2": "Generador de memes",
-          "item3": "Marca de agua"
+          "desc2": "Involucre a su audiencia con humor viral añadiendo leyendas superiores e inferiores a cualquier plantilla de imagen.",
+          "item3": "Marca de agua",
+          "desc3": "Proteja su propiedad intelectual superponiendo texto o logotipos semitransparentes, asegurando que su marca permanezca con su trabajo."
         }
       },
-      "formatHeading": "Elegir el formato de imagen correcto",
+      "formatHeading": "Comprender las diferencias técnicas entre los formatos de imagen es clave para el rendimiento web y la calidad visual.",
       "formatTable": {
-        "format": "Formato",
-        "bestUse": "Mejor uso",
-        "jpg": "JPG",
-        "jpgUse": "Fotos",
-        "png": "PNG",
-        "pngUse": "Gráficos",
-        "webp": "WebP",
-        "webpUse": "Sitios web"
+        "format": "Nombre del formato",
+        "bestUse": "Caso de uso óptimo",
+        "jpg": "JPEG (Joint Photographic Experts Group)",
+        "jpgUse": "Ideal para fotografías e imágenes realistas con gradientes suaves. Ofrece alta compresión pero carece de transparencia.",
+        "png": "PNG (Portable Network Graphics)",
+        "pngUse": "Ideal para logotipos, iconos y gráficos que requieren fondos transparentes o precisión de píxeles perfecta.",
+        "webp": "WebP (Formato web de Google)",
+        "webpUse": "Estándar moderno para la web. Proporciona una compresión superior con soporte para transparencia."
       },
-      "seoNote": "Este tipo de contenido posiciona sorprendentemente bien.",
-      "scenariosHeading": "Escenarios comunes",
+      "seoNote": "Optimizar imágenes para la web reduce los tiempos de carga de la página y mejora significativamente el posicionamiento SEO.",
+      "scenariosHeading": "Cómo nuestros usuarios combinan frecuentemente estas herramientas para resultados profesionales.",
       "scenarios": {
-        "usePrefix": "Usa",
+        "usePrefix": "Intente combinar estos con",
         "social": {
-          "title": "Redimensionar para redes sociales"
+          "title": "Creación de contenido para redes sociales",
+          "desc": "Prepare una publicación perfecta para Instagram recortando primero a un cuadrado 1:1, luego redimensionando a 1080x1080 píxeles."
         },
         "branding": {
-          "title": "Agregar branding"
+          "title": "Branding para fotógrafos",
+          "desc": "Reduzca exportaciones RAW de alta resolución a anchos de 2000px y aplique una marca de agua de logotipo antes de compartir."
         },
         "marketing": {
-          "title": "Crear gráficos de marketing"
+          "title": "Activos de campaña de marketing",
+          "desc": "Convierta capturas de pantalla PNG pesadas en formatos WebP optimizados para ahorrar ancho de banda manteniendo una alta claridad."
+        }
+      },
+      "privacy": {
+        "intro": "A diferencia de muchos conversores en línea que requieren que cargue sus fotos a sus servidores, nuestras herramientas manejan todo localmente. Este enfoque tiene varios beneficios:",
+        "point1": "Seguridad: Sus imágenes nunca salen de su dispositivo. No hay riesgo de interceptación o almacenamiento sin permiso.",
+        "point2": "Privacidad: No vemos lo que edita. Ya sean fotos familiares o documentos comerciales confidenciales, sus datos son suyos.",
+        "point3": "Cumplimiento: Nuestra arquitectura se alinea naturalmente con regulaciones estrictas de protección de datos como GDPR y CCPA por diseño.",
+        "point4": "Velocidad: Las imágenes 4K grandes no necesitan cargarse, lo que ahorra minutos en conexiones lentas."
+      },
+      "tips": {
+        "intro": "Aproveche al máximo nuestras herramientas con estos consejos profesionales de edición de imágenes.",
+        "tip1": {
+          "title": "Preserve la calidad del activo:",
+          "body": "Comience siempre con la fuente de más alta resolución disponible. Es fácil reducir, pero ampliar siempre resultará en borrosidad."
+        },
+        "tip2": {
+          "title": "Entienda la relación de aspecto:",
+          "body": "Al redimensionar, bloquee siempre la relación de aspecto a menos que desee deliberadamente estirar o aplastar la imagen."
+        },
+        "tip3": {
+          "title": "Use WebP para navegadores modernos:",
+          "body": "Los archivos WebP son típicamente entre un 25 y un 35% más pequeños que los JPEG con la misma calidad."
+        },
+        "tip4": {
+          "title": "Optimice la opacidad de la marca de agua:",
+          "body": "Una marca de agua debe proteger su trabajo sin distraer. Apunte a un 20-40% de opacidad para un aspecto profesional."
+        },
+        "tip5": {
+          "title": "Aproveche el contraste para los memes:",
+          "body": "Al hacer memes, use texto blanco con un contorno negro. Esto asegura que sea legible sobre cualquier color de fondo."
+        }
+      },
+      "faq": {
+        "q1": "¿Hay un límite de tamaño de archivo?",
+        "a1": "El límite está determinado principalmente por la RAM de su computadora. La mayoría de los dispositivos modernos pueden manejar fácilmente imágenes de hasta 50MB-100MB.",
+        "q2": "¿Mis imágenes se verán borrosas después de redimensionar?",
+        "a2": "Utilizamos algoritmos de interpolación de alta calidad para asegurar que la reducción permanezca nítida.",
+        "q3": "¿Puedo convertir imágenes de WebP a JPG?",
+        "a3": "¡Sí! Nuestro conversor admite conversión bidireccional entre la mayoría de los formatos populares.",
+        "q4": "¿Las herramientas son gratuitas para proyectos comerciales?",
+        "a4": "Absolutamente. Todas las herramientas en esta plataforma son gratuitas para uso personal y profesional sin costos ocultos.",
+        "q5": "¿El creador de collages admite diseños personalizados?",
+        "a5": "Ofrecemos varios ajustes preestablecidos de cuadrícula populares que se adaptan automáticamente al número de imágenes cargadas."
+      },
+      "useCases": {
+        "intro": "Nuestro kit de herramientas es utilizado por miles de personas cada día para diversas aplicaciones del mundo real.",
+        "case1": {
+          "title": "Propietarios de comercio electrónico:",
+          "body": "Redimensionan por lotes fotos de productos a dimensiones uniformes y las convierten a WebP para su tienda en línea."
+        },
+        "case2": {
+          "title": "Gestores de redes sociales:",
+          "body": "Generan memes rápidos para temas de tendencia o añaden logotipos de marca a contenido viral."
+        },
+        "case3": {
+          "title": "Desarrolladores web:",
+          "body": "Recortan imágenes hero a relaciones de aspecto específicas y optimizan la calidad para mejores Core Web Vitals."
+        },
+        "case4": {
+          "title": "Usuarios generales:",
+          "body": "Combinan fotos de vacaciones en un collage o simplemente rotan fotos del teléfono que salieron de lado."
         }
       }
     }
@@ -157,43 +275,87 @@
     },
     "guide": {
       "heading": "Por qué importan las utilidades para desarrolladores",
-      "intro": "Las utilidades para desarrolladores reducen fricción en el trabajo diario gracias a depuración, pruebas de API, validación de datos y productividad.",
+      "sections": {
+        "foundation": { "title": "1) Beneficios principales del flujo de trabajo" },
+        "overview": { "title": "2) Descripción por herramienta" },
+        "examples": { "title": "3) Ejemplos listos para usar" },
+        "pitfalls": { "title": "4) Errores comunes y cómo evitarlos" },
+        "privacy": { "title": "5) Tus datos se quedan en el navegador" },
+        "tips": { "title": "6) Consejos para un uso más efectivo" },
+        "faq": { "title": "7) Preguntas frecuentes" },
+        "useCases": { "title": "8) ¿Quién usa estas herramientas?" }
+      },
+      "intro": "Los desarrolladores se enfrentan a la misma fricción diaria: una respuesta JSON llega de una API como una sola línea ilegible, o un patrón regex funciona en la documentación pero falla en el código. Abrir la herramienta correcta en el navegador elimina esa fricción con un espacio de trabajo de instalación cero que se abre al instante y nunca requiere enviar datos a terceros.",
       "highlights": {
-        "item1": "Depuración",
-        "item2": "Pruebas de API",
-        "item3": "Validación de datos",
-        "item4": "Productividad"
+        "item1": "Depura respuestas de API pegando JSON sin procesar y leyendo un árbol estructurado con resaltado de sintaxis en lugar de una cadena plana ilegible.",
+        "item2": "Prueba contratos de API verificando que el cuerpo de la solicitud coincide con el esquema esperado antes de llegar al servidor.",
+        "item3": "Valida patrones de entrada de formularios escribiendo y refinando expresiones regulares contra cadenas de muestra reales en tiempo real.",
+        "item4": "Reduce la fricción del flujo de trabajo manteniendo las tareas comunes de desarrollo en la pestaña del navegador donde ya estás trabajando."
       },
       "overviewHeading": "Resumen de herramientas",
       "json": {
-        "item1": "Formato legible",
-        "item2": "Depuración de APIs",
-        "item3": "Validación de respuestas"
+        "item1": "Formatea JSON compacto o minificado en una estructura indentada y legible con colores de sintaxis para que las claves, valores y objetos anidados sean fácilmente escaneables.",
+        "item2": "Depura respuestas de API pegando cargas útiles sin procesar directamente desde la pestaña de red o el portapapeles e inspeccionando la estructura sin escribir código.",
+        "item3": "Valida la sintaxis JSON antes de enviar datos a un servidor o almacenarlos en un archivo de configuración, detectando errores como comas sobrantes o corchetes desbalanceados al instante."
       },
       "regex": {
-        "item1": "Coincidencia de patrones",
-        "item2": "Validación",
-        "item3": "Prueba de expresiones"
+        "item1": "Coincide patrones en texto de muestra de múltiples líneas con resaltado visual inmediato de cada grupo de captura y la región de coincidencia general.",
+        "item2": "Valida formatos de entrada comunes como correos electrónicos, números de teléfono, URLs y fechas probando contra cadenas del mundo real que incluyen casos extremos.",
+        "item3": "Prueba la lógica de buscar y reemplazar antes de usarla en código, un script o una migración de base de datos para confirmar que la sustitución funciona exactamente como se pretende."
       },
       "examplesHeading": "Ejemplos prácticos",
       "examples": {
         "email": {
           "title": "Validar direcciones de correo",
-          "label": "Ejemplo de regex.",
+          "label": "Pega este patrón en el Tester de Regex e ingresa una lista de direcciones en el campo de prueba. Las coincidencias se resaltan; las líneas sin coincidencia permanecen sin estilo. Ajusta el patrón para admitir subdominios, direccionamiento con signo más o TLD internacionales según sea necesario.",
           "code": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
         },
         "api": {
           "title": "Leer respuestas de API",
-          "label": "Ejemplo JSON.",
+          "label": "Pega el cuerpo de una respuesta de API sin procesar en el Formateador JSON para ver al instante una vista estructurada e indentada. Úsala para confirmar qué campos están presentes, verificar tipos de datos e identificar valores nulos inesperados antes de escribir código para procesar la respuesta.",
           "code": "{\n  \"userId\": 42,\n  \"status\": \"active\",\n  \"roles\": [\"admin\", \"editor\"]\n}"
         }
       },
       "mistakesHeading": "Errores comunes de desarrolladores",
-      "seoNote": "Este es exactamente el tipo de contenido que le gusta a Google.",
+      "seoNote": "Los pequeños errores de formato y los patrones no probados son de las causas más comunes de errores difíciles de rastrear. Detectarlos temprano con las herramientas adecuadas ahorra más tiempo de depuración del que lleva agregar la verificación.",
       "mistakes": {
-        "item1": "JSON inválido",
-        "item2": "Regex demasiado compleja",
-        "item3": "Escape deficiente"
+        "item1": "Enviar JSON inválido a una API porque quedó una coma sobrante en un archivo de configuración o en el cuerpo de la solicitud — el formateador lo detecta al instante antes de realizar cualquier petición.",
+        "item2": "Escribir una regex demasiado compleja con grupos anidados que funciona para un caso pero falla silenciosamente para entradas válidas — probar contra un conjunto de muestras diversas lo previene.",
+        "item3": "Olvidar escapar caracteres especiales como puntos, corchetes o barras en patrones regex, haciendo que coincidan de forma mucho más amplia que lo pretendido."
+      },
+      "privacy": {
+        "intro": "Ambas herramientas se ejecutan completamente en tu navegador. No se envían datos a ningún servidor en ningún momento. Esto importa especialmente en flujos de desarrollo porque las cargas útiles suelen contener información sensible:",
+        "point1": "Las respuestas de API pueden incluir tokens de autenticación, IDs de usuario o datos personales que no deben salir de tu entorno controlado.",
+        "point2": "Los archivos de configuración JSON a veces contienen credenciales, claves de API o URLs de endpoints internos que no deben pegarse en herramientas en línea públicas.",
+        "point3": "Las cadenas de prueba regex suelen contener datos reales de usuarios extraídos de registros o bases de datos sujetos a regulaciones de privacidad.",
+        "point4": "Cerrar la pestaña del navegador descarta inmediatamente todo el contenido sin dejar rastro, y no se requiere cuenta ni inicio de sesión para usar ninguna herramienta."
+      },
+      "tips": {
+        "intro": "Algunos hábitos hacen estas herramientas significativamente más útiles en un flujo de trabajo de desarrollo real:",
+        "tip1": { "title": "Usa datos reales, no marcadores de posición.", "body": "Probar un regex o un esquema JSON con un ejemplo sintético suele perder casos extremos. Pega cargas útiles reales o entradas de formularios reales para detectar fallos inesperados de inmediato." },
+        "tip2": { "title": "Prueba casos extremos deliberadamente.", "body": "Para regex, incluye siempre al menos una entrada casi válida — una cadena que parezca válida pero no deba coincidir. Para JSON, prueba un objeto vacío, una estructura muy anidada y un arreglo en la raíz." },
+        "tip3": { "title": "Formatea antes de leer.", "body": "Nunca intentes interpretar JSON minificado a simple vista. Un pegado en el formateador ahorra más tiempo del que lleva y elimina una fuente importante de errores de lectura." },
+        "tip4": { "title": "Usa grupos de captura con nombre.", "body": "En patrones regex usados para analizar datos, prefiere grupos con nombre en lugar de posicionales. Dejan clara la intención al revisar el patrón semanas después." },
+        "tip5": { "title": "Guarda tus patrones.", "body": "Los patrones regex para formatos comunes como fechas ISO, UUIDs y versiones semánticas vale la pena guardar. Construye una referencia personal para no reescribir los mismos patrones repetidamente." }
+      },
+      "faq": {
+        "q1": "¿El Formateador JSON admite cargas muy grandes?",
+        "a1": "Sí. Dado que el procesamiento se realiza localmente en tu navegador, los únicos límites prácticos son la memoria del navegador y el rendimiento del motor JavaScript. Las respuestas de API típicas de varios megabytes se formatean en menos de un segundo.",
+        "q2": "¿Puedo usar modificadores de regex como insensible a mayúsculas o modo multilínea?",
+        "a2": "El Tester de Regex admite los modificadores estándar de JavaScript, incluidos insensible a mayúsculas (i), global (g), multilínea (m) y dotAll (s). Puedes combinarlos directamente en el campo de entrada del patrón usando la notación de barra estándar.",
+        "q3": "¿El Formateador JSON detecta y explica errores?",
+        "a3": "Sí. Cuando pegas JSON inválido, el formateador resalta la posición del error de sintaxis y muestra un mensaje describiendo el problema. Los errores comunes como comas sobrantes, comillas simples en lugar de dobles y claves sin comillas se detectan de inmediato.",
+        "q4": "¿El Tester de Regex es compatible con patrones de otros lenguajes?",
+        "a4": "El tester usa el motor de regex de JavaScript, que es compatible con la mayoría de los patrones comunes. Los patrones de Python, Ruby, PHP y Java suelen ser portables con ajustes menores.",
+        "q5": "¿Puedo compartir un patrón o un ejemplo JSON con un compañero?",
+        "a5": "Las herramientas no tienen actualmente una función de enlace compartible, pero puedes copiar y pegar patrones y muestras JSON en un documento compartido, un mensaje de Slack o un comentario de pull request. Las herramientas se abren en segundos, así que un colega puede pegar y verificar de inmediato."
+      },
+      "useCases": {
+        "intro": "Estas utilidades son útiles en toda la gama de roles y tareas de desarrollo:",
+        "case1": { "title": "Ingenieros de backend.", "body": "Formatea e inspecciona respuestas de API durante el trabajo de integración, valida cargas de solicitudes antes de escribir código de análisis y prueba patrones de extracción de datos contra muestras de archivos de registro." },
+        "case2": { "title": "Desarrolladores frontend.", "body": "Depura datos de API que provienen de endpoints antes de construir componentes de UI, valida patrones de campos de formulario y confirma que los objetos de estado tienen la estructura esperada." },
+        "case3": { "title": "Ingenieros de QA y testers.", "body": "Verifica que las respuestas de API cumplen con los esquemas documentados, construye y prueba patrones de validación de entrada para casos de prueba e inspecciona cargas de casos extremos." },
+        "case4": { "title": "Ingenieros de DevOps y plataforma.", "body": "Valida y formatea archivos de configuración antes de desplegar, prueba patrones de grep o sed contra líneas de registro de muestra antes de ejecutarlos en producción e inspecciona registros estructurados para identificar anomalías." }
       }
     }
   },
@@ -202,57 +364,136 @@
     "description": "Captura tu pantalla o transforma clips de vídeo en GIF animados ligeros — procesado completamente en tu navegador. Sin extensiones que instalar, sin cuentas que crear y nada se sube nunca a un servidor.",
     "tools": {
       "screenRecorder": {
-        "name": "Grabadora de pantalla rápida",
-        "desc": "Graba tu pantalla o pestaña del navegador al instante sin necesidad de extensiones o software."
+        "name": "Grabador de pantalla rápido",
+        "desc": "Una utilidad de grabación basada en el navegador, sin configuración, diseñada para uso inmediato. Capture su escritorio, una ventana de aplicación específica o una pestaña del navegador con claridad de alta definición. Perfecto para crear tutoriales y demostraciones sin instalaciones."
       },
       "videoToGif": {
         "name": "Conversor de vídeo a GIF",
-        "desc": "Convierte clips de vídeo en GIF animados completamente en tu navegador. Rápido, gratuito y privado."
+        "desc": "Transforme clips de vídeo de alta resolución en GIFs animados ligeros y fáciles de compartir. Nuestro conversor se ejecuta localmente, lo que le permite ajustar la velocidad de fotogramas y la calidad para optimizar el tamaño del archivo."
       }
     },
     "guide": {
-      "heading": "Por qué importan los formatos de video",
-      "intro": "Elegir el formato correcto afecta el rendimiento, la calidad y la distribución. Los flujos de video suelen equilibrar MP4 y GIF según tamaño, compatibilidad y uso compartido.",
-      "highlights": {
-        "item1": "MP4",
-        "item2": "GIF",
-        "item3": "Tamaño de archivo",
-        "item4": "Compatibilidad"
+      "heading": "La guía completa de utilidades de vídeo en el navegador",
+      "sections": {
+        "foundation": { "title": "1. Grabación y conversión modernas en el navegador" },
+        "categories": { "title": "2. Capacidades de las herramientas de vídeo" },
+        "formats": { "title": "3. Comparación de formatos GIF vs. MP4" },
+        "scenarios": { "title": "4. Flujos de trabajo profesionales comunes" },
+        "privacy": { "title": "5. Por qué importa el procesamiento de vídeo local" },
+        "tips": { "title": "6. Consejos profesionales para capturas de alta calidad" },
+        "faq": { "title": "7. Preguntas frecuentes" },
+        "useCases": { "title": "8. Casos de uso del mundo real" }
       },
-      "overviewHeading": "Resumen de herramientas",
-      "useCasesLabel": "Casos de uso:",
+      "intro": "El contenido de vídeo es el medio más atractivo en la web, pero crearlo y compartirlo puede ser un desafío técnico. Nuestra plataforma simplifica esto al proporcionar herramientas de vídeo robustas que no requieren instalación. Al aprovechar las API modernas del navegador como MediaDevices y conversores basados en WebAssembly, llevamos el procesamiento de vídeo de alto rendimiento directamente a su ventana del navegador. Esto elimina la necesidad de suscripciones costosas o conversores en la nube que invaden la privacidad. Todo el procesamiento ocurre en su CPU y GPU local, asegurando que sus datos nunca abandonen su dispositivo.",
+      "highlights": {
+        "item1": "Sin instalación",
+        "desc1": "Sin extensiones de navegador ni aplicaciones de escritorio. Todo se ejecuta en navegadores modernos estándar.",
+        "item2": "Captura sin pérdidas",
+        "desc2": "Grabe su pantalla a la resolución nativa para tutoriales y presentaciones perfectas a nivel de píxel.",
+        "item3": "Conversión rápida",
+        "desc3": "Convierta partes de vídeos a GIFs en segundos utilizando algoritmos de codificación locales eficientes.",
+        "item4": "Uso compartido universal",
+        "desc4": "Genere formatos compatibles con todas las plataformas sociales, clientes de correo y herramientas de documentación."
+      },
+      "overviewHeading": "Desglose detallado de nuestras capacidades principales de procesamiento de vídeo.",
+      "useCasesLabel": "Casos de uso principales para esta herramienta:",
       "videoToGif": {
-        "item1": "Tutoriales",
-        "item2": "Redes sociales",
-        "item3": "Documentación"
+        "item1": "Creación de resúmenes de funciones animados para páginas de aterrizaje y correos de marketing.",
+        "item2": "Adición de demostraciones en bucle a sitios de documentación como GitBook o Readme.io.",
+        "item3": "Captura de segmentos divertidos o informativos de vídeos largos para compartir en redes sociales."
       },
       "screenRecorder": {
-        "item1": "Reporte de bugs",
-        "item2": "Demos",
-        "item3": "Materiales de capacitación"
+        "item1": "Grabación de errores técnicos para compartir con los equipos de desarrollo para una depuración más rápida.",
+        "item2": "Creación de guías de vídeo de 'cómo hacerlo' para la incorporación de nuevos empleados o usuarios.",
+        "item3": "Captura de presentaciones en vivo o seminarios web para revisión y archivo posterior."
       },
-      "comparisonHeading": "GIF vs Video",
+      "comparisonHeading": "Entender cuándo elegir GIF sobre MP4 es esencial para optimizar el rendimiento web.",
       "table": {
-        "feature": "Característica",
-        "gif": "GIF",
-        "mp4": "MP4",
-        "size": "Tamaño",
-        "row1gif": "Más grande",
-        "row1mp4": "Más pequeño",
-        "audio": "Audio",
-        "row2gif": "No",
-        "row2mp4": "Sí",
-        "sharing": "Compartir",
-        "row3gif": "Fácil",
-        "row3mp4": "Fácil"
+        "feature": "Capacidad",
+        "gif": "GIF Animado",
+        "mp4": "MP4 (H.264/H.265)",
+        "size": "Tamaño de archivo",
+        "row1gif": "Alto (Mejor para clips cortos)",
+        "row1mp4": "Bajo (Alta compresión, mejor para vídeos largos)",
+        "audio": "Soporte de audio",
+        "row2gif": "No (Estrictamente visual)",
+        "row2mp4": "Sí (Audio estéreo de alta fidelidad)",
+        "sharing": "Soporte de reproducción automática",
+        "row3gif": "Universal (Se reproduce automáticamente en todos los entornos)",
+        "row3mp4": "Condicional (A menudo requiere silencio para reproducción automática)"
       },
-      "workflowsHeading": "Flujos comunes",
+      "workflowsHeading": "Guías paso a paso para tareas profesionales de vídeo comunes.",
       "workflows": {
         "bug": {
-          "title": "Grabar un bug"
+          "title": "Documentar un error de software",
+          "desc": "Inicie el grabador de pantalla, capture los pasos exactos y guárdelo como MP4 para adjuntarlo a su ticket de Jira o GitHub."
         },
         "animation": {
-          "title": "Compartir una animación rápida"
+          "title": "Crear una animación de interfaz de usuario",
+          "desc": "Grabe un clip corto de una transición de UI y use la herramienta Vídeo a GIF para crear un bucle ligero."
+        }
+      },
+      "privacy": {
+        "intro": "Los archivos de vídeo suelen ser grandes y contienen información sensible. Nuestro enfoque local garantiza la máxima seguridad:",
+        "point1": "Grabación local en memoria: Su grabación se almacena en la memoria temporal del navegador, nunca en nuestros servidores.",
+        "point2": "Sin rastreo: No rastreamos lo que graba o convierte. Sus reuniones privadas permanecen confidenciales.",
+        "point3": "Capacidad sin conexión: Una vez cargada la herramienta, puede grabar y convertir incluso sin conexión a internet.",
+        "point4": "Sin marcas de agua: No forzamos marcas de agua en su contenido profesional, asegurando que su marca sea la protagonista."
+      },
+      "tips": {
+        "intro": "Domine el vídeo en el navegador con estas estrategias de grabación y conversión.",
+        "tip1": {
+          "title": "Cuide su área de grabación:",
+          "body": "Siempre que sea posible, grabe una 'Ventana' o 'Pestaña' en lugar de toda la pantalla para evitar filtraciones accidentales."
+        },
+        "tip2": {
+          "title": "Optimice para resolución GIF:",
+          "body": "Al convertir a GIF, use una resolución menor (ej. 640px de ancho) para mantener tamaños de archivo bajos."
+        },
+        "tip3": {
+          "title": "Compruebe el audio del sistema:",
+          "body": "Los navegadores modernos permiten capturar el audio de la pestaña. Asegúrese de que el volumen esté equilibrado."
+        },
+        "tip4": {
+          "title": "Use menos FPS para documentación:",
+          "body": "Para demostraciones de software, 10-15 FPS suelen ser suficientes para GIFs, reduciendo drásticamente el tamaño."
+        },
+        "tip5": {
+          "title": "Limpie la interfaz de su navegador:",
+          "body": "Antes de grabar, oculte su barra de marcadores y extensiones para que el vídeo parezca más profesional."
+        }
+      },
+      "faq": {
+        "q1": "¿Cuánto tiempo puedo grabar mi pantalla?",
+        "a1": "No hay un límite estricto, pero las grabaciones se almacenan en la RAM, por lo que depende de la memoria de su dispositivo.",
+        "q2": "¿Qué formatos de vídeo son compatibles para conversión a GIF?",
+        "a2": "La mayoría de los formatos que su navegador puede reproducir, incluidos MP4, WebM y MOV.",
+        "q3": "¿Se admite audio de micrófono en el grabador?",
+        "a3": "¡Sí! Puede elegir incluir su micrófono, el audio del sistema o ambos.",
+        "q4": "¿Por qué mi archivo GIF es tan grande?",
+        "a4": "Los GIFs no están comprimidos. Intente reducir la duración, los FPS o la resolución durante la conversión.",
+        "q5": "¿Funciona esto en dispositivos móviles?",
+        "a5": "La grabación de pantalla es mejor compatible en navegadores de escritorio debido a restricciones de seguridad del SO móvil.",
+        "q6": "¿Son estas herramientas gratuitas para uso comercial?",
+        "a6": "Sí, nuestras herramientas de vídeo son completamente gratuitas para proyectos personales y profesionales."
+      },
+      "useCases": {
+        "intro": "Nuestro kit de herramientas es utilizado por profesionales de diversas industrias por su velocidad y privacidad.",
+        "case1": {
+          "title": "Ingenieros de QA:",
+          "body": "Graban reproducciones de errores en alta definición y las comparten instantáneamente con los desarrolladores."
+        },
+        "case2": {
+          "title": "Creadores de contenido:",
+          "body": "Convierten clips destacados en GIFs para redes sociales en plataformas como Twitter e Instagram."
+        },
+        "case3": {
+          "title": "Educadores remotos:",
+          "body": "Graban rápidamente fragmentos instructivos cortos para explicar conceptos complejos a los estudiantes."
+        },
+        "case4": {
+          "title": "Diseñadores de producto:",
+          "body": "Capturan transiciones de UI/UX fluidas para mostrar a los desarrolladores exactamente cómo deben sentirse las animaciones."
         }
       }
     }

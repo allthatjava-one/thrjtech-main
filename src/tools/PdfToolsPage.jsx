@@ -31,6 +31,37 @@ const TOOLS = [
   },
 ]
 
+const DEEP_DIVE_SECTIONS = [
+  {
+    titleKey: 'pdf.guide.deepDive.sections.fundamentals.title',
+    paragraphKeys: [
+      'pdf.guide.deepDive.paragraph1',
+      'pdf.guide.deepDive.paragraph2',
+    ],
+  },
+  {
+    titleKey: 'pdf.guide.deepDive.sections.structure.title',
+    paragraphKeys: [
+      'pdf.guide.deepDive.paragraph3',
+      'pdf.guide.deepDive.paragraph4',
+    ],
+  },
+  {
+    titleKey: 'pdf.guide.deepDive.sections.output.title',
+    paragraphKeys: [
+      'pdf.guide.deepDive.paragraph5',
+      'pdf.guide.deepDive.paragraph6',
+    ],
+  },
+  {
+    titleKey: 'pdf.guide.deepDive.sections.qa.title',
+    paragraphKeys: [
+      'pdf.guide.deepDive.paragraph7',
+      'pdf.guide.deepDive.paragraph8',
+    ],
+  },
+]
+
 export default function PdfToolsPage() {
   const { t } = useTranslation('toolsLanding')
 
@@ -70,6 +101,16 @@ export default function PdfToolsPage() {
             <div className="pdf-tools-guide-content">
               <h2>{t('pdf.guide.heading')}</h2>
               <p>{t('pdf.guide.intro')}</p>
+
+              <h3>{t('pdf.guide.deepDiveHeading')}</h3>
+              {DEEP_DIVE_SECTIONS.map((section) => (
+                <div key={section.titleKey}>
+                  <h4>{t(section.titleKey)}</h4>
+                  {section.paragraphKeys.map((paragraphKey) => (
+                    <p key={paragraphKey}>{t(paragraphKey)}</p>
+                  ))}
+                </div>
+              ))}
 
               <h3>{t('pdf.guide.examplesHeading')}</h3>
               <ul>
@@ -126,6 +167,48 @@ export default function PdfToolsPage() {
                 <li><Link to="/blogs/pdf-compressor-guide">{t('pdf.guide.related.compression')}</Link></li>
                 <li><Link to="/blogs/pdf-converter-guide">{t('pdf.guide.related.conversion')}</Link></li>
                 <li><Link to="/blogs/pdf-compressor-guide#why-pdf-file-size-matters">{t('pdf.guide.related.whyLarge')}</Link></li>
+              </ul>
+
+              <h3>{t('pdf.guide.privacy.heading')}</h3>
+              <p>{t('pdf.guide.privacy.intro')}</p>
+              <ul>
+                <li>{t('pdf.guide.privacy.point1')}</li>
+                <li>{t('pdf.guide.privacy.point2')}</li>
+                <li>{t('pdf.guide.privacy.point3')}</li>
+                <li>{t('pdf.guide.privacy.point4')}</li>
+              </ul>
+
+              <h3>{t('pdf.guide.tips.heading')}</h3>
+              <p>{t('pdf.guide.tips.intro')}</p>
+              <ul>
+                <li><strong>{t('pdf.guide.tips.tip1.title')}</strong> {t('pdf.guide.tips.tip1.body')}</li>
+                <li><strong>{t('pdf.guide.tips.tip2.title')}</strong> {t('pdf.guide.tips.tip2.body')}</li>
+                <li><strong>{t('pdf.guide.tips.tip3.title')}</strong> {t('pdf.guide.tips.tip3.body')}</li>
+                <li><strong>{t('pdf.guide.tips.tip4.title')}</strong> {t('pdf.guide.tips.tip4.body')}</li>
+                <li><strong>{t('pdf.guide.tips.tip5.title')}</strong> {t('pdf.guide.tips.tip5.body')}</li>
+              </ul>
+
+              <h3>{t('pdf.guide.faq.heading')}</h3>
+              <div className="pdf-tools-faq-list">
+                <p><strong>{t('pdf.guide.faq.q1')}</strong></p>
+                <p>{t('pdf.guide.faq.a1')}</p>
+                <p><strong>{t('pdf.guide.faq.q2')}</strong></p>
+                <p>{t('pdf.guide.faq.a2')}</p>
+                <p><strong>{t('pdf.guide.faq.q3')}</strong></p>
+                <p>{t('pdf.guide.faq.a3')}</p>
+                <p><strong>{t('pdf.guide.faq.q4')}</strong></p>
+                <p>{t('pdf.guide.faq.a4')}</p>
+                <p><strong>{t('pdf.guide.faq.q5')}</strong></p>
+                <p>{t('pdf.guide.faq.a5')}</p>
+              </div>
+
+              <h3>{t('pdf.guide.useCases.heading')}</h3>
+              <p>{t('pdf.guide.useCases.intro')}</p>
+              <ul>
+                <li><strong>{t('pdf.guide.useCases.case1.title')}</strong> {t('pdf.guide.useCases.case1.body')}</li>
+                <li><strong>{t('pdf.guide.useCases.case2.title')}</strong> {t('pdf.guide.useCases.case2.body')}</li>
+                <li><strong>{t('pdf.guide.useCases.case3.title')}</strong> {t('pdf.guide.useCases.case3.body')}</li>
+                <li><strong>{t('pdf.guide.useCases.case4.title')}</strong> {t('pdf.guide.useCases.case4.body')}</li>
               </ul>
             </div>
           </div>
