@@ -1,19 +1,10 @@
 <div class="icon-list" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
 
   <style>
-    .icon-list ul, .icon-list ol { padding-left: 0; }
-    .icon-list li { list-style: none; position: relative; padding-left: 28px; margin-bottom: .4rem; }
-    .icon-list li:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.15rem;
-      width: 18px;
-      height: 18px;
-      background-repeat: no-repeat;
-      background-size: 18px 18px;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='4' width='22' height='16' rx='2' fill='%231a73e8'/><circle cx='8' cy='11' r='2' fill='%23ffffff'/><path d='M16 15l-3-4-5 6h11z' fill='%23ffffff'/></svg>");
-    }
+    .icon-list ul, .icon-list ol { padding-left: 0; margin-left: 0; }
+    .icon-list li { list-style: none; margin-bottom: .4rem; display:flex; align-items:flex-start; }
+    .icon-list .li-icon { width:18px; height:18px; flex:0 0 18px; margin-right:10px; display:inline-block; }
+    .icon-list .li-content { line-height:1.4; }
   </style>
 
   <h1>내 PDF가 이렇게 큰 이유는? PDF 파일 크기와 이미지 영향 이해하기</h1>
@@ -28,20 +19,73 @@
   <h2>이미지: 주요 원인</h2>
   <p>이미지는 여러 방식으로 PDF의 크기를 증가시킵니다:</p>
   <ul>
-    <li><strong>해상도(픽셀 치수)</strong>: 3000×2000 픽셀 이미지에는 600만 개의 픽셀이 있습니다. 픽셀 수가 많을수록 파일 크기가 커집니다.</li>
-    <li><strong>색상 깊이</strong>: 24비트 RGB나 32비트 RGBA 같은 높은 색상 깊이 이미지는 그레이스케일이나 색상 팔레트가 제한된 이미지보다 픽셀당 더 많은 바이트를 필요로 합니다.</li>
-    <li><strong>압축 유형</strong>: PNG나 TIFF 같은 무손실 또는 비압축 형식은 JPEG 같은 손실 압축 이미지보다 훨씬 클 수 있습니다. 어떤 압축 방식은 사진에 최적화되어 있고(JPEG), 다른 방식은 그래픽이나 텍스트에 유리합니다(PNG).</li>
-    <li><strong>이미지 복제</strong>: 동일한 이미지가 서로 다른 크기나 변환으로 여러 번 포함되면, PDF가 리소스를 재사용하지 못하고 별도 복사본을 저장할 수 있습니다.</li>
-    <li><strong>다운샘플링 부재</strong>: 생성자나 내보내기 도구가 표시될 크기에 맞춰 이미지를 다운샘플하지 않으면, 화면에 작게 표시되더라도 고해상도 이미지가 그대로 포함됩니다.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#1f2937" />
+        <path d="M7 8h10v8H7z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>해상도(픽셀 치수)</strong>: 3000×2000 픽셀 이미지에는 600만 개의 픽셀이 있습니다. 픽셀 수가 많을수록 파일 크기가 커집니다.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#ef4444" />
+        <path d="M7 8h10v6H7z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>색상 깊이</strong>: 24비트 RGB나 32비트 RGBA 같은 높은 색상 깊이 이미지는 그레이스케일이나 색상 팔레트가 제한된 이미지보다 픽셀당 더 많은 바이트를 필요로 합니다.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#f59e0b" />
+        <path d="M6 16l3-6 4 8 3-5 2 9H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>압축 유형</strong>: PNG나 TIFF 같은 무손실 또는 비압축 형식은 JPEG 같은 손실 압축 이미지보다 훨씬 클 수 있습니다. 어떤 압축 방식은 사진에 최적화되어 있고(JPEG), 다른 방식은 그래픽이나 텍스트에 유리합니다(PNG).</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <circle cx="10" cy="10" r="7" fill="#6366f1" />
+        <path d="M19 19l-3.5-3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+      <span class="li-content"><strong>이미지 복제</strong>: 동일한 이미지가 서로 다른 크기나 변환으로 여러 번 포함되면, PDF가 리소스를 재사용하지 못하고 별도 복사본을 저장할 수 있습니다.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#1a73e8" d="M3 11h18v2H3z" />
+      </svg>
+      <span class="li-content"><strong>다운샘플링 부재</strong>: 생성자나 내보내기 도구가 표시될 크기에 맞춰 이미지를 다운샘플하지 않으면, 화면에 작게 표시되더라도 고해상도 이미지가 그대로 포함됩니다.</span>
+    </li>
   </ul>
 
   <h2>PDF 내부에 이미지가 저장되는 방식</h2>
   <p>PDF는 여러 인코딩 방식으로 이미지를 포함할 수 있습니다. 일반적인 방법은 다음과 같습니다:</p>
   <ul>
-    <li><strong>JPEG 스트림</strong>: 사진에 적합하며 손실 압축을 사용해 사진 콘텐츠에 대해 비교적 작은 파일을 생성합니다.</li>
-    <li><strong>Flate/ZIP (zlib)</strong>: 스캔한 문서나 색상이 제한된 그래픽에 사용되는 무손실 압축입니다.</li>
-    <li><strong>JBIG2</strong>: 이진(흑백) 스캔에 매우 효율적이며 텍스트와 유사한 스캔의 영역을 강하게 압축하는 데 자주 사용됩니다.</li>
-    <li><strong>CCITT</strong>: 팩스 스타일의 흑백 이미지에 특화된 코덱입니다.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#6366f1" />
+        <circle cx="8" cy="11" r="2" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>JPEG 스트림</strong>: 사진에 적합하며 손실 압축을 사용해 사진 콘텐츠에 대해 비교적 작은 파일을 생성합니다.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#ef4444" />
+        <path d="M7 8h10v6H7z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Flate/ZIP (zlib)</strong>: 스캔한 문서나 색상이 제한된 그래픽에 사용되는 무손실 압축입니다.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#f59e0b" />
+        <path d="M6 16l3-6 4 8 3-5 2 9H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>JBIG2</strong>: 이진(흑백) 스캔에 매우 효율적이며 텍스트와 유사한 스캔의 영역을 강하게 압축하는 데 자주 사용됩니다。</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#6b7280" />
+        <path d="M5 9h14v2H5z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>CCITT</strong>: 팩스 스타일의 흑백 이미지에 특화된 코덱입니다。</span>
+    </li>
   </ul>
 
   <p>인코더 선택은 중요합니다: 고품질 PNG로 저장한 사진은 동일한 사진을 중간 품질의 JPEG로 저장한 것보다 훨씬 클 수 있습니다. 반대로 색이 평면적이고 가장자리가 선명한 도형은 JPEG로 압축하면 화질이 떨어지거나 효율이 낮을 수 있어 PNG나 벡터가 더 적합할 수 있습니다.</p>
@@ -61,30 +105,111 @@
   <h2>겉보기에는 같아도 파일 크기가 다른 이유</h2>
   <p>겉보기에는 동일한 두 PDF가 파일 크기에서는 큰 차이를 보일 수 있습니다. 이는 생성 방식이나 내보내기 설정의 차이 때문입니다. 예를 들면:</p>
   <ul>
-    <li>원본 이미지를 해상도 그대로 포함하고 여러 폰트 파일을 포함하는 Word의 PDF 내보내기.</li>
-    <li>시스템 프린터 드라이버로 "PDF로 인쇄"하면 프린터 해상도로 래스터화하여 이미지를 포함하는 경우.</li>
-    <li>이미지를 다운샘플하고 효율적으로 압축하며 폰트 서브셋을 생성하는 그래픽 도구의 최적화된 내보내기.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="18" rx="2" fill="#1f2937" />
+        <path d="M7 8h10v8H7z" fill="#fff" />
+      </svg>
+      <span class="li-content">원본 이미지를 해상도 그대로 포함하고 여러 폰트 파일을 포함하는 Word의 PDF 내보내기.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M21 8V6l-4-4H7L3 6v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8z" fill="#0ea5e9" />
+        <path d="M7 12h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <span class="li-content">시스템 프린터 드라이버로 "PDF로 인쇄"하면 프린터 해상도로 래스터화하여 이미지를 포함하는 경우.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="#10b981" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">이미지를 다운샘플하고 효율적으로 압축하며 폰트 서브셋을 생성하는 그래픽 도구의 최적화된 내보내기.</span>
+    </li>
   </ul>
 
   <h2>큰 PDF 진단 방법</h2>
   <p>먼저 PDF 내부 구조를 검사하세요. Adobe Acrobat Pro, <code>pdfinfo</code>, <code>qpdf --qdf</code>, <code>mutool</code> 또는 온라인 분석 도구로 어떤 객체가 용량을 많이 차지하는지 확인할 수 있습니다. 확인할 항목:</p>
   <ul>
-    <li>큰 이미지 XObject와 그 크기.</li>
-    <li>포함된 폰트의 수와 크기.</li>
-    <li>임베디드 파일이나 멀티미디어 스트림.</li>
-    <li>페이지 수와 페이지별 리소스 사용량.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <circle cx="10" cy="10" r="7" fill="#6366f1" />
+        <path d="M19 19l-3.5-3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+      <span class="li-content">큰 이미지 XObject와 그 크기.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#ef4444" />
+        <path d="M7 8h10v6H7z" fill="#fff" />
+      </svg>
+      <span class="li-content">포함된 폰트의 수와 크기.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#f59e0b" />
+        <path d="M6 8h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">임베디드 파일이나 멀티미디어 스트림.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M5 20h14v-2H5z" fill="#6b7280" />
+        <path d="M7 4h10v10H7z" fill="#e5e7eb" />
+      </svg>
+      <span class="li-content">페이지 수와 페이지별 리소스 사용량.</span>
+    </li>
   </ul>
 
   <h2>PDF 크기를 줄이는 실용적인 방법</h2>
   <p>품질을 유지하면서 PDF 용량을 줄이기 위한 실무적 조치:</p>
   <ol>
-    <li><strong>이미지 해상도 낮추기(다운샘플링)</strong>: 화면용 PDF라면 72–150 DPI 정도로 픽셀 치수를 줄이세요. 웹용으로 배포할 경우 300–600 DPI 이미지를 그대로 포함하지 마세요.</li>
-    <li><strong>적절한 압축 방식 선택</strong>: 사진엔 JPEG, 색이 단순한 그래픽엔 PNG, 흑백 스캔엔 JBIG2/CCITT을 사용하세요. JPEG 품질을 조절해 용량과 화질의 균형을 맞추세요.</li>
-    <li><strong>불필요한 투명도 제거 또는 플래튼</strong>: 효과가 필요 없다면 플래튼하거나 투명도를 제거해 벡터를 유지하세요.</li>
-    <li><strong>폰트 최적화(서브셋)</strong>: 사용된 글리프만 포함하도록 하고, 불필요한 전체 폰트 포함을 피하세요.</li>
-    <li><strong>미사용 리소스 제거</strong>: 생성 도중 남은 사용 안 하는 이미지나 메타데이터를 제거하세요.</li>
-    <li><strong>스캔은 OCR 적용해 검색 가능 PDF로 변환</strong>: 스캔 문서는 마스터는 고해상도로 보관하고 배포용은 저해상도로 내보내는 전략이 좋습니다. 또는 텍스트를 추출해 이미지 해상도를 낮추세요.</li>
-    <li><strong>선형화된(웹 최적화) PDF 생성</strong>: 파일 크기를 크게 줄이지는 못하지만, 스트리밍과 로딩 경험을 개선합니다.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#1a73e8" />
+        <circle cx="9" cy="10" r="2" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>이미지 해상도 낮추기(다운샘플링)</strong>: 화면용 PDF라면 72–150 DPI 정도로 픽셀 치수를 줄이세요. 웹용으로 배포할 경우 300–600 DPI 이미지를 그대로 포함하지 마세요.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#10b981" d="M3 6h18v12H3z" />
+        <path d="M7 10h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <span class="li-content"><strong>적절한 압축 방식 선택</strong>: 사진엔 JPEG, 색이 단순한 그래픽엔 PNG, 흑백 스캔엔 JBIG2/CCITT을 사용하세요. JPEG 품질을 조절해 용량과 화질의 균형을 맞추세요。</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#f59e0b" d="M12 2L2 22h20L12 2z" />
+      </svg>
+      <span class="li-content"><strong>불필요한 투명도 제거 또는 플래튼</strong>: 효과가 필요 없다면 플래튼하거나 투명도를 제거해 벡터를 유지하세요.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="#6b7280" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>폰트 최적화(서브셋)</strong>: 사용된 글리프만 포함하도록 하고, 불필요한 전체 폰트 포함을 피하세요。</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#ef4444" d="M4 6h16v12H4z" />
+      </svg>
+      <span class="li-content"><strong>미사용 리소스 제거</strong>: 생성 도중 남은 사용 안 하는 이미지나 메타데이터를 제거하세요。</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#111827" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>스캔은 OCR 적용해 검색 가능 PDF로 변환</strong>: 스캔 문서는 마스터는 고해상도로 보관하고 배포용은 저해상도로 내보내는 전략이 좋습니다. 또는 텍스트를 추출해 이미지 해상도를 낮추세요.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#6366f1" d="M3 11h18v2H3z" />
+      </svg>
+      <span class="li-content"><strong>선형화된(웹 최적화) PDF 생성</strong>: 파일 크기를 크게 줄이지는 못하지만, 스트리밍과 로딩 경험을 개선합니다。</span>
+    </li>
   </ol>
 
   <h2>주의해야 할 내보내기 설정</h2>
@@ -99,11 +224,38 @@
   <h2>실무용 체크리스트</h2>
   <p>PDF을 공유하기 전에 이 체크리스트를 빠르게 점검하세요:</p>
   <ul>
-    <li>이미지가 필요한 것보다 큰가요? 필요시 해상도를 줄이세요.</li>
-    <li>사진이 비효율적인 형식으로 저장되어 있나요? 제어된 품질로 JPEG로 다시 저장하세요.</li>
-    <li>문서에 영상이나 첨부파일이 포함되어 있나요? 가능하면 제거하거나 외부에 호스팅하세요.</li>
-    <li>폰트가 올바르게 포함되어 있고 서브셋으로 되어 있나요?</li>
-    <li>스캔을 검색 가능한 텍스트로 변환하고 배포용엔 저해상도 이미지를 사용하는 것이 적절한가요?</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#6366f1" d="M3 11h18v2H3z" />
+      </svg>
+      <span class="li-content">이미지가 필요한 것보다 큰가요? 필요시 해상도를 줄이세요.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="6" width="18" height="10" rx="2" fill="#ef4444" />
+      </svg>
+      <span class="li-content">사진이 비효율적인 형식으로 저장되어 있나요? 제어된 품질로 JPEG로 다시 저장하세요.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#f59e0b" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">문서에 영상이나 첨부파일이 포함되어 있나요? 가능하면 제거하거나 외부에 호스팅하세요.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="#6b7280" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">폰트가 올바르게 포함되어 있고 서브셋으로 되어 있나요?</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#1a73e8" />
+      </svg>
+      <span class="li-content">스캔을 검색 가능한 텍스트로 변환하고 배포용엔 저해상도 이미지를 사용하는 것이 적절한가요?</span>
+    </li>
   </ul>
 
   <h2>결론</h2>
