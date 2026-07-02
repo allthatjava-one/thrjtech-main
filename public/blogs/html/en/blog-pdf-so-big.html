@@ -1,19 +1,10 @@
 <div class="icon-list" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
 
   <style>
-    .icon-list ul, .icon-list ol { padding-left: 0; }
-    .icon-list li { list-style: none; position: relative; padding-left: 28px; margin-bottom: .4rem; }
-    .icon-list li:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.15rem;
-      width: 18px;
-      height: 18px;
-      background-repeat: no-repeat;
-      background-size: 18px 18px;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='4' width='22' height='16' rx='2' fill='%231a73e8'/><circle cx='8' cy='11' r='2' fill='%23ffffff'/><path d='M16 15l-3-4-5 6h11z' fill='%23ffffff'/></svg>");
-    }
+    .icon-list ul, .icon-list ol { padding-left: 0; margin-left: 0; }
+    .icon-list li { list-style: none; margin-bottom: .4rem; display:flex; align-items:flex-start; }
+    .icon-list .li-icon { width:18px; height:18px; flex:0 0 18px; margin-right:10px; display:inline-block; }
+    .icon-list .li-content { line-height:1.4; }
   </style>
 
   <h1>Why Is My PDF So Big? Understanding PDF Size and How Images Drive It</h1>
@@ -28,20 +19,75 @@
   <h2>Images: the usual suspects</h2>
   <p>Images inflate PDFs in several ways:</p>
   <ul>
-    <li><strong>Resolution (pixel dimensions)</strong>: A 3000×2000 image contains 6 million pixels. Each pixel requires data, so larger dimensions mean larger files.</li>
-    <li><strong>Color depth</strong>: Images with higher color depth (24-bit RGB, 32-bit RGBA) require more bytes per pixel than grayscale or indexed-color images.</li>
-    <li><strong>Compression type</strong>: Raw or lossless formats like PNG or TIFF can be much larger than compressed JPEG images. Some compression methods are optimized for photographs (JPEG) while others are better for graphics and text (PNG).</li>
-    <li><strong>Multiple image copies</strong>: If the same image is embedded multiple times at different sizes or with different transformations, the PDF may store separate copies instead of reusing one resource.</li>
-    <li><strong>Downsampling and resampling</strong>: If a creator or exporter doesn't downsample (reduce the pixel dimensions) for the intended viewing size, the PDF will carry full-resolution images even when displayed smaller.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="2" y="5" width="20" height="14" rx="2" fill="#1a73e8" />
+        <circle cx="8" cy="11" r="2" fill="#fff" />
+        <path d="M16 15l-3-4-5 6h11z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Resolution (pixel dimensions)</strong>: A 3000×2000 image contains 6 million pixels. Each pixel requires data, so larger dimensions mean larger files.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="3" width="18" height="18" rx="2" fill="#6b7280" />
+        <rect x="6" y="7" width="6" height="4" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Color depth</strong>: Images with higher color depth (24-bit RGB, 32-bit RGBA) require more bytes per pixel than grayscale or indexed-color images.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#10b981" d="M3 5h18v14H3z" />
+        <circle cx="9" cy="11" r="2" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Compression type</strong>: Raw or lossless formats like PNG or TIFF can be much larger than compressed JPEG images. Some compression methods are optimized for photographs (JPEG) while others are better for graphics and text (PNG).</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#f59e0b" d="M2 6h20v12H2z" />
+        <path d="M6 8h5v6H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Multiple image copies</strong>: If the same image is embedded multiple times at different sizes or with different transformations, the PDF may store separate copies instead of reusing one resource.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="2" y="5" width="20" height="14" rx="2" fill="#ef4444" />
+        <path d="M5 16l4-6 3 4 5-7 2 9H5z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Downsampling and resampling</strong>: If a creator or exporter doesn't downsample (reduce the pixel dimensions) for the intended viewing size, the PDF will carry full-resolution images even when displayed smaller.</span>
+    </li>
   </ul>
 
   <h2>How images are stored inside PDFs</h2>
   <p>PDFs can embed images in various encodings. Common approaches include:</p>
   <ul>
-    <li><strong>JPEG streams</strong>: Good for photos; uses lossy compression and typically produces smaller files for photographic content.</li>
-    <li><strong>Flate/ZIP (zlib)</strong>: Lossless compression used for images like scanned documents or graphics with limited colors.</li>
-    <li><strong>JBIG2</strong>: Efficient for bi-level (black-and-white) scans, often used for text-like scans to compress text areas aggressively.</li>
-    <li><strong>CCITT</strong>: Specialized for fax-style black-and-white images.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#6366f1" />
+        <circle cx="8" cy="11" r="2" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>JPEG streams</strong>: Good for photos; uses lossy compression and typically produces smaller files for photographic content.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#ef4444" />
+        <path d="M7 8h10v6H7z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Flate/ZIP (zlib)</strong>: Lossless compression used for images like scanned documents or graphics with limited colors.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#f59e0b" />
+        <path d="M6 16l3-6 4 8 3-5 2 9H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>JBIG2</strong>: Efficient for bi-level (black-and-white) scans, often used for text-like scans to compress text areas aggressively.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#6b7280" />
+        <path d="M5 9h14v2H5z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>CCITT</strong>: Specialized for fax-style black-and-white images.</span>
+    </li>
   </ul>
 
   <p>The encoder choice matters: a photo saved as a high-quality PNG can be many times larger than the same photo saved as a medium-quality JPEG. Conversely, diagrams with flat colors and sharp edges may compress poorly with JPEG and be better served by PNG or vector formats.</p>
@@ -61,49 +107,178 @@
   <h2>Why some PDFs look the same but have different sizes</h2>
   <p>Two PDFs that appear identical visually may differ by orders of magnitude in file size because of differences in how they were created or exported. Consider these examples:</p>
   <ul>
-    <li>A Word export that embeds full-resolution images and includes several font files.</li>
-    <li>A PDF printed to PDF using system print drivers that rasterize and embed images at printer resolution.</li>
-    <li>A well-optimized export from a graphics tool that downsamples images, compresses them efficiently, and subsets fonts.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="18" rx="2" fill="#1f2937" />
+        <path d="M7 8h10v8H7z" fill="#fff" />
+      </svg>
+      <span class="li-content">A Word export that embeds full-resolution images and includes several font files.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M21 8V6l-4-4H7L3 6v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8z" fill="#0ea5e9" />
+        <path d="M7 12h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <span class="li-content">A PDF printed to PDF using system print drivers that rasterize and embed images at printer resolution.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="#10b981" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">A well-optimized export from a graphics tool that downsamples images, compresses them efficiently, and subsets fonts.</span>
+    </li>
   </ul>
 
   <h2>How to diagnose large PDFs</h2>
   <p>Start by inspecting the PDF's internal structure. Tools like Adobe Acrobat Pro, `pdfinfo`, `qpdf --qdf`, `mutool`, or online analyzers can show which objects consume the most space. Look for:</p>
   <ul>
-    <li>Large image XObjects and their sizes.</li>
-    <li>Number and size of embedded fonts.</li>
-    <li>Embedded files or multimedia streams.</li>
-    <li>Number of pages and per-page resource usage.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <circle cx="10" cy="10" r="7" fill="#6366f1" />
+        <path d="M19 19l-3.5-3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+      <span class="li-content">Large image XObjects and their sizes.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#ef4444" />
+        <path d="M7 8h10v6H7z" fill="#fff" />
+      </svg>
+      <span class="li-content">Number and size of embedded fonts.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#f59e0b" />
+        <path d="M6 8h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">Embedded files or multimedia streams.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M5 20h14v-2H5z" fill="#6b7280" />
+        <path d="M7 4h10v10H7z" fill="#e5e7eb" />
+      </svg>
+      <span class="li-content">Number of pages and per-page resource usage.</span>
+    </li>
   </ul>
 
   <h2>Practical ways to reduce PDF size</h2>
   <p>Here are actionable steps to shrink PDFs while preserving usable quality:</p>
   <ol>
-    <li><strong>Downsample images</strong>: Reduce image pixel dimensions to match the target viewing resolution (e.g., 72–150 DPI for screen). Avoid carrying 300–600 DPI images into a PDF meant for web viewing.</li>
-    <li><strong>Choose appropriate compression</strong>: Use JPEG for photos, PNG for graphics with flat colors, and JBIG2/CCITT for black-and-white scans. Adjust JPEG quality to balance size and fidelity.</li>
-    <li><strong>Flatten or remove unnecessary transparency</strong>: When effects aren’t necessary, flatten them or re-create the artwork without transparency to keep vector content intact.</li>
-    <li><strong>Subset or optimize fonts</strong>: Only embed used glyphs; avoid embedding multiple full font families if not needed.</li>
-    <li><strong>Remove unused resources</strong>: Some generators leave behind unused images or metadata. Stripping these can reduce size.</li>
-    <li><strong>Convert scanned pages to searchable PDF with OCR</strong>: For scanned documents, a lossless high-res archive plus a low-res web PDF is a good workflow. Or convert scans into mixed PDFs where text is extracted and images are downsampled.</li>
-    <li><strong>Create linearized (web-optimized) PDFs</strong>: This doesn't reduce file size much but improves streaming and perceived performance for large files.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#1a73e8" />
+        <circle cx="9" cy="10" r="2" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Downsample images</strong>: Reduce image pixel dimensions to match the target viewing resolution (e.g., 72–150 DPI for screen). Avoid carrying 300–600 DPI images into a PDF meant for web viewing.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#10b981" d="M3 6h18v12H3z" />
+        <path d="M7 10h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <span class="li-content"><strong>Choose appropriate compression</strong>: Use JPEG for photos, PNG for graphics with flat colors, and JBIG2/CCITT for black-and-white scans. Adjust JPEG quality to balance size and fidelity.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#f59e0b" d="M12 2L2 22h20L12 2z" />
+      </svg>
+      <span class="li-content"><strong>Flatten or remove unnecessary transparency</strong>: When effects aren’t necessary, flatten them or re-create the artwork without transparency to keep vector content intact.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="#6b7280" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Subset or optimize fonts</strong>: Only embed used glyphs; avoid embedding multiple full font families if not needed.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#ef4444" d="M4 6h16v12H4z" />
+      </svg>
+      <span class="li-content"><strong>Remove unused resources</strong>: Some generators leave behind unused images or metadata. Stripping these can reduce size.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#111827" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content"><strong>Convert scanned pages to searchable PDF with OCR</strong>: For scanned documents, a lossless high-res archive plus a low-res web PDF is a good workflow. Or convert scans into mixed PDFs where text is extracted and images are downsampled.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#6366f1" d="M3 11h18v2H3z" />
+      </svg>
+      <span class="li-content"><strong>Create linearized (web-optimized) PDFs</strong>: This doesn't reduce file size much but improves streaming and perceived performance for large files.</span>
+    </li>
   </ol>
 
   <h2>Export settings to watch for</h2>
   <p>When exporting from applications, check these settings:</p>
   <ul>
-    <li>Image downsampling resolution and quality.</li>
-    <li>Compression method for color, grayscale, and monochrome images.</li>
-    <li>Font embedding options (subset vs full).</li>
-    <li>Whether to preserve editing capabilities or to flatten for smaller output.</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#1a73e8" d="M4 7h16v10H4z" />
+      </svg>
+      <span class="li-content">Image downsampling resolution and quality.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#10b981" d="M3 6h18v12H3z" />
+      </svg>
+      <span class="li-content">Compression method for color, grayscale, and monochrome images.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#6b7280" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">Font embedding options (subset vs full).</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#f59e0b" d="M12 2L2 22h20L12 2z" />
+      </svg>
+      <span class="li-content">Whether to preserve editing capabilities or to flatten for smaller output.</span>
+    </li>
   </ul>
 
   <h2>A real-world checklist</h2>
   <p>Before sharing a PDF, quickly run through this checklist:</p>
   <ul>
-    <li>Are images larger than they need to be? Downsample where appropriate.</li>
-    <li>Are photos saved in an inefficient format? Re-save as JPEG with controlled quality.</li>
-    <li>Does the document contain embedded videos or attachments? Remove or link externally if possible.</li>
-    <li>Are fonts embedded properly and subsetted?</li>
-    <li>Would converting scanned pages to searchable text and low-res images work?</li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path fill="#6366f1" d="M3 11h18v2H3z" />
+      </svg>
+      <span class="li-content">Are images larger than they need to be? Downsample where appropriate.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="6" width="18" height="10" rx="2" fill="#ef4444" />
+      </svg>
+      <span class="li-content">Are photos saved in an inefficient format? Re-save as JPEG with controlled quality.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#f59e0b" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">Does the document contain embedded videos or attachments? Remove or link externally if possible.</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="#6b7280" />
+        <path d="M6 9h12v2H6z" fill="#fff" />
+      </svg>
+      <span class="li-content">Are fonts embedded properly and subsetted?</span>
+    </li>
+    <li>
+      <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#1a73e8" />
+      </svg>
+      <span class="li-content">Would converting scanned pages to searchable text and low-res images work?</span>
+    </li>
   </ul>
 
   <h2>Conclusion</h2>
