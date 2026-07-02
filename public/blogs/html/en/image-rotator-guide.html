@@ -1,0 +1,116 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1 id="image-rotator-guide--create-smooth-image-rotations-in-your-browser">Image Rotator Guide — Create Smooth Image Rotations in Your Browser</h1>
+
+  <p>The Image Rotator is a lightweight, browser-based tool for rotating, previewing, and exporting images with precision. Whether you need to straighten a scanned photo, rotate portrait shots to landscape, or prepare multiple images for a gallery, this guide walks through the UI, features, and best practices so you can get pixel-perfect results quickly.</p>
+
+  <p style="display:flex;gap:0.5rem;align-items:center;margin-top:0.5rem;">Try the Image Rotator at <a href="/image-rotator">image-rotator</a> to try it live.</p>
+
+  <br>
+  <h2 id="what-is-an-image-rotator">What Is an Image Rotator?</h2>
+
+  <p>An image rotator is a simple utility that rotates raster images by arbitrary angles and optionally re-exports the rotated result. Unlike full photo editors, rotators focus specifically on rotation while preserving quality, aspect ratio, and composition controls such as canvas background and trimming options.</p>
+
+  <p>In practical workflows, rotating is one of the most common edits: images shot on mobile devices sometimes capture the wrong orientation, scanned documents need deskewing, and layout assets require exact rotations to match design grids. The Image Rotator tool in THRJ's toolset offers an accessible, privacy-first way to perform these edits directly in your browser without uploading your files.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-001.png" alt="Image Rotator main UI" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="key-features">Key Features</h2>
+
+  <ul>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Arbitrary rotation:</strong> Rotate by any angle with sub-degree precision or use quick presets (90°, 180°, 270°).</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M3 7h18M3 12h18M3 17h18" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Canvas trimming:</strong> Choose whether to keep the original canvas size, auto-trim to visible pixels, or use a custom canvas color for transparent areas.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M7 10l5 5 5-5" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Live preview:</strong> See changes instantly with a high-fidelity canvas preview before exporting.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 5v14M5 12h14" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Batch-friendly:</strong> Rotate multiple images one after another without reloading the page — ideal for preparing galleries.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 3v3M12 18v3M5 6l4 4M19 6l-4 4M5 18l4-4M19 18l-4-4" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Export options:</strong> Download as PNG (lossless) or convert to JPEG via the Image Converter tool for smaller files.</li>
+  </ul>
+
+  <br>
+  <h2 id="user-interface-walkthrough">User Interface Walkthrough</h2>
+
+  <p>The rotator UI is intentionally compact and focused. The left column contains controls and presets; the right column displays a large preview canvas with zoom and pan controls. Common actions are grouped at the top for quick access.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-002.png" alt="Rotator controls and presets" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <ol>
+    <li><strong>File input:</strong> Drag files into the drop zone or click to open the file picker. Multiple formats are supported (JPEG, PNG, WebP, GIF — GIFs are flattened to a single frame on export).</li>
+    <li><strong>Rotation slider:</strong> Use the slider for fast adjustments or enter a numeric angle for exact rotations. The UI supports negative angles for counter-clockwise rotation and shows both angle and normalized preview.</li>
+    <li><strong>Presets:</strong> One-click rotate buttons are provided for 90°, 180°, and 270° rotations — useful for common corrections from camera EXIF orientation mismatches.</li>
+    <li><strong>Canvas and background:</strong> Choose to keep the canvas, auto-crop to visible pixels, or fill exposed corners with a chosen background color (useful when rotating non-square images).</li>
+    <li><strong>Export:</strong> Click <em>Export</em> to generate a rasterized PNG. For smaller files, use the Image Converter tool to convert to JPEG after export.</li>
+  </ol>
+
+  <br>
+  <h2 id="step-by-step-example">Step-by-step Example: Straightening a Photo</h2>
+
+  <p>This example shows how to straighten a horizon that appears tilted after capture.</p>
+
+  <ol>
+    <li>Open the Image Rotator and add your photo via drag & drop.</li>
+    <li>Use the rotation slider to roughly align the horizon. As you move the slider, the preview updates instantly.</li>
+    <li>Fine-tune the angle using the numeric input to reach sub-degree accuracy (for example, -1.7°).</li>
+    <li>Choose <strong>Auto-trim</strong> to remove transparent corners; alternatively set a background color if you want preserved canvas edges.</li>
+    <li>Zoom the preview to 100% and inspect edges. If satisfied, click <strong>Export</strong> and save your PNG.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-003.png" alt="Before and after rotation preview" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="tips-for-best-results">Tips for Best Results</h2>
+
+  <ul>
+    <li><strong>Use high-resolution sources:</strong> Rotations can introduce resampling artifacts. Starting with higher-resolution images preserves detail after export.</li>
+    <li><strong>Export at a larger canvas if planning to crop later:</strong> If you expect to crop or retouch the rotated image, export at a larger pixel dimension to leave room for adjustments.</li>
+    <li><strong>Prefer PNG for quality:</strong> PNG preserves pixel fidelity and is preferred for images with sharp edges or text. Convert to JPEG only when file size matters more than absolute losslessness.</li>
+    <li><strong>Check image metadata:</strong> Many cameras embed EXIF orientation tags. If images display incorrectly after import, use the rotate presets to correct the visible orientation before exporting.</li>
+  </ul>
+
+  <br>
+  <h2 id="batch-workflow-and-automation">Batch Workflow and Automation</h2>
+
+  <p>If you have a set of images that all need the same rotation (for example, a batch of scanned pages), the rotator's workflow minimizes repetition:</p>
+
+  <ol>
+    <li>Load the first image, set the desired rotation and canvas policy.</li>
+    <li>Export and then use the <em>Next</em> button to load the subsequent file while preserving your current settings.</li>
+    <li>Repeat export for each file — the tool remembers the last used rotation and canvas choice to speed the process.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-004.png" alt="Batch rotation and export" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="accessibility-and-performance">Accessibility and Performance</h2>
+
+  <p>The Image Rotator is built to be responsive and accessible:</p>
+  <ul>
+    <li><strong>Keyboard accessible controls:</strong> Slider and numeric inputs can be operated via keyboard for precise adjustments.</li>
+    <li><strong>Screen-reader friendly:</strong> Form elements include appropriate labels and ARIA attributes to improve usability for assistive technologies.</li>
+    <li><strong>Performance optimizations:</strong> Heavy image processing runs in a web worker (when available) so the UI remains responsive while generating previews or export data.</li>
+  </ul>
+
+  <br>
+  <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+  <p><strong>Can I rotate animated GIFs or multi-frame WebP?</strong> Animated sources are flattened to a single frame during rotation and export. Use a dedicated animation editor for frame-preserving edits.</p>
+
+  <p><strong>Will rotating degrade my image quality?</strong> Any resampling operation may change pixel values. Use a higher-resolution source and export to PNG to minimize visible degradation.</p>
+
+  <p><strong>Is my image uploaded anywhere?</strong> No. All processing happens locally in your browser unless you explicitly upload or share a file using a separate tool or integration.</p>
+
+  <br>
+  <h2 id="advanced-ideas-and-integrations">Advanced Ideas and Integrations</h2>
+
+  <p>Pair the Image Rotator with other THRJ tools for richer workflows:</p>
+  <ul>
+    <li><strong>Image Converter:</strong> Convert exported PNGs to JPEGs for smaller web-friendly assets.</li>
+    <li><strong>Image Resizer:</strong> Resize rotated images while preserving composition for responsive delivery.</li>
+    <li><strong>Meme Generator:</strong> Add captions or overlays to a rotated canvas for social sharing.</li>
+  </ul>
+
+  <p>Programmatic integrations: If you need headless or server-side rotations in bulk, consider using an automated image pipeline with tools like ImageMagick or Sharp. The browser rotator is optimized for manual, privacy-sensitive edits rather than high-throughput server transforms.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>

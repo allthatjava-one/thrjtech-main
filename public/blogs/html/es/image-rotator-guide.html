@@ -1,0 +1,116 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1 id="image-rotator-guide--create-smooth-image-rotations-in-your-browser">Guía del Rotador de Imágenes — Crea Rotaciones Suave de Imágenes en Tu Navegador</h1>
+
+  <p>El Rotador de Imágenes es una herramienta ligera basada en navegador para rotar, obtener una vista previa y exportar imágenes con precisión. Ya sea que necesites enderezar una foto escaneada, rotar fotos en retrato a paisaje o preparar múltiples imágenes para una galería, esta guía te lleva a través de la interfaz de usuario, características y mejores prácticas para que obtengas resultados pixel-perfectos rápidamente.</p>
+
+  <p style="display:flex;gap:0.5rem;align-items:center;margin-top:0.5rem;">Try the Image Rotator at <a href="/image-rotator">image-rotator</a> to try it live.</p>
+
+  <br>
+  <h2 id="what-is-an-image-rotator">¿Qué es un Rotador de Imágenes?</h2>
+
+  <p>Un rotador de imágenes es una utilidad simple que rota imágenes rasterizadas por ángulos arbitrarios y opcionalmente re-exporta el resultado rotado. A diferencia de los editores de fotos completos, los rotadores se enfocan específicamente en la rotación mientras preservan la calidad, la relación de aspecto y los controles de composición como el fondo del lienzo y las opciones de recorte.</p>
+
+  <p>En flujos de trabajo prácticos, la rotación es uno de los edits más comunes: las imágenes capturadas en dispositivos móviles a veces capturan la orientación incorrecta, los documentos escaneados necesitan deskewing, y los activos de diseño requieren rotaciones exactas para coincidir con cuadrículas de diseño. La herramienta Rotador de Imágenes en el conjunto de herramientas de THRJ ofrece una forma accesible y enfocada en la privacidad para realizar estos edits directamente en tu navegador sin cargar tus archivos.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-001.png" alt="Image Rotator main UI" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="key-features">Características Principales</h2>
+
+  <ul>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Rotación arbitraria:</strong> Rota por cualquier ángulo con precisión de subdegree o utiliza presets rápidos (90°, 180°, 270°).</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M3 7h18M3 12h18M3 17h18" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Recorte de lienzo:</strong> Elige si mantener el tamaño original del lienzo, auto-recortar a píxeles visibles, o usar un color de lienzo personalizado para áreas transparentes.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M7 10l5 5 5-5" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Vista previa en vivo:</strong> Ve los cambios instantáneamente con una vista previa de lienzo de alta fidelidad antes de exportar.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 5v14M5 12h14" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Amigable con lotes:</strong> Rota múltiples imágenes una tras otra sin recargar la página — ideal para preparar galerías.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 3v3M12 18v3M5 6l4 4M19 6l-4 4M5 18l4-4M19 18l-4-4" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Opciones de exportación:</strong> Descarga como PNG (sin pérdidas) o convierte a JPEG a través de la herramienta Image Converter para archivos más pequeños.</li>
+  </ul>
+
+  <br>
+  <h2 id="user-interface-walkthrough">Recorrido de la Interfaz de Usuario</h2>
+
+  <p>La interfaz del rotador es intencionalmente compacta y enfocada. La columna izquierda contiene controles y presets; la columna derecha muestra un gran lienzo de vista previa con controles de zoom y panorámica. Las acciones comunes se agrupan en la parte superior para acceso rápido.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-002.png" alt="Controles del rotador y presets" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <ol>
+    <li><strong>Entrada de archivo:</strong> Arrastra archivos a la zona de depósito o haz clic para abrir el selector de archivos. Se admiten múltiples formatos (JPEG, PNG, WebP, GIF — los GIFs se aplanan a un solo fotograma al exportar).</li>
+    <li><strong>Deslizador de rotación:</strong> Utiliza el deslizador para ajustes rápidos o ingresa un ángulo numérico para rotaciones exactas. La interfaz admite ángulos negativos para rotación en sentido antihorario y muestra vista previa de ángulo y normalizada.</li>
+    <li><strong>Presets:</strong> Se proporcionan botones de rotación de un clic para rotaciones de 90°, 180° y 270° — útil para correcciones comunes de desajustes de orientación EXIF de cámara.</li>
+    <li><strong>Lienzo y fondo:</strong> Elige mantener el lienzo, auto-recortar a píxeles visibles, o llenar esquinas expuestas con un color de fondo elegido (útil al rotar imágenes no cuadradas).</li>
+    <li><strong>Exportar:</strong> Haz clic en <em>Exportar</em> para generar un PNG rasterizado. Para archivos más pequeños, usa la herramienta Image Converter para convertir a JPEG después de exportar.</li>
+  </ol>
+
+  <br>
+  <h2 id="step-by-step-example">Ejemplo Paso a Paso: Enderezar una Foto</h2>
+
+  <p>Este ejemplo muestra cómo enderezar un horizonte que parece inclinado después de capturar.</p>
+
+  <ol>
+    <li>Abre el Rotador de Imágenes y añade tu foto mediante arrastrar y soltar.</li>
+    <li>Utiliza el deslizador de rotación para alinear aproximadamente el horizonte. A medida que mueves el deslizador, la vista previa se actualiza instantáneamente.</li>
+    <li>Ajusta finamente el ángulo usando la entrada numérica para alcanzar precisión de subdegree (por ejemplo, -1.7°).</li>
+    <li>Elige <strong>Auto-recorte</strong> para eliminar esquinas transparentes; alternativamente establece un color de fondo si deseas conservar los bordes del lienzo.</li>
+    <li>Amplía la vista previa al 100% e inspecciona los bordes. Si estás satisfecho, haz clic en <strong>Exportar</strong> y guarda tu PNG.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-003.png" alt="Vista previa de rotación antes y después" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="tips-for-best-results">Consejos para Mejores Resultados</h2>
+
+  <ul>
+    <li><strong>Utiliza fuentes de alta resolución:</strong> Las rotaciones pueden introducir artefactos de remuestreo. Comenzar con imágenes de mayor resolución preserva el detalle después de exportar.</li>
+    <li><strong>Exporta con un lienzo más grande si planeas recortar después:</strong> Si esperas recortar o retoucar la imagen rotada, exporta con una dimensión de píxel más grande para dejar espacio para ajustes.</li>
+    <li><strong>Prefiere PNG para calidad:</strong> PNG preserva la fidelidad de píxeles y se prefiere para imágenes con bordes nítidos o texto. Convierte a JPEG solo cuando el tamaño de archivo importa más que la falta absoluta de pérdidas.</li>
+    <li><strong>Verifica metadatos de imagen:</strong> Muchas cámaras incrustan etiquetas de orientación EXIF. Si las imágenes se muestran incorrectamente después de importar, utiliza los presets de rotación para corregir la orientación visible antes de exportar.</li>
+  </ul>
+
+  <br>
+  <h2 id="batch-workflow-and-automation">Flujo de Trabajo por Lotes y Automatización</h2>
+
+  <p>Si tienes un conjunto de imágenes que todas necesitan la misma rotación (por ejemplo, un lote de páginas escaneadas), el flujo de trabajo del rotador minimiza la repetición:</p>
+
+  <ol>
+    <li>Carga la primera imagen, establece la rotación deseada y la política de lienzo.</li>
+    <li>Exporta y luego usa el botón <em>Siguiente</em> para cargar el archivo posterior mientras preservas tu configuración actual.</li>
+    <li>Repite la exportación para cada archivo — la herramienta recuerda la última rotación utilizada y la opción de lienzo para acelerar el proceso.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-004.png" alt="Rotación por lotes y exportación" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="accessibility-and-performance">Accesibilidad y Rendimiento</h2>
+
+  <p>El Rotador de Imágenes está construido para ser responsivo y accesible:</p>
+  <ul>
+    <li><strong>Controles accesibles desde el teclado:</strong> El deslizador e inputs numéricos se pueden operar a través del teclado para ajustes precisos.</li>
+    <li><strong>Compatible con lector de pantalla:</strong> Los elementos del formulario incluyen etiquetas apropiadas y atributos ARIA para mejorar la usabilidad de tecnologías de asistencia.</li>
+    <li><strong>Optimizaciones de rendimiento:</strong> El procesamiento pesado de imágenes se ejecuta en un web worker (cuando está disponible) para que la interfaz permanezca responsiva mientras se generan vistas previas o datos de exportación.</li>
+  </ul>
+
+  <br>
+  <h2 id="frequently-asked-questions">Preguntas Frecuentes</h2>
+
+  <p><strong>¿Puedo rotar GIFs animados o WebP de múltiples fotogramas?</strong> Las fuentes animadas se aplanan a un solo fotograma durante la rotación y exportación. Usa un editor de animación dedicado para ediciones que preserven fotogramas.</p>
+
+  <p><strong>¿Degradará la rotación la calidad de mi imagen?</strong> Cualquier operación de remuestreo puede cambiar valores de píxeles. Utiliza una fuente de mayor resolución y exporta a PNG para minimizar la degradación visible.</p>
+
+  <p><strong>¿Mi imagen se carga en algún lugar?</strong> No. Todo el procesamiento ocurre localmente en tu navegador a menos que explícitamente cargues o compartas un archivo usando una herramienta o integración separada.</p>
+
+  <br>
+  <h2 id="advanced-ideas-and-integrations">Ideas Avanzadas e Integraciones</h2>
+
+  <p>Empareja el Rotador de Imágenes con otras herramientas THRJ para flujos de trabajo más ricos:</p>
+  <ul>
+    <li><strong>Convertidor de Imágenes:</strong> Convierte PNGs exportados a JPEGs para activos web más pequeños y amigables.</li>
+    <li><strong>Redimensionador de Imágenes:</strong> Redimensiona imágenes rotadas mientras preservas la composición para entrega responsiva.</li>
+    <li><strong>Generador de Memes:</strong> Añade leyendas u superposiciones a un lienzo rotado para compartir en redes sociales.</li>
+  </ul>
+
+  <p>Integraciones programáticas: Si necesitas rotaciones headless o del lado del servidor en masa, considera usar una tubería de imagen automatizada con herramientas como ImageMagick o Sharp. El rotador de navegador está optimizado para ediciones manuales y sensibles a la privacidad en lugar de transformaciones de servidor de alto rendimiento.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>

@@ -1,0 +1,116 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1 id="image-rotator-guide--create-smooth-image-rotations-in-your-browser">Guide de la rotation d'images — Créer des rotations d'images fluides dans votre navigateur</h1>
+
+  <p>Image Rotator est un outil léger basé sur le navigateur pour faire pivoter, prévisualiser et exporter des images avec précision. Que vous ayez besoin de redresser une photo numérisée, de faire pivoter des photos en portrait en paysage, ou de préparer plusieurs images pour une galerie, ce guide vous explique l'interface utilisateur, les fonctionnalités et les bonnes pratiques pour obtenir rapidement des résultats impeccables.</p>
+
+  <p style="display:flex;gap:0.5rem;align-items:center;margin-top:0.5rem;">Essayez Image Rotator sur <a href="/image-rotator">image-rotator</a> pour l'essayer en direct.</p>
+
+  <br>
+  <h2 id="what-is-an-image-rotator">Qu'est-ce qu'un outil de rotation d'images ?</h2>
+
+  <p>Un outil de rotation d'images est un utilitaire simple qui fait pivoter les images raster selon des angles arbitraires et exporte éventuellement le résultat pivoté. Contrairement aux éditeurs de photos complets, les outils de rotation se concentrent spécifiquement sur la rotation tout en préservant la qualité, le rapport d'aspect et les contrôles de composition tels que l'arrière-plan de la toile et les options de recadrage.</p>
+
+  <p>Dans les flux de travail pratiques, la rotation est l'une des modifications les plus courantes : les images capturées sur les appareils mobiles capturent parfois la mauvaise orientation, les documents numérisés ont besoin d'être redressés, et les éléments de mise en page nécessitent des rotations exactes pour correspondre aux grilles de conception. L'outil Image Rotator dans l'ensemble d'outils de THRJ offre un moyen accessible et respectueux de la vie privée d'effectuer ces modifications directement dans votre navigateur sans télécharger vos fichiers.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-001.png" alt="Interface principale d'Image Rotator" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="key-features">Fonctionnalités clés</h2>
+
+  <ul>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Rotation arbitraire :</strong> Faites pivoter selon n'importe quel angle avec une précision infra-degré ou utilisez des présets rapides (90°, 180°, 270°).</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M3 7h18M3 12h18M3 17h18" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Recadrage de toile :</strong> Choisissez de conserver la taille de toile d'origine, de recadrer automatiquement les pixels visibles, ou d'utiliser une couleur de toile personnalisée pour les zones transparentes.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M7 10l5 5 5-5" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Aperçu en direct :</strong> Voyez les modifications instantanément avec un aperçu de toile haute fidélité avant d'exporter.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 5v14M5 12h14" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Convivial pour les lots :</strong> Faites pivoter plusieurs images l'une après l'autre sans recharger la page — idéal pour préparer des galeries.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 3v3M12 18v3M5 6l4 4M19 6l-4 4M5 18l4-4M19 18l-4-4" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>Options d'exportation :</strong> Téléchargez au format PNG (sans perte) ou convertissez au format JPEG via l'outil Image Converter pour des fichiers plus petits.</li>
+  </ul>
+
+  <br>
+  <h2 id="user-interface-walkthrough">Visite de l'interface utilisateur</h2>
+
+  <p>L'interface de l'outil de rotation est intentionnellement compacte et ciblée. La colonne de gauche contient les contrôles et les présets ; la colonne de droite affiche un grand canevas d'aperçu avec des contrôles de zoom et de panoramique. Les actions courantes sont groupées en haut pour un accès rapide.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-002.png" alt="Contrôles et présets de rotation" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <ol>
+    <li><strong>Entrée de fichier :</strong> Faites glisser les fichiers dans la zone de dépôt ou cliquez pour ouvrir le sélecteur de fichier. Plusieurs formats sont pris en charge (JPEG, PNG, WebP, GIF — les GIF sont aplatis en une seule image lors de l'exportation).</li>
+    <li><strong>Curseur de rotation :</strong> Utilisez le curseur pour des ajustements rapides ou entrez un angle numérique pour des rotations exactes. L'interface supporte les angles négatifs pour la rotation dans le sens inverse des aiguilles d'une montre et affiche à la fois l'angle et l'aperçu normalisé.</li>
+    <li><strong>Présets :</strong> Des boutons de rotation en un clic sont fournis pour les rotations de 90°, 180° et 270° — utiles pour les corrections courantes des erreurs d'orientation EXIF de l'appareil photo.</li>
+    <li><strong>Toile et arrière-plan :</strong> Choisissez de conserver la toile, de recadrer automatiquement les pixels visibles, ou de remplir les coins exposés avec une couleur d'arrière-plan choisie (utile lors de la rotation d'images non carrées).</li>
+    <li><strong>Exportation :</strong> Cliquez sur <em>Exporter</em> pour générer un PNG rastérisé. Pour des fichiers plus petits, utilisez l'outil Image Converter pour convertir au format JPEG après l'exportation.</li>
+  </ol>
+
+  <br>
+  <h2 id="step-by-step-example">Exemple étape par étape : redresser une photo</h2>
+
+  <p>Cet exemple montre comment redresser un horizon qui semble incliné après la capture.</p>
+
+  <ol>
+    <li>Ouvrez Image Rotator et ajoutez votre photo par glisser-déposer.</li>
+    <li>Utilisez le curseur de rotation pour aligner grossièrement l'horizon. Quand vous déplacez le curseur, l'aperçu se met à jour instantanément.</li>
+    <li>Affinez l'angle en utilisant l'entrée numérique pour atteindre une précision infra-degré (par exemple, -1,7°).</li>
+    <li>Choisissez <strong>Recadrage automatique</strong> pour supprimer les coins transparents ; ou définissez une couleur d'arrière-plan si vous voulez préserver les bords de la toile.</li>
+    <li>Zoomez l'aperçu à 100% et inspectez les bords. Si vous êtes satisfait, cliquez sur <strong>Exporter</strong> et enregistrez votre PNG.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-003.png" alt="Aperçu avant et après la rotation" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="tips-for-best-results">Conseils pour les meilleurs résultats</h2>
+
+  <ul>
+    <li><strong>Utilisez des sources haute résolution :</strong> Les rotations peuvent introduire des artefacts de rééchantillonnage. Commencer avec des images haute résolution préserve les détails après l'exportation.</li>
+    <li><strong>Exportez sur une plus grande toile si vous prévoyez de recadrer plus tard :</strong> Si vous prévoyez de recadrer ou de retoucher l'image pivotée, exportez avec une dimension de pixel plus grande pour laisser de la place aux ajustements.</li>
+    <li><strong>Préférez PNG pour la qualité :</strong> PNG préserve la fidélité des pixels et est préféré pour les images avec des bords nets ou du texte. Convertissez au format JPEG uniquement quand la taille du fichier est plus importante que la sans-perte absolue.</li>
+    <li><strong>Vérifiez les métadonnées de l'image :</strong> De nombreux appareils photo intègrent des balises d'orientation EXIF. Si les images s'affichent incorrectement après l'importation, utilisez les présets de rotation pour corriger l'orientation visible avant l'exportation.</li>
+  </ul>
+
+  <br>
+  <h2 id="batch-workflow-and-automation">Flux de travail par lots et automatisation</h2>
+
+  <p>Si vous avez un ensemble d'images qui ont toutes besoin de la même rotation (par exemple, un lot de pages numérisées), le flux de travail de l'outil minimise la répétition :</p>
+
+  <ol>
+    <li>Chargez la première image, définissez la rotation souhaitée et la politique de toile.</li>
+    <li>Exportez, puis utilisez le bouton <em>Suivant</em> pour charger le fichier suivant tout en conservant vos paramètres actuels.</li>
+    <li>Répétez l'exportation pour chaque fichier — l'outil mémorise la dernière rotation utilisée et le choix de toile pour accélérer le processus.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-004.png" alt="Rotation et exportation par lots" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="accessibility-and-performance">Accessibilité et performances</h2>
+
+  <p>Image Rotator est conçu pour être réactif et accessible :</p>
+  <ul>
+    <li><strong>Contrôles accessibles au clavier :</strong> Le curseur et les entrées numériques peuvent être utilisés via le clavier pour des ajustements précis.</li>
+    <li><strong>Compatible avec les lecteurs d'écran :</strong> Les éléments de formulaire incluent les étiquettes appropriées et les attributs ARIA pour améliorer la convivialité pour les technologies d'assistance.</li>
+    <li><strong>Optimisations des performances :</strong> Le traitement lourd des images s'exécute dans un web worker (le cas échéant) de sorte que l'interface reste réactive lors de la génération d'aperçus ou de données d'exportation.</li>
+  </ul>
+
+  <br>
+  <h2 id="frequently-asked-questions">Questions fréquemment posées</h2>
+
+  <p><strong>Puis-je faire pivoter des GIF animés ou des WebP multi-images ?</strong> Les sources animées sont aplaties en une seule image pendant la rotation et l'exportation. Utilisez un éditeur d'animation dédié pour les modifications préservant les images.</p>
+
+  <p><strong>La rotation dégradera-t-elle la qualité de mon image ?</strong> Toute opération de rééchantillonnage peut modifier les valeurs de pixels. Utilisez une source haute résolution et exportez au format PNG pour minimiser la dégradation visible.</p>
+
+  <p><strong>Mon image est-elle téléchargée quelque part ?</strong> Non. Tout le traitement se fait localement dans votre navigateur à moins que vous ne téléchargiez ou ne partagiez explicitement un fichier à l'aide d'un outil ou d'une intégration séparé.</p>
+
+  <br>
+  <h2 id="advanced-ideas-and-integrations">Idées avancées et intégrations</h2>
+
+  <p>Associez Image Rotator avec d'autres outils THRJ pour des flux de travail plus enrichis :</p>
+  <ul>
+    <li><strong>Image Converter :</strong> Convertissez les PNG exportés en JPEG pour des actifs plus petits et conviviaux pour le web.</li>
+    <li><strong>Image Resizer :</strong> Redimensionnez les images pivotées tout en préservant la composition pour une distribution réactive.</li>
+    <li><strong>Meme Generator :</strong> Ajoutez des légendes ou des superpositions à une toile pivotée pour le partage sur les réseaux sociaux.</li>
+  </ul>
+
+  <p>Intégrations programmatiques : Si vous avez besoin de rotations sans serveur ou côté serveur en masse, envisagez d'utiliser un pipeline d'images automatisé avec des outils comme ImageMagick ou Sharp. L'outil de rotation du navigateur est optimisé pour les modifications manuelles et respectueuses de la vie privée plutôt que pour les transformations serveur à haut débit.</p>
+
+  <hr />
+  <p>Publié par THRJ Tech</p>
+
+</div>

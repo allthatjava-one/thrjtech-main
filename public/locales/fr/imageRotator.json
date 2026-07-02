@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Rotateur d'images",
-    "tagline": "Avez-vous déjà été ennuyé par des images tournées ? Ne cherchez plus ! Faites pivoter une ou plusieurs images de 90°/180°/270° vers la gauche ou la droite. Prévisualisez le résultat instantanément, puis téléchargez vos images ou compressez-les toutes en ZIP. Sans envoi ni serveur."
+    "tagline": "Avez-vous déjà été ennuyé par des images tournées ? Ne cherchez plus ! Faites pivoter une ou plusieurs images de 90°/180°/270° vers la gauche ou la droite. Prévisualisez le résultat instantanément, puis téléchargez vos images ou compressez-les toutes en ZIP. Sans envoi ni serveur.",
+    "blogLink": "Apprenez à faire pivoter votre image →"
   },
   "tabs": {
     "details": "Détails",
