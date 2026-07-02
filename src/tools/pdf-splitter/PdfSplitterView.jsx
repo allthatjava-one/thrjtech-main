@@ -31,7 +31,8 @@ export function PdfSplitterView({
     <>
       {status !== 'done' && <div className="hero-section">
         <h1 className="hero-title">{t('hero.title')}</h1>
-        <p className="hero-tagline">{t('hero.tagline')}</p>
+        <p className="hero-tagline">{t('hero.tagline')}&nbsp;
+                      <Link to="/blogs/pdf-splitter-guide">{t('hero.blogLink')}</Link></p>
 
         <div className="hint-banner">
           <span className="hint-banner-icon">🖼️</span>

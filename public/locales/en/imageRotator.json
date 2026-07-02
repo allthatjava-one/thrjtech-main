@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Image Rotator",
-    "tagline": "Have you even been annoyed by rotated images? Look no further! Rotate one or more images 90°/180°/270° left or right. Preview the result instantly, then download your rotated image — or zip them all at once. No uploads, no server."
+    "tagline": "Have you even been annoyed by rotated images? Look no further! Rotate one or more images 90°/180°/270° left or right. Preview the result instantly, then download your rotated image — or zip them all at once. No uploads, no server.",
+    "blogLink": "Learn how to rotate your image →"
   },
   "tabs": {
     "details": "Details",
