@@ -1,0 +1,81 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1 id="video-screen-recorder-guide--record-your-screen-in-the-browser">브라우저에서 화면 녹화하기</h1>
+
+  <p>THRJ의 웹 기반 화면 녹화 도구(<a href="/screen-recorder">/screen-recorder</a>)를 소개하며, 네이티브 앱과 비교했을 때 왜 더 좋은 선택인지 설명합니다. 설치도 필요 없고, 업데이트도 자동이며, 녹화 파일이 로컬에 저장되므로 빠르고 개인정보를 보호합니다.</p>
+
+  <br>
+  <h2 id="what-is-a-web-based-screen-recorder">웹 기반 화면 녹화 도구란?</h2>
+
+  <p>웹 기반 화면 녹화 도구는 표준 웹 API를 사용하여 브라우저에서 완전히 실행됩니다. 화면 전체, 특정 애플리케이션 창 또는 브라우저 탭의 콘텐츠를 캡처하고 소프트웨어 설치 없이 로컬에서 비디오를 인코딩합니다. 최신 브라우저는 많은 경량 네이티브 도구와 견줄 수 있는 성능 좋은 녹화 기능을 제공합니다.</p>
+
+  <p><img src="/images/blogs/video-screen-record.png" alt="화면 녹화 도구 스크린샷" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="why-choose-a-browser-recorder">브라우저 녹화 도구를 선택해야 하는 이유</h2>
+
+  <ul>
+    <li><strong>설치 불필요:</strong> 최신 브라우저에서 바로 녹화 시작 — 일회성 캡처 및 빠른 데모에 완벽합니다.</li>
+    <li><strong>크로스 플랫폼:</strong> Windows, macOS, Linux, Chromebook, 태블릿 및 많은 모바일 브라우저에서 별도 빌드 없이 작동합니다.</li>
+    <li><strong>개인정보 우선:</strong> 파일이 브라우저에서 인코딩됩니다. 명시적으로 공유하지 않으면 아무것도 업로드되지 않습니다.</li>
+    <li><strong>항상 최신:</strong> 녹화 도구의 개선 사항을 즉시 이용 가능 — 수동 업데이트 불필요합니다.</li>
+    <li><strong>가볍습니다:</strong> 백그라운드 서비스, 런처 또는 시스템을 복잡하게 만드는 지속적인 프로세스가 없습니다.</li>
+  </ul>
+
+  <br>
+  <h2 id="quick-steps">빠른 단계</h2>
+
+  <ol>
+    <li>도구 → 화면 녹화에서 화면 녹화 도구를 열거나 <code>/video-screen-recorder</code>를 방문하세요.</li>
+    <li>녹화할 대상 선택: 전체 화면, 애플리케이션 창 또는 브라우저 탭.</li>
+    <li>오디오 소스(마이크, 시스템 오디오) 조정 및 가능한 경우 해상도 설정.</li>
+    <li><strong>녹화 시작</strong>을 클릭하고 작업을 수행한 후 완료되면 <strong>중지</strong>를 클릭합니다.</li>
+    <li>녹화를 미리 보고 <strong>다운로드</strong>를 클릭하여 로컬 비디오 파일로 저장합니다.</li>
+  </ol>
+
+  <br>
+  <h2 id="advantages-over-native-tools">네이티브 도구의 장점</h2>
+
+  <ul>
+    <li><strong>빠른 액세스:</strong> 설치 프로그램이나 설정 없음 — 원격 지원, 인터뷰 및 빠른 데모에 유용합니다.</li>
+    <li><strong>일관된 UI:</strong> 모든 기기 및 OS 버전에서 동일한 환경으로 팀과 학습자의 마찰을 줄입니다.</li>
+    <li><strong>임시 사용 사례:</strong> 가끔씩만 녹화하고 영구적인 앱을 설치하고 싶지 않은 사용자에게 좋습니다.</li>
+    <li><strong>제한된 권한:</strong> 브라우저는 사이트 및 세션별로 권한을 분리하여 지속적인 네이티브 앱에 비해 장기적인 보안 위험을 낮춥니다.</li>
+    <li><strong>통합:</strong> THRJ 업로더, 편집기 또는 변환기와 같은 다른 웹 도구와 쉽게 결합하되 브라우저를 떠나지 않습니다.</li>
+  </ul>
+
+  <br>
+  <h2 id="tips-and-best-practices">팁 및 모범 사례</h2>
+
+  <ul>
+    <li>녹화 전에 불필요한 탭과 앱을 닫아 분산을 줄이고 CPU 사용량을 낮춥니다.</li>
+    <li>화면 공유 세션에는 유선 네트워크를 사용하세요 — 브라우저 녹화 도구는 시스템 리소스를 사용할 수 있을 때 최고의 성능을 발휘합니다.</li>
+    <li>Windows에서 시스템 오디오가 필요한 경우 시스템 오디오 캡처를 지원하는 브라우저 및 OS 조합을 선택하세요.</li>
+    <li>공유하기 전에 로컬에서 짧은 클립을 미리 보고 자르면 실수를 제거하고 파일 크기를 줄입니다.</li>
+  </ul>
+
+  <br>
+  <h2 id="common-use-cases">일반적인 사용 사례</h2>
+
+  <p><strong>빠른 튜토리얼</strong>: 짧은 방법을 녹화하고 팀원과 즉시 공유합니다.</p>
+  <p><strong>버그 보고</strong>: 정확한 재현 단계를 캡처하고 문제에 녹화를 포함합니다.</p>
+  <p><strong>원격 인터뷰 및 데모</strong>: 참가자에게 소프트웨어 설치를 요청하지 않고 흐름을 보여줍니다.</p>
+  <p><strong>교실 및 교육</strong>: 교사는 브라우저만 사용하여 짧은 수업 클립을 만들 수 있습니다.</p>
+
+  <br>
+  <h2 id="exporting-and-formats">내보내기 및 형식</h2>
+
+  <p>녹화 도구는 표준 비디오 파일(브라우저 지원에 따라 일반적으로 WebM 또는 MP4)을 내보냅니다. 다운로드한 파일은 YouTube, Vimeo 또는 LMS와 같은 서비스에 업로드할 준비가 되어 있습니다. 다른 형식이나 압축이 필요한 경우 다운로드 후 THRJ의 변환기 및 크기 조정 도구를 사용하세요.</p>
+
+  <br>
+  <h2 id="frequently-asked-questions">자주 묻는 질문</h2>
+
+  <p><strong>품질이 네이티브 앱보다 나쁜가요?</strong> 최신 브라우저는 고품질 캡처를 제공합니다. 매우 높은 비트율이나 전문 제작 워크플로우의 경우 전용 네이티브 앱이 더 고급 인코딩 제어를 제공할 수 있습니다.</p>
+  <p><strong>시스템 오디오를 녹화하나요?</strong> 시스템 오디오 캡처는 브라우저 및 OS에 따라 다릅니다. 마이크 캡처는 광범위하게 지원됩니다.</p>
+  <p><strong>녹화가 자동으로 업로드되나요?</strong> 아니요 — 녹화는 브라우저에 남아 있으며 다운로드하거나 명시적으로 업로드하도록 선택할 때까지 업로드되지 않습니다.</p>
+  <p><strong>녹화를 편집할 수 있나요?</strong> 많은 브라우저에서 짧은 클립을 자르거나 다운로드 후 THRJ의 편집 및 변환기 도구를 사용할 수 있습니다.</p>
+
+  <hr />
+  <p>THRJ Tech에서 발행</p>
+
+</div>
