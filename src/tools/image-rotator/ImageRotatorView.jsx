@@ -30,7 +30,8 @@ export function ImageRotatorView({
     <div className="ir2-view">
       {/* Hero */}
       <h1 className="hero-title">{t('hero.title')}</h1>
-      <p className="hero-tagline">{t('hero.tagline')}</p>
+      <p className="hero-tagline">{t('hero.tagline')}&nbsp;
+              <Link to="/blogs/image-rotator-guide">{t('hero.blogLink')}</Link></p>
 
       {/* Info hint */}
       <div className="ir2-tip-banner">
@@ -379,7 +380,6 @@ export function ImageRotatorView({
           <ul style={{ paddingLeft: '1.5rem' }}>
             <li><a href="/image-resizer" onClick={(e) => { e.preventDefault(); window.location.href = '/image-resizer'; }}>{t('guide.relatedTools.tool1')}</a></li>
             <li><a href="/image-crop" onClick={(e) => { e.preventDefault(); window.location.href = '/image-crop'; }}>{t('guide.relatedTools.tool2')}</a></li>
-            <li><a href="/image-compressor" onClick={(e) => { e.preventDefault(); window.location.href = '/image-compressor'; }}>{t('guide.relatedTools.tool3')}</a></li>
             <li><a href="/pdf-compressor" onClick={(e) => { e.preventDefault(); window.location.href = '/pdf-compressor'; }}>{t('guide.relatedTools.tool4')}</a></li>
           </ul>
         </div>

@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Rotador de Imágenes",
-    "tagline": "¿Alguna vez te has sentido molesto por las imágenes rotadas? ¡No busques más! Rota una o más imágenes 90°/180°/270° a la izquierda o a la derecha. Previsualiza el resultado al instante y descarga la imagen rotada o comprímalas todas en un ZIP. Sin subidas ni servidor."
+    "tagline": "¿Alguna vez te has sentido molesto por las imágenes rotadas? ¡No busques más! Rota una o más imágenes 90°/180°/270° a la izquierda o a la derecha. Previsualiza el resultado al instante y descarga la imagen rotada o comprímalas todas en un ZIP. Sin subidas ni servidor.",
+    "blogLink": "Aprende cómo rotar tu imagen →"
   },
   "tabs": {
     "details": "Detalles",

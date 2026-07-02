@@ -1,0 +1,116 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <h1 id="image-rotator-guide--create-smooth-image-rotations-in-your-browser">이미지 회전 가이드 — 브라우저에서 부드러운 이미지 회전 만들기</h1>
+
+  <p>이미지 회전 도구는 정밀하게 이미지를 회전, 미리 보기 및 내보낼 수 있는 가벼운 브라우저 기반 도구입니다. 스캔한 사진을 곧게 펴거나, 세로 방향 사진을 가로 방향으로 회전하거나, 갤러리용 여러 이미지를 준비하든, 이 가이드는 UI, 기능 및 모범 사례를 소개하므로 픽셀 완벽한 결과를 빠르게 얻을 수 있습니다.</p>
+
+  <p style="display:flex;gap:0.5rem;align-items:center;margin-top:0.5rem;">이미지 회전 도구를 <a href="/image-rotator">image-rotator</a>에서 실시간으로 체험해보세요.</p>
+
+  <br>
+  <h2 id="what-is-an-image-rotator">이미지 회전 도구란?</h2>
+
+  <p>이미지 회전 도구는 래스터 이미지를 임의의 각도로 회전하고 선택적으로 회전된 결과를 다시 내보내는 간단한 유틸리티입니다. 전체 사진 편집기와 달리, 회전 도구는 캔버스 배경 및 자르기 옵션과 같은 구성 제어를 유지하면서 회전에만 집중합니다.</p>
+
+  <p>실제 워크플로우에서 회전은 가장 일반적인 편집 중 하나입니다. 모바일 기기에서 촬영한 이미지는 때때로 잘못된 방향으로 캡처되고, 스캔한 문서는 기울기를 조정해야 하며, 레이아웃 자산은 디자인 그리드와 일치하도록 정확한 회전이 필요합니다. THRJ 도구 모음의 이미지 회전 도구는 파일을 업로드하지 않고도 브라우저에서 직접 이러한 편집을 수행할 수 있는 접근 가능하고 개인정보 보호 중심의 방법을 제공합니다.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-001.png" alt="이미지 회전 도구 메인 UI" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="key-features">주요 기능</h2>
+
+  <ul>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>임의의 회전:</strong> 소수 정밀도로 모든 각도로 회전하거나 빠른 사전 설정(90°, 180°, 270°)을 사용합니다.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M3 7h18M3 12h18M3 17h18" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>캔버스 자르기:</strong> 원본 캔버스 크기를 유지하거나, 보이는 픽셀로 자동 자르거나, 투명한 영역에 사용자 정의 캔버스 색상을 사용하도록 선택합니다.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M7 10l5 5 5-5" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>실시간 미리 보기:</strong> 내보내기 전에 고충실도 캔버스 미리 보기로 변경 사항을 즉시 확인합니다.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 5v14M5 12h14" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>배치 친화적:</strong> 페이지를 다시 로드하지 않고 여러 이미지를 차례대로 회전합니다 — 갤러리 준비에 이상적입니다.</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px"><path d="M12 3v3M12 18v3M5 6l4 4M19 6l-4 4M5 18l4-4M19 18l-4-4" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><strong>내보내기 옵션:</strong> PNG로 다운로드(무손실)하거나 이미지 변환기 도구를 통해 JPEG로 변환하여 더 작은 파일을 만듭니다.</li>
+  </ul>
+
+  <br>
+  <h2 id="user-interface-walkthrough">사용자 인터페이스 둘러보기</h2>
+
+  <p>회전 도구 UI는 의도적으로 콤팩트하고 집중적입니다. 왼쪽 열에는 컨트롤과 사전 설정이 포함되어 있고, 오른쪽 열에는 확대/축소 및 팬 컨트롤이 있는 큰 미리 보기 캔버스가 표시됩니다. 일반적인 작업은 빠른 액세스를 위해 맨 위에 그룹화됩니다.</p>
+
+  <p><img src="/screenshots/rotator/image-rotator-002.png" alt="회전 도구 컨트롤 및 사전 설정" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <ol>
+    <li><strong>파일 입력:</strong> 드롭 영역으로 파일을 드래그하거나 클릭하여 파일 선택기를 엽니다. 여러 형식이 지원됩니다(JPEG, PNG, WebP, GIF — GIF는 내보낼 때 단일 프레임으로 병합됩니다).</li>
+    <li><strong>회전 슬라이더:</strong> 슬라이더를 사용하여 빠르게 조정하거나 정확한 회전을 위해 숫자 각도를 입력합니다. UI는 반시계 방향 회전을 위한 음수 각도를 지원하고 각도와 정규화된 미리 보기를 모두 표시합니다.</li>
+    <li><strong>사전 설정:</strong> 90°, 180° 및 270° 회전을 위한 한 번의 클릭 회전 버튼이 제공됩니다 — 카메라 EXIF 방향 불일치로 인한 일반적인 수정에 유용합니다.</li>
+    <li><strong>캔버스 및 배경:</strong> 캔버스를 유지하거나, 보이는 픽셀로 자동 자르거나, 노출된 모서리를 선택한 배경색으로 채우도록 선택합니다(정사각형이 아닌 이미지를 회전할 때 유용함).</li>
+    <li><strong>내보내기:</strong> <em>내보내기</em>를 클릭하여 래스터화된 PNG를 생성합니다. 더 작은 파일을 위해 이미지 변환기 도구를 사용하여 내보낸 후 JPEG로 변환합니다.</li>
+  </ol>
+
+  <br>
+  <h2 id="step-by-step-example">단계별 예: 사진 펴기</h2>
+
+  <p>이 예는 촬영 후 기울어진 수평선을 펴는 방법을 보여줍니다.</p>
+
+  <ol>
+    <li>이미지 회전 도구를 열고 드래그 앤 드롭으로 사진을 추가합니다.</li>
+    <li>회전 슬라이더를 사용하여 수평선을 대략적으로 정렬합니다. 슬라이더를 이동하면 미리 보기가 즉시 업데이트됩니다.</li>
+    <li>숫자 입력을 사용하여 각도를 미세 조정하여 소수 정밀도에 도달합니다(예: -1.7°).</li>
+    <li>투명한 모서리를 제거하려면 <strong>자동 자르기</strong>를 선택합니다. 또는 보존된 캔버스 모서리를 원하면 배경색을 설정합니다.</li>
+    <li>미리 보기를 100%로 확대하고 모서리를 검사합니다. 만족하면 <strong>내보내기</strong>를 클릭하고 PNG를 저장합니다.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-003.png" alt="회전 전후 미리 보기" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="tips-for-best-results">최상의 결과를 위한 팁</h2>
+
+  <ul>
+    <li><strong>고해상도 소스 사용:</strong> 회전으로 인해 리샘플링 아티팩트가 발생할 수 있습니다. 더 높은 해상도의 이미지로 시작하면 내보낸 후 세부 사항이 보존됩니다.</li>
+    <li><strong>나중에 자르려면 더 큰 캔버스로 내보내기:</strong> 회전된 이미지를 자르거나 수정할 예정이면 조정을 위한 여유를 남기기 위해 더 큰 픽셀 크기로 내보냅니다.</li>
+    <li><strong>품질을 위해 PNG 사용:</strong> PNG는 픽셀 충실도를 유지하며 날카로운 모서리 또는 텍스트가 있는 이미지에 선호됩니다. 파일 크기가 절대적인 무손실보다 중요할 때만 JPEG로 변환합니다.</li>
+    <li><strong>이미지 메타데이터 확인:</strong> 많은 카메라가 EXIF 방향 태그를 포함합니다. 가져온 후 이미지가 잘못 표시되면 회전 사전 설정을 사용하여 내보내기 전에 표시되는 방향을 수정합니다.</li>
+  </ul>
+
+  <br>
+  <h2 id="batch-workflow-and-automation">배치 워크플로우 및 자동화</h2>
+
+  <p>모두 동일한 회전이 필요한 이미지 세트가 있는 경우(예: 스캔된 페이지 배치), 회전 도구의 워크플로우는 반복을 최소화합니다:</p>
+
+  <ol>
+    <li>첫 번째 이미지를 로드하고 원하는 회전 및 캔버스 정책을 설정합니다.</li>
+    <li>내보낸 후 <em>다음</em> 버튼을 사용하여 현재 설정을 유지하면서 후속 파일을 로드합니다.</li>
+    <li>각 파일에 대해 내보내기를 반복합니다 — 도구는 마지막으로 사용한 회전 및 캔버스 선택을 기억하여 프로세스 속도를 높입니다.</li>
+  </ol>
+
+  <p><img src="/screenshots/rotator/image-rotator-004.png" alt="배치 회전 및 내보내기" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <br>
+  <h2 id="accessibility-and-performance">접근성 및 성능</h2>
+
+  <p>이미지 회전 도구는 반응형 및 접근 가능하도록 구축되었습니다:</p>
+  <ul>
+    <li><strong>키보드 접근 가능한 컨트롤:</strong> 슬라이더 및 숫자 입력은 정확한 조정을 위해 키보드로 작동할 수 있습니다.</li>
+    <li><strong>화면 판독기 친화적:</strong> 양식 요소에는 보조 기술의 유용성을 개선하기 위해 적절한 레이블 및 ARIA 속성이 포함됩니다.</li>
+    <li><strong>성능 최적화:</strong> 무거운 이미지 처리는 웹 워커에서 실행되므로 미리 보기 또는 내보내기 데이터를 생성하는 동안 UI가 반응 가능하게 유지됩니다.</li>
+  </ul>
+
+  <br>
+  <h2 id="frequently-asked-questions">자주 묻는 질문</h2>
+
+  <p><strong>애니메이션 GIF 또는 다중 프레임 WebP를 회전할 수 있습니까?</strong> 애니메이션 소스는 회전 및 내보내기 중에 단일 프레임으로 병합됩니다. 프레임 보존 편집을 위해 전용 애니메이션 편집기를 사용하세요.</p>
+
+  <p><strong>회전하면 이미지 품질이 저하됩니까?</strong> 모든 리샘플링 작업은 픽셀 값을 변경할 수 있습니다. 보이는 저하를 최소화하려면 더 높은 해상도 소스를 사용하고 PNG로 내보냅니다.</p>
+
+  <p><strong>내 이미지가 어디에 업로드됩니까?</strong> 아니요. 모든 처리는 별도의 도구 또는 통합을 사용하여 명시적으로 파일을 업로드하거나 공유하지 않는 한 브라우저에서 로컬로 발생합니다.</p>
+
+  <br>
+  <h2 id="advanced-ideas-and-integrations">고급 아이디어 및 통합</h2>
+
+  <p>이미지 회전 도구를 다른 THRJ 도구와 함께 사용하여 더욱 풍부한 워크플로우를 만듭니다:</p>
+  <ul>
+    <li><strong>이미지 변환기:</strong> 내보낸 PNG를 JPEG로 변환하여 더 작은 웹 친화적 자산을 만듭니다.</li>
+    <li><strong>이미지 크기 조정:</strong> 반응형 전달을 위해 구성을 유지하면서 회전된 이미지의 크기를 조정합니다.</li>
+    <li><strong>밈 생성기:</strong> 소셜 공유를 위해 회전된 캔버스에 캡션 또는 오버레이를 추가합니다.</li>
+  </ul>
+
+  <p>프로그래밍 방식 통합: 대량의 헤드리스 또는 서버 측 회전이 필요한 경우 ImageMagick 또는 Sharp와 같은 도구를 사용한 자동화된 이미지 파이프라인을 사용하는 것을 고려하세요. 브라우저 회전 도구는 높은 처리량 서버 변환보다는 수동 개인정보 보호 중심 편집에 최적화되어 있습니다.</p>
+
+  <hr />
+  <p>THRJ Tech에서 게시함</p>
+
+</div>
