@@ -1,0 +1,115 @@
+<div class="icon-list" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <style>
+    .icon-list ul, .icon-list ol { padding-left: 0; }
+    .icon-list li { list-style: none; position: relative; padding-left: 28px; margin-bottom: .4rem; }
+    .icon-list li:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 18px;
+      height: 18px;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='4' width='22' height='16' rx='2' fill='%231a73e8'/><circle cx='8' cy='11' r='2' fill='%23ffffff'/><path d='M16 15l-3-4-5 6h11z' fill='%23ffffff'/></svg>");
+    }
+  </style>
+
+  <h1>Why Is My PDF So Big? Understanding PDF Size and How Images Drive It</h1>
+
+  <p>PDF files are convenient for sharing documents across platforms, but sometimes a seemingly simple PDF balloons into a very large file. This article explains the common causes—especially how images contribute to PDF size—so you can make informed decisions when creating, optimizing, or sharing PDFs. <a href="/pdf-compressor">Try the PDF Compressor</a></p>
+
+  <p><img src="/images/blogs/pdf-why-big.png" alt="Why PDFs get big" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <h2>High-level overview</h2>
+  <p>PDF file size depends on the document's contents and how those contents are encoded. Text alone is usually small, but embedded resources—images, fonts, embedded media, forms, and annotations—add bulk. Of these, images are often the largest contributors because they can contain millions of pixels and require substantial data to represent those pixels accurately.</p>
+
+  <h2>Images: the usual suspects</h2>
+  <p>Images inflate PDFs in several ways:</p>
+  <ul>
+    <li><strong>Resolution (pixel dimensions)</strong>: A 3000×2000 image contains 6 million pixels. Each pixel requires data, so larger dimensions mean larger files.</li>
+    <li><strong>Color depth</strong>: Images with higher color depth (24-bit RGB, 32-bit RGBA) require more bytes per pixel than grayscale or indexed-color images.</li>
+    <li><strong>Compression type</strong>: Raw or lossless formats like PNG or TIFF can be much larger than compressed JPEG images. Some compression methods are optimized for photographs (JPEG) while others are better for graphics and text (PNG).</li>
+    <li><strong>Multiple image copies</strong>: If the same image is embedded multiple times at different sizes or with different transformations, the PDF may store separate copies instead of reusing one resource.</li>
+    <li><strong>Downsampling and resampling</strong>: If a creator or exporter doesn't downsample (reduce the pixel dimensions) for the intended viewing size, the PDF will carry full-resolution images even when displayed smaller.</li>
+  </ul>
+
+  <h2>How images are stored inside PDFs</h2>
+  <p>PDFs can embed images in various encodings. Common approaches include:</p>
+  <ul>
+    <li><strong>JPEG streams</strong>: Good for photos; uses lossy compression and typically produces smaller files for photographic content.</li>
+    <li><strong>Flate/ZIP (zlib)</strong>: Lossless compression used for images like scanned documents or graphics with limited colors.</li>
+    <li><strong>JBIG2</strong>: Efficient for bi-level (black-and-white) scans, often used for text-like scans to compress text areas aggressively.</li>
+    <li><strong>CCITT</strong>: Specialized for fax-style black-and-white images.</li>
+  </ul>
+
+  <p>The encoder choice matters: a photo saved as a high-quality PNG can be many times larger than the same photo saved as a medium-quality JPEG. Conversely, diagrams with flat colors and sharp edges may compress poorly with JPEG and be better served by PNG or vector formats.</p>
+
+  <h2>Scanned documents and multipage PDFs</h2>
+  <p>Scanned pages are images of text. Each page can be a full-page photograph at scanner resolutions (300–600 DPI or higher). A 300 DPI color scan of a letter-sized page can easily be several megabytes. When you stack hundreds of scanned pages, the PDF size multiplies accordingly.</p>
+
+  <h2>Fonts, embedded subsets, and subsets duplicated</h2>
+  <p>Fonts increase size too, though usually less than images. PDFs often embed font subsets to ensure correct rendering. If many different fonts or many glyphs are used, these subsets can add up. Some tools embed entire font files instead of optimized subsets, leading to unnecessary bloat.</p>
+
+  <h2>Transparency, layers, and blend modes</h2>
+  <p>Complex visual effects—transparency, soft shadows, blending, and layers—can force rasterization or more expensive encodings, increasing size. Even vector artwork containing transparency may be flattened into bitmaps during export, turning compact vector instructions into large images.</p>
+
+  <h2>Embedded multimedia and attachments</h2>
+  <p>Embedded audio, video, or file attachments can dramatically increase a PDF's size. While not as common as images, an attached MP4 or a high-resolution image gallery can turn a small document into a massive package.</p>
+
+  <h2>Why some PDFs look the same but have different sizes</h2>
+  <p>Two PDFs that appear identical visually may differ by orders of magnitude in file size because of differences in how they were created or exported. Consider these examples:</p>
+  <ul>
+    <li>A Word export that embeds full-resolution images and includes several font files.</li>
+    <li>A PDF printed to PDF using system print drivers that rasterize and embed images at printer resolution.</li>
+    <li>A well-optimized export from a graphics tool that downsamples images, compresses them efficiently, and subsets fonts.</li>
+  </ul>
+
+  <h2>How to diagnose large PDFs</h2>
+  <p>Start by inspecting the PDF's internal structure. Tools like Adobe Acrobat Pro, `pdfinfo`, `qpdf --qdf`, `mutool`, or online analyzers can show which objects consume the most space. Look for:</p>
+  <ul>
+    <li>Large image XObjects and their sizes.</li>
+    <li>Number and size of embedded fonts.</li>
+    <li>Embedded files or multimedia streams.</li>
+    <li>Number of pages and per-page resource usage.</li>
+  </ul>
+
+  <h2>Practical ways to reduce PDF size</h2>
+  <p>Here are actionable steps to shrink PDFs while preserving usable quality:</p>
+  <ol>
+    <li><strong>Downsample images</strong>: Reduce image pixel dimensions to match the target viewing resolution (e.g., 72–150 DPI for screen). Avoid carrying 300–600 DPI images into a PDF meant for web viewing.</li>
+    <li><strong>Choose appropriate compression</strong>: Use JPEG for photos, PNG for graphics with flat colors, and JBIG2/CCITT for black-and-white scans. Adjust JPEG quality to balance size and fidelity.</li>
+    <li><strong>Flatten or remove unnecessary transparency</strong>: When effects aren’t necessary, flatten them or re-create the artwork without transparency to keep vector content intact.</li>
+    <li><strong>Subset or optimize fonts</strong>: Only embed used glyphs; avoid embedding multiple full font families if not needed.</li>
+    <li><strong>Remove unused resources</strong>: Some generators leave behind unused images or metadata. Stripping these can reduce size.</li>
+    <li><strong>Convert scanned pages to searchable PDF with OCR</strong>: For scanned documents, a lossless high-res archive plus a low-res web PDF is a good workflow. Or convert scans into mixed PDFs where text is extracted and images are downsampled.</li>
+    <li><strong>Create linearized (web-optimized) PDFs</strong>: This doesn't reduce file size much but improves streaming and perceived performance for large files.</li>
+  </ol>
+
+  <h2>Export settings to watch for</h2>
+  <p>When exporting from applications, check these settings:</p>
+  <ul>
+    <li>Image downsampling resolution and quality.</li>
+    <li>Compression method for color, grayscale, and monochrome images.</li>
+    <li>Font embedding options (subset vs full).</li>
+    <li>Whether to preserve editing capabilities or to flatten for smaller output.</li>
+  </ul>
+
+  <h2>A real-world checklist</h2>
+  <p>Before sharing a PDF, quickly run through this checklist:</p>
+  <ul>
+    <li>Are images larger than they need to be? Downsample where appropriate.</li>
+    <li>Are photos saved in an inefficient format? Re-save as JPEG with controlled quality.</li>
+    <li>Does the document contain embedded videos or attachments? Remove or link externally if possible.</li>
+    <li>Are fonts embedded properly and subsetted?</li>
+    <li>Would converting scanned pages to searchable text and low-res images work?</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>Images are the dominant cause of large PDF files because they carry the most raw data. By understanding how images are encoded, choosing appropriate compression and resolution, and applying a few optimization steps, you can often reduce PDF sizes drastically without sacrificing usability. When in doubt, keep a high-quality master copy and export smaller, optimized versions for distribution.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>

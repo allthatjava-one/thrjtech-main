@@ -1,0 +1,115 @@
+<div class="icon-list" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif; font-size: 14px; line-height: 1.6; color: #000000;">
+
+  <style>
+    .icon-list ul, .icon-list ol { padding-left: 0; }
+    .icon-list li { list-style: none; position: relative; padding-left: 28px; margin-bottom: .4rem; }
+    .icon-list li:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 18px;
+      height: 18px;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='4' width='22' height='16' rx='2' fill='%231a73e8'/><circle cx='8' cy='11' r='2' fill='%23ffffff'/><path d='M16 15l-3-4-5 6h11z' fill='%23ffffff'/></svg>");
+    }
+  </style>
+
+  <h1>¿Por qué mi PDF es tan grande? Entendiendo el tamaño del PDF y cómo las imágenes lo afectan</h1>
+
+  <p>Los archivos PDF son prácticos para compartir documentos entre diferentes sistemas, pero en ocasiones un PDF aparentemente sencillo puede crecer hasta ocupar mucho espacio. Este artículo describe las causas más comunes —con énfasis en cómo las imágenes influyen en el tamaño— para que puedas crear, optimizar y compartir PDFs de forma más eficiente. <a href="/pdf-compressor">Prueba el Compresor de PDF</a></p>
+
+  <p><img src="/images/blogs/pdf-why-big.png" alt="Why PDFs get big" style="max-width:100%;height:auto;display:block;margin:0.75rem 0;border:1px solid black;" /></p>
+
+  <h2>Resumen de alto nivel</h2>
+  <p>El tamaño del archivo PDF depende del contenido del documento y de cómo se codifica ese contenido. El texto solo suele ser pequeño, pero los recursos incrustados (imágenes, fuentes, medios incrustados, formularios y anotaciones) agregan peso. De estos, las imágenes suelen ser los mayores contribuyentes porque pueden contener millones de píxeles y requieren datos sustanciales para representar esos píxeles con precisión.</p>
+
+  <h2>Imágenes: los sospechosos habituales</h2>
+  <p>Las imágenes aumentan el tamaño de los PDFs por varias razones:</p>
+  <ul>
+    <li><strong>Resolución (dimensiones en píxeles)</strong>: Una imagen de 3000×2000 contiene 6 millones de píxeles. Cada píxel requiere información, por lo que dimensiones mayores implican archivos más grandes.</li>
+    <li><strong>Profundidad de color</strong>: Las imágenes con mayor profundidad de color (por ejemplo, 24 bits RGB o 32 bits RGBA) necesitan más bytes por píxel que imágenes en escala de grises o con paletas reducidas.</li>
+    <li><strong>Tipo de compresión</strong>: Formatos sin pérdida o sin compresión como PNG o TIFF pueden ser mucho más grandes que una imagen JPEG comprimida. Algunos métodos funcionan mejor con fotografías (JPEG) y otros con gráficos o texto (PNG).</li>
+    <li><strong>Copias múltiples</strong>: Si la misma imagen se inserta varias veces (a distintos tamaños o con transformaciones), el PDF puede almacenar copias separadas en lugar de reutilizar un único recurso.</li>
+    <li><strong>Falta de reducción de resolución (downsampling)</strong>: Si el generador del PDF no reduce la resolución de las imágenes al tamaño de visualización previsto, se incluirán imágenes en alta resolución aunque se muestren a menor tamaño.</li>
+  </ul>
+
+  <h2>Cómo se almacenan las imágenes dentro de los PDFs</h2>
+  <p>Los PDFs pueden incrustar imágenes usando diferentes codificaciones. Los métodos más comunes incluyen:</p>
+  <ul>
+    <li><strong>Flujos JPEG</strong>: Ideales para fotografías; emplean compresión con pérdida y suelen producir archivos más pequeños para contenido fotográfico.</li>
+    <li><strong>Flate/ZIP (zlib)</strong>: Compresión sin pérdida usada para imágenes como documentos escaneados o gráficos con paletas de color limitadas.</li>
+    <li><strong>JBIG2</strong>: Muy eficiente para escaneos bi-tonales (blanco y negro); a menudo se usa para comprimir agresivamente las zonas de texto en escaneos.</li>
+    <li><strong>CCITT</strong>: Especializado en imágenes monocromo tipo fax.</li>
+  </ul>
+
+  <p>La elección del codificador importa: una fotografía guardada como PNG de alta calidad puede ser varias veces más grande que la misma foto guardada como JPEG de calidad media. Por el contrario, diagramas con colores planos y bordes nítidos suelen comprimirse peor con JPEG y funcionan mejor como PNG o como vectores.</p>
+
+  <h2>Documentos escaneados y PDFs multipágina</h2>
+  <p>Las páginas escaneadas son esencialmente imágenes de texto. Cada página puede ser una fotografía a resolución de escáner (300–600 DPI o más). Un escaneo a 300 DPI en color de una página tamaño carta puede ocupar varios megabytes; si apilas cientos de páginas escaneadas, el tamaño del PDF aumenta proporcionalmente.</p>
+
+  <h2>Fuentes, subconjuntos incrustados y duplicación</h2>
+  <p>Las fuentes también añaden tamaño, aunque normalmente menos que las imágenes. Los PDFs suelen incrustar subconjuntos de fuentes para garantizar que se rendericen correctamente. Si se usan muchas fuentes distintas o muchos glifos, esos subconjuntos pueden sumar tamaño. Algunas aplicaciones incrustan archivos de fuentes completos en lugar de subconjuntos optimizados, lo que genera un aumento innecesario.</p>
+
+  <h2>Transparencias, capas y modos de fusión</h2>
+  <p>Efectos visuales complejos —transparencias, sombras suaves, modos de fusión y capas— pueden forzar la rasterización o el uso de codificaciones más costosas, aumentando el tamaño. Incluso obras vectoriales con transparencias pueden aplanarse a mapas de bits durante la exportación, transformando instrucciones compactas en imágenes grandes.</p>
+
+  <h2>Multimedia incrustado y archivos adjuntos</h2>
+  <p>Archivos de audio, vídeo o archivos adjuntos incrustados pueden aumentar drásticamente el tamaño de un PDF. Aunque no son tan habituales como las imágenes, adjuntar un MP4 o una galería de imágenes en alta resolución puede convertir un documento pequeño en un paquete enorme.</p>
+
+  <h2>Por qué algunos PDFs parecen iguales pero tienen tamaños distintos</h2>
+  <p>Dos PDFs que se ven idénticos pueden diferir por órdenes de magnitud en tamaño debido a cómo se generaron o exportaron. Algunos ejemplos:</p>
+  <ul>
+    <li>Una exportación desde Word que incrusta imágenes en resolución completa e incluye varios archivos de fuentes.</li>
+    <li>Un "Imprimir a PDF" con controladores del sistema que rasterizan e incrustan imágenes a resolución de impresora.</li>
+    <li>Una exportación optimizada desde una herramienta gráfica que reduce la resolución de las imágenes, las comprime eficientemente y crea subconjuntos de fuentes.</li>
+  </ul>
+
+  <h2>Cómo diagnosticar PDFs grandes</h2>
+  <p>Comienza inspeccionando la estructura interna del PDF. Herramientas como Adobe Acrobat Pro, `pdfinfo`, `qpdf --qdf`, `mutool` o analizadores en línea pueden mostrar qué objetos consumen más espacio. Busca:</p>
+  <ul>
+    <li>Grandes XObjects de imagen y sus tamaños.</li>
+    <li>Número y tamaño de las fuentes incrustadas.</li>
+    <li>Archivos incrustados o flujos multimedia.</li>
+    <li>Número de páginas y uso de recursos por página.</li>
+  </ul>
+
+  <h2>Formas prácticas de reducir el tamaño del PDF</h2>
+  <p>A continuación encontrarás acciones concretas para reducir PDFs manteniendo calidad aceptable:</p>
+  <ol>
+    <li><strong>Reducir resolución de las imágenes (downsample)</strong>: Ajusta las dimensiones en píxeles al nivel de visualización objetivo (por ejemplo, 72–150 DPI para pantalla). Evita incluir imágenes de 300–600 DPI en PDFs destinados a la web.</li>
+    <li><strong>Elegir la compresión adecuada</strong>: Usa JPEG para fotografías, PNG para gráficos con colores planos y JBIG2/CCITT para escaneos en blanco/negro. Ajusta la calidad JPEG para equilibrar tamaño y fidelidad.</li>
+    <li><strong>Aplanar o eliminar transparencias innecesarias</strong>: Si los efectos no son necesarios, aplánalos o recrea el arte sin transparencias para mantener el contenido en vector cuando sea posible.</li>
+    <li><strong>Subconjuntar u optimizar fuentes</strong>: Incrusta únicamente los glifos usados; evita incrustar familias de fuentes completas si no hace falta.</li>
+    <li><strong>Eliminar recursos no usados</strong>: Algunos generadores dejan imágenes o metadatos sin uso; eliminarlos reduce el tamaño.</li>
+    <li><strong>Convertir escaneos a PDF buscable con OCR</strong>: Para documentos escaneados, mantener un archivo maestro en alta resolución y publicar una versión web en baja resolución es una buena estrategia. Otra opción es extraer el texto y reducir las imágenes.</li>
+    <li><strong>Crear PDFs linealizados (optimización web)</strong>: Esto no reduce mucho el tamaño, pero mejora la transmisión y la experiencia al abrir archivos grandes en navegadores.</li>
+  </ol>
+
+  <h2>Ajustes de exportación a vigilar</h2>
+  <p>Al exportar desde aplicaciones, revisa estos ajustes:</p>
+  <ul>
+    <li>Resolución y calidad de reducción de imágenes (downsampling).</li>
+    <li>Método de compresión para imágenes a color, en escala de grises y monocromo.</li>
+    <li>Opciones de incrustación de fuentes (subconjunto vs completo).</li>
+    <li>Si se preservan capacidades de edición o se aplana el documento para obtener salida más pequeña.</li>
+  </ul>
+
+  <h2>Lista de verificación práctica</h2>
+  <p>Antes de compartir un PDF, repasa esta lista rápidamente:</p>
+  <ul>
+    <li>¿Las imágenes son más grandes de lo necesario? Reduce la resolución cuando proceda.</li>
+    <li>¿Las fotos están en un formato ineficiente? Vuelve a guardarlas como JPEG con una calidad controlada.</li>
+    <li>¿El documento contiene vídeos o archivos adjuntos? Elimínalos o enlázalos externamente si es posible.</li>
+    <li>¿Las fuentes están incrustadas correctamente y en subconjunto?</li>
+    <li>¿Sería conveniente convertir escaneos a texto buscable y usar imágenes de baja resolución para la versión de distribución?</li>
+  </ul>
+
+  <h2>Conclusión</h2>
+  <p>Las imágenes son la causa principal de que los PDFs aumenten de tamaño, porque contienen la mayor cantidad de datos en bruto. Comprendiendo cómo se codifican las imágenes, eligiendo compresión y resolución adecuadas y aplicando unos cuantos pasos de optimización, puedes reducir drásticamente el tamaño sin sacrificar la usabilidad. Cuando haya dudas, conserva una copia maestra de alta calidad y exporta versiones optimizadas para distribución.</p>
+
+  <hr />
+  <p>Published by THRJ Tech</p>
+
+</div>
