@@ -210,7 +210,7 @@ export function PdfConverterView({
             </button>
           )}
 
-              {(status === 'uploading' || status === 'converting') && (
+          {(status === 'uploading' || status === 'converting') && (
             <div className="progress-section">
               <div className="progress-label">
                 {status === 'uploading' ? t('progress.uploading') : t('progress.converting')}
@@ -260,128 +260,150 @@ export function PdfConverterView({
           {t('note')}
       </div>
 
-      {/* Converter guide */}
-      <section className="converter-guide" style={{ marginTop: 28 }}>
-        <div style={{ maxWidth: 880, margin: '0 auto', padding: 18, background: 'linear-gradient(180deg,#fffdf7,#ffffff)', borderRadius: 10, border: '1px solid #f0e8cc', color: '#111' }}>
-          <div style={{ display: 'flex', gap: 12 }}>
-            <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>🔄</div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <h2 style={{ margin: 0, fontSize: 22 }}>{t('guide.title')}</h2>
-              <p style={{ marginTop: 8 }}>{t('guide.intro')}</p>
-              <p style={{ marginTop: 6, fontWeight: 700 }}>{t('guide.cta')}</p>
+      {/* Converter guide — card-grid layout, distinct from other PDF tools' single-column article */}
+      <section className="converter-guide">
+        <div className="converter-guide-header">
+          <span className="converter-guide-header-icon">🔄</span>
+          <div>
+            <h2>{t('guide.title')}</h2>
+            <p>{t('guide.intro')}</p>
+            <p className="converter-guide-cta-line">{t('guide.cta')}</p>
+          </div>
+        </div>
 
-              <br />
-              <h3 style={{ marginTop: 12 }}>{t('guide.whatIs.heading')}</h3>
-              <p>{t('guide.whatIs.body')}</p>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li style={{color: '#AAA'}}>{t('guide.whatIs.item1')}</li>
-                <li>{t('guide.whatIs.item2')}</li>
-                <li style={{color: '#AAA'}}>{t('guide.whatIs.item3')}</li>
-              </ul>
-              <p style={{ marginTop: 6 }}>{t('guide.whatIs.note')}</p>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.whyConvert.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.whyConvert.item1')}</li>
-                <li>{t('guide.whyConvert.item2')}</li>
-                <li>{t('guide.whyConvert.item3')}</li>
-                <li>{t('guide.whyConvert.item4')}</li>
-              </ul>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.howWorks.heading')}</h3>
-              <p>{t('guide.howWorks.body')}</p>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.whyBreaks.heading')}</h3>
-              <p>{t('guide.whyBreaks.body')}</p>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.bestPractices.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.bestPractices.item1')}</li>
-                <li>{t('guide.bestPractices.item2')}</li>
-                <li>{t('guide.bestPractices.item3')}</li>
-                <li>{t('guide.bestPractices.item4')}</li>
-                <li>{t('guide.bestPractices.item5')}</li>
-              </ul>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.stepByStep.heading')}</h3>
-              <ol style={{ marginLeft: 16 }}>
-                <li>{t('guide.stepByStep.step1')}</li>
-                <li>{t('guide.stepByStep.step2')}</li>
-                <li>{t('guide.stepByStep.step3')}</li>
-                <li>{t('guide.stepByStep.step4')}</li>
-              </ol>
-              <p style={{ marginTop: 6 }}>{t('guide.stepByStep.note')}</p>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.scenarios.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.scenarios.item1')}</li>
-                <li>{t('guide.scenarios.item2')}</li>
-                <li>{t('guide.scenarios.item3')}</li>
-                <li>{t('guide.scenarios.item4')}</li>
-              </ul>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.mistakes.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.mistakes.item1')}</li>
-                <li>{t('guide.mistakes.item2')}</li>
-                <li>{t('guide.mistakes.item3')}</li>
-                <li>{t('guide.mistakes.item4')}</li>
-                <li>{t('guide.mistakes.item5')}</li>
-              </ul>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.comparison.heading')}</h3>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #f0e8cc' }}>
-                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col1')}</th>
-                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col2')}</th>
-                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col3')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>{t('guide.comparison.row1col1')}</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>{t('guide.comparison.row1col2')}</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>{t('guide.comparison.row1col3')}</td></tr>
-                  <tr><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>{t('guide.comparison.row2col1')}</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>{t('guide.comparison.row2col2')}</td><td style={{ padding: 6, borderBottom: '1px solid #faf5e4' }}>{t('guide.comparison.row2col3')}</td></tr>
-                  <tr><td style={{ padding: 6 }}>{t('guide.comparison.row3col1')}</td><td style={{ padding: 6 }}>{t('guide.comparison.row3col2')}</td><td style={{ padding: 6 }}>{t('guide.comparison.row3col3')}</td></tr>
-                </tbody>
-              </table>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.proTips.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.proTips.item1')}</li>
-                <li>{t('guide.proTips.item2')}</li>
-                <li>{t('guide.proTips.item3')}</li>
-                <li>{t('guide.proTips.item4')}</li>
-              </ul>
-              
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.faq.heading')}</h3>
-              <p><strong>{t('guide.faq.q1')}</strong> {t('guide.faq.a1')}</p>
-              <p><strong>{t('guide.faq.q2')}</strong> {t('guide.faq.a2')}</p>
-              <p><strong>{t('guide.faq.q3')}</strong> {t('guide.faq.a3')}</p>
-              <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
-              
-              <br />
-              <p style={{ marginTop: 12 }}><strong>🧾 {t('guide.conclusionTitle')}</strong><br/>
-              {t('guide.conclusion')}</p>
+        <div className="converter-guide-grid">
+          <div className="converter-guide-card">
+            <h3>{t('guide.whatIs.heading')}</h3>
+            <p>{t('guide.whatIs.body')}</p>
+            <ul>
+              <li>{t('guide.whatIs.item1')}</li>
+              <li>{t('guide.whatIs.item2')}</li>
+              <li>{t('guide.whatIs.item3')}</li>
+            </ul>
+            <p className="converter-guide-note">{t('guide.whatIs.note')}</p>
+          </div>
 
-              <p style={{ marginTop: 12 }}>
-                <a
-                  className="btn btn-primary"
-                  href="/pdf-converter"
-                  onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-converter') }}
-                >{t('guide.ctaBtn')}</a>
-              </p>
+          <div className="converter-guide-card">
+            <h3>{t('guide.whyConvert.heading')}</h3>
+            <ul>
+              <li>{t('guide.whyConvert.item1')}</li>
+              <li>{t('guide.whyConvert.item2')}</li>
+              <li>{t('guide.whyConvert.item3')}</li>
+              <li>{t('guide.whyConvert.item4')}</li>
+            </ul>
+          </div>
+
+          <div className="converter-guide-card">
+            <h3>{t('guide.howWorks.heading')}</h3>
+            <p>{t('guide.howWorks.body')}</p>
+          </div>
+
+          <div className="converter-guide-card">
+            <h3>{t('guide.whyBreaks.heading')}</h3>
+            <p>{t('guide.whyBreaks.body')}</p>
+          </div>
+
+          <div className="converter-guide-card">
+            <h3>{t('guide.bestPractices.heading')}</h3>
+            <ul>
+              <li>{t('guide.bestPractices.item1')}</li>
+              <li>{t('guide.bestPractices.item2')}</li>
+              <li>{t('guide.bestPractices.item3')}</li>
+              <li>{t('guide.bestPractices.item4')}</li>
+              <li>{t('guide.bestPractices.item5')}</li>
+            </ul>
+          </div>
+
+          <div className="converter-guide-card">
+            <h3>{t('guide.scenarios.heading')}</h3>
+            <ul>
+              <li>{t('guide.scenarios.item1')}</li>
+              <li>{t('guide.scenarios.item2')}</li>
+              <li>{t('guide.scenarios.item3')}</li>
+              <li>{t('guide.scenarios.item4')}</li>
+            </ul>
+          </div>
+
+          <div className="converter-guide-card">
+            <h3>{t('guide.mistakes.heading')}</h3>
+            <ul>
+              <li>{t('guide.mistakes.item1')}</li>
+              <li>{t('guide.mistakes.item2')}</li>
+              <li>{t('guide.mistakes.item3')}</li>
+              <li>{t('guide.mistakes.item4')}</li>
+              <li>{t('guide.mistakes.item5')}</li>
+            </ul>
+          </div>
+
+          <div className="converter-guide-card">
+            <h3>{t('guide.proTips.heading')}</h3>
+            <ul>
+              <li>{t('guide.proTips.item1')}</li>
+              <li>{t('guide.proTips.item2')}</li>
+              <li>{t('guide.proTips.item3')}</li>
+              <li>{t('guide.proTips.item4')}</li>
+            </ul>
+          </div>
+
+          <div className="converter-guide-card converter-guide-card--wide">
+            <h3>{t('guide.stepByStep.heading')}</h3>
+            <ol>
+              <li>{t('guide.stepByStep.step1')}</li>
+              <li>{t('guide.stepByStep.step2')}</li>
+              <li>{t('guide.stepByStep.step3')}</li>
+              <li>{t('guide.stepByStep.step4')}</li>
+            </ol>
+            <p className="converter-guide-note">{t('guide.stepByStep.note')}</p>
+          </div>
+
+          <div className="converter-guide-card converter-guide-card--wide">
+            <h3>{t('guide.comparison.heading')}</h3>
+            <table className="converter-guide-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.comparison.col1')}</th>
+                  <th>{t('guide.comparison.col2')}</th>
+                  <th>{t('guide.comparison.col3')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>{t('guide.comparison.row1col1')}</td><td>{t('guide.comparison.row1col2')}</td><td>{t('guide.comparison.row1col3')}</td></tr>
+                <tr><td>{t('guide.comparison.row2col1')}</td><td>{t('guide.comparison.row2col2')}</td><td>{t('guide.comparison.row2col3')}</td></tr>
+                <tr><td>{t('guide.comparison.row3col1')}</td><td>{t('guide.comparison.row3col2')}</td><td>{t('guide.comparison.row3col3')}</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="converter-guide-card converter-guide-card--wide">
+            <h3>{t('guide.faq.heading')}</h3>
+            <div className="converter-guide-faq-grid">
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q1')}</strong>
+                <p>{t('guide.faq.a1')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q2')}</strong>
+                <p>{t('guide.faq.a2')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q3')}</strong>
+                <p>{t('guide.faq.a3')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q4')}</strong>
+                <p>{t('guide.faq.a4')}</p>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div className="converter-guide-footer">
+          <p><strong>🧾 {t('guide.conclusionTitle')}</strong><br />{t('guide.conclusion')}</p>
+          <a
+            className="btn btn-primary"
+            href="/pdf-converter"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-converter') }}
+          >{t('guide.ctaBtn')}</a>
         </div>
       </section>
     </>
