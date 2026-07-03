@@ -9,6 +9,7 @@ const namespaces = [
   'jsonFormatter', 'regexTester', 'imageWatermarker', 'imageResizer',
   'imageCollage', 'imageCrop', 'imageMemeGenerator', 'imageConverter',
   'imageRotator', 'screenRecorder', 'videoToGif', 'toolsLanding',
+  'notFound',
 ]
 
 // Resolve relative to cwd (workspace root) so the path works both in source

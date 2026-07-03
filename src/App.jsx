@@ -33,6 +33,7 @@ import PdfToolsPage from './tools/PdfToolsPage';
 import ImageToolsPage from './tools/ImageToolsPage';
 import DeveloperToolsPage from './tools/DeveloperToolsPage';
 import VideoToolsPage from './tools/VideoToolsPage';
+import NotFoundPage from './components/NotFoundPage'
 
 function HomePage() {
   const { t } = useTranslation('home')
@@ -177,6 +178,7 @@ export default function App() {
         <Route path="/image-tools" element={<><Seo title="Image Tools — THRJ" description="Free online image tools: resize, crop, watermark, collage, convert, and more — all in your browser." /><ImageToolsPage /></>} />
         <Route path="/developer-tools" element={<><Seo title="Developer Tools — THRJ" description="Free browser-based developer tools: JSON formatter, regex tester, and more." /><DeveloperToolsPage /></>} />
         <Route path="/video-tools" element={<><Seo title="Video Tools — THRJ" description="Free browser-based video tools: screen recorder and video to GIF converter." /><VideoToolsPage /></>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   )
