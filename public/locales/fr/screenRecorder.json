@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Enregistreur d'écran",
-    "tagline": "Enregistrez votre écran instantanément — reste dans votre navigateur, privé et gratuit."
+    "tagline": "Enregistrez votre écran instantanément — reste dans votre navigateur, privé et gratuit.",
+    "why-use-screen-recorder": "Pourquoi utiliser un enregistreur d'écran basé sur le navigateur ?"
   },
   "tabs": {
     "details": "Détails",

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 export default function ScreenRecorderView({ isSupported, recording, videoUrl, error, startRecording, stopRecording, recordSound, setRecordSound }) {
@@ -18,7 +19,7 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
       {/* Hero */}
       <div className="hero-section">
         <h1 className="hero-title">{t('hero.title')}</h1>
-        <p className="hero-tagline">{t('hero.tagline')}</p>
+        <p className="hero-tagline">{t('hero.tagline')} <Link to="/blogs/screen-recorder-better">{t('hero.why-use-screen-recorder')}</Link></p>
 
         <div className="details-row" data-open={openPanel}>
         <div className="details-controls">

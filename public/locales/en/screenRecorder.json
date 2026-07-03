@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Screen Recorder",
-    "tagline": "Record your screen instantly — stays in your browser, private and free."
+    "tagline": "Record your screen instantly — stays in your browser, private and free.",
+    "why-use-screen-recorder": "Why use a browser-based screen recorder?"
   },
   "tabs": {
     "details": "Details",
