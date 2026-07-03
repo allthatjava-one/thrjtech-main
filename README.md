@@ -26,3 +26,12 @@ Deploy command:npx wrangler deploy
 Version command:npx wrangler versions upload
 Root directory:/
 ```
+
+# Cloudflare Option - Rules
+- Domains > Overview > Rules > Overview > Response Header Transform Rules
+  - Added a new rule
+  - Rule name: `Add X-Robots-Tag`
+  - Expression: `(http.host eq "preview.thrjtech.com")`
+  - Action: `Modify Response Header`
+  - Header name: `X-Robots-Tag`
+  - Value: `noindex, nofollow`
