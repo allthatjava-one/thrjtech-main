@@ -268,134 +268,103 @@ export function PdfSplitterView({
 
 
 
-      {/* Splitter guide - green/teal design */}
-      <section className="splitter-guide" style={{ marginTop: 28 }}>
-        <div style={{ maxWidth: 880, margin: '0 auto', padding: 18, background: 'linear-gradient(180deg,#f4fdf7,#ffffff)', borderRadius: 10, border: '1px solid #c8ebd5', color: '#111' }}>
-          <div style={{ display: 'flex', gap: 12 }}>
-            <div style={{ flex: '0 0 60px', fontSize: 34, lineHeight: 1 }}>✂️</div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <h2 style={{ margin: 0, fontSize: 22 }}>{t('guide.title')}</h2>
-              <p style={{ marginTop: 8 }}>{t('guide.intro')}</p>
-              <p style={{ marginTop: 6, fontWeight: 700 }}>{t('guide.cta')}</p>
-
-              <br />
-              <h3 style={{ marginTop: 12 }}>{t('guide.whatIs.heading')}</h3>
-              <p>{t('guide.whatIs.body')}</p>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.whatIs.item1')}</li>
-                <li>{t('guide.whatIs.item2')}</li>
-                <li>{t('guide.whatIs.item3')}</li>
-              </ul>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.whyUseful.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.whyUseful.item1')}</li>
-                <li>{t('guide.whyUseful.item2')}</li>
-                <li>{t('guide.whyUseful.item3')}</li>
-                <li>{t('guide.whyUseful.item4')}</li>
-              </ul>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.useCases.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.useCases.item1')}</li>
-                <li>{t('guide.useCases.item2')}</li>
-                <li>{t('guide.useCases.item3')}</li>
-                <li>{t('guide.useCases.item4')}</li>
-              </ul>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.ways.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.ways.item1')}</li>
-                <li>{t('guide.ways.item2')}</li>
-                <li>{t('guide.ways.item3')}</li>
-              </ul>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.stepByStep.heading')}</h3>
-              <ol style={{ marginLeft: 16 }}>
-                <li>{t('guide.stepByStep.step1')}</li>
-                <li>{t('guide.stepByStep.step2')}</li>
-                <li>{t('guide.stepByStep.step3')}</li>
-                <li>{t('guide.stepByStep.step4')}</li>
-                <li>{t('guide.stepByStep.step5')}</li>
-              </ol>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.bestPractices.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.bestPractices.item1')}</li>
-                <li>{t('guide.bestPractices.item2')}</li>
-                <li>{t('guide.bestPractices.item3')}</li>
-                <li>{t('guide.bestPractices.item4')}</li>
-                <li>{t('guide.bestPractices.item5')}</li>
-              </ul>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.mistakes.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.mistakes.item1')}</li>
-                <li>{t('guide.mistakes.item2')}</li>
-                <li>{t('guide.mistakes.item3')}</li>
-                <li>{t('guide.mistakes.item4')}</li>
-                <li>{t('guide.mistakes.item5')}</li>
-              </ul>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.comparison.heading')}</h3>
-              <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #c8ebd5' }}>
-                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col1')}</th>
-                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col2')}</th>
-                    <th style={{ textAlign: 'left', padding: 6 }}>{t('guide.comparison.col3')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>{t('guide.comparison.row1col1')}</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>{t('guide.comparison.row1col2')}</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>{t('guide.comparison.row1col3')}</td></tr>
-                  <tr><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>{t('guide.comparison.row2col1')}</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>{t('guide.comparison.row2col2')}</td><td style={{ padding: 6, borderBottom: '1px solid #edf7f1' }}>{t('guide.comparison.row2col3')}</td></tr>
-                  <tr><td style={{ padding: 6 }}>{t('guide.comparison.row3col1')}</td><td style={{ padding: 6 }}>{t('guide.comparison.row3col2')}</td><td style={{ padding: 6 }}>{t('guide.comparison.row3col3')}</td></tr>
-                </tbody>
-              </table>
-              <p style={{ marginTop: 6 }}>{t('guide.comparison.note')}</p>
-              </div>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.proTips.heading')}</h3>
-              <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
-                <li>{t('guide.proTips.item1')}</li>
-                <li>{t('guide.proTips.item2')}</li>
-                <li>{t('guide.proTips.item3')}</li>
-                <li>{t('guide.proTips.item4')}</li>
-              </ul>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.safety.heading')}</h3>
-              <p>{t('guide.safety.body')}</p>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>{t('guide.faq.heading')}</h3>
-              <p><strong>{t('guide.faq.q1')}</strong> {t('guide.faq.a1')}</p>
-              <p><strong>{t('guide.faq.q2')}</strong> {t('guide.faq.a2')}</p>
-              <p><strong>{t('guide.faq.q3')}</strong> {t('guide.faq.a3')}</p>
-              <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
-
-              <br />
-              <h3 style={{ marginTop: 10 }}>🧾 {t('guide.conclusionTitle')}</h3>
-              <p>{t('guide.conclusion')}</p>
-
-              <p style={{ marginTop: 12 }}>
-                <a
-                  className="btn btn-primary"
-                  href="/pdf-splitter"
-                  onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-splitter') }}
-                >{t('guide.ctaBtn')}</a>
-              </p>
-            </div>
+      {/* Splitter guide — unique card-grid (green accent) */}
+      <section className="splitter-guide">
+        <div className="splitter-guide-header">
+          <span className="splitter-guide-icon">✂️</span>
+          <div>
+            <h2>{t('guide.title')}</h2>
+            <p>{t('guide.intro')}</p>
+            <p className="splitter-guide-cta">{t('guide.cta')}</p>
           </div>
+        </div>
+
+        <div className="splitter-guide-grid">
+          <div className="splitter-guide-card">
+            <h3>{t('guide.whatIs.heading')}</h3>
+            <p>{t('guide.whatIs.body')}</p>
+            <ul>
+              <li>{t('guide.whatIs.item1')}</li>
+              <li>{t('guide.whatIs.item2')}</li>
+              <li>{t('guide.whatIs.item3')}</li>
+            </ul>
+          </div>
+
+          <div className="splitter-guide-card">
+            <h3>{t('guide.whyUseful.heading')}</h3>
+            <ul>
+              <li>{t('guide.whyUseful.item1')}</li>
+              <li>{t('guide.whyUseful.item2')}</li>
+              <li>{t('guide.whyUseful.item3')}</li>
+              <li>{t('guide.whyUseful.item4')}</li>
+            </ul>
+          </div>
+
+          <div className="splitter-guide-card">
+            <h3>{t('guide.useCases.heading')}</h3>
+            <ul>
+              <li>{t('guide.useCases.item1')}</li>
+              <li>{t('guide.useCases.item2')}</li>
+              <li>{t('guide.useCases.item3')}</li>
+              <li>{t('guide.useCases.item4')}</li>
+            </ul>
+          </div>
+
+          <div className="splitter-guide-card splitter-guide-card--wide">
+            <h3>{t('guide.stepByStep.heading')}</h3>
+            <ol>
+              <li>{t('guide.stepByStep.step1')}</li>
+              <li>{t('guide.stepByStep.step2')}</li>
+              <li>{t('guide.stepByStep.step3')}</li>
+              <li>{t('guide.stepByStep.step4')}</li>
+              <li>{t('guide.stepByStep.step5')}</li>
+            </ol>
+          </div>
+
+          <div className="splitter-guide-card">
+            <h3>{t('guide.bestPractices.heading')}</h3>
+            <ul>
+              <li>{t('guide.bestPractices.item1')}</li>
+              <li>{t('guide.bestPractices.item2')}</li>
+              <li>{t('guide.bestPractices.item3')}</li>
+              <li>{t('guide.bestPractices.item4')}</li>
+              <li>{t('guide.bestPractices.item5')}</li>
+            </ul>
+          </div>
+
+          <div className="splitter-guide-card splitter-guide-card--wide">
+            <h3>{t('guide.comparison.heading')}</h3>
+            <table className="splitter-guide-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.comparison.col1')}</th>
+                  <th>{t('guide.comparison.col2')}</th>
+                  <th>{t('guide.comparison.col3')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>{t('guide.comparison.row1col1')}</td><td>{t('guide.comparison.row1col2')}</td><td>{t('guide.comparison.row1col3')}</td></tr>
+                <tr><td>{t('guide.comparison.row2col1')}</td><td>{t('guide.comparison.row2col2')}</td><td>{t('guide.comparison.row2col3')}</td></tr>
+                <tr><td>{t('guide.comparison.row3col1')}</td><td>{t('guide.comparison.row3col2')}</td><td>{t('guide.comparison.row3col3')}</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="splitter-guide-card">
+            <h3>{t('guide.mistakes.heading')}</h3>
+            <ul>
+              <li>{t('guide.mistakes.item1')}</li>
+              <li>{t('guide.mistakes.item2')}</li>
+              <li>{t('guide.mistakes.item3')}</li>
+              <li>{t('guide.mistakes.item4')}</li>
+              <li>{t('guide.mistakes.item5')}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="splitter-guide-footer">
+          <p><strong>{t('guide.conclusionTitle')}</strong><br/>{t('guide.conclusion')}</p>
+          <a className="btn btn-primary" href="/pdf-splitter" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-splitter') }}>{t('guide.ctaBtn')}</a>
         </div>
       </section>
     </>

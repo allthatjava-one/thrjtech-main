@@ -381,3 +381,112 @@
     padding-right: 1rem;
   }
 }
+
+/* ── Merger guide (unique content area) ───────────────────────────────── */
+.pdf-merger-page .merger-guide {
+  max-width: 980px;
+  margin: 28px auto 40px;
+  padding: 0 1rem;
+}
+
+.pdf-merger-page .merger-guide-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: linear-gradient(180deg,#f7fbff,#ffffff);
+  border: 1px solid #e6f0ff;
+  border-radius: 12px;
+  padding: 18px;
+  color: #0f172a;
+}
+
+.pdf-merger-page .merger-guide-header-icon {
+  font-size: 34px;
+  line-height: 1;
+  flex: 0 0 56px;
+}
+
+.pdf-merger-page .merger-guide-cta-line {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #0b5b5b;
+}
+
+/* Make guide text darker for readability (scope to merger guide only) */
+.pdf-merger-page .merger-guide {
+  color: #374151; /* slate-700 for body text */
+}
+
+.pdf-merger-page .merger-guide h2,
+.pdf-merger-page .merger-guide h3 {
+  color: #0f172a; /* darker headings */
+}
+
+.pdf-merger-page .merger-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.pdf-merger-page .merger-guide-card {
+  background: #ffffff;
+  border: 1px solid #eef6ff;
+  border-left: 4px solid #e6f0ff;
+  border-radius: 10px;
+  padding: 14px 14px 14px 20px; /* more left padding to avoid overlap */
+}
+
+.pdf-merger-page .merger-guide-card--wide {
+  grid-column: 1 / -1;
+}
+
+.pdf-merger-page .merger-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.pdf-merger-page .merger-guide-table th,
+.pdf-merger-page .merger-guide-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #f3f7ff;
+}
+
+.pdf-merger-page .merger-guide-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.pdf-merger-page .merger-guide-faq-item p {
+  margin: 6px 0 0;
+}
+
+.pdf-merger-page .merger-guide-card ul {
+  padding-left: 1.25rem; /* indent bullets further */
+  list-style-position: outside;
+}
+
+.pdf-merger-page .merger-guide-card li {
+  margin-bottom: 6px;
+}
+
+.pdf-merger-page .merger-guide-footer {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 720px) {
+  .pdf-merger-page .merger-guide-grid {
+    grid-template-columns: 1fr;
+  }
+  .pdf-merger-page .merger-guide-faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .pdf-merger-page .merger-guide-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
