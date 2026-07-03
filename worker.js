@@ -28,6 +28,18 @@ export default {
         const htmlResponse = await env.ASSETS.fetch(new Request(htmlUrl, request))
         if (htmlResponse.status !== 404) {
           return htmlResponse
+        } else {
+          // If a prerendered page wasn't found for this route, return a prerendered 404.html with HTTP 404.
+          try {
+            const notFoundUrl = new URL('/404', request.url)
+            const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request))
+            if (notFoundResponse.status !== 404) {
+              const body = await notFoundResponse.text()
+              return new Response(body, { status: 404, headers: notFoundResponse.headers })
+            }
+          } catch (e) {
+            // fall through to later fallback
+          }
         }
       }
     }
@@ -78,11 +90,29 @@ export default {
     }
 
     const assetResponse = await env.ASSETS.fetch(request)
-    if (assetResponse.status !== 404 || !isHtmlRequest(request)) {
+    // If the asset exists (not a 404), return it immediately.
+    if (assetResponse.status !== 404) {
       return assetResponse
     }
 
-    const indexUrl = new URL('/index.html', request.url)
-    return env.ASSETS.fetch(new Request(indexUrl, request))
+    // If this is a GET for a path without a file extension, treat it as a
+    // navigation and try to serve a prerendered 404 page. This avoids relying
+    // solely on the Accept header which may be absent for some clients.
+    if (request.method === 'GET' && !hasFileExtension(url.pathname)) {
+      try {
+        const notFoundUrl = new URL('/404', request.url)
+        const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request))
+        if (notFoundResponse.status === 200) {
+          const body = await notFoundResponse.text()
+          return new Response(body, { status: 404, headers: notFoundResponse.headers })
+        }
+      } catch (e) {
+        // ignore and fall back to returning original asset response
+      }
+    }
+
+    // Default fallback: return the original asset response (404) so non-HTML
+    // requests keep their original semantics.
+    return assetResponse
   },
 }

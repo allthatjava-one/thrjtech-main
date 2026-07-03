@@ -34,6 +34,7 @@ i18n
       'imageRotator',
       'screenRecorder',
       'videoToGif',
+      'notFound',
       'toolsLanding',
     ],
     backend: {

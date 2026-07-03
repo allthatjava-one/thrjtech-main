@@ -141,6 +141,7 @@ const staticRoutes = [
   '/image-tools',
   '/developer-tools',
   '/video-tools',
+  '/404',
 ]
 
 // ── fetch blog list ───────────────────────────────────────────────────────────
