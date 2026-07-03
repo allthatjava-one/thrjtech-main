@@ -127,3 +127,78 @@
     padding-right: 1rem;
   }
 }
+
+/* ── Splitter guide (green/teal unique vibe) ───────────────────────────── */
+.pdf-splitter-page .splitter-guide {
+  max-width: 980px;
+  margin: 28px auto 40px;
+  padding: 0 1rem;
+}
+
+.pdf-splitter-page .splitter-guide-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: linear-gradient(180deg,#f4fdf7,#ffffff);
+  border: 1px solid #c8ebd5;
+  border-radius: 12px;
+  padding: 18px;
+  color: #05332a;
+}
+
+.pdf-splitter-page .splitter-guide-icon {
+  font-size: 34px;
+  line-height: 1;
+  flex: 0 0 56px;
+}
+
+.pdf-splitter-page .splitter-guide-cta {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #065f46;
+}
+
+.pdf-splitter-page .splitter-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.pdf-splitter-page .splitter-guide-card {
+  background: #ffffff;
+  border: 1px solid #e6f6ec;
+  box-shadow: 0 6px 18px rgba(6,95,70,0.03);
+  border-left: 4px solid #34d399;
+  border-radius: 10px;
+  padding: 14px 14px 14px 20px;
+}
+
+.pdf-splitter-page .splitter-guide-card--wide { grid-column: 1 / -1 }
+
+.pdf-splitter-page .splitter-guide-table { width:100%; border-collapse:collapse }
+.pdf-splitter-page .splitter-guide-table th, .pdf-splitter-page .splitter-guide-table td { text-align:left; padding:8px; border-bottom:1px solid #eef9f1 }
+
+.pdf-splitter-page .splitter-guide-footer { margin-top:14px; display:flex; gap:12px; align-items:center; justify-content:space-between }
+
+.pdf-splitter-page .splitter-guide-card ul { padding-left: 1.25rem; list-style-position: outside }
+.pdf-splitter-page .splitter-guide-card li { margin-bottom: 6px }
+
+@media (max-width: 720px) {
+  .pdf-splitter-page .splitter-guide-grid { grid-template-columns: 1fr }
+  .pdf-splitter-page .splitter-guide-footer { flex-direction: column; align-items: stretch }
+}
+
+/* Darken guide text for readability (scoped) */
+.pdf-splitter-page .splitter-guide {
+  color: #374151; /* slate-700 */
+}
+.pdf-splitter-page .splitter-guide h2,
+.pdf-splitter-page .splitter-guide h3 {
+  color: #0f172a; /* darker headings */
+}
+
+.pdf-splitter-page .splitter-guide-card p,
+.pdf-splitter-page .splitter-guide-card li {
+  color: inherit;
+}
