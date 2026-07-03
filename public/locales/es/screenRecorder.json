@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Grabador de pantalla",
-    "tagline": "Graba tu pantalla al instante — se queda en tu navegador, privado y gratuito."
+    "tagline": "Graba tu pantalla al instante — se queda en tu navegador, privado y gratuito.",
+    "why-use-screen-recorder": "¿Por qué usar un grabador de pantalla basado en navegador?"
   },
   "tabs": {
     "details": "Detalles",
