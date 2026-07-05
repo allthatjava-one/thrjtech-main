@@ -95,11 +95,22 @@ export default {
       return assetResponse
     }
 
-    // If this is a GET for a path without a file extension, treat it as a
-    // navigation and try to serve a prerendered 404 page. This avoids relying
-    // solely on the Accept header which may be absent for some clients.
+    // If the asset is missing, but this looks like a navigation request
+    // (GET and no file extension), try to serve a prerendered HTML file
+    // (e.g. `/some-route.html`) and return it with HTTP 200 so crawlers
+    // and clients see the page as successful.
     if (request.method === 'GET' && !hasFileExtension(url.pathname)) {
       try {
+        const htmlUrl = new URL(`${url.pathname}.html`, request.url)
+        const htmlResponse = await env.ASSETS.fetch(new Request(htmlUrl, request))
+        if (htmlResponse.status === 200) {
+          const body = await htmlResponse.text()
+          return new Response(body, { status: 200, headers: htmlResponse.headers })
+        }
+
+        // If a prerendered page wasn't found, fall back to serving a
+        // prerendered 404 page (with 404 status) so non-existent routes
+        // are discoverable as not found.
         const notFoundUrl = new URL('/404', request.url)
         const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request))
         if (notFoundResponse.status === 200) {
