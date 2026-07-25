@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
@@ -11,7 +11,12 @@ const app = (
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <App />
+        {/* Namespaces not preloaded for the current route (see src/i18n.js)
+            are lazy-loaded on demand; this boundary covers that loading gap
+            when navigating client-side to a page with a different namespace. */}
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
       </BrowserRouter>
     </HelmetProvider>
   </StrictMode>
