@@ -9,5 +9,8 @@
   "back": "← Back to Blog",
   "createdAt": "Created at: {{date}}",
   "loadingArticle": "Loading…",
-  "errorArticle": "Error: {{error}}"
+  "errorArticle": "Error: {{error}}",
+  "postNavigation": "Blog post navigation",
+  "prevPostTitled": "< [Newer] {{title}}",
+  "nextPostTitled": "{{title}} [Older] >"
 }

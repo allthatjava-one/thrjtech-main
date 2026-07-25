@@ -13,5 +13,8 @@
   "back": "← 블로그로 돌아가기",
   "createdAt": "생성 날짜: {{date}}",
   "loadingArticle": "로드 중…",
-  "errorArticle": "오류: {{error}}"
+  "errorArticle": "오류: {{error}}",
+  "postNavigation": "블로그 게시물 탐색",
+  "prevPostTitled": "< [Newer] {{title}}",
+  "nextPostTitled": "{{title}} [Older] >"
 }
