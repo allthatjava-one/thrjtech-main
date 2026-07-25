@@ -10,6 +10,18 @@ function hasFileExtension(pathname) {
   return lastSegment.includes('.')
 }
 
+function mergeHeaders(origHeaders, extra) {
+  const headers = new Headers()
+  try {
+    if (origHeaders) for (const [k, v] of origHeaders) headers.set(k, v)
+  } catch (e) {
+    // origHeaders may be a plain object
+    try { for (const k of Object.keys(origHeaders || {})) headers.set(k, origHeaders[k]) } catch (e) {}
+  }
+  for (const k of Object.keys(extra || {})) headers.set(k, extra[k])
+  return headers
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
@@ -27,7 +39,14 @@ export default {
         const htmlUrl = new URL(`${url.pathname}.html`, request.url)
         const htmlResponse = await env.ASSETS.fetch(new Request(htmlUrl, request))
         if (htmlResponse.status !== 404) {
-          return htmlResponse
+          // Ensure crawler-friendly headers for HTML responses
+          try {
+            const buf = await htmlResponse.arrayBuffer()
+            const headers = mergeHeaders(htmlResponse.headers, { 'Cache-Control': 'public, max-age=300' })
+            return new Response(buf, { status: 200, headers })
+          } catch (e) {
+            return htmlResponse
+          }
         } else {
           // If a prerendered page wasn't found for this route, return a prerendered 404.html with HTTP 404.
           try {
@@ -35,7 +54,8 @@ export default {
             const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request))
             if (notFoundResponse.status !== 404) {
               const body = await notFoundResponse.text()
-              return new Response(body, { status: 404, headers: notFoundResponse.headers })
+              const headers = mergeHeaders(notFoundResponse.headers, { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' })
+              return new Response(body, { status: 404, headers })
             }
           } catch (e) {
             // fall through to later fallback
@@ -90,8 +110,19 @@ export default {
     }
 
     const assetResponse = await env.ASSETS.fetch(request)
-    // If the asset exists (not a 404), return it immediately.
+    // If the asset exists (not a 404), return it immediately. For HTML
+    // assets, ensure we return crawler-friendly cache headers.
     if (assetResponse.status !== 404) {
+      const contentType = (assetResponse.headers.get('Content-Type') || '')
+      if (contentType.includes('text/html')) {
+        try {
+          const buf = await assetResponse.arrayBuffer()
+          const headers = mergeHeaders(assetResponse.headers, { 'Cache-Control': 'public, max-age=300' })
+          return new Response(buf, { status: assetResponse.status, headers })
+        } catch (e) {
+          return assetResponse
+        }
+      }
       return assetResponse
     }
 
@@ -104,8 +135,13 @@ export default {
         const htmlUrl = new URL(`${url.pathname}.html`, request.url)
         const htmlResponse = await env.ASSETS.fetch(new Request(htmlUrl, request))
         if (htmlResponse.status === 200) {
-          const body = await htmlResponse.text()
-          return new Response(body, { status: 200, headers: htmlResponse.headers })
+          try {
+            const buf = await htmlResponse.arrayBuffer()
+            const headers = mergeHeaders(htmlResponse.headers, { 'Cache-Control': 'public, max-age=300' })
+            return new Response(buf, { status: 200, headers })
+          } catch (e) {
+            return htmlResponse
+          }
         }
 
         // If a prerendered page wasn't found, fall back to serving a
@@ -115,7 +151,8 @@ export default {
         const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request))
         if (notFoundResponse.status === 200) {
           const body = await notFoundResponse.text()
-          return new Response(body, { status: 404, headers: notFoundResponse.headers })
+          const headers = mergeHeaders(notFoundResponse.headers, { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' })
+          return new Response(body, { status: 404, headers })
         }
       } catch (e) {
         // ignore and fall back to returning original asset response

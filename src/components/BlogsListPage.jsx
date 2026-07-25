@@ -32,6 +32,11 @@ export default function BlogsListPage() {
   const urlPage = parseInt(searchParams.get('page') || '1', 10)
   const urlPageSize = searchParams.get('page_size') ? parseInt(searchParams.get('page_size'), 10) : null
 
+  const blogLinkParams = new URLSearchParams()
+  if (page > 1) blogLinkParams.set('page', page)
+  if (pageSize) blogLinkParams.set('page_size', pageSize)
+  const blogLinkSuffix = blogLinkParams.toString() ? `?${blogLinkParams.toString()}` : ''
+
   const fetchBlogs = (targetPage, targetPageSize) => {
     setLoading(true)
     let url = '/api/blogs'
@@ -97,7 +102,7 @@ export default function BlogsListPage() {
                   const displayDescription = (lang !== 'en' && b[`description_${lang}`]) || b.description
                   return (
                     <Link
-                      to={`/blogs/${b.slug}`}
+                      to={`/blogs/${b.slug}${blogLinkSuffix}`}
                       key={b.slug}
                       className="card blog-row"
                       style={{ display: 'flex', alignItems: 'center', gap: 16, padding: 16, borderBottom: '1px solid #e5e7eb', background }}

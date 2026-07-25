@@ -9,5 +9,8 @@
   "back": "← Volver al Blog",
   "createdAt": "Creado el: {{date}}",
   "loadingArticle": "Cargando…",
-  "errorArticle": "Error: {{error}}"
+  "errorArticle": "Error: {{error}}",
+  "postNavigation": "Navegación de entradas del blog",
+  "prevPostTitled": "< [Newer] {{title}}",
+  "nextPostTitled": "{{title}} [Older] >"
 }
