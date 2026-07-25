@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams, Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useSsrData } from '../SsrDataContext.js'
 import Navbar from './Navbar'
@@ -25,7 +25,7 @@ function naiveMarkdownToHtml(md) {
 export default function BlogPage() {
   const { t, i18n } = useTranslation('blogs')
   const { slug } = useParams()
-  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const ssrData = useSsrData()
   // Consume window.__INITIAL_DATA__ exactly once (cleared so remounts don't reuse stale data)
   const [serverBlog] = useState(() => {
@@ -37,14 +37,28 @@ export default function BlogPage() {
   })
   const [createdAt, setCreatedAt] = useState(serverBlog?.createdAt ?? null)
   const [blogData, setBlogData] = useState(serverBlog)
+  const [previousBlog, setPreviousBlog] = useState(serverBlog?.previous ?? null)
+  const [nextBlog, setNextBlog] = useState(serverBlog?.next ?? null)
   const [error, setError] = useState(null)
   const initialDataUsed = useRef(!!serverBlog)
 
   const lang = i18n.resolvedLanguage || i18n.language || 'en'
-  const title = blogData ? ((lang !== 'en' && blogData[`title_${lang}`]) || blogData.title) : null
+  const getLocalizedTitle = (post) => post ? ((lang !== 'en' && post[`title_${lang}`]) || post.title) : null
+  const title = getLocalizedTitle(blogData)
   const content = blogData
     ? naiveMarkdownToHtml((lang !== 'en' && blogData[`content_${lang}`]) || blogData.content)
     : null
+  const previousTitle = getLocalizedTitle(previousBlog)
+  const nextTitle = getLocalizedTitle(nextBlog)
+
+  // Remember the blog list page/page_size the user came from so navigating
+  // back (or through Prev/Next) returns to the same list page.
+  const listPage = searchParams.get('page')
+  const listPageSize = searchParams.get('page_size')
+  const listQuery = new URLSearchParams()
+  if (listPage) listQuery.set('page', listPage)
+  if (listPageSize) listQuery.set('page_size', listPageSize)
+  const listQuerySuffix = listQuery.toString() ? `?${listQuery.toString()}` : ''
 
   useEffect(() => {
     if (initialDataUsed.current) {
@@ -60,6 +74,8 @@ export default function BlogPage() {
       .then(data => {
         setBlogData(data)
         setCreatedAt(data.createdAt)
+        setPreviousBlog(data.previous ?? null)
+        setNextBlog(data.next ?? null)
       })
       .catch(err => setError(err.message))
   }, [slug])
@@ -76,7 +92,7 @@ export default function BlogPage() {
       <main className="main">
         <div className="container">
           <div style={{ marginBottom: '1rem' }}>
-            <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }}>{t('back')}</button>
+            <Link to={`/blogs${listQuerySuffix}`} style={{ color: 'inherit', textDecoration: 'underline' }}>{t('back')}</Link>
           </div>
           <article className="card">
             <div style={{ color: '#000000' }}>{t('createdAt', { date: new Date(createdAt).toLocaleString() })}</div>
@@ -87,6 +103,18 @@ export default function BlogPage() {
                 </>
             }
           </article>
+          {!error && blogData && (
+            <nav className="blog-post-nav" aria-label={t('postNavigation')}>
+              {previousBlog?.slug
+                ? <Link to={`/blogs/${previousBlog.slug}${listQuerySuffix}`} className="blog-post-nav-link">{previousTitle ? t('prevPostTitled', { title: previousTitle }) : t('prevPost')}</Link>
+                : <span className="blog-post-nav-link disabled"></span>
+              }
+              {nextBlog?.slug
+                ? <Link to={`/blogs/${nextBlog.slug}${listQuerySuffix}`} className="blog-post-nav-link">{nextTitle ? t('nextPostTitled', { title: nextTitle }) : t('nextPost')}</Link>
+                : <span className="blog-post-nav-link disabled"></span>
+              }
+            </nav>
+          )}
         </div>
       </main>
       <Footer />
