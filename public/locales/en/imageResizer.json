@@ -108,6 +108,26 @@
       "resampling": "Poor Resampling Method — Not all resizing algorithms are equal. Nearest Neighbor is fast but blocky. Bilinear is smoother. Bicubic is best for most cases.",
       "repeated": "Repeated Resizing — Every resize discards more data. Always resize from the original image, never from a previously resized copy."
     },
+    "algorithms": {
+      "heading": "Resampling Algorithms Explained: Nearest Neighbor vs. Bilinear vs. Bicubic",
+      "intro": "Every time an image is resized, the software must decide what color value to assign to each new pixel. That decision is made by a resampling algorithm, and the one your tool uses has a huge impact on the final result.",
+      "nearestNeighbor": {
+        "label": "Nearest Neighbor",
+        "body": "The fastest and simplest method. It copies the value of the closest existing pixel with no blending, which is great for pixel art but produces blocky, jagged edges on photos — especially when upscaling."
+      },
+      "bilinear": {
+        "label": "Bilinear Interpolation",
+        "body": "Looks at the four nearest pixels and blends them using a weighted average. It produces smoother results than Nearest Neighbor and works well for moderate resizing, though fine details can appear slightly soft."
+      },
+      "bicubic": {
+        "label": "Bicubic Interpolation",
+        "body": "Considers the surrounding 16 pixels and applies a more sophisticated curve-fitting calculation. It produces the sharpest, most natural-looking results for photographs and is the default algorithm most browsers use — including this tool — for both downscaling and upscaling."
+      },
+      "vectorRaster": {
+        "heading": "Vector vs. Raster Resizing: Why Photos Behave Differently Than Logos",
+        "body": "Formats like JPEG, PNG, and WebP are raster images — they store a fixed grid of pixels. Resizing a raster image means recalculating that grid, so enlarging it always introduces blur or blockiness because no new detail actually exists to draw from. Vector formats like SVG store mathematical shapes and paths instead of pixels, so they can be scaled to any size — from a favicon to a billboard — with perfectly crisp edges and no quality loss. If your source material is a logo or illustration, keeping a vector master file will always give better resizing results than starting from a raster export."
+      }
+    },
     "bestPractices": {
       "heading": "Best Practices to Resize Without Losing Quality",
       "aspectRatio": "Maintain Aspect Ratio — Always keep width and height proportional.",
@@ -115,11 +135,31 @@
       "format": "Choose the Right Format — JPEG: smaller size, slight loss. PNG: higher quality, larger file. WebP: best balance.",
       "compression": "Avoid Over-Compression — Aim for balance, not maximum compression."
     },
+    "formatTable": {
+      "heading": "Output Format Comparison: WebP vs. JPEG vs. PNG",
+      "intro": "The format you choose after resizing affects file size, transparency support, and visual quality just as much as the dimensions do. Use this table to pick the right one for your use case:",
+      "headers": {
+        "format": "Format",
+        "transparency": "Transparency Support",
+        "compression": "Lossy / Lossless",
+        "useCase": "Ideal Use Case"
+      },
+      "rows": {
+        "webp": { "format": "WebP", "transparency": "Yes", "compression": "Both", "useCase": "Modern web pages, fast loading" },
+        "jpeg": { "format": "JPEG", "transparency": "No", "compression": "Lossy", "useCase": "Complex photos, digital prints" },
+        "png": { "format": "PNG", "transparency": "Yes", "compression": "Lossless", "useCase": "Graphics, logos, screenshots" }
+      }
+    },
     "useCases": {
       "heading": "Common Use Cases",
       "website": "Website Uploads — Resize large images (4000px → 1200px) to dramatically improve page load speed.",
       "social": "Social Media — Resizing ensures no cropping issues and better visual quality across profiles, posts, and thumbnails.",
       "email": "Email Attachments — Large images slow down sending and may be rejected. Resizing keeps files manageable."
+    },
+    "privacy": {
+      "heading": "Your Images Never Leave Your Device",
+      "body1": "This resizer runs entirely client-side using your browser's built-in Canvas API. When you drop an image into the tool, it is decoded and processed directly in local browser memory — nothing is ever uploaded to a remote server, stored in a database, or transmitted over the network.",
+      "body2": "This client-side JavaScript (and, for supported formats, WebAssembly-accelerated) processing model means your photos remain completely private. It also makes the tool faster, since there's no upload/download round trip, and it keeps working even if your connection is slow or temporarily offline."
     },
     "mistakes": {
       "heading": "Mistakes to Avoid",
@@ -145,7 +185,17 @@
       "q3": "What's the best format after resizing?",
       "a3": "Web: WebP or JPEG — High quality archival: PNG",
       "q4": "Is it better to resize or compress?",
-      "a4": "They serve different purposes. Resize changes dimensions; Compress reduces file size. Best results come from using both carefully."
+      "a4": "They serve different purposes. Resize changes dimensions; Compress reduces file size. Best results come from using both carefully.",
+      "q5": "What is DPR (Device Pixel Ratio) and does it matter for Retina displays?",
+      "a5": "Device Pixel Ratio (DPR) describes how many physical pixels a screen packs into each CSS pixel — Retina and other high-density displays typically use a DPR of 2 or 3. If an image will be shown on these screens, resize it 2x or 3x larger than its on-screen display size so it still looks sharp instead of blurry.",
+      "q6": "What dimensions should I use for social media posts and thumbnails?",
+      "a6": "Common targets include 1080×1080px for Instagram square posts, 1200×630px for Facebook/LinkedIn link previews, and 1280×720px for YouTube thumbnails. Always check the platform's current guidelines, since recommended sizes change over time.",
+      "q7": "Does this tool upload my images to a server?",
+      "a7": "No. All resizing happens locally in your browser using canvas processing — your files never leave your device, which keeps your photos private and the tool fast.",
+      "q8": "Will resizing remove EXIF metadata like GPS location from my photos?",
+      "a8": "Yes, in most cases. Because the image is redrawn onto a canvas and re-exported, embedded EXIF metadata (camera settings, GPS coordinates, timestamps) is typically stripped from the output file — a helpful side effect if you're sharing photos publicly.",
+      "q9": "Can I resize a PNG and keep its transparent background?",
+      "a9": "Yes. If your source image has an alpha channel and you export it as PNG or WebP, the transparency is preserved through the resize. Exporting to JPEG will flatten transparency to a solid background color, since JPEG doesn't support alpha channels."
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Resizing images isn't just about making them smaller — it's about doing it correctly to preserve clarity and usability. By maintaining aspect ratio, resizing once from the original, and choosing the right format, you can significantly improve both image quality and performance.",

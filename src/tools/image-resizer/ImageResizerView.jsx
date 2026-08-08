@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 export function ImageResizerView({
   mainImage,
@@ -197,8 +198,26 @@ export function ImageResizerView({
       setSendStatus('error');
     }
   };
+
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9'];
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqKeys.map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  };
+
   return (
     <div className="image-resizer-view">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <h2 className="hero-title">{t('hero.title')}</h2>
       <p className="hero-tagline">{t('hero.tagline')}{' '}
         <Link to="/blogs/image-resizer-guide">{t('hero.blogLink')}</Link></p>
@@ -597,6 +616,27 @@ export function ImageResizerView({
         </div>
 
         <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">{t('guide.algorithms.heading')}</h3>
+          <p>{t('guide.algorithms.intro')}</p>
+          <div className="ir-guide-algo-grid">
+            <div className="ir-guide-algo-card">
+              <strong>{t('guide.algorithms.nearestNeighbor.label')}</strong>
+              <p>{t('guide.algorithms.nearestNeighbor.body')}</p>
+            </div>
+            <div className="ir-guide-algo-card">
+              <strong>{t('guide.algorithms.bilinear.label')}</strong>
+              <p>{t('guide.algorithms.bilinear.body')}</p>
+            </div>
+            <div className="ir-guide-algo-card">
+              <strong>{t('guide.algorithms.bicubic.label')}</strong>
+              <p>{t('guide.algorithms.bicubic.body')}</p>
+            </div>
+          </div>
+          <h3 className="ir-guide-h3" style={{ marginTop: '0.5rem' }}>{t('guide.algorithms.vectorRaster.heading')}</h3>
+          <p>{t('guide.algorithms.vectorRaster.body')}</p>
+        </div>
+
+        <div className="ir-guide-section">
           <h3 className="ir-guide-h3">{t('guide.bestPractices.heading')}</h3>
           <div className="ir-guide-best-list">
             <div className="ir-guide-best-item">
@@ -619,6 +659,43 @@ export function ImageResizerView({
         </div>
 
         <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">{t('guide.formatTable.heading')}</h3>
+          <p>{t('guide.formatTable.intro')}</p>
+          <div className="ir-guide-table-wrap">
+            <table className="ir-guide-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.formatTable.headers.format')}</th>
+                  <th>{t('guide.formatTable.headers.transparency')}</th>
+                  <th>{t('guide.formatTable.headers.compression')}</th>
+                  <th>{t('guide.formatTable.headers.useCase')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label={t('guide.formatTable.headers.format')}><strong>{t('guide.formatTable.rows.webp.format')}</strong></td>
+                  <td data-label={t('guide.formatTable.headers.transparency')}>{t('guide.formatTable.rows.webp.transparency')}</td>
+                  <td data-label={t('guide.formatTable.headers.compression')}>{t('guide.formatTable.rows.webp.compression')}</td>
+                  <td data-label={t('guide.formatTable.headers.useCase')}>{t('guide.formatTable.rows.webp.useCase')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.formatTable.headers.format')}><strong>{t('guide.formatTable.rows.jpeg.format')}</strong></td>
+                  <td data-label={t('guide.formatTable.headers.transparency')}>{t('guide.formatTable.rows.jpeg.transparency')}</td>
+                  <td data-label={t('guide.formatTable.headers.compression')}>{t('guide.formatTable.rows.jpeg.compression')}</td>
+                  <td data-label={t('guide.formatTable.headers.useCase')}>{t('guide.formatTable.rows.jpeg.useCase')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.formatTable.headers.format')}><strong>{t('guide.formatTable.rows.png.format')}</strong></td>
+                  <td data-label={t('guide.formatTable.headers.transparency')}>{t('guide.formatTable.rows.png.transparency')}</td>
+                  <td data-label={t('guide.formatTable.headers.compression')}>{t('guide.formatTable.rows.png.compression')}</td>
+                  <td data-label={t('guide.formatTable.headers.useCase')}>{t('guide.formatTable.rows.png.useCase')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="ir-guide-section">
           <h3 className="ir-guide-h3">{t('guide.useCases.heading')}</h3>
           <div className="ir-guide-usecases">
             <div className="ir-guide-usecase">
@@ -634,6 +711,12 @@ export function ImageResizerView({
               <p>{t('guide.useCases.email')}</p>
             </div>
           </div>
+        </div>
+
+        <div className="ir-guide-section">
+          <h3 className="ir-guide-h3">{t('guide.privacy.heading')}</h3>
+          <p>{t('guide.privacy.body1')}</p>
+          <p>{t('guide.privacy.body2')}</p>
         </div>
 
         <div className="ir-guide-section">
@@ -675,6 +758,26 @@ export function ImageResizerView({
             <details className="ir-guide-faq-item">
               <summary>{t('guide.faq.q4')}</summary>
               <p>{t('guide.faq.a4')}</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>{t('guide.faq.q5')}</summary>
+              <p>{t('guide.faq.a5')}</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>{t('guide.faq.q6')}</summary>
+              <p>{t('guide.faq.a6')}</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>{t('guide.faq.q7')}</summary>
+              <p>{t('guide.faq.a7')}</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>{t('guide.faq.q8')}</summary>
+              <p>{t('guide.faq.a8')}</p>
+            </details>
+            <details className="ir-guide-faq-item">
+              <summary>{t('guide.faq.q9')}</summary>
+              <p>{t('guide.faq.a9')}</p>
             </details>
           </div>
         </div>
