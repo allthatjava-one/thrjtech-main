@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async'
 import useImageCollage from "./hooks/useImageCollage";
 import ImageFileList from "./ImageFileList";
 import TemplateSelector from "./TemplateSelector";
@@ -20,6 +21,16 @@ const ImageCollageView = ({
   setCellHeight,
 }) => {
   const { t } = useTranslation('imageCollage');
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1','q2','q3','q4','q5','q6','q7','q8'].map(key => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`, { defaultValue: '' }),
+      acceptedAnswer: { '@type': 'Answer', text: t(`guide.faq.a${key.slice(1)}`, { defaultValue: '' }) }
+    }))
+  }
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
   const [sendStatus, setSendStatus] = useState('idle');
@@ -373,6 +384,9 @@ const ImageCollageView = ({
       <p className="hero-tagline">{t('hero.tagline')}{' '}
         <Link to="/blogs/image-collage-guide">{t('hero.blogLink')}</Link>
       </p>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <div className="details-row" data-open={openPanel}>
         <div className="details-controls">
           <button
@@ -786,6 +800,89 @@ const ImageCollageView = ({
           <p>{t('guide.tryIt', { defaultValue: 'Try it here:' })}</p>
           <div className="ic-cta-wrap">
             <a href="/image-collage" className="ic-cta" onClick={(e)=>{ e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/image-collage'); }}>{t('guide.ctaBtn', { defaultValue: 'Image Collage Tool →' })}</a>
+          </div>
+        </section>
+
+        <section className="ic-section">
+          <h3>{t('guide.techArchitecture.heading')}</h3>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.body') }} />
+          <h4>{t('guide.techArchitecture.whyHeading')}</h4>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.whyBody') }} />
+        </section>
+
+        <section className="ic-section">
+          <h3>{t('guide.canvasDpi.heading')}</h3>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.canvasDpi.body') }} />
+        </section>
+
+        <section className="ic-section">
+          <h3>{t('guide.aspect.heading')}</h3>
+          <p>{t('guide.aspect.body')}</p>
+        </section>
+
+        <section className="ic-section">
+          <h3>{t('guide.layout.heading')}</h3>
+          <div className="wm-guide-table-wrap">
+            <table className="wm-guide-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.layout.table.headers.type')}</th>
+                  <th>{t('guide.layout.table.headers.dimensions')}</th>
+                  <th>{t('guide.layout.table.headers.useCase')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{t('guide.layout.rows.row1.type')}</td>
+                  <td>{t('guide.layout.rows.row1.dim')}</td>
+                  <td>{t('guide.layout.rows.row1.useCase')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.layout.rows.row2.type')}</td>
+                  <td>{t('guide.layout.rows.row2.dim')}</td>
+                  <td>{t('guide.layout.rows.row2.useCase')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.layout.rows.row3.type')}</td>
+                  <td>{t('guide.layout.rows.row3.dim')}</td>
+                  <td>{t('guide.layout.rows.row3.useCase')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.layout.rows.row4.type')}</td>
+                  <td>{t('guide.layout.rows.row4.dim')}</td>
+                  <td>{t('guide.layout.rows.row4.useCase')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="ic-section">
+          <h3>{t('guide.expandedFaq.heading')}</h3>
+          <div className="wm-guide-faq">
+            {[5,6,7,8].map(n => (
+              <details key={n} className="wm-faq-item">
+                <summary>{t(`guide.faq.q${n}`)}</summary>
+                <p dangerouslySetInnerHTML={{ __html: t(`guide.faq.a${n}`) }} />
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section className="ic-section">
+          <h3>{t('guide.checklist.heading')}</h3>
+          <div className="wm-guide-table-wrap">
+            <table className="wm-guide-table">
+              <thead>
+                <tr><th>{t('guide.checklist.headers.area')}</th><th>{t('guide.checklist.headers.status')}</th><th>{t('guide.checklist.headers.action')}</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>{t('guide.checklist.rows.row1.area')}</td><td>{t('guide.checklist.rows.row1.status')}</td><td>{t('guide.checklist.rows.row1.action')}</td></tr>
+                <tr><td>{t('guide.checklist.rows.row2.area')}</td><td>{t('guide.checklist.rows.row2.status')}</td><td>{t('guide.checklist.rows.row2.action')}</td></tr>
+                <tr><td>{t('guide.checklist.rows.row3.area')}</td><td>{t('guide.checklist.rows.row3.status')}</td><td>{t('guide.checklist.rows.row3.action')}</td></tr>
+                <tr><td>{t('guide.checklist.rows.row4.area')}</td><td>{t('guide.checklist.rows.row4.status')}</td><td>{t('guide.checklist.rows.row4.action')}</td></tr>
+              </tbody>
+            </table>
           </div>
         </section>
       </div>
