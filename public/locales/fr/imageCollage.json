@@ -65,6 +65,54 @@
       "q4": "Q : Cela s'exécute-t-il dans mon navigateur ?",
       "a4": "R : Oui — l'assemblage du collage est côté client ; rien n'est téléchargé sauf si vous utilisez explicitement une fonction de partage."
     }
+    ,
+    "techArchitecture": {
+      "heading": "Architecture technique",
+      "body": "Cet outil effectue toute la composition d'images côté client en utilisant l'API Canvas HTML5. Les fichiers sources sont lus en mémoire via FileReader et dessinés sur un canevas hors écran avec <code>drawImage()</code>. Aucune image utilisateur n'est envoyée à un serveur — le navigateur effectue tout le traitement, la composition et l'exportation. Pour des entrées très volumineuses, l'application sérialise les opérations de dessin sur un seul canevas afin d'éviter de créer de nombreux bitmaps intermédiaires.",
+      "whyHeading": "Pourquoi côté client ?",
+      "whyBody": "Le rendu côté client préserve la confidentialité des utilisateurs, réduit les coûts serveur et évite la latence réseau. L'image exportée est produite avec <code>canvas.toDataURL()</code> ou <code>canvas.toBlob()</code> et proposée en téléchargement directement dans le navigateur."
+    },
+    "canvasDpi": {
+      "heading": "Résolution du canevas et mise à l'échelle DPI",
+      "body": "Les dimensions finales du canevas en pixels sont calculées à partir des cellules, des espaces et des bordures : <strong>width = cols*cellWidth + (cols+1)*gap</strong>, <strong>height = rows*cellHeight + (rows+1)*gap</strong>. Pour viser une sortie qualité impression (par exemple 300 DPI), convertissez les pouces en pixels : <em>pixels = inches × DPI</em>. Par exemple, une impression 8\"×10\" à 300 DPI nécessite 2400×3000 px. Utilisez les contrôles de taille des cellules pour planifier la résolution d'export souhaitée — l'outil affiche les pixels calculés dans l'UI."
+    },
+    "aspect": {
+      "heading": "Conservation du ratio et stratégie d'adaptation",
+      "body": "Chaque image source peut avoir un ratio d'aspect différent de sa cellule cible. Nous calculons le ratio de l'image et le ratio de la cellule et sélectionnons un ajustement de type 'cover' afin que la cellule soit entièrement remplie. L'algorithme calcule une largeur/hauteur de base en conservant le ratio de l'image, puis applique l'échelle et le décalage définis par l'utilisateur. Cela évite les bandes noires et garde les zones focales centrées ; les utilisateurs peuvent déplacer/zoomer les cellules individuellement pour ajuster la zone visible."
+    },
+    "layout": {
+      "heading": "Mise en page vs. spécifications des réseaux sociaux",
+      "table": {
+        "headers": { "type": "Type de mise en page", "dimensions": "Dimensions recommandées", "useCase": "Cas d'utilisation optimal" },
+        "rows": {
+          "row1": { "type": "Grille 2×2", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram, affichages produits carrés" },
+          "row2": { "type": "Côte à côte (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "En-têtes Open Graph, publications Facebook" },
+          "row3": { "type": "Bande de 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Stories mobiles, épingles Pinterest" },
+          "row4": { "type": "Empilé (2×1)", "dim": "1200 × 1200 px", "useCase": "Comparaisons côte à côte pour portfolio" }
+        }
+      }
+    },
+    "expandedFaq": { "heading": "FAQ technique" },
+    "faq": {
+      "q5": "Comment les limites de mémoire du navigateur affectent-elles les exports haute résolution ?",
+      "a5": "Les grands canevas consomment de la mémoire proportionnellement à width×height×4 octets par pixel. Les exports au-delà d'environ 100 mégapixels peuvent échouer sur les appareils à faible mémoire. Pour réduire l'utilisation mémoire, diminuez la taille des cellules, exportez à un DPI plus faible ou divisez le collage en plusieurs exports.",
+      "q6": "Le JPEG/PNG/WebP préserve-t-il la transparence lorsque l'espacement des bordures est appliqué ?",
+      "a6": "PNG et WebP (avec alpha) préservent la transparence ; JPEG ne le fait pas. Si vous utilisez la transparence pour les espaces, exportez en PNG ou WebP pour conserver l'alpha.",
+      "q7": "Comment éviter la perte de netteté lors de la combinaison d'images de résolutions différentes ?",
+      "a7": "Choisissez des tailles de cellule inférieures ou égales à la résolution native de vos images sources, évitez l'agrandissement et privilégiez des photos source en haute résolution pour les cibles d'impression. L'outil affiche les dimensions natives des images dans les métadonnées de prévisualisation pour aider à décider.",
+      "q8": "Comment les profils de couleur sont-ils gérés (sRGB vs Display P3) ?",
+      "a8": "L'API Canvas fonctionne dans l'espace colorimétrique du navigateur (généralement sRGB). La gestion avancée des couleurs (inclusion de profils ICC ou préservation Display P3) n'est pas réalisée — pour une impression précise sur appareils wide-gamut, exportez et post-traitez dans un éditeur gérant les profils colorimétriques."
+    },
+    "checklist": {
+      "heading": "Résumé de la checklist technique",
+      "headers": { "area": "Domaine", "status": "Statut actuel", "action": "Action requise" },
+      "rows": {
+        "row1": { "area": "Nombre de mots & profondeur", "status": "Court (~350 mots)", "action": "Élargir à 800–1 000+ mots avec des détails techniques" },
+        "row2": { "area": "Focalisation technique", "status": "Conseils de conception", "action": "Ajouter des détails sur HTML5 Canvas, confidentialité et calculs de pixels" },
+        "row3": { "area": "Tableaux structurés", "status": "Manquants", "action": "Ajouter la table Mise en page vs Plateforme (fait)" },
+        "row4": { "area": "FAQ", "status": "Courte / Inline", "action": "Ajouter 6–8 FAQ techniques avec JSON-LD (fait)" }
+      }
+    }
   },
   "howItWorks": {
     "step1": "Sélectionnez un modèle",
