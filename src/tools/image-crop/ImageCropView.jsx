@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Cropper from 'react-easy-crop';
 import CustomSelect from '../../commons/CustomSelect';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 export function ImageCropView(props) {
   const {
@@ -37,6 +38,16 @@ export function ImageCropView(props) {
 
   const navigate = useNavigate();
   const { t } = useTranslation('imageCrop');
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1','q2','q3','q4','q5','q6','q7','q8'].map(key => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`, { defaultValue: '' }),
+      acceptedAnswer: { '@type': 'Answer', text: t(`guide.faq.a${key.slice(1)}`, { defaultValue: '' }) }
+    }))
+  };
 
   const [selectValue, setSelectValue] = useState(() => (aspect ? String(aspect) : String(4 / 3)));
   const [customW, setCustomW] = useState(4);
@@ -227,6 +238,9 @@ export function ImageCropView(props) {
       <h2 className="hero-title">{t('hero.title')}</h2>
       <p className="hero-tagline">{t('hero.tagline')}{' '}
         <Link to="/blogs/image-crop-guide">{t('hero.blogLink')}</Link></p>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
 
       <div className="ir-tip-banner">
         <span className="ir-tip-text">{t('hint.text')}</span>
@@ -635,12 +649,63 @@ export function ImageCropView(props) {
         </div>
 
         <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.techArchitecture.heading')}</h3>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.body') }} />
+          <h4 className="ic-guide-h4">{t('guide.techArchitecture.whyHeading')}</h4>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.whyBody') }} />
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.aspectTable.heading')}</h3>
+          <div className="wm-guide-table-wrap">
+            <table className="wm-guide-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.aspectTable.headers.platform')}</th>
+                  <th>{t('guide.aspectTable.headers.ratio')}</th>
+                  <th>{t('guide.aspectTable.headers.dimensions')}</th>
+                  <th>{t('guide.aspectTable.headers.considerations')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{t('guide.aspectTable.rows.row1.platform')}</td>
+                  <td>{t('guide.aspectTable.rows.row1.ratio')}</td>
+                  <td>{t('guide.aspectTable.rows.row1.dim')}</td>
+                  <td>{t('guide.aspectTable.rows.row1.considerations')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.aspectTable.rows.row2.platform')}</td>
+                  <td>{t('guide.aspectTable.rows.row2.ratio')}</td>
+                  <td>{t('guide.aspectTable.rows.row2.dim')}</td>
+                  <td>{t('guide.aspectTable.rows.row2.considerations')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.aspectTable.rows.row3.platform')}</td>
+                  <td>{t('guide.aspectTable.rows.row3.ratio')}</td>
+                  <td>{t('guide.aspectTable.rows.row3.dim')}</td>
+                  <td>{t('guide.aspectTable.rows.row3.considerations')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.aspectTable.rows.row4.platform')}</td>
+                  <td>{t('guide.aspectTable.rows.row4.ratio')}</td>
+                  <td>{t('guide.aspectTable.rows.row4.dim')}</td>
+                  <td>{t('guide.aspectTable.rows.row4.considerations')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
           <h3 className="ic-guide-h3">{t('guide.faq.heading', { defaultValue: 'FAQ' })}</h3>
           <div className="ic-guide-faq">
-            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q1', { defaultValue: 'Does cropping reduce image quality?' })}</summary><p>{t('guide.faq.a1', { defaultValue: 'Yes — because pixels are removed, but if done carefully the quality loss is usually not noticeable.' })}</p></details>
-            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q2', { defaultValue: 'Can I undo cropping?' })}</summary><p>{t('guide.faq.a2', { defaultValue: 'Only if your tool supports non-destructive editing or you kept the original image.' })}</p></details>
-            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q3', { defaultValue: 'What is the best aspect ratio?' })}</summary><p>{t('guide.faq.a3', { defaultValue: 'Depends on usage: Instagram → 1:1 or 4:5; YouTube → 16:9; Websites → varies.' })}</p></details>
-            <details className="ic-guide-faq-item"><summary>{t('guide.faq.q4', { defaultValue: 'Is cropping better than resizing?' })}</summary><p>{t('guide.faq.a4', { defaultValue: 'They serve different purposes: cropping changes composition, resizing changes dimensions.' })}</p></details>
+            {[1,2,3,4,5,6,7,8].map(n => (
+              <details key={n} className="ic-guide-faq-item">
+                <summary>{t(`guide.faq.q${n}`)}</summary>
+                <p dangerouslySetInnerHTML={{ __html: t(`guide.faq.a${n}`) }} />
+              </details>
+            ))}
           </div>
         </div>
 
