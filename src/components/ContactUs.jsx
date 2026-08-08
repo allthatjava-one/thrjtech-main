@@ -64,6 +64,9 @@ const ContactUs = ({ open, onClose }) => {
               {t('signature')}
             </span>
           </p>
+          <p className="contactus-direct-email">
+            {t('directEmailLabel')} <a href="mailto:privacy@thrjtech.com">privacy@thrjtech.com</a>
+          </p>
         </div>
         <hr style={{ margin: '1.5rem 0' }} />
         <div className="contactus-section">
