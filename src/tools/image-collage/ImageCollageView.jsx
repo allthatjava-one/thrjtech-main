@@ -826,9 +826,9 @@ const ImageCollageView = ({
             <table className="wm-guide-table">
               <thead>
                 <tr>
-                  <th>{t('guide.layout.table.headers.type')}</th>
-                  <th>{t('guide.layout.table.headers.dimensions')}</th>
-                  <th>{t('guide.layout.table.headers.useCase')}</th>
+                  <th>{t('guide.layout.headers.type')}</th>
+                  <th>{t('guide.layout.headers.dimensions')}</th>
+                  <th>{t('guide.layout.headers.useCase')}</th>
                 </tr>
               </thead>
               <tbody>

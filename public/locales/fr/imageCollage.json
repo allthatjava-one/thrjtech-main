@@ -82,14 +82,12 @@
     },
     "layout": {
       "heading": "Mise en page vs. spécifications des réseaux sociaux",
-      "table": {
-        "headers": { "type": "Type de mise en page", "dimensions": "Dimensions recommandées", "useCase": "Cas d'utilisation optimal" },
-        "rows": {
-          "row1": { "type": "Grille 2×2", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram, affichages produits carrés" },
-          "row2": { "type": "Côte à côte (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "En-têtes Open Graph, publications Facebook" },
-          "row3": { "type": "Bande de 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Stories mobiles, épingles Pinterest" },
-          "row4": { "type": "Empilé (2×1)", "dim": "1200 × 1200 px", "useCase": "Comparaisons côte à côte pour portfolio" }
-        }
+      "headers": { "type": "Type de mise en page", "dimensions": "Dimensions recommandées", "useCase": "Cas d'utilisation optimal" },
+      "rows": {
+        "row1": { "type": "Grille 2×2", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram, affichages produits carrés" },
+        "row2": { "type": "Côte à côte (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "En-têtes Open Graph, publications Facebook" },
+        "row3": { "type": "Bande de 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Stories mobiles, épingles Pinterest" },
+        "row4": { "type": "Empilé (2×1)", "dim": "1200 × 1200 px", "useCase": "Comparaisons côte à côte pour portfolio" }
       }
     },
     "expandedFaq": { "heading": "FAQ technique" },
@@ -257,6 +255,41 @@
       "a4": "Pas si elles sont créées correctement — assurez-vous que les images sources sont de haute qualité."
     },
     "conclusion": "Les collages d'images sont plus qu'une simple combinaison de photos : ils constituent un moyen puissant de raconter des histoires, de présenter des informations et de capter l'attention. Avec la bonne mise en page et le bon objectif, un simple ensemble d'images peut devenir une expérience visuelle convaincante.",
-    "ctaBtn": "Image du collage"
+    "ctaBtn": "Image du collage",
+    "techArchitecture": {
+      "heading": "Architecture technique",
+      "body": "Cet outil effectue toute la composition d'images côté client en utilisant l'API Canvas HTML5. Les fichiers sources sont lus en mémoire via FileReader et dessinés sur un canevas hors écran avec <code>drawImage()</code>. Aucune image utilisateur n'est envoyée à un serveur — le navigateur effectue tout le traitement, la composition et l'exportation. Pour des entrées très volumineuses, l'application sérialise les opérations de dessin sur un seul canevas afin d'éviter de créer de nombreux bitmaps intermédiaires.",
+      "whyHeading": "Pourquoi côté client ?",
+      "whyBody": "Le rendu côté client préserve la confidentialité des utilisateurs, réduit les coûts serveur et évite la latence réseau. L'image exportée est produite avec <code>canvas.toDataURL()</code> ou <code>canvas.toBlob()</code> et proposée en téléchargement directement dans le navigateur."
+    },
+    "canvasDpi": {
+      "heading": "Résolution du canevas et mise à l'échelle DPI",
+      "body": "Les dimensions finales du canevas en pixels sont calculées à partir des cellules, des espaces et des bordures : <strong>width = cols*cellWidth + (cols+1)*gap</strong>, <strong>height = rows*cellHeight + (rows+1)*gap</strong>. Pour viser une sortie qualité impression (par exemple 300 DPI), convertissez les pouces en pixels : <em>pixels = inches × DPI</em>. Par exemple, une impression 8\"×10\" à 300 DPI nécessite 2400×3000 px. Utilisez les contrôles de taille des cellules pour planifier la résolution d'export souhaitée — l'outil affiche les pixels calculés dans l'UI."
+    },
+    "aspect": {
+      "heading": "Conservation du ratio et stratégie d'adaptation",
+      "body": "Chaque image source peut avoir un ratio d'aspect différent de sa cellule cible. Nous calculons le ratio de l'image et le ratio de la cellule et sélectionnons un ajustement de type 'cover' afin que la cellule soit entièrement remplie. L'algorithme calcule une largeur/hauteur de base en conservant le ratio de l'image, puis applique l'échelle et le décalage définis par l'utilisateur. Cela évite les bandes noires et garde les zones focales centrées ; les utilisateurs peuvent déplacer/zoomer les cellules individuellement pour ajuster la zone visible."
+    },
+    "layout": {
+      "heading": "Mise en page vs. spécifications des réseaux sociaux",
+      "headers": { "type": "Type de mise en page", "dimensions": "Dimensions recommandées", "useCase": "Cas d'utilisation optimal" },
+      "rows": {
+        "row1": { "type": "Grille 2×2", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram, affichages produits carrés" },
+        "row2": { "type": "Côte à côte (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "En-têtes Open Graph, publications Facebook" },
+        "row3": { "type": "Bande de 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Stories mobiles, épingles Pinterest" },
+        "row4": { "type": "Empilé (2×1)", "dim": "1200 × 1200 px", "useCase": "Comparaisons côte à côte pour portfolio" }
+      }
+    },
+    "expandedFaq": { "heading": "FAQ technique" },
+    "checklist": {
+      "heading": "Résumé de la checklist technique",
+      "headers": { "area": "Domaine", "status": "Statut actuel", "action": "Action requise" },
+      "rows": {
+        "row1": { "area": "Nombre de mots & profondeur", "status": "Court (~350 mots)", "action": "Élargir à 800–1 000+ mots avec des détails techniques" },
+        "row2": { "area": "Focalisation technique", "status": "Conseils de conception", "action": "Ajouter des détails sur HTML5 Canvas, confidentialité et calculs de pixels" },
+        "row3": { "area": "Tableaux structurés", "status": "Manquants", "action": "Ajouter la table Mise en page vs Plateforme (fait)" },
+        "row4": { "area": "FAQ", "status": "Courte / Inline", "action": "Ajouter 6–8 FAQ techniques avec JSON-LD (fait)" }
+      }
+    }
   }
 }
