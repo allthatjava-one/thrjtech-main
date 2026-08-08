@@ -131,6 +131,26 @@
       "resampling": "Método de remuestreo deficiente: no todos los algoritmos de cambio de tamaño son iguales. El vecino más cercano es rápido pero bloqueable. Bilineal es más suave. Bicúbico es mejor para la mayoría de los casos.",
       "repeated": "Cambio de tamaño repetido: cada cambio de tamaño descarta más datos. Cambie siempre el tamaño desde la imagen original, nunca desde una copia previamente redimensionada."
     },
+    "algorithms": {
+      "heading": "Algoritmos de remuestreo explicados: vecino más cercano vs. bilineal vs. bicúbico",
+      "intro": "Cada vez que se cambia el tamaño de una imagen, el software debe decidir qué valor de color asignar a cada píxel nuevo. Esa decisión la toma un algoritmo de remuestreo, y el que use su herramienta tiene un gran impacto en el resultado final.",
+      "nearestNeighbor": {
+        "label": "Vecino más cercano",
+        "body": "El método más rápido y sencillo. Copia el valor del píxel existente más cercano sin mezcla, lo cual es ideal para pixel art pero produce bordes irregulares y en bloques en fotografías, especialmente al ampliar."
+      },
+      "bilinear": {
+        "label": "Interpolación bilineal",
+        "body": "Analiza los cuatro píxeles más cercanos y los combina mediante un promedio ponderado. Produce resultados más suaves que el vecino más cercano y funciona bien para cambios de tamaño moderados, aunque los detalles finos pueden verse ligeramente suaves."
+      },
+      "bicubic": {
+        "label": "Interpolación bicúbica",
+        "body": "Considera los 16 píxeles circundantes y aplica un cálculo de ajuste de curvas más sofisticado. Produce los resultados más nítidos y naturales para fotografías, y es el algoritmo predeterminado que usan la mayoría de los navegadores —incluida esta herramienta— tanto para reducir como para ampliar."
+      },
+      "vectorRaster": {
+        "heading": "Redimensionamiento vectorial vs. raster: por qué las fotos se comportan diferente a los logotipos",
+        "body": "Formatos como JPEG, PNG y WebP son imágenes ráster: almacenan una cuadrícula fija de píxeles. Cambiar el tamaño de una imagen ráster significa recalcular esa cuadrícula, por lo que ampliarla siempre introduce desenfoque o bloques, porque no existe ningún detalle nuevo del cual partir. Los formatos vectoriales como SVG almacenan formas y trayectorias matemáticas en lugar de píxeles, por lo que se pueden escalar a cualquier tamaño —desde un favicon hasta una valla publicitaria— con bordes perfectamente nítidos y sin pérdida de calidad. Si su material de origen es un logotipo o ilustración, conservar un archivo maestro vectorial siempre dará mejores resultados que partir de una exportación ráster."
+      }
+    },
     "bestPractices": {
       "heading": "Mejores prácticas para cambiar el tamaño sin perder calidad",
       "aspectRatio": "Mantener relación de aspecto: mantenga siempre proporcionales el ancho y el alto.",
@@ -138,11 +158,31 @@
       "format": "Elija el formato correcto: JPEG: tamaño más pequeño, ligera pérdida. PNG: archivo más grande y de mayor calidad. WebP: mejor equilibrio.",
       "compression": "Evite la sobrecompresión: busque el equilibrio, no la compresión máxima."
     },
+    "formatTable": {
+      "heading": "Comparación de formatos de salida: WebP vs. JPEG vs. PNG",
+      "intro": "El formato que elija después de cambiar el tamaño afecta el tamaño del archivo, el soporte de transparencia y la calidad visual tanto como las dimensiones. Use esta tabla para elegir el adecuado para su caso de uso:",
+      "headers": {
+        "format": "Formato",
+        "transparency": "Soporte de transparencia",
+        "compression": "Con/sin pérdida",
+        "useCase": "Uso ideal"
+      },
+      "rows": {
+        "webp": { "format": "WebP", "transparency": "Sí", "compression": "Ambos", "useCase": "Páginas web modernas, carga rápida" },
+        "jpeg": { "format": "JPEG", "transparency": "No", "compression": "Con pérdida", "useCase": "Fotos complejas, impresiones digitales" },
+        "png": { "format": "PNG", "transparency": "Sí", "compression": "Sin pérdida", "useCase": "Gráficos, logotipos, capturas de pantalla" }
+      }
+    },
     "useCases": {
       "heading": "Casos de uso comunes",
       "website": "Cargas de sitios web: cambie el tamaño de las imágenes grandes (4000 px → 1200 px) para mejorar drásticamente la velocidad de carga de la página.",
       "social": "Redes sociales: cambiar el tamaño garantiza que no haya problemas de recorte y una mejor calidad visual en perfiles, publicaciones y miniaturas.",
       "email": "Archivos adjuntos de correo electrónico: las imágenes grandes ralentizan el envío y pueden ser rechazadas. Cambiar el tamaño mantiene los archivos manejables."
+    },
+    "privacy": {
+      "heading": "Sus imágenes nunca salen de su dispositivo",
+      "body1": "Este redimensionador se ejecuta completamente del lado del cliente utilizando la API Canvas integrada de su navegador. Cuando suelta una imagen en la herramienta, se decodifica y procesa directamente en la memoria local del navegador; nunca se sube a un servidor remoto, se almacena en una base de datos ni se transmite por la red.",
+      "body2": "Este modelo de procesamiento con JavaScript del lado del cliente (y, para formatos compatibles, acelerado con WebAssembly) significa que sus fotos permanecen completamente privadas. También hace que la herramienta sea más rápida, ya que no hay un viaje de ida y vuelta de carga/descarga, y sigue funcionando incluso si su conexión es lenta o está temporalmente sin conexión."
     },
     "mistakes": {
       "heading": "Errores a evitar",
@@ -168,7 +208,17 @@
       "q3": "¿Cuál es el mejor formato después de cambiar el tamaño?",
       "a3": "Web: WebP o JPEG. Archivo de alta calidad: PNG.",
       "q4": "¿Es mejor cambiar el tamaño o comprimir?",
-      "a4": "Sirven para diferentes propósitos. Cambiar tamaño cambia las dimensiones; Comprimir reduce el tamaño del archivo. Los mejores resultados se obtienen si se utilizan ambos con cuidado."
+      "a4": "Sirven para diferentes propósitos. Cambiar tamaño cambia las dimensiones; Comprimir reduce el tamaño del archivo. Los mejores resultados se obtienen si se utilizan ambos con cuidado.",
+      "q5": "¿Qué es el DPR (relación de píxeles del dispositivo) y afecta a las pantallas Retina?",
+      "a5": "La relación de píxeles del dispositivo (DPR) describe cuántos píxeles físicos empaqueta una pantalla en cada píxel CSS; las pantallas Retina y otras de alta densidad suelen usar un DPR de 2 o 3. Si una imagen se mostrará en estas pantallas, cambie su tamaño 2x o 3x mayor que su tamaño de visualización en pantalla para que se vea nítida en lugar de borrosa.",
+      "q6": "¿Qué dimensiones debo usar para publicaciones y miniaturas en redes sociales?",
+      "a6": "Los objetivos comunes incluyen 1080×1080 px para publicaciones cuadradas de Instagram, 1200×630 px para vistas previas de enlaces de Facebook/LinkedIn y 1280×720 px para miniaturas de YouTube. Consulte siempre las pautas actuales de la plataforma, ya que los tamaños recomendados cambian con el tiempo.",
+      "q7": "¿Esta herramienta sube mis imágenes a un servidor?",
+      "a7": "No. Todo el redimensionamiento ocurre localmente en su navegador mediante procesamiento en canvas; sus archivos nunca salen de su dispositivo, lo que mantiene sus fotos privadas y la herramienta rápida.",
+      "q8": "¿Cambiar el tamaño eliminará los metadatos EXIF, como la ubicación GPS, de mis fotos?",
+      "a8": "Sí, en la mayoría de los casos. Debido a que la imagen se vuelve a dibujar en un lienzo y se exporta de nuevo, los metadatos EXIF incrustados (configuración de la cámara, coordenadas GPS, marcas de tiempo) suelen eliminarse del archivo de salida, un efecto secundario útil si comparte fotos públicamente.",
+      "q9": "¿Puedo cambiar el tamaño de un PNG y conservar su fondo transparente?",
+      "a9": "Sí. Si su imagen de origen tiene un canal alfa y la exporta como PNG o WebP, la transparencia se conserva durante el cambio de tamaño. Exportar a JPEG aplanará la transparencia a un color de fondo sólido, ya que JPEG no admite canales alfa."
     },
     "conclusionTitle": "Conclusión",
     "conclusion": "Cambiar el tamaño de las imágenes no se trata sólo de hacerlas más pequeñas, sino de hacerlo correctamente para preservar la claridad y la usabilidad. Si mantiene la relación de aspecto, cambia el tamaño una vez con respecto al original y elige el formato correcto, puede mejorar significativamente tanto la calidad como el rendimiento de la imagen.",

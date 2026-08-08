@@ -108,20 +108,58 @@
       "resampling": "Mauvaise méthode de rééchantillonnage — Tous les algorithmes de redimensionnement ne sont pas égaux. Le voisin le plus proche est rapide mais en bloc. Le bilinéaire est plus fluide. Bicubic est le meilleur dans la plupart des cas.",
       "repeated": "Redimensionnement répété — Chaque redimensionnement supprime davantage de données. Redimensionnez toujours à partir de l'image originale, jamais à partir d'une copie précédemment redimensionnée."
     },
+    "algorithms": {
+      "heading": "Algorithmes de rééchantillonnage expliqués",
+      "intro": "Chaque fois qu'une image est redimensionnée, le logiciel doit décider quelle valeur de couleur attribuer à chaque nouveau pixel.",
+      "nearestNeighbor": {
+        "label": "Plus proche voisin",
+        "body": "La méthode la plus rapide et la plus simple. Elle copie la valeur du pixel existant le plus proche sans mélange, ce qui est idéal pour le pixel art mais produit des bords en blocs et irréguliers sur les photos, surtout lors d'un agrandissement."
+      },
+      "bilinear": {
+        "label": "Interpolation bilinéaire",
+        "body": "Examine les quatre pixels les plus proches et les mélange à l'aide d'une moyenne pondérée. Elle produit des résultats plus doux que le plus proche voisin et fonctionne bien pour un redimensionnement modéré, bien que les détails fins puissent paraître légèrement flous."
+      },
+      "bicubic": {
+        "label": "Interpolation bicubique",
+        "body": "Prend en compte les 16 pixels environnants et applique un calcul d'ajustement de courbe plus sophistiqué. Elle produit les résultats les plus nets et les plus naturels pour les photographies et constitue l'algorithme par défaut utilisé par la plupart des navigateurs, y compris cet outil, pour la réduction comme pour l'agrandissement."
+      },
+      "vectorRaster": {
+        "heading": "Redimensionnement vectoriel vs. matriciel : pourquoi les photos se comportent différemment des logos",
+        "body": "Des formats comme JPEG, PNG et WebP sont des images matricielles (raster) : elles stockent une grille fixe de pixels. Redimensionner une image matricielle signifie recalculer cette grille, donc l'agrandir introduit toujours du flou ou des blocs, car aucun nouveau détail n'existe réellement pour être exploité. Les formats vectoriels comme le SVG stockent des formes et des tracés mathématiques plutôt que des pixels, ils peuvent donc être mis à l'échelle à n'importe quelle taille, d'une favicon à un panneau d'affichage, avec des bords parfaitement nets et sans perte de qualité. Si votre source est un logo ou une illustration, conserver un fichier maître vectoriel donnera toujours de meilleurs résultats de redimensionnement qu'un export matriciel."
+      }
+    },
     "bestPractices": {
       "heading": "Meilleures pratiques pour redimensionner sans perdre en qualité",
-      "aspectRatio": "Conserver les proportions – Gardez toujours la largeur et la hauteur proportionnelles.",
+      "aspectRatio": "Conserver les proportions – Gardez toujours la largeur et la hauteur proportionnelles.",
       "resizeOnce": "Redimensionner une fois — Commencez par l'original → redimensionnez une fois → enregistrez la version finale.",
       "format": "Choisissez le bon format — JPEG : taille plus petite, légère perte. PNG : qualité supérieure, fichier plus volumineux. WebP : meilleur équilibre.",
       "compression": "Évitez la surcompression – Visez l’équilibre et non la compression maximale."
+    },
+    "formatTable": {
+      "heading": "Comparaison des formats de sortie : WebP vs. JPEG vs. PNG",
+      "intro": "Le format choisi après redimensionnement affecte la taille du fichier, la prise en charge de la transparence et la qualité visuelle tout autant que les dimensions. Utilisez ce tableau pour choisir celui adapté à votre usage :",
+      "headers": {
+        "format": "Format",
+        "transparency": "Prise en charge de la transparence",
+        "compression": "Avec/sans perte",
+        "useCase": "Usage idéal"
+      },
+      "rows": {
+        "webp": { "format": "WebP", "transparency": "Oui", "compression": "Les deux", "useCase": "Pages web modernes, chargement rapide" },
+        "jpeg": { "format": "JPEG", "transparency": "Non", "compression": "Avec perte", "useCase": "Photos complexes, impressions numériques" },
+        "png": { "format": "PNG", "transparency": "Oui", "compression": "Sans perte", "useCase": "Graphismes, logos, captures d'écran" }
+      }
     },
     "useCases": {
       "heading": "Cas d'utilisation courants",
       "website": "Téléchargements de sites Web — Redimensionnez les grandes images (4 000 px → 1 200 px) pour améliorer considérablement la vitesse de chargement des pages.",
       "social": "Médias sociaux — Le redimensionnement garantit l'absence de problèmes de recadrage et une meilleure qualité visuelle sur les profils, les publications et les miniatures.",
       "email": "Pièces jointes aux e-mails : les images volumineuses ralentissent l'envoi et peuvent être rejetées. Le redimensionnement permet de gérer les fichiers."
-    },
-    "mistakes": {
+    },    "privacy": {
+      "heading": "Vos images ne quittent jamais votre appareil",
+      "body1": "Ce redimensionneur fonctionne entièrement côté client grâce à l'API Canvas intégrée de votre navigateur. Lorsque vous déposez une image dans l'outil, elle est décodée et traitée directement en mémoire locale du navigateur : rien n'est jamais téléchargé vers un serveur distant, stocké dans une base de données ou transmis sur le réseau.",
+      "body2": "Ce modèle de traitement JavaScript côté client (et, pour les formats pris en charge, accéléré par WebAssembly) signifie que vos photos restent totalement privées. Cela rend aussi l'outil plus rapide, car il n'y a pas d'aller-retour de téléchargement, et il continue de fonctionner même si votre connexion est lente ou temporairement hors ligne."
+    },    "mistakes": {
       "heading": "Erreurs à éviter",
       "item1": "❌ Étirement des images (mauvais rapport hauteur/largeur)",
       "item2": "❌ Enregistrement répété au format JPEG",
@@ -145,7 +183,17 @@
       "q3": "Quel est le meilleur format après le redimensionnement ?",
       "a3": "Web : WebP ou JPEG — Archivage haute qualité : PNG",
       "q4": "Vaut-il mieux redimensionner ou compresser ?",
-      "a4": "Ils servent à des fins différentes. Redimensionner modifie les dimensions ; La compression réduit la taille du fichier. Les meilleurs résultats proviennent d’une utilisation prudente des deux."
+      "a4": "Ils servent à des fins différentes. Redimensionner modifie les dimensions ; La compression réduit la taille du fichier. Les meilleurs résultats proviennent d’une utilisation prudente des deux.",
+      "q5": "Qu'est-ce que le DPR (Device Pixel Ratio) et est-ce important pour les écrans Retina ?",
+      "a5": "Le Device Pixel Ratio (DPR) décrit le nombre de pixels physiques qu'un écran regroupe dans chaque pixel CSS — les écrans Retina et autres écrans à haute densité utilisent généralement un DPR de 2 ou 3. Si une image doit être affichée sur ces écrans, redimensionnez-la 2x ou 3x plus grande que sa taille d'affichage à l'écran afin qu'elle reste nette plutôt que floue.",
+      "q6": "Quelles dimensions dois-je utiliser pour les publications et miniatures sur les réseaux sociaux ?",
+      "a6": "Les tailles courantes incluent 1080×1080 px pour les publications carrées Instagram, 1200×630 px pour les aperçus de liens Facebook/LinkedIn et 1280×720 px pour les miniatures YouTube. Vérifiez toujours les directives actuelles de la plateforme, car les tailles recommandées évoluent avec le temps.",
+      "q7": "Cet outil télécharge-t-il mes images vers un serveur ?",
+      "a7": "Non. Tout le redimensionnement se fait localement dans votre navigateur grâce au traitement par canevas — vos fichiers ne quittent jamais votre appareil, ce qui garde vos photos privées et rend l'outil rapide.",
+      "q8": "Le redimensionnement supprimera-t-il les métadonnées EXIF comme la position GPS de mes photos ?",
+      "a8": "Oui, dans la plupart des cas. Comme l'image est redessinée sur un canevas puis réexportée, les métadonnées EXIF intégrées (réglages de l'appareil photo, coordonnées GPS, horodatage) sont généralement supprimées du fichier de sortie — un effet secondaire utile si vous partagez des photos publiquement.",
+      "q9": "Puis-je redimensionner un PNG en conservant son fond transparent ?",
+      "a9": "Oui. Si votre image source possède un canal alpha et que vous l'exportez en PNG ou WebP, la transparence est conservée lors du redimensionnement. L'exportation en JPEG aplatira la transparence en une couleur de fond unie, car JPEG ne prend pas en charge les canaux alpha."
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Redimensionner des images ne consiste pas seulement à les réduire, il s'agit de le faire correctement pour préserver la clarté et la convivialité. En conservant les proportions, en redimensionnant une fois par rapport à l'original et en choisissant le bon format, vous pouvez améliorer considérablement la qualité et les performances de l'image.",
