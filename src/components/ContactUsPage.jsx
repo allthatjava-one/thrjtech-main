@@ -56,7 +56,7 @@ export default function ContactUsPage() {
               <p>{t('intro')}<span style={{ display: 'block', textAlign: 'right', marginTop: '0.5em' }}>- {t('signature')}</span></p>
               <p className="contactus-direct-email">
                 <br /><br />
-                {t('directEmailLabel')} <a href="mailto:privacy@thrjtech.com">privacy@thrjtech.com</a>
+                {t('directEmailLabel')} <a href="mailto:contact-us@thrjtech.com">contact-us@thrjtech.com</a>
               </p>
             </div>
             <hr style={{ margin: '0.5rem 0 0rem', border: 'none', borderTop: '1px solid #e2e6f0' }} />
