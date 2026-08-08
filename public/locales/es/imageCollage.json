@@ -117,14 +117,12 @@
     },
     "layout": {
       "heading": "Diseño vs. especificaciones de redes sociales",
-      "table": {
-        "headers": { "type": "Tipo de diseño", "dimensions": "Dimensiones recomendadas", "useCase": "Caso de uso óptimo" },
-        "rows": {
-          "row1": { "type": "2×2 Grid", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram Feed, Square Product Displays" },
-          "row2": { "type": "Side by Side (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "Open Graph Headers, Facebook Posts" },
-          "row3": { "type": "Strip of 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Mobile Stories, Pinterest Pins" },
-          "row4": { "type": "Stacked (2×1)", "dim": "1200 × 1200 px", "useCase": "Portfolio Side-by-Side Comparisons" }
-        }
+      "headers": { "type": "Tipo de diseño", "dimensions": "Dimensiones recomendadas", "useCase": "Caso de uso óptimo" },
+      "rows": {
+        "row1": { "type": "2×2 Grid", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram Feed, Square Product Displays" },
+        "row2": { "type": "Side by Side (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "Open Graph Headers, Facebook Posts" },
+        "row3": { "type": "Strip of 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Mobile Stories, Pinterest Pins" },
+        "row4": { "type": "Stacked (2×1)", "dim": "1200 × 1200 px", "useCase": "Portfolio Side-by-Side Comparisons" }
       }
     },
     "expandedFaq": { "heading": "FAQ técnica" },
@@ -279,6 +277,41 @@
       "a4": "No si se crean correctamente: asegúrese de que las imágenes de origen sean de alta calidad."
     },
     "conclusion": "Los collages de imágenes son más que solo combinar fotos: son una forma poderosa de contar historias, presentar información y captar la atención. Con el diseño y el propósito correctos, un simple conjunto de imágenes puede convertirse en una experiencia visual convincente.",
-    "ctaBtn": "Herramienta de collage de imágenes →"
+    "ctaBtn": "Herramienta de collage de imágenes →",
+    "techArchitecture": {
+      "heading": "Arquitectura técnica",
+      "body": "Esta herramienta realiza toda la composición de imágenes en el cliente usando la API HTML5 Canvas. Los archivos fuente se leen en memoria mediante FileReader y se dibujan en un lienzo fuera de pantalla con <code>drawImage()</code>. Ninguna imagen de usuario se carga en un servidor: el navegador realiza todo el procesamiento, la composición y la exportación. Para entradas muy grandes, la aplicación serializa las operaciones de dibujo en un solo lienzo para evitar crear muchos bitmaps intermedios.",
+      "whyHeading": "¿Por qué del lado del cliente?",
+      "whyBody": "El renderizado del lado del cliente preserva la privacidad del usuario, reduce costos de servidor y evita la latencia de red. La imagen exportada se produce con <code>canvas.toDataURL()</code> o <code>canvas.toBlob()</code> y se ofrece para descarga directamente en el navegador."
+    },
+    "canvasDpi": {
+      "heading": "Resolución del lienzo y escalado DPI",
+      "body": "Las dimensiones finales del lienzo en píxeles se calculan a partir de las celdas, los espacios y los bordes: <strong>width = cols*cellWidth + (cols+1)*gap</strong>, <strong>height = rows*cellHeight + (rows+1)*gap</strong>. Para dirigir una salida de calidad de impresión (por ejemplo, 300 DPI), convierta pulgadas a píxeles: <em>pixels = inches × DPI</em>. Por ejemplo, una impresión 8\"×10\" a 300 DPI requiere 2400×3000 px. Use los controles de tamaño de celda para planificar la resolución de exportación deseada: la herramienta muestra los píxeles calculados en la UI."
+    },
+    "aspect": {
+      "heading": "Preservación de la relación de aspecto y estrategia de ajuste",
+      "body": "Cada imagen fuente puede tener una relación de aspecto diferente a su celda objetivo. Calculamos la relación de la imagen y la relación de la celda y seleccionamos un ajuste de tipo cover para que la celda esté completamente llena. El algoritmo calcula una anchura/altura base preservando la relación de aspecto de la imagen, luego aplica la escala y el desplazamiento del usuario. Esto evita las barras y mantiene las áreas focales centradas; los usuarios pueden desplazar/zoomear celdas individualmente para ajustar la región visible."
+    },
+    "layout": {
+      "heading": "Diseño vs. especificaciones de redes sociales",
+      "headers": { "type": "Tipo de diseño", "dimensions": "Dimensiones recomendadas", "useCase": "Caso de uso óptimo" },
+      "rows": {
+        "row1": { "type": "2×2 Grid", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram Feed, Square Product Displays" },
+        "row2": { "type": "Side by Side (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "Open Graph Headers, Facebook Posts" },
+        "row3": { "type": "Strip of 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Mobile Stories, Pinterest Pins" },
+        "row4": { "type": "Stacked (2×1)", "dim": "1200 × 1200 px", "useCase": "Portfolio Side-by-Side Comparisons" }
+      }
+    },
+    "expandedFaq": { "heading": "FAQ técnica" },
+    "checklist": {
+      "heading": "Resumen de la lista de verificación técnica",
+      "headers": { "area": "Área", "status": "Estado actual", "action": "Acción requerida" },
+      "rows": {
+        "row1": { "area": "Recuento de palabras y profundidad", "status": "Ligero (~350 palabras)", "action": "Ampliar a 800–1.000+ palabras con profundidad técnica" },
+        "row2": { "area": "Enfoque técnico", "status": "Consejos de diseño", "action": "Agregar detalles de HTML5 Canvas, privacidad y cálculos de píxeles" },
+        "row3": { "area": "Tablas estructuradas", "status": "Faltantes", "action": "Agregar tabla Diseño vs Plataforma (hecho)" },
+        "row4": { "area": "FAQ", "status": "Corto / Inline", "action": "Agregar 6–8 FAQ técnicas con JSON-LD (hecho)" }
+      }
+    }
   }
 }
