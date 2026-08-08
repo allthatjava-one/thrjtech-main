@@ -19,6 +19,69 @@
 .wm-type-body p { margin:4px 0 0; color:#475569 }
 .wm-guide-best { margin:8px 0 0 18px; color:#475569 }
 .wm-faq-item { background: rgba(15,17,23,0.01); padding:8px; border-radius:8px; margin-top:8px; color:#475569 }
+.wm-faq-item summary { cursor: pointer; font-weight: 600; padding: 4px; outline: none; }
+.wm-faq-item p { margin-top: 6px; padding: 0 4px; line-height: 1.5; color: #4b5563; }
+
+.wm-guide-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.wm-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+
+.wm-guide-table th,
+.wm-guide-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.wm-guide-table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.wm-guide-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .wm-guide-table, .wm-guide-table thead, .wm-guide-table tbody, .wm-guide-table th, .wm-guide-table tr, .wm-guide-table td {
+    display: block;
+  }
+  .wm-guide-table thead {
+    display: none;
+  }
+  .wm-guide-table tr {
+    border-bottom: 2px solid #e5e7eb;
+    padding: 8px 0;
+  }
+  .wm-guide-table td {
+    border-bottom: none;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: right;
+  }
+  .wm-guide-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    text-align: left;
+    color: #4b5563;
+  }
+}
+
 .wm-guide-conclusion { margin-top:12px; color:#334155 }
 .wm-guide-cta { display:inline-block; margin-top:12px; padding:10px 14px; background: linear-gradient(90deg,#ff8a00,#ff5e62); color:#081426; border-radius:10px; text-decoration:none; font-weight:600 }
 

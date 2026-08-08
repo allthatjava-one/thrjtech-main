@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import './RegexTester.css'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 function escapeRegexLiteral(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -103,9 +104,24 @@ export default function RegexTesterView() {
     setOutputText(''); setRegexError(null); setMatchCount(0); setCopied(false)
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1', 'q2', 'q3', 'q4'].map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
-
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       {/* ── Hero ── */}
       <div className="rt-hero">
         <div className="rt-tool-icon" aria-hidden="true">{t('hero.icon')}</div>

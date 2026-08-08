@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { formatSize } from './utils/formatSize'
 import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 export function PdfSplitterView({
   file,
@@ -27,8 +28,25 @@ export function PdfSplitterView({
   const [openPanel, setOpenPanel] = useState('')
   const navigate = useNavigate()
   const togglePanel = (panel) => setOpenPanel((prev) => (prev === panel ? '' : panel))
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1', 'q2', 'q3', 'q4'].map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       {status !== 'done' && <div className="hero-section">
         <h1 className="hero-title">{t('hero.title')}</h1>
         <p className="hero-tagline">{t('hero.tagline')}&nbsp;
@@ -359,6 +377,16 @@ export function PdfSplitterView({
               <li>{t('guide.mistakes.item4')}</li>
               <li>{t('guide.mistakes.item5')}</li>
             </ul>
+          </div>
+
+          <div className="splitter-guide-card splitter-guide-card--wide">
+            <h3>{t('guide.faq.heading')}</h3>
+            <div className="splitter-guide-faq">
+              <p><strong>{t('guide.faq.q1')}</strong> {t('guide.faq.a1')}</p>
+              <p><strong>{t('guide.faq.q2')}</strong> {t('guide.faq.a2')}</p>
+              <p><strong>{t('guide.faq.q3')}</strong> {t('guide.faq.a3')}</p>
+              <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
+            </div>
           </div>
         </div>
 
