@@ -280,16 +280,6 @@
         "row4": { "type": "Empilé (2×1)", "dim": "1200 × 1200 px", "useCase": "Comparaisons côte à côte pour portfolio" }
       }
     },
-    "expandedFaq": { "heading": "FAQ technique" },
-    "checklist": {
-      "heading": "Résumé de la checklist technique",
-      "headers": { "area": "Domaine", "status": "Statut actuel", "action": "Action requise" },
-      "rows": {
-        "row1": { "area": "Nombre de mots & profondeur", "status": "Court (~350 mots)", "action": "Élargir à 800–1 000+ mots avec des détails techniques" },
-        "row2": { "area": "Focalisation technique", "status": "Conseils de conception", "action": "Ajouter des détails sur HTML5 Canvas, confidentialité et calculs de pixels" },
-        "row3": { "area": "Tableaux structurés", "status": "Manquants", "action": "Ajouter la table Mise en page vs Plateforme (fait)" },
-        "row4": { "area": "FAQ", "status": "Courte / Inline", "action": "Ajouter 6–8 FAQ techniques avec JSON-LD (fait)" }
-      }
-    }
+    "expandedFaq": { "heading": "FAQ technique" }
   }
 }

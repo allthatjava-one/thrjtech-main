@@ -180,16 +180,65 @@
       "profile": "👤 Profile Pictures — Crop tightly around the face and center for better visibility.",
       "product": "🛍️ Product Images — Remove background clutter and highlight the product clearly."
     },
+    "techArchitecture": {
+      "heading": "Technical Architecture & Local Processing",
+      "body": "Our Image Crop tool uses client-side <strong>HTML5 Canvas API</strong> and pixel coordinate bounding boxes (x, y, w, h) to perform cropping. Non-destructive transforms (rotation from 0° to 360°, zoom scaling, horizontal/vertical flipping) are calculated in memory before rasterizing to an output canvas via <code>drawImage()</code>.",
+      "whyHeading": "Why Zero-Server Processing Matters",
+      "whyBody": "By processing images strictly inside your browser's V8 engine RAM, your uncropped source files are never uploaded to remote cloud servers. This guarantees <strong>100% privacy</strong> for confidential photos and sensitive documents."
+    },
+    "aspectTable": {
+      "heading": "Aspect Ratio & Social Platform Specifications",
+      "headers": {
+        "platform": "Platform / Use Case",
+        "ratio": "Aspect Ratio",
+        "dimensions": "Recommended Dimensions",
+        "considerations": "Design Considerations"
+      },
+      "rows": {
+        "row1": {
+          "platform": "Instagram / Profile",
+          "ratio": "1:1 Square",
+          "dim": "1080 x 1080 px",
+          "considerations": "Keep essential focal points centered for circle avatars."
+        },
+        "row2": {
+          "platform": "Instagram Stories / TikTok",
+          "ratio": "9:16 Portrait",
+          "dim": "1080 x 1920 px",
+          "considerations": "Leave top/bottom vertical space for UI overlays."
+        },
+        "row3": {
+          "platform": "YouTube / Web Video",
+          "ratio": "16:9 Widescreen",
+          "dim": "1920 x 1080 px",
+          "considerations": "Standard landscape ratio for thumbnails and desktop banners."
+        },
+        "row4": {
+          "platform": "Twitter / Web Banners",
+          "ratio": "3:1 or 4:1 Landscape",
+          "dim": "1500 x 500 px",
+          "considerations": "Ultra-wide orientation requiring clear horizontal focal balance."
+        }
+      }
+    },
     "faq": {
-      "heading": "FAQ",
-      "q1": "Does cropping reduce image quality?",
-      "a1": "Yes — because pixels are removed, but if done carefully the quality loss is usually not noticeable.",
-      "q2": "Can I undo cropping?",
-      "a2": "Only if your tool supports non-destructive editing or you kept the original image.",
-      "q3": "What is the best aspect ratio?",
-      "a3": "Depends on usage: Instagram → 1:1 or 4:5; YouTube → 16:9; Websites → varies.",
-      "q4": "Is cropping better than resizing?",
-      "a4": "They serve different purposes: cropping changes composition, resizing changes dimensions."
+      "heading": "Frequently Asked Questions (FAQ)",
+      "q1": "Does cropping an image reduce its PPI / DPI resolution?",
+      "a1": "Cropping removes pixel columns and rows from the bitmap grid (W × H), which reduces total pixel count and physical output dimensions. However, the pixel density (PPI/DPI metadata) remains unchanged.",
+      "q2": "How does the tool handle EXIF camera orientation tags?",
+      "a2": "Modern browsers automatically auto-orient JPEG images based on EXIF metadata. Our canvas pipeline respects EXIF orientation prior to coordinate translation and scaling.",
+      "q3": "What is the difference between destructive canvas cropping and CSS cropping?",
+      "a3": "CSS cropping hides overflowing pixels visually using <code>overflow: hidden</code> or <code>object-fit: cover</code> without shrinking file size. Canvas cropping permanently trims excess bitmap data to reduce memory usage and output payload.",
+      "q4": "Can I crop high-resolution 4K or 8K images without memory crashes?",
+      "a4": "Yes. HTML5 Canvas supports large allocations (typically up to 16,384 × 16,384 pixels on modern GPUs/browsers). Local RAM handles rasterization without network payload bottlenecks.",
+      "q5": "Why does my cropped PNG file size increase compared to the original JPEG?",
+      "a5": "PNG uses lossless DEFLATE compression, whereas JPEG uses lossy discrete cosine transform (DCT). Converting lossy JPEGs to lossless PNGs preserves crisp line edges but can increase raw byte count.",
+      "q6": "Does local client-side cropping expose my photos to external servers?",
+      "a6": "No. All pixel operations occur strictly within client browser memory. No network traffic or background API calls are dispatched during cropping.",
+      "q7": "How do zoom and rotation math affect crop precision?",
+      "a7": "Zoom scales the source image coordinate matrix, while rotation applies trigonometric transformation matrices (cos θ, sin θ). Crop bounding box selection operates on transformed coordinates to yield pixel-perfect exports.",
+      "q8": "Which image formats can be exported after cropping?",
+      "a8": "The tool currently exports trimmed graphics as high-quality lossless PNG files, maintaining full transparency and pixel fidelity."
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Image cropping is a simple but powerful way to improve composition, highlight important content, and make images fit any platform. Use the right techniques to turn an average image into a clean, professional-looking one.",
