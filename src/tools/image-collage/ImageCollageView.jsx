@@ -868,23 +868,6 @@ const ImageCollageView = ({
             ))}
           </div>
         </section>
-
-        <section className="ic-section">
-          <h3>{t('guide.checklist.heading')}</h3>
-          <div className="wm-guide-table-wrap">
-            <table className="wm-guide-table">
-              <thead>
-                <tr><th>{t('guide.checklist.headers.area')}</th><th>{t('guide.checklist.headers.status')}</th><th>{t('guide.checklist.headers.action')}</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>{t('guide.checklist.rows.row1.area')}</td><td>{t('guide.checklist.rows.row1.status')}</td><td>{t('guide.checklist.rows.row1.action')}</td></tr>
-                <tr><td>{t('guide.checklist.rows.row2.area')}</td><td>{t('guide.checklist.rows.row2.status')}</td><td>{t('guide.checklist.rows.row2.action')}</td></tr>
-                <tr><td>{t('guide.checklist.rows.row3.area')}</td><td>{t('guide.checklist.rows.row3.status')}</td><td>{t('guide.checklist.rows.row3.action')}</td></tr>
-                <tr><td>{t('guide.checklist.rows.row4.area')}</td><td>{t('guide.checklist.rows.row4.status')}</td><td>{t('guide.checklist.rows.row4.action')}</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
       </div>
     </>
   );

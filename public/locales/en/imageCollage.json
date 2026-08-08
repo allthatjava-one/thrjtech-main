@@ -242,16 +242,6 @@
         "row4": { "type": "Stacked (2×1)", "dim": "1200 × 1200 px", "useCase": "Portfolio Side-by-Side Comparisons" }
       }
     },
-    "expandedFaq": { "heading": "Technical FAQ" },
-    "checklist": {
-      "heading": "Technical Checklist Summary",
-      "headers": { "area": "Area", "status": "Current Status", "action": "Action Required" },
-      "rows": {
-        "row1": { "area": "Word Count & Depth", "status": "Light (~350 words)", "action": "Expand to 800–1,000+ words with technical depth" },
-        "row2": { "area": "Technical Focus", "status": "Design tips", "action": "Add HTML5 Canvas details, privacy, pixel calculations" },
-        "row3": { "area": "Structured Tables", "status": "Missing", "action": "Add Layout vs Platform table (done)" },
-        "row4": { "area": "FAQ", "status": "Short / Inline", "action": "Add 6–8 technical FAQs with JSON-LD (done)" }
-      }
-    }
+    "expandedFaq": { "heading": "Technical FAQ" }
   }
 }

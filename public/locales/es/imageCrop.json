@@ -200,16 +200,65 @@
       "profile": "👤 Imágenes de perfil: recorta bien alrededor de la cara y céntrala para una mejor visibilidad.",
       "product": "🛍️ Imágenes del producto: elimine el desorden del fondo y resalte el producto con claridad."
     },
+    "techArchitecture": {
+      "heading": "Arquitectura técnica y procesamiento local",
+      "body": "Nuestra herramienta de recorte de imágenes utiliza la API <strong>HTML5 Canvas</strong> del cliente y marcos de coordenadas de píxeles (x, y, w, h) para realizar el recorte. Las transformaciones no destructivas (rotación de 0° a 360°, zoom y volteo horizontal/vertical) se calculan en memoria antes de la rasterización en un lienzo de salida mediante <code>drawImage()</code>.",
+      "whyHeading": "Por qué es crucial el procesamiento sin servidor",
+      "whyBody": "Al procesar imágenes estrictamente dentro de la memoria RAM del motor V8 de su navegador, sus archivos de origen sin recortar nunca se suben a servidores en la nube. Esto garantiza un <strong>100% de privacidad</strong> para sus fotos y documentos confidenciales."
+    },
+    "aspectTable": {
+      "heading": "Especificaciones de relación de aspecto por plataforma",
+      "headers": {
+        "platform": "Plataforma / Caso de uso",
+        "ratio": "Relación de aspecto",
+        "dimensions": "Dimensiones recomendadas",
+        "considerations": "Consideraciones de diseño"
+      },
+      "rows": {
+        "row1": {
+          "platform": "Instagram / Perfil",
+          "ratio": "1:1 Cuadrado",
+          "dim": "1080 x 1080 px",
+          "considerations": "Mantenga los elementos clave centrados para avatares circulares."
+        },
+        "row2": {
+          "platform": "Instagram Stories / TikTok",
+          "ratio": "9:16 Retrato",
+          "dim": "1080 x 1920 px",
+          "considerations": "Deje espacio vertical superior e inferior para la interfaz."
+        },
+        "row3": {
+          "platform": "YouTube / Video Web",
+          "ratio": "16:9 Panorámico",
+          "dim": "1920 x 1080 px",
+          "considerations": "Formato horizontal estándar para miniaturas y banners."
+        },
+        "row4": {
+          "platform": "Twitter / Banners Web",
+          "ratio": "3:1 o 4:1 Apaisado",
+          "dim": "1500 x 500 px",
+          "considerations": "Formato ultra ancho que requiere equilibrio focal horizontal claro."
+        }
+      }
+    },
     "faq": {
-      "heading": "Preguntas frecuentes",
-      "q1": "¿El recorte reduce la calidad de la imagen?",
-      "a1": "Sí, porque se eliminan los píxeles, pero si se hace con cuidado, la pérdida de calidad no suele ser perceptible.",
-      "q2": "¿Puedo deshacer el recorte?",
-      "a2": "Solo si su herramienta admite la edición no destructiva o si conservó la imagen original.",
-      "q3": "¿Cuál es la mejor relación de aspecto?",
-      "a3": "Depende del uso: Instagram → 1:1 o 4:5; Youtube → 16:9; Sitios web → varía.",
-      "q4": "¿Es mejor recortar que cambiar el tamaño?",
-      "a4": "Sirven para diferentes propósitos: recortar cambia la composición, cambiar el tamaño cambia las dimensiones."
+      "heading": "Preguntas frecuentes (FAQ)",
+      "q1": "¿Recortar una imagen reduce su resolución PPI / DPI?",
+      "a1": "El recorte elimina columnas y filas de píxeles de la cuadrícula de mapa de bits (Ancho × Alto), reduciendo el número total de píxeles. Sin embargo, la densidad de píxeles (metadatos PPI/DPI) no cambia.",
+      "q2": "¿Cómo maneja la herramienta la orientación EXIF de la cámara?",
+      "a2": "Los navegadores modernos reorientan automáticamente las imágenes JPEG según los metadatos EXIF. Nuestro procesamiento en Canvas respeta la orientación EXIF antes de aplicar transformaciones.",
+      "q3": "¿Cuál es la diferencia entre el recorte destructivo en Canvas y el recorte mediante CSS?",
+      "a3": "El recorte con CSS oculta visualmente los bordes con <code>overflow: hidden</code> sin reducir el tamaño del archivo. El recorte en Canvas elimina permanentemente los píxeles sobrantes para reducir el consumo de memoria.",
+      "q4": "¿Puedo recortar imágenes de alta resolución 4K u 8K sin bloqueos de memoria?",
+      "a4": "Sí. La API HTML5 Canvas admite asignaciones grandes (normalmente hasta 16,384 × 16,384 píxeles en GPU modernas). La memoria RAM local procesa la rasterización sin saturar la red.",
+      "q5": "¿Por qué el tamaño del archivo PNG recortado aumenta en comparación con el JPEG original?",
+      "a5": "El formato PNG utiliza compresión sin pérdida (DEFLATE), mientras que JPEG utiliza compresión con pérdida. Convertir JPEG a PNG conserva bordes nítidos pero puede aumentar el tamaño en bytes.",
+      "q6": "¿El recorte local expone mis fotos a servidores externos?",
+      "a6": "No. Todas las operaciones ocurren estrictamente en la memoria del navegador del cliente. No se realiza tráfico de red ni llamadas a API durante el recorte.",
+      "q7": "¿Cómo afectan el zoom y la rotación a la precisión del recorte?",
+      "a7": "El zoom ajusta la matriz de coordenadas de origen, mientras que la rotación aplica matrices trigonométricas (cos θ, sen θ). La selección del marco de recorte funciona sobre coordenadas transformadas para una exportación precisa.",
+      "q8": "¿Qué formatos de imagen se pueden exportar después de recortar?",
+      "a8": "Actualmente, la herramienta exporta los gráficos recortados como archivos PNG sin pérdida de alta calidad, conservando la transparencia y la fidelidad de los píxeles."
     },
     "conclusionTitle": "Conclusión",
     "conclusion": "Recortar imágenes es una forma sencilla pero poderosa de mejorar la composición, resaltar contenido importante y hacer que las imágenes se adapten a cualquier plataforma. Utilice las técnicas adecuadas para convertir una imagen normal en una limpia y de aspecto profesional.",

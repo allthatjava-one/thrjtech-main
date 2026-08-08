@@ -180,16 +180,65 @@
       "profile": "👤 Photos de profil — Recadrez étroitement autour du visage et au centre pour une meilleure visibilité.",
       "product": "🛍️ Images du produit — Supprimez l'encombrement de l'arrière-plan et mettez clairement le produit en évidence."
     },
+    "techArchitecture": {
+      "heading": "Architecture technique et traitement local",
+      "body": "Notre outil de recadrage d'images utilise l'API <strong>HTML5 Canvas</strong> côté client et des cadres d'encadrement par coordonnées de pixels (x, y, w, h) pour effectuer le recadrage. Les transformations non destructives (rotation de 0° à 360°, zoom, miroir horizontal/vertical) sont calculées en mémoire avant la rastérisation sur un canevas de sortie via <code>drawImage()</code>.",
+      "whyHeading": "Pourquoi le traitement zéro-serveur est essentiel",
+      "whyBody": "En traitant les images strictement dans la mémoire RAM du moteur V8 de votre navigateur, vos fichiers sources non recadrés ne sont jamais envoyés vers des serveurs cloud. Cela garantit une <strong>confidentialité à 100 %</strong> pour vos photos et documents sensibles."
+    },
+    "aspectTable": {
+      "heading": "Spécifications de proportions par plateforme",
+      "headers": {
+        "platform": "Plateforme / Usage",
+        "ratio": "Rapport d'aspect",
+        "dimensions": "Dimensions recommandées",
+        "considerations": "Considérations de design"
+      },
+      "rows": {
+        "row1": {
+          "platform": "Instagram / Profil",
+          "ratio": "1:1 Carré",
+          "dim": "1080 x 1080 px",
+          "considerations": "Gardez le sujet principal au centre pour les avatars circulaires."
+        },
+        "row2": {
+          "platform": "Instagram Stories / TikTok",
+          "ratio": "9:16 Portrait",
+          "dim": "1080 x 1920 px",
+          "considerations": "Laissez de l'espace vertical en haut/bas pour les éléments d'interface."
+        },
+        "row3": {
+          "platform": "YouTube / Vidéo Web",
+          "ratio": "16:9 Panoramique",
+          "dim": "1920 x 1080 px",
+          "considerations": "Format paysage standard pour miniatures et bannières."
+        },
+        "row4": {
+          "platform": "Twitter / Bannières Web",
+          "ratio": "3:1 ou 4:1 Paysage",
+          "dim": "1500 x 500 px",
+          "considerations": "Format ultra-large nécessitant un équilibre focal horizontal clair."
+        }
+      }
+    },
     "faq": {
-      "heading": "FAQ",
-      "q1": "Le recadrage réduit-il la qualité de l’image ?",
-      "a1": "Oui, car les pixels sont supprimés, mais si cela est fait avec soin, la perte de qualité n'est généralement pas perceptible.",
-      "q2": "Puis-je annuler le recadrage ?",
-      "a2": "Uniquement si votre outil prend en charge l'édition non destructive ou si vous avez conservé l'image originale.",
-      "q3": "Quel est le meilleur rapport hauteur/largeur ?",
-      "a3": "Dépend de l'utilisation : Instagram → 1:1 ou 4:5 ; YouTube → 16:9 ; Sites Web → varie.",
-      "q4": "Est-il préférable de recadrer plutôt que de redimensionner ?",
-      "a4": "Ils servent à différentes fins : le recadrage modifie la composition, le redimensionnement modifie les dimensions."
+      "heading": "Foire aux questions (FAQ)",
+      "q1": "Le recadrage d'une image réduit-il sa résolution PPI / DPI ?",
+      "a1": "Le recadrage supprime des colonnes et lignes de pixels de la matrice (L × H), réduisant le nombre total de pixels et la taille physique. Cependant, la densité de pixels (métadonnées PPI/DPI) reste inchangée.",
+      "q2": "Comment l'outil gère-t-il l'orientation EXIF de l'appareil photo ?",
+      "a2": "Les navigateurs modernes réorientent automatiquement les images JPEG selon les métadonnées EXIF. Notre moteur Canvas respecte cette orientation avant toute transformation.",
+      "q3": "Quelle est la différence entre un recadrage Canvas destructif et un recadrage CSS ?",
+      "a3": "Le recadrage CSS masque visuellement le surplus avec <code>overflow: hidden</code> sans réduire le poids du fichier. Le recadrage Canvas supprime définitivement les pixels superflus pour alléger le fichier.",
+      "q4": "Puis-je recadrer des images 4K ou 8K sans plantage mémoire ?",
+      "a4": "Oui. L'API HTML5 Canvas gère de grandes allocations (jusqu'à 16 384 × 16 384 pixels sur les GPU récents). La mémoire RAM locale traite la rastérisation sans saturation réseau.",
+      "q5": "Pourquoi la taille du fichier PNG recadré augmente-t-elle par rapport au JPEG d'origine ?",
+      "a5": "Le format PNG utilise une compression sans perte (DEFLATE), tandis que le JPEG utilise une compression avec perte. Convertir un JPEG en PNG préserve des contours nets mais peut augmenter le poids en octets.",
+      "q6": "Le recadrage local expose-t-il mes photos à des serveurs externes ?",
+      "a6": "Non. Toutes les opérations s'effectuent strictement dans la mémoire du navigateur client. Aucun trafic réseau ni appel d'API n'est envoyé lors du recadrage.",
+      "q7": "Comment le zoom et la rotation affectent-ils la précision du recadrage ?",
+      "a7": "Le zoom ajuste la matrice de coordonnées sources, tandis que la rotation applique des matrices trigonométriques (cos θ, sin θ). La sélection du cadre s'applique aux coordonnées transformées pour une exportation parfaite.",
+      "q8": "Quels formats d'image peuvent être exportés après le recadrage ?",
+      "a8": "L'outil exporte actuellement les visuels recadrés sous forme de fichiers PNG haute qualité sans perte, préservant la transparence et la fidélité des pixels."
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Le recadrage d'images est un moyen simple mais puissant d'améliorer la composition, de mettre en évidence le contenu important et d'adapter les images à n'importe quelle plate-forme. Utilisez les bonnes techniques pour transformer une image moyenne en une image nette et professionnelle.",
