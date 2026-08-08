@@ -25,6 +25,10 @@
     "heading": "Constantly Improving",
     "body": "We ship updates regularly based on user feedback and our own day-to-day use of the tools. New tools are added when we identify a gap that isn't already well-served by a simple, free, browser-based solution. Our roadmap is driven by what is actually useful — not by trends or feature bloat. If something doesn't make the experience better, it doesn't ship."
   },
+  "editorialStandards": {
+    "heading": "Editorial & Development Standards",
+    "body": "Every tool is manually tested against known-good sample files and checked across major browsers before it ships, and we re-verify existing tools whenever their underlying libraries are updated. On the security side, we keep dependencies patched, scan for known vulnerabilities, and design client-side tools so your files never need to leave your browser in the first place. Any written guides or blog content are reviewed for technical accuracy before publishing and updated if a tool's behavior changes."
+  },
   "getInTouch": {
     "heading": "Get in Touch",
     "body": "We are always looking to improve. If you have suggestions, feedback, or find a bug, please reach out — we read every message and genuinely appreciate the time people take to write in. Your input has directly shaped many of the features you see today, and we look forward to hearing what you think next.",

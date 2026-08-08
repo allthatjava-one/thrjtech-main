@@ -37,6 +37,9 @@ export default function AboutUsPage() {
             <h3>{t('constantlyImproving.heading')}</h3>
             <p>{t('constantlyImproving.body')}</p>
 
+            <h3>{t('editorialStandards.heading')}</h3>
+            <p>{t('editorialStandards.body')}</p>
+
             <h3>{t('getInTouch.heading')}</h3>
             <p>{t('getInTouch.body')}</p>
             <p>

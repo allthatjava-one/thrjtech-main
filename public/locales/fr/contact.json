@@ -2,6 +2,7 @@
   "title": "Contactez-nous",
   "intro": "Nous adorons avoir des nouvelles de nos utilisateurs — vos retours sont ce qui nous pousse à continuer à nous améliorer. Que vous ayez trouvé un bug, une suggestion de fonctionnalité, ou que vous souhaitiez simplement partager votre expérience, nous voulons sincèrement le savoir. Envoyez-nous un message via le formulaire ci-dessous et nous vous répondrons dès que possible. Chaque message est lu par une vraie personne et nous faisons de notre mieux pour répondre rapidement. Merci de prendre le temps de nous contacter !",
   "signature": "- L'équipe THRJTech",
+  "directEmailLabel": "Vous préférez l'e-mail ? Contactez-nous directement à",
   "emailLabel": "Adresse e-mail",
   "emailPlaceholder": "votre@email.com",
   "messageLabel": "Message",

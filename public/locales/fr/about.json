@@ -25,6 +25,10 @@
     "heading": "En amélioration constante",
     "body": "Nous publions des mises à jour régulièrement basées sur les retours des utilisateurs et notre propre utilisation quotidienne des outils. De nouveaux outils sont ajoutés lorsque nous identifions un manque qui n'est pas déjà bien servi par une solution simple, gratuite et basée sur navigateur. Notre feuille de route est guidée par ce qui est réellement utile — et non par les tendances ou le gonflement des fonctionnalités. Si quelque chose n'améliore pas l'expérience, cela ne sort pas."
   },
+  "editorialStandards": {
+    "heading": "Normes éditoriales et de développement",
+    "body": "Chaque outil est testé manuellement sur des fichiers d'exemple connus et vérifié sur les principaux navigateurs avant sa mise en ligne, et nous revérifions les outils existants chaque fois que leurs bibliothèques sous-jacentes sont mises à jour. Côté sécurité, nous maintenons nos dépendances à jour, recherchons les vulnérabilités connues et concevons des outils côté client afin que vos fichiers n'aient jamais besoin de quitter votre navigateur. Les guides écrits et le contenu du blog sont relus pour vérifier leur exactitude technique avant publication."
+  },
   "getInTouch": {
     "heading": "Prenez contact",
     "body": "Nous cherchons toujours à nous améliorer. Si vous avez des suggestions, des commentaires ou trouvez un bug, n'hésitez pas à nous contacter — nous lisons chaque message et apprécions sincèrement le temps que les gens prennent pour écrire. Vos contributions ont directement façonné de nombreuses fonctionnalités que vous voyez aujourd'hui, et nous avons hâte d'entendre ce que vous pensez ensuite.",

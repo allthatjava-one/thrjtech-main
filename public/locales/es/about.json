@@ -25,6 +25,10 @@
     "heading": "En constante mejora",
     "body": "Publicamos actualizaciones regularmente basadas en los comentarios de los usuarios y nuestro propio uso diario de las herramientas."
   },
+  "editorialStandards": {
+    "heading": "Normas editoriales y de desarrollo",
+    "body": "Cada herramienta se prueba manualmente con archivos de muestra conocidos y se verifica en los principales navegadores antes de su lanzamiento, y volvemos a verificar las herramientas existentes cada vez que se actualizan sus bibliotecas subyacentes. En cuanto a la seguridad, mantenemos las dependencias actualizadas, buscamos vulnerabilidades conocidas y diseñamos herramientas del lado del cliente para que sus archivos nunca necesiten salir de su navegador. Las guías y el contenido del blog se revisan para verificar su precisión técnica antes de publicarse."
+  },
   "getInTouch": {
     "heading": "Contáctenos",
     "body": "Siempre buscamos mejorar. Si tiene sugerencias, comentarios o encuentra un error, comuníquese con nosotros — leemos todos los mensajes.",
