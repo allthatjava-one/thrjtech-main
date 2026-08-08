@@ -7,7 +7,7 @@
   },
   "googleAdsense": {
     "heading": "Google AdSense & Advertising",
-    "body1": "We use Google AdSense to display advertisements on this site. Google, as a third-party vendor, uses cookies (including the DoubleClick cookie) to serve ads based on your prior visits to this website and other sites on the internet. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to thjrtech.com and/or other sites on the Internet.",
+    "body1": "We use Google AdSense to display advertisements on this site. Google, as a third-party vendor, uses cookies (including the DoubleClick cookie) to serve ads based on your prior visits to this website and other sites on the internet. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to thrjtech.com and/or other sites on the Internet.",
     "body2Pre": "You may opt out of personalised advertising by visiting",
     "googleAdsLink": "Google Ads Settings",
     "body2Mid": ". Alternatively, you can opt out of a third-party vendor's use of cookies for personalised advertising by visiting",
@@ -40,6 +40,6 @@
   },
   "contact": {
     "heading": "Contact",
-    "body": "If you have any questions about this Privacy Policy, please reach out via the contact information provided on this site at privacy@thjrtech.com"
+    "body": "If you have any questions about this Privacy Policy, please reach out via the contact information provided on this site at privacy@thrjtech.com"
   }
 }

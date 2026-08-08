@@ -54,8 +54,12 @@ export default function ContactUsPage() {
             <div className="aboutus-section">
               <h2 style={{ marginBottom: '0.75rem' }}>{t('title')}</h2>
               <p>{t('intro')}<span style={{ display: 'block', textAlign: 'right', marginTop: '0.5em' }}>- {t('signature')}</span></p>
+              <p className="contactus-direct-email">
+                <br /><br />
+                {t('directEmailLabel')} <a href="mailto:privacy@thrjtech.com">privacy@thrjtech.com</a>
+              </p>
             </div>
-            <hr style={{ margin: '0.5rem 0 1rem', border: 'none', borderTop: '1px solid #e2e6f0' }} />
+            <hr style={{ margin: '0.5rem 0 0rem', border: 'none', borderTop: '1px solid #e2e6f0' }} />
             <form onSubmit={handleSubmit} className="contactus-form" autoComplete="off">
               {/* Honeypot — hidden from real users, traps bots */}
               <div style={{ display: 'none' }}>
