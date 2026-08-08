@@ -206,9 +206,54 @@
       "q3": "Are collages good for SEO or websites?",
       "a3": "Yes — they save space, improve visual engagement, and reduce page clutter.",
       "q4": "Do collages reduce image quality?",
-      "a4": "Not if created properly — ensure source images are high quality."
+      "a4": "Not if created properly — ensure source images are high quality.",
+      "q5": "How do browser memory limits affect high-resolution exports?",
+      "a5": "Large canvases consume memory proportional to width×height×4 bytes per pixel. Exports above ~100 megapixels may fail on low-memory devices. To reduce memory use, lower cell sizes, export at smaller DPI, or split the collage into multiple exports.",
+      "q6": "Do JPEG/PNG/WebP preserve transparency when border spacing is applied?",
+      "a6": "PNG and WebP (with alpha) preserve transparency; JPEG does not. If you use transparency for gaps, export as PNG or WebP to retain alpha channels.",
+      "q7": "How can I prevent blurriness when combining images of different resolutions?",
+      "a7": "Choose cell sizes less than or equal to the native resolution of your source images, avoid upscaling, and prefer high-resolution source photos for print targets. The tool displays native image dimensions in the preview meta to help decide.",
+      "q8": "How are color profiles handled (sRGB vs. Display P3)?",
+      "a8": "The Canvas API operates in the browser's color space (typically sRGB). Complex color-management (ICC profile embedding or Display P3 preservation) is not performed — for accurate print color across wide-gamut devices, export and post-process in a color-managed editor."
     },
     "conclusion": "Image collages are more than just combining photos — they're a powerful way to tell stories, present information, and capture attention. With the right layout and purpose, a simple set of images can become a compelling visual experience.",
-    "ctaBtn": "Image Collage Tool →"
+    "ctaBtn": "Image Collage Tool →",
+    "techArchitecture": {
+      "heading": "Technical Architecture",
+      "body": "This tool performs all image composition client-side using the HTML5 Canvas API. Source files are read into memory via FileReader and drawn to an offscreen canvas with <code>drawImage()</code>. No user images are uploaded to any server — the browser performs all processing, compositing, and export. For very large inputs the app streams drawing operations into a single canvas to avoid creating many intermediate bitmaps.",
+      "whyHeading": "Why client-side?",
+      "whyBody": "Client-side rendering preserves user privacy, reduces server costs, and avoids network latency. The exported image is produced with <code>canvas.toDataURL()</code> or <code>canvas.toBlob()</code> and offered for download directly in the browser."
+    },
+    "canvasDpi": {
+      "heading": "Canvas Resolution & DPI Scaling",
+      "body": "The final canvas pixel dimensions are computed from cells, gaps and borders: <strong>width = cols*cellWidth + (cols+1)*gap</strong>, <strong>height = rows*cellHeight + (rows+1)*gap</strong>. To target print-quality output (e.g. 300 DPI), convert inches to pixels: <em>pixels = inches × DPI</em>. For example, an 8\"×10\" print at 300 DPI requires 2400×3000 px. Use the cell size inputs to plan desired export resolution — the tool shows computed output pixels in the UI."
+    },
+    "aspect": {
+      "heading": "Aspect Ratio Preservation & Fitting Strategy",
+      "body": "Each source image may have a different aspect ratio than its target cell. We compute the image ratio and cell ratio and select a cover-style fit so the cell is fully filled. The algorithm calculates a base draw width/height preserving the image aspect ratio, then applies the user scale and offset. This avoids letterboxing and keeps focal areas centered; users can pan/zoom individual cells to adjust the visible region."
+    },
+    "layout": {
+      "heading": "Layout vs. Social Media Specs",
+      "table": {
+        "headers": { "type": "Layout Type", "dimensions": "Recommended Output Dimensions", "useCase": "Optimal Use Case" },
+        "rows": {
+          "row1": { "type": "2×2 Grid", "dim": "1080 × 1080 px (1:1)", "useCase": "Instagram Feed, Square Product Displays" },
+          "row2": { "type": "Side by Side (1×2)", "dim": "1200 × 630 px (1.91:1)", "useCase": "Open Graph Headers, Facebook Posts" },
+          "row3": { "type": "Strip of 3 (1×3)", "dim": "1080 × 1920 px (9:16)", "useCase": "Mobile Stories, Pinterest Pins" },
+          "row4": { "type": "Stacked (2×1)", "dim": "1200 × 1200 px", "useCase": "Portfolio Side-by-Side Comparisons" }
+        }
+      }
+    },
+    "expandedFaq": { "heading": "Technical FAQ" },
+    "checklist": {
+      "heading": "Technical Checklist Summary",
+      "headers": { "area": "Area", "status": "Current Status", "action": "Action Required" },
+      "rows": {
+        "row1": { "area": "Word Count & Depth", "status": "Light (~350 words)", "action": "Expand to 800–1,000+ words with technical depth" },
+        "row2": { "area": "Technical Focus", "status": "Design tips", "action": "Add HTML5 Canvas details, privacy, pixel calculations" },
+        "row3": { "area": "Structured Tables", "status": "Missing", "action": "Add Layout vs Platform table (done)" },
+        "row4": { "area": "FAQ", "status": "Short / Inline", "action": "Add 6–8 technical FAQs with JSON-LD (done)" }
+      }
+    }
   }
 }
