@@ -4,6 +4,7 @@ import CustomSelect from '../../commons/CustomSelect'
 import JSZip from 'jszip'
 import './Watermarker.css'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 export function WatermarkerView({
   mainImages,
@@ -42,12 +43,28 @@ export function WatermarkerView({
   const navigate = useNavigate();
   const { t } = useTranslation('imageWatermarker')
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'].map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   // Auto-open popup once the watermarked result is ready for the current index
   useEffect(() => {
     if (outputUrls && outputUrls[currentIndex]) setPreviewOpen(true)
   }, [outputUrls, currentIndex])
   return (
     <div className="watermarker-view">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <h2 className="hero-title">{t('hero.title')}</h2>
       <p className="hero-tagline">{t('hero.tagline')} <Link to="/blogs/image-watermark-guide">{t('hero.blogLink')}</Link></p>
       
@@ -467,6 +484,83 @@ export function WatermarkerView({
           </div>
         </div>
 
+        <div className="wm-guide-section wm-guide-tech">
+          <h3 className="wm-guide-h3">{t('guide.tech.heading')}</h3>
+          <p>{t('guide.tech.body1')}</p>
+          <p style={{ marginTop: '0.75rem' }}>{t('guide.tech.body2')}</p>
+          <p style={{ marginTop: '0.75rem' }}>{t('guide.tech.body3')}</p>
+        </div>
+
+        <div className="wm-guide-section">
+          <h3 className="wm-guide-h3">{t('guide.comptable.heading')}</h3>
+          <p style={{ marginBottom: '1rem' }}>{t('guide.comptable.intro')}</p>
+          <div className="wm-guide-table-wrap">
+            <table className="wm-guide-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.comptable.col1')}</th>
+                  <th>{t('guide.comptable.col2')}</th>
+                  <th>{t('guide.comptable.col3')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label={t('guide.comptable.col1')}><strong>{t('guide.comptable.r1c1')}</strong></td>
+                  <td data-label={t('guide.comptable.col2')}>{t('guide.comptable.r1c2')}</td>
+                  <td data-label={t('guide.comptable.col3')}>{t('guide.comptable.r1c3')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.comptable.col1')}><strong>{t('guide.comptable.r2c1')}</strong></td>
+                  <td data-label={t('guide.comptable.col2')}>{t('guide.comptable.r2c2')}</td>
+                  <td data-label={t('guide.comptable.col3')}>{t('guide.comptable.r2c3')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.comptable.col1')}><strong>{t('guide.comptable.r3c1')}</strong></td>
+                  <td data-label={t('guide.comptable.col2')}>{t('guide.comptable.r3c2')}</td>
+                  <td data-label={t('guide.comptable.col3')}>{t('guide.comptable.r3c3')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="wm-guide-section">
+          <h3 className="wm-guide-h3">{t('guide.guidetable.heading')}</h3>
+          <p style={{ marginBottom: '1rem' }}>{t('guide.guidetable.intro')}</p>
+          <div className="wm-guide-table-wrap">
+            <table className="wm-guide-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.guidetable.col1')}</th>
+                  <th>{t('guide.guidetable.col2')}</th>
+                  <th>{t('guide.guidetable.col3')}</th>
+                  <th>{t('guide.guidetable.col4')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label={t('guide.guidetable.col1')}><strong>{t('guide.guidetable.r1c1')}</strong></td>
+                  <td data-label={t('guide.guidetable.col2')} style={{ whiteSpace: 'nowrap' }}>{t('guide.guidetable.r1c2')}</td>
+                  <td data-label={t('guide.guidetable.col3')}>{t('guide.guidetable.r1c3')}</td>
+                  <td data-label={t('guide.guidetable.col4')}>{t('guide.guidetable.r1c4')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.guidetable.col1')}><strong>{t('guide.guidetable.r2c1')}</strong></td>
+                  <td data-label={t('guide.guidetable.col2')} style={{ whiteSpace: 'nowrap' }}>{t('guide.guidetable.r2c2')}</td>
+                  <td data-label={t('guide.guidetable.col3')}>{t('guide.guidetable.r2c3')}</td>
+                  <td data-label={t('guide.guidetable.col4')}>{t('guide.guidetable.r2c4')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.guidetable.col1')}><strong>{t('guide.guidetable.r3c1')}</strong></td>
+                  <td data-label={t('guide.guidetable.col2')} style={{ whiteSpace: 'nowrap' }}>{t('guide.guidetable.r3c2')}</td>
+                  <td data-label={t('guide.guidetable.col3')}>{t('guide.guidetable.r3c3')}</td>
+                  <td data-label={t('guide.guidetable.col4')}>{t('guide.guidetable.r3c4')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div className="wm-guide-section">
           <h3 className="wm-guide-h3">{t('guide.bestPractices.heading')}</h3>
           <ul className="wm-guide-best">
@@ -495,6 +589,12 @@ export function WatermarkerView({
           <details className="wm-faq-item"><summary>{t('guide.faq.q2')}</summary><p>{t('guide.faq.a2')}</p></details>
           <details className="wm-faq-item"><summary>{t('guide.faq.q3')}</summary><p>{t('guide.faq.a3')}</p></details>
           <details className="wm-faq-item"><summary>{t('guide.faq.q4')}</summary><p>{t('guide.faq.a4')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q5')}</summary><p>{t('guide.faq.a5')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q6')}</summary><p>{t('guide.faq.a6')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q7')}</summary><p>{t('guide.faq.a7')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q8')}</summary><p>{t('guide.faq.a8')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q9')}</summary><p>{t('guide.faq.a9')}</p></details>
+          <details className="wm-faq-item"><summary>{t('guide.faq.q10')}</summary><p>{t('guide.faq.a10')}</p></details>
         </div>
 
         <div className="wm-guide-conclusion">

@@ -184,6 +184,9 @@
 .pdf-splitter-page .splitter-guide-card ul { padding-left: 1.25rem; list-style-position: outside }
 .pdf-splitter-page .splitter-guide-card li { margin-bottom: 6px }
 
+.pdf-splitter-page .splitter-guide-faq p { margin: 0 0 10px; line-height: 1.5 }
+.pdf-splitter-page .splitter-guide-faq strong { display: block; margin-bottom: 2px }
+
 @media (max-width: 720px) {
   .pdf-splitter-page .splitter-guide-grid { grid-template-columns: 1fr }
   .pdf-splitter-page .splitter-guide-footer { flex-direction: column; align-items: stretch }

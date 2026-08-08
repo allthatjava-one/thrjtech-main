@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useCallback } from 'react'
 import './JsonFormatter.css'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 const INDENT = 2
 
@@ -91,8 +92,24 @@ export default function JsonFormatterView() {
     }
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1', 'q2', 'q3', 'q4'].map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       {/* Hero */}
       <div className="jf-hero">
         <div className="jf-tool-icon" aria-hidden="true">{t('hero.icon')}</div>
