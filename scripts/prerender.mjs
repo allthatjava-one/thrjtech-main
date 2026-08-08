@@ -74,6 +74,11 @@ function injectHtml(template, renderedHtml, helmet, ssrData, urlPath, titleOverr
     if (metaStr) headTags.push(metaStr)
   }
 
+  if (helmet?.script) {
+    const scriptStr = helmet.script.toString().trim()
+    if (scriptStr) headTags.push(scriptStr)
+  }
+
   if (headTags.length) {
     html = html.replace('</head>', `${headTags.join('\n  ')}\n</head>`)
   }
