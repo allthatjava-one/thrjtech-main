@@ -153,6 +153,21 @@
       "item4": "✅ Avoid over-optimization — readable regex beats \"clever\" regex.",
       "item5": "✅ Validate edge cases — test empty input and unexpected formats."
     },
+    "architecture": {
+      "heading": "🧠 Technical Architecture & Engine Mechanics",
+      "engine": {
+        "title": "The JavaScript RegExp Engine & Dynamic Match Pipeline",
+        "body": "When you type a search pattern or test string, our tool interacts directly with the browser's native JavaScript `RegExp` engine. Using methods like `RegExp.prototype.exec()` and `String.prototype.matchAll()`, the engine parses strings dynamically in memory as you type. It constructs a match buffer and calculates character offset indices (`m.index` and `lastIndex`) to apply live HTML `<mark>` highlights without server roundtrips."
+      },
+      "redos": {
+        "title": "Catastrophic Backtracking & ReDoS (Regular Expression Denial of Service)",
+        "body": "A major technical vulnerability in regex evaluation is ReDoS. When a pattern contains nested or overlapping quantifiers (such as `(a+)+$`), non-matching input forces the engine to evaluate an exponential number of execution branches ($2^N$). This phenomenon—catastrophic backtracking—can freeze the browser thread. Running the regex engine entirely in local client RAM isolates this execution risk safely to the user's device, ensuring remote server infrastructure remains immune."
+      },
+      "privacy": {
+        "title": "Zero-Server Privacy & Local In-Memory Execution",
+        "body": "Because regex evaluation and string substitution run strictly within the client browser's local RAM, no text payloads are transmitted over HTTP endpoints. Developers can securely paste sensitive production server logs, API authorization responses, or Personally Identifiable Information (PII) without risk of data leaks or server-side logging."
+      }
+    },
     "useCases": {
       "heading": "🧑‍💻 Real-World Use Cases",
       "item1": "📧 Email Validation — check input format before submission",
@@ -182,6 +197,43 @@
       "row3col2": "Easy",
       "row3col3": "Harder"
     },
+    "flagsTable": {
+      "heading": "📊 Regex Flags Specification & Browser Support Reference",
+      "colFlag": "Regex Flag",
+      "colName": "Name",
+      "colImpact": "Technical Impact on Evaluation",
+      "colSupport": "Browser Support",
+      "rowG": {
+        "flag": "g",
+        "name": "Global",
+        "impact": "Evaluates the entire string to find all non-overlapping matches rather than stopping after the first match.",
+        "support": "Universal"
+      },
+      "rowI": {
+        "flag": "i",
+        "name": "Ignore Case",
+        "impact": "Disables case sensitivity during character matching (e.g., [a-z] matches A-Z).",
+        "support": "Universal"
+      },
+      "rowM": {
+        "flag": "m",
+        "name": "Multiline",
+        "impact": "Modifies the behavior of ^ and $ anchors to match the start and end of individual lines (\\n, \\r) rather than the whole input string.",
+        "support": "Universal"
+      },
+      "rowS": {
+        "flag": "s",
+        "name": "DotAll",
+        "impact": "Allows the dot . wildcard token to match newline characters (\\n and \\r) as well as regular characters.",
+        "support": "ES2018+"
+      },
+      "rowU": {
+        "flag": "u",
+        "name": "Unicode",
+        "impact": "Enables full Unicode pattern matching, treating UTF-16 surrogate pairs as single unified code points.",
+        "support": "ES2015+"
+      }
+    },
     "proTips": {
       "heading": "🚀 Pro Tips",
       "item1": "🔍 Test small parts of regex first",
@@ -199,13 +251,23 @@
     "faq": {
       "heading": "❓ FAQ",
       "q1": "Why is my regex not matching anything?",
-      "a1": "Possible reasons: missing anchors, incorrect syntax, or wrong test input.",
+      "a1": "Possible reasons include incorrect escape syntax, missing multiline (m) or global (g) flags, unescaped special characters (like . or ?), or mismatched test input.",
       "q2": "Why does my regex match too much?",
-      "a2": "Likely due to greedy patterns like .*. Try .*? instead.",
-      "q3": "Can I learn regex without memorizing everything?",
-      "a3": "Yes — practice with testing tools is the fastest way.",
-      "q4": "What's the best way to improve regex skills?",
-      "a4": "Build + test + iterate repeatedly."
+      "a2": "Likely due to greedy quantifiers like `.*` that consume as many characters as possible. Use a lazy quantifier like `.*?` to stop matching at the first valid boundary.",
+      "q3": "What is the difference between JavaScript RegExp syntax and PCRE (Perl Compatible Regular Expressions)?",
+      "a3": "JavaScript RegExp engine follows ECMAScript specifications. While syntax overlaps heavily with PCRE, JavaScript historically lacked features like possessive quantifiers (`*+`) or atomic grouping (`(?>...)`), though modern JS engines now support lookbehinds (`(?<=...)`) and named capture groups (`(?<name>...)`).",
+      "q4": "How do positive and negative lookaheads (`(?=...)` and `(?!...)`) impact client-side performance?",
+      "a4": "Lookaheads evaluate zero-width assertions without consuming characters in the match buffer. Positive lookaheads (`(?=...)`) ensure a pattern follows, while negative lookaheads (`(?!...)`) ensure it does not. Overusing complex lookaheads inside high-frequency loops increases evaluation steps at every character offset.",
+      "q5": "Why does a greedy quantifier (`.*`) cause browser freezing on large 10MB text inputs compared to a lazy quantifier (`.*?`)?",
+      "a5": "A greedy quantifier (`.*`) consumes the entire string up to the end first and then backtracks character-by-character to satisfy trailing tokens. On a 10MB input, non-matching trailing rules force millions of backtracking steps. A lazy quantifier (`.*?`) matches the minimum necessary length first, avoiding massive backtracking chains.",
+      "q6": "Are named capture groups (`(?<name>...)`) supported across all mobile browsers?",
+      "a6": "Yes, named capture groups (`(?<name>...)`) were introduced in ES2018 and are supported across all modern mobile browsers, including iOS Safari 11.3+ and Chrome for Android. They allow accessing matched groups via `match.groups.name` rather than numeric indices like `$1` or `$2`.",
+      "q7": "What is ReDoS (Regular Expression Denial of Service) and how do I prevent it?",
+      "a7": "ReDoS occurs when a pattern with nested quantifiers or overlapping clauses (like `(a+)+b`) is tested against non-matching input (`aaaaa...X`). The engine explores $2^N$ execution paths trying to match. Prevent ReDoS by avoiding nested quantifiers, making match clauses mutually exclusive, and testing patterns against edge case inputs.",
+      "q8": "How does the Unicode flag (`u`) change pattern matching for emoji and special characters?",
+      "a8": "By default, JavaScript regex treats strings as 16-bit code units. Complex characters like emoji consist of 2 surrogate code units (32-bit). The `u` flag enables full Unicode awareness, ensuring `.` and character classes like `\\w` match complete surrogate pairs as a single character rather than half a character.",
+      "q9": "Can I learn regex without memorizing every token?",
+      "a9": "Yes — practicing with an interactive client-side tester where you can see live match highlights and immediate replacement previews is the fastest, most practical way to master regular expressions."
     },
     "conclusion": "Regex doesn't have to be frustrating. With the right approach and a good tester, you can build patterns faster, debug with confidence, and truly understand what your regex is doing.",
     "ctaBtn": "👉 Try your regex here: Regex Tester Tool"

@@ -153,6 +153,21 @@
       "item4": "✅ Évitez la sur-optimisation : une regex lisible bat une regex \"intelligente\".",
       "item5": "✅ Validez les cas extrêmes : testez les entrées vides et les formats inattendus."
     },
+    "architecture": {
+      "heading": "🧠 Architecture Technique & Mécanique du Moteur",
+      "engine": {
+        "title": "Le Moteur RegExp JavaScript & Pipeline de Correspondance Dynamique",
+        "body": "Lorsque vous saisissez un motif ou un texte de test, notre outil interagit directement avec le moteur nativement intégré `RegExp` du navigateur. Via des méthodes comme `RegExp.prototype.exec()` et `String.prototype.matchAll()`, le moteur analyse dynamiquement les chaînes en mémoire vive. Il calcule les limites d'index (`m.index` et `lastIndex`) pour appliquer un surlignage `<mark>` en temps réel sans aller-retour serveur."
+      },
+      "redos": {
+        "title": "Backtracking Catastrophique & ReDoS (Déni de Service par Expression Régulière)",
+        "body": "Une vulnérabilité technique majeure des expressions régulières est le ReDoS. Lorsqu'un motif comporte des quantificateurs imbriqués ou chevauchants (comme `(a+)+$`), une chaîne non correspondante force le moteur à évaluer un nombre exponentiel de branches ($2^N$). Ce backtracking catastrophique peut figer le thread principal du navigateur. L'exécution locale isole ce risque sur le terminal de l'utilisateur, préservant ainsi les serveurs distants."
+      },
+      "privacy": {
+        "title": "Confidentialité Zéro Serveur & Exécution en Mémoire Locale",
+        "body": "Comme le traitement regex et la substitution de chaînes s'exécutent exclusivement dans la mémoire RAM locale du navigateur, aucune donnée n'est transmise via des requêtes HTTP. Les développeurs peuvent coller en toute sécurité des journaux de serveurs de production, des réponses d'API ou des données personnelles (PII) sans risque de fuite."
+      }
+    },
     "useCases": {
       "heading": "🧑‍💻 Cas d'utilisation réels",
       "item1": "📧 Validation par e-mail — vérifiez le format d'entrée avant de soumettre",
@@ -182,6 +197,43 @@
       "row3col2": "Facile",
       "row3col3": "Plus fort"
     },
+    "flagsTable": {
+      "heading": "📊 Spécification des Options Regex & Référence de Prise en Charge",
+      "colFlag": "Option Regex",
+      "colName": "Nom",
+      "colImpact": "Impact Technique sur l'Évaluation",
+      "colSupport": "Prise en charge Navigateur",
+      "rowG": {
+        "flag": "g",
+        "name": "Global",
+        "impact": "Évalue l'intégralité de la chaîne pour trouver toutes les correspondances sans s'arrêter à la première.",
+        "support": "Universel"
+      },
+      "rowI": {
+        "flag": "i",
+        "name": "Insensible à la casse",
+        "impact": "Désactive la sensibilité majuscules/minuscules lors du traitement (ex. [a-z] correspond à A-Z).",
+        "support": "Universel"
+      },
+      "rowM": {
+        "flag": "m",
+        "name": "Multiligne",
+        "impact": "Modifie le comportement des ancres ^ et $ pour correspondre au début/fin de chaque ligne (\\n, \\r) plutôt qu'à toute la chaîne.",
+        "support": "Universel"
+      },
+      "rowS": {
+        "flag": "s",
+        "name": "DotAll",
+        "impact": "Permet au joker point . de correspondre également aux sauts de ligne (\\n et \\r).",
+        "support": "ES2018+"
+      },
+      "rowU": {
+        "flag": "u",
+        "name": "Unicode",
+        "impact": "Active la correspondance Unicode complète en traitant les paires de substituts UTF-16 comme des points de code uniques.",
+        "support": "ES2015+"
+      }
+    },
     "proTips": {
       "heading": "🚀 Conseils de pro",
       "item1": "🔍 Testez d'abord de petites parties de regex",
@@ -197,15 +249,25 @@
       "warning": "👉 Évitez tout de même de coller des données sensibles ou des secrets de production."
     },
     "faq": {
-      "heading": "❓FAQ",
-      "q1": "Pourquoi mon expression régulière ne correspond-elle à rien ?",
-      "a1": "Raisons possibles : ancres manquantes, syntaxe incorrecte ou mauvaise entrée de test.",
-      "q2": "Pourquoi mon expression régulière correspond-elle trop ?",
-      "a2": "Probablement en raison de modèles gourmands comme .*. Essayer .*? plutôt.",
-      "q3": "Puis-je apprendre les regex sans tout mémoriser ?",
-      "a3": "Oui, la pratique avec des outils de test est le moyen le plus rapide.",
-      "q4": "Quelle est la meilleure façon d’améliorer les compétences en matière d’expression régulière ?",
-      "a4": "Construire + tester + itérer à plusieurs reprises."
+      "heading": "❓ FAQ",
+      "q1": "Pourquoi mon expression régulière ne correspond-elle à rien ?",
+      "a1": "Raisons possibles : syntaxe d'échappement incorrecte, options multiligne (m) ou globale (g) manquantes, caractères spéciaux non échappés (comme . ou ?), ou texte de test non correspondant.",
+      "q2": "Pourquoi mon expression régulière correspond-elle à trop de texte ?",
+      "a2": "Probablement en raison de quantificateurs gourmands comme `.*` qui consomment autant de caractères que possible. Utilisez un quantificateur paresseux comme `.*?` pour vous arrêter à la première limite valide.",
+      "q3": "Quelle est la différence entre la syntaxe RegExp de JavaScript et PCRE (Perl Compatible Regular Expressions) ?",
+      "a3": "Le moteur RegExp de JavaScript respecte les spécifications ECMAScript. Bien que la syntaxe soit très proche de PCRE, JavaScript manquait historiquement de fonctionnalités comme les quantificateurs possessifs (`*+`) ou le regroupement atomique (`(?>...)`), bien que les moteurs JS modernes prennent désormais en charge les lookbehinds (`(?<=...)`) et les groupes de capture nommés (`(?<name>...)`).",
+      "q4": "Quel est l'impact des lookaheads positifs et négatifs (`(?=...)` et `(?!...)`) sur les performances côté client ?",
+      "a4": "Les lookaheads évaluent des assertions de largeur nulle sans consommer de caractères dans le tampon de correspondance. Les lookaheads positifs (`(?=...)`) vérifient qu'un motif suit, tandis que les négatifs (`(?!...)`) vérifient qu'il ne suit pas. Surutiliser des lookaheads complexes dans des boucles fréquentes augmente les étapes d'évaluation à chaque décalage.",
+      "q5": "Pourquoi un quantificateur gourmand (`.*`) fait-il geler le navigateur sur un texte de 10 Mo par rapport à un quantificateur paresseux (`.*?`) ?",
+      "a5": "Un quantificateur gourmand (`.*`) consomme toute la chaîne jusqu'à la fin avant de revenir en arrière caractère par caractère. Sur un texte de 10 Mo, des règles finales non correspondantes forcent des millions d'étapes de backtracking. Un quantificateur paresseux (`.*?`) correspond à la longueur minimale nécessaire en premier, évitant ainsi les chaînes de backtracking massives.",
+      "q6": "Les groupes de capture nommés (`(?<name>...)`) sont-ils pris en charge sur tous les navigateurs mobiles ?",
+      "a6": "Oui, les groupes de capture nommés (`(?<name>...)`) ont été introduits dans ES2018 et sont pris en charge sur tous les navigateurs mobiles modernes, y compris iOS Safari 11.3+ et Chrome pour Android. Ils permettent d'accéder aux groupes via `match.groups.name` plutôt que par des index numériques comme `$1` ou `$2`.",
+      "q7": "Qu'est-ce que le ReDoS (Déni de Service par Expression Régulière) et comment le prévenir ?",
+      "a7": "Le ReDoS se produit lorsqu'un motif comportant des quantificateurs imbriqués ou des clauses chevauchantes (comme `(a+)+b`) est testé sur une entrée non correspondante (`aaaaa...X`). Le moteur explore $2^N$ chemins d'exécution. Prévenez le ReDoS en évitant les quantificateurs imbriqués, en rendant les clauses mutuellement exclusives et en testant vos motifs sur des cas limites.",
+      "q8": "Comment l'option Unicode (`u`) modifie-t-elle la correspondance pour les émojis et caractères spéciaux ?",
+      "a8": "Par défaut, les expressions régulières JavaScript traitent les chaînes comme des unités de code 16 bits. Les caractères complexes comme les émojis se composent de 2 unités de code (32 bits). L'option `u` active la gestion Unicode complète, garantissant que `.` et les classes comme `\\w` correspondent aux paires de substituts complètes en tant que caractère unique.",
+      "q9": "Puis-je apprendre les regex sans mémoriser chaque jeton ?",
+      "a9": "Oui — pratiquer avec un testeur interactif côté client où vous pouvez voir le surlignage en direct et les aperçus de remplacement immédiats est le moyen le plus rapide et le plus pratique de maîtriser les expressions régulières."
     },
     "conclusion": "Regex ne doit pas être frustrant. Avec la bonne approche et un bon testeur, vous pouvez créer des modèles plus rapidement, déboguer en toute confiance et vraiment comprendre ce que fait votre regex.",
     "ctaBtn": "👉 Essayez votre regex ici : Regex Tester Tool"
