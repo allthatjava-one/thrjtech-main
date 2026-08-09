@@ -92,10 +92,11 @@ export default function JsonFormatterView() {
     }
   }
 
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9']
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: ['q1', 'q2', 'q3', 'q4'].map((key) => ({
+    mainEntity: faqKeys.map((key) => ({
       '@type': 'Question',
       name: t(`guide.faq.${key}`),
       acceptedAnswer: {
@@ -342,6 +343,24 @@ export default function JsonFormatterView() {
               <li>{t('guide.bestPractices.item5')}</li>
             </ul>
 
+            {t('guide.architecture.heading') && (
+              <div className="jf-arch-section" style={{ marginTop: 24, marginBottom: 20 }}>
+                <h3 style={{ fontSize: 20, color: '#6c63ff' }}>{t('guide.architecture.heading')}</h3>
+                <div style={{ marginTop: 12 }}>
+                  <h4 style={{ margin: '8px 0 4px 0', fontSize: 16 }}>{t('guide.architecture.parsingEngine.title')}</h4>
+                  <p style={{ margin: 0 }}>{t('guide.architecture.parsingEngine.body')}</p>
+                </div>
+                <div style={{ marginTop: 12 }}>
+                  <h4 style={{ margin: '8px 0 4px 0', fontSize: 16 }}>{t('guide.architecture.bigIntPrecision.title')}</h4>
+                  <p style={{ margin: 0 }}>{t('guide.architecture.bigIntPrecision.body')}</p>
+                </div>
+                <div style={{ marginTop: 12 }}>
+                  <h4 style={{ margin: '8px 0 4px 0', fontSize: 16 }}>{t('guide.architecture.zeroServer.title')}</h4>
+                  <p style={{ margin: 0 }}>{t('guide.architecture.zeroServer.body')}</p>
+                </div>
+              </div>
+            )}
+
             <h3 style={{ marginTop: 10 }}>{t('guide.comparison.heading')}</h3>
             <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
               <thead>
@@ -359,6 +378,55 @@ export default function JsonFormatterView() {
             </table>
             <p style={{ marginTop: 6 }}>{t('guide.comparison.workflow')}</p>
 
+            {t('guide.formatSpecs.heading') && (
+              <div className="jf-specs-table-container" style={{ marginTop: 24, marginBottom: 20 }}>
+                <h3 style={{ fontSize: 20 }}>{t('guide.formatSpecs.heading')}</h3>
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
+                    <thead>
+                      <tr style={{ borderBottom: '1px solid #dddaff', background: '#f8f8ff' }}>
+                        <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.formatSpecs.colFormat')}</th>
+                        <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.formatSpecs.colVerbosity')}</th>
+                        <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.formatSpecs.colComments')}</th>
+                        <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.formatSpecs.colTypes')}</th>
+                        <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.formatSpecs.colUse')}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={{ borderBottom: '1px solid #eeeeff' }}>
+                        <td style={{ padding: 8 }}><strong>{t('guide.formatSpecs.rowJson.format')}</strong></td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson.verbosity')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson.comments')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson.types')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson.use')}</td>
+                      </tr>
+                      <tr style={{ borderBottom: '1px solid #eeeeff' }}>
+                        <td style={{ padding: 8 }}><strong>{t('guide.formatSpecs.rowJson5.format')}</strong></td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson5.verbosity')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson5.comments')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson5.types')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowJson5.use')}</td>
+                      </tr>
+                      <tr style={{ borderBottom: '1px solid #eeeeff' }}>
+                        <td style={{ padding: 8 }}><strong>{t('guide.formatSpecs.rowYaml.format')}</strong></td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowYaml.verbosity')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowYaml.comments')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowYaml.types')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowYaml.use')}</td>
+                      </tr>
+                      <tr>
+                        <td style={{ padding: 8 }}><strong>{t('guide.formatSpecs.rowXml.format')}</strong></td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowXml.verbosity')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowXml.comments')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowXml.types')}</td>
+                        <td style={{ padding: 8 }}>{t('guide.formatSpecs.rowXml.use')}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
             <h3 style={{ marginTop: 10 }}>{t('guide.proTips.heading')}</h3>
             <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
               <li>{t('guide.proTips.item1')}</li>
@@ -371,10 +439,54 @@ export default function JsonFormatterView() {
             <p>{t('guide.safety.body')}</p>
 
             <h3 style={{ marginTop: 10 }}>{t('guide.faq.heading')}</h3>
-            <p><strong>{t('guide.faq.q1')}</strong> {t('guide.faq.a1')}</p>
-            <p><strong>{t('guide.faq.q2')}</strong> {t('guide.faq.a2')}</p>
-            <p><strong>{t('guide.faq.q3')}</strong> {t('guide.faq.a3')}</p>
-            <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
+            <div style={{ marginTop: 10 }}>
+              <p><strong>{t('guide.faq.q1')}</strong></p>
+              <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a1')}</p>
+              
+              <p><strong>{t('guide.faq.q2')}</strong></p>
+              <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a2')}</p>
+              
+              <p><strong>{t('guide.faq.q3')}</strong></p>
+              <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a3')}</p>
+              
+              <p><strong>{t('guide.faq.q4')}</strong></p>
+              <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a4')}</p>
+
+              {t('guide.faq.q5') && (
+                <>
+                  <p><strong>{t('guide.faq.q5')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a5')}</p>
+                </>
+              )}
+
+              {t('guide.faq.q6') && (
+                <>
+                  <p><strong>{t('guide.faq.q6')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a6')}</p>
+                </>
+              )}
+
+              {t('guide.faq.q7') && (
+                <>
+                  <p><strong>{t('guide.faq.q7')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a7')}</p>
+                </>
+              )}
+
+              {t('guide.faq.q8') && (
+                <>
+                  <p><strong>{t('guide.faq.q8')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a8')}</p>
+                </>
+              )}
+
+              {t('guide.faq.q9') && (
+                <>
+                  <p><strong>{t('guide.faq.q9')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a9')}</p>
+                </>
+              )}
+            </div>
 
             <br />
             <p style={{ marginTop: 12 }}><strong>{t('guide.conclusion')}</strong></p>

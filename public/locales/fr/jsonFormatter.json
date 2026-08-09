@@ -129,6 +129,21 @@
       "item4": "✅ Évitez la sur-imbrication – l’imbrication profonde est difficile à lire et à entretenir.",
       "item5": "✅ Validez tôt : détectez les erreurs avant d'utiliser JSON dans le code."
     },
+    "architecture": {
+      "heading": "🧠 Détails de l'Architecture Technique & Analyse Côté Client (Browser RAM)",
+      "parsingEngine": {
+        "title": "Le moteur d'analyse JavaScript & Arbres de syntaxe abstraite (AST)",
+        "body": "Lorsque vous collez des chaînes brutes dans l'outil, le formateur utilise le moteur JavaScript local du client. Tout d'abord, `JSON.parse()` convertit la séquence de caractères bruts en un arbre syntaxique abstrait (AST) chargé en RAM. Cet AST modélise précisément chaque paire clé-valeur et nœud imbriqué. Ensuite, `JSON.stringify(data, null, 2)` parcourt récursivement cet AST en mémoire RAM pour émettre une chaîne linéarisée avec une indentation de deux espaces par bloc."
+      },
+      "bigIntPrecision": {
+        "title": "Limitations de précision IEEE 754 & Perte de précision BigInt",
+        "body": "Un défi technique classique du traitement JSON client concerne les très grands entiers (comme les Snowflake IDs de Twitter/X ou d'importants registres de bases de données). Le moteur JS natif représente ses variables numériques sous forme de nombres à virgule flottante double précision (conforme au standard IEEE 754), masquant et tronquant silencieusement les identifiants codés sur 64 bits. L'intégrité de ces données nécessite sinon des mécanismes de remplacement de parseur par regex ou par objet BigInt natif."
+      },
+      "zeroServer": {
+        "title": "Zéro Serveur Sandbox : Confidentialité Maximale de vos données",
+        "body": "Le traitement s'exécute de bout en bout localement dans la mémoire vive de votre navigateur. Aucune requête réseau HTTP ne migre vers un serveur externe. Il est donc totalement sécurisé d'y formater de véritables identifiants de production, des logs financiers ou des clés API privés."
+      }
+    },
     "comparison": {
       "heading": "🧰 Formateur JSON vs validateur JSON",
       "col1": "Fonctionnalité",
@@ -145,6 +160,42 @@
       "row3col3": "Messages d'erreur",
       "workflow": "Meilleur flux de travail : Formater → Valider → Corriger."
     },
+    "formatSpecs": {
+      "heading": "📊 Analyse Comparative Structurée (JSON vs JSON5 vs YAML vs XML)",
+      "colFormat": "Format de données",
+      "colVerbosity": "Verbosité de la Syntax",
+      "colComments": "Commentaires Supportés ?",
+      "colTypes": "Types de données supportés",
+      "colUse": "Cas d'usage primaire",
+      "rowJson": {
+        "format": "JSON (RFC 8259)",
+        "verbosity": "Faible / Strict",
+        "comments": "Non",
+        "types": "String, Number, Boolean, Array, Object, Null",
+        "use": "Payloads d'API REST, transfert de données Frontend-Backend"
+      },
+      "rowJson5": {
+        "format": "JSON5",
+        "verbosity": "Faible / Flexible",
+        "comments": "Oui (// et /* */)",
+        "types": "Types JSON + NaN, Infinity, virgules de fin",
+        "use": "Fichiers de configuration utilisateur, réglages lisibles"
+      },
+      "rowYaml": {
+        "format": "YAML",
+        "verbosity": "Minimaliste (Mise en retrait)",
+        "comments": "Oui (#)",
+        "types": "Complexe (Ancres, Aliases, Types personnalisés)",
+        "use": "Pipelines d'intégration CI/CD, templates Docker & Kubernetes"
+      },
+      "rowXml": {
+        "format": "XML",
+        "verbosity": "Élevée (Balises lourdes)",
+        "comments": "Oui (<!-- comment -->)",
+        "types": "Texte seul (Requiert des schémas de typage)",
+        "use": "APIs SOAP héritées, flux RSS, architectures SOA d'entreprise"
+      }
+    },
     "proTips": {
       "heading": "⚡ Conseils de pro",
       "item1": "🔍 Formater avant d'enregistrer un gros JSON",
@@ -159,13 +210,23 @@
     "faq": {
       "heading": "❓FAQ",
       "q1": "Le formatage modifie-t-il mes données JSON ?",
-      "a1": "Non, cela change seulement l'apparence, pas le contenu.",
+      "a1": "No, cela change seulement l'apparence, pas le contenu.",
       "q2": "Un formateur peut-il corriger un JSON invalide ?",
       "a2": "Non, mais cela vous aide à voir où se situe le problème.",
       "q3": "Quel est le meilleur style d’indentation ?",
       "a3": "2 espaces est la norme la plus courante.",
       "q4": "Pourquoi mon JSON ne parvient-il pas à se formater ?",
-      "a4": "Probablement en raison d'erreurs de syntaxe, de crochets manquants ou d'un style de guillemet incorrect."
+      "a4": "Probablement en raison d'erreurs de syntaxe, de crochets manquants ou d'un style de guillemet incorrect.",
+      "q5": "Pourquoi JSON.parse() renvoie-t-il un SyntaxError: Unexpected token face à des virgules de fin ?",
+      "a5": "Au sens des standards stricts de la grammaire JSON (notamment RFC 8259), une virgule doit impérativement précéder un élément. Lorsqu'un crochet ou une accolade de fin est rencontré juste après une virgule, l'analyseur plante car aucun nœud ne comble cet intervalle.",
+      "q6": "Comment le navigateur gère-t-il la RAM lors du formatage de fichiers JSON volumineux (+ de 50 Mo) ?",
+      "a6": "La modélisation de de volumineux fichiers sous forme d'objets en mémoire (AST) démultiplie la mémoire vive nécessaire de 4 à 8 fois le poids brut initial du payload textuel, ce qui peut potentiellement figer momentanément l'onglet du client.",
+      "q7": "Quelle est la nuance technique essentielle entre les standards RFC 4627 et RFC 8259 ?",
+      "a7": "L'ancienne spécification RFC 4627 exigeait que le conteneur racine de tout document JSON soit un tableau ou un objet. La nouvelle RFC 8259 valide l'usage de n'importe quel type de primitive scalaire (nombre, chaîne, booléen) en racine et impose l'encodage UTF-8.",
+      "q8": "Pourquoi les références circulaires font-elles planter le formateur JSON ?",
+      "a8": "Les moteurs sous-jacents parcourent récursivement les branches de l'objet. Si un nœud pointe vers lui-même ou l'un de ses ascendants, la boucle de sérialisation devient infinie. Le runtime lève d'office une exception de sécurité pour stopper le processus.",
+      "q9": "Qu'est-ce que la perte de précision BigInt et comment l'éviter lors du formatage avancé ?",
+      "a9": "Les nombres en JavaScript étant des flottants à double précision, les valeurs entières supérieures à 9 007 199 254 740 991 subissent une perte de précision. L'analyse native d'un identifiant 64 bits tronque les chiffres les moins significatifs. On l'évite en utilisant un analyseur par expression régulière ou un reviver personnalisé qui lit ces séquences numériques sous forme de chaînes ou directement comme objets BigInt."
     },
     "conclusion": "Travailler avec du JSON brut ne doit pas être frustrant. Avec un formateur JSON, vous pouvez lire les données instantanément, déboguer plus rapidement et réduire les erreurs : l'un des outils les plus simples pouvant améliorer considérablement votre flux de travail.",
     "ctaBtn": "👉 Essayez-le ici : outil de formatage JSON"

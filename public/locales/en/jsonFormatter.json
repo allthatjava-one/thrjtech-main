@@ -129,6 +129,21 @@
       "item4": "✅ Avoid over-nesting — deep nesting is hard to read and hard to maintain.",
       "item5": "✅ Validate early — catch errors before using JSON in code."
     },
+    "architecture": {
+      "heading": "🧠 Technical Architecture & Client-Side Parsing Details",
+      "parsingEngine": {
+        "title": "The JavaScript Parsing Engine & Abstract Syntax Trees (AST)",
+        "body": "When a developer pastes raw strings into our system, the formatter activates the browser's native Javascript engine engine. First, `JSON.parse()` processes the sequence, converting characters into an in-memory Abstract Syntax Tree (AST) representing the dictionary hierarchy. Under the hood, this parsing engine maps structures, nested nodes, and lists in RAM. Next, `JSON.stringify(data, null, 2)` traverses the freshly constructed AST, emitting a clean, serialized string indented by exactly two spaces per hierarchy step."
+      },
+      "bigIntPrecision": {
+        "title": "BigInt Precision Loss & IEEE 754 Floating-Point Limitations",
+        "body": "A critical technical challenge with standard client-side JSON parsing is number precision. JavaScript natively represents numbers as IEEE 754 double-precision floats, which are limited to a safe integer range of 53 bits (up to 9,007,199,254,740,991). When processing responses containing 64-bit identifiers—highly prevalent in Snowflake IDs, Twitter/X platform payloads, or transactional database headers—native parsing causes silent, devastating precision loss. High-fidelity integrations require custom parser revivers or specialized parsers to read large integer keys safely as raw BigInt sequences."
+      },
+      "zeroServer": {
+        "title": "Zero-Server Sandbox: Maximum Information Privacy",
+        "body": "Because formatting relies exclusively on local browser engines, no data payloads are transmitted over HTTP to remote servers. All AST mapping, JSON stringifying, and validation happen inside the local RAM heap. Pasting highly sensitive production logs, proprietary API keys, credentials, or customer database records remains 100% private, leak-proof, and secure."
+      }
+    },
     "comparison": {
       "heading": "🧰 JSON Formatter vs JSON Validator",
       "col1": "Feature",
@@ -144,6 +159,42 @@
       "row3col2": "Clean structure",
       "row3col3": "Error messages",
       "workflow": "Best workflow: Format → Validate → Fix."
+    },
+    "formatSpecs": {
+      "heading": "📊 Structural Format Comparison (JSON vs JSON5 vs YAML vs XML)",
+      "colFormat": "Data Format",
+      "colVerbosity": "Syntax Verbosity",
+      "colComments": "Comments Supported?",
+      "colTypes": "Data Types Supported",
+      "colUse": "Primary Use Case",
+      "rowJson": {
+        "format": "JSON (RFC 8259)",
+        "verbosity": "Low / Strict",
+        "comments": "No",
+        "types": "String, Number, Boolean, Array, Object, Null",
+        "use": "REST API payloads, frontend-backend data transfer"
+      },
+      "rowJson5": {
+        "format": "JSON5",
+        "verbosity": "Low / Flexible",
+        "comments": "Yes (// and /* */)",
+        "types": "JSON types + NaN, Infinity, trailing commas",
+        "use": "Configuration files, human-editable settings"
+      },
+      "rowYaml": {
+        "format": "YAML",
+        "verbosity": "Minimal (Whitespace)",
+        "comments": "Yes (#)",
+        "types": "Complex (Anchors, Aliases, Custom Types)",
+        "use": "CI/CD pipelines, Docker, Kubernetes configurations"
+      },
+      "rowXml": {
+        "format": "XML",
+        "verbosity": "High (Heavy Tags)",
+        "comments": "Yes (<!-- comment -->)",
+        "types": "Text (Requires schema for types)",
+        "use": "Legacy SOAP APIs, RSS feeds, enterprise messaging systems"
+      }
     },
     "proTips": {
       "heading": "⚡ Pro Tips",
@@ -165,7 +216,17 @@
       "q3": "What's the best indentation style?",
       "a3": "2 spaces is the most common standard.",
       "q4": "Why does my JSON fail to format?",
-      "a4": "Likely due to syntax errors, missing brackets, or incorrect quote style."
+      "a4": "Likely due to syntax errors, missing brackets, or incorrect quote style.",
+      "q5": "Why does JSON.parse() throw a 'SyntaxError: Unexpected token' on trailing commas?",
+      "a5": "According to the JSON specifications (including ECMA-404 and RFC 8259), trailing commas are strictly forbidden. The JSON syntax grammar expects another key-value pair or element immediately following a comma. When a bracket or curly brace is encountered instead, the parser fails because there is no element to match.",
+      "q6": "How does the browser allocate RAM when formatting massive JSON files (e.g., 50MB+ database dumps)?",
+      "a6": "Formatting raw JSON strings in the browser requires parsing the file into active virtual RAM. A 50MB JSON string can consume up to 300MB to 500MB of RAM once parsed because every key and nested value is allocated as an individual JavaScript object node. Since JavaScript garbage collection occurs asynchronously, processing massive dumps can temporarily spike memory usage or freeze the browser tab if it hits heap limitations.",
+      "q7": "What is the difference between RFC 4627 and the newer RFC 8259 JSON standards?",
+      "a7": "RFC 4627 was the original specification and required the top-level container of a JSON text to be either an Array or an Object. The newer RFC 8259 standard relaxes this, allowing any valid JSON value (such as a plain string, number, or boolean) to exist as a valid top-level JSON document on its own. Furthermore, RFC 8259 enforces UTF-8 as the mandatory default character encoding.",
+      "q8": "How do circular references (recursive objects) cause a JSON formatter to crash?",
+      "a8": "Standard serialization functions like native `JSON.stringify` perform a recursive depth-first traversal of the object tree. If an object references itself directly or indirectly, the tree traversal becomes infinite. To prevent complete system hangs, the browser's JavaScript runtime detects this infinite nesting loop and throws a 'TypeError: Converting circular structure to JSON' to crash the process gracefully.",
+      "q9": "What is BigInt precision loss and how is it prevented in advanced formatting?",
+      "a9": "Because JavaScript numbers are double-precision floats, integer values above 9,007,199,254,740,991 suffer from loss of precision. Parsing a 64-bit ID natively truncates the least significant digits. It is prevented by using a regex parser or a custom parser reviver that reads these numeric sequences as strings or natively as BigInt objects."
     },
     "conclusion": "Working with raw JSON doesn't have to be frustrating. With a JSON formatter, you can read data instantly, debug faster, and reduce errors — one of the simplest tools that can significantly improve your workflow.",
     "ctaBtn": "👉 Try it here: JSON Formatter Tool"
