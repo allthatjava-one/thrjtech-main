@@ -173,6 +173,21 @@
       "item4": "✅ Evite la optimización excesiva: la expresión regular legible supera a la expresión regular \"inteligente\".",
       "item5": "✅ Validar casos extremos: probar entradas vacías y formatos inesperados."
     },
+    "architecture": {
+      "heading": "🧠 Arquitectura Técnica y Mecánica del Motor",
+      "engine": {
+        "title": "El Motor RegExp de JavaScript y la Canalización Dinámica de Coincidencias",
+        "body": "Al ingresar un patrón de búsqueda o texto de prueba, nuestra herramienta interactúa directamente con el motor nativo `RegExp` de JavaScript en el navegador. Utilizando métodos como `RegExp.prototype.exec()` y `String.prototype.matchAll()`, el motor analiza cadenas dinámicamente en la memoria mientras escribe. Construye un búfer de coincidencias y calcula índices de desplazamiento (`m.index` y `lastIndex`) para aplicar resaltados `<mark>` en vivo sin peticiones al servidor."
+      },
+      "redos": {
+        "title": "Retroceso Catastrófico y ReDoS (Denegación de Servicio por Expresiones Regulares)",
+        "body": "Una vulnerabilidad técnica clave en la evaluación de expresiones regulares es el ReDoS. Cuando un patrón contiene cuantificadores anidados o superpuestos (como `(a+)+$`), una entrada que no coincide fuerza al motor a evaluar un número exponencial de ramas ($2^N$). Este retroceso catastrófico puede congelar el hilo principal del navegador. La ejecución completa en la memoria RAM del cliente aísla este riesgo de forma segura en el dispositivo del usuario, protegé la infraestructura del servidor."
+      },
+      "privacy": {
+        "title": "Privacidad sin Servidor y Ejecución Local en Memoria",
+        "body": "Debido a que la evaluación de expresiones regulares y la sustitución de cadenas se ejecutan estrictamente dentro de la memoria RAM local del navegador, no se transmiten datos a través de puntos de enlace HTTP. Los desarrolladores pueden pegar de forma segura registros de servidores de producción, respuestas de autorización de API o Información de Identificación Personal (PII) sin riesgo de filtración de datos."
+      }
+    },
     "useCases": {
       "heading": "🧑‍💻 Casos de uso del mundo real",
       "item1": "📧 Validación de correo electrónico: verifique el formato de entrada antes de enviarlo",
@@ -202,6 +217,43 @@
       "row3col2": "Fácil",
       "row3col3": "Más difícil"
     },
+    "flagsTable": {
+      "heading": "📊 Especificación de Banderas Regex y Referencia de Soporte",
+      "colFlag": "Bandera Regex",
+      "colName": "Nombre",
+      "colImpact": "Impacto Técnico en la Evaluación",
+      "colSupport": "Soporte de Navegador",
+      "rowG": {
+        "flag": "g",
+        "name": "Global",
+        "impact": "Evalúa toda la cadena para encontrar todas las coincidencias no superpuestas en lugar de detenerse tras la primera.",
+        "support": "Universal"
+      },
+      "rowI": {
+        "flag": "i",
+        "name": "Ignorar Mayúsculas/Minúsculas",
+        "impact": "Desactiva la sensibilidad a mayúsculas y minúsculas durante la coincidencia (por ejemplo, [a-z] coincide con A-Z).",
+        "support": "Universal"
+      },
+      "rowM": {
+        "flag": "m",
+        "name": "Multilínea",
+        "impact": "Modifica el comportamiento de los anclajes ^ y $ para coincidir con el inicio y fin de líneas individuales (\\n, \\r) en lugar de toda la cadena.",
+        "support": "Universal"
+      },
+      "rowS": {
+        "flag": "s",
+        "name": "DotAll",
+        "impact": "Permite que el comodín punto . coincida con caracteres de nueva línea (\\n y \\r) además de caracteres normales.",
+        "support": "ES2018+"
+      },
+      "rowU": {
+        "flag": "u",
+        "name": "Unicode",
+        "impact": "Habilita la coincidencia Unicode completa, tratando los pares sustitutos UTF-16 como puntos de código unificados.",
+        "support": "ES2015+"
+      }
+    },
     "proTips": {
       "heading": "🚀 Consejos profesionales",
       "item1": "🔍 Pruebe primero partes pequeñas de expresiones regulares",
@@ -219,13 +271,23 @@
     "faq": {
       "heading": "❓ Preguntas frecuentes",
       "q1": "¿Por qué mi expresión regular no coincide con nada?",
-      "a1": "Posibles motivos: anclajes faltantes, sintaxis incorrecta o entrada de prueba incorrecta.",
+      "a1": "Las razones posibles incluyen sintaxis de escape incorrecta, falta de banderas multilínea (m) o global (g), caracteres especiales no escapados (como . o ?) o entrada de prueba no coincidente.",
       "q2": "¿Por qué mi expresión regular coincide demasiado?",
-      "a2": "Probablemente debido a patrones codiciosos como .*. Intentar .*? en cambio.",
-      "q3": "¿Puedo aprender expresiones regulares sin memorizarlo todo?",
-      "a3": "Sí, practicar con herramientas de prueba es la forma más rápida.",
-      "q4": "¿Cuál es la mejor manera de mejorar las habilidades de expresiones regulares?",
-      "a4": "Construir + probar + iterar repetidamente."
+      "a2": "Probablemente se deba a cuantificadores codiciosos como `.*` que consumen tantos caracteres como sea posible. Use un cuantificador perezoso como `.*?` para detener la coincidencia en el primer límite válido.",
+      "q3": "¿Cuál es la diferencia entre la sintaxis RegExp de JavaScript y PCRE (Expresiones Regulares Compatibles con Perl)?",
+      "a3": "El motor RegExp de JavaScript sigue las especificaciones ECMAScript. Aunque la sintaxis se superpone con PCRE, JavaScript históricamente carecía de funciones como cuantificadores posesivos (`*+`) o agrupamiento atómico (`(?>...)`), aunque los motores modernos de JS ahora admiten lookbehinds (`(?<=...)`) y grupos de captura con nombre (`(?<name>...)`).",
+      "q4": "¿Cómo afectan los lookaheads positivos y negativos (`(?=...)` y `(?!...)`) al rendimiento en el cliente?",
+      "a4": "Los lookaheads evalúan aserciones de ancho cero sin consumir caracteres en el búfer de coincidencia. Los lookaheads positivos (`(?=...)`) aseguran que siga un patrón, mientras que los negativos (`(?!...)`) aseguran que no. El uso excesivo de lookaheads complejos en bucles frecuentes aumenta los pasos de evaluación en cada desplazamiento de caracteres.",
+      "q5": "¿Por qué un cuantificador codicioso (`.*`) congela el navegador en textos grandes de 10 MB en comparación con uno perezoso (`.*?`)?",
+      "a5": "Un cuantificador codicioso (`.*`) consume toda la cadena hasta el final primero y luego retrocede carácter por carácter para satisfacer las reglas posteriores. En una entrada de 10 MB, las reglas no coincidentes fuerzan millones de pasos de retroceso. Un cuantificador perezoso (`.*?`) coincide con la longitud mínima necesaria primero, evitando retrocesos masivos.",
+      "q6": "¿Se admiten los grupos de captura con nombre (`(?<name>...)`) en todos los navegadores móviles?",
+      "a6": "Sí, los grupos de captura con nombre (`(?<name>...)`) se introdujeron en ES2018 y son compatibles con todos los navegadores móviles modernos, incluidos iOS Safari 11.3+ y Chrome para Android. Permiten acceder a grupos coincidentes a través de `match.groups.name` en lugar de índices numéricos como `$1` o `$2`.",
+      "q7": "¿Qué es ReDoS (Denegación de Servicio por Expresiones Regulares) y cómo lo prevengo?",
+      "a7": "ReDoS ocurre cuando un patrón con cuantificadores anidados o cláusulas superpuestas (como `(a+)+b`) se prueba contra una entrada que no coincide (`aaaaa...X`). El motor explora $2^N$ rutas de ejecución tratando de coincidir. Prevenga ReDoS evitando cuantificadores anidados, haciendo que las cláusulas sean mutuamente excluyentes y probando patrones contra casos extremos.",
+      "q8": "¿Cómo cambia la bandera Unicode (`u`) la coincidencia de patrones para emojis y caracteres especiales?",
+      "a8": "De forma predeterminada, las expresiones regulares de JavaScript tratan las cadenas como unidades de código de 16 bits. Los caracteres complejos como los emojis constan de 2 unidades de código sustitutas (32 bits). La bandera `u` habilita el reconocimiento completo de Unicode, asegurando que `.` y clases de caracteres como `\\w` coincidan con pares sustitutos completos como un solo carácter.",
+      "q9": "¿Puedo aprender expresiones regulares sin memorizar cada token?",
+      "a9": "Sí: practicar con un evaluador interactivo del lado del cliente donde pueda ver resaltados en vivo y previsualizaciones de reemplazo inmediatas es la forma más rápida y práctica de dominar las expresiones regulares."
     },
     "conclusion": "Regex no tiene por qué ser frustrante. Con el enfoque correcto y un buen evaluador, puede crear patrones más rápido, depurar con confianza y comprender realmente lo que está haciendo su expresión regular.",
     "ctaBtn": "👉 Pruebe su expresión regular aquí: Herramienta de prueba de expresiones regulares"
