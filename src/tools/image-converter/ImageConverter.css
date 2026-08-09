@@ -414,12 +414,11 @@
 .ic-section { margin: 12px 0; color: #16324a }
 
 .ic-guide-convert {
-  display: grid;
-  grid-template-columns: 1fr 300px;
+  display: flex;
+  flex-direction: column;
   gap: 1.25rem;
   width: 100%;
   margin-top: 1.25rem;
-  align-items: start;
 }
 
 .ic-guide-convert .ic-guide-article {
