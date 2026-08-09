@@ -3,6 +3,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import JSZip from 'jszip';
 import './ImageConverter.css';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 // ── Draggable + zoomable image viewport ─────────────────────────────────────
 function DraggablePreview({ src, alt }) {
@@ -146,6 +147,16 @@ export function ImageConverterView({
   const navigate = useNavigate();
   const { t } = useTranslation('imageConverter');
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1','q2','q3','q4','q5','q6','q7','q8'].map(key => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`, { defaultValue: '' }),
+      acceptedAnswer: { '@type': 'Answer', text: t(`guide.faq.a${key.slice(1)}`, { defaultValue: '' }) }
+    }))
+  };
+
   // Provide defaults for keys so UI stays readable even if translations are missing
   const formatDefaultLabels = {
     JPG: 'JPG', PNG: 'PNG', WebP: 'WebP', AVIF: 'AVIF', BMP: 'BMP', GIF: 'GIF', ICO: 'ICO',
@@ -169,6 +180,9 @@ export function ImageConverterView({
 
   return (
     <div className="ic-view">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <h2 className="hero-title">{t('hero.title')}</h2>
       <p className="hero-tagline">
         {t('hero.tagline')}{' '}<Link to="/blogs/image-converter-guide">{t('hero.blogLink')}</Link>
@@ -472,7 +486,37 @@ export function ImageConverterView({
 
       {/* ── Guide: Why Image Formats Matter ── */}
       <section className="ic-guide ic-guide-convert">
-        <div className="ic-guide-article">
+        <aside className="ic-guide-aside" style={{ width: '100%', marginBottom: '1rem' }}>
+          <div className="ic-aside-card" style={{ position: 'relative', top: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', width: '100%' }}>
+              <div>
+                <h5 style={{ margin: 0, fontSize: '1rem' }}>{t('guide.asideTitle', { defaultValue: 'Quick Actions' })}</h5>
+                <p className="muted" style={{ margin: '0.25rem 0 0 0', fontSize: '0.875rem' }}>{t('guide.asideDesc', { defaultValue: 'Ready to convert? Jump straight to the tool.' })}</p>
+              </div>
+              <button
+                type="button"
+                className="ic-guide-cta"
+                style={{ width: 'auto', margin: 0, padding: '0.6rem 1.25rem' }}
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                {t('guide.ctaBtn', { defaultValue: 'Use the Image Converter Tool' })}
+              </button>
+            </div>
+            <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '0.75rem', width: '100%' }}>
+              <h6 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: '#1e293b' }}>{t('guide.useCases.heading', { defaultValue: 'Real-World Use Cases' })}</h6>
+              <ul className="ic-mini-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.5rem', margin: 0, paddingLeft: '1.2rem', color: '#475569' }}>
+                <li>{t('guide.useCases.item1', { defaultValue: 'Website optimization — PNG → WebP' })}</li>
+                <li>{t('guide.useCases.item2', { defaultValue: 'Social uploads — convert to supported formats' })}</li>
+                <li>{t('guide.useCases.item3', { defaultValue: 'Business docs — ensure cross-system compatibility' })}</li>
+                <li>{t('guide.useCases.item4', { defaultValue: 'iPhone photos — HEIC → JPG for sharing' })}</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <div className="ic-guide-article" style={{ gridColumn: '1 / -1' }}>
           <h3 className="ic-guide-title">{t('guide.title', { defaultValue: 'Why Image Formats Matter (And How to Convert Images the Right Way)' })}</h3>
 
           <p className="ic-lead">{t('guide.introLead', { defaultValue: 'You try to upload an image… and suddenly:' })}</p>
@@ -538,6 +582,79 @@ export function ImageConverterView({
           </section>
 
           <section className='ic-section'>
+          <h4>{t('guide.techArchitecture.heading')}</h4>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.body') }} />
+          <h5>{t('guide.techArchitecture.privacyHeading')}</h5>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.privacyBody') }} />
+          </section>
+
+          <section className='ic-section'>
+          <h4>{t('guide.specsTable.heading')}</h4>
+          <div className="wm-guide-table-wrap">
+            <table className="mg-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.specsTable.headers.format')}</th>
+                  <th>{t('guide.specsTable.headers.compression')}</th>
+                  <th>{t('guide.specsTable.headers.transparency')}</th>
+                  <th>{t('guide.specsTable.headers.support')}</th>
+                  <th>{t('guide.specsTable.headers.useCase')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row1.format')}</td>
+                  <td>{t('guide.specsTable.rows.row1.comp')}</td>
+                  <td>{t('guide.specsTable.rows.row1.trans')}</td>
+                  <td>{t('guide.specsTable.rows.row1.support')}</td>
+                  <td>{t('guide.specsTable.rows.row1.useCase')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row2.format')}</td>
+                  <td>{t('guide.specsTable.rows.row2.comp')}</td>
+                  <td>{t('guide.specsTable.rows.row2.trans')}</td>
+                  <td>{t('guide.specsTable.rows.row2.support')}</td>
+                  <td>{t('guide.specsTable.rows.row2.useCase')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row3.format')}</td>
+                  <td>{t('guide.specsTable.rows.row3.comp')}</td>
+                  <td>{t('guide.specsTable.rows.row3.trans')}</td>
+                  <td>{t('guide.specsTable.rows.row3.support')}</td>
+                  <td>{t('guide.specsTable.rows.row3.useCase')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row4.format')}</td>
+                  <td>{t('guide.specsTable.rows.row4.comp')}</td>
+                  <td>{t('guide.specsTable.rows.row4.trans')}</td>
+                  <td>{t('guide.specsTable.rows.row4.support')}</td>
+                  <td>{t('guide.specsTable.rows.row4.useCase')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row5.format')}</td>
+                  <td>{t('guide.specsTable.rows.row5.comp')}</td>
+                  <td>{t('guide.specsTable.rows.row5.trans')}</td>
+                  <td>{t('guide.specsTable.rows.row5.support')}</td>
+                  <td>{t('guide.specsTable.rows.row5.useCase')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </section>
+
+          <section className='ic-section'>
+          <h4>{t('guide.faq.heading', { defaultValue: 'FAQ' })}</h4>
+          <div className="ic-guide-faq">
+            {[1,2,3,4,5,6,7,8].map(n => (
+              <details key={n} className="ic-guide-faq-item" style={{ marginBottom: '0.75rem' }}>
+                <summary style={{ fontWeight: 'bold', cursor: 'pointer' }}>{t(`guide.faq.q${n}`)}</summary>
+                <p style={{ marginTop: '0.5rem', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: t(`guide.faq.a${n}`) }} />
+              </details>
+            ))}
+          </div>
+          </section>
+
+          <section className='ic-section'>
           <h4>{t('guide.stepByStep.heading', { defaultValue: 'Step-by-Step: How to Convert an Image' })}</h4>
           <ol className="ic-steps-compact">
             <li>{t('guide.stepByStep.step1', { defaultValue: 'Upload your image' })}</li>
@@ -550,30 +667,6 @@ export function ImageConverterView({
 
           <p className="ic-conclusion">{t('guide.conclusion', { defaultValue: "Image conversion isn’t just technical — it’s essential for compatibility, performance, and usability. By picking the right format you can avoid upload errors, improve speed, and keep good quality." })}</p>
         </div>
-
-        <aside className="ic-guide-aside">
-          <div className="ic-aside-card">
-            <h5>{t('guide.asideTitle', { defaultValue: 'Quick Actions' })}</h5>
-            <p className="muted">{t('guide.asideDesc', { defaultValue: 'Ready to convert? Jump straight to the tool.' })}</p>
-            <button
-              type="button"
-              className="ic-guide-cta"
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            >
-              {t('guide.ctaBtn', { defaultValue: 'Use the Image Converter Tool' })}
-            </button>
-
-            <h6>{t('guide.useCases.heading', { defaultValue: 'Real-World Use Cases' })}</h6>
-            <ul className="ic-mini-list">
-              <li>{t('guide.useCases.item1', { defaultValue: 'Website optimization — PNG → WebP' })}</li>
-              <li>{t('guide.useCases.item2', { defaultValue: 'Social uploads — convert to supported formats' })}</li>
-              <li>{t('guide.useCases.item3', { defaultValue: 'Business docs — ensure cross-system compatibility' })}</li>
-              <li>{t('guide.useCases.item4', { defaultValue: 'iPhone photos — HEIC → JPG for sharing' })}</li>
-            </ul>
-          </div>
-        </aside>
       </section>
     </div>
   );
