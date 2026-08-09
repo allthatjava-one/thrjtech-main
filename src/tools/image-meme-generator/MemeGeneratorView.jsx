@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import "./MemeGenerator.css";
 import { normalizeImageFile } from '../../commons/normalizeImageFiles';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { decodeGif, isAnimatedGif } from './gifDecoder.js';
 
 export default function MemeGeneratorView({ initialFile }) {
@@ -11,6 +12,16 @@ export default function MemeGeneratorView({ initialFile }) {
   const previewRef = useRef(null);
   const navigate = useNavigate();
   const { t } = useTranslation('imageMemeGenerator');
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1','q2','q3','q4','q5','q6','q7','q8'].map(key => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`, { defaultValue: '' }),
+      acceptedAnswer: { '@type': 'Answer', text: t(`guide.faq.a${key.slice(1)}`, { defaultValue: '' }) }
+    }))
+  };
   const [imageSrc, setImageSrc] = useState(null);
   const [imageObj, setImageObj] = useState(null);
   // Layers: multiple text layers with position, size and color
@@ -795,6 +806,9 @@ export default function MemeGeneratorView({ initialFile }) {
 
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <h2 className="hero-title">{t('hero.title')}</h2>
       <p className="hero-tagline">{t('hero.tagline')}{' '}
         <Link to="/blogs/meme-generator-guide">{t('hero.blogLink')}</Link></p>
@@ -1172,6 +1186,55 @@ export default function MemeGeneratorView({ initialFile }) {
         </section>
 
         <section className='mg-section'>
+          <h3>{t('guide.techArchitecture.heading')}</h3>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.body') }} />
+          <h4>{t('guide.techArchitecture.privacyHeading')}</h4>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.privacyBody') }} />
+        </section>
+
+        <section className='mg-section'>
+          <h3>{t('guide.specsTable.heading')}</h3>
+          <div className="wm-guide-table-wrap">
+            <table className="mg-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.specsTable.headers.format')}</th>
+                  <th>{t('guide.specsTable.headers.dimensions')}</th>
+                  <th>{t('guide.specsTable.headers.fontStyle')}</th>
+                  <th>{t('guide.specsTable.headers.bestOutput')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row1.format')}</td>
+                  <td>{t('guide.specsTable.rows.row1.dim')}</td>
+                  <td>{t('guide.specsTable.rows.row1.font')}</td>
+                  <td>{t('guide.specsTable.rows.row1.output')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row2.format')}</td>
+                  <td>{t('guide.specsTable.rows.row2.dim')}</td>
+                  <td>{t('guide.specsTable.rows.row2.font')}</td>
+                  <td>{t('guide.specsTable.rows.row2.output')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row3.format')}</td>
+                  <td>{t('guide.specsTable.rows.row3.dim')}</td>
+                  <td>{t('guide.specsTable.rows.row3.font')}</td>
+                  <td>{t('guide.specsTable.rows.row3.output')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.specsTable.rows.row4.format')}</td>
+                  <td>{t('guide.specsTable.rows.row4.dim')}</td>
+                  <td>{t('guide.specsTable.rows.row4.font')}</td>
+                  <td>{t('guide.specsTable.rows.row4.output')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className='mg-section'>
           <h3>{t('guide.comparison.heading', { defaultValue: 'Meme Generator vs Image Editor' })}</h3>
           <table className="mg-table">
             <thead><tr><th>{t('guide.comparison.col1', { defaultValue: 'Feature' })}</th><th>{t('guide.comparison.col2', { defaultValue: 'Meme Generator' })}</th><th>{t('guide.comparison.col3', { defaultValue: 'Image Editor' })}</th></tr></thead>
@@ -1186,9 +1249,14 @@ export default function MemeGeneratorView({ initialFile }) {
 
         <section className='mg-section'>
           <h3>{t('guide.faq.heading', { defaultValue: 'FAQ' })}</h3>
-          <p><strong>{t('guide.faq.q1', { defaultValue: 'Do I need design skills?' })}</strong> {t('guide.faq.a1', { defaultValue: 'No — just a good idea and clear message.' })}</p>
-          <p><strong>{t('guide.faq.q2', { defaultValue: 'Can I use any image?' })}</strong> {t('guide.faq.a2', { defaultValue: 'You can, but be mindful of copyright and prefer common meme formats when possible.' })}</p>
-          <p><strong>{t('guide.faq.q3', { defaultValue: 'Why are my memes not getting engagement?' })}</strong> {t('guide.faq.a3', { defaultValue: 'Possible reasons: too much text, not relatable, outdated format.' })}</p>
+          <div className="ic-guide-faq">
+            {[1,2,3,4,5,6,7,8].map(n => (
+              <details key={n} className="ic-guide-faq-item" style={{ marginBottom: '0.75rem' }}>
+                <summary style={{ fontWeight: 'bold', cursor: 'pointer' }}>{t(`guide.faq.q${n}`)}</summary>
+                <p style={{ marginTop: '0.5rem', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: t(`guide.faq.a${n}`) }} />
+              </details>
+            ))}
+          </div>
         </section>
 
         <section className='mg-section'>

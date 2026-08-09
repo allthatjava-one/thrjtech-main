@@ -169,6 +169,47 @@
       "item3": "Mantenlo simple pero inteligente",
       "item4": "Pruebe diferentes variaciones"
     },
+    "techArchitecture": {
+      "heading": "Arquitectura técnica y renderizado Canvas en cliente",
+      "body": "Nuestro generador de memes utiliza la API <strong>HTML5 Canvas</strong> del cliente para lograr un renderizado de texto nítido. Los textos se superponen mediante <code>fillText()</code> para el relleno y <code>strokeText()</code> con un borde negro de más de 2 px para garantizar un alto contraste sobre cualquier fondo. Para GIF animados, buffers WebAssembly decodifican y procesan los fotogramas en la RAM del navegador.",
+      "privacyHeading": "Privacidad en cliente y exportación instantánea",
+      "privacyBody": "Dado que la rasterización e imagen ocurren estrictamente en la memoria JavaScript local, los archivos e imágenes de origen nunca se envían a servidores remotos. Las descargas utilizan <code>toBlob()</code> y Data URLs."
+    },
+    "specsTable": {
+      "heading": "Especificaciones de formatos de meme y Canvas",
+      "headers": {
+        "format": "Formatos / Tipos de meme",
+        "dimensions": "Dimensiones Canvas recomendadas",
+        "fontStyle": "Estilo de fuente típico",
+        "bestOutput": "Mejor formato de salida"
+      },
+      "rows": {
+        "row1": {
+          "format": "Texto clásico superior/inferior",
+          "dim": "1080 x 1080 px (1:1)",
+          "font": "Impact / Bold Sans, Texto blanco con contorno negro 2px",
+          "output": "JPEG o WebP"
+        },
+        "row2": {
+          "format": "Bloque de encabezado (Twitter / Reddit)",
+          "dim": "1200 x 675 px (16:9)",
+          "font": "Arial / Helvetica, Texto negro sobre fondo blanco",
+          "output": "PNG o WebP"
+        },
+        "row3": {
+          "format": "Meme GIF animado",
+          "dim": "Proporción original del GIF (480p / 720p)",
+          "font": "Superposición Canvas con sincronización de fotogramas",
+          "output": "GIF animado"
+        },
+        "row4": {
+          "format": "Reacción lado a lado",
+          "dim": "1200 x 600 px (2:1)",
+          "font": "Sans-serif del sistema, Ubicación dinámica",
+          "output": "JPEG o PNG"
+        }
+      }
+    },
     "comparison": {
       "heading": "Generador de memes vs editor de imágenes",
       "col1": "Característica",
@@ -188,13 +229,23 @@
       "row4col3": "Personalización completa"
     },
     "faq": {
-      "heading": "Preguntas frecuentes",
-      "q1": "¿Necesito habilidades de diseño?",
-      "a1": "No, sólo una buena idea y un mensaje claro.",
-      "q2": "¿Puedo usar cualquier imagen?",
-      "a2": "Puedes hacerlo, pero ten en cuenta los derechos de autor y prefiere formatos de memes comunes cuando sea posible.",
-      "q3": "¿Por qué mis memes no generan interacción?",
-      "a3": "Posibles motivos: demasiado texto, no identificable, formato desactualizado."
+      "heading": "Preguntas frecuentes (FAQ)",
+      "q1": "¿Cómo evita el contorno stroke que el texto desaparezca en fondos complejos?",
+      "a1": "Al ejecutar <code>strokeText()</code> con un borde oscuro (ej. negro) antes de aplicar <code>fillText()</code> con texto claro (ej. blanco), se crea un límite de alto contraste alrededor de cada carácter, garantizando la legibilidad.",
+      "q2": "¿Cómo maneja el navegador los retrasos de fotogramas en GIF animados durante el renderizado en Canvas?",
+      "a2": "Nuestro codificador de GIF decodifica los buffers RGBA fotograma por fotograma. Superpone el texto en cada fotograma preservando los parámetros de retardo originales durante la recodificación.",
+      "q3": "¿Cuál es la memoria máxima de Canvas disponible en navegadores móviles antes de sufrir bloqueos?",
+      "a3": "iOS Safari limita las asignaciones de Canvas a aproximadamente 16 MP (ej. 4096 × 4096 px). Mantener dimensiones por debajo de 2048 × 2048 px garantiza un renderizado fluido.",
+      "q4": "¿Cómo se cargan las fuentes personalizadas a través de la API Web Font antes de dibujarlas en Canvas?",
+      "a4": "Las fuentes se cargan de forma asíncrona mediante CSS o <code>document.fonts.load()</code>. Una vez resueltas en el navegador, <code>ctx.font = '30px Impact'</code> calcula y dibuja correctamente los caracteres.",
+      "q5": "¿Puedo exportar memes con transparencia en formato PNG?",
+      "a5": "Sí. El formato PNG admite un canal alfa de 8 bits. Si la imagen de origen contiene transparencia, el lienzo exportado la conserva por completo.",
+      "q6": "¿Necesito habilidades de diseño para crear memes?",
+      "a6": "No: la herramienta automatiza el escalado de diseño, las proporciones de fuente y los bordes para que puedas concentrarte en el mensaje.",
+      "q7": "¿Puedo usar mis propias imágenes o archivos GIF?",
+      "a7": "Sí, solo arrastra y suelta cualquier archivo JPEG, PNG, WebP o GIF animado directamente en la herramienta.",
+      "q8": "¿Se envían mis imágenes o memes a servidores en la nube?",
+      "a8": "No. Todo el renderizado y la exportación de archivos ocurren 100% localmente en la memoria RAM de tu navegador."
     },
     "conclusion": "Crear memes no se trata de un diseño complejo, se trata de comunicación y sincronización. Concéntrese en ideas claras, texto simple y relacionabilidad.",
     "ctaBtn": "Generador de memes de imágenes →",
