@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export function ImageRotatorView({
   items,
@@ -26,8 +27,26 @@ export function ImageRotatorView({
   const selected = items[selectedIdx];
   const isDownloading = status === 'downloading';
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1','q2','q3','q4','q5','q6','q7','q8'].map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`, { defaultValue: '' }),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`, { defaultValue: '' }),
+      },
+    })),
+  };
+
   return (
     <div className="ir2-view">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
       {/* Hero */}
       <h1 className="hero-title">{t('hero.title')}</h1>
       <p className="hero-tagline">{t('hero.tagline')}&nbsp;
@@ -342,24 +361,63 @@ export function ImageRotatorView({
         </div>
 
         <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.techArchitecture.heading')}</h3>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.body') }} />
+          <h4 style={{ fontSize: '1.05rem', marginTop: '1rem', marginBottom: '0.5rem', color: '#1e293b' }}>{t('guide.techArchitecture.privacyHeading')}</h4>
+          <p dangerouslySetInnerHTML={{ __html: t('guide.techArchitecture.privacyBody') }} />
+        </div>
+
+        <div className="ic-guide-section">
+          <h3 className="ic-guide-h3">{t('guide.exifTable.heading')}</h3>
+          <div className="wm-guide-table-wrap">
+            <table className="mg-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.exifTable.headers.tag')}</th>
+                  <th>{t('guide.exifTable.headers.orientation')}</th>
+                  <th>{t('guide.exifTable.headers.rotation')}</th>
+                  <th>{t('guide.exifTable.headers.action')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{t('guide.exifTable.rows.row1.tag')}</td>
+                  <td>{t('guide.exifTable.rows.row1.orientation')}</td>
+                  <td>{t('guide.exifTable.rows.row1.rotation')}</td>
+                  <td>{t('guide.exifTable.rows.row1.action')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.exifTable.rows.row2.tag')}</td>
+                  <td>{t('guide.exifTable.rows.row2.orientation')}</td>
+                  <td>{t('guide.exifTable.rows.row2.rotation')}</td>
+                  <td>{t('guide.exifTable.rows.row2.action')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.exifTable.rows.row3.tag')}</td>
+                  <td>{t('guide.exifTable.rows.row3.orientation')}</td>
+                  <td>{t('guide.exifTable.rows.row3.rotation')}</td>
+                  <td>{t('guide.exifTable.rows.row3.action')}</td>
+                </tr>
+                <tr>
+                  <td>{t('guide.exifTable.rows.row4.tag')}</td>
+                  <td>{t('guide.exifTable.rows.row4.orientation')}</td>
+                  <td>{t('guide.exifTable.rows.row4.rotation')}</td>
+                  <td>{t('guide.exifTable.rows.row4.action')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="ic-guide-section">
           <h3 className="ic-guide-h3">{t('guide.faq.heading')}</h3>
           <div className="ic-guide-faq">
-            <details className="ic-guide-faq-item">
-              <summary>{t('guide.faq.q1')}</summary>
-              <p>{t('guide.faq.a1')}</p>
-            </details>
-            <details className="ic-guide-faq-item">
-              <summary>{t('guide.faq.q2')}</summary>
-              <p>{t('guide.faq.a2')}</p>
-            </details>
-            <details className="ic-guide-faq-item">
-              <summary>{t('guide.faq.q3')}</summary>
-              <p>{t('guide.faq.a3')}</p>
-            </details>
-            <details className="ic-guide-faq-item">
-              <summary>{t('guide.faq.q4')}</summary>
-              <p>{t('guide.faq.a4')}</p>
-            </details>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+              <details key={n} className="ic-guide-faq-item" style={{ marginBottom: '0.75rem' }}>
+                <summary style={{ fontWeight: 'bold', cursor: 'pointer' }}>{t(`guide.faq.q${n}`)}</summary>
+                <p style={{ marginTop: '0.5rem', lineHeight: 1.5 }}>{t(`guide.faq.a${n}`)}</p>
+              </details>
+            ))}
           </div>
         </div>
 

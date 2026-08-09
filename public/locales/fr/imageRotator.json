@@ -102,16 +102,65 @@
       "item5": "Aligner des graphiques pour des présentations",
       "item6": "Créer du contenu pour les réseaux sociaux"
     },
+    "techArchitecture": {
+      "heading": "Architecture Canvas côté client et mathématiques de rotation trigonométrique",
+      "body": "Notre rotateur d'images exécute les transformations 100% côté client en mémoire navigateur grâce à l'API <strong>HTML5 Canvas</strong>. Pour faire pivoter une matrice d'image sans rognage ni déformation, le contexte 2D applique une matrice de transformation : d'abord <code>ctx.translate(width / 2, height / 2)</code> déplace l'origine au centre du canvas, puis <code>ctx.rotate(radians)</code> applique la rotation $\\theta = \\text{degrés} \\times \\frac{\\pi}{180}$. Enfin, <code>ctx.drawImage()</code> dessine le bitmap décalé de sa demi-dimension.",
+      "privacyHeading": "Balises EXIF sans perte vs. Ré-encodage Bitmap Canvas",
+      "privacyBody": "L'orientation des images repose soit sur des <strong>balises de métadonnées EXIF</strong>, soit sur une <strong>transformation physique des pixels</strong>. Les smartphones (iOS et Android) enregistrent une balise EXIF (Tag 1, 3, 6, 8) indiquant l'orientation du capteur. Modifier uniquement l'EXIF est sans perte mais échoue sur les logiciels ignorant ces balises. Notre outil effectue un ré-encodage canvas : les pixels sont physiquement transposés et ré-encodés (JPEG, PNG, WebP), garantissant 100% de compatibilité sans envoi sur un serveur."
+    },
+    "exifTable": {
+      "heading": "Spécifications et balises d'orientation EXIF standard",
+      "headers": {
+        "tag": "Valeur balise EXIF",
+        "orientation": "Orientation initiale de l'appareil",
+        "rotation": "Rotation requise pour corriger",
+        "action": "Action matrice Canvas"
+      },
+      "rows": {
+        "row1": {
+          "tag": "1",
+          "orientation": "Normale (Haut-Gauche)",
+          "rotation": "0° (Aucune)",
+          "action": "Aucune transformation"
+        },
+        "row2": {
+          "tag": "3",
+          "orientation": "Inversée (Bas-Droite)",
+          "rotation": "180°",
+          "action": "Rotation de 180° autour du centre"
+        },
+        "row3": {
+          "tag": "6",
+          "orientation": "Pivotée 90° Horlogique (Droite-Haut)",
+          "rotation": "90° Sens horaire",
+          "action": "Inverser Largeur/Hauteur + 90°"
+        },
+        "row4": {
+          "tag": "8",
+          "orientation": "Pivotée 90° Antihoraire (Gauche-Bas)",
+          "rotation": "270° Sens horaire / 90° Antihoraire",
+          "action": "Inverser Largeur/Hauteur + 270°"
+        }
+      }
+    },
     "faq": {
-      "heading": "❓ Questions fréquentes",
-      "q1": "La rotation réduit-elle la qualité de l'image ?",
-      "a1": "La plupart des outils modernes préservent la qualité lors de la rotation des formats courants.",
-      "q2": "Puis-je faire pivoter une image selon un angle personnalisé ?",
-      "a2": "Certains outils permettent une rotation libre au-delà des incréments de 90°.",
-      "q3": "La rotation d'image est-elle gratuite ?",
-      "a3": "De nombreux outils de rotation en ligne sont entièrement gratuits.",
-      "q4": "Dois-je créer un compte ?",
-      "a4": "La plupart des outils en ligne ne nécessitent pas d'inscription."
+      "heading": "Foire aux questions (FAQ)",
+      "q1": "Comment les balises d'orientation EXIF affectent-elles les photos prises sur iOS ou Android ?",
+      "a1": "Les smartphones écrivent des balises EXIF (ex. Tag 6 ou 8) selon l'accéléromètre. Certains navigateurs ou sites ignorent ces balises et affichent les photos de côté. Notre outil applique la rotation directement sur le tableau de pixels pour un rendu universel.",
+      "q2": "Faire pivoter un JPEG à 90° dans le navigateur entraîne-t-il une perte de qualité ?",
+      "a2": "Le ré-encodage décompresse le buffer JPEG en pixels RGBA avant de le ré-enregistrer avec une qualité très élevée (~0.92-0.95). La dégradation est imperceptible à l'œil nu.",
+      "q3": "Comment les dimensions de l'image (largeur et hauteur) sont-elles recalculées lors d'une rotation à 90° vs 180° ?",
+      "a3": "Pour 180°, les dimensions restent identiques ($W_{out} = W_{in}, H_{out} = H_{in}$). Pour 90° et 270°, la largeur et la hauteur s'inversent ($W_{out} = H_{in}, H_{out} = W_{in}$) pour éviter tout rognage.",
+      "q4": "Quelle est la taille de fichier maximale gérée par le navigateur avant manque de mémoire ?",
+      "a4": "Les limites Canvas dépendent du GPU et du navigateur (jusqu'à 16 384 × 16 384 px ou ~256 Mo de RAM). Les photos HD/4K de 50 Mo+ sont traitées de manière fluide.",
+      "q5": "Mes photos personnelles sont-elles envoyées vers un serveur distant lors de la rotation ?",
+      "a5": "Non. Tout le traitement s'exécute strictement dans la mémoire RAM de votre navigateur client. Aucun octet ne quitte votre appareil.",
+      "q6": "Puis-je faire pivoter des images PNG transparentes sans perdre la transparence ?",
+      "a6": "Oui. Les formats PNG et WebP conservent leur canal alpha de transparence 8 bits durant la transformation.",
+      "q7": "Comment fonctionne la rotation par lot avec l'option 'Appliquer à tous' ?",
+      "a7": "L'activation d'Appliquer à tous applique la même matrice de rotation à tous les fichiers en mémoire simultanément, vous permettant de tout télécharger dans une archive ZIP.",
+      "q8": "Pourquoi certaines photos apparaissent-elles droites sur mon ordinateur mais de côté sur le web ?",
+      "a8": "Les visualiseurs d'images lisent les métadonnées EXIF automatiquement, alors que certains navigateurs web affichent les pixels bruts sans interpréter l'EXIF. La rotation physique résout ce problème."
     },
     "whyUs": {
       "heading": "⭐ Pourquoi utiliser ThrjTech Image Rotator ?",
