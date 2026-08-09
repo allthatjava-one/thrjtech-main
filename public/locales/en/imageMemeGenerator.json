@@ -157,6 +157,47 @@
       "item3": "Keep it simple but clever",
       "item4": "Test different variations"
     },
+    "techArchitecture": {
+      "heading": "Technical Architecture & Client-Side Canvas Mechanics",
+      "body": "Our Meme Generator relies on client-side <strong>HTML5 Canvas API</strong> rendering for crisp text overlays. Captions are composited using <code>fillText()</code> for solid fills and <code>strokeText()</code> with a 2px+ black border outline to guarantee high contrast across varied background colors. For animated GIFs, WebAssembly binary buffers parse frames frame-by-frame entirely inside browser RAM.",
+      "privacyHeading": "Client-Side Privacy & Instant Export",
+      "privacyBody": "Because text rasterization and binary encoding occur strictly inside local JavaScript memory, source images and video frames are never transmitted to external cloud servers. Downloads use <code>toBlob()</code> and Data URLs for instant, private file generation."
+    },
+    "specsTable": {
+      "heading": "Meme Format & Canvas Specification Table",
+      "headers": {
+        "format": "Meme Format / Type",
+        "dimensions": "Recommended Canvas Dimensions",
+        "fontStyle": "Typical Font & Styling",
+        "bestOutput": "Best Output Format"
+      },
+      "rows": {
+        "row1": {
+          "format": "Classic Top/Bottom Text",
+          "dim": "1080 x 1080 px (1:1)",
+          "font": "Impact / Bold Sans, White text with 2px Black Stroke",
+          "output": "JPEG or WebP"
+        },
+        "row2": {
+          "format": "Header Block (Twitter / Reddit)",
+          "dim": "1200 x 675 px (16:9)",
+          "font": "Arial / Helvetica, Black text on White padding",
+          "output": "PNG or WebP"
+        },
+        "row3": {
+          "format": "Animated GIF Meme",
+          "dim": "Original Ratio (480p / 720p)",
+          "font": "Custom Canvas Overlay with Frame Delay Sync",
+          "output": "Animated GIF"
+        },
+        "row4": {
+          "format": "Side-by-Side Reaction",
+          "dim": "1200 x 600 px (2:1)",
+          "font": "System Sans-Serif, Dynamic placement",
+          "output": "JPEG or PNG"
+        }
+      }
+    },
     "comparison": {
       "heading": "Meme Generator vs Image Editor",
       "col1": "Feature",
@@ -176,13 +217,23 @@
       "row4col3": "Full customization"
     },
     "faq": {
-      "heading": "FAQ",
-      "q1": "Do I need design skills?",
-      "a1": "No — just a good idea and clear message.",
-      "q2": "Can I use any image?",
-      "a2": "You can, but be mindful of copyright and prefer common meme formats when possible.",
-      "q3": "Why are my memes not getting engagement?",
-      "a3": "Possible reasons: too much text, not relatable, outdated format."
+      "heading": "Frequently Asked Questions (FAQ)",
+      "q1": "How does stroke outline width prevent text from disappearing on multi-colored image backgrounds?",
+      "a1": "By rendering <code>strokeText()</code> with a dark outline (e.g. black) prior to executing <code>fillText()</code> with light text (e.g. white), a high-contrast boundary surrounds every character. This ensures legibility regardless of background brightness.",
+      "q2": "How does the browser handle animated GIF frame-rate delays during canvas text composite rendering?",
+      "a2": "Our GIF encoder decodes raw byte buffers into individual RGBA frame arrays. It composites canvas text layers onto each frame buffer while preserving original EXIF frame delay parameters during re-encoding.",
+      "q3": "What is the maximum canvas memory buffer available on mobile browsers before memory limits throttle export?",
+      "a3": "iOS Safari limits individual canvas allocations to roughly 16 MP (e.g. 4096 × 4096 pixels or 288 MB RAM). Keeping meme dimensions under 2048 × 2048 px guarantees smooth multi-frame rendering.",
+      "q4": "How do custom font files load via Web Font API before binding to the canvas context?",
+      "a4": "Fonts load asynchronously using CSS or <code>document.fonts.load()</code>. Once resolved in the DOM font set, calling <code>ctx.font = '30px Impact'` correctly measures and draws text glyphs.",
+      "q5": "Can I export memes with transparent alpha channels using PNG format?",
+      "a5": "Yes. PNG format supports 8-bit alpha channels. If your source image contains transparent regions or padding, the exported canvas retains full transparency.",
+      "q6": "Do I need design or photo editing skills to create memes?",
+      "a6": "No — our tool automates layout scaling, font ratios, and text stroke boundaries so you can focus entirely on punchy captions.",
+      "q7": "Can I use custom image uploads or GIF URLs?",
+      "a7": "Yes, you can drag and drop any local JPEG, PNG, WebP, or animated GIF file directly into the browser workspace.",
+      "q8": "Are my images or generated memes sent to cloud servers?",
+      "a8": "No. All canvas rendering, image compositing, and file exports occur 100% locally in your browser RAM."
     },
     "conclusion": "Creating memes isn't about complex design — it's about communication and timing. Focus on clear ideas, simple text, and relatability.",
     "ctaBtn": "Image Meme Generator →",
