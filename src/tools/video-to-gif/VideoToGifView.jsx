@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 export default function VideoToGifView({
   videoRef,
@@ -212,8 +213,25 @@ export default function VideoToGifView({
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8']
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqKeys.map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       {/* Hero */}
       <div className="hero-section">
         <h1 className="hero-title">{t('hero.title')}</h1>
@@ -540,6 +558,25 @@ export default function VideoToGifView({
         <h3>{t('guide.feature3.title')}</h3>
         <p>{t('guide.feature3.body')}</p>
 
+        <div className="vtg-arch-section" style={{ marginTop: '2.5rem', marginBottom: '2.5rem' }}>
+          <h2>{t('guide.archTitle')}</h2>
+          
+          <div style={{ marginBottom: '1.5rem' }}>
+            <h3>{t('guide.architecture.wasmTitle')}</h3>
+            <p>{t('guide.architecture.wasmBody')}</p>
+          </div>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <h3>{t('guide.architecture.quantizationTitle')}</h3>
+            <p>{t('guide.architecture.quantizationBody')}</p>
+          </div>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <h3>{t('guide.architecture.memoryTitle')}</h3>
+            <p>{t('guide.architecture.memoryBody')}</p>
+          </div>
+        </div>
+
         <h4>{t('guide.recommendedSettings.title')}</h4>
         <div className="vtg-table-wrap">
           <table className="vtg-table">
@@ -560,6 +597,46 @@ export default function VideoToGifView({
 
         <h3>{t('guide.feature4.title')}</h3>
         <p>{t('guide.feature4.body')}</p>
+
+        <h4 style={{ marginTop: '2.5rem' }}>{t('guide.specTable.title')}</h4>
+        <div className="vtg-table-wrap" style={{ marginBottom: '2.5rem' }}>
+          <table className="vtg-table">
+            <thead>
+              <tr>
+                <th>{t('guide.specTable.headers.specification')}</th>
+                <th>{t('guide.specTable.headers.mp4source')}</th>
+                <th>{t('guide.specTable.headers.gifoutput')}</th>
+                <th>{t('guide.specTable.headers.technicalImpact')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>{t('guide.specTable.rows.colorDepth.spec')}</strong></td>
+                <td>{t('guide.specTable.rows.colorDepth.mp4')}</td>
+                <td>{t('guide.specTable.rows.colorDepth.gif')}</td>
+                <td>{t('guide.specTable.rows.colorDepth.impact')}</td>
+              </tr>
+              <tr>
+                <td><strong>{t('guide.specTable.rows.compression.spec')}</strong></td>
+                <td>{t('guide.specTable.rows.compression.mp4')}</td>
+                <td>{t('guide.specTable.rows.compression.gif')}</td>
+                <td>{t('guide.specTable.rows.compression.impact')}</td>
+              </tr>
+              <tr>
+                <td><strong>{t('guide.specTable.rows.audioSupport.spec')}</strong></td>
+                <td>{t('guide.specTable.rows.audioSupport.mp4')}</td>
+                <td>{t('guide.specTable.rows.audioSupport.gif')}</td>
+                <td>{t('guide.specTable.rows.audioSupport.impact')}</td>
+              </tr>
+              <tr>
+                <td><strong>{t('guide.specTable.rows.alphaChannel.spec')}</strong></td>
+                <td>{t('guide.specTable.rows.alphaChannel.mp4')}</td>
+                <td>{t('guide.specTable.rows.alphaChannel.gif')}</td>
+                <td>{t('guide.specTable.rows.alphaChannel.impact')}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <h4>{t('guide.widthOptionsTitle')}</h4>
         <ul>
@@ -603,14 +680,40 @@ export default function VideoToGifView({
         <hr />
 
         <h2>{t('guide.faqTitle')}</h2>
-        <h3>{t('guide.faq.q1')}</h3>
-        <p>{t('guide.faq.a1')}</p>
-        <h3>{t('guide.faq.q2')}</h3>
-        <p>{t('guide.faq.a2')}</p>
-        <h3>{t('guide.faq.q3')}</h3>
-        <p>{t('guide.faq.a3')}</p>
-        <h3>{t('guide.faq.q4')}</h3>
-        <p>{t('guide.faq.a4')}</p>
+        <div style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q1')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a1')}</p>
+          </details>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q2')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a2')}</p>
+          </details>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q3')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a3')}</p>
+          </details>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q4')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a4')}</p>
+          </details>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q5')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a5')}</p>
+          </details>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q6')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a6')}</p>
+          </details>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q7')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a7')}</p>
+          </details>
+          <details className="vtg-faq-item" style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <summary style={{ fontWeight: '600', paddingBottom: '0.5rem' }}>{t('guide.faq.q8')}</summary>
+            <p style={{ marginTop: '0.5rem', cursor: 'default' }}>{t('guide.faq.a8')}</p>
+          </details>
+        </div>
 
         <hr />
         

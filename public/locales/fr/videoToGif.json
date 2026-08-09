@@ -78,7 +78,7 @@
     "featuresTitle": "Fonctionnalités clés de THRJTech Vidéo en GIF",
     "feature1": {
       "title": "1. Conversion rapide dans le navigateur",
-      "body": "L'outil fonctionne directement dans votre navigateur, sans téléversement vers un serveur. Cette approche améliore la confidentialité et réduit l'attente. Les convertisseurs modernes utilisent de plus en plus le traitement local avec WebAssembly et des technologies basées sur FFmpeg.",
+      "body": "L'outil fonctionne directement dans votre navigateur, sans téléversement vers un serveur. Cette approche améliore la confidentialité et réduit l'attente. Les convertisseurs modernes utilisent de plus en plus le traitement local avec WebAssembly et des technologies basées sur FFmpeg. En exploitant des bibliothèques C/C++ compilées en WASM (comme ffmpeg.wasm), le décodage vidéo et l'extraction de trames s'exécutent de manière fluide au sein de la sandbox du navigateur.",
       "benefitsTitle": "Avantages",
       "benefit1": "🔒 Meilleure confidentialité",
       "benefit2": "⚡ Traitement plus rapide",
@@ -88,11 +88,55 @@
     "feature2": {
       "title": "2. Découpez le moment exact",
       "lead": "Personne ne veut d'un GIF de 2 minutes.",
-      "body": "Choisissez exactement la portion de vidéo à convertir. Les clips plus courts produisent généralement des fichiers plus légers, une lecture plus fluide et une meilleure compatibilité sur les réseaux sociaux. La plupart des workflows professionnels recommandent de découper avant export."
+      "body": "Choisissez exactement la portion de vidéo à convertir. Les clips plus courts produisent généralement des fichiers plus légers, une lecture plus fluide et une meilleure compatibilité sur les réseaux sociaux. La plupart des workflows professionnels recommandent de découper avant export. Le découpage concentre le budget CPU sur les trames nécessaires, réduisant le volume global de données à traiter."
     },
     "feature3": {
       "title": "3. Contrôlez les FPS et la taille du fichier",
-      "body": "Le nombre d'images par seconde (FPS) a un impact majeur sur la qualité et la taille d'un GIF. De nombreux outils exposent ce réglage car l'optimisation est cruciale pour le partage."
+      "body": "Le nombre d'images par seconde (FPS) a un impact majeur sur la qualité et la taille d'un GIF. De nombreux outils exposent ce réglage car l'optimisation est cruciale pour le partage. Ajuster cette valeur modifie dynamiquement la charge de compression LZW en omettant les états d'images intermédiaires."
+    },
+    "archTitle": "Architecture Technique Approfondie",
+    "architecture": {
+      "wasmTitle": "WebAssembly (WASM) & Décodage Local",
+      "wasmBody": "Contrairement aux systèmes vidéo cloud traditionnels qui téléversent de lourds médias via des requêtes réseau, ce convertisseur s'exécute localement sur votre ordinateur. Grâce à des modules Javascript pré-compilés communicants (dans l'esprit d'un framework ffmpeg.wasm), l'application convertit des instructions natives en code WebAssembly hautement optimisé. Votre microprocesseur décode alors directement les flux H.264 ou VP9 locaux pour projeter les pixels image par image sur un élément HTML5 Canvas sans latence externe.",
+      "quantizationTitle": "Extraction d'images & Restriction 256 Couleurs",
+      "quantizationBody": "Le standard d'encodage GIF (Graphics Interchange Format) repose historiquement sur un système d'indexation 8-bit par palette de couleurs, limitant l'espace à un maximum absolu de 256 nuances distinctes par image. Pour convertir un signal vidéo source codé sur 24 bits (16,7 millions de teintes) sans générer des aplats grossiers, nous utilisons des algorithmes avancés de quantification colorimétrique (tels que NeuQuant ou la méthode médiane). Ces formules regroupent les pixels voisins en 256 nuances optimales et y appliquent un tramage spatial (dithering de type Floyd-Steinberg ou diffusion d'erreur) pour lisser les ombres et dégradés.",
+      "memoryTitle": "Consommation RAM & Gestion de la Heap Navigateur",
+      "memoryBody": "Le décodage, l'extraction de trames et les routines de quantification mathématique sollicitent fortement la mémoire physique de votre navigateur web. Traiter une séquence typique de 10 secondes en résolution 1080p peut rapidement saturer la mémoire allouée (heap Javascript) à hauteur de plusieurs centaines de mégaoctets. Sur les appareils mobiles ou tablettes d'ancienne génération disposant de ressources RAM limitées, un dépassement peut causer des redémarrages inopinés de l'onglet (erreurs OOM). Notre outil gère rigoureusement la collecte de données obsolètes (garbage collection) pour libérer les Canvas non utilisés après compression LZW."
+    },
+    "specTable": {
+      "title": "Comparatif Technique: Spécifications Vidéo vs. GIF",
+      "headers": {
+        "specification": "Spécification",
+        "mp4source": "MP4 / WebM (Source)",
+        "gifoutput": "GIF Animé (Sortie)",
+        "technicalImpact": "Impact Technique"
+      },
+      "rows": {
+        "colorDepth": {
+          "spec": "Profondeur de couleur",
+          "mp4": "24-bit (16.7 millions de couleurs)",
+          "gif": "8-bit (Maximum 256 couleurs)",
+          "impact": "L'encodage GIF impose un calcul de palette et un tramage (dithering)."
+        },
+        "compression": {
+          "spec": "Algorithme de compression",
+          "mp4": "Inter-image avancée (H.264/VP9)",
+          "gif": "LZW compression sans perte (Trame par trame)",
+          "impact": "Entraîne des poids de fichiers massifs sur les longues durées."
+        },
+        "audioSupport": {
+          "spec": "Canal Audio",
+          "mp4": "Oui (AAC, Vorbis, etc.)",
+          "gif": "Non",
+          "impact": "Les bandes-son sont éliminées lors du processus d'assemblage."
+        },
+        "alphaChannel": {
+          "spec": "Transparence (Canal Alpha)",
+          "mp4": "WebM (Oui), MP4 (Non)",
+          "gif": "Oui (Binaire : Oui/Non uniquement)",
+          "impact": "Les GIF ne gèrent pas la transparence partielle ou progressive (semi-transparente)."
+        }
+      }
     },
     "recommendedSettings": {
       "title": "Réglages recommandés",
@@ -153,7 +197,15 @@
       "q3": "Pourquoi mon GIF est-il flou ?",
       "a3": "Causes possibles : faible résolution, compression excessive, FPS trop faible, ou redimensionnement agressif d'une source très grande.",
       "q4": "Puis-je convertir des vidéos YouTube en GIF ?",
-      "a4": "Certains outils permettent l'import par URL, d'autres exigent de télécharger la vidéo d'abord."
+      "a4": "Certains outils permettent l'import par URL, d'autres exigent de télécharger la vidéo d'abord.",
+      "q5": "Pourquoi les dégradés et les ciels apparaissent-ils pixels ou ont-ils des 'bandes' après conversion ?",
+      "a5": "Cela se produit car le format GIF est limité à une profondeur de couleur de 8 bits (256 nuances max). Lorsqu'une vidéo de 24 bits est réduite à cette palette, le procédé de quantification crée des bandes d'aplat visibles. Nous utilisons un tramage (dithering) pour estomper ces lignes, ce qui crée un effet de grain pixelisé.",
+      "q6": "Comment le navigateur gère-t-il la RAM lors de conversions 4K via WebAssembly ?",
+      "a6": "WebAssembly s'exécute dans une sandbox de mémoire virtuelle gérée par le navigateur. Décoder des formats 4K volumineux requiert de charger chaque pixel brut sous forme de tampons RGBA de 32 bits. Si la mémoire requise dépasse le plafond du navigateur, l'onglet subira une plantage instantané (erreur OOM - Out of Memory).",
+      "q7": "Est-ce que le processus FFmpeg WASM local supprime les métadonnées de géolocalisation ou de prise de vue ?",
+      "a7": "Oui. Notre algorithme d'écriture LZW extrait uniquement les pixels nécessaires au dessin, omettant totalement les blocs de métadonnées EXIF, dates d'enregistrement, ou coordonnées GPS issus du fichier vidéo d'origine.",
+      "q8": "Comment la baisse du taux de rafraîchissement (FPS) réduit-elle mathématiquement la taille du GIF ?",
+      "a8": "Comme les fichiers GIF reposent sur une compression LZW sans perte appliquée individuellement trame après trame, chaque image est traitée séparément. Diviser le FPS par deux (ex. de 20 à 10 images par seconde) élimine littéralement 50% des calculs et images à stocker, diminuant de façon linéaire le poids final du fichier."
     },
     "finalTitle": "Conclusion",
     "finalBody1": "Un simple clip vidéo peut devenir un mème viral, un extrait de tutoriel, un rapport de bug, une vitrine produit ou une réaction pour les réseaux sociaux.",
