@@ -148,6 +148,21 @@
       "item4": "✅ Evite el anidamiento excesivo: el anidamiento profundo es difícil de leer y de mantener.",
       "item5": "✅ Valide temprano: detecte errores antes de usar JSON en el código."
     },
+    "architecture": {
+      "heading": "🧠 Detalles de Arquitectura Técnica y Análisis en el Cliente",
+      "parsingEngine": {
+        "title": "El Motor de Análisis de JavaScript y Árboles de Sintaxis Abstracta (AST)",
+        "body": "Cuando pegas texto sin formato, el formateador utiliza el motor JS del navegador. Primero, `JSON.parse()` procesa los caracteres para construir un Árbol de Sintaxis Abstracta (AST) en la memoria RAM del host. Luego, `JSON.stringify(data, null, 2)` recorre de manera iterativa el AST generado procesando las sangrías especificadas para emitir la cadena resultante."
+      },
+      "bigIntPrecision": {
+        "title": "Prueba de Precisión de BigInt y Limitaciones del Punto Flotante IEEE 754",
+        "body": "Dado que las variables numéricas estándar se representan con precisión doble según IEEE 754, leer enteros de 64 bits (comunes en Snowflake IDs o respuestas estructuradas de Twitter/X) puede provocar pérdidas de información de forma silenciosa. Esta herramienta puede extenderse con funciones revivor personalizadas para convertir estas grandes cadenas numéricas antes del parseo."
+      },
+      "zeroServer": {
+        "title": "Aislamiento en Dispositivo: Máxima Privacidad de Información",
+        "body": "La ejecución se procesa en entorno Sandbox. Los datos nunca viajan por HTTP a servidores de terceros. Todo reside únicamente en el espacio de memoria heap virtual local, de forma segura."
+      }
+    },
     "comparison": {
       "heading": "🧰 Formateador JSON vs Validador JSON",
       "col1": "Característica",
@@ -163,6 +178,42 @@
       "row3col2": "Estructura limpia",
       "row3col3": "Mensajes de error",
       "workflow": "Mejor flujo de trabajo: Formatear → Validar → Corregir."
+    },
+    "formatSpecs": {
+      "heading": "📊 Comparación de Formatos Estructurados (JSON vs JSON5 vs YAML vs XML)",
+      "colFormat": "Formato de Datos",
+      "colVerbosity": "Verbosidad de Sintaxis",
+      "colComments": "¿Soporta Comentarios?",
+      "colTypes": "Tipos de Datos Soportados",
+      "colUse": "Caso de Uso Principal",
+      "rowJson": {
+        "format": "JSON (RFC 8259)",
+        "verbosity": "Bajo / Estricto",
+        "comments": "No",
+        "types": "String, Number, Boolean, Array, Object, Null",
+        "use": "Mensajería REST API, transferencia de datos Frontend-Backend"
+      },
+      "rowJson5": {
+        "format": "JSON5",
+        "verbosity": "Bajo / Flexible",
+        "comments": "Sí (// y /* */)",
+        "types": "Tipos JSON + NaN, Infinity, comas sobrantes",
+        "use": "Archivos de configuración, configuraciones editables por humanos"
+      },
+      "rowYaml": {
+        "format": "YAML",
+        "verbosity": "Mínimo (Espaciado)",
+        "comments": "Sí (#)",
+        "types": "Complejo (Anclas, Alias, Tipos Propios)",
+        "use": "Flujos de integración CI/CD, configuraciones de Kubernetes/Docker"
+      },
+      "rowXml": {
+        "format": "XML",
+        "verbosity": "Alto (Etiquetas Pesadas)",
+        "comments": "Sí (<!-- comentario -->)",
+        "types": "Texto (Requiere esquemas para parsear tipos)",
+        "use": "APIs legadas de SOAP, feeds RSS, integración de sistemas corporativos"
+      }
     },
     "proTips": {
       "heading": "⚡ Consejos profesionales",
@@ -184,7 +235,17 @@
       "q3": "¿Cuál es el mejor estilo de sangría?",
       "a3": "2 espacios es el estándar más común.",
       "q4": "¿Por qué no se formatea mi JSON?",
-      "a4": "Probablemente debido a errores de sintaxis, falta de corchetes o estilo de cita incorrecto."
+      "a4": "Probablemente debido a errores de sintaxis, falta de corchetes o estilo de cita incorrecto.",
+      "q5": "¿Por qué JSON.parse() lanza un error SyntaxError: Unexpected token al detectar comas finales?",
+      "a5": "Según las especificaciones formales ECMA-404 y RFC 8259, las comas sobrantes están prohibidas para asegurar la portabilidad de los flujos de mensajería. Al encontrarse un carácter de cierre en lugar de un par llave-valor, el analizador falla.",
+      "q6": "¿Cómo gestiona el navegador la memoria RAM al procesar ficheros JSON masivos de más de 50MB?",
+      "a6": "La conversión a objetos de JavaScript estructurados en la memoria heap puede disparar la ram activa de 5 a 10 veces el tamaño físico del archivo, pudiendo causar congelaciones temporales en dispositivos con menos recursos de sistema.",
+      "q7": "¿Cuál es la diferencia técnica entre los estándares RFC 4627 y RFC 8259 para JSON?",
+      "a7": "RFC 4627 restringía los documentos válidos a arreglos u objetos a nivel de raíz. La nueva RFC 8259 permite cualquier tipo de dato primitivo válido como elemento independiente principal y declara UTF-8 por defecto.",
+      "q8": "¿Por qué las llamadas de referencias circulares (recursive objects) provocan fallos de formato?",
+      "a8": "Al recorrer en profundidad un árbol de dependencias cruzado recursivo, las funciones de serialización como stringify sufren loops infinitos de procesamiento. Los motores de JS disparan un error de tipo para autodestruir el bucle.",
+      "q9": "¿Qué es la pérdida de precisión de BigInt y cómo se previene en el formateo avanzado?",
+      "a9": "Dado que los números en JavaScript son flotantes de doble precisión, los valores enteros superiores a 9,007,199,254,740,991 sufren una pérdida de precisión. Analizar un ID de 64 bits de forma nativa trunca los dígitos menos significativos. Esto se previene utilizando un analizador de expresiones regulares o una función reviver personalizada que lea estas secuencias numéricas como cadenas o de forma nativa como objetos BigInt."
     },
     "conclusion": "Trabajar con JSON sin formato no tiene por qué ser frustrante. Con un formateador JSON, puede leer datos al instante, depurar más rápido y reducir errores: una de las herramientas más simples que puede mejorar significativamente su flujo de trabajo.",
     "ctaBtn": "👉 Pruébelo aquí: Herramienta de formato JSON"
