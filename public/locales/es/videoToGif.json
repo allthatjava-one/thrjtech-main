@@ -78,7 +78,7 @@
     "featuresTitle": "Funciones clave de Video a GIF de THRJTech",
     "feature1": {
       "title": "1. Conversión rápida en el navegador",
-      "body": "La herramienta funciona directamente en tu navegador, por lo que no necesitas subir archivos a un servidor. Este enfoque mejora la privacidad y reduce la espera. Los convertidores modernos usan cada vez más procesamiento local con WebAssembly y tecnología basada en FFmpeg.",
+      "body": "La herramienta funciona directamente en tu navegador, por lo que no necesitas subir archivos a un servidor. Este enfoque mejora la privacidad y reduce la espera. Los convertidores modernos usan cada vez más procesamiento local con WebAssembly y tecnología basada en FFmpeg. Al aprovechar las librerías C/C++ compiladas en WASM (como ffmpeg.wasm), la decodificación de video y la extracción de fotogramas pueden ejecutarse sin problemas dentro de la estructura de sandbox del navegador.",
       "benefitsTitle": "Beneficios",
       "benefit1": "🔒 Mejor privacidad",
       "benefit2": "⚡ Procesamiento más rápido",
@@ -88,11 +88,55 @@
     "feature2": {
       "title": "2. Recorta el momento exacto",
       "lead": "Nadie quiere un GIF de 2 minutos.",
-      "body": "Elige la sección exacta del video que deseas convertir. Los clips cortos suelen generar archivos más pequeños, reproducción más fluida y mejor compatibilidad en redes sociales. La mayoría de flujos profesionales recomienda recortar antes de exportar."
+      "body": "Elige la sección exacta del video que deseas convertir. Los clips cortos suelen generar archivos más pequeños, reproducción más fluida y mejor compatibilidad en redes sociales. La mayoría de flujos profesionales recomienda recortar antes de exportar. El recorte concentra el presupuesto computacional en marcas de tiempo específicas, reduciendo los fotogramas totales requeridos para codificar."
     },
     "feature3": {
       "title": "3. Controla FPS y tamaño de archivo",
-      "body": "La velocidad de fotogramas (FPS) influye mucho en la calidad y el tamaño del GIF. Muchos convertidores modernos ofrecen ajuste de FPS porque optimizar GIF es clave para compartir en plataformas."
+      "body": "La velocidad de fotogramas (FPS) influye mucho en la calidad y el tamaño del GIF. Muchos convertidores modernos ofrecen ajuste de FPS porque optimizar GIF es clave para compartir en plataformas. El ajuste de FPS cambia dinámicamente la carga de codificación LZW al capturar menos estados de fotogramas intersticiales."
+    },
+    "archTitle": "Arquitectura Técnica Profunda",
+    "architecture": {
+      "wasmTitle": "WebAssembly (WASM) y Decodificación Local",
+      "wasmBody": "A diferencia de las plataformas de video tradicionales basadas en servidores que transmiten archivos sin procesar a través de túneles HTTP redundantes, este sistema procesa archivos localmente en el navegador. Utiliza un marco de trabajo JS personalizado compilado, similar a ffmpeg.wasm, que traduce las librerías básicas de bajo nivel de C en instrucciones portátiles de WebAssembly. Esto permite que la CPU del navegador decodifique flujos de video (como H.264 o VP9) y asigne búferes de píxeles raw en lienzos HTML5 Canvas directamente en el dispositivo del cliente sin latencia de red.",
+      "quantizationTitle": "Extracción de Fotogramas y el Límite de Paleta de 256 Colores",
+      "quantizationBody": "La especificación GIF (Graphics Interchange Format) se basa inherentemente en un sistema de paletas indexadas de 8 bits, lo que restringe el color disponible a un máximo de 256 colores por fotograma. Para comprimir datos de video reales de 24 bits en un espacio mapeado de 8 bits sin provocar bandas severas de color, implementamos algoritmos de cuantización de color (como NeuQuant o corte medio). Estos algoritmos agrupan millones de colores en los 256 valores más representativos y aplican difusión de errores de tramado (dithering de Floyd-Steinberg) para mezclar transiciones de color de forma natural.",
+      "memoryTitle": "Asignaciones de Memoria del Navegador e Impacto de Heap",
+      "memoryBody": "La representación local de fotogramas de video y la ejecución de rutinas de cuantización requieren una asignación de RAM sustancial. Realizar esta conversión para un archivo de video 1080p estándar de 10 segundos puede hacer que el tamaño del heap virtual de JavaScript activo alcance rápidamente cientos de megabytes. En dispositivos móviles con hardware de baja especificación, esto puede ocasionar errores de falta de memoria (OOM) y forzar el reinicio de la pestaña del navegador. Nuestro sistema optimiza la recolección de basura desechando búferes antiguos a medida que se empaquetan en bloques LZW."
+    },
+    "specTable": {
+      "title": "Especificaciones técnicas y comparación de formatos: Video vs. GIF",
+      "headers": {
+        "specification": "Especificación",
+        "mp4source": "MP4 / WebM (Origen)",
+        "gifoutput": "GIF Animado (Salida)",
+        "technicalImpact": "Impacto Técnico"
+      },
+      "rows": {
+        "colorDepth": {
+          "spec": "Profundidad de Color",
+          "mp4": "24 bits (16.7 Millones de Colores)",
+          "gif": "8 bits (Máximo 256 Colores)",
+          "impact": "Los GIFs requieren generación de paletas y tramado (dithering)."
+        },
+        "compression": {
+          "spec": "Compresión",
+          "mp4": "Inter-fotograma Avanzada (H.264/VP9)",
+          "gif": "LZW Sin Pérdidas (Fotograma a Fotograma)",
+          "impact": "Los GIFs producen archivos masivos para clips largos."
+        },
+        "audioSupport": {
+          "spec": "Soporte de Audio",
+          "mp4": "Sí (AAC, Vorbis, etc.)",
+          "gif": "No",
+          "impact": "Las pistas de audio se eliminan por completo durante la codificación."
+        },
+        "alphaChannel": {
+          "spec": "Canal Alfa",
+          "mp4": "WebM (Sí), MP4 (No)",
+          "gif": "Sí (Solo transparencia binaria)",
+          "impact": "Los GIFs no admiten píxeles semitransparentes."
+        }
+      }
     },
     "recommendedSettings": {
       "title": "Configuración recomendada",
@@ -153,7 +197,16 @@
       "q3": "¿Por qué mi GIF se ve borroso?",
       "a3": "Las causas comunes son baja resolución, compresión excesiva, FPS demasiado bajo o un video fuente muy grande redimensionado de forma agresiva.",
       "q4": "¿Puedo convertir videos de YouTube a GIF?",
-      "a4": "Algunas herramientas permiten importar URL directamente y otras requieren descargar primero el video."
+      "a4": "Algunas herramientas permiten importar URL directamente y otras requieren descargar primero el video.",
+      "q5": "¿Por qué los degradados y cielos se ven pixelados o con bandas de color al convertir MP4 a GIF?",
+      "a5": "Esto ocurre porque el formato GIF tiene un límite de profundidad de color de 8 bits (máximo 256 colores por fotograma). Cuando un video de 24 bits con degradados suaves se reduce a 256 colores, el proceso de cuantización crea bandas visibles. Se aplica un tramado (dithering) para mezclar los píxeles y simular colores intermedios, lo que a menudo introduce un patrón granulado.",
+      "q6": "¿Cómo maneja el navegador la asignación de memoria RAM al convertir un video 4K usando WebAssembly?",
+      "a6": "Los programas WebAssembly se ejecutan en un espacio de memoria virtual limitado dentro del navegador. Analizar y decodificar video 4K requiere desempaquetar cada fotograma como un búfer RGBA de 32 bits en bruto. Si se superan los límites de alojamiento del heap asignado por el navegador, la pestaña del navegador fallará o sufrirá un cierre repentino (error de memoria insuficiente u OOM).",
+      "q7": "¿El proceso WebAssembly local de FFmpeg elimina los metadatos EXIF o de ubicación geográfica del video original?",
+      "a7": "Sí, nuestro proceso interno de codificación LZW funciona extrayendo solo píxeles independientes para la simulación de fotogramas, lo que elimina cualquier tipo de GPS, fecha de creación u otros metadatos ID3 o contenedores EXIF del archivo GIF final de forma nativa.",
+      "q8": "¿Cómo ayuda la reducción de la tasa de fotogramas (FPS) a disminuir matemáticamente el tamaño del archivo GIF?",
+      "a8": "Dado que el algoritmo de codificación de un GIF guarda y comprime cada fotograma de manera secuencial (usando compresión LZW sin pérdidas), reducir los FPS de 20 a 10 disminuye a la mitad el número de imágenes procesadas. Esto resulta en una reducción directa y matemática del tamaño final del archivo.",
+      "q9": "not provided"
     },
     "finalTitle": "Conclusión",
     "finalBody1": "Un clip de video simple puede convertirse en un meme viral, un fragmento tutorial, un reporte de error, una vitrina de producto o una reacción para redes sociales.",
