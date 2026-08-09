@@ -104,10 +104,11 @@ export default function RegexTesterView() {
     setOutputText(''); setRegexError(null); setMatchCount(0); setCopied(false)
   }
 
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9']
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: ['q1', 'q2', 'q3', 'q4'].map((key) => ({
+    mainEntity: faqKeys.map((key) => ({
       '@type': 'Question',
       name: t(`guide.faq.${key}`),
       acceptedAnswer: {
@@ -447,6 +448,24 @@ export default function RegexTesterView() {
                   <li>{t('guide.bestPractices.item5')}</li>
                 </ul>
 
+                {t('guide.architecture.heading') && (
+                  <div className="rt-arch-section" style={{ marginTop: 24, marginBottom: 20 }}>
+                    <h3 style={{ fontSize: 20, color: '#e94560' }}>{t('guide.architecture.heading')}</h3>
+                    <div style={{ marginTop: 12 }}>
+                      <h4 style={{ margin: '8px 0 4px 0', fontSize: 16 }}>{t('guide.architecture.engine.title')}</h4>
+                      <p style={{ margin: 0 }}>{t('guide.architecture.engine.body')}</p>
+                    </div>
+                    <div style={{ marginTop: 12 }}>
+                      <h4 style={{ margin: '8px 0 4px 0', fontSize: 16 }}>{t('guide.architecture.redos.title')}</h4>
+                      <p style={{ margin: 0 }}>{t('guide.architecture.redos.body')}</p>
+                    </div>
+                    <div style={{ marginTop: 12 }}>
+                      <h4 style={{ margin: '8px 0 4px 0', fontSize: 16 }}>{t('guide.architecture.privacy.title')}</h4>
+                      <p style={{ margin: 0 }}>{t('guide.architecture.privacy.body')}</p>
+                    </div>
+                  </div>
+                )}
+
                 <h3 style={{ marginTop: 12 }}>{t('guide.useCases.heading')}</h3>
                 <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
                   <li>{t('guide.useCases.item1')}</li>
@@ -479,6 +498,56 @@ export default function RegexTesterView() {
                   </tbody>
                 </table>
 
+                {t('guide.flagsTable.heading') && (
+                  <div className="rt-flags-table-container" style={{ marginTop: 24, marginBottom: 20 }}>
+                    <h3 style={{ fontSize: 20 }}>{t('guide.flagsTable.heading')}</h3>
+                    <div style={{ overflowX: 'auto' }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
+                        <thead>
+                          <tr style={{ borderBottom: '2px solid #ff6b2b33', background: '#1a1a2e', color: '#fff' }}>
+                            <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.flagsTable.colFlag')}</th>
+                            <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.flagsTable.colName')}</th>
+                            <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.flagsTable.colImpact')}</th>
+                            <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.flagsTable.colSupport')}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style={{ borderBottom: '1px solid #fff0eb' }}>
+                            <td style={{ padding: 8 }}><code>{t('guide.flagsTable.rowG.flag')}</code></td>
+                            <td style={{ padding: 8 }}><strong>{t('guide.flagsTable.rowG.name')}</strong></td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowG.impact')}</td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowG.support')}</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid #fff0eb' }}>
+                            <td style={{ padding: 8 }}><code>{t('guide.flagsTable.rowI.flag')}</code></td>
+                            <td style={{ padding: 8 }}><strong>{t('guide.flagsTable.rowI.name')}</strong></td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowI.impact')}</td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowI.support')}</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid #fff0eb' }}>
+                            <td style={{ padding: 8 }}><code>{t('guide.flagsTable.rowM.flag')}</code></td>
+                            <td style={{ padding: 8 }}><strong>{t('guide.flagsTable.rowM.name')}</strong></td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowM.impact')}</td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowM.support')}</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid #fff0eb' }}>
+                            <td style={{ padding: 8 }}><code>{t('guide.flagsTable.rowS.flag')}</code></td>
+                            <td style={{ padding: 8 }}><strong>{t('guide.flagsTable.rowS.name')}</strong></td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowS.impact')}</td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowS.support')}</td>
+                          </tr>
+                          <tr>
+                            <td style={{ padding: 8 }}><code>{t('guide.flagsTable.rowU.flag')}</code></td>
+                            <td style={{ padding: 8 }}><strong>{t('guide.flagsTable.rowU.name')}</strong></td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowU.impact')}</td>
+                            <td style={{ padding: 8 }}>{t('guide.flagsTable.rowU.support')}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
                 <h3 style={{ marginTop: 12 }}>{t('guide.proTips.heading')}</h3>
                 <ul style={{ marginLeft: 0, paddingLeft: 0, listStyle: 'none' }}>
                   <li>{t('guide.proTips.item1')}</li>
@@ -496,10 +565,54 @@ export default function RegexTesterView() {
                 <p style={{ marginTop: 6 }}>{t('guide.safety.warning')}</p>
 
                 <h3 style={{ marginTop: 12 }}>{t('guide.faq.heading')}</h3>
-                <p><strong>{t('guide.faq.q1')}</strong> {t('guide.faq.a1')}</p>
-                <p><strong>{t('guide.faq.q2')}</strong> {t('guide.faq.a2')}</p>
-                <p><strong>{t('guide.faq.q3')}</strong> {t('guide.faq.a3')}</p>
-                <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
+                <div style={{ marginTop: 10 }}>
+                  <p><strong>{t('guide.faq.q1')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a1')}</p>
+                  
+                  <p><strong>{t('guide.faq.q2')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a2')}</p>
+
+                  <p><strong>{t('guide.faq.q3')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a3')}</p>
+
+                  <p><strong>{t('guide.faq.q4')}</strong></p>
+                  <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a4')}</p>
+
+                  {t('guide.faq.q5') && (
+                    <>
+                      <p><strong>{t('guide.faq.q5')}</strong></p>
+                      <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a5')}</p>
+                    </>
+                  )}
+
+                  {t('guide.faq.q6') && (
+                    <>
+                      <p><strong>{t('guide.faq.q6')}</strong></p>
+                      <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a6')}</p>
+                    </>
+                  )}
+
+                  {t('guide.faq.q7') && (
+                    <>
+                      <p><strong>{t('guide.faq.q7')}</strong></p>
+                      <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a7')}</p>
+                    </>
+                  )}
+
+                  {t('guide.faq.q8') && (
+                    <>
+                      <p><strong>{t('guide.faq.q8')}</strong></p>
+                      <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a8')}</p>
+                    </>
+                  )}
+
+                  {t('guide.faq.q9') && (
+                    <>
+                      <p><strong>{t('guide.faq.q9')}</strong></p>
+                      <p style={{ marginLeft: 12, marginBottom: 12 }}>{t('guide.faq.a9')}</p>
+                    </>
+                  )}
+                </div>
 
                 <p style={{ marginTop: 14 }}><strong>{t('guide.conclusion')}</strong></p>
 
