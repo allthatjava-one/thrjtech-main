@@ -349,3 +349,100 @@
 .screen-recorder-page .sr-table tbody tr:nth-child(even) td {
   background: #f9fafb;
 }
+
+/* FAQ Details/Accordion Styles */
+.screen-recorder-page .sr-faq-item {
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.screen-recorder-page .sr-faq-item:hover {
+  background: rgba(15, 17, 23, 0.04) !important;
+  border-color: rgba(229, 231, 235, 0.8);
+}
+
+.screen-recorder-page .sr-faq-item summary {
+  padding: 12px 14px;
+  position: relative;
+  list-style: none; /* Removes standard block bullet in Firefox + Webkit */
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.screen-recorder-page .sr-faq-item summary::-webkit-details-marker {
+  display: none !important; /* Force hide Chrome-specific list marker */
+}
+
+.screen-recorder-page .sr-faq-item summary::after {
+  content: '▼';
+  font-size: 0.75rem;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.screen-recorder-page .sr-faq-item[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.screen-recorder-page .sr-faq-item[open] {
+  background: #ffffff !important;
+  border-color: #3b82f6;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.05), 0 2px 4px -1px rgba(59, 130, 246, 0.03);
+}
+
+.screen-recorder-page .sr-faq-item p {
+  padding: 0 14px 14px 14px;
+}
+
+/* Mobile responsive table rules */
+@media (max-width: 768px) {
+  .screen-recorder-page .sr-table {
+    display: block;
+    width: 100%;
+  }
+  .screen-recorder-page .sr-table thead {
+    display: none; /* Hide header columns on mobile */
+  }
+  .screen-recorder-page .sr-table tbody {
+    display: block;
+    width: 100%;
+  }
+  .screen-recorder-page .sr-table tr {
+    display: block;
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  }
+  .screen-recorder-page .sr-table td {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: 0.5rem 0.25rem;
+    border: none;
+    border-bottom: 1px dashed #f3f4f6;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .screen-recorder-page .sr-table td:last-child {
+    border-bottom: none;
+  }
+  .screen-recorder-page .sr-table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: 700;
+    color: #4b5563;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}

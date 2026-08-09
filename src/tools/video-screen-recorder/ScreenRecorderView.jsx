@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 export default function ScreenRecorderView({ isSupported, recording, videoUrl, error, startRecording, stopRecording, recordSound, setRecordSound }) {
   const { t } = useTranslation('screenRecorder')
@@ -14,8 +15,24 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'].map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       {/* Hero */}
       <div className="hero-section">
         <h1 className="hero-title">{t('hero.title')}</h1>
@@ -177,6 +194,14 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
 
         <h2>{t('guide.whyUse.heading')}</h2>
         <p>{t('guide.whyUse.body')}</p>
+
+        <div className="sr-guide-tech-section">
+          <h3>{t('guide.tech.heading')}</h3>
+          <p>{t('guide.tech.body1')}</p>
+          <p style={{ marginTop: '0.75rem' }}>{t('guide.tech.body2')}</p>
+          <p style={{ marginTop: '0.75rem' }}>{t('guide.tech.body3')}</p>
+        </div>
+
         <h3>{t('guide.keyBenefits.heading')}</h3>
         <ul>
           <li>{t('guide.keyBenefits.item1')}</li>
@@ -249,6 +274,43 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
               <tr><td>{t('guide.comparison.row7feature')}</td><td>{t('guide.comparison.row7browser')}</td><td>{t('guide.comparison.row7desktop')}</td></tr>
             </tbody>
           </table>
+        </div>
+
+        <div className="sr-guide-tech-section" style={{ marginTop: '20px' }}>
+          <h3>{t('guide.comptable.heading')}</h3>
+          <p style={{ marginBottom: '12px' }}>{t('guide.comptable.intro')}</p>
+          <div className="sr-table-wrap">
+            <table className="sr-table">
+              <thead>
+                <tr>
+                  <th>{t('guide.comptable.col1')}</th>
+                  <th>{t('guide.comptable.col2')}</th>
+                  <th>{t('guide.comptable.col3')}</th>
+                  <th>{t('guide.comptable.col4')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label={t('guide.comptable.col1')}><strong>{t('guide.comptable.r1c1')}</strong></td>
+                  <td data-label={t('guide.comptable.col2')}>{t('guide.comptable.r1c2')}</td>
+                  <td data-label={t('guide.comptable.col3')}>{t('guide.comptable.r1c3')}</td>
+                  <td data-label={t('guide.comptable.col4')}>{t('guide.comptable.r1c4')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.comptable.col1')}><strong>{t('guide.comptable.r2c1')}</strong></td>
+                  <td data-label={t('guide.comptable.col2')}>{t('guide.comptable.r2c2')}</td>
+                  <td data-label={t('guide.comptable.col3')}>{t('guide.comptable.r2c3')}</td>
+                  <td data-label={t('guide.comptable.col4')}>{t('guide.comptable.r2c4')}</td>
+                </tr>
+                <tr>
+                  <td data-label={t('guide.comptable.col1')}><strong>{t('guide.comptable.r3c1')}</strong></td>
+                  <td data-label={t('guide.comptable.col2')}>{t('guide.comptable.r3c2')}</td>
+                  <td data-label={t('guide.comptable.col3')}>{t('guide.comptable.r3c3')}</td>
+                  <td data-label={t('guide.comptable.col4')}>{t('guide.comptable.r3c4')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <hr />
@@ -335,17 +397,14 @@ export default function ScreenRecorderView({ isSupported, recording, videoUrl, e
 
         <h2>{t('guide.faq.heading')}</h2>
 
-        <h3>{t('guide.faq.q1')}</h3>
-        <p>{t('guide.faq.a1')}</p>
-
-        <h3>{t('guide.faq.q2')}</h3>
-        <p>{t('guide.faq.a2')}</p>
-
-        <h3>{t('guide.faq.q3')}</h3>
-        <p>{t('guide.faq.a3')}</p>
-
-        <h3>{t('guide.faq.q4')}</h3>
-        <p>{t('guide.faq.a4')}</p>
+        <div className="sr-guide-faq-accordion">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+            <details key={n} className="sr-faq-item" style={{ marginBottom: '1rem', padding: '10px', background: 'rgba(15, 17, 23, 0.02)', borderRadius: '8px' }}>
+              <summary style={{ fontWeight: 'bold', cursor: 'pointer', outline: 'none' }}>{t(`guide.faq.q${n}`)}</summary>
+              <p style={{ marginTop: '8px', lineHeight: 1.5, color: '#4b5563' }}>{t(`guide.faq.a${n}`)}</p>
+            </details>
+          ))}
+        </div>
 
         <hr />
 
