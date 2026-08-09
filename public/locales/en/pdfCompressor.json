@@ -140,6 +140,32 @@
       "item4": "Know your purpose — printing needs higher quality; sharing can be smaller.",
       "item5": "Use a reliable tool — balance size and quality; try this compressor for fast results."
     },
+    "architecture": {
+      "heading": "🧠 Server-Side Architecture & Security",
+      "processingPipeline": {
+        "title": "The Processing Pipeline",
+        "body": "When a PDF is uploaded, it is transmitted over a secure TLS 1.3 encrypted connection to our serverless backend execution environment. The backend processing engine analyzes the PDF object tree, locates embedded raster streams and font subsets, and applies stream-level optimization passes. Once re-encoded, the optimized document payload is returned directly to the user."
+      },
+      "r2Lifecycle": {
+        "title": "Cloudflare R2 & Automated Lifecycle Deletion",
+        "body": "Temporary file artifacts are written to isolated Cloudflare R2 bucket storage using strict 30-minute lifecycle deletion rules. Once 30 minutes elapse, the Cloudflare storage engine automatically purges the file permanently. Uploaded PDFs are never indexed, backed up, stored permanently, or used for AI model training."
+      }
+    },
+    "mechanics": {
+      "heading": "⚙️ How PDF Internal Compression Mechanics Work",
+      "imageDownsampling": {
+        "title": "Image Downsampling & Re-Quantization",
+        "body": "High-resolution raster images embedded in documents (such as 300+ DPI print scans) are resampled down to web-optimized resolutions (such as 144 DPI or 72 DPI). Redundant pixel channels are re-encoded using DCT (JPEG) or Flate quantization to drastically reduce byte counts."
+      },
+      "fontSubsetting": {
+        "title": "Font Subsetting & Glyph Pruning",
+        "body": "Full font packages (like Arial or Times New Roman) embedded inside PDFs often contain glyphs for unused foreign character sets. Font subsetting prunes all unused character glyphs, retaining only the exact character subset required to render the document text."
+      },
+      "streamCompression": {
+        "title": "Stream-Level FlateDecode Optimization",
+        "body": "Raw vector coordinates, page layout instructions, and content streams are compressed using lossless zlib/deflate algorithms (`FlateDecode`). Unreferenced object tables, redundant metadata caches, and duplicate stream dictionaries are purged from the cross-reference table."
+      }
+    },
     "mistakes": {
       "heading": "Common Mistakes to Avoid",
       "item1": "Over-compressing important documents",
@@ -178,6 +204,37 @@
       "row3col2": "Email, uploads",
       "row3col3": "Large document sharing"
     },
+    "specsTable": {
+      "heading": "📊 Optimization Target & Technical Impact Reference",
+      "colTarget": "Optimization Target",
+      "colAction": "Technical Action Performed",
+      "colImpact": "Impact on File Size",
+      "colUseCase": "Ideal Use Case",
+      "rowRaster": {
+        "target": "Raster Images",
+        "action": "Downsamples to 144/72 DPI, applies JPEG quantization",
+        "impact": "High (Massive reduction)",
+        "useCase": "Scanned documents, photo-heavy presentations"
+      },
+      "rowFonts": {
+        "target": "Embedded Fonts",
+        "action": "Subsets font glyphs to only include used characters",
+        "impact": "Medium",
+        "useCase": "Text-heavy reports, ebooks, formal contracts"
+      },
+      "rowMetadata": {
+        "target": "Document Metadata",
+        "action": "Strips XMP metadata, author tags, and thumbnail caches",
+        "impact": "Low",
+        "useCase": "Privacy compliance, web sharing"
+      },
+      "rowVectors": {
+        "target": "Vector Graphics",
+        "action": "Simplifies vector paths and compresses FlateStreams",
+        "impact": "Low to Medium",
+        "useCase": "CAD exports, complex charts, architectural blueprints"
+      }
+    },
     "tips": {
       "heading": "Tips for Better Results",
       "item1": "Use clear, high-quality originals",
@@ -186,13 +243,25 @@
       "item4": "Test different compression levels"
     },
     "faq": {
-      "heading": "FAQ",
-      "q1": "Does PDF compression reduce quality?",
-      "a1": "Yes — but good tools minimize noticeable loss.",
-      "q2": "How much can I reduce file size?",
-      "a2": "It depends on content: image-heavy PDFs see large reductions; text-only PDFs see smaller changes.",
-      "q3": "Can I reverse compression?",
-      "a3": "No — compression is usually permanent. Keep originals."
+      "heading": "❓ Frequently Asked Questions",
+      "q1": "Does PDF compression reduce visual quality?",
+      "a1": "It depends on the selected compression profile. Lossless stream compression preserves exact vector and text fidelity, while lossy image re-encoding slightly downsamples raster images to drastically shrink file sizes.",
+      "q2": "Is my sensitive document data secure in Cloudflare R2 storage?",
+      "a2": "Yes — all uploads are encrypted in transit via TLS 1.3 and at rest in Cloudflare R2 storage buckets. Files are bound to an automated 30-minute lifecycle rule that permanently purges the object. No data is stored permanently, backed up, or used for AI model training.",
+      "q3": "Why did my PDF file size stay the same or slightly increase after compression?",
+      "a3": "This edge case happens when a PDF contains already-optimized stream data (like pre-compressed JPEG2000 images) or when re-encoding adds object overhead without finding redundant streams. If a file cannot be compressed further without quality destruction, the engine outputs the best possible structure.",
+      "q4": "Does compressing a PDF remove interactive elements like forms or digital signatures?",
+      "a4": "Digital signatures may become invalidated if internal stream byte offsets are modified during re-compression, as signatures rely on cryptographic hashes of exact original byte ranges. Interactive form fields and hyperlinks are preserved when using standard stream optimization settings.",
+      "q5": "How does image downsampling affect OCR (Optical Character Recognition) text layers on scanned documents?",
+      "a5": "Standard image downsampling reduces raster DPI while preserving hidden text vectors behind the image. However, aggressive downsampling below 150 DPI can reduce OCR accuracy if you attempt to re-run character recognition on the output.",
+      "q6": "How much can I reduce my PDF file size?",
+      "a6": "Image-rich presentations, scanned documents, and photo reports often achieve 50% to 80% size reductions. Text-only documents with minimal embedded fonts yield smaller 10% to 30% savings.",
+      "q7": "What is the difference between lossless and lossy PDF compression?",
+      "a7": "Lossless compression removes redundant stream objects, unreferenced fonts, and whitespace using FlateDecode algorithms without altering a single pixel. Lossy compression re-quantizes raster images and reduces DPI to achieve maximum byte savings.",
+      "q8": "Can I reverse PDF compression?",
+      "a8": "No. Once raster images are downsampled or metadata is stripped during lossy encoding, original high-resolution pixels cannot be reconstructed. Always maintain a local copy of your original uncompressed PDF.",
+      "q9": "Why is there a 5MB upload limit on this tool?",
+      "a9": "The 5MB ceiling ensures fast, responsive serverless execution and prevents memory buffer overruns on mobile devices. For massive multipage documents over 5MB, desktop CLI tools (like Ghostscript or pdfcpu) are recommended."
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Large PDFs don't have to slow you down. Use proper compression techniques to share files, meet upload limits, and improve performance without sacrificing usability.",

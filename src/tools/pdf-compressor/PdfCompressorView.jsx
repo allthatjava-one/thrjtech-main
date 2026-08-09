@@ -3,6 +3,7 @@ import { formatSize } from './utils/formatSize'
 import { useState } from 'react'
 import CustomSelect from '../../commons/CustomSelect'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 export function PdfCompressorView({
   file,
@@ -34,8 +35,25 @@ export function PdfCompressorView({
   const guideListStyle = { marginLeft: 0, paddingLeft: 0, listStylePosition: 'inside' }
   const navigate = useNavigate()
 
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9']
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqKeys.map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
           {status !== 'done' && (
             <>
               <div className="hero-section">
@@ -318,6 +336,38 @@ export function PdfCompressorView({
                 <li>{t('guide.bestPractices.item5')}</li>
               </ol>
 
+              {t('guide.architecture.heading') && (
+                <div style={{ marginTop: 20, marginBottom: 20 }}>
+                  <h3 style={{ fontSize: 18, color: '#1e3a8a', marginTop: 12 }}>{t('guide.architecture.heading')}</h3>
+                  <div style={{ marginTop: 8 }}>
+                    <h4 style={{ fontSize: 15, margin: '6px 0 2px 0' }}>{t('guide.architecture.processingPipeline.title')}</h4>
+                    <p style={{ margin: 0 }}>{t('guide.architecture.processingPipeline.body')}</p>
+                  </div>
+                  <div style={{ marginTop: 10 }}>
+                    <h4 style={{ fontSize: 15, margin: '6px 0 2px 0' }}>{t('guide.architecture.r2Lifecycle.title')}</h4>
+                    <p style={{ margin: 0 }}>{t('guide.architecture.r2Lifecycle.body')}</p>
+                  </div>
+                </div>
+              )}
+
+              {t('guide.mechanics.heading') && (
+                <div style={{ marginTop: 20, marginBottom: 20 }}>
+                  <h3 style={{ fontSize: 18, color: '#1e3a8a', marginTop: 12 }}>{t('guide.mechanics.heading')}</h3>
+                  <div style={{ marginTop: 8 }}>
+                    <h4 style={{ fontSize: 15, margin: '6px 0 2px 0' }}>{t('guide.mechanics.imageDownsampling.title')}</h4>
+                    <p style={{ margin: 0 }}>{t('guide.mechanics.imageDownsampling.body')}</p>
+                  </div>
+                  <div style={{ marginTop: 10 }}>
+                    <h4 style={{ fontSize: 15, margin: '6px 0 2px 0' }}>{t('guide.mechanics.fontSubsetting.title')}</h4>
+                    <p style={{ margin: 0 }}>{t('guide.mechanics.fontSubsetting.body')}</p>
+                  </div>
+                  <div style={{ marginTop: 10 }}>
+                    <h4 style={{ fontSize: 15, margin: '6px 0 2px 0' }}>{t('guide.mechanics.streamCompression.title')}</h4>
+                    <p style={{ margin: 0 }}>{t('guide.mechanics.streamCompression.body')}</p>
+                  </div>
+                </div>
+              )}
+
               <br />
               <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.mistakes.heading')}</h3>
               <ul style={guideListStyle}>
@@ -379,6 +429,50 @@ export function PdfCompressorView({
                 </tbody>
               </table>
 
+              {t('guide.specsTable.heading') && (
+                <div style={{ marginTop: 20, marginBottom: 20 }}>
+                  <h3 style={{ fontSize: 18, marginTop: 12 }}>{t('guide.specsTable.heading')}</h3>
+                  <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 8 }}>
+                      <thead>
+                        <tr style={{ borderBottom: '2px solid #2563eb', background: '#f8fafc' }}>
+                          <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.specsTable.colTarget')}</th>
+                          <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.specsTable.colAction')}</th>
+                          <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.specsTable.colImpact')}</th>
+                          <th style={{ textAlign: 'left', padding: 8 }}>{t('guide.specsTable.colUseCase')}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+                          <td style={{ padding: 8 }}><strong>{t('guide.specsTable.rowRaster.target')}</strong></td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowRaster.action')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowRaster.impact')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowRaster.useCase')}</td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+                          <td style={{ padding: 8 }}><strong>{t('guide.specsTable.rowFonts.target')}</strong></td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowFonts.action')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowFonts.impact')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowFonts.useCase')}</td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+                          <td style={{ padding: 8 }}><strong>{t('guide.specsTable.rowMetadata.target')}</strong></td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowMetadata.action')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowMetadata.impact')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowMetadata.useCase')}</td>
+                        </tr>
+                        <tr>
+                          <td style={{ padding: 8 }}><strong>{t('guide.specsTable.rowVectors.target')}</strong></td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowVectors.action')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowVectors.impact')}</td>
+                          <td style={{ padding: 8 }}>{t('guide.specsTable.rowVectors.useCase')}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
               <br />
               <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.tips.heading')}</h3>
               <ul style={guideListStyle}>
@@ -390,9 +484,17 @@ export function PdfCompressorView({
 
               <br />
               <h3 style={{ fontSize: 16, marginTop: 6 }}>{t('guide.faq.heading')}</h3>
-              <p><strong>{t('guide.faq.q1')}</strong><br/>{t('guide.faq.a1')}</p>
-              <p><strong>{t('guide.faq.q2')}</strong><br/>{t('guide.faq.a2')}</p>
-              <p><strong>{t('guide.faq.q3')}</strong><br/>{t('guide.faq.a3')}</p>
+              <div style={{ marginTop: 10 }}>
+                <p><strong>{t('guide.faq.q1')}</strong><br/>{t('guide.faq.a1')}</p>
+                <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q2')}</strong><br/>{t('guide.faq.a2')}</p>
+                <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q3')}</strong><br/>{t('guide.faq.a3')}</p>
+                {t('guide.faq.q4') && <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q4')}</strong><br/>{t('guide.faq.a4')}</p>}
+                {t('guide.faq.q5') && <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q5')}</strong><br/>{t('guide.faq.a5')}</p>}
+                {t('guide.faq.q6') && <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q6')}</strong><br/>{t('guide.faq.a6')}</p>}
+                {t('guide.faq.q7') && <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q7')}</strong><br/>{t('guide.faq.a7')}</p>}
+                {t('guide.faq.q8') && <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q8')}</strong><br/>{t('guide.faq.a8')}</p>}
+                {t('guide.faq.q9') && <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q9')}</strong><br/>{t('guide.faq.a9')}</p>}
+              </div>
 
               <p style={{ marginTop: 10 }}><strong>{t('guide.conclusionTitle')}</strong><br/>
               {t('guide.conclusion')}</p>

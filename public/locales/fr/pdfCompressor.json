@@ -140,6 +140,32 @@
       "item4": "Connaissez votre usage — l'impression nécessite une qualité plus élevée ; le partage peut être plus petit.",
       "item5": "Utilisez un outil fiable — équilibrez taille et qualité ; essayez ce compresseur pour des résultats rapides."
     },
+    "architecture": {
+      "heading": "🧠 Architecture Côté Serveur & Sécurité",
+      "processingPipeline": {
+        "title": "Le Pipeline de Traitement",
+        "body": "Lorsqu'un PDF est téléchargé, il est transmis via une connexion sécurisée chiffrée TLS 1.3 vers notre environnement d'exécution sans serveur. Le moteur de traitement analyse l'arborescence des objets PDF, localise les flux d'images et les sous-ensembles de polices, et applique des passes d'optimisation. Une fois réencodé, le document optimisé est renvoyé directement à l'utilisateur."
+      },
+      "r2Lifecycle": {
+        "title": "Cloudflare R2 & Règle de Suppression Automatique",
+        "body": "Les fichiers temporaires sont stockés dans des conteneurs isolés Cloudflare R2 configurés avec une règle de suppression automatique stricte de 30 minutes. Une fois ce délai écoulé, Cloudflare purge définitivement le fichier. Les PDF chargés ne sont jamais indexés, sauvegardés ou utilisés pour l'entraînement d'IA."
+      }
+    },
+    "mechanics": {
+      "heading": "⚙️ Mécanique Interne de Compression PDF",
+      "imageDownsampling": {
+        "title": "Sous-échantillonnage d'Images & Re-quantification",
+        "body": "Les images matricielles haute résolution intégrées dans les documents (numérisations 300+ DPI) sont rééchantillonnées vers des résolutions optimisées pour le web (144 DPI ou 72 DPI). Les canaux de pixels redondants sont réencodés via la quantification DCT (JPEG) ou Flate."
+      },
+      "fontSubsetting": {
+        "title": "Sous-ensemble de Polices & Élagage des Glyphes",
+        "body": "Les packages de polices complets (comme Arial ou Times New Roman) intégrés dans les PDF contiennent souvent des caractères inutilisés. Le sous-ensemble de polices élimine tous les glyphes inutilisés, ne conservant que les caractères strictement nécessaires."
+      },
+      "streamCompression": {
+        "title": "Optimisation FlateDecode des Flux",
+        "body": "Les coordonnées vectorielles brutes et les flux de contenu sont compressés via des algorithmes sans perte zlib/deflate (`FlateDecode`). Les tables d'objets non référencés et les caches de métadonnées inutiles sont purgés."
+      }
+    },
     "mistakes": {
       "heading": "Erreurs courantes à éviter",
       "item1": "Sur-compresser des documents importants",
@@ -178,6 +204,37 @@
       "row3col2": "Email, chargements",
       "row3col3": "Partage de grands documents"
     },
+    "specsTable": {
+      "heading": "📊 Spécifications d'Optimisation & Impact Technique",
+      "colTarget": "Cible d'Optimisation",
+      "colAction": "Action Technique Effectuée",
+      "colImpact": "Impact sur la Taille",
+      "colUseCase": "Cas d'Usage Idéal",
+      "rowRaster": {
+        "target": "Images Matricielles",
+        "action": "Sous-échantillonne à 144/72 DPI, applique la quantification JPEG",
+        "impact": "Élevé (Réduction massive)",
+        "useCase": "Documents numérisés, présentations avec photos"
+      },
+      "rowFonts": {
+        "target": "Polices Intégrées",
+        "action": "Élague les glyphes de polices inutilisés",
+        "impact": "Moyen",
+        "useCase": "Rapports texte, livres numériques, contrats"
+      },
+      "rowMetadata": {
+        "target": "Métadonnées du Document",
+        "action": "Supprime les métadonnées XMP, balises auteur et vignettes",
+        "impact": "Faible",
+        "useCase": "Conformité confidentialité, partage web"
+      },
+      "rowVectors": {
+        "target": "Graphiques Vectoriels",
+        "action": "Simplifie les tracés et compresse les flux FlateStreams",
+        "impact": "Faible à Moyen",
+        "useCase": "Exports CAD, graphiques complexes"
+      }
+    },
     "tips": {
       "heading": "Conseils pour de meilleurs résultats",
       "item1": "Utilisez des originaux clairs et de haute qualité",
@@ -186,13 +243,25 @@
       "item4": "Testez différents niveaux de compression"
     },
     "faq": {
-      "heading": "FAQ",
-      "q1": "La compression PDF réduit-elle la qualité ?",
-      "a1": "Oui — mais les bons outils minimisent la perte perceptible.",
-      "q2": "Combien puis-je réduire la taille du fichier ?",
-      "a2": "Cela dépend du contenu : les PDF riches en images voient de grandes réductions ; les PDF texte uniquement voient de plus petits changements.",
-      "q3": "Puis-je annuler la compression ?",
-      "a3": "Non — la compression est généralement permanente. Conservez les originaux."
+      "heading": "❓ Foire Aux Questions",
+      "q1": "La compression PDF réduit-elle la qualité visuelle ?",
+      "a1": "Cela dépend du profil sélectionné. La compression sans perte préserve la fidélité exacte des vecteurs et textes, tandis que le réencodage avec perte sous-échantillonne légèrement les images pour réduire fortement le fichier.",
+      "q2": "Mes données confidentielles sont-elles en sécurité sur Cloudflare R2 ?",
+      "a2": "Oui — tous les envois sont chiffrés en transit via TLS 1.3 et au repos sur Cloudflare R2. Les fichiers sont automatiquement supprimés au bout de 30 minutes. Aucune donnée n'est conservée, sauvegardée ou utilisée pour l'IA.",
+      "q3": "Pourquoi la taille de mon PDF a-t-elle augmenté ou stagné après la compression ?",
+      "a3": "Cela se produit lorsque le PDF contient déjà des données optimisées (comme des images JPEG2000 précompressées) ou lorsque le réencodage ajoute des en-têtes sans trouver de flux redondants.",
+      "q4": "La compression supprime-t-elle les éléments interactifs comme les formulaires ou signatures numériques ?",
+      "a4": "Les signatures numériques peuvent être invalidées si les octets internes sont modifiés lors de la recompression. Les champs de formulaires interactifs et hyperliens sont conservés.",
+      "q5": "Comment le sous-échantillonnage affecte-t-il les couches de texte OCR sur les documents numérisés ?",
+      "a5": "Le sous-échantillonnage standard réduit la résolution des images tout en préservant le texte masqué OCR. Toutefois, une réduction sous 150 DPI peut diminuer la précision en cas de nouvelle reconnaissance de caractères.",
+      "q6": "De combien puis-je réduire la taille de mon PDF ?",
+      "a6": "Les présentations riches en images et numérisations obtiennent souvent 50 % à 80 % de réduction. Les documents texte seuls obtiennent 10 % à 30 % d'économie.",
+      "q7": "Quelle est la différence entre la compression PDF avec et sans perte ?",
+      "a7": "La compression sans perte supprime les objets redondants via FlateDecode sans modifier un seul pixel. La compression avec perte rééchantillonne les images pour maximiser l'économie d'espace.",
+      "q8": "Puis-je annuler la compression d'un PDF ?",
+      "a8": "Non. Une fois les images sous-échantillonnées ou les métadonnées supprimées, les pixels d'origine ne peuvent plus être reconstruits. Conservez toujours une copie de votre fichier original.",
+      "q9": "Pourquoi y a-t-il une limite de 5 Mo sur cet outil ?",
+      "a9": "La limite de 5 Mo garantit une exécution sans serveur rapide et évite la saturation de mémoire sur mobile. Pour les documents volumineux de plus de 5 Mo, utilisez un outil de bureau."
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Les PDF volumineux n'ont pas à vous ralentir. Utilisez des techniques de compression appropriées pour partager des fichiers, respecter les limites de chargement et améliorer les performances sans sacrifier la convivialité.",
