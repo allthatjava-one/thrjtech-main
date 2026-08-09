@@ -108,16 +108,65 @@
       "item5": "Aligning graphics for presentations",
       "item6": "Social media content creation"
     },
+    "techArchitecture": {
+      "heading": "Client-Side Canvas Transformation Architecture & Trigonometric Rotation Math",
+      "body": "Our online Image Rotator processes transformations 100% client-side inside browser memory using the <strong>HTML5 Canvas API</strong>. To rotate an image matrix without introducing off-center clipping or visual distortion, the 2D rendering context executes a multi-step coordinate transformation matrix. First, context translation <code>ctx.translate(width / 2, height / 2)</code> repositions the origin $(0, 0)$ to the exact geometric center of the canvas. Next, a rotational transformation <code>ctx.rotate(radians)</code> is computed using radian conversion $\\theta = \\text{degrees} \\times \\frac{\\pi}{180}$. Finally, <code>ctx.drawImage()</code> renders the source bitmap offset by half its original dimensions <code>(-origWidth / 2, -origHeight / 2)</code>.",
+      "privacyHeading": "Lossless EXIF Metadata Flags vs. Canvas Bitmap Re-Encoding",
+      "privacyBody": "Understanding image orientation requires distinguishing between <strong>EXIF metadata flags</strong> and <strong>pixel-level bitmap transformation</strong>. Smartphones (iOS and Android) attach a 1-byte EXIF tag (Tags 1, 3, 6, or 8) indicating camera sensor orientation. Updating only the EXIF flag is mathematically lossless but can fail on platforms or legacy image viewers that ignore EXIF orientation metadata. Our tool performs raster canvas re-encoding: pixel byte arrays are physically transposed and re-rasterized into the target format (JPEG, PNG, WebP), guaranteeing 100% universal display compatibility across all operating systems and web browsers with zero server uploads."
+    },
+    "exifTable": {
+      "heading": "Standard EXIF Orientation Tags & Transformation Reference",
+      "headers": {
+        "tag": "EXIF Tag Value",
+        "orientation": "Visual Camera Orientation",
+        "rotation": "Required Rotation to Fix",
+        "action": "Canvas Matrix Action"
+      },
+      "rows": {
+        "row1": {
+          "tag": "1",
+          "orientation": "Normal (Top-Left)",
+          "rotation": "0° (None)",
+          "action": "No transformation applied"
+        },
+        "row2": {
+          "tag": "3",
+          "orientation": "Upside Down (Bottom-Right)",
+          "rotation": "180°",
+          "action": "Rotate 180° around center"
+        },
+        "row3": {
+          "tag": "6",
+          "orientation": "Rotated 90° CW (Right-Top)",
+          "rotation": "90° Clockwise",
+          "action": "Swap W/H, rotate 90° CW"
+        },
+        "row4": {
+          "tag": "8",
+          "orientation": "Rotated 90° CCW (Left-Bottom)",
+          "rotation": "270° CW / 90° CCW",
+          "action": "Swap W/H, rotate 270° CW"
+        }
+      }
+    },
     "faq": {
-      "heading": "❓ Frequently Asked Questions",
-      "q1": "Does rotating an image reduce quality?",
-      "a1": "Most modern image rotators preserve quality when rotating standard formats.",
-      "q2": "Can I rotate images by custom angles?",
-      "a2": "Some tools allow free-angle rotation beyond fixed 90° turns.",
-      "q3": "Is image rotation free?",
-      "a3": "Many browser-based image rotators are completely free to use.",
-      "q4": "Do I need to create an account?",
-      "a4": "Most online image rotators do not require registration."
+      "heading": "Frequently Asked Questions (FAQ)",
+      "q1": "How do EXIF orientation tags affect images uploaded from iOS vs. Android devices?",
+      "a1": "iOS and Android devices write EXIF orientation tags (e.g. Tag 6 or 8) based on internal accelerometer sensors. When viewing or uploading photos, some software ignores these flags and displays images sideways. Our rotator physically bakes rotation into pixel byte arrays for 100% universal rendering.",
+      "q2": "Does rotating a JPEG image 90° in the browser cause pixel quality loss?",
+      "a2": "Standard canvas re-encoding decompresses lossy JPEG discrete cosine transform (DCT) coefficients into uncompressed RGBA pixel buffers before re-saving at high quality (~0.92-0.95). While lossless JPEG rotation requires specialized lossy-domain tools, canvas rotation yields imperceptible visual degradation.",
+      "q3": "How are image dimensions (width and height) recalculated when rotating 90° vs 180°?",
+      "a3": "For 180° rotations, canvas dimensions remain identical $(W_{out} = W_{in}, H_{out} = H_{in})$. For 90° and 270° rotations, horizontal and vertical axes transpose: $W_{out} = H_{in}$ and $H_{out} = W_{in}$, preventing image cropping.",
+      "q4": "What is the maximum file size or resolution the browser can rotate before running out of RAM?",
+      "a4": "HTML5 Canvas limits depend on browser and system GPU limits (typically up to 16,384 × 16,384 pixels or ~256 MB RAM per canvas context). Our tool handles large 4K/8K smartphone photos (50MB+) smoothly.",
+      "q5": "Does my private photo or document get uploaded to an external server during rotation?",
+      "a5": "No. All file reading, canvas transformation matrices, and image downloads occur strictly inside client browser RAM memory. Zero bytes leave your device.",
+      "q6": "Can I rotate animated GIF or transparent PNG images without breaking transparency?",
+      "a6": "Yes. PNG and WebP formats retain full 8-bit alpha transparency channels during canvas transformation. Animated GIFs are rendered using the primary frame for static image rotation.",
+      "q7": "How does batch rotation work when selecting 'Apply All' for multiple photos?",
+      "a7": "Selecting 'Apply All' applies the selected rotation matrix simultaneously to all queued file objects in memory, allowing you to rotate dozens of vacation or product photos at once and download a single ZIP.",
+      "q8": "Why do some images appear correctly oriented in desktop viewers but sideways on web pages?",
+      "a8": "Desktop image viewers often read EXIF orientation metadata automatically, whereas standard web browsers or legacy CSS render raw pixel arrays without EXIF parsing. Rotating and saving the physical canvas fixes web display."
     },
     "whyUs": {
       "heading": "⭐ Why Use ThrjTech Image Rotator?",
