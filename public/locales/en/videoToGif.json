@@ -78,7 +78,7 @@
     "featuresTitle": "Key Features of THRJTech Video to GIF",
     "feature1": {
       "title": "1. Fast Browser-Based Conversion",
-      "body": "The tool works directly in your browser, meaning your files do not need to be uploaded to a server. This approach improves privacy and reduces waiting time. Modern converters increasingly use browser-side processing with WebAssembly and FFmpeg-based technology.",
+      "body": "The tool works directly in your browser, meaning your files do not need to be uploaded to a server. This approach improves privacy and reduces waiting time. Modern converters increasingly use browser-side processing with WebAssembly and FFmpeg-based technology. By leveraging C/C++ libraries compiled into WASM (like ffmpeg.wasm), video decoding and frame extraction can run smoothly within the browser sandbox structure.",
       "benefitsTitle": "Benefits",
       "benefit1": "🔒 Better privacy",
       "benefit2": "⚡ Faster processing",
@@ -88,11 +88,20 @@
     "feature2": {
       "title": "2. Trim the Exact Moment",
       "lead": "Nobody wants a 2-minute GIF.",
-      "body": "Choose the exact section of your video you want to convert. Shorter clips usually produce smaller file sizes, smoother playback, and better social media compatibility. Most professional GIF workflows recommend trimming before export."
+      "body": "Choose the exact section of your video you want to convert. Shorter clips usually produce smaller file sizes, smoother playback, and better social media compatibility. Most professional GIF workflows recommend trimming before export. Trimming focuses the computational budget on specific timestamps, reducing the overall frames required for encoding."
     },
     "feature3": {
       "title": "3. Control FPS and File Size",
-      "body": "Frame rate (FPS) has a huge impact on GIF quality and size. Many converters now expose FPS tuning because GIF optimization is critical for sharing platforms."
+      "body": "Frame rate (FPS) has a huge impact on GIF quality and size. Many converters now expose FPS tuning because GIF optimization is critical for sharing platforms. Adjusting FPS dynamically changes the LZW encoding load by capturing fewer interstitial frame states."
+    },
+    "archTitle": "Deep Technical Architecture",
+    "architecture": {
+      "wasmTitle": "WebAssembly (WASM) & Local Decoding",
+      "wasmBody": "Unlike legacy server-side video platforms that transmit sensitive raw assets over HTTP tunnels, this system runs locally inside the browser. It leverages a custom compiled JS-accessible framework—similar to ffmpeg.wasm—translating core low-level C libraries into portable WebAssembly instructions. This allows your browser's CPU core to parse underlying streams (such as H.264 or VP9 containers) and map raw pixel buffers onto HTML5 Canvas grids without latency.",
+      "quantizationTitle": "Frame Extraction & The 256-Color Palette Limit",
+      "quantizationBody": "The GIF (Graphics Interchange Format) specification relies heavily on an 8-bit index palette system, restricting the display canvas to a maximum of 256 colors per frame. To squeeze high-fidelity 24-bit video input streams into 8-bit space without severe pixel banding or color shifts, we utilize color quantization algorithms (such as NeuQuant or median cut). These algorithms mathematically group millions of true color details into the most representative 256-color map, and apply subtle dithering (Floyd-Steinberg or error diffusion) to smooth out sky gradients and shadows.",
+      "memoryTitle": "Browser Memory Allocations & Heap Overhead",
+      "memoryBody": "Executing multi-frame rendering routines and applying floating-point palette quantization in client-side memory requires substantial RAM reservation. Real-time encoding of a standard 10-second 1080p video clip can easily balloon the browser's active virtual heap size up to several hundred megabytes. On low-memory environments, such as vintage mobile devices or tablet screens, exceeding these constraints might cause the browser tab to restart or crash due to target out-of-memory (OOM) signals. Our tool manages garbage collection carefully to clear older canvas buffers as frames are successfully packed into LZW chunks."
     },
     "recommendedSettings": {
       "title": "Recommended Settings",
@@ -106,6 +115,41 @@
       "row3Fps": "15-20 FPS",
       "row4UseCase": "Small file size priority",
       "row4Fps": "5-10 FPS"
+    },
+    "specTable": {
+      "title": "Video vs. GIF Format Specifications & Comparison",
+      "headers": {
+        "specification": "Specification",
+        "mp4source": "MP4 / WebM (Source)",
+        "gifoutput": "Animated GIF (Output)",
+        "technicalImpact": "Technical Impact"
+      },
+      "rows": {
+        "colorDepth": {
+          "spec": "Color Depth",
+          "mp4": "24-bit (16.7 Million Colors)",
+          "gif": "8-bit (Maximum 256 Colors)",
+          "impact": "GIFs require palette generation and dithering."
+        },
+        "compression": {
+          "spec": "Compression",
+          "mp4": "Advanced Interframe (H.264/VP9)",
+          "gif": "LZW Lossless (Frame-by-Frame)",
+          "impact": "GIFs result in massive file sizes for long clips."
+        },
+        "audioSupport": {
+          "spec": "Audio Support",
+          "mp4": "Yes (AAC, Vorbis, etc.)",
+          "gif": "No",
+          "impact": "Audio tracks are completely stripped during encoding."
+        },
+        "alphaChannel": {
+          "spec": "Alpha Channel",
+          "mp4": "WebM (Yes), MP4 (No)",
+          "gif": "Yes (Binary transparency only)",
+          "impact": "GIFs do not support semi-transparent pixels."
+        }
+      }
     },
     "feature4": {
       "title": "4. Resize Output Dimensions",
@@ -153,7 +197,15 @@
       "q3": "Why is my GIF blurry?",
       "a3": "Possible reasons include low resolution, too much compression, extremely low FPS, or an oversized source video scaled down too aggressively.",
       "q4": "Can I convert YouTube videos to GIFs?",
-      "a4": "Some tools support direct URL import while others require downloading the video first."
+      "a4": "Some tools support direct URL import while others require downloading the video first.",
+      "q5": "Why do gradients and skies look pixelated or 'banded' when converting MP4 to GIF?",
+      "a5": "This occurs because the GIF format has an 8-bit color depth limitation, meaning it can display a maximum of only 256 colors per frame. When a 24-bit video with smooth gradients is simplified into 256 colors, quantization leaves noticeable color bands. Dithering is applied to scatter pixels and blend colors, giving the illusion of a smooth gradient but introducing a noisy or pixelated pattern.",
+      "q6": "How does the browser handle RAM allocation when converting a 4K video using WebAssembly?",
+      "a6": "WebAssembly programs run inside the host browser's virtual memory sandbox. To decode high-resolution videos (like 4K), the memory allocation grows significantly because every single image frame has to be unpacked as raw 32-bit RGBA canvas buffers. If the browser runs out of heap allocation, the browser sandbox will trigger an out-of-memory error and terminate the execution to protect the device.",
+      "q7": "Does the local FFmpeg WebAssembly process strip EXIF or location metadata from the original video?",
+      "a7": "Yes, our client-side LZW rendering process focuses purely on raw pixel extraction. It does not carry over container metadata, sidecar elements, EXIF data, or location tracking GPS tags into the newly synthesized GIF output, making it highly secure and anonymous.",
+      "q8": "How does reducing the frame rate (FPS) mathematically reduce the final GIF byte size?",
+      "a8": "Because GIFs are compressed using frame-by-frame LZW (Lempel-Ziv-Welch) lossless compression, each frame acts almost like an independent picture. Dropping the FPS from 20 to 10 literally halves the number of individual frames that need color quantization, layout mapping, and compression, leading to a massive linear reduction in file size."
     },
     "finalTitle": "Final Thoughts",
     "finalBody1": "A simple video clip can become a viral meme, a tutorial snippet, a bug report, a product showcase, or a social media reaction.",
