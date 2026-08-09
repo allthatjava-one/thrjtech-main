@@ -152,6 +152,78 @@
       "item4": "Ignorer les paramètres de qualité",
       "item5": "Télécharger des images énormes sans optimisation"
     },
+    "techArchitecture": {
+      "heading": "Architecture technique et conversion côté client",
+      "body": "Notre convertisseur d'images exécute les conversions côté client grâce à l'API <strong>HTML5 Canvas</strong> et aux décodeurs <strong>WebAssembly (WASM)</strong>. Les fichiers sources sont décodés en buffers bruts de pixels (<code>ImageData</code>) en mémoire navigateur, puis ré-encodés dans les formats cibles (WebP, JPEG, PNG, AVIF).",
+      "privacyHeading": "Quantification sans perte et zéro latence serveur",
+      "privacyBody": "Lors de l'encodage JPEG/WebP, des matrices de quantification optimisent les coefficients pour réduire la taille du fichier. En convertissant une image RGBA transparente vers un format sans canal alpha (ex. JPEG), les pixels transparents sont aplanis sur un fond blanc. Toutes les opérations s'exécutent en mémoire RAM locale sans envoi réseau."
+    },
+    "specsTable": {
+      "heading": "Tableau comparatif et spécifications des formats d'image",
+      "headers": {
+        "format": "Format",
+        "compression": "Type de compression",
+        "transparency": "Gestion transparence",
+        "support": "Compatibilité navigateur",
+        "useCase": "Cas d'usage idéal"
+      },
+      "rows": {
+        "row1": {
+          "format": "WebP",
+          "comp": "Les deux (Avec & Sans perte)",
+          "trans": "Oui (Canal Alpha)",
+          "support": "~97% (Tous navigateurs modernes)",
+          "useCase": "Performance web, petits fichiers"
+        },
+        "row2": {
+          "format": "AVIF",
+          "comp": "Les deux (Nouvelle génération)",
+          "trans": "Oui (Canal Alpha)",
+          "support": "Chrome, Firefox, Safari (Récents)",
+          "useCase": "Graphismes web nouvelle génération, compression max"
+        },
+        "row3": {
+          "format": "PNG",
+          "comp": "Sans perte (DEFLATE)",
+          "trans": "Oui (Canal Alpha)",
+          "support": "100% Universel",
+          "useCase": "Logos, graphismes, captures d'écran avec texte"
+        },
+        "row4": {
+          "format": "JPEG",
+          "comp": "Avec perte (DCT)",
+          "trans": "Non (Fond aplati RGB)",
+          "support": "100% Universel",
+          "useCase": "Photographies complexes, impression, compatibilité"
+        },
+        "row5": {
+          "format": "ICO",
+          "comp": "Non compressé / Compression PNG",
+          "trans": "Oui (Canal Alpha)",
+          "support": "100% Universel (Favicons)",
+          "useCase": "Icônes Windows, favicons de navigateurs"
+        }
+      }
+    },
+    "faq": {
+      "heading": "Foire aux questions (FAQ)",
+      "q1": "Que devient la transparence lors de la conversion d'un PNG transparent vers JPEG ?",
+      "a1": "Le format JPEG ne prenant pas en compte le canal alpha 8 bits, les pixels de fond transparent sont automatiquement aplanis en blanc solide (#FFFFFF) lors de la rastérisation.",
+      "q2": "Comment WebAssembly décode-t-il les images AVIF et WebP sur les anciens navigateurs ?",
+      "a2": "Si le navigateur ne prend pas en charge l'encodage natif WebP/AVIF, des binaires WebAssembly compilés depuis des bibliothèques C/C++ s'exécutent dans des web workers locaux pour décoder et ré-encoder les buffers de pixels.",
+      "q3": "Comment le format conteneur multi-résolution ICO intègre-t-il plusieurs dimensions dans un seul fichier ?",
+      "a3": "La structure d'en-tête ICO contient un répertoire d'icônes suivi de blocs d'octets pour chaque résolution spécifiée (ex. 16×16, 32×32, 48×48, 256×256 px). L'OS sélectionne la taille idéale au moment de l'affichage.",
+      "q4": "La conversion d'un JPEG compressé en PNG restaure-t-elle la qualité perdue ?",
+      "a4": "Non. La compression JPEG élimine définitivement les données haute fréquence. Convertir un JPEG en PNG évite toute dégradation supplémentaire mais ne peut restaurer les pixels d'origine.",
+      "q5": "Quelles sont les limites de mémoire RAM lors de la conversion de grandes images ?",
+      "a5": "Les allocations Canvas dépendent du GPU et du navigateur (jusqu'à 16 384 × 16 384 px ou ~256 Mo par canevas). La conversion de fichiers de 50 Mo+ s'exécute de façon fluide dans le tas JavaScript local.",
+      "q6": "Comment les profils de couleur (sRGB vs Display P3) sont-ils préservés lors de la conversion ?",
+      "a6": "Les navigateurs modernes gèrent automatiquement les profils ICC. Le contexte Canvas 2D restitue les octets de pixels dans l'espace colorimétrique sRGB par défaut pour un rendu homogène.",
+      "q7": "Puis-je convertir plusieurs images à la fois et les télécharger dans une archive ZIP ?",
+      "a7": "Oui. Notre convertisseur par lots traite plusieurs fichiers en parallèle et les regroupe dans une archive ZIP téléchargeable via JSZip.",
+      "q8": "Mes photos sont-elles envoyées vers des serveurs distants ?",
+      "a8": "Non. Tout le décodage, la conversion de format et la compression s'effectuent 100% localement dans la mémoire RAM de votre navigateur."
+    },
     "stepByStep": {
       "heading": "Étape par étape : comment convertir une image",
       "step1": "Téléchargez votre image",
@@ -177,16 +249,6 @@
     "howItWorksTitle": "Comment fonctionne la conversion",
     "howItWorksBody": "Votre image est décodée dans le navigateur, dessinée sur un canevas hors écran et exportée au format cible. Les fichiers TIFF sont décodés à l'aide d'une bibliothèque JS légère. Pour les formats qui ne prennent pas en charge la transparence (JPG, BMP, GIF), les zones transparentes sont remplies de blanc.",
     "faqTitle": "FAQ",
-    "faq": {
-      "q1": "Mon image quitte-t-elle mon navigateur ?",
-      "a1": "Non. Tout le traitement est effectué localement ; rien n'est téléchargé.",
-      "q2": "Pourquoi AVIF ne fonctionne-t-il pas ?",
-      "a2": "L'encodage AVIF nécessite un navigateur moderne ; les anciens navigateurs peuvent ne pas le prendre en charge.",
-      "q3": "Que se passe-t-il avec la transparence lors de la conversion en JPG, BMP ou GIF ?",
-      "a3": "Les zones transparentes sont remplies de blanc.",
-      "q4": "Pourquoi le GIF est-il mauvais pour les photos ?",
-      "a4": "Le GIF ne prend en charge que 256 couleurs ; utilisez PNG ou WebP pour les photos."
-    },
     "introLead": "Vous essayez de télécharger une image… et soudain :",
     "introBullet1": "« Format de fichier non pris en charge »",
     "introBullet2": "L’image ne s’ouvre pas sur un autre appareil",

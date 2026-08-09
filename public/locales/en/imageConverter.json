@@ -152,6 +152,78 @@
       "item4": "Ignoring quality settings",
       "item5": "Uploading huge images without optimization"
     },
+    "techArchitecture": {
+      "heading": "Technical Architecture & Client-Side Conversion Mechanics",
+      "body": "Our Image Converter executes client-side conversions using the <strong>HTML5 Canvas API</strong> and <strong>WebAssembly (WASM)</strong> decoders. Source files are decoded into raw uncompressed pixel byte arrays (<code>ImageData</code>) inside browser memory, then re-encoded into target formats like WebP, JPEG, PNG, or AVIF via native canvas encoders or WebAssembly libraries.",
+      "privacyHeading": "Lossless Quantization & Zero-Server Latency",
+      "privacyBody": "During JPEG and WebP encoding, quantization matrices optimize discrete cosine transform coefficients to compress files efficiently. When converting RGBA images with transparency to formats that lack alpha channel support (e.g. JPEG or BMP), transparent pixels are flattened onto a solid RGB background. All operations execute strictly in your local browser RAM with zero network latency or cloud uploads."
+    },
+    "specsTable": {
+      "heading": "Image Format Comparison & Specifications Table",
+      "headers": {
+        "format": "Format",
+        "compression": "Compression Type",
+        "transparency": "Transparency Support",
+        "support": "Browser Support",
+        "useCase": "Ideal Use Case"
+      },
+      "rows": {
+        "row1": {
+          "format": "WebP",
+          "comp": "Both (Lossy & Lossless)",
+          "trans": "Yes (Alpha Channel)",
+          "support": "~97% (All Modern Browsers)",
+          "useCase": "Website performance, small file sizes"
+        },
+        "row2": {
+          "format": "AVIF",
+          "comp": "Both (Next-Gen Lossy/Lossless)",
+          "trans": "Yes (Alpha Channel)",
+          "support": "Chrome, Firefox, Safari (Modern)",
+          "useCase": "Next-gen web graphics, maximum compression"
+        },
+        "row3": {
+          "format": "PNG",
+          "comp": "Lossless (DEFLATE)",
+          "trans": "Yes (Alpha Channel)",
+          "support": "100% Universal",
+          "useCase": "Logos, line art, screenshots with text"
+        },
+        "row4": {
+          "format": "JPEG",
+          "comp": "Lossy (DCT)",
+          "trans": "No (RGB flattened)",
+          "support": "100% Universal",
+          "useCase": "Complex photography, print, legacy compatibility"
+        },
+        "row5": {
+          "format": "ICO",
+          "comp": "Uncompressed / PNG-compressed",
+          "trans": "Yes (Alpha Channel)",
+          "support": "100% Universal (Favicons)",
+          "useCase": "Windows icons, browser favicons"
+        }
+      }
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions (FAQ)",
+      "q1": "What happens to transparency when converting a transparent PNG or WebP to JPEG?",
+      "a1": "Because JPEG does not support an 8-bit alpha channel, transparent background pixels are automatically flattened to solid white (#FFFFFF) during canvas rasterization.",
+      "q2": "How does client-side WebAssembly decode AVIF and WebP images on older web browsers?",
+      "a2": "When a browser lacks native WebP or AVIF encoding support, WebAssembly binaries compiled from C/C++ libraries (such as libwebp or libavif) run inside JavaScript worker threads to parse and re-encode pixel buffers.",
+      "q3": "How does the ICO multi-resolution container format embed multiple icon dimensions into one file?",
+      "a3": "The ICO header structure includes an icon directory followed by raw image byte blocks for each specified dimension (e.g. 16×16, 32×32, 48×48, 256×256 px). Browsers and operating systems pick the optimal sub-icon at runtime.",
+      "q4": "Does converting a compressed JPEG into a PNG recover lost pixel quality?",
+      "a4": "No. JPEG compression uses lossy discrete cosine transforms (DCT) that permanently discard high-frequency color data. Converting JPEG to PNG prevents further degradation but cannot restore original pixel data.",
+      "q5": "What are the browser RAM memory bounds when converting large high-resolution images?",
+      "a5": "HTML5 Canvas allocations depend on system GPU and browser limits (typically up to 16,384 × 16,384 px or ~256 MB per canvas context). Converting 50MB+ source files runs smoothly inside local 64-bit V8 engine heap memory.",
+      "q6": "How are color profiles (sRGB vs. Display P3) preserved during canvas image re-encoding?",
+      "a6": "Modern browsers automatically manage ICC color profiles. Canvas 2D contexts render pixel byte arrays within sRGB color space by default, ensuring consistent color presentation across monitors.",
+      "q7": "Can I convert multiple images at once and download them as a ZIP archive?",
+      "a7": "Yes. Our batch converter processes multiple images simultaneously and package them into a single downloadable ZIP archive using JSZip.",
+      "q8": "Are my uploaded photos sent to remote servers or stored on the cloud?",
+      "a8": "No. All file parsing, format conversion, and compression occur 100% locally in your browser memory (RAM)."
+    },
     "stepByStep": {
       "heading": "Step-by-Step: How to Convert an Image",
       "step1": "Upload your image",
@@ -177,16 +249,6 @@
     "howItWorksTitle": "How conversion works",
     "howItWorksBody": "Your image is decoded in the browser, drawn onto an offscreen canvas, and exported to the target format. TIFF files are decoded using a lightweight JS library. For formats that don’t support transparency (JPG, BMP, GIF), transparent areas are filled with white.",
     "faqTitle": "FAQs",
-    "faq": {
-      "q1": "Does my image leave my browser?",
-      "a1": "No. All processing is done locally; nothing is uploaded.",
-      "q2": "Why is AVIF not working?",
-      "a2": "AVIF encoding requires a modern browser; older browsers may not support it.",
-      "q3": "What happens to transparency when converting to JPG, BMP, or GIF?",
-      "a3": "Transparent areas are filled with white.",
-      "q4": "Why does GIF look bad for photos?",
-      "a4": "GIF supports only 256 colors; use PNG or WebP for photos."
-    },
     "introLead": "You try to upload an image… and suddenly:",
     "introBullet1": "\"File format not supported\"",
     "introBullet2": "Image won’t open on another device",
