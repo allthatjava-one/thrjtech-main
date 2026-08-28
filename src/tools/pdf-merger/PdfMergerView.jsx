@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { formatSize } from './utils/formatSize'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 export function PdfMergerView({
   files,
@@ -33,8 +34,26 @@ export function PdfMergerView({
   const { t } = useTranslation('pdfMerger')
   const [openPanel, setOpenPanel] = useState('')
   const navigate = useNavigate()
+
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10']
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqKeys.map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       {status !== 'done' && (
         <>
           <div className="hero-section">
@@ -366,6 +385,30 @@ export function PdfMergerView({
             <p>{t('guide.howWorks.body')}</p>
           </div>
 
+          {/* Technical Architecture & Document Merging Mechanics */}
+          <div className="merger-guide-card merger-guide-card--wide">
+            <h3>{t('guide.architecture.heading')}</h3>
+            <p style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#4b5563' }}>{t('guide.architecture.intro')}</p>
+            <div className="merger-arch-grid">
+              <div className="merger-arch-block">
+                <h4>{t('guide.architecture.objectCatalog.title')}</h4>
+                <p>{t('guide.architecture.objectCatalog.body')}</p>
+              </div>
+              <div className="merger-arch-block">
+                <h4>{t('guide.architecture.xrefRebuilding.title')}</h4>
+                <p>{t('guide.architecture.xrefRebuilding.body')}</p>
+              </div>
+              <div className="merger-arch-block">
+                <h4>{t('guide.architecture.fontSubsetting.title')}</h4>
+                <p>{t('guide.architecture.fontSubsetting.body')}</p>
+              </div>
+              <div className="merger-arch-block">
+                <h4>{t('guide.architecture.clientPrivacy.title')}</h4>
+                <p>{t('guide.architecture.clientPrivacy.body')}</p>
+              </div>
+            </div>
+          </div>
+
           <div className="merger-guide-card merger-guide-card--wide">
             <h3>{t('guide.stepByStep.heading')}</h3>
             <ol>
@@ -416,13 +459,59 @@ export function PdfMergerView({
             </table>
           </div>
 
+          {/* Technical Specification Table: PDF Internal Element Behavior During Merge */}
+          <div className="merger-guide-card merger-guide-card--wide">
+            <h3>{t('guide.specsTable.heading')}</h3>
+            <p style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#4b5563' }}>{t('guide.specsTable.intro')}</p>
+            <div style={{ overflowX: 'auto' }}>
+              <table className="merger-guide-table merger-specs-table">
+                <thead>
+                  <tr style={{ borderBottom: '2px solid #6366f1', background: '#f8f9ff' }}>
+                    <th style={{ width: '22%' }}>{t('guide.specsTable.colElement')}</th>
+                    <th style={{ width: '38%' }}>{t('guide.specsTable.colHandling')}</th>
+                    <th style={{ width: '40%' }}>{t('guide.specsTable.colResolution')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowAcroForms.element')}</strong></td>
+                    <td>{t('guide.specsTable.rowAcroForms.handling')}</td>
+                    <td>{t('guide.specsTable.rowAcroForms.resolution')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowBookmarks.element')}</strong></td>
+                    <td>{t('guide.specsTable.rowBookmarks.handling')}</td>
+                    <td>{t('guide.specsTable.rowBookmarks.resolution')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowFonts.element')}</strong></td>
+                    <td>{t('guide.specsTable.rowFonts.handling')}</td>
+                    <td>{t('guide.specsTable.rowFonts.resolution')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowMetadata.element')}</strong></td>
+                    <td>{t('guide.specsTable.rowMetadata.handling')}</td>
+                    <td>{t('guide.specsTable.rowMetadata.resolution')}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Technical FAQ Accordion */}
           <div className="merger-guide-card merger-guide-card--wide">
             <h3>{t('guide.faq.heading')}</h3>
-            <div className="merger-guide-faq-grid">
-              <div className="merger-guide-faq-item"><strong>{t('guide.faq.q1')}</strong><p>{t('guide.faq.a1')}</p></div>
-              <div className="merger-guide-faq-item"><strong>{t('guide.faq.q2')}</strong><p>{t('guide.faq.a2')}</p></div>
-              <div className="merger-guide-faq-item"><strong>{t('guide.faq.q3')}</strong><p>{t('guide.faq.a3')}</p></div>
-              <div className="merger-guide-faq-item"><strong>{t('guide.faq.q4')}</strong><p>{t('guide.faq.a4')}</p></div>
+            <div className="merger-guide-faq-accordion">
+              {faqKeys.map((key, idx) => (
+                <details key={key} className="merger-faq-item" open={idx === 0}>
+                  <summary className="merger-faq-summary">
+                    <span>{t(`guide.faq.${key}`)}</span>
+                  </summary>
+                  <div className="merger-faq-content">
+                    <p>{t(`guide.faq.a${key.slice(1)}`)}</p>
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
         </div>

@@ -15,58 +15,58 @@
   "details": {
     "howMergeWorks": {
       "heading": "Comment fonctionne la fusion PDF",
-      "body": "Une opération de fusion PDF prend les flux de pages de chaque document source dans l'ordre que vous spécifiez et les écrit séquentiellement dans un nouveau conteneur PDF. Le fichier résultant ne partage aucune donnée avec les originaux — chaque page est entièrement reproduite, préservant le texte, les images, les annotations et les graphiques vectoriels."
+      "body": "Une opération de fusion PDF analyse le catalogue d'objets racine et les arbres de pages de chaque document source, réindexe les références d'objets indirectes et construit un arbre de pages unifié en mémoire. Le fichier résultant résout tous les pointeurs internes via une nouvelle table de références croisées sans corrompre le texte, les tracés vectoriels ou les ressources intégrées."
     },
     "howSizeDetermined": {
       "heading": "Comment la taille fusionnée est déterminée",
-      "body": "La taille du PDF fusionné est approximativement la somme des tailles des fichiers d'entrée, plus une petite quantité de surcharge pour la nouvelle table de références croisées et la bande-annonce. Les ressources intégrées en double (polices, images) ne sont pas automatiquement dédupliquées à moins que l'outil ne le fasse explicitement."
+      "body": "La taille du fichier PDF fusionné est égale à la somme en octets de tous les flux de pages, polices intégrées et images matricielles conservés, plus la surcharge structurelle pour la table XRef reconstruite, le dictionnaire /Catalog et le trailer. Les polices dupliquées non compressées peuvent légèrement augmenter le poids total sauf si une compression est appliquée."
     },
     "whyUseOnline": {
       "heading": "Pourquoi utiliser un fusionneur en ligne",
-      "body": "La fusion basée sur navigateur élimine le besoin d'installer un logiciel. Les fichiers sont transférés vers un processus serveur éphémère, fusionnés et retournés ; les originaux restent sur votre appareil."
+      "body": "La fusion basée sur navigateur s'exécute intégralement côté client via l'allocation mémoire JavaScript/WebAssembly, éliminant toute installation logicielle tout en garantissant zéro rétention serveur pour les opérations non compressées. La compression cloud facultative utilise un stockage chiffré éphémère avec suppression automatique après 30 minutes."
     },
     "bestPractices": {
       "heading": "Meilleures pratiques",
-      "item1": "Fusionnez dans l'ordre — organisez vos fichiers à l'avance pour éviter une refusion.",
-      "item2": "Compressez après fusion — utilisez la case à cocher pour réduire la taille du fichier final.",
-      "item3": "Vérifiez le nombre de fichiers — la plupart des outils en ligne gèrent un nombre raisonnable de fichiers."
+      "item1": "Fusionnez dans l'ordre logique — organisez vos fichiers à l'avance pour préserver une pagination cohérente.",
+      "item2": "Compressez après fusion — activez l'option de compression pour rééchantillonner les flux d'images redondants et élaguer les glyphes de polices inutilisés.",
+      "item3": "Déverrouillez les fichiers chiffrés — supprimez les mots de passe de lecture avant la fusion afin que le moteur puisse parcourir les dictionnaires d'objets."
     },
     "whatItDoes": {
       "heading": "Ce qu'il fait",
-      "item1": "Combine plusieurs PDF en un seul document ordonné."
+      "item1": "Combine plusieurs documents PDF indépendants en un conteneur PDF unique, standardisé et multipage."
     },
     "usefulWhen": {
       "heading": "Utile lorsque",
-      "item1": "Combinaison de chapitres ou sections rédigés séparément.",
-      "item2": "Fusion de pages numérisées enregistrées sous forme de fichiers individuels.",
-      "item3": "Combinaison d'une page de couverture, du document principal et d'une annexe."
+      "item1": "Consolidation de factures mensuelles, relevés financiers et reçus en un dossier d'audit unifié.",
+      "item2": "Assemblage d'articles de recherche académique, lettres de motivation et annexes de portfolio.",
+      "item3": "Combinaison de contrats légaux numérisés sur plusieurs pages et folios de signatures notariées."
     },
     "comparison": {
       "heading": "Comparaison",
-      "item1": "Contrairement aux outils bureau, celui-ci fonctionne dans votre navigateur sans installation."
+      "item1": "Assemblage PDF en mémoire haute performance exécuté directement dans votre navigateur sans licence logicielle coûteuse."
     },
     "privacy": {
       "heading": "Confidentialité et conservation",
-      "body": "Les fichiers chargés sont traités sur une infrastructure éphémère et supprimés conformément à la politique de conservation de l'application. Si vous traitez des documents hautement sensibles, préférez les outils bureau locaux ou une solution sur site correspondant à vos exigences de conformité."
+      "body": "La fusion standard s'exécute à 100 % localement dans la mémoire de votre navigateur. Lorsque la compression facultative est activée, les fichiers sont chiffrés en transit via TLS 1.3, stockés temporairement sur Cloudflare R2 et supprimés automatiquement après 30 minutes. Ils ne sont jamais stockés de manière permanente."
     },
     "faq": {
       "heading": "FAQ",
-      "q1": "Q : Mon fichier est-il privé ?",
-      "a1": "R : Les fichiers sont traités temporairement et supprimés automatiquement conformément à la politique de l'application.",
-      "q2": "Q : La fusion modifiera-t-elle le formatage des PDF individuels ?",
-      "a2": "R : Non — les pages sont reproduites telles quelles ; le formatage est préservé.",
-      "q3": "Q : Puis-je contrôler l'ordre des pages ?",
-      "a3": "R : Oui — faites glisser les fichiers pour les réorganiser avant la fusion.",
-      "q4": "Q : Puis-je fusionner plus de deux PDF ?",
-      "a4": "R : Oui — il n'y a pas de limite fixe, bien que les très grands lots puissent être plus lents.",
-      "q5": "Q : Que faire si le résultat est plus grand que prévu ?",
-      "a5": "R : Activez la compression après la fusion pour réduire la taille du fichier final."
+      "q1": "Q : Mes documents sont-ils privés et sécurisés ?",
+      "a1": "R : Oui. La fusion opère côté client dans la RAM du navigateur, et les fichiers compressés sont automatiquement purgés du stockage R2 après 30 minutes.",
+      "q2": "Q : La fusion modifiera-t-elle la mise en page ou le formatage ?",
+      "a2": "R : Non. Les dimensions de page, limites MediaBox, graphiques vectoriels et glyphes typographiques sont préservés à l'identique.",
+      "q3": "Q : Puis-je réorganiser les pages et fichiers avant la fusion ?",
+      "a3": "R : Oui. Glissez et déposez les fichiers dans la liste pour définir l'ordre séquentiel exact.",
+      "q4": "Q : Y a-t-il une limite sur le nombre de PDF à fusionner ?",
+      "a4": "R : Aucune limite fixe n'est imposée ; la capacité de mémoire RAM du navigateur est la seule contrainte.",
+      "q5": "Q : Comment réduire la taille du fichier fusionné s'il est trop lourd ?",
+      "a5": "R : Cochez l'option 'Compresser le PDF fusionné' pour exécuter l'optimisation des flux FlateDecode et le rééchantillonnage d'images."
     }
   },
   "howItWorks": {
     "step1": "Chargez les fichiers PDF que vous souhaitez fusionner.",
     "step2": "Faites glisser pour réorganiser les fichiers afin de définir l'ordre de fusion.",
-    "step3": "Cliquez sur Fusionner pour envoyer les fichiers au processus de fusion côté serveur.",
+    "step3": "Cliquez sur Fusionner pour lancer le processus d'assemblage.",
     "step4": "Téléchargez le PDF fusionné une fois le traitement terminé."
   },
   "badges": {
@@ -112,99 +112,147 @@
     "btn": "Essayer le compresseur PDF"
   },
   "guide": {
-    "title": "Combiner plusieurs PDF en un seul (Guide propre, organisé et sans stress)",
-    "intro": "Travailler avec plusieurs fichiers PDF peut rapidement devenir compliqué. Au lieu de les envoyer ou de les gérer un par un, vous pouvez tout fusionner en un seul document propre.",
-    "cta": "👉 Ce guide vous montre comment fusionner des PDF efficacement, les organiser correctement et éviter les erreurs courantes.",
+    "title": "Guide exhaustif de fusion PDF : Architecture, Mécanique et Bonnes Pratiques",
+    "intro": "Consolider plusieurs fichiers PDF en un document unique et cohérent est indispensable pour les rapports d'entreprise, les dossiers juridiques, les soumissions académiques et l'archivage numérique. Plutôt que d'envoyer des pièces jointes fragmentées, un PDF fusionné établit une lecture structurée avec signets unifiés et pagination continue.",
+    "cta": "👉 Découvrez comment les arbres d'objets PDF, les tables XRef et les dictionnaires de ressources sont unifiés lors de la fusion.",
     "whatIs": {
       "heading": "📌 Qu'est-ce qu'un fusionneur PDF ?",
-      "body": "Un fusionneur PDF est un outil qui vous permet de :",
-      "item1": "📄 Combiner plusieurs fichiers PDF",
-      "item2": "🔀 Réorganiser l'ordre des pages",
-      "item3": "➕ Ajouter ou supprimer des pages",
-      "item4": "📥 Exporter en tant que document unique"
+      "body": "Un moteur de fusion PDF assemble plusieurs conteneurs PDF binaires en une structure documentaire unique en :",
+      "item1": "📄 Analysant et unifiant les arbres de hiérarchie /Pages indépendants",
+      "item2": "🔀 Réindexant les numéros d'objets indirects et les références croisées",
+      "item3": "➕ Préservant les polices intégrées, les espaces colorimétriques et les tracés vectoriels",
+      "item4": "📥 Compilant une table de références croisées standardisée et un trailer racine"
     },
     "whyMatters": {
-      "heading": "🎯 Pourquoi la fusion de PDF est importante",
-      "item1": "Meilleure organisation — transformez plusieurs fichiers en un document structuré.",
-      "item2": "Partage plus facile — un seul fichier est plus rapide, plus propre et moins confus.",
-      "item3": "Présentation professionnelle — un seul PDF fusionné paraît soigné.",
-      "item4": "Flux de travail amélioré — réduit le désordre et les tâches répétitives."
+      "heading": "🎯 Pourquoi la fusion de PDF est cruciale",
+      "item1": "Organisation structurelle — transforme des pages isolées en une hiérarchie de lecture séquentielle et claire.",
+      "item2": "Distribution fluide — élimine la prolifération de pièces jointes en fournissant un fichier unique et soigné.",
+      "item3": "Intégrité et conformité — conserve fidèlement la précision vectorielle, les champs de formulaire et les signatures.",
+      "item4": "Flux de travail optimisés — accélère l'impression par lots, le dépôt électronique légal et l'indexation."
     },
     "useCases": {
-      "heading": "🛠 Cas d'utilisation courants",
-      "item1": "💼 Documents professionnels — combiner rapports, factures, contrats",
-      "item2": "🎓 Devoirs étudiants — fusionner plusieurs sections en une seule soumission",
-      "item3": "🧾 Fichiers numérisés — combiner des pages numérisées en un seul fichier",
-      "item4": "📑 Soumissions de candidature — CV + lettre de motivation + certificats"
+      "heading": "🛠 Cas d'utilisation professionnels et personnels",
+      "item1": "💼 Dossiers d'entreprise — combiner résumés exécutifs, tableaux financiers et bilans d'audit.",
+      "item2": "🎓 Dépôts universitaires — fusionner manuscrits de recherche, graphiques, bibliographies et approbations.",
+      "item3": "🧾 Documents numérisés — assembler des scans individuels en contrats multipages continus.",
+      "item4": "📑 Candidatures — rassembler CV, lettres de motivation, diplômes et lettres de recommandation."
     },
     "howWorks": {
-      "heading": "🧠 Comment fonctionne la fusion PDF (Explication simple)",
-      "body": "Les fichiers sont chargés, les pages sont extraites et arrangées, et un nouveau PDF est généré. Les fichiers originaux restent inchangés."
+      "heading": "🧠 Comment fonctionne la fusion PDF (Vue d'ensemble)",
+      "body": "Le moteur charge les binaires PDF en mémoire, analyse le catalogue racine, extrait les objets de page, met à jour les pointeurs de référence indirecte et sérialise un nouveau flux de références croisées pour générer le document de sortie sans altération visuelle."
+    },
+    "architecture": {
+      "heading": "⚙️ Architecture technique et mécanique de fusion de documents",
+      "intro": "Les normes d'ingénierie logicielle exigent une transparence technique complète sur le traitement bas niveau du modèle objet du document (DOM) PDF en mémoire :",
+      "objectCatalog": {
+        "title": "Fusion du catalogue d'objets et de l'arbre de pages (/Catalog et /Pages)",
+        "body": "Chaque fichier PDF valide contient un dictionnaire racine /Catalog pointant vers le sommet de la hiérarchie /Pages. Lors de la fusion, le moteur parcourt l'arbre B équilibré des nœuds /Pages de chaque document source, extrait les dictionnaires individuels /Page (incluant /MediaBox, /CropBox, /Rotate et flux /Contents) et synthétise un arbre /Pages unifié en mémoire. Les pointeurs parent-enfant (/Parent et tableau /Kids) ainsi que le compteur total (/Count) sont recalculés dynamiquement pour garantir la compatibilité universelle."
+      },
+      "xrefRebuilding": {
+        "title": "Reconstruction de la table de références croisées (XRef) et des pointeurs",
+        "body": "Les PDF reposent sur une table de références croisées (ou flux compressé /XRef) contenant les décalages d'octets exacts de chaque objet indirect (ex. '12 0 obj'). La concaténation invalide tous les décalages originaux. Le processeur réindexe tous les identifiants sur une plage numérique continue (1 à N), réécrit chaque pointeur de référence ('12 0 R') dans les flux et dictionnaires, et reconstruit entièrement une nouvelle table XRef et un dictionnaire /Trailer, prévenant toute corruption de fichier."
+      },
+      "fontSubsetting": {
+        "title": "Sous-ensembles de polices et déduplication des ressources",
+        "body": "Les PDF sources intègrent souvent des sous-ensembles partiels de polices standard (comme Helvetica ou polices OpenType avec préfixes aléatoires de 6 lettres type ABCDEF+Arial). Pendant la fusion, le moteur inspecte les dictionnaires /Resources /Font de toutes les pages. Les sous-ensembles identiques et programmes de description communs sont dédupliqués pour limiter l'inflation de taille, tandis que les sous-ensembles uniques sont isolés pour éviter les conflits d'identifiants de glyphes dans la table /ToUnicode CMap."
+      },
+      "clientPrivacy": {
+        "title": "Allocation mémoire côté client et confidentialité cryptographique",
+        "body": "Les opérations de fusion standard s'exécutent à 100 % localement dans la mémoire du navigateur client à l'aide de tableaux typés JavaScript (Uint8Array, ArrayBuffer) et WebAssembly. Les données documentaires ne sont jamais transmises à des serveurs distants sauf activation expresse de la compression facultative. Dans ce cas, le transfert est sécurisé par TLS 1.3 vers un conteneur Cloudflare R2 isolé configuré avec une règle de purge automatique après 30 minutes."
+      }
+    },
+    "specsTable": {
+      "heading": "📊 Spécification de traitement des éléments internes PDF",
+      "intro": "La spécification de référence ci-dessous détaille le comportement des structures internes PDF lors de la fusion et les stratégies de résolution des conflits :",
+      "colElement": "Élément interne PDF",
+      "colHandling": "Traitement technique lors de la fusion",
+      "colResolution": "Conflit potentiel et résolution",
+      "rowAcroForms": {
+        "element": "AcroForms / Formulaires interactifs",
+        "handling": "Les dictionnaires de formulaires sont unifiés sous l'entrée racine /AcroForm.",
+        "resolution": "Les collisions de noms de champs (ex. deux champs Signature1) nécessitent un préfixage automatique d'espace de noms pour éviter l'écrasement mutuel des valeurs."
+      },
+      "rowBookmarks": {
+        "element": "Signets et plans hiérarchiques (/Outlines)",
+        "handling": "Les signets sont fusionnés en une structure arborescente multiniveau imbriquée.",
+        "resolution": "Les cibles de destination (/Dest) sont ajustées pour refléter les nouveaux décalages d'index de page dans le document consolidé."
+      },
+      "rowFonts": {
+        "element": "Polices intégrées",
+        "handling": "Les sous-ensembles de polices identiques sont dédupliqués dans la mesure du possible.",
+        "resolution": "Les sous-ensembles personnalisés distincts portant le même nom sont conservés séparément pour éviter toute corruption du rendu des glyphes."
+      },
+      "rowMetadata": {
+        "element": "Métadonnées XMP et annotations",
+        "handling": "Les métadonnées sont unifiées ou remplacées ; les annotations (/Annots) sont conservées par page.",
+        "resolution": "Les métadonnées globales auteur/titre reprennent celles du document principal ou des paramètres personnalisés de sortie."
+      }
     },
     "stepByStep": {
-      "heading": "🧭 Étape par étape : Fusionner des PDF facilement",
-      "step1": "📤 Chargez vos fichiers PDF",
-      "step2": "👀 Prévisualisez toutes les pages",
-      "step3": "🔀 Faites glisser pour réorganiser",
-      "step4": "➕ Ajoutez ou supprimez des fichiers",
-      "step5": "📥 Téléchargez le PDF fusionné"
+      "heading": "🧭 Guide étape par étape : Fusionner des PDF avec rigueur technique",
+      "step1": "📤 Déposez vos fichiers PDF sources dans la zone de téléversement",
+      "step2": "👀 Vérifiez l'ordre dans la file et réorganisez par glisser-déposer ou via les contrôles fléchés",
+      "step3": "⚙️ Activez la compression post-fusion facultative si vous désirez un fichier plus compact",
+      "step4": "🚀 Cliquez sur 'Fusionner les PDF' pour déclencher l'assemblage du catalogue en mémoire",
+      "step5": "📥 Téléchargez immédiatement votre document PDF consolidé"
     },
     "tips": {
-      "heading": "🎨 Conseils pour rendre votre PDF fusionné propre",
-      "item1": "✅ Gardez un ordre logique (Couverture → Contenu → Annexe)",
-      "item2": "✅ Utilisez des noms de fichiers clairs (renommez les fichiers dans le bon ordre)",
-      "item3": "✅ Supprimez les pages inutiles (pages vides, doublons)",
-      "item4": "✅ Vérifiez la sortie finale (ordre des pages, orientation, formatage)"
+      "heading": "🎨 Conseils professionnels pour une fusion PDF irréprochable",
+      "item1": "✅ Établissez une hiérarchie logique — ordonnez méthodiquement (Page de titre → Sommaire → Sections de contenu → Annexes).",
+      "item2": "✅ Harmonisez les dimensions de page — vérifiez les documents mixtes Lettre US et A4 pour l'alignement d'impression.",
+      "item3": "✅ Supprimez les pages superflues — retirez les pages blanches ou versions de brouillon avant la fusion.",
+      "item4": "✅ Validez les éléments interactifs — testez les hyperliens, signatures électroniques et signets dans le PDF final."
     },
     "mistakes": {
-      "heading": "⚠️ Erreurs courantes à éviter",
-      "item1": "❌ Mauvais ordre de pages",
-      "item2": "❌ Mélange maladroit de portrait et paysage",
-      "item3": "❌ Oublier de supprimer les doublons",
-      "item4": "❌ Fusionner des numérisations de faible qualité",
-      "item5": "❌ Ne pas réviser le fichier final"
+      "heading": "⚠️ Erreurs fréquentes lors de la fusion et comment les éviter",
+      "item1": "❌ Inversion involontaire de pages — omettre de vérifier la file de fichiers avant la sérialisation finale.",
+      "item2": "❌ Conflits de formulaires interactifs — fusionner des champs homonymes sans espace de noms distinct.",
+      "item3": "❌ Fusion de PDF verrouillés — oublier de lever les protections par mot de passe avant le traitement.",
+      "item4": "❌ Poids de fichier excessif — négliger la déduplication de polices et la compression sur les gros volumes.",
+      "item5": "❌ Perte de la couche textuelle — pixelliser les pages en images plutôt que de réaliser une vraie fusion DOM vectorielle."
     },
     "comparison": {
       "heading": "🔍 Fusionneur PDF vs Diviseur PDF",
       "col1": "Fonctionnalité",
       "col2": "Fusionneur PDF",
       "col3": "Diviseur PDF",
-      "row1col1": "Objectif",
-      "row1col2": "Combiner des fichiers",
-      "row1col3": "Diviser des fichiers",
-      "row2col1": "Sortie",
-      "row2col2": "Document unique",
-      "row2col3": "Documents multiples",
-      "row3col1": "Cas d'utilisation",
-      "row3col2": "Organisation",
-      "row3col3": "Extraction"
-    },
-    "proTips": {
-      "heading": "🚀 Conseils pro pour un flux de travail plus rapide",
-      "item1": "🗂 Préparez les fichiers à l'avance",
-      "item2": "🔢 Nommez les fichiers dans l'ordre (01, 02, 03…)",
-      "item3": "⚡ Fusionnez une seule fois au lieu de répéter",
-      "item4": "🔒 Utilisez des outils qui respectent la vie privée"
-    },
-    "safety": {
-      "heading": "🔐 Est-il sûr de fusionner des PDF en ligne ?",
-      "body": "La plupart des outils traitent les fichiers temporairement et les suppriment après la fin. Néanmoins, évitez de charger des documents sensibles sauf si vous faites confiance à l'outil."
+      "row1col1": "Objectif principal",
+      "row1col2": "Unifier plusieurs conteneurs PDF en un seul fichier",
+      "row1col3": "Extraire ou scinder des pages en fichiers distincts",
+      "row2col1": "Structure produite",
+      "row2col2": "PDF unique consolidé avec catalogue /Catalog unifié",
+      "row2col3": "Plusieurs fichiers PDF autonomes ou segments séparés",
+      "row3col1": "Cas d'usage type",
+      "row3col2": "Création de dossiers, rapports composites, archivage",
+      "row3col3": "Extraction de chapitres, isolation de factures ou formulaires"
     },
     "faq": {
-      "heading": "❓FAQ",
-      "q1": "Puis-je changer l'ordre des pages après la fusion ?",
-      "a1": "Oui — la plupart des outils permettent la réorganisation avant l'export final.",
-      "q2": "La fusion affectera-t-elle la qualité ?",
-      "a2": "Non — les bons outils préservent la mise en page et le formatage.",
-      "q3": "Puis-je fusionner des images en PDF ?",
-      "a3": "Oui — de nombreux outils prennent en charge la combinaison d'images et de PDF.",
-      "q4": "Y a-t-il une limite sur le nombre de fichiers ?",
-      "a4": "Cela dépend de l'outil, mais beaucoup prennent en charge plusieurs fichiers facilement."
+      "heading": "❓ Questions techniques fréquentes (FAQ)",
+      "q1": "Comment le fusionneur gère-t-il les PDF chiffrés ou protégés par mot de passe ?",
+      "a1": "Les PDF protégés par un chiffrement AES/RC4 standard de 40, 128 ou 256 bits contiennent un dictionnaire /Encrypt restreignant l'accès aux objets. Si le fichier exige un mot de passe d'ouverture (Utilisateur), il doit être déchiffré au préalable car le moteur ne peut accéder à l'arbre /Pages sans clé cryptographique. Les PDF avec mot de passe d'autorisation (Propriétaire) peuvent être traités si l'extraction de contenu est permise.",
+      "q2": "Que se passe-t-il lors de la combinaison de documents aux orientations mixtes (Portrait vs Paysage) ?",
+      "a2": "Chaque objet de page possède des attributs /MediaBox et /Rotate indépendants (0°, 90°, 180° ou 270°). Le moteur préserve individuellement la boîte englobante et la matrice de transformation de chaque page dans l'arbre unifié, assurant une coexistence parfaite des pages portrait et paysage sans rognage.",
+      "q3": "Comment les conflits de noms de champs sont-ils résolus lors de la fusion de formulaires interactifs ?",
+      "a3": "Lors de la fusion de plusieurs PDF dotés de dictionnaires /AcroForm, des noms de champs identiques (comme 'Signature1' ou 'Date') entreraient en collision s'ils étaient simplement aplatis. Le processeur unifie les champs sous l'entrée /AcroForm racine en qualifiant les noms dupliqués par des préfixes d'espace de noms hiérarchiques uniques.",
+      "q4": "Pourquoi la fusion de plusieurs petits PDF produit-elle parfois un fichier plus lourd que la somme des originaux ?",
+      "a4": "Le document fusionné exige une nouvelle table de références croisées (XRef), des métadonnées /Catalog unifiées et de nouveaux dictionnaires trailer. En outre, si les fichiers sources intègrent des sous-ensembles de polices différents pour une même famille, chaque sous-ensemble distinct doit être conservé pour préserver les glyphes, créant une légère surcharge structurelle cumulée.",
+      "q5": "Comment les hyperliens internes et ancres de destination sont-ils préservés entre documents ?",
+      "a5": "Les annotations de lien interne (/Type /Annot /Subtype /Link) ciblent des destinations (/Dest) via des pointeurs explicites ou des arbres de noms (/Names /Dests). Durant la fusion, le moteur décale les index de page cible selon le nombre cumulé de pages des fichiers précédents, garantissant une navigation interne sans erreur.",
+      "q6": "Quel est le seuil maximal de mémoire RAM du navigateur lors de la fusion simultanée de dizaines de PDF haute résolution ?",
+      "a6": "La fusion client dans le navigateur alloue des tampons ArrayBuffer dans l'onglet. Sur les navigateurs 64 bits modernes (Chrome, Firefox, Edge, Safari), la limite de tas mémoire varie entre 1,5 Go et 4 Go par onglet. Pour les gros volumes de numérisations très haute définition, l'activation de la compression soulage la mémoire et accélère le traitement.",
+      "q7": "Comment fonctionne la gestion des profils colorimétriques (CMJN vs sRGB) lors de la fusion de documents prépresse et web ?",
+      "a7": "Les pages PDF déclarent leur espace colorimétrique dans leurs dictionnaires locaux /Resources /ColorSpace (ex. /DeviceCMYK, /DeviceRGB ou /ICCBased). Le moteur conserve ces dictionnaires par flux de page, évitant toute altération chromatique globale lors du mélange de pages d'impression CMJN et d'illustrations numériques sRGB.",
+      "q8": "La fusion de PDF aplatis affecte-t-elle l'extraction de la couche de texte par les moteurs OCR ?",
+      "a8": "Non. La véritable fusion PDF concatène directement les flux de contenu vectoriel (blocs BT ... ET) et les tables de correspondance Unicode (/ToUnicode CMap). Les moteurs OCR et extracteurs textuels peuvent indexer, sélectionner et copier le texte du document final sans aucune perte de qualité.",
+      "q9": "La conformité à la norme PDF/A (ISO 19005) peut-elle être maintenue lors de la fusion de PDF standard ?",
+      "a9": "L'archivage PDF/A impose l'incorporation intégrale des polices, des profils de couleur indépendants du périphérique (/OutputIntents) et l'exclusion des flux audio/vidéo ou JavaScript. Si tous les fichiers sources respectent la norme PDF/A et que les métadonnées incluent le schéma XMP adéquat, la conformité PDF/A est maintenue.",
+      "q10": "Quelle est la différence entre la fusion d'arbres de pages et la pixellisation en images ?",
+      "a10": "La fusion structurelle copie fidèlement les tracés vectoriels natifs, polices et objets textuels, garantissant une netteté parfaite à n'importe quel niveau de zoom et une taille de fichier minimale. À l'inverse, la pixellisation transforme les pages en images bitmap, ce qui rend le texte flou, détruit la recherche textuelle et fait exploser le poids du document."
     },
     "conclusion": {
-      "heading": "🧾Conclusion",
-      "body": "La fusion de PDF vous aide à rester organisé et à présenter des informations de manière professionnelle. Avec la bonne approche, vous pouvez transformer des fichiers éparpillés en un document propre en quelques secondes."
+      "heading": "🧾 Résumé et étapes suivantes",
+      "body": "Fusionner des documents PDF avec une précision de niveau professionnel garantit une hiérarchie structurelle impeccable, une fidélité vectorielle intacte et une confidentialité absolue de vos données. Qu'il s'agisse de compiler des bilans financiers ou des dossiers académiques, notre outil offre une consolidation rapide, sécurisée et fidèle."
     },
-    "ctaBtn": "👉 Essayez ici : Outil Fusionneur PDF"
+    "ctaBtn": "👉 Fusionnez vos fichiers PDF dès maintenant"
   }
 }

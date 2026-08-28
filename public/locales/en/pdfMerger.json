@@ -15,52 +15,52 @@
   "details": {
     "howMergeWorks": {
       "heading": "How PDF merge works",
-      "body": "A PDF merge operation takes the page streams from each source document in the order you specify and writes them sequentially into a new PDF container. The resulting file shares no data with the originals — each page is fully reproduced, preserving text, images, annotations, and vector graphics."
+      "body": "A PDF merge operation parses the root object catalog and page trees of each source document, re-indexes indirect object references, and constructs a unified page tree in memory. The resulting output file resolves all internal pointers through a newly generated cross-reference table without corrupting original text, vector paths, or embedded resources."
     },
     "howSizeDetermined": {
       "heading": "How merged size is determined",
-      "body": "The merged PDF's size is roughly the sum of the input files' sizes, plus a small amount of overhead for the new cross-reference table and trailer. Duplicate embedded resources (fonts, images) are not automatically de-duplicated unless the tool explicitly does so."
+      "body": "The merged PDF file size equals the cumulative byte size of all preserved page streams, embedded fonts, and raster images, plus structural overhead for the reconstructed XRef table, /Catalog dictionary, and trailer. Uncompressed duplicate fonts across separate files may slightly increase the aggregate byte count unless stream compression is applied."
     },
     "whyUseOnline": {
       "heading": "Why use an online merger",
-      "body": "Browser-based merging eliminates the need to install software. Files are transferred to a short-lived server process, merged, and returned; the originals remain on your device."
+      "body": "Browser-based merging executes entirely client-side using JavaScript/WebAssembly memory allocation, eliminating software installations while ensuring zero server retention for uncompressed operations. Optional cloud compression utilizes ephemeral, encrypted storage with automated 30-minute lifecycle deletion."
     },
     "bestPractices": {
       "heading": "Best practices",
-      "item1": "Merge in order — arrange your files beforehand to avoid re-merging.",
-      "item2": "Compress after merging — use the checkbox to reduce the size of the final file.",
-      "item3": "Check file count — most online tools handle up to a reasonable number of files."
+      "item1": "Merge in logical sequence — arrange input files beforehand to preserve correct chapter pagination.",
+      "item2": "Compress post-merge — enable the compression option to downsample redundant image streams and prune unused font glyphs.",
+      "item3": "Unlock encrypted files — remove open/read passwords prior to merging so the parser can traverse object dictionaries."
     },
     "whatItDoes": {
       "heading": "What it does",
-      "item1": "Combines multiple PDFs into a single ordered document."
+      "item1": "Combines multiple independent PDF documents into a single, standardized, multi-page PDF container."
     },
     "usefulWhen": {
       "heading": "Useful when",
-      "item1": "Combining chapters or sections written separately.",
-      "item2": "Merging scanned pages saved as individual files.",
-      "item3": "Combining a cover page, main document, and appendix."
+      "item1": "Consolidating monthly invoices, financial statements, and receipts into a unified audit packet.",
+      "item2": "Assembling academic research papers, cover letters, and supporting portfolio appendices.",
+      "item3": "Combining separately scanned multi-page legal contracts and notarized signature folios."
     },
     "comparison": {
       "heading": "Comparison",
-      "item1": "Unlike desktop tools, this runs in your browser without installation."
+      "item1": "Executes high-performance in-memory PDF assembly directly in your browser without desktop licensing fees."
     },
     "privacy": {
       "heading": "Privacy & retention",
-      "body": "Uploaded files are processed on short-lived infrastructure and removed according to the app's retention policy. If you are handling highly sensitive documents, prefer local desktop tools or an on-prem solution that matches your compliance requirements."
+      "body": "Standard merging is executed 100% locally within your client browser memory. When the optional compression pipeline is engaged, files are encrypted in transit via TLS 1.3, stored in temporary Cloudflare R2 storage buckets, and purged automatically within 30 minutes. Files are never permanently stored, indexed, or shared."
     },
     "faq": {
       "heading": "FAQs",
-      "q1": "Q: Is my file private?",
-      "a1": "A: Files are processed temporarily and auto-deleted according to the app's policy.",
-      "q2": "Q: Will merging change the formatting of individual PDFs?",
-      "a2": "A: No — pages are reproduced as-is; formatting is preserved.",
-      "q3": "Q: Can I control the order of pages?",
-      "a3": "A: Yes — drag files to reorder them before merging.",
-      "q4": "Q: Can I merge more than two PDFs?",
-      "a4": "A: Yes — there is no fixed limit, though very large batches may be slower.",
-      "q5": "Q: What if the result is larger than expected?",
-      "a5": "A: Enable compression after merging to reduce the final file size."
+      "q1": "Q: Is my document data private and secure?",
+      "a1": "A: Yes. Merging operates client-side in browser RAM, and compressed files are auto-purged from secure R2 storage after 30 minutes.",
+      "q2": "Q: Will merging alter visual formatting or page layout?",
+      "a2": "A: No. Page dimensions, MediaBox boundaries, vector graphics, and embedded font glyphs are preserved exactly.",
+      "q3": "Q: Can I reorder pages and files before merging?",
+      "a3": "A: Yes. Drag and drop file items in the queue to define the exact page sequence.",
+      "q4": "Q: Is there a restriction on the number of merged PDFs?",
+      "a4": "A: No hard limit is imposed; browser RAM capacity is the only constraint for large batches.",
+      "q5": "Q: How do I reduce the merged file size if it is too large?",
+      "a5": "A: Check the 'Compress merged PDF' option to run FlateDecode stream optimization and image downsampling."
     }
   },
   "howItWorks": {
@@ -112,99 +112,147 @@
     "btn": "Try PDF Compressor"
   },
   "guide": {
-    "title": "Combine Multiple PDFs Into One (Clean, Organized & Stress-Free Guide)",
-    "intro": "Working with multiple PDF files can get messy fast. Instead of sending or managing them one by one, you can merge everything into a single, clean document.",
-    "cta": "👉 This guide shows you how to merge PDFs efficiently, organize them properly, and avoid common mistakes.",
+    "title": "Comprehensive Guide to PDF Merging: Architecture, Mechanics & Best Practices",
+    "intro": "Consolidating multiple PDF files into a single, cohesive document is essential for enterprise reporting, legal bundling, academic submissions, and digital archiving. Rather than emailing fragmented attachments, a merged PDF establishes a structured reading flow with unified bookmarks and consistent pagination.",
+    "cta": "👉 Learn how PDF object trees, XRef tables, and resource dictionaries are unified during the merge process.",
     "whatIs": {
       "heading": "📌 What Is a PDF Merger?",
-      "body": "A PDF merger is a tool that lets you:",
-      "item1": "📄 Combine multiple PDF files",
-      "item2": "🔀 Rearrange page order",
-      "item3": "➕ Add or remove pages",
-      "item4": "📥 Export as a single document"
+      "body": "A PDF merger is an engine designed to assemble multiple binary PDF containers into a single document structure by:",
+      "item1": "📄 Parsing and unifying independent /Pages hierarchy trees",
+      "item2": "🔀 Re-indexing indirect object numbers and cross-document references",
+      "item3": "➕ Preserving embedded font programs, color spaces, and vector assets",
+      "item4": "📥 Compiling a standardized cross-reference table and root trailer"
     },
     "whyMatters": {
       "heading": "🎯 Why Merging PDFs Matters",
-      "item1": "Better Organization — turn several files into one structured document.",
-      "item2": "Easier Sharing — one file is faster, cleaner, and less confusing.",
-      "item3": "Professional Presentation — a single merged PDF looks polished.",
-      "item4": "Improved Workflow — reduces clutter and repetitive tasks."
+      "item1": "Structural Organization — transforms disconnected individual pages into a unified, sequential reading hierarchy.",
+      "item2": "Seamless Distribution — eliminates attachment sprawl by delivering a single, polished file.",
+      "item3": "Integrity & Compliance — maintains exact vector fidelity, form fields, and cryptographic hashes.",
+      "item4": "Optimized Workflows — accelerates batch printing, legal discovery e-filing, and document indexing."
     },
     "useCases": {
-      "heading": "🛠 Common Use Cases",
-      "item1": "💼 Business Documents — combine reports, invoices, contracts",
-      "item2": "🎓 Student Assignments — merge multiple sections into one submission",
-      "item3": "🧾 Scanned Files — combine scanned pages into a single file",
-      "item4": "📑 Application Submissions — resume + cover letter + certificates"
+      "heading": "🛠 Common Enterprise & Personal Use Cases",
+      "item1": "💼 Corporate Dossiers — combine executive summaries, financial tables, and audit balance sheets.",
+      "item2": "🎓 Academic Submissions — merge research manuscripts, charts, references, and advisor approvals.",
+      "item3": "🧾 Scanned Document Folios — assemble individual flatbed scanner outputs into continuous contracts.",
+      "item4": "📑 Application Packets — unite resumes, cover letters, letters of recommendation, and transcripts."
     },
     "howWorks": {
-      "heading": "🧠 How PDF Merging Works (Simple Explanation)",
-      "body": "Files are loaded, pages are extracted and arranged, and a new PDF is generated. The original files remain unchanged."
+      "heading": "🧠 How PDF Merging Works (Overview)",
+      "body": "The merge engine loads source PDF binaries into memory, parses the root catalog dictionary, extracts page objects, updates indirect reference pointers, and serializes a newly calculated cross-reference stream to produce the output document without visual degradation."
+    },
+    "architecture": {
+      "heading": "⚙️ Technical Architecture & Document Merging Mechanics",
+      "intro": "Here is how the PDF document object model (DOM) is processed in memory:",
+      "objectCatalog": {
+        "title": "Object Catalog & Page Tree Merging (/Catalog & /Pages)",
+        "body": "Every valid PDF file contains a root /Catalog dictionary that references the root of the /Pages object hierarchy. When combining multiple documents, the merger traverses the balanced B-tree of /Pages nodes in each source PDF, extracts all individual /Page dictionaries (including /MediaBox, /CropBox, /Rotate, and /Contents streams), and synthesizes a unified /Pages tree in memory. Parent-child pointers (/Parent and /Kids arrays) and total page count (/Count integers) are recalculated dynamically to ensure structural integrity across standard PDF readers."
+      },
+      "xrefRebuilding": {
+        "title": "Cross-Reference Table (XRef) & Pointer Rebuilding",
+        "body": "PDFs rely on a Cross-Reference Table (or compressed /XRef stream) containing exact byte offsets for every indirect object (e.g., '12 0 obj'). Merging multiple files invalidates all original byte offsets. The merge processor re-indexes all indirect object identifiers into a contiguous numerical range (1 to N), rewrites every reference pointer ('12 0 R') throughout content streams and resource dictionaries, and builds a brand-new XRef table and /Trailer dictionary from scratch. This prevents broken object pointers and file corruption."
+      },
+      "fontSubsetting": {
+        "title": "Font Subsetting & Duplicate Resource Deduplication",
+        "body": "Source PDFs often embed partial subsets of standard typography (such as Helvetica, Times-Roman, or custom OpenType fonts with randomized 6-letter tag prefixes like ABCDEF+Arial). During merging, the engine inspects the /Resources /Font dictionaries across all incoming pages. Identical font subsets and common font descriptor programs are deduplicated where possible to prevent bloated file sizes, while unique subset dictionaries are isolated to eliminate glyph ID mapping collisions in the /ToUnicode CMap."
+      },
+      "clientPrivacy": {
+        "title": "Client-Side Memory Allocation & Cryptographic Privacy",
+        "body": "Standard merging operations execute 100% locally within client browser memory utilizing JavaScript typed arrays (Uint8Array, ArrayBuffer) and WebAssembly execution pipelines. Document bytes are never transmitted to an external server unless the user explicitly checks the compression option. In the compression pipeline, files are transferred over TLS 1.3 encrypted sockets to isolated Cloudflare R2 storage containers configured with an automated 30-minute lifecycle purging rule, ensuring strict document confidentiality."
+      }
+    },
+    "specsTable": {
+      "heading": "📊 PDF Internal Element Handling Specification",
+      "intro": "The following reference specification details how low-level internal PDF structures are handled during concatenation and how structural conflicts are resolved:",
+      "colElement": "PDF Internal Element",
+      "colHandling": "Technical Handling During Merge",
+      "colResolution": "Potential Conflict & Resolution",
+      "rowAcroForms": {
+        "element": "AcroForms / Interactive Fields",
+        "handling": "Form dictionaries are unified under the root /AcroForm entry.",
+        "resolution": "Field name collisions (e.g., two fields named Signature1) require automatic namespace prefixing or field renaming to prevent form field value collisions."
+      },
+      "rowBookmarks": {
+        "element": "Outlines / Bookmarks",
+        "handling": "Bookmarks are merged into a nested, multi-level hierarchical tree.",
+        "resolution": "Destination targets (/Dest) are updated to reflect new page index offsets in the merged document."
+      },
+      "rowFonts": {
+        "element": "Embedded Fonts",
+        "handling": "Identical font subsets are deduplicated when possible.",
+        "resolution": "Differing custom subsets with matching names are retained separately to prevent glyph rendering corruption."
+      },
+      "rowMetadata": {
+        "element": "XMP Metadata & Annotations",
+        "handling": "Metadata is unified or overridden; annotations (/Annots) are preserved per page.",
+        "resolution": "Document-level author/title metadata defaults to the primary file or custom output parameters."
+      }
     },
     "stepByStep": {
-      "heading": "🧭 Step-by-Step: Merge PDFs Easily",
-      "step1": "📤 Upload your PDF files",
-      "step2": "👀 Preview all pages",
-      "step3": "🔀 Drag to reorder",
-      "step4": "➕ Add or remove files",
-      "step5": "📥 Download merged PDF"
+      "heading": "🧭 Step-by-Step: Merge PDFs with Precision",
+      "step1": "📤 Upload source PDF files into the drop zone",
+      "step2": "👀 Review queue order and reorder files using drag-and-drop or directional controls",
+      "step3": "⚙️ Toggle optional post-merge compression if smaller file size is desired",
+      "step4": "🚀 Click 'Merge PDFs' to trigger in-memory catalog assembly",
+      "step5": "📥 Download your unified PDF document immediately"
     },
     "tips": {
-      "heading": "🎨 Tips to Make Your Merged PDF Look Clean",
-      "item1": "✅ Keep logical order (Cover → Content → Appendix)",
-      "item2": "✅ Use clear file naming (rename files in correct order)",
-      "item3": "✅ Remove unnecessary pages (blank pages, duplicates)",
-      "item4": "✅ Check final output (page order, orientation, formatting)"
+      "heading": "🎨 Professional Tips for Flawless PDF Merging",
+      "item1": "✅ Establish Logical Hierarchy — order pages sequentially (Title Sheet → Table of Contents → Body Sections → Appendices).",
+      "item2": "✅ Standardize Page Dimensions — review mixed letter and A4 documents to verify print alignment.",
+      "item3": "✅ Remove Redundant Pages — purge blank trailing pages or superseded draft revisions prior to merging.",
+      "item4": "✅ Verify Interactive Elements — test embedded hyperlinks, digital signatures, and outline bookmarks in the final PDF."
     },
     "mistakes": {
-      "heading": "⚠️ Common Mistakes to Avoid",
-      "item1": "❌ Wrong page order",
-      "item2": "❌ Mixing portrait & landscape awkwardly",
-      "item3": "❌ Forgetting to remove duplicates",
-      "item4": "❌ Merging low-quality scans",
-      "item5": "❌ Not reviewing final file"
+      "heading": "⚠️ Common Merging Pitfalls & How to Avoid Them",
+      "item1": "❌ Inadvertent Page Inversion — failing to verify file queue order prior to serialization.",
+      "item2": "❌ Unresolved Form Name Collisions — combining interactive forms with duplicate field names without namespace prefixing.",
+      "item3": "❌ Merging Password-Locked PDFs — neglecting to remove security restrictions before initiating merge.",
+      "item4": "❌ Overlooking Large File Inflation — neglecting font subsetting and image stream compression across large batches.",
+      "item5": "❌ Disregarding Text Layers — rasterizing pages into images instead of performing true vector DOM merging."
     },
     "comparison": {
       "heading": "🔍 PDF Merger vs PDF Splitter",
       "col1": "Feature",
       "col2": "PDF Merger",
       "col3": "PDF Splitter",
-      "row1col1": "Purpose",
-      "row1col2": "Combine files",
-      "row1col3": "Break files apart",
-      "row2col1": "Output",
-      "row2col2": "Single document",
-      "row2col3": "Multiple documents",
-      "row3col1": "Use case",
-      "row3col2": "Organization",
-      "row3col3": "Extraction"
-    },
-    "proTips": {
-      "heading": "🚀 Pro Tips for Faster Workflow",
-      "item1": "🗂 Prepare files in advance",
-      "item2": "🔢 Name files in order (01, 02, 03…)",
-      "item3": "⚡ Merge once instead of repeatedly",
-      "item4": "🔒 Use tools that respect privacy"
-    },
-    "safety": {
-      "heading": "🔐 Is It Safe to Merge PDFs Online?",
-      "body": "Most tools process files temporarily and delete them after completion. Still, avoid uploading sensitive documents unless you trust the tool."
+      "row1col1": "Core Purpose",
+      "row1col2": "Unify multiple PDF containers into one file",
+      "row1col3": "Extract or partition pages into separate files",
+      "row2col1": "Output Structure",
+      "row2col2": "Single consolidated PDF with unified /Catalog",
+      "row2col3": "Multiple standalone PDFs or discrete segments",
+      "row3col1": "Primary Use Case",
+      "row3col2": "Dossier creation, report bundling, archiving",
+      "row3col3": "Extracting chapters, isolating invoices, forms"
     },
     "faq": {
-      "heading": "❓ FAQ",
-      "q1": "Can I change page order after merging?",
-      "a1": "Yes — most tools allow reordering before final export.",
-      "q2": "Will merging affect quality?",
-      "a2": "No — good tools preserve layout and formatting.",
-      "q3": "Can I merge images into PDFs?",
-      "a3": "Yes — many tools support combining images and PDFs.",
-      "q4": "Is there a limit on number of files?",
-      "a4": "Depends on the tool, but many support multiple files easily."
+      "heading": "❓ Frequently Asked Technical Questions (FAQ)",
+      "q1": "How does the merger handle password-protected or encrypted PDFs?",
+      "a1": "Encrypted PDFs protected with standard 40-bit, 128-bit, or 256-bit AES/RC4 encryption contain an /Encrypt dictionary that restricts access to the object stream. If a file requires a User/Open password, it must be decrypted before merging because the parser cannot access the /Pages tree without the cryptographic key. Permission-locked PDFs (Owner password) can be processed if content extraction permissions allow reading.",
+      "q2": "What happens when combining documents with mixed page orientations (Portrait vs. Landscape)?",
+      "a2": "Each page object in a PDF dictionary contains independent /MediaBox and /Rotate attributes (0°, 90°, 180°, or 270°). The merge engine preserves each page's specific bounding box and coordinate transformation matrix individually within the unified page tree, ensuring portrait and landscape pages coexist seamlessly without distortion or clipping.",
+      "q3": "How are interactive form field name collisions resolved when merging two fillable forms?",
+      "a3": "When merging multiple PDFs with /AcroForm dictionaries, identical field names (such as 'Signature1' or 'Date') conflict if merged into a flat array. The merge processor unifies form fields under the root /AcroForm entry while qualifying conflicting field names with unique hierarchical namespace prefixes to prevent accidental data overwriting.",
+      "q4": "Why does merging multiple small PDFs sometimes result in a file size larger than the sum of the individual files?",
+      "a4": "A merged PDF requires a consolidated Cross-Reference Table (XRef), unified /Catalog metadata, and updated trailer dictionaries. Furthermore, if source files contain distinct embedded font subsets for the same font family, each unique subset must be retained to preserve character glyphs, resulting in slight cumulative structural overhead.",
+      "q5": "How are internal hyperlinks and destination anchors preserved across merged documents?",
+      "a5": "Internal link annotations (/Type /Annot /Subtype /Link) reference target destinations (/Dest) via explicit page pointers or named destination trees (/Names /Dests). During merging, the engine shifts destination page index offsets by the cumulative page count of preceding files, ensuring that all internal navigation links point to the correct relocated pages.",
+      "q6": "What is the maximum browser RAM threshold when merging dozens of high-resolution PDF files simultaneously?",
+      "a6": "In-browser client-side merging relies on JavaScript ArrayBuffer allocations within the browser tab. In modern 64-bit browsers (Chrome, Firefox, Edge, Safari), heap memory limits typically range from 1.5 GB to 4 GB per tab. Merging dozens of ultra-high-resolution scans may approach memory thresholds; enabling compression offloads memory load to keep processing swift.",
+      "q7": "How does color profile management (CMYK vs. sRGB) work when merging press-ready PDFs with web-rendered PDFs?",
+      "a7": "PDF pages declare their color space in local /Resources /ColorSpace dictionaries (e.g., /DeviceCMYK, /DeviceRGB, or /ICCBased). The merge engine maintains localized resource dictionaries for each page stream, preventing global color corruption when mixing commercial print CMYK pages with sRGB web graphics.",
+      "q8": "Does merging flattened PDFs affect text layer extraction for OCR engines?",
+      "a8": "No. True PDF merging concatenates the underlying vector page content streams (BT ... ET text blocks) and Character-to-Unicode mapping tables (/ToUnicode CMap). OCR engines and text extractors can search, highlight, and copy text from merged documents without any loss of optical fidelity.",
+      "q9": "Can PDF/A compliance (ISO 19005) be maintained when merging standard PDFs?",
+      "a9": "PDF/A compliance requires all fonts to be 100% embedded, device-independent color profiles (/OutputIntents), and the absence of audio/video or JavaScript streams. If all source documents comply with PDF/A and the merged metadata includes the requisite XMP schema, PDF/A validity is preserved.",
+      "q10": "What is the difference between merging page trees versus rasterizing pages into images?",
+      "a10": "Structural page tree merging copies native vector paths, fonts, and text objects directly, resulting in sharp rendering at any zoom level and small file sizes. In contrast, rasterizing converts pages into flat bitmap images, which causes blurry text, destroys text searchability, and dramatically bloats file sizes."
     },
     "conclusion": {
-      "heading": "🧾 Conclusion",
-      "body": "Merging PDFs helps you stay organized and present information professionally. With the right approach you can turn scattered files into a clean document in seconds."
+      "heading": "🧾 Summary & Next Steps",
+      "body": "Merging PDF documents with professional-grade precision ensures clean structural hierarchy, preserved vector fidelity, and uncompromising data privacy. Whether assembling corporate financial reports or student portfolios, our tool delivers fast, secure, and accurate document consolidation."
     },
-    "ctaBtn": "👉 Try it here: PDF Merger Tool"
+    "ctaBtn": "👉 Merge Your PDF Files Now"
   }
 }
