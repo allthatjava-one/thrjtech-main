@@ -143,7 +143,7 @@
     },
     "architecture": {
       "heading": "⚙️ 기술 아키텍처 및 문서 병합 메커니즘",
-      "intro": "소프트웨어 엔지니어링 및 AdSense 품질 표준에 부합하는 메모리 내 저수준 PDF 문서 객체 모델(DOM) 처리 방식은 다음과 같습니다:",
+      "intro": "품질 표준에 부합하는 메모리 내 저수준 PDF 문서 객체 모델(DOM) 처리 방식은 다음과 같습니다:",
       "objectCatalog": {
         "title": "객체 카탈로그 및 페이지 트리 병합 (/Catalog 및 /Pages)",
         "body": "모든 유효한 PDF 파일은 /Pages 객체 계층의 루트를 가리키는 루트 /Catalog 딕셔너리를 포함합니다. 여러 문서를 결합할 때 병합기는 각 소스 PDF의 균형 B-트리 /Pages 노드를 순회하며 개별 /Page 딕셔너리(/MediaBox, /CropBox, /Rotate 및 /Contents 스트림 포함)를 추출하여 메모리 내에 단일 통합 /Pages 트리를 합성합니다. 부모-자식 포인터(/Parent 및 /Kids 배열)와 전체 페이지 수(/Count 정수)를 동적으로 재계산하여 표준 PDF 뷰어와의 완벽한 호환성을 보장합니다."

@@ -143,7 +143,7 @@
     },
     "architecture": {
       "heading": "⚙️ Technical Architecture & Document Merging Mechanics",
-      "intro": "AdSense reviewers and software engineers look for unique technical explanations rather than basic usage steps. Here is how the PDF document object model (DOM) is processed in memory:",
+      "intro": "Here is how the PDF document object model (DOM) is processed in memory:",
       "objectCatalog": {
         "title": "Object Catalog & Page Tree Merging (/Catalog & /Pages)",
         "body": "Every valid PDF file contains a root /Catalog dictionary that references the root of the /Pages object hierarchy. When combining multiple documents, the merger traverses the balanced B-tree of /Pages nodes in each source PDF, extracts all individual /Page dictionaries (including /MediaBox, /CropBox, /Rotate, and /Contents streams), and synthesizes a unified /Pages tree in memory. Parent-child pointers (/Parent and /Kids arrays) and total page count (/Count integers) are recalculated dynamically to ensure structural integrity across standard PDF readers."
