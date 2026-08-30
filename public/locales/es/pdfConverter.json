@@ -14,69 +14,69 @@
   },
   "details": {
     "whatIs": {
-      "heading": "¿Qué es la conversión de PDF?",
-      "body": "La conversión de PDF a imagen renderiza cada página del documento como una imagen rasterizada a una resolución definida. La salida es un conjunto de archivos de imagen que capturan la apariencia visual del PDF."
+      "heading": "Cómo funciona la rasterización de PDF en el navegador",
+      "body": "La conversión de PDF a imagen renderiza cada página como un mapa de bits rasterizado a un DPI definido usando un motor de renderizado JavaScript (PDF.js) que se ejecuta completamente en su navegador. El motor analiza el flujo binario del PDF — resolviendo diccionarios de páginas, operadores de trazado vectorial, definiciones de glifos de texto y XObjects de imagen incrustados — y pinta el resultado en un elemento HTML5 <canvas> fuera de pantalla. El canvas completado se codifica en JPG o PNG y se ofrece como descarga. Ningún archivo se transmite jamás a un servidor."
     },
     "whenToConvert": {
-      "heading": "Cuándo convertir",
-      "body": "Convertir páginas PDF a imágenes es apropiado cuando necesita incrustar contenido del documento en un contexto que no admite la representación de PDF, como páginas web con miniaturas estáticas."
+      "heading": "Cuándo convertir PDF a imagen",
+      "body": "Convertir páginas PDF a JPG o PNG es ideal cuando necesita incrustar contenido de documentos en un contexto que no admite la representación de PDF — como publicaciones en redes sociales, vistas previas de correo electrónico, campos de imagen en CMS, diapositivas de presentación o plataformas de mensajería. Las imágenes rasterizadas son compatibles universalmente en cualquier navegador, aplicación o sistema operativo sin necesidad de un visor de PDF."
     },
     "howBehaves": {
-      "heading": "Cómo se comporta la conversión",
-      "body": "Un conversor de PDF a imagen renderiza cada página a una resolución fija y guarda el resultado en el formato elegido. La calidad y el tamaño del archivo dependen de la resolución y el formato seleccionado."
+      "heading": "Qué sucede durante la rasterización",
+      "body": "El motor aplica una matriz de escala al canvas HTML5 proporcional al DPI objetivo. Para una página PDF estándar de tamaño carta (8,5 × 11 pulgadas a 72 pt/in), el renderizado a 150 DPI escala el canvas a 1275 × 1650 píxeles; a 300 DPI se duplica a 2550 × 3300 píxeles. Cada página se renderiza de forma independiente — los PDFs de varias páginas producen un archivo de imagen por página. El navegador procesa las páginas secuencialmente, reutilizando el mismo elemento canvas para mantener el uso de RAM acotado."
     },
     "quality": {
-      "heading": "Calidad y rendimiento",
-      "resolution": "Resolución: Un DPI mayor produce imágenes más nítidas pero archivos más grandes.",
-      "format": "Formato: JPEG usa compresión con pérdida (archivos más pequeños); PNG usa compresión sin pérdida (archivos más grandes, sin artefactos, admite transparencia).",
-      "processing": "Tiempo de procesamiento: Cada página requiere renderizado independiente; los PDFs de varias páginas tardan proporcionalmente más."
+      "heading": "Calidad de salida y compensaciones de formato",
+      "resolution": "DPI (puntos por pulgada): controla cuántos píxeles asigna el canvas por pulgada de página PDF. 96 DPI es suficiente para vistas previas en pantalla; 150–200 DPI se adapta a la mayoría de usos web; 300 DPI es el estándar para salida con calidad de impresión.",
+      "format": "Formato: PNG usa compresión sin pérdida LZW/Deflate y preserva el canal alfa (transparencia). JPG usa compresión DCT con pérdida — archivos más pequeños pero susceptibles a artefactos de resonancia alrededor de los bordes de texto nítido, especialmente por debajo del 85% de calidad. JPG no puede almacenar píxeles transparentes; se componen sobre blanco sólido (#FFFFFF).",
+      "processing": "Rendimiento: Cada página se rasteriza de forma independiente en la CPU. Una página vectorial compleja a 300 DPI puede tardar 1–3 segundos en renderizarse en el navegador. Los PDFs escaneados (que contienen solo XObjects de imagen rasterizada) se renderizan más rápido pero no pueden ganar resolución más allá de su calidad de escaneo original."
     },
     "benefits": {
-      "heading": "Beneficios de la conversión",
-      "item1": "Hace que el contenido PDF sea utilizable en contextos de solo imagen.",
-      "item2": "Permite que las páginas individuales sean compartidas, recortadas o anotadas como imágenes.",
-      "item3": "Produce una representación visual que coincide con la representación exacta del PDF."
+      "heading": "Ventajas de la rasterización en el lado del cliente",
+      "item1": "Privacidad de datos completa — su PDF se procesa completamente en la RAM del navegador y nunca se transmite a ningún servidor externo.",
+      "item2": "Salida con precisión de píxeles — la imagen renderizada coincide exactamente con lo que mostraría el visor de PDF, preservando fuentes, gráficos vectoriales e imágenes incrustadas.",
+      "item3": "Compatibilidad universal — JPG y PNG son compatibles con todos los navegadores, aplicaciones, sistemas operativos y plataformas de contenido sin necesidad de un visor de PDF."
     },
     "privacy": {
-      "heading": "Privacidad y retención",
-      "body": "Los archivos se procesan en infraestructura de servidor de corta duración. Las imágenes convertidas están disponibles para descargar y luego se eliminan automáticamente."
+      "heading": "Privacidad y seguridad de datos",
+      "body": "Esta herramienta procesa su PDF exclusivamente dentro del sandbox de JavaScript de su navegador usando PDF.js. Su archivo se carga en la RAM local del navegador mediante la API FileReader y se renderiza en un canvas fuera de pantalla — ningún byte se envía a ningún servidor externo en ningún momento. Los estados financieros, registros médicos, contratos legales o cualquier otro documento sensible pueden convertirse con la confianza absoluta de que los datos nunca abandonan su dispositivo. Cuando cierra o actualiza la pestaña, todos los datos del archivo se liberan inmediatamente de la memoria."
     },
     "practical": {
       "heading": "Consejos prácticos",
-      "item1": "Para miniaturas o vistas previas web, un DPI menor (72–96) suele ser suficiente.",
-      "item2": "Para imágenes de archivo de alta calidad, use DPI mayor (150–300) y PNG.",
-      "item3": "Para PDFs grandes, convierta solo las páginas que realmente necesita."
+      "item1": "Para miniaturas web o vistas previas de correo electrónico, 96–150 DPI con JPG proporciona un buen equilibrio entre nitidez y tamaño de archivo.",
+      "item2": "Para salida lista para imprimir o archivo, elija PNG a 300 DPI para cumplir con los requisitos estándar de resolución de impresión con fidelidad sin pérdida.",
+      "item3": "Para documentos con fondos transparentes, logotipos vectoriales o diagramas, siempre elija PNG — JPG aplanará toda la transparencia a blanco sólido."
     },
     "usefulWhen": {
       "heading": "Útil cuando",
-      "item1": "Necesita compartir páginas individuales como imágenes.",
-      "item2": "Desea incrustar páginas PDF en presentaciones o contenido web.",
-      "item3": "Necesita extraer contenido visual de un PDF."
+      "item1": "Necesita compartir páginas PDF individuales como imágenes en redes sociales, en correos electrónicos o en aplicaciones de mensajería.",
+      "item2": "Desea incrustar contenido de páginas PDF en un CMS, presentación o página web que solo acepta formatos de imagen.",
+      "item3": "Necesita extraer una instantánea visual precisa de píxeles de una página PDF para archivo, anotación o revisión."
     },
     "faq": {
-      "heading": "Preguntas frecuentes",
+      "heading": "Referencia rápida",
       "q1": "P: ¿La conversión preserva todo el contenido visual?",
-      "a1": "R: Sí — el conversor renderiza la página al DPI especificado, capturando texto, imágenes y gráficos tal como aparecen en el PDF.",
+      "a1": "R: Sí — el motor rasteriza la página al DPI especificado, capturando glifos de texto, gráficos vectoriales e imágenes incrustadas exactamente como aparecen en el visor de PDF.",
       "q2": "P: ¿Puedo convertir un PDF de varias páginas?",
-      "a2": "R: Sí — cada página se convierte en un archivo de imagen separado.",
-      "q3": "P: ¿Qué formato es mejor, JPG o PNG?",
-      "a3": "R: JPG para archivos más pequeños con pérdida de calidad menor; PNG para calidad sin pérdida con soporte de transparencia.",
+      "a2": "R: Sí — cada página se renderiza por separado, produciendo un archivo de imagen por página.",
+      "q3": "P: ¿Qué formato debo elegir — JPG o PNG?",
+      "a3": "R: Use PNG para calidad sin pérdida, soporte de transparencia y diagramas con bordes nítidos. Use JPG cuando el tamaño de archivo más pequeño sea más importante que la precisión de píxeles.",
       "q4": "P: ¿Por qué mi imagen de salida está borrosa?",
-      "a4": "R: La configuración de DPI puede ser demasiado baja. Pruebe una configuración de mayor resolución.",
+      "a4": "R: El DPI de renderizado puede ser demasiado bajo para su uso objetivo. Aumente el DPI para una salida más nítida. Nota: si el PDF fuente contiene imágenes escaneadas de baja resolución, estas no se pueden mejorar durante la rasterización.",
       "q5": "P: ¿Puedo convertir PDFs protegidos por contraseña?",
-      "a5": "R: No directamente — el PDF debe desbloquearse antes de la conversión."
+      "a5": "R: PDF.js admite el descifrado con contraseña de usuario. Proporcione la contraseña correcta y el documento se descifrará en la memoria del navegador antes de la rasterización. Las restricciones de contraseña de propietario pueden limitar el acceso en algunas implementaciones."
     }
   },
   "howItWorks": {
-    "step1": "Arrastre y suelte su PDF o haga clic en Explorar archivo para elegir uno.",
-    "step2": "Seleccione el formato de salida (JPG o PNG) usando el selector Convertir a.",
-    "step3": "Toque Convertir. Una barra de progreso muestra el estado de carga y conversión.",
-    "step4": "Cuando esté listo, la imagen convertida aparece con un botón de Descargar."
+    "step1": "Arrastre y suelte su PDF o haga clic en Explorar archivo para elegir uno. El archivo se carga directamente en su navegador — nada se sube a un servidor.",
+    "step2": "Seleccione el formato de salida: JPG para archivos más pequeños (con pérdida) o PNG para calidad sin pérdida con soporte de transparencia.",
+    "step3": "Toque Convertir. El navegador rasteriza cada página en un canvas HTML5 al DPI configurado y la codifica en el formato elegido.",
+    "step4": "Cuando esté listo, la imagen convertida está disponible para descargar directamente desde su navegador."
   },
   "badges": {
     "instant": "⚡ Instantáneo",
-    "secure": "🔒 Seguro",
-    "autoDeleted": "🗑️ Eliminación automática"
+    "secure": "🔒 100% Privado",
+    "autoDeleted": "🖥️ Solo en el navegador"
   },
   "dropZone": {
     "icon": "📂",
@@ -88,8 +88,8 @@
   "convertTo": "Convertir a",
   "convertBtn": "Convertir a {{type}}",
   "progress": {
-    "uploading": "Subiendo…",
-    "converting": "Convirtiendo PDF…"
+    "uploading": "Cargando…",
+    "converting": "Rasterizando páginas PDF…"
   },
   "result": {
     "icon": "✅",
@@ -99,100 +99,114 @@
     "download": "Descargar archivo convertido",
     "another": "Convertir otro archivo"
   },
-  "note": "Nota: El archivo convertido se almacenará en Cloudflare R2 durante 30 min. Por favor descárguelo dentro de este período.",
   "guide": {
-    "title": "Cómo convertir archivos PDF sin alterar el diseño (guía inteligente y sencilla)",
-    "intro": "Los archivos PDF son excelentes para compartir, pero no siempre para editar. Probablemente hayas experimentado esto: necesitas editar un PDF pero está bloqueado, quieres extraer texto pero no puedes, o necesitas una versión de Word o Excel pero el formato se rompe.",
-    "cta": "👉 En esta guía, aprenderá cómo convertir archivos PDF de forma segura, conservar el formato y elegir el formato adecuado para sus necesidades.",
+    "title": "Conversión de PDF a imagen: Una inmersión técnica en la rasterización del lado del cliente",
+    "intro": "Convertir un PDF a JPG o PNG no es simplemente un cambio de formato — es un proceso preciso de rasterización del lado del cliente. El navegador analiza el flujo binario del PDF, reconstruye las rutas vectoriales, los glifos de texto y las imágenes incrustadas de cada página, y los renderiza en un canvas HTML5 a un DPI configurable antes de codificar el mapa de bits en el formato elegido.",
+    "cta": "👉 En esta guía, aprenderá exactamente cómo se rasterizan las páginas PDF en el navegador, cómo el escalado de DPI afecta las dimensiones de píxeles, por qué PNG y JPG manejan la transparencia de manera diferente, y qué sucede con los elementos interactivos durante la conversión.",
     "whatIs": {
-      "heading": "📄 ¿Qué es un conversor de PDF?",
-      "body": "Un conversor de PDF es una herramienta que le permite:",
-      "item1": "🔁 Convertir PDF → Word, Excel, PowerPoint",
-      "item2": "🖼 Convertir PDF → imágenes (JPG, PNG)",
-      "item3": "📥 Convertir archivos → PDF (Word, imágenes, etc.)",
-      "note": "Las herramientas modernas admiten ambas direcciones y múltiples formatos, lo que las hace muy flexibles. Piense en ello como un puente entre formatos."
+      "heading": "⚙️ Arquitectura de rasterización del lado del cliente",
+      "body": "PDF.js — el motor de renderizado de PDF de código abierto de Mozilla — es la base de la conversión de PDF a imagen basada en el navegador. Funciona de la siguiente manera:",
+      "item1": "📂 Análisis del flujo binario: PDF.js lee la tabla de referencias cruzadas del PDF y resuelve las referencias de objetos indirectas para localizar el diccionario /Page de cada página.",
+      "item2": "🖼️ Renderizado en canvas: El flujo de contenido de cada página (operadores de texto, operadores de ruta, XObjects de imagen) se pinta en un elemento canvas HTML5 fuera de pantalla usando el contexto de renderizado 2D del navegador.",
+      "item3": "📤 Codificación de imagen: El mapa de bits del canvas completado se codifica en JPG (via canvas.toDataURL image/jpeg con calidad) o PNG (via canvas.toDataURL image/png) y se pone a disposición para su descarga.",
+      "note": "Dado que todo se ejecuta dentro del sandbox de JavaScript del navegador, su PDF nunca abandona su dispositivo. La privacidad completa de los datos está garantizada por diseño — sin carga de archivos, sin procesamiento en servidor."
     },
     "whyConvert": {
-      "heading": "🤔 ¿Por qué convertir archivos PDF?",
-      "item1": "✏️ Edite contenido fácilmente: convierta a Word o Excel para modificar texto, actualizar datos y reutilizar contenido.",
-      "item2": "📊 Extraer datos: convierta PDF → Excel para ahorrar tiempo y evitar la escritura manual.",
-      "item3": "🖼 Utilice contenido en otros formatos: conviértalo a imagen para compartir imágenes o incrustarlo en presentaciones.",
-      "item4": "📤 Mejorar la compatibilidad: algunos sistemas requieren tipos de archivos específicos; La conversión resuelve esto al instante."
+      "heading": "📐 Escalado de DPI y resolución del viewport",
+      "item1": "📏 Una página PDF estándar usa unidades de espacio de usuario donde 1 punto = 1/72 pulgada. Para apuntar a 150 DPI, la matriz de transformación del canvas se escala por 150/72 ≈ 2,08×.",
+      "item2": "🖥️ A 150 DPI, una página de tamaño carta de EE.UU. (8,5 × 11 pulg.) produce un canvas de 1275 × 1650 píxeles. A 300 DPI, se duplica a 2550 × 3300 píxeles.",
+      "item3": "🔍 Un DPI más alto significa glifos de texto más nítidos y líneas vectoriales más finas — crítico para dibujos técnicos, esquemas o documentos con tamaños de fuente pequeños.",
+      "item4": "💾 El DPI controla directamente el tamaño del archivo: un PNG a 300 DPI puede ser 4× más grande que uno a 150 DPI porque el recuento de píxeles se duplica en cada dimensión."
     },
     "howWorks": {
-      "heading": "⚙️ Cómo funciona la conversión de PDF",
-      "body": "Cuando convierte un PDF, el sistema lee la estructura del archivo, identifica el texto, las imágenes y el diseño y luego reconstruye el contenido en el nuevo formato. Las buenas herramientas intentan preservar el diseño y mantener intactas las fuentes y el espaciado."
+      "heading": "🔒 Garantía de privacidad del lado del cliente",
+      "body": "PDF.js se ejecuta completamente en el entorno de ejecución de JavaScript local de su navegador. Su PDF se carga en la RAM del navegador y se renderiza sin ninguna transmisión de red. Los documentos sensibles — estados financieros, registros médicos, contratos legales — se procesan exclusivamente en su dispositivo. Cuando cierra o actualiza la pestaña, todos los datos del archivo se liberan inmediatamente de la memoria."
     },
     "whyBreaks": {
-      "heading": "🧠 Por qué el formato a veces falla",
-      "body": "Los archivos PDF están diseñados para mostrarse, no para estructurarse. Es posible que el texto no se almacene de forma lógica y que el diseño sea \"sólo visual\", por lo que los convertidores a veces tienen que adivinar la estructura. Por eso los resultados varían."
+      "heading": "🧠 Por qué la calidad de salida varía entre fuentes de PDF",
+      "body": "No todos los PDFs son iguales. Un PDF creado a partir de una fuente vectorial de alta resolución se renderiza con total nitidez a cualquier DPI. Sin embargo, un PDF escaneado contiene solo XObjects de imagen rasterizada incrustados a una resolución fija — rasterizar dicha página a 300 DPI simplemente escalará una imagen ya pixelada, sin recuperar el detalle perdido. Además, los PDFs que dependen de perfiles de color CMYK personalizados requieren un paso de mapeo del espacio de color durante el renderizado en el canvas, lo que puede introducir ligeros cambios de matiz."
     },
     "bestPractices": {
-      "heading": "✅ Mejores prácticas para una conversión precisa",
-      "item1": "🔹 Utilice archivos fuente limpios: texto claro, fuentes estándar, diseño simple.",
-      "item2": "🔹 Elija el formato de salida correcto: Word para editar, Excel para tablas, JPG para compartir imágenes.",
-      "item3": "🔹 Verifique después de la conversión: revise siempre la alineación, las fuentes y las tablas.",
-      "item4": "🔹 Evite volver a convertir archivos: cada paso puede introducir errores; convierta siempre desde el PDF original.",
-      "item5": "🔹 Utilice una herramienta confiable: un buen conversor debe conservar el formato y admitir múltiples formatos."
+      "heading": "✅ Mejores prácticas para una rasterización de alta calidad",
+      "item1": "🔹 Para miniaturas web, 96–150 DPI con JPG ofrece una buena relación tamaño-calidad sin artefactos visibles.",
+      "item2": "🔹 Para imágenes listas para imprimir o de archivo, use PNG a 300 DPI para cumplir con los requisitos estándar de resolución de impresión.",
+      "item3": "🔹 Si el PDF contiene capas transparentes o logotipos vectoriales, seleccione siempre PNG — JPG aplanará la transparencia a blanco.",
+      "item4": "🔹 Evite volver a convertir una imagen ya rasterizada — cada paso de rasterización degrada la calidad.",
+      "item5": "🔹 Para PDFs de varias páginas grandes (100+ páginas), convierta solo las páginas que necesita para mantenerse dentro de los límites de RAM del navegador."
     },
     "stepByStep": {
-      "heading": "🚀 Paso a paso: convertir un PDF",
-      "step1": "📤 Sube tu PDF",
-      "step2": "🎯 Seleccione el formato de salida (JPG, PNG, etc.)",
-      "step3": "⚙️ Iniciar conversión",
-      "step4": "📥 Descarga el nuevo archivo",
-      "note": "La mayoría de las herramientas completan esto en segundos."
+      "heading": "🚀 Paso a paso: cómo el navegador rasteriza una página PDF",
+      "step1": "📤 Suba su PDF — el archivo se lee en la memoria del navegador mediante la API FileReader sin ninguna carga al servidor",
+      "step2": "🎯 Seleccione el formato de salida — JPG para archivos más pequeños (compresión DCT con pérdida), PNG para salida sin pérdida y precisión de píxeles",
+      "step3": "⚙️ PDF.js analiza el diccionario de la página, aplica la matriz de escalado de DPI y renderiza la página en un canvas fuera de pantalla",
+      "step4": "📥 El mapa de bits del canvas se codifica y se proporciona como descarga — su PDF nunca abandonó su dispositivo",
+      "note": "Todo el proceso se ejecuta en el sandbox de JavaScript del navegador. Ningún archivo se transmite a ningún servidor externo en ningún momento."
     },
     "scenarios": {
-      "heading": "🧩 Escenarios de conversión comunes",
-      "item1": "📄 PDF → Word: editar documentos, actualizar texto",
-      "item2": "📊 PDF → Excel: extraer tablas, trabajar con datos",
-      "item3": "🖼 PDF → Imagen: comparte páginas visualmente, úsalas en presentaciones",
-      "item4": "📥 Word/Imagen → PDF: cree documentos para compartir y conserve el formato"
+      "heading": "🧩 Casos de uso comunes de rasterización",
+      "item1": "🖼️ PDF → PNG — documentos con fondos transparentes, logotipos vectoriales o diagramas que requieren fidelidad sin pérdida",
+      "item2": "📷 PDF → JPG — compartir en redes sociales, archivos adjuntos de correo electrónico o contenido web donde el tamaño del archivo es la prioridad",
+      "item3": "🏗️ Dibujos de arquitectura e ingeniería — PNG a 300 DPI para preservar trazos finos y texto de dimensiones",
+      "item4": "📄 Miniaturas de vista previa de documentos — JPG a 96–150 DPI para vistas previas compactas de carga rápida"
     },
     "mistakes": {
-      "heading": "⚠️ Errores comunes que se deben evitar",
-      "item1": "❌ Convertir archivos PDF escaneados sin OCR",
-      "item2": "❌ Esperando un formato perfecto siempre",
-      "item3": "❌ Usar archivos fuente de baja calidad",
-      "item4": "❌ No revisar el resultado final",
-      "item5": "❌ Convertir varias veces innecesariamente"
-    },
-    "comparison": {
-      "heading": "🔍 Convertidor de PDF frente a editor de PDF",
-      "col1": "Característica",
-      "col2": "Convertidor",
-      "col3": "Editor",
-      "row1col1": "Objetivo",
-      "row1col2": "Cambiar formato",
-      "row1col3": "Modificar contenido",
-      "row2col1": "Facilidad de uso",
-      "row2col2": "Fácil",
-      "row2col3": "Moderado",
-      "row3col1": "Lo mejor para",
-      "row3col2": "Flexibilidad",
-      "row3col3": "Edición detallada"
+      "heading": "⚠️ Errores comunes de rasterización que se deben evitar",
+      "item1": "❌ Usar un DPI demasiado bajo — los glifos de texto y las líneas finas se renderizan como píxeles borrosos e ilegibles",
+      "item2": "❌ Elegir JPG para PDFs con fondo transparente — los píxeles transparentes se componen sobre blanco sólido (#FFFFFF)",
+      "item3": "❌ Ignorar los perfiles de color CMYK fuente — la compresión pesada en JPG puede desplazar los tonos mapeados de CMYK en la salida sRGB",
+      "item4": "❌ No revisar el renderizado de bordes — verifique los bordes nítidos de alto contraste (bordes, contornos de texto) en busca de artefactos de cuantización DCT",
+      "item5": "❌ Convertir PDFs masivos de una vez — cada mapa de bits de página consume RAM del navegador; procese en lotes para documentos muy grandes"
     },
     "proTips": {
       "heading": "💡 Consejos profesionales",
-      "item1": "📌 Primero convierta un pequeño archivo de prueba",
-      "item2": "📌 Utilice fuentes consistentes en el original",
-      "item3": "📌 Evite diseños complejos cuando sea posible",
-      "item4": "📌 Mantenga una copia de seguridad del archivo original"
+      "item1": "📌 Para miniaturas web, 96–150 DPI con JPG ofrece una excelente relación tamaño-calidad con artefactos mínimos visibles",
+      "item2": "📌 Para imágenes de archivo o listas para imprimir, elija PNG a 300 DPI para fidelidad sin pérdida",
+      "item3": "📌 Si su PDF tiene capas transparentes o logotipos vectoriales, siempre elija PNG para preservar el canal alfa",
+      "item4": "📌 Mantenga el PDF original como fuente de verdad — nunca vuelva a rasterizar una imagen ya convertida"
+    },
+    "comparison": {
+      "heading": "🔬 Manejo de rasterización y exportación: PNG vs JPG",
+      "col1": "Elemento PDF",
+      "col2": "Exportación PNG (sin pérdida)",
+      "col3": "Exportación JPG (con pérdida)",
+      "row1col1": "Fondos transparentes",
+      "row1col2": "Canal alfa preservado; los fondos permanecen transparentes",
+      "row1col3": "Canal alfa no compatible; los píxeles transparentes se aplanan a blanco sólido (#FFFFFF)",
+      "row2col1": "Gráficos vectoriales y líneas",
+      "row2col2": "Renderizado con límites de píxeles exactos; compresión LZW/Deflate sin pérdida",
+      "row2col3": "Susceptible a artefactos de cuantización DCT alrededor de bordes nítidos de alto contraste",
+      "row3col1": "Espacios de color CMYK",
+      "row3col2": "Mapeado a perfiles de color sRGB durante la rasterización del canvas",
+      "row3col3": "Mapeado a sRGB; la compresión pesada puede cambiar ligeramente la fidelidad del color",
+      "row4col1": "Tamaño de archivo (por página)",
+      "row4col2": "Mayor tamaño de archivo debido a la compresión LZW/Deflate sin pérdida",
+      "row4col3": "Menor tamaño de archivo, controlado por porcentaje de calidad (p.ej., 80% de calidad)"
     },
     "faq": {
       "heading": "❓ Preguntas frecuentes",
-      "q1": "¿La conversión de PDF siempre sigue formateando?",
-      "a1": "No siempre, pero las buenas herramientas conservan la mayor parte del diseño y la estructura.",
-      "q2": "¿Puedo convertir archivos PDF escaneados?",
-      "a2": "Sí, pero es posible que necesites OCR (reconocimiento de texto) para obtener resultados precisos.",
-      "q3": "¿Cuál es el mejor formato para convertir?",
-      "a3": "Edición → Word, datos → Excel, compartir → PDF/Imagen.",
-      "q4": "¿Es segura la conversión en línea?",
-      "a4": "La mayoría de las herramientas procesan archivos de forma segura y temporal."
+      "q1": "¿Por qué los elementos transparentes se renderizan con fondo blanco al exportar como JPG?",
+      "a1": "El formato JPG no admite canal alfa. Cuando el rasterizador de canvas del navegador encuentra un píxel transparente, debe componerlo sobre un color de fondo sólido — por convención esto es blanco opaco (#FFFFFF). Si su PDF contiene capas transparentes o logotipos sin fondo, elija PNG, que preserva completamente el canal alfa.",
+      "q2": "¿Cómo gestiona el navegador la RAM al convertir un PDF grande de 100 páginas?",
+      "a2": "PDF.js lee el árbol de páginas del documento (diccionario /Pages) y renderiza una página a la vez en un elemento canvas HTML5 fuera de pantalla. Cada canvas contiene el mapa de bits rasterizado de una sola página en la RAM del navegador. Para un documento A4 de 100 páginas a 150 DPI, un único mapa de bits de página es aproximadamente 1240 × 1754 píxeles × 4 bytes (RGBA) ≈ 8,7 MB. Dado que las páginas se procesan secuencialmente y el canvas se reutiliza, el uso máximo de RAM permanece acotado a unas pocas páginas.",
+      "q3": "¿Se preservan las fuentes personalizadas incrustadas (subconjuntos OpenType/TrueType) durante la rasterización?",
+      "a3": "Sí — PDF.js analiza los diccionarios de descriptores de fuentes dentro del flujo binario del PDF y reconstruye los subconjuntos de fuentes OpenType y TrueType incrustados directamente en el navegador. Los glifos se renderizan como contornos vectoriales en el canvas antes de que el canvas se codifique en una imagen rasterizada, por lo que la salida de píxeles final refleja las formas de fuente exactas del PDF fuente.",
+      "q4": "¿Cómo afecta el escalado de DPI a las dimensiones de píxeles finales del PNG exportado?",
+      "a4": "El DPI se aplica como factor de escala a la matriz de renderizado del canvas. Una página PDF estándar se define en unidades de espacio de usuario (1 punto = 1/72 pulgada). Para renderizar a 150 DPI, el motor escala la matriz de transformación del canvas por 150/72 ≈ 2,08×. Una página de tamaño carta (8,5 × 11 pulg.) produce por tanto un canvas de 1275 × 1650 píxeles a 150 DPI, o 2550 × 3300 píxeles a 300 DPI.",
+      "q5": "¿La conversión de un PDF a imagen elimina elementos interactivos como campos AcroForm e hipervínculos?",
+      "a5": "Sí — la rasterización convierte las capas vectoriales y de texto del PDF en un mapa de bits plano. Todos los elementos interactivos como campos de formulario AcroForm, acciones JavaScript, hipervínculos incrustados y superposiciones de anotaciones se descartan permanentemente en la imagen de salida. Solo la apariencia visual de esos elementos (p.ej., texto de enlace subrayado en azul) se preserva como píxeles.",
+      "q6": "¿Cuál es la diferencia entre compresión sin pérdida y con pérdida en la exportación de PDF a imagen?",
+      "a6": "PNG usa compresión sin pérdida (LZW/Deflate), lo que significa que cada píxel se almacena exactamente como se rasterizó — no se descartan datos. JPG usa compresión con pérdida basada en Transformada de Coseno Discreta (DCT): el algoritmo descarta información de color de alta frecuencia que es menos perceptible para el ojo humano. Para PDFs con mucho texto, la compresión JPG puede introducir artefactos de resonancia o desenfoque alrededor de los bordes de caracteres con configuraciones de calidad por debajo del ~85%.",
+      "q7": "¿Puedo convertir un PDF protegido por contraseña o cifrado?",
+      "a7": "El cifrado de PDF se aplica a nivel de documento mediante el diccionario /Encrypt. El motor del navegador (PDF.js) admite el descifrado con contraseña de usuario — si proporciona la contraseña correcta, el documento se descifra en memoria y puede rasterizarse normalmente. Las restricciones de contraseña de propietario (que controlan la impresión y la extracción de contenido) son una capa de permisos separada y pueden bloquear la rasterización en algunas implementaciones.",
+      "q8": "¿Cómo garantiza el procesamiento del lado del cliente mi privacidad de datos?",
+      "a8": "Dado que PDF.js se ejecuta completamente dentro del sandbox de JavaScript de su navegador, su archivo PDF se carga en la RAM local del navegador y nunca se transmite a través de una conexión de red a un servidor externo. Los documentos sensibles — como estados financieros, registros médicos o contratos legales — se procesan exclusivamente en su dispositivo. Una vez que cierra o actualiza la pestaña, los datos del archivo se liberan de la memoria.",
+      "q9": "¿Por qué mi imagen de salida se ve pixelada o borrosa?",
+      "a9": "La pixelación ocurre cuando el DPI de rasterización se establece por debajo de la resolución de pantalla del medio objetivo. Para pantallas HD estándar (96 PPI), se recomienda un DPI de renderizado de al menos 96 para visualización con precisión de píxeles. Para salida de impresión, use 300 DPI para cumplir con los requisitos típicos de resolución de impresión. El desenfoque también puede ocurrir si el PDF fuente contiene imágenes rasterizadas de baja resolución incrustadas que no se pueden mejorar durante la rasterización.",
+      "q10": "¿Es posible convertir solo páginas específicas de un PDF grande?",
+      "a10": "Sí — PDF.js expone una API de renderizado a nivel de página que permite renderizar cualquier página por su índice. En lugar de iterar a través del árbol de páginas completo, el motor puede saltar directamente a un diccionario de página específico. Esto hace que la conversión selectiva sea muy eficiente en memoria, ya que solo las páginas objetivo se decodifican y rasterizan, dejando el resto del documento sin procesar en memoria."
     },
     "conclusionTitle": "Conclusión",
-    "conclusion": "La conversión de PDF no se trata sólo de cambiar formatos, sino de desbloquear su contenido. Con el enfoque correcto, puedes editar documentos fácilmente, extraer datos útiles y compartir contenido en cualquier formato.",
-    "ctaBtn": "👉 Pruébelo aquí: Herramienta de conversión de PDF"
+    "conclusion": "La conversión de PDF a imagen es un proceso preciso de rasterización — no un simple cambio de formato. Comprender cómo interactúan el escalado de DPI, el mapeo del espacio de color, el soporte del canal alfa y la gestión de RAM del lado del navegador le ayuda a elegir el formato de salida y la configuración correctos para su caso de uso. Ya sea que necesite un PNG sin pérdida para gráficos vectoriales transparentes o un JPG compacto para compartir en la web, esta herramienta maneja todo el proceso localmente en su navegador para una privacidad de datos completa.",
+    "ctaBtn": "👉 Pruébelo aquí: Conversor de PDF a imagen"
   }
 }

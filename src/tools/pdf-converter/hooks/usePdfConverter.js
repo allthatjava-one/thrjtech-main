@@ -1,9 +1,22 @@
 import { useState, useRef, useCallback } from 'react'
-import { uploadToR2 } from '../../../services/r2Service'
+import JSZip from 'jszip'
+
+let pdfjsLibPromise = null
+async function getPdfJs() {
+  if (!pdfjsLibPromise) {
+    pdfjsLibPromise = (async () => {
+      const pdfjs = await import('pdfjs-dist')
+      const workerUrl = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default
+      pdfjs.GlobalWorkerOptions.workerSrc = workerUrl
+      return pdfjs
+    })()
+  }
+  return pdfjsLibPromise
+}
 
 export function usePdfConverter() {
   const [file, setFile] = useState(null)
-  const [status, setStatus] = useState('idle') // idle | uploading | converting | done | error
+  const [status, setStatus] = useState('idle') // idle | converting | done | error
   const [progress, setProgress] = useState(0)
   const [originalSize, setOriginalSize] = useState(0)
   const [downloadUrl, setDownloadUrl] = useState('')
@@ -15,7 +28,7 @@ export function usePdfConverter() {
 
   const handleFile = (f) => {
     if (!f) return
-    if (f.type !== 'application/pdf') {
+    if (f.type !== 'application/pdf' && !f.name?.toLowerCase().endsWith('.pdf')) {
       setErrorMsg('Please upload a valid PDF file.')
       return
     }
@@ -49,99 +62,138 @@ export function usePdfConverter() {
   const handleConvert = async () => {
     if (!file) return
     try {
-      setStatus('uploading')
-      setProgress(20)
+      setStatus('converting')
+      setProgress(5)
       setErrorMsg('')
 
-      const { key: objectKey, pdfConverterBackendUrl } = await uploadToR2(file, 'pdf-converter')
-
-      setProgress(60)
-      setStatus('converting')
-
-      const backendUrl = pdfConverterBackendUrl || import.meta.env.VITE_PDF_CONVERTER_BACKEND_URL
-      if (!backendUrl) {
-        throw new Error('PDF converter backend URL is not configured.')
-      }
-
-      const response = await fetch(backendUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ objectKey, convertType }),
+      const pdfjsLib = await getPdfJs()
+      const arrayBuffer = await file.arrayBuffer()
+      const loadingTask = pdfjsLib.getDocument({
+        data: new Uint8Array(arrayBuffer),
       })
+      const pdf = await loadingTask.promise
+      const totalPages = pdf.numPages
 
-      if (!response.ok) {
-        throw new Error(`Conversion failed: ${response.status} ${response.statusText}`)
+      if (totalPages === 0) {
+        throw new Error('This PDF file has no pages.')
       }
 
-      const { presignedUrl } = await response.json()
-      if (!presignedUrl) {
-        throw new Error('No presigned URL returned from server.')
-      }
+      const mimeType = convertType === 'png' ? 'image/png' : 'image/jpeg'
+      const quality = convertType === 'png' ? undefined : 0.92
+      const originalBase = file.name.replace(/\.pdf$/i, '') || 'document'
 
-      const downloadResponse = await fetch(presignedUrl)
-      if (!downloadResponse.ok) {
-        throw new Error(`Failed to fetch converted file: ${downloadResponse.status} ${downloadResponse.statusText}`)
-      }
+      if (totalPages === 1) {
+        // Single-page PDF conversion
+        const page = await pdf.getPage(1)
+        const scale = 2.0 // Render at 2x scale for crisp quality
+        const viewport = page.getViewport({ scale })
 
-      const blob = await downloadResponse.blob()
-      const blobUrl = URL.createObjectURL(blob)
+        const canvas = document.createElement('canvas')
+        const context = canvas.getContext('2d')
+        canvas.width = Math.floor(viewport.width)
+        canvas.height = Math.floor(viewport.height)
 
-      // Determine result filename (prefer Content-Disposition, then presignedUrl)
-      let resultFilename = ''
-      const contentDisp = downloadResponse.headers.get('Content-Disposition')
-      if (contentDisp) {
-        const fnStarMatch = contentDisp.match(/filename\*=(?:UTF-8'')?([^;\n\r]+)/i)
-        const fnMatch = contentDisp.match(/filename=(?:"?)([^";]+)(?:"?)/i)
-        if (fnStarMatch && fnStarMatch[1]) {
-          try {
-            resultFilename = decodeURIComponent(fnStarMatch[1])
-          } catch (e) {
-            resultFilename = fnStarMatch[1]
+        if (convertType === 'jpg') {
+          context.fillStyle = '#ffffff'
+          context.fillRect(0, 0, canvas.width, canvas.height)
+        }
+
+        await page.render({
+          canvasContext: context,
+          viewport,
+        }).promise
+
+        setProgress(85)
+
+        const blob = await new Promise((resolve, reject) => {
+          canvas.toBlob(
+            (b) => (b ? resolve(b) : reject(new Error('Failed to convert canvas to image'))),
+            mimeType,
+            quality
+          )
+        })
+
+        const blobUrl = URL.createObjectURL(blob)
+        const finalName = `${originalBase}_converted.${convertType}`
+
+        setDownloadUrl(blobUrl)
+        setDownloadName(finalName)
+        setProgress(100)
+        setStatus('done')
+
+        // Auto trigger download
+        const a = document.createElement('a')
+        a.href = blobUrl
+        a.download = finalName
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+      } else {
+        // Multi-page PDF conversion: bundle pages into a zip archive
+        const zip = new JSZip()
+        const padLength = String(totalPages).length
+
+        for (let i = 1; i <= totalPages; i += 1) {
+          const page = await pdf.getPage(i)
+          const scale = 2.0
+          const viewport = page.getViewport({ scale })
+
+          const canvas = document.createElement('canvas')
+          const context = canvas.getContext('2d')
+          canvas.width = Math.floor(viewport.width)
+          canvas.height = Math.floor(viewport.height)
+
+          if (convertType === 'jpg') {
+            context.fillStyle = '#ffffff'
+            context.fillRect(0, 0, canvas.width, canvas.height)
           }
-        } else if (fnMatch && fnMatch[1]) {
-          resultFilename = fnMatch[1]
+
+          await page.render({
+            canvasContext: context,
+            viewport,
+          }).promise
+
+          const pageBlob = await new Promise((resolve, reject) => {
+            canvas.toBlob(
+              (b) => (b ? resolve(b) : reject(new Error(`Failed to convert page ${i} to image`))),
+              mimeType,
+              quality
+            )
+          })
+
+          const pageNumberStr = String(i).padStart(padLength, '0')
+          const pageFileName = `${originalBase}_page_${pageNumberStr}.${convertType}`
+          zip.file(pageFileName, pageBlob)
+
+          const pageProgress = 5 + Math.round((i / totalPages) * 75)
+          setProgress(pageProgress)
         }
+
+        setProgress(85)
+
+        const zipBlob = await zip.generateAsync({ type: 'blob' }, (metadata) => {
+          const zipProgress = 85 + Math.round((metadata.percent / 100) * 15)
+          setProgress(Math.min(zipProgress, 99))
+        })
+
+        const blobUrl = URL.createObjectURL(zipBlob)
+        const finalName = `${originalBase}_converted.zip`
+
+        setDownloadUrl(blobUrl)
+        setDownloadName(finalName)
+        setProgress(100)
+        setStatus('done')
+
+        // Auto trigger download
+        const a = document.createElement('a')
+        a.href = blobUrl
+        a.download = finalName
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
       }
-
-      if (!resultFilename) {
-        try {
-          const urlPath = new URL(presignedUrl).pathname
-          const lastSeg = urlPath.split('/').filter(Boolean).pop() || ''
-          resultFilename = decodeURIComponent(lastSeg)
-        } catch (e) {
-          // ignore
-        }
-      }
-
-      // Extract extension from resultFilename if present
-      let ext = ''
-      if (resultFilename) {
-        const m = resultFilename.match(/\.([a-zA-Z0-9]{1,8})(?:\?.*)?$/)
-        if (m && m[1]) ext = m[1].toLowerCase()
-      }
-
-      // Build final download name: original base + _converted + (extracted ext or fallback)
-      const originalBase = file.name.replace(/\.pdf$/i, '')
-      let finalName = originalBase + '_converted'
-      if (ext) {
-        finalName += `.${ext}`
-      } else if (convertType) {
-        finalName += `.${convertType}`
-      }
-
-      setDownloadUrl(blobUrl)
-      setDownloadName(finalName)
-      setProgress(100)
-      setStatus('done')
-
-      const a = document.createElement('a')
-      a.href = blobUrl
-      a.download = finalName
-      document.body.appendChild(a)
-      a.click()
-      document.body.removeChild(a)
     } catch (err) {
-      setErrorMsg(err.message || 'An unexpected error occurred.')
+      setErrorMsg(err.message || 'An unexpected error occurred during conversion.')
       setStatus('error')
     }
   }
