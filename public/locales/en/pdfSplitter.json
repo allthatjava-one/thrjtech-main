@@ -117,100 +117,157 @@
     "another": "Split Another File"
   },
   "guide": {
-    "title": "How to Split PDF Files Efficiently (Take Control of Large Documents)",
-    "intro": "Big PDF files can be overwhelming — dozens of pages, mixed content you don't need, sections that should really be separate. Instead of working with the entire file, you can split it into smaller, focused documents.",
-    "cta": "👉 In this guide, you'll learn how to break PDFs into exactly what you need — quickly and cleanly.",
+    "title": "Comprehensive Guide to PDF Splitting & Structural Page Extraction",
+    "intro": "Large, monolithic PDF documents frequently contain extraneous sections, unneeded appendices, or distinct chapters that require separation. Rather than transmitting or storing an entire multi-megabyte container, precise page extraction isolates target content into streamlined, standalone PDF documents while preserving vector sharpness and typographical integrity.",
+    "cta": "👉 Explore the technical architecture below to understand how client-side PDF DOM manipulation and object tree extraction deliver fast, zero-loss document splitting.",
     "whatIs": {
-      "heading": "📄 What Is a PDF Splitter?",
-      "body": "A PDF splitter is a tool that lets you:",
-      "item1": "✂️ Extract specific pages",
-      "item2": "📑 Separate a large file into multiple PDFs",
-      "item3": "🎯 Keep only the content you need"
+      "heading": "📄 What Is PDF Splitting?",
+      "body": "PDF splitting is the algorithmic extraction of selected page dictionaries and their associated indirect object subgraphs from a source PDF document. The process enables you to:",
+      "item1": "✂️ Extract precise page ranges or non-contiguous page collections (e.g., 1, 4–7, 12)",
+      "item2": "📑 Partition expansive multi-page files into independent single-page or section-based PDFs",
+      "item3": "🎯 Isolate critical chapters, invoices, or legal exhibits with 100% vector and font fidelity",
+      "item4": "📦 Reduce document transmission overhead by purging unneeded content streams and raster assets"
     },
     "whyUseful": {
-      "heading": "🧠 Why Splitting PDFs Is Useful",
-      "item1": "🎯 Focus on Relevant Content — keep only the pages you need instead of scrolling through everything.",
-      "item2": "📤 Share Specific Sections — no need to send a 50-page document when only 3 pages matter.",
-      "item3": "⚡ Improve Workflow Efficiency — smaller files are faster to open, easier to manage, and quicker to upload.",
-      "item4": "📂 Better Organization — turn one large file into multiple categorized documents."
+      "heading": "🧠 Why Splitting PDFs Is Critical for Document Pipelines",
+      "item1": "🎯 Focus on High-Priority Data — isolate and review only the relevant sections without navigating through hundreds of unrelated pages.",
+      "item2": "📤 Granular Document Distribution — transmit only the specific exhibits or contractual addenda required by external recipients.",
+      "item3": "⚡ Enhanced Processing Performance — smaller, extracted files load instantaneously in web viewers, mobile readers, and downstream OCR tools.",
+      "item4": "📂 Structured Information Management — decompose batch-scanned documents into organized, categorical records with distinct metadata."
     },
     "useCases": {
-      "heading": "🛠 Common Use Cases",
-      "item1": "💼 Business Documents — extract contracts, invoices, reports",
-      "item2": "🎓 Academic Work — separate chapters or submit only required pages",
-      "item3": "📑 Legal or Official Files — isolate important pages, keep records organized",
-      "item4": "🧾 Scanned Documents — split scanned pages into individual files"
+      "heading": "🛠 Enterprise & Professional Use Cases",
+      "item1": "💼 Corporate & Commercial Law — extract signature pages, schedules, and confidential annexes from master service agreements.",
+      "item2": "🎓 Academic & Scientific Research — segment voluminous reference journals into discrete chapters or isolate bibliography sections.",
+      "item3": "📑 Financial & Tax Reporting — separate consolidated annual financial binders into individual quarterly statements and audit exhibits.",
+      "item4": "🧾 High-Volume Batch Scanning — partition multi-page feeder scan batches into separate invoice and receipt records."
     },
-    "ways": {
-      "heading": "🔍 Ways to Split a PDF",
-      "item1": "📌 By Page Range — e.g. Pages 1–5 → File A, Pages 6–10 → File B",
-      "item2": "📌 Extract Specific Pages — pick exact pages (Page 2, 5, 9 → new file)",
-      "item3": "📌 Split Every Page — turn one PDF into multiple single-page files"
+    "howWorks": {
+      "heading": "🧠 How PDF Splitting Works (Overview)",
+      "body": "The splitting engine parses the binary PDF stream into an in-memory Document Object Model (DOM), traverses the hierarchical page tree, extracts the targeted /Page dictionaries along with their content streams and resource dependencies, recalculates object byte offsets, and serializes a fully compliant ISO 32000 PDF file."
+    },
+    "architecture": {
+      "heading": "⚙️ Technical Architecture & PDF Object Mechanics",
+      "intro": "Understanding low-level PDF document internals is essential for robust, developer-grade document manipulation. Below is an architectural breakdown of how our engine performs page extraction without rasterization or structural corruption:",
+      "objectCatalog": {
+        "title": "Object Catalog & Page Tree Dissection (/Catalog & /Pages)",
+        "body": "Every valid PDF file contains a root /Catalog dictionary pointing to a balanced B-Tree /Pages hierarchy. During extraction, the engine parses the root catalog, traverses intermediate /Pages branch nodes, and isolates target /Page dictionaries. The engine flattens inherited attributes (such as /MediaBox, /CropBox, and /Rotate) directly into the target page objects, assigns a newly synthesized root /Pages tree with a recalculated /Count integer, and establishes fresh /Parent pointer references."
+      },
+      "xrefRebuilding": {
+        "title": "Cross-Reference Table (XRef) & Byte Offset Recalculation",
+        "body": "PDF documents rely on a Cross-Reference Table (or compressed /XRef stream) that indexes the precise byte offset of every indirect object (e.g., '14 0 obj'). Extracting a subset of pages invalidates all original byte locations. The splitting engine re-indexes all referenced indirect objects into a compact sequential range (1 to N), rewrites indirect object identifiers ('N 0 R') across content streams and dictionaries, and builds a new binary XRef table and /Trailer dictionary from byte offset zero, guaranteeing zero corruption."
+      },
+      "fontSubsetting": {
+        "title": "Font Subset Extraction & Stream Isolation",
+        "body": "Pages reference typography through shared /Resources /Font dictionaries, including custom OpenType/TrueType subsets identified by randomized 6-character tags (e.g., ABCDEF+Roboto). The extraction pipeline isolates only the font programs, /FontDescriptor structures, and /ToUnicode Character Maps (CMaps) specifically invoked by the extracted /Contents streams. Unreferenced font resources and orphaned assets from omitted pages are pruned, maintaining rendering fidelity while minimizing output overhead."
+      },
+      "clientPrivacy": {
+        "title": "Client-Side Memory Allocations & Cryptographic Privacy",
+        "body": "Page extraction operates directly within the browser's execution thread using JavaScript TypedArrays (Uint8Array, ArrayBuffer) and high-performance WebAssembly. Documents never leave your device or touch external servers during local operations, eliminating data leakage risks for confidential legal agreements, financial records, or medical files. Output files are synthesized as in-memory Blobs and downloaded directly via ephemeral object URLs with instant memory deallocation."
+      }
     },
     "stepByStep": {
       "heading": "🪜 Step-by-Step: How to Split a PDF",
-      "step1": "📤 Upload your PDF",
-      "step2": "👀 Preview pages",
-      "step3": "✂️ Select pages or ranges",
-      "step4": "⚙️ Choose split method",
-      "step5": "📥 Download results"
+      "step1": "📤 Upload your source PDF document via the intuitive drag-and-drop zone or file browser",
+      "step2": "👀 Specify target page ranges using standard notation (e.g., '1-3, 5, 8-10')",
+      "step3": "⚙️ Select output mode: discrete standalone files for each range or a single merged output",
+      "step4": "🚀 Click 'Split PDF' to execute in-memory object tree extraction and byte serialization",
+      "step5": "📥 Download individual segment PDFs or your consolidated document package instantly"
     },
     "bestPractices": {
-      "heading": "🎯 Best Practices for Splitting PDFs",
-      "item1": "✅ Plan before splitting — know what pages you need and how you want them grouped.",
-      "item2": "✅ Keep file names clear — name files logically (e.g., \"Chapter1.pdf\").",
-      "item3": "✅ Avoid over-splitting — too many small files can become hard to manage.",
-      "item4": "✅ Check output files — verify correct pages and proper order.",
-      "item5": "✅ Keep the original file — in case you need additional pages later."
+      "heading": "🎯 Best Practices for Precision PDF Splitting",
+      "item1": "✅ Pre-Verify Page Indices — check the internal physical page numbers rather than document-printed folio numbers prior to range specification.",
+      "item2": "✅ Maintain Logical Naming Conventions — adopt structured file prefixes (e.g., 'Contract_Exhibit_A.pdf') for extracted segments.",
+      "item3": "✅ Avoid Over-Fragmentation — consolidate closely related pages into coherent multi-page ranges to prevent cluttering document repositories.",
+      "item4": "✅ Validate Interactive Elements — confirm that form fields, hyperlinks, and bookmarks retain appropriate destination targets in output files.",
+      "item5": "✅ Retain Golden Master Copies — preserve uncompressed master PDF files in immutable storage prior to destructive workflow partitions."
     },
     "mistakes": {
-      "heading": "⚠️ Common Mistakes to Avoid",
-      "item1": "❌ Selecting wrong page range",
-      "item2": "❌ Losing important pages",
-      "item3": "❌ Creating too many tiny files",
-      "item4": "❌ Not reviewing final output",
-      "item5": "❌ Overwriting original file"
+      "heading": "⚠️ Common Extraction Pitfalls & How to Avoid Them",
+      "item1": "❌ Range Index Offset Errors — confusing 1-indexed PDF physical page positions with Roman-numeral preface folios.",
+      "item2": "❌ Inadvertent Signature Invalidation — splitting cryptographically signed PDFs without recognizing that hash digests are broken upon structural change.",
+      "item3": "❌ Orphaned Form Field Widgets — extracting fillable form pages without updating the root /AcroForm dictionary container.",
+      "item4": "❌ Unchecked Bookmark References — retaining outline trees with dead pointers directed at purged document sections.",
+      "item5": "❌ Desktop Rasterization Workarounds — converting pages to bitmap images instead of performing native vector DOM page extraction."
     },
     "comparison": {
       "heading": "⚖️ PDF Splitter vs PDF Merger",
       "col1": "Feature",
       "col2": "PDF Splitter",
       "col3": "PDF Merger",
-      "row1col1": "Purpose",
-      "row1col2": "Break file apart",
-      "row1col3": "Combine files",
-      "row2col1": "Output",
-      "row2col2": "Multiple PDFs",
-      "row2col3": "Single PDF",
-      "row3col1": "Use case",
-      "row3col2": "Extraction",
-      "row3col3": "Organization",
-      "note": "Opposite tools — often used together."
+      "row1col1": "Core Objective",
+      "row1col2": "Decompose document into discrete page ranges",
+      "row1col3": "Unify multiple disparate PDFs into a single container",
+      "row2col1": "Output Structure",
+      "row2col2": "Multiple standalone PDFs or discrete segments",
+      "row2col3": "Single consolidated PDF with unified /Catalog",
+      "row3col1": "Primary Use Case",
+      "row3col2": "Extracting chapters, isolating invoices, forms",
+      "row3col3": "Dossier creation, report bundling, archiving",
+      "note": "Complementary tools — frequently paired in automated document workflows."
     },
-    "proTips": {
-      "heading": "🚀 Pro Tips for Better Workflow",
-      "item1": "🔢 Use page numbers as reference",
-      "item2": "🗂 Organize files immediately after splitting",
-      "item3": "⚡ Split once instead of repeatedly",
-      "item4": "📌 Combine with merging for full control"
-    },
-    "safety": {
-      "heading": "🔐 Is It Safe to Split PDFs Online?",
-      "body": "Most modern tools process files temporarily and remove them after download. Still, avoid uploading sensitive documents unless you trust the tool."
+    "specsTable": {
+      "heading": "📊 PDF Internal Component Handling Specification",
+      "intro": "The technical reference table below outlines how low-level PDF data structures and resource dictionaries are transformed during extraction:",
+      "colComponent": "PDF Internal Component",
+      "colAction": "Technical Action During Extraction",
+      "colImpact": "Impact on Output File",
+      "rowBookmarks": {
+        "component": "Outlines / Bookmarks (/Outlines)",
+        "action": "Parent/child node pointers referencing pages outside the extracted range are pruned.",
+        "impact": "Prevents broken navigation links and dangling pointers in isolated files."
+      },
+      "rowAnnots": {
+        "component": "Annotations & Comments (/Annots)",
+        "action": "Isolated /Annots object arrays mapped to extracted page indices are retained.",
+        "impact": "Sticky notes, text highlights, stamps, and vector drawings remain intact and positioned."
+      },
+      "rowFonts": {
+        "component": "Embedded Font Subsets (/Font)",
+        "action": "Relevant font dictionaries and /ToUnicode CMaps are embedded into the new file header.",
+        "impact": "Ensures identical visual text rendering; slightly increases isolated file byte size."
+      },
+      "rowAcroForms": {
+        "component": "AcroForms & Fields (/AcroForm)",
+        "action": "Form field dictionaries mapped to target pages are linked under a new root /AcroForm.",
+        "impact": "Interactive form inputs, text boxes, and checkboxes remain editable in the extracted file."
+      },
+      "rowSignatures": {
+        "component": "Digital Signatures (/Sig)",
+        "action": "Cryptographic hash digests (/ByteRange) are invalidated upon stream modification.",
+        "impact": "Signatures are stripped or marked invalid to preserve cryptographic security integrity."
+      },
+      "rowColorSpace": {
+        "component": "Color Spaces & ICC Profiles (/ColorSpace)",
+        "action": "ICC profile streams and device color dictionaries are mapped into local page /Resources.",
+        "impact": "Guarantees accurate CMYK and sRGB color calibration for high-fidelity printing."
+      }
     },
     "faq": {
-      "heading": "❓ FAQ",
-      "q1": "Can I split a PDF without losing quality?",
-      "a1": "Yes — splitting does not affect content quality.",
-      "q2": "Can I extract just one page?",
-      "a2": "Absolutely — you can extract any page individually.",
-      "q3": "Is there a limit to file size?",
-      "a3": "Depends on the tool, but most support reasonably large files.",
-      "q4": "Can I undo splitting?",
-      "a4": "No — but you can merge files back together if needed."
+      "heading": "❓ Frequently Asked Technical Questions (FAQ)",
+      "q1": "Why does extracting a single page from a PDF sometimes result in a file size larger than expected?",
+      "a1": "Standalone PDF pages must be self-contained documents. When extracting a single page from a multi-page document, the newly created PDF must embed the full typography subset dictionaries (/Font), color profiles (/ICCBased), shared resource dictionaries, and document header metadata required to render that page accurately. While subsequent pages share these embedded resources in the original multi-page file, the isolated single-page file must carry these foundational structures independently, leading to a higher baseline byte overhead.",
+      "q2": "What happens to digital signatures and cryptographic certificates when a signed PDF is split?",
+      "a2": "Digital signatures in PDFs compute a cryptographic SHA-256 or RSA digest over an exact document byte range (/ByteRange). Because extracting or deleting pages fundamentally alters the file's byte sequence, any pre-existing digital signature is mathematically invalidated. To maintain cryptographic integrity and adhere to ISO 32000 specifications, the split engine strips broken signature dictionaries or flags them as invalidated, preventing false assertions of authenticity.",
+      "q3": "How does the client-side parser rebuild internal bookmark hierarchies when extracting non-sequential page ranges (e.g., 1, 4-7, 12)?",
+      "a3": "The parser inspects the hierarchical /Outlines tree in the document's /Catalog. It evaluates each outline item's destination dictionary (/Dest) to identify its target page object. Nodes pointing to excluded pages are pruned, while valid entries pointing to retained pages are re-linked under synthesized parent-child pointers (/First, /Last, /Next, /Prev) with updated page indices, ensuring interactive document navigation without dead links.",
+      "q4": "Can a password-protected or encrypted PDF (AES-128 / AES-256) be split without decrypting the master key?",
+      "a4": "No. Standard PDF encryption secures internal object streams using AES-128, AES-256, or RC4 cipher algorithms linked to the document's encryption dictionary (/Encrypt). The engine cannot traverse the /Pages tree or read object byte streams without the document decryption key. Once the user provides the password, decryption occurs in volatile memory, allowing page extraction before generating a secure output file.",
+      "q5": "How are interactive AcroForm fields handled when splitting a multi-page fillable form into single-page documents?",
+      "a5": "The extraction processor scans the /Annots array of each extracted page to identify interactive widget annotations (/Subtype /Widget). It then generates a dedicated root /AcroForm dictionary containing only the field descriptors associated with those widgets. Field values, calculation scripts, and appearance streams (/AP) are preserved so that text fields, radio buttons, and dropdowns remain interactive in the split document.",
+      "q6": "What is the maximum browser RAM threshold when splitting high-resolution 500+ page vector PDF blueprints?",
+      "a6": "Modern 64-bit web browsers allocate between 1.5 GB and 4 GB of heap memory per tab. When splitting massive documents with hundreds of high-resolution CAD drawings or multi-megapixel vector streams, memory consumption peaks during /Contents stream decompression (FlateDecode). The parser employs memory recycling and TypedArray stream slicing to keep RAM usage well below browser crash limits.",
+      "q7": "Does splitting a scanned PDF affect embedded OCR (Optical Character Recognition) text layers?",
+      "a7": "No. In scanned documents with OCR, text layers exist as invisible vector text objects rendered with the '3 Tr' (invisible text) rendering mode positioned precisely over the background raster image (/XObject /Image). The splitting engine copies both the raster image stream and the invisible OCR text stream alongside its /ToUnicode CMap, preserving complete keyword searchability and copy-paste capabilities.",
+      "q8": "How does stream decompression (FlateDecode) work during local page extraction?",
+      "a8": "PDF content streams, vector graphics, and metadata streams are typically compressed using zlib / Deflate algorithms declared in the /Filter /FlateDecode dictionary. During extraction, the engine decodes the binary byte streams to verify structural object boundaries and can either copy compressed streams directly without re-compression (passthrough) or re-deflate them to optimize output file size and processing speed.",
+      "q9": "How does page rotation (/Rotate) and crop box (/CropBox) inheritance behave in extracted pages?",
+      "a9": "In complex PDF documents, page dimensions and rotations are often defined at parent /Pages node levels rather than on individual /Page objects. The extractor resolves all inherited geometric attributes—including /MediaBox, /CropBox, /BleedBox, /TrimBox, and /Rotate (0°, 90°, 180°, 270°)—and flattens them explicitly into the new standalone /Page dictionary to prevent layout distortion.",
+      "q10": "What is the difference between vector page extraction and rasterizing or printing to PDF?",
+      "a10": "True vector page extraction performs direct structural manipulation of the PDF DOM, preserving infinite zoom resolution, vector line paths, selectable fonts, and embedded metadata with minimal file sizes. In contrast, 'Print to PDF' or rasterization tools convert vector content into fixed-DPI pixel bitmaps, resulting in fuzzy text, huge file sizes, and total loss of searchable text layers."
     },
     "conclusionTitle": "Conclusion",
-    "conclusion": "Splitting PDFs gives you control over your documents. Instead of dealing with large, cluttered files, you can extract only what matters, organize content efficiently, and work faster and smarter.",
-    "ctaBtn": "👉 Start splitting your PDF here"
+    "conclusion": "Mastering PDF page extraction allows professionals and enterprises to dissect massive document silos into agile, task-specific deliverables. By combining client-side DOM parsing, intelligent font subset extraction, and real-time XRef table recalculation, modern web tools deliver frictionless, zero-compromise PDF splitting directly in your browser.",
+    "ctaBtn": "👉 Start Splitting Your PDF Now"
   }
 }

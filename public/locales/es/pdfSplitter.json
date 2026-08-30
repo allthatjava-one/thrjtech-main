@@ -117,100 +117,157 @@
     "another": "Dividir otro archivo"
   },
   "guide": {
-    "title": "Cómo dividir archivos PDF de manera eficiente (tome el control de documentos grandes)",
-    "intro": "Los archivos PDF de gran tamaño pueden resultar abrumadores: docenas de páginas, contenido mixto que no necesita, secciones que realmente deberían estar separadas. En lugar de trabajar con el archivo completo, puede dividirlo en documentos más pequeños y enfocados.",
-    "cta": "👉 En esta guía, aprenderá cómo dividir archivos PDF en exactamente lo que necesita, de forma rápida y limpia.",
+    "title": "Guía completa para la división de PDF y la extracción estructural de páginas",
+    "intro": "Los documentos PDF monolíticos y de gran tamaño suelen contener secciones superfluas, apéndices innecesarios o capítulos independientes que deben separarse. En lugar de transmitir o almacenar un contenedor de varios megabytes, la extracción precisa de páginas aísla el contenido requerido en documentos PDF independientes y optimizados, preservando la nitidez vectorial y la fidelidad tipográfica.",
+    "cta": "👉 Explore la arquitectura técnica a continuación para comprender cómo la manipulación del DOM de PDF y la extracción del árbol de objetos en el cliente logran una división ultrarrápida y sin pérdidas.",
     "whatIs": {
-      "heading": "📄 ¿Qué es un divisor de PDF?",
-      "body": "Un divisor de PDF es una herramienta que le permite:",
-      "item1": "✂️ Extraer páginas específicas",
-      "item2": "📑 Separe un archivo grande en varios PDF",
-      "item3": "🎯 Conserva solo el contenido que necesitas"
+      "heading": "📄 ¿Qué es la división de PDF?",
+      "body": "La división de PDF es la extracción algorítmica de diccionarios de páginas seleccionadas y sus subgrafos de objetos indirectos asociados a partir de un documento PDF de origen:",
+      "item1": "✂️ Extraiga rangos de páginas precisos o colecciones de páginas no contiguas (p. ej., 1, 4–7, 12)",
+      "item2": "📑 Divida archivos de gran volumen en documentos PDF independientes de una sola página o por capítulos",
+      "item3": "🎯 Aísle contratos, facturas o anexos legales manteniendo el 100% de fidelidad vectorial y tipográfica",
+      "item4": "📦 Reduzca la sobrecarga de transferencia de archivos eliminando flujos de contenido y recursos innecesarios"
     },
     "whyUseful": {
-      "heading": "🧠 Por qué es útil dividir archivos PDF",
-      "item1": "🎯 Céntrese en el contenido relevante: conserve solo las páginas que necesita en lugar de desplazarse por todo.",
-      "item2": "📤 Comparta secciones específicas: no es necesario enviar un documento de 50 páginas cuando solo importan 3.",
-      "item3": "⚡ Mejore la eficiencia del flujo de trabajo: los archivos más pequeños se abren más rápido, son más fáciles de administrar y se cargan más rápido.",
-      "item4": "📂 Mejor organización: convierta un archivo grande en varios documentos categorizados."
+      "heading": "🧠 Por qué la división de PDF es crucial en los flujos de trabajo documentales",
+      "item1": "🎯 Enfoque en información relevante: revise y distribuya únicamente las secciones necesarias sin navegar por cientos de páginas.",
+      "item2": "📤 Distribución documental selectiva: envíe únicamente los anexos o acuerdos específicos requeridos por destinatarios externos.",
+      "item3": "⚡ Rendimiento de procesamiento superior: los archivos extraídos se abren al instante en visores web, dispositivos móviles y motores OCR.",
+      "item4": "📂 Gestión organizada de la información: convierta lotes de digitalización masiva en registros estructurados con metadatos diferenciados."
     },
     "useCases": {
-      "heading": "🛠 Casos de uso comunes",
-      "item1": "💼 Documentos comerciales: extraiga contratos, facturas, informes",
-      "item2": "🎓 Trabajo académico: capítulos separados o envíe solo las páginas requeridas",
-      "item3": "📑 Archivos legales u oficiales: aísle las páginas importantes y mantenga los registros organizados",
-      "item4": "🧾 Documentos escaneados: divida las páginas escaneadas en archivos individuales"
+      "heading": "🛠 Casos de uso profesionales y empresariales",
+      "item1": "💼 Ámbito legal y corporativo: extraiga páginas de firmas, cronogramas y cláusulas confidenciales de contratos marco.",
+      "item2": "🎓 Investigación académica y científica: segmente revistas y publicaciones en capítulos individuales o aísle bibliografías.",
+      "item3": "📑 Reportes financieros y tributarios: divida balances contables consolidados en estados trimestrales y anexos de auditoría.",
+      "item4": "🧾 Digitalización masiva por lotes: separe escaneos continuos en comprobantes, facturas y recibos individuales."
     },
-    "ways": {
-      "heading": "🔍 Formas de dividir un PDF",
-      "item1": "📌 Por rango de páginas, p. Páginas 1–5 → Archivo A, Páginas 6–10 → Archivo B",
-      "item2": "📌 Extraiga páginas específicas: seleccione páginas exactas (Páginas 2, 5, 9 → archivo nuevo)",
-      "item3": "📌 Divida cada página: convierta un PDF en varios archivos de una sola página"
+    "howWorks": {
+      "heading": "🧠 Cómo funciona la división de PDF (Resumen técnico)",
+      "body": "El motor de división analiza el flujo binario del PDF en un Modelo de Objetos del Documento (DOM) en memoria, recorre el árbol jerárquico de páginas, aísla los diccionarios /Page de destino junto con sus flujos de contenido y recursos dependientes, recalcula los desplazamientos de bytes de los objetos y serializa un nuevo documento PDF conforme al estándar ISO 32000."
+    },
+    "architecture": {
+      "heading": "⚙️ Arquitectura técnica y mecánica de objetos PDF",
+      "intro": "Para un procesamiento de nivel profesional es fundamental comprender la estructura interna de bajo nivel de los archivos PDF. A continuación se detalla cómo nuestro motor extrae páginas sin rasterización ni corrupción estructural:",
+      "objectCatalog": {
+        "title": "Catálogo de objetos y análisis del árbol de páginas (/Catalog y /Pages)",
+        "body": "Todo archivo PDF estándar contiene un diccionario raíz /Catalog que apunta a una jerarquía en árbol B balanceado /Pages. Durante la extracción, el motor analiza el catálogo raíz, recorre los nodos intermedios /Pages y aísla los diccionarios /Page de destino. Asimismo, aplana los atributos heredados de nodos superiores (/MediaBox, /CropBox, /Rotate) directamente en los objetos de página de destino, asigna un nuevo árbol raíz /Pages con un entero /Count recalculado y establece punteros /Parent limpios."
+      },
+      "xrefRebuilding": {
+        "title": "Tabla de referencias cruzadas (XRef) y recalculación de desplazamientos de bytes",
+        "body": "Los documentos PDF dependen de una tabla de referencias cruzadas (o flujo comprimido /XRef) que indexa el desplazamiento exacto en bytes de cada objeto indirecto (p. ej., '14 0 obj'). Al extraer páginas, todos los desplazamientos originales quedan invalidados. El motor reindexa secuencialmente todos los objetos indirectos referenciados (de 1 a N), reescribe los identificadores ('N 0 R') en flujos y diccionarios, y genera una nueva tabla XRef y diccionario /Trailer desde el byte cero, evitando cualquier corrupción."
+      },
+      "fontSubsetting": {
+        "title": "Extracción de subconjuntos de fuentes y aislamiento de flujos",
+        "body": "Las páginas hacen referencia a tipografías mediante diccionarios /Resources /Font, incluyendo subconjuntos personalizados OpenType/TrueType identificados con prefijos aleatorios de 6 caracteres (p. ej., ABCDEF+Roboto). El proceso aísla únicamente los programas de fuentes, estructuras /FontDescriptor y mapas de caracteres /ToUnicode (CMaps) invocados por los flujos /Contents extraídos. Los recursos no referenciados de páginas omitidas se descartan, preservando la fidelidad visual y minimizando el tamaño."
+      },
+      "clientPrivacy": {
+        "title": "Asignación de memoria en el cliente y privacidad criptográfica",
+        "body": "La extracción de páginas se ejecuta íntegramente en el hilo del navegador utilizando matrices tipadas de JavaScript (Uint8Array, ArrayBuffer) y WebAssembly de alto rendimiento. Los documentos nunca abandonan su dispositivo ni se transmiten a servidores externos en operaciones locales, eliminando riesgos de filtración en acuerdos confidenciales, balances o historias clínicas. Los archivos resultantes se sintetizan como Blobs en memoria y se descargan mediante URLs de objetos efímeras con liberación inmediata de memoria."
+      }
     },
     "stepByStep": {
-      "heading": "🪜 Paso a paso: cómo dividir un PDF",
-      "step1": "📤 Sube tu PDF",
-      "step2": "👀 Vista previa de páginas",
-      "step3": "✂️ Seleccionar páginas o rangos",
-      "step4": "⚙️ Elija el método de división",
-      "step5": "📥 Descargar resultados"
+      "heading": "🪜 Paso a paso: Cómo dividir un PDF con precisión",
+      "step1": "📤 Cargue su documento PDF de origen mediante la zona de arrastrar y soltar o el selector de archivos",
+      "step2": "👀 Especifique los rangos de páginas deseados mediante notación estándar (p. ej., '1-3, 5, 8-10')",
+      "step3": "⚙️ Elija el modo de salida: archivos independientes por cada rango o un único archivo combinado",
+      "step4": "🚀 Haga clic en 'Dividir PDF' para ejecutar la extracción del árbol de objetos en memoria y la serialización binaria",
+      "step5": "📥 Descargue los segmentos PDF individuales o su documento consolidado de inmediato"
     },
     "bestPractices": {
-      "heading": "🎯 Mejores prácticas para dividir archivos PDF",
-      "item1": "✅ Planifique antes de dividir: sepa qué páginas necesita y cómo quiere agruparlas.",
-      "item2": "✅ Mantenga claros los nombres de los archivos: nombre los archivos de forma lógica (por ejemplo, \"Capítulo1.pdf\").",
-      "item3": "✅ Evite dividir demasiado: demasiados archivos pequeños pueden resultar difíciles de administrar.",
-      "item4": "✅ Verifique los archivos de salida: verifique las páginas correctas y el orden correcto.",
-      "item5": "✅ Conserve el archivo original, en caso de que necesite páginas adicionales más adelante."
+      "heading": "🎯 Buenas prácticas para la división profesional de PDF",
+      "item1": "✅ Compruebe los índices de página: valide el número de página física del PDF antes de ingresar el rango, no la numeración impresa.",
+      "item2": "✅ Utilice nombres de archivo estructurados: asigne prefijos descriptivos (p. ej., 'Contrato_Anexo_A.pdf') a los segmentos extraídos.",
+      "item3": "✅ Evite la sobrefragmentación: agrupe páginas estrechamente relacionadas en rangos coherentes para facilitar su archivo.",
+      "item4": "✅ Valide elementos interactivos: verifique que los campos de formulario, enlaces y marcadores conserven destinos válidos en el archivo final.",
+      "item5": "✅ Conserve una copia original maestra: mantenga una copia de seguridad inmutable del archivo original antes de realizar particiones."
     },
     "mistakes": {
-      "heading": "⚠️ Errores comunes que se deben evitar",
-      "item1": "❌ Seleccionar un rango de páginas incorrecto",
-      "item2": "❌ Perder páginas importantes",
-      "item3": "❌ Crear demasiados archivos pequeños",
-      "item4": "❌ No revisar el resultado final",
-      "item5": "❌ Sobrescribir el archivo original"
+      "heading": "⚠️ Errores comunes de extracción y cómo evitarlos",
+      "item1": "❌ Error de desfase de índices: confundir los números de página físicos del PDF (indexados en 1) con números de prólogos en romanos.",
+      "item2": "❌ Invalidación inadvertida de firmas: dividir archivos con firmas digitales sin prever que los hashes criptográficos quedan invalidados.",
+      "item3": "❌ Campos de formulario huérfanos: extraer páginas de formularios interactivos sin actualizar el contenedor raíz /AcroForm.",
+      "item4": "❌ Marcadores rotos no verificados: conservar árboles de marcadores con enlaces que apuntan a secciones eliminadas.",
+      "item5": "❌ Rasterización mediante impresoras virtuales: convertir páginas a imágenes bitmap en lugar de realizar una extracción vectorial DOM nativa."
     },
     "comparison": {
-      "heading": "⚖️ Divisor de PDF frente a fusión de PDF",
+      "heading": "⚖️ Divisor de PDF vs Fusionador de PDF",
       "col1": "Característica",
       "col2": "Divisor de PDF",
-      "col3": "Fusión de PDF",
-      "row1col1": "Objetivo",
-      "row1col2": "separar el archivo",
-      "row1col3": "Combinar archivos",
-      "row2col1": "Producción",
-      "row2col2": "Varios archivos PDF",
-      "row2col3": "PDF único",
-      "row3col1": "Caso de uso",
-      "row3col2": "Extracción",
-      "row3col3": "Organización",
-      "note": "Herramientas opuestas, a menudo utilizadas juntas."
+      "col3": "Fusionador de PDF",
+      "row1col1": "Objetivo principal",
+      "row1col2": "Descomponer un documento en rangos discretos",
+      "row1col3": "Unificar múltiples archivos PDF en un solo contenedor",
+      "row2col1": "Estructura de salida",
+      "row2col2": "Múltiples PDF independientes o segmentos",
+      "row2col3": "PDF único consolidado con /Catalog unificado",
+      "row3col1": "Caso de uso principal",
+      "row3col2": "Extraer capítulos, aislar facturas o formularios",
+      "row3col3": "Creación de expedientes, archivo unificado de informes",
+      "note": "Herramientas complementarias: habitualmente combinadas en flujos de trabajo documentales."
     },
-    "proTips": {
-      "heading": "🚀 Consejos profesionales para un mejor flujo de trabajo",
-      "item1": "🔢 Utilice los números de página como referencia",
-      "item2": "🗂 Organice archivos inmediatamente después de dividirlos",
-      "item3": "⚡ Dividir una vez en lugar de repetidamente",
-      "item4": "📌 Combine con la fusión para obtener un control total"
-    },
-    "safety": {
-      "heading": "🔐 ¿Es seguro dividir archivos PDF en línea?",
-      "body": "La mayoría de las herramientas modernas procesan archivos temporalmente y los eliminan después de descargarlos. Aún así, evite cargar documentos confidenciales a menos que confíe en la herramienta."
+    "specsTable": {
+      "heading": "📊 Especificación de tratamiento de componentes internos de PDF",
+      "intro": "La siguiente tabla de referencia detalla cómo se transforman las estructuras de bajo nivel y los diccionarios de recursos durante la extracción:",
+      "colComponent": "Componente interno del PDF",
+      "colAction": "Acción técnica durante la extracción",
+      "colImpact": "Impacto en el archivo de salida",
+      "rowBookmarks": {
+        "component": "Marcadores y esquemas (/Outlines)",
+        "action": "Se podan los nodos cuyos punteros hacen referencia a páginas fuera del rango seleccionado.",
+        "impact": "Evita enlaces de navegación rotos y punteros huérfanos en los archivos resultantes."
+      },
+      "rowAnnots": {
+        "component": "Anotaciones y comentarios (/Annots)",
+        "action": "Se conservan los arreglos de objetos /Annots mapeados a los índices de página extraídos.",
+        "impact": "Las notas adhesivas, resaltados, sellos y dibujos vectoriales se mantienen exactamente en su posición."
+      },
+      "rowFonts": {
+        "component": "Subconjuntos de fuentes incrustadas (/Font)",
+        "action": "Se incrustan en la cabecera los diccionarios de fuentes y tablas /ToUnicode CMap requeridos.",
+        "impact": "Garantiza una visualización idéntica del texto; puede aumentar ligeramente el tamaño del archivo individual."
+      },
+      "rowAcroForms": {
+        "component": "Formularios interactivos (/AcroForm)",
+        "action": "Los diccionarios de campos vinculados a las páginas de destino se asocian bajo un nuevo /AcroForm raíz.",
+        "impact": "Los campos de texto, casillas de verificación y botones interactivos permanecen editables."
+      },
+      "rowSignatures": {
+        "component": "Firmas digitales (/Sig)",
+        "action": "El hash criptográfico (/ByteRange) queda invalidado al modificarse la secuencia binaria.",
+        "impact": "Las firmas se eliminan o marcan como no válidas para salvaguardar la integridad criptográfica."
+      },
+      "rowColorSpace": {
+        "component": "Espacios de color y perfiles ICC (/ColorSpace)",
+        "action": "Los perfiles ICC y definiciones de color de dispositivo se asignan al /Resources local de cada página.",
+        "impact": "Garantiza una calibración de color precisa en CMYK y sRGB para impresión de alta fidelidad."
+      }
     },
     "faq": {
-      "heading": "❓ Preguntas frecuentes",
-      "q1": "¿Puedo dividir un PDF sin perder calidad?",
-      "a1": "Sí, la división no afecta la calidad del contenido.",
-      "q2": "¿Puedo extraer solo una página?",
-      "a2": "Absolutamente, puedes extraer cualquier página individualmente.",
-      "q3": "¿Existe un límite para el tamaño del archivo?",
-      "a3": "Depende de la herramienta, pero la mayoría admite archivos razonablemente grandes.",
-      "q4": "¿Puedo deshacer la división?",
-      "a4": "No, pero puedes volver a fusionar archivos si es necesario."
+      "heading": "❓ Preguntas técnicas frecuentes (FAQ)",
+      "q1": "¿Por qué extraer una sola página de un PDF a veces genera un archivo más grande de lo esperado?",
+      "a1": "Cada página de un PDF debe ser un documento autosuficiente. Al extraer una sola página, el nuevo PDF debe incluir los diccionarios de fuentes (/Font), perfiles de color (/ICCBased), recursos compartidos y metadatos de cabecera necesarios para renderizarla con precisión. En el documento original estos recursos se comparten entre muchas páginas, mientras que el archivo individual debe portarlos de forma autónoma, lo que genera una sobrecarga base de bytes.",
+      "q2": "¿Qué ocurre con las firmas digitales y certificados criptográficos al dividir un PDF firmado?",
+      "a2": "Las firmas digitales en PDF calculan un resumen criptográfico SHA-256 o RSA sobre un rango exacto de bytes (/ByteRange). Al extraer o eliminar páginas, la secuencia de bytes del archivo cambia de manera irreversible, invalidando matemáticamente la firma. Para cumplir con las normas ISO 32000 y preservar la seguridad, el motor elimina las firmas rotas o las marca como invalidadas.",
+      "q3": "¿Cómo reconstruye el analizador la jerarquía de marcadores al extraer rangos no consecutivos (p. ej., 1, 4-7, 12)?",
+      "a3": "El analizador inspecciona el árbol /Outlines en el /Catalog del documento. Evalúa el destino (/Dest) de cada marcador para identificar su página objetivo. Los nodos que apuntan a páginas excluidas se podan, mientras que las entradas válidas se vuelven a enlazar con nuevos punteros jerárquicos (/First, /Last, /Next, /Prev) e índices actualizados, garantizando una navegación interactiva sin enlaces muertos.",
+      "q4": "¿Se puede dividir un PDF protegido con contraseña o cifrado (AES-128 / AES-256) sin la clave de descifrado?",
+      "a4": "No. El cifrado estándar de PDF protege los flujos de objetos internos mediante algoritmos AES-128, AES-256 o RC4 vinculados al diccionario /Encrypt. El motor no puede leer el árbol /Pages ni los flujos de datos sin la clave correspondiente. Una vez que el usuario ingresa la contraseña, el descifrado ocurre en la memoria volátil antes de generar el archivo extraído.",
+      "q5": "¿Cómo se gestionan los campos interactivos AcroForm al dividir un formulario de varias páginas en documentos individuales?",
+      "a5": "El procesador analiza el arreglo /Annots de cada página extraída para identificar widgets interactivos (/Subtype /Widget). Luego genera un diccionario raíz /AcroForm específico que contiene únicamente los descriptores de campo asociados a esos widgets. Los valores, secuencias de cálculo y apariencias (/AP) se preservan para que los campos sigan siendo editables.",
+      "q6": "¿Cuál es el límite de memoria RAM del navegador al dividir planos vectoriales de más de 500 páginas en alta resolución?",
+      "a6": "Los navegadores modernos de 64 bits asignan entre 1,5 GB y 4 GB de memoria por pestaña. Al dividir documentos masivos con cientos de esquemas CAD o gráficos vectoriales complejos, el consumo de memoria alcanza su punto máximo durante la descompresión de flujos /Contents (FlateDecode). El motor utiliza reciclaje de memoria y segmentación de flujos TypedArray para evitar cierres imprevistos del navegador.",
+      "q7": "¿Dividir un PDF escaneado afecta las capas de texto con OCR (Reconocimiento Óptico de Caracteres)?",
+      "a7": "No. En documentos escaneados con OCR, las capas de texto son objetos vectoriales transparentes con modo de renderizado '3 Tr' superpuestos con precisión sobre la imagen de fondo (/XObject /Image). El motor de división copia tanto el flujo de imagen como el flujo de texto OCR y su tabla /ToUnicode CMap, manteniendo intacta la búsqueda y selección de texto.",
+      "q8": "¿Cómo funciona la descompresión de flujos (FlateDecode) durante la extracción local de páginas?",
+      "a8": "Los flujos de contenido, gráficos vectoriales y metadatos de PDF se comprimen comúnmente mediante algoritmos zlib / Deflate declarados en el diccionario /Filter /FlateDecode. Durante la extracción, el motor decodifica los flujos para verificar los límites de los objetos y puede copiarlos directamente sin recompresión (passthrough) o volver a comprimirlos para optimizar el tamaño y la velocidad.",
+      "q9": "¿Cómo funciona la herencia de rotación (/Rotate) y márgenes (/CropBox) en las páginas extraídas?",
+      "a9": "En documentos PDF complejos, las dimensiones y rotaciones suelen definirse en los nodos superiores /Pages y no en cada objeto /Page. El extractor resuelve todos los atributos geométricos heredados (/MediaBox, /CropBox, /BleedBox, /TrimBox y /Rotate) y los aplana de forma explícita en el nuevo diccionario /Page independiente para evitar distorsiones visuales.",
+      "q10": "¿Cuál es la diferencia estructural entre la extracción vectorial nativa y la impresión virtual o rasterización a PDF?",
+      "a10": "La extracción vectorial nativa manipula directamente la estructura DOM del PDF, conservando una resolución infinita, trazados vectoriales, fuentes seleccionables y metadatos con archivos de tamaño reducido. En contraste, la impresión virtual o rasterización convierte el contenido en mapas de bits de resolución fija, generando textos borrosos, archivos muy pesados y la pérdida total de la capa de texto seleccionable."
     },
     "conclusionTitle": "Conclusión",
-    "conclusion": "Dividir archivos PDF le brinda control sobre sus documentos. En lugar de lidiar con archivos grandes y desordenados, puede extraer solo lo que importa, organizar el contenido de manera eficiente y trabajar de manera más rápida e inteligente.",
-    "ctaBtn": "👉 Comience a dividir su PDF aquí"
+    "conclusion": "Dominar la extracción estructural de páginas en PDF permite a profesionales y organizaciones descomponer grandes volúmenes documentales en archivos ágiles y funcionales. Gracias al análisis DOM en el cliente, la gestión avanzada de fuentes y el recálculo en tiempo real de tablas XRef, obtenga una división de PDF rápida, segura y sin pérdidas directamente en su navegador.",
+    "ctaBtn": "👉 Comenzar a dividir su PDF ahora"
   }
 }
