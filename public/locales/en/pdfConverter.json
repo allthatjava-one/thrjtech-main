@@ -99,100 +99,114 @@
     "download": "Download Converted File",
     "another": "Convert Another File"
   },
-  "note": "Note: The converted file will be stored temporarily for a short time. Please download it within the available window.",
   "guide": {
-    "title": "How to Convert PDF Files Without Breaking Layout (Smart & Simple Guide)",
-    "intro": "PDFs are great for sharing — but not always for editing. You've probably experienced this: you need to edit a PDF but it's locked, want to extract text but can't, or need a Word or Excel version but formatting breaks.",
-    "cta": "👉 In this guide, you'll learn how to convert PDFs safely, preserve formatting, and choose the right format for your needs.",
+    "title": "PDF to Image Conversion: A Technical Deep Dive into Client-Side Rasterization",
+    "intro": "Converting a PDF to JPG or PNG is not simply a format swap — it is a precise client-side rasterization pipeline. The browser parses the PDF binary stream, reconstructs each page's vector paths, text glyphs, and embedded images, and renders them onto an HTML5 canvas at a configurable DPI before encoding the bitmap to your chosen format.",
+    "cta": "👉 In this guide, you'll learn exactly how PDF pages are rasterized in the browser, how DPI scaling affects pixel dimensions, why PNG and JPG handle transparency differently, and what happens to interactive elements during conversion.",
     "whatIs": {
-      "heading": "📄 What Is a PDF Converter?",
-      "body": "A PDF converter is a tool that allows you to:",
-      "item1": "🔁 Convert PDF → Word, Excel, PowerPoint",
-      "item2": "🖼 Convert PDF → images (JPG, PNG)",
-      "item3": "📥 Convert files → PDF (Word, images, etc.)",
-      "note": "Modern tools support both directions and multiple formats, making them highly flexible. Think of it as a bridge between formats."
+      "heading": "⚙️ Client-Side Rasterization Architecture",
+      "body": "PDF.js — Mozilla's open-source PDF rendering engine — is the foundation of browser-based PDF-to-image conversion. It operates as follows:",
+      "item1": "📂 Binary stream parsing: PDF.js reads the PDF cross-reference table and resolves indirect object references to locate each page's /Page dictionary.",
+      "item2": "🖼️ Canvas rendering: Each page's content stream (text operators, path operators, image XObjects) is painted onto an off-screen HTML5 canvas element using the browser's 2D rendering context.",
+      "item3": "📤 Image encoding: The completed canvas bitmap is encoded to JPG (via canvas.toDataURL image/jpeg with quality) or PNG (via canvas.toDataURL image/png) and made available for download.",
+      "note": "Because everything runs inside the browser's JavaScript sandbox, your PDF never leaves your device. Complete data privacy is guaranteed by design — no file upload, no server processing."
     },
     "whyConvert": {
-      "heading": "🤔 Why Convert PDFs?",
-      "item1": "✏️ Edit Content Easily — convert to Word or Excel to modify text, update data, and reuse content.",
-      "item2": "📊 Extract Data — convert PDF → Excel to save time and avoid manual typing.",
-      "item3": "🖼 Use Content in Other Formats — convert to image to share visuals or embed in presentations.",
-      "item4": "📤 Improve Compatibility — some systems require specific file types; conversion solves this instantly."
+      "heading": "📐 DPI Scaling & Viewport Resolution",
+      "item1": "📏 A standard PDF page uses user-space units where 1 point = 1/72 inch. To target 150 DPI, the canvas transformation matrix is scaled by 150/72 ≈ 2.08×.",
+      "item2": "🖥️ At 150 DPI, a US letter page (8.5 × 11 in) produces a canvas of 1275 × 1650 pixels. At 300 DPI, that doubles to 2550 × 3300 pixels.",
+      "item3": "🔍 Higher DPI means sharper text glyphs and finer vector lines — critical for technical drawings, schematics, or documents with small font sizes.",
+      "item4": "💾 DPI directly controls file size: a 300 DPI PNG can be 4× larger than a 150 DPI PNG because the pixel count doubles in each dimension."
     },
     "howWorks": {
-      "heading": "⚙️ How PDF Conversion Works",
-      "body": "When you convert a PDF, the system reads the file structure, identifies text, images, and layout, then rebuilds content in the new format. Good tools try to preserve layout and keep fonts and spacing intact."
+      "heading": "🔒 Client-Side Privacy Guarantee",
+      "body": "PDF.js runs entirely in your browser's local JavaScript execution environment. Your PDF is loaded into browser RAM and rendered without any network transmission. Sensitive documents — financial statements, medical records, legal contracts — are processed exclusively on your device. When you close or refresh the tab, all file data is immediately released from memory."
     },
     "whyBreaks": {
-      "heading": "🧠 Why Formatting Sometimes Breaks",
-      "body": "PDFs are built for display, not structure. Text may not be stored logically and layout may be \"visual only\" — so converters sometimes have to guess structure. This is why results vary."
+      "heading": "🧠 Why Output Quality Varies Between PDF Sources",
+      "body": "Not all PDFs are equal. A PDF created from a high-resolution vector source renders with perfect crispness at any DPI. A scanned PDF, however, contains only raster image XObjects embedded at a fixed resolution — rasterizing such a page at 300 DPI will simply upscale an already-pixelated image, not recover lost detail. Additionally, PDFs that rely on custom CMYK color profiles require a color space mapping step during canvas rendering, which can introduce subtle hue shifts."
     },
     "bestPractices": {
-      "heading": "✅ Best Practices for Accurate Conversion",
-      "item1": "🔹 Use clean source files — clear text, standard fonts, simple layout.",
-      "item2": "🔹 Choose the right output format — Word for editing, Excel for tables, JPG for sharing visuals.",
-      "item3": "🔹 Check after conversion — always review alignment, fonts, and tables.",
-      "item4": "🔹 Avoid re-converting files — each step can introduce errors; always convert from the original PDF.",
-      "item5": "🔹 Use a reliable tool — a good converter should preserve formatting and support multiple formats."
+      "heading": "✅ Best Practices for High-Quality Rasterization",
+      "item1": "🔹 For web thumbnails, 96–150 DPI with JPG delivers a strong size-to-quality ratio without visible artifacts.",
+      "item2": "🔹 For print-ready or archival images, use PNG at 300 DPI to meet standard print resolution requirements.",
+      "item3": "🔹 If the PDF contains transparent layers or vector logos, always select PNG — JPG will flatten transparency to white.",
+      "item4": "🔹 Avoid re-converting an already-rasterized image back through the pipeline — each rasterization step degrades quality.",
+      "item5": "🔹 For large multi-page PDFs (100+ pages), convert only the pages you need to stay within browser RAM limits."
     },
     "stepByStep": {
-      "heading": "🚀 Step-by-Step: Convert a PDF",
-      "step1": "📤 Upload your PDF",
-      "step2": "🎯 Select output format (JPG, PNG, etc.)",
-      "step3": "⚙️ Start conversion",
-      "step4": "📥 Download the new file",
-      "note": "Most tools complete this in seconds."
+      "heading": "🚀 Step-by-Step: How the Browser Rasterizes a PDF Page",
+      "step1": "📤 Upload your PDF — the file is read into browser memory via the FileReader API without any server upload",
+      "step2": "🎯 Select output format — JPG for smaller files (lossy DCT compression), PNG for lossless pixel-perfect output",
+      "step3": "⚙️ PDF.js parses the page dictionary, applies the DPI scaling matrix, and renders the page onto an off-screen canvas",
+      "step4": "📥 The canvas bitmap is encoded and provided as a download — your PDF never left your device",
+      "note": "The entire pipeline executes in the browser's JavaScript sandbox. No file is transmitted to any external server at any point."
     },
     "scenarios": {
-      "heading": "🧩 Common Conversion Scenarios",
-      "item1": "📄 PDF → Word — edit documents, update text",
-      "item2": "📊 PDF → Excel — extract tables, work with data",
-      "item3": "🖼 PDF → Image — share pages visually, use in presentations",
-      "item4": "📥 Word/Image → PDF — create shareable documents, preserve formatting"
+      "heading": "🧩 Common Rasterization Use Cases",
+      "item1": "🖼️ PDF → PNG — documents with transparent backgrounds, vector logos, or diagrams requiring lossless fidelity",
+      "item2": "📷 PDF → JPG — social media sharing, email attachments, or web embeds where file size is the priority",
+      "item3": "🏗️ Architectural & engineering drawings — PNG at 300 DPI to preserve hairline strokes and dimension text",
+      "item4": "📄 Document preview thumbnails — JPG at 96–150 DPI for fast-loading, compact previews"
     },
     "mistakes": {
-      "heading": "⚠️ Common Mistakes to Avoid",
-      "item1": "❌ Converting scanned PDFs without OCR",
-      "item2": "❌ Expecting perfect formatting every time",
-      "item3": "❌ Using low-quality source files",
-      "item4": "❌ Not reviewing final output",
-      "item5": "❌ Converting multiple times unnecessarily"
-    },
-    "comparison": {
-      "heading": "🔍 PDF Converter vs PDF Editor",
-      "col1": "Feature",
-      "col2": "Converter",
-      "col3": "Editor",
-      "row1col1": "Purpose",
-      "row1col2": "Change format",
-      "row1col3": "Modify content",
-      "row2col1": "Ease of use",
-      "row2col2": "Easy",
-      "row2col3": "Moderate",
-      "row3col1": "Best for",
-      "row3col2": "Flexibility",
-      "row3col3": "Detailed editing"
+      "heading": "⚠️ Common Rasterization Mistakes to Avoid",
+      "item1": "❌ Using too low a DPI — text glyphs and fine lines render as blurry, unreadable pixels",
+      "item2": "❌ Choosing JPG for transparent-background PDFs — transparent pixels are composited to solid white (#FFFFFF)",
+      "item3": "❌ Ignoring CMYK source profiles — heavy color compression in JPG can shift CMYK-mapped hues in the sRGB output",
+      "item4": "❌ Not reviewing edge rendering — check sharp high-contrast edges (borders, text outlines) for DCT quantization artifacts",
+      "item5": "❌ Converting massive PDFs all at once — each page bitmap consumes browser RAM; process in batches for very large documents"
     },
     "proTips": {
       "heading": "💡 Pro Tips",
-      "item1": "📌 Convert a small test file first",
-      "item2": "📌 Use consistent fonts in original",
-      "item3": "📌 Avoid complex layouts when possible",
-      "item4": "📌 Keep a backup of the original file"
+      "item1": "📌 For web thumbnails, 96–150 DPI with JPG gives a great size-to-quality ratio with minimal visible artifacts",
+      "item2": "📌 For archival or print-ready images, choose PNG at 300 DPI for lossless fidelity",
+      "item3": "📌 If your PDF has transparent layers or vector logos, always choose PNG to preserve the alpha channel",
+      "item4": "📌 Keep the original PDF as your source of truth — never re-rasterize an already-converted image"
+    },
+    "comparison": {
+      "heading": "🔬 Rasterization & Export Handling: PNG vs JPG",
+      "col1": "PDF Element",
+      "col2": "PNG Export Handling (Lossless)",
+      "col3": "JPG Export Handling (Lossy)",
+      "row1col1": "Transparent Backgrounds",
+      "row1col2": "Alpha channel preserved; backgrounds remain transparent",
+      "row1col3": "Alpha channel unsupported; transparent pixels flattened to solid white (#FFFFFF)",
+      "row2col1": "Vector Graphics & Lines",
+      "row2col2": "Rendered with exact pixel boundaries; lossless LZW/Deflate compression",
+      "row2col3": "Susceptible to DCT quantization artifacts around sharp, high-contrast edges",
+      "row3col1": "CMYK Color Spaces",
+      "row3col2": "Mapped to sRGB color profiles during canvas rasterization",
+      "row3col3": "Mapped to sRGB; heavy compression may slightly shift color fidelity",
+      "row4col1": "File Size (Per Page)",
+      "row4col2": "Higher file size due to lossless LZW/Deflate compression",
+      "row4col3": "Lower file size, controlled by quality percentage (e.g., 80% quality)"
     },
     "faq": {
-      "heading": "❓ FAQ",
-      "q1": "Does PDF conversion always keep formatting?",
-      "a1": "Not always — but good tools preserve most layout and structure.",
-      "q2": "Can I convert scanned PDFs?",
-      "a2": "Yes, but you may need OCR (text recognition) for accurate results.",
-      "q3": "What's the best format to convert to?",
-      "a3": "Editing → Word, data → Excel, sharing → PDF/Image.",
-      "q4": "Is online conversion safe?",
-      "a4": "Most tools process files securely and temporarily."
+      "heading": "❓ Frequently Asked Questions",
+      "q1": "Why do transparent elements render with a white background when exported as JPG?",
+      "a1": "The JPG format does not support an alpha channel. When the browser's canvas rasterizer encounters a transparent pixel, it must composite it against a solid background color — by convention this defaults to opaque white (#FFFFFF). If your PDF contains transparent layers or logos with no background, choose PNG, which fully preserves the alpha channel.",
+      "q2": "How does the browser manage RAM when converting a large 100-page PDF?",
+      "a2": "PDF.js reads the document's page tree (/Pages dictionary) and renders one page at a time onto an off-screen HTML5 canvas element. Each canvas holds a single page's rasterized bitmap in browser RAM. For a 100-page A4 document at 150 DPI, a single page bitmap is roughly 1240 × 1754 pixels × 4 bytes (RGBA) ≈ 8.7 MB. Since pages are processed sequentially and the canvas is reused, peak RAM usage stays bounded to a few pages rather than the entire document.",
+      "q3": "Are embedded custom fonts (OpenType/TrueType subsets) preserved during rasterization?",
+      "a3": "Yes — PDF.js parses the font descriptor dictionaries inside the PDF binary stream and reconstructs embedded OpenType and TrueType font subsets directly in the browser. The glyphs are rendered as vector outlines onto the canvas before the canvas is encoded to a raster image, so the final pixel output reflects the exact font shapes from the source PDF.",
+      "q4": "How does DPI scaling affect the final pixel dimensions of the exported PNG?",
+      "a4": "DPI is applied as a scaling factor to the canvas rendering matrix. A standard PDF page is defined in user-space units (1 point = 1/72 inch). To render at 150 DPI, the renderer scales the canvas transformation matrix by 150/72 ≈ 2.08×. A letter-size page (8.5 × 11 in) therefore produces a canvas of 1275 × 1650 pixels at 150 DPI, or 2550 × 3300 pixels at 300 DPI.",
+      "q5": "Does converting a PDF to an image strip away interactive elements like AcroForm fields and hyperlinks?",
+      "a5": "Yes — rasterization converts the PDF's vector and text layers into a flat bitmap. All interactive elements such as AcroForm fillable fields, JavaScript actions, embedded hyperlinks, and annotation overlays are permanently discarded in the output image. Only the visual appearance of those elements (e.g., a blue underlined link text) is preserved as pixels.",
+      "q6": "What is the difference between lossless and lossy compression in PDF-to-image export?",
+      "a6": "PNG uses lossless compression (LZW/Deflate), meaning every pixel is stored exactly as rasterized — no data is discarded. JPG uses lossy compression based on Discrete Cosine Transform (DCT): the algorithm discards high-frequency color information that is less perceptible to the human eye. For text-heavy PDFs, JPG compression can introduce ringing or blurring around character edges at quality settings below ~85%.",
+      "q7": "Can I convert a password-protected or encrypted PDF?",
+      "a7": "PDF encryption is enforced at the document level via the /Encrypt dictionary. The browser renderer (PDF.js) supports user-password decryption — if you supply the correct password, the document is decrypted in memory and can be rasterized normally. Owner-password restrictions (which control printing and content extraction) are a separate permission layer and may block rasterization on some implementations.",
+      "q8": "How does client-side processing guarantee my data privacy?",
+      "a8": "Because PDF.js runs entirely inside your browser's JavaScript sandbox, your PDF file is loaded into local browser RAM and never transmitted over a network connection to an external server. Sensitive documents — such as financial statements, medical records, or legal contracts — are processed exclusively on your device. Once you close or refresh the tab, the file data is released from memory.",
+      "q9": "Why does my output image look pixelated or blurry?",
+      "a9": "Pixelation occurs when the rasterization DPI is set lower than the display resolution of the target medium. For standard HD screens (96 PPI), a render DPI of at least 96 is recommended for pixel-perfect display. For print output, use 300 DPI to meet typical print resolution requirements. Blurriness can also occur if the source PDF contains low-resolution embedded raster images that cannot be sharpened during rasterization.",
+      "q10": "Is it possible to convert only specific pages of a large PDF?",
+      "a10": "Yes — PDF.js exposes a page-level rendering API that allows rendering of any page by its index. Rather than iterating through the full page tree, the renderer can jump directly to a specific page dictionary. This makes selective conversion highly memory-efficient, as only the target pages are decoded and rasterized, leaving the rest of the document unprocessed in memory."
     },
     "conclusionTitle": "Conclusion",
-    "conclusion": "PDF conversion isn't just about changing formats — it's about unlocking your content. With the right approach, you can edit documents easily, extract useful data, and share content in any format.",
-    "ctaBtn": "👉 Try it here: PDF Converter Tool"
+    "conclusion": "PDF-to-image conversion is a precise rasterization process — not a simple format swap. Understanding how DPI scaling, color space mapping, alpha channel support, and browser-side RAM management interact helps you choose the right output format and settings for your use case. Whether you need a lossless PNG for transparent vector graphics or a compact JPG for web sharing, this tool handles the entire pipeline locally in your browser for complete data privacy.",
+    "ctaBtn": "👉 Try it here: PDF to Image Converter"
   }
 }

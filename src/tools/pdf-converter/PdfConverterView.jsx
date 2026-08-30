@@ -3,6 +3,7 @@ import { formatSize } from '../pdf-compressor/utils/formatSize'
 import { useState } from 'react'
 import CustomSelect from '../../commons/CustomSelect'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 export function PdfConverterView({
   file,
@@ -31,8 +32,25 @@ export function PdfConverterView({
     setOpenPanel((prev) => (prev === panel ? '' : panel))
   }
 
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10']
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqKeys.map((key) => ({
+      '@type': 'Question',
+      name: t(`guide.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`guide.faq.a${key.slice(1)}`),
+      },
+    })),
+  }
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       {status !== 'done' && (
         <>
           <div className="hero-section">
@@ -255,11 +273,6 @@ export function PdfConverterView({
         </div>
       )}
 
-      <div className="note">
-        <span className="note-icon">⚠️</span>
-          {t('note')}
-      </div>
-
       {/* Converter guide — card-grid layout, distinct from other PDF tools' single-column article */}
       <section className="converter-guide">
         <div className="converter-guide-header">
@@ -370,6 +383,7 @@ export function PdfConverterView({
                 <tr><td>{t('guide.comparison.row1col1')}</td><td>{t('guide.comparison.row1col2')}</td><td>{t('guide.comparison.row1col3')}</td></tr>
                 <tr><td>{t('guide.comparison.row2col1')}</td><td>{t('guide.comparison.row2col2')}</td><td>{t('guide.comparison.row2col3')}</td></tr>
                 <tr><td>{t('guide.comparison.row3col1')}</td><td>{t('guide.comparison.row3col2')}</td><td>{t('guide.comparison.row3col3')}</td></tr>
+                <tr><td>{t('guide.comparison.row4col1')}</td><td>{t('guide.comparison.row4col2')}</td><td>{t('guide.comparison.row4col3')}</td></tr>
               </tbody>
             </table>
           </div>
@@ -392,6 +406,30 @@ export function PdfConverterView({
               <div className="converter-guide-faq-item">
                 <strong>{t('guide.faq.q4')}</strong>
                 <p>{t('guide.faq.a4')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q5')}</strong>
+                <p>{t('guide.faq.a5')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q6')}</strong>
+                <p>{t('guide.faq.a6')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q7')}</strong>
+                <p>{t('guide.faq.a7')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q8')}</strong>
+                <p>{t('guide.faq.a8')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q9')}</strong>
+                <p>{t('guide.faq.a9')}</p>
+              </div>
+              <div className="converter-guide-faq-item">
+                <strong>{t('guide.faq.q10')}</strong>
+                <p>{t('guide.faq.a10')}</p>
               </div>
             </div>
           </div>
