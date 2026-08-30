@@ -29,10 +29,11 @@ export function PdfSplitterView({
   const navigate = useNavigate()
   const togglePanel = (panel) => setOpenPanel((prev) => (prev === panel ? '' : panel))
 
+  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10']
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: ['q1', 'q2', 'q3', 'q4'].map((key) => ({
+    mainEntity: faqKeys.map((key) => ({
       '@type': 'Question',
       name: t(`guide.faq.${key}`),
       acceptedAnswer: {
@@ -305,6 +306,7 @@ export function PdfSplitterView({
               <li>{t('guide.whatIs.item1')}</li>
               <li>{t('guide.whatIs.item2')}</li>
               <li>{t('guide.whatIs.item3')}</li>
+              <li>{t('guide.whatIs.item4')}</li>
             </ul>
           </div>
 
@@ -326,6 +328,35 @@ export function PdfSplitterView({
               <li>{t('guide.useCases.item3')}</li>
               <li>{t('guide.useCases.item4')}</li>
             </ul>
+          </div>
+
+          <div className="splitter-guide-card">
+            <h3>{t('guide.howWorks.heading')}</h3>
+            <p>{t('guide.howWorks.body')}</p>
+          </div>
+
+          {/* Technical Architecture & Document Splitting Mechanics */}
+          <div className="splitter-guide-card splitter-guide-card--wide">
+            <h3>{t('guide.architecture.heading')}</h3>
+            <p style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#4b5563' }}>{t('guide.architecture.intro')}</p>
+            <div className="splitter-arch-grid">
+              <div className="splitter-arch-block">
+                <h4>{t('guide.architecture.objectCatalog.title')}</h4>
+                <p>{t('guide.architecture.objectCatalog.body')}</p>
+              </div>
+              <div className="splitter-arch-block">
+                <h4>{t('guide.architecture.xrefRebuilding.title')}</h4>
+                <p>{t('guide.architecture.xrefRebuilding.body')}</p>
+              </div>
+              <div className="splitter-arch-block">
+                <h4>{t('guide.architecture.fontSubsetting.title')}</h4>
+                <p>{t('guide.architecture.fontSubsetting.body')}</p>
+              </div>
+              <div className="splitter-arch-block">
+                <h4>{t('guide.architecture.clientPrivacy.title')}</h4>
+                <p>{t('guide.architecture.clientPrivacy.body')}</p>
+              </div>
+            </div>
           </div>
 
           <div className="splitter-guide-card splitter-guide-card--wide">
@@ -350,6 +381,17 @@ export function PdfSplitterView({
             </ul>
           </div>
 
+          <div className="splitter-guide-card">
+            <h3>{t('guide.mistakes.heading')}</h3>
+            <ul>
+              <li>{t('guide.mistakes.item1')}</li>
+              <li>{t('guide.mistakes.item2')}</li>
+              <li>{t('guide.mistakes.item3')}</li>
+              <li>{t('guide.mistakes.item4')}</li>
+              <li>{t('guide.mistakes.item5')}</li>
+            </ul>
+          </div>
+
           <div className="splitter-guide-card splitter-guide-card--wide">
             <h3>{t('guide.comparison.heading')}</h3>
             <table className="splitter-guide-table">
@@ -368,24 +410,69 @@ export function PdfSplitterView({
             </table>
           </div>
 
-          <div className="splitter-guide-card">
-            <h3>{t('guide.mistakes.heading')}</h3>
-            <ul>
-              <li>{t('guide.mistakes.item1')}</li>
-              <li>{t('guide.mistakes.item2')}</li>
-              <li>{t('guide.mistakes.item3')}</li>
-              <li>{t('guide.mistakes.item4')}</li>
-              <li>{t('guide.mistakes.item5')}</li>
-            </ul>
+          {/* Technical Reference Table: PDF Internal Component Handling Specification */}
+          <div className="splitter-guide-card splitter-guide-card--wide">
+            <h3>{t('guide.specsTable.heading')}</h3>
+            <p style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#4b5563' }}>{t('guide.specsTable.intro')}</p>
+            <div style={{ overflowX: 'auto' }}>
+              <table className="splitter-guide-table splitter-specs-table">
+                <thead>
+                  <tr style={{ borderBottom: '2px solid #10b981', background: '#f0fdf4' }}>
+                    <th style={{ width: '22%' }}>{t('guide.specsTable.colComponent')}</th>
+                    <th style={{ width: '38%' }}>{t('guide.specsTable.colAction')}</th>
+                    <th style={{ width: '40%' }}>{t('guide.specsTable.colImpact')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowBookmarks.component')}</strong></td>
+                    <td>{t('guide.specsTable.rowBookmarks.action')}</td>
+                    <td>{t('guide.specsTable.rowBookmarks.impact')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowAnnots.component')}</strong></td>
+                    <td>{t('guide.specsTable.rowAnnots.action')}</td>
+                    <td>{t('guide.specsTable.rowAnnots.impact')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowFonts.component')}</strong></td>
+                    <td>{t('guide.specsTable.rowFonts.action')}</td>
+                    <td>{t('guide.specsTable.rowFonts.impact')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowAcroForms.component')}</strong></td>
+                    <td>{t('guide.specsTable.rowAcroForms.action')}</td>
+                    <td>{t('guide.specsTable.rowAcroForms.impact')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowSignatures.component')}</strong></td>
+                    <td>{t('guide.specsTable.rowSignatures.action')}</td>
+                    <td>{t('guide.specsTable.rowSignatures.impact')}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{t('guide.specsTable.rowColorSpace.component')}</strong></td>
+                    <td>{t('guide.specsTable.rowColorSpace.action')}</td>
+                    <td>{t('guide.specsTable.rowColorSpace.impact')}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
+          {/* Technical FAQ Accordion */}
           <div className="splitter-guide-card splitter-guide-card--wide">
             <h3>{t('guide.faq.heading')}</h3>
-            <div className="splitter-guide-faq">
-              <p><strong>{t('guide.faq.q1')}</strong> {t('guide.faq.a1')}</p>
-              <p><strong>{t('guide.faq.q2')}</strong> {t('guide.faq.a2')}</p>
-              <p><strong>{t('guide.faq.q3')}</strong> {t('guide.faq.a3')}</p>
-              <p><strong>{t('guide.faq.q4')}</strong> {t('guide.faq.a4')}</p>
+            <div className="splitter-guide-faq-accordion">
+              {faqKeys.map((key, idx) => (
+                <details key={key} className="splitter-faq-item" open={idx === 0}>
+                  <summary className="splitter-faq-summary">
+                    <span>{t(`guide.faq.${key}`)}</span>
+                  </summary>
+                  <div className="splitter-faq-content">
+                    <p>{t(`guide.faq.a${key.slice(1)}`)}</p>
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
         </div>
