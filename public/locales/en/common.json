@@ -24,7 +24,8 @@
     "videoToGif": "Convert to GIF",
     "blog": "Blog",
     "contactUs": "Contact Us",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "misc": "Misc."
   },
   "footer": {
     "copyright": "© {{year}} THRJTech. All rights reserved.",
