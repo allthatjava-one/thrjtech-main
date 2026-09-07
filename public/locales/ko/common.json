@@ -24,7 +24,8 @@
     "videoToGif": "GIF로 변환",
     "blog": "블로그",
     "contactUs": "문의하기",
-    "openMenu": "메뉴 열기"
+    "openMenu": "메뉴 열기",
+    "misc": "기타"
   },
   "footer": {
     "copyright": "© {{year}} THRJTech. 모든 권리 보유.",

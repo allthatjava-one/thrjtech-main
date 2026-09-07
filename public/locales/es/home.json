@@ -5,12 +5,25 @@
   },
   "popularGuides": {
     "heading": "Guías populares",
+    "pdfConverter": "Conversor PDF — Convertir páginas PDF a imágenes",
+    "screenRecorder": "Grabadora de pantalla — Grabación instantánea en el navegador",
     "jsonFormatter": "Formateador JSON — Formatear, validar y explorar JSON",
     "imageCrop": "Recortar imagen — Recorte y encuadre sus imágenes",
     "memeGenerator": "Generador de memes — Cree memes para compartir en segundos",
     "pdfCompressor": "Compresor PDF — Reduzca el tamaño de archivos PDF rápidamente",
     "imageCollage": "Collage de imágenes — Cree hermosos collages de fotos",
     "pdfMerger": "Fusionador PDF — Combine múltiples PDFs en uno"
+  },
+  "pdfTools": {
+    "heading": "Herramientas PDF",
+    "pdfMergerName": "Fusionador PDF",
+    "pdfMergerDesc": "Combine múltiples archivos PDF en un solo documento organizado en segundos.",
+    "pdfConverterName": "Conversor PDF",
+    "pdfConverterDesc": "Convierta páginas PDF en imágenes JPG o PNG de alta calidad con total privacidad.",
+    "pdfCompressorName": "Compresor PDF",
+    "pdfCompressorDesc": "Reduzca el tamaño de sus archivos PDF rápidamente sin perder calidad.",
+    "pdfSplitterName": "Divisor PDF",
+    "pdfSplitterDesc": "Extraiga páginas específicas o divida PDFs grandes en documentos separados."
   },
   "developerTools": {
     "heading": "Herramientas para desarrolladores",
@@ -25,6 +38,13 @@
     "imageCropDesc": "Recorte cualquier imagen al tamaño y relación de aspecto exactos que necesita. Soporta recorte libre y preajustes convenientes como 1:1, 16:9 y 4:5.",
     "memeGeneratorName": "Generador de memes",
     "memeGeneratorDesc": "Agregue capas de texto en negrita sobre cualquier imagen, arrástrelas a la posición deseada y descargue su meme personalizado como PNG."
+  },
+  "videoTools": {
+    "heading": "Herramientas de video",
+    "screenRecorderName": "Grabadora de pantalla rápida",
+    "screenRecorderDesc": "Grabe su pantalla, ventana o pestaña con audio de micrófono — 100% en el navegador.",
+    "videoToGifName": "Conversor de video a GIF",
+    "videoToGifDesc": "Convierta cualquier clip de video en un GIF animado directamente en su navegador."
   },
   "cards": {
     "howItWorks": "Cómo funciona",

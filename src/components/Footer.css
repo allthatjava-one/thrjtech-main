@@ -1,23 +1,113 @@
+/* ── Footer ────────────────────────────────────────────────── */
 .footer {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
-  padding: 1.5rem 0;
+  padding: 3rem 0 1.5rem;
   margin-top: auto;
 }
 
-.footer-inner {
+.footer-container {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.footer-brand {
+  max-width: 480px;
+}
+
+.footer-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+
+.footer-logo:hover {
+  text-decoration: none;
+}
+
+.footer-tagline {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+
+.footer-heading a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-heading a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.footer-list li a {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-list li a:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* ── Footer Bottom Bar ───────────────────────────────────── */
+.footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+  padding-top: 1.5rem;
 }
 
 .footer-copy {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--color-muted);
   margin: 0;
 }
@@ -33,7 +123,7 @@ a.footer-link-btn {
   background: none;
   border: none;
   padding: 0;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--color-muted);
   cursor: pointer;
   text-decoration: underline;
@@ -42,81 +132,26 @@ a.footer-link-btn {
 
 .footer-link-btn:hover,
 a.footer-link-btn:hover {
-  color: var(--color-text, #222);
+  color: var(--color-text);
 }
 
 .footer-link-sep {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--color-muted);
   user-select: none;
 }
 
-/* ── Legal popup dialogs ─────────────────────────────────── */
-.fl-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
 }
 
-.fl-dialog {
-  background: #fff;
-  color: #222;
-  border-radius: 10px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
-  max-width: 640px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding: 2rem 2rem 1.75rem;
-  position: relative;
-}
-
-.fl-dialog h2 {
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin: 0 0 0.25rem;
-}
-
-.fl-dialog h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 1.25rem 0 0.35rem;
-}
-
-.fl-dialog p {
-  font-size: 0.9rem;
-  line-height: 1.65;
-  margin: 0 0 0.6rem;
-}
-
-.fl-dialog a {
-  color: #2563eb;
-}
-
-.fl-updated {
-  font-size: 0.78rem;
-  color: #888;
-  margin-bottom: 1rem !important;
-}
-
-.fl-close {
-  position: absolute;
-  top: 0.85rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  color: #666;
-  padding: 0.1rem 0.3rem;
-}
-
-.fl-close:hover {
-  color: #111;
+@media (max-width: 420px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
