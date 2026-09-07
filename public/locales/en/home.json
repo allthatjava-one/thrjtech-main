@@ -5,12 +5,25 @@
   },
   "popularGuides": {
     "heading": "Popular Guides",
+    "pdfConverter": "PDF Converter — Convert PDF pages into images",
+    "screenRecorder": "Screen Recorder — Browser-based instant recording",
     "jsonFormatter": "JSON Formatter — Pretty-print, validate & explore JSON",
     "imageCrop": "Image Crop — Trim and frame your images",
     "memeGenerator": "Meme Generator — Create shareable memes in seconds",
     "pdfCompressor": "PDF Compressor — Shrink PDF file sizes quickly",
     "imageCollage": "Image Collage — Build beautiful photo collages",
     "pdfMerger": "PDF Merger — Combine multiple PDFs into one"
+  },
+  "pdfTools": {
+    "heading": "PDF Tools",
+    "pdfMergerName": "PDF Merger",
+    "pdfMergerDesc": "Combine multiple PDF files into a single organized document in seconds.",
+    "pdfConverterName": "PDF Converter",
+    "pdfConverterDesc": "Convert PDF pages into high-quality JPG or PNG images with full privacy.",
+    "pdfCompressorName": "PDF Compressor",
+    "pdfCompressorDesc": "Reduce PDF file sizes quickly without sacrificing document quality.",
+    "pdfSplitterName": "PDF Splitter",
+    "pdfSplitterDesc": "Extract specific pages or split large PDFs into separate documents."
   },
   "developerTools": {
     "heading": "Developer Tools",
@@ -25,6 +38,13 @@
     "imageCropDesc": "Crop any image to the exact size and aspect ratio you need. Supports free-form cropping and convenient presets like 1:1, 16:9, and 4:5 — all in your browser.",
     "memeGeneratorName": "Meme Generator",
     "memeGeneratorDesc": "Add bold text layers over any image, drag them into position, and download your custom meme as a PNG. No account needed."
+  },
+  "videoTools": {
+    "heading": "Video Tools",
+    "screenRecorderName": "Quick Screen Recorder",
+    "screenRecorderDesc": "Record your desktop, application window, or browser tab with microphone audio — 100% in-browser.",
+    "videoToGifName": "Video to GIF Converter",
+    "videoToGifDesc": "Turn any video clip into an animated GIF right in your browser with trimming and frame rate controls."
   },
   "cards": {
     "howItWorks": "How it works",

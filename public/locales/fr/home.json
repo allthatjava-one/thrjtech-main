@@ -5,12 +5,25 @@
   },
   "popularGuides": {
     "heading": "Guides populaires",
+    "pdfConverter": "Convertisseur PDF — Convertir des pages PDF en images",
+    "screenRecorder": "Enregistreur d'écran — Enregistrement d'écran instantané",
     "jsonFormatter": "Formateur JSON — Embellir, valider et explorer le JSON",
     "imageCrop": "Recadrage d'image — Ajustez et cadrez vos images",
     "memeGenerator": "Générateur de mèmes — Créez des mèmes partageables en quelques secondes",
     "pdfCompressor": "Compresseur PDF — Réduisez rapidement la taille des fichiers PDF",
     "imageCollage": "Collage d'images — Créez de beaux collages photo",
     "pdfMerger": "Fusionneur PDF — Combinez plusieurs PDF en un seul"
+  },
+  "pdfTools": {
+    "heading": "Outils PDF",
+    "pdfMergerName": "Fusionneur PDF",
+    "pdfMergerDesc": "Combinez plusieurs fichiers PDF en un document unique et structuré en quelques secondes.",
+    "pdfConverterName": "Convertisseur PDF",
+    "pdfConverterDesc": "Convertissez des pages PDF en images JPG ou PNG haute résolution en toute confidentialité.",
+    "pdfCompressorName": "Compresseur PDF",
+    "pdfCompressorDesc": "Réduisez la taille de vos fichiers PDF rapidement sans dégrader la qualité visuelle.",
+    "pdfSplitterName": "Diviseur PDF",
+    "pdfSplitterDesc": "Extrayez des pages spécifiques ou divisez des PDF volumineux en documents distincts."
   },
   "developerTools": {
     "heading": "Outils pour développeurs",
@@ -25,6 +38,13 @@
     "imageCropDesc": "Recadrez n'importe quelle image à la taille et au rapport d'aspect exact dont vous avez besoin. Prend en charge le recadrage libre et des préréglages pratiques comme 1:1, 16:9 et 4:5 — directement dans votre navigateur.",
     "memeGeneratorName": "Générateur de mèmes",
     "memeGeneratorDesc": "Ajoutez des calques de texte en gras sur n'importe quelle image, faites-les glisser à la position souhaitée et téléchargez votre mème personnalisé en PNG. Aucun compte requis."
+  },
+  "videoTools": {
+    "heading": "Outils vidéo",
+    "screenRecorderName": "Enregistreur d'écran rapide",
+    "screenRecorderDesc": "Enregistrez votre écran, votre fenêtre ou votre onglet avec l'audio du microphone — 100% dans le navigateur.",
+    "videoToGifName": "Convertisseur vidéo en GIF",
+    "videoToGifDesc": "Transformez n'importe quel clip vidéo en GIF animé directement dans votre navigateur."
   },
   "cards": {
     "howItWorks": "Comment ça fonctionne",

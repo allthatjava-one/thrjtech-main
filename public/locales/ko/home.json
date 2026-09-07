@@ -5,12 +5,25 @@
   },
   "popularGuides": {
     "heading": "인기 가이드",
+    "pdfConverter": "PDF 변환기 — PDF 페이지를 이미지로 변환",
+    "screenRecorder": "화면 녹화기 — 브라우저 즉시 화면 녹화",
     "jsonFormatter": "JSON 포맷터 — JSON 포맷, 검증, 탐색",
     "imageCrop": "이미지 자르기 — 이미지를 정확히 크롭",
     "memeGenerator": "밈 생성기 — 몇 초 만에 공유용 밈 만들기",
     "pdfCompressor": "PDF 압축기 — PDF 파일 크기 빠르게 줄이기",
     "imageCollage": "이미지 콜라주 — 아름다운 사진 콜라주 만들기",
     "pdfMerger": "PDF 병합기 — 여러 PDF를 하나로 결합"
+  },
+  "pdfTools": {
+    "heading": "PDF 도구",
+    "pdfMergerName": "PDF 병합기",
+    "pdfMergerDesc": "여러 PDF 파일을 하나의 문서로 몇 초 만에 결합합니다.",
+    "pdfConverterName": "PDF 변환기",
+    "pdfConverterDesc": "완벽한 프라이버시로 PDF 페이지를 고화질 JPG 또는 PNG 이미지로 변환합니다.",
+    "pdfCompressorName": "PDF 압축기",
+    "pdfCompressorDesc": "품질 손실 없이 PDF 파일 크기를 빠르게 줄입니다.",
+    "pdfSplitterName": "PDF 분할기",
+    "pdfSplitterDesc": "특정 페이지를 추출하거나 대용량 PDF를 분할합니다."
   },
   "developerTools": {
     "heading": "개발자 도구",
@@ -25,6 +38,13 @@
     "imageCropDesc": "필요한 정확한 크기와 비율로 이미지를 자릅니다.",
     "memeGeneratorName": "밈 생성기",
     "memeGeneratorDesc": "이미지 위에 텍스트 레이어를 추가하고 위치를 조정해 PNG로 저장합니다."
+  },
+  "videoTools": {
+    "heading": "비디오 도구",
+    "screenRecorderName": "빠른 화면 녹화기",
+    "screenRecorderDesc": "데스크톱, 창, 브라우저 탭을 마이크 오디오와 함께 브라우저에서 100% 로컬로 녹화합니다.",
+    "videoToGifName": "비디오 to GIF 변환기",
+    "videoToGifDesc": "비디오 클립을 브라우저에서 바로 고품질 애니메이션 GIF로 변환합니다."
   },
   "cards": {
     "howItWorks": "작동 방식",

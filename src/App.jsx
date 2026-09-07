@@ -74,6 +74,8 @@ function HomePage() {
           <div className="container">
             <h2 className="home-section-title">{t('popularGuides.heading')}</h2>
             <div className="guide-links">
+              <Link className="guide-link" to="/blogs/pdf-converter-guide">{t('popularGuides.pdfConverter')}</Link>
+              <Link className="guide-link" to="/blogs/screen-recorder-better">{t('popularGuides.screenRecorder')}</Link>
               <Link className="guide-link" to="/blogs/json-formatter-guide">{t('popularGuides.jsonFormatter')}</Link>
               <Link className="guide-link" to="/blogs/image-crop-guide">{t('popularGuides.imageCrop')}</Link>
               <Link className="guide-link" to="/blogs/meme-generator-guide">{t('popularGuides.memeGenerator')}</Link>
@@ -84,13 +86,57 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Developer & Image Tools Spotlight */}
+        {/* Tools Spotlight Section */}
         <section className="home-section home-section--alt">
           <div className="container">
 
+            {/* PDF Tools */}
+            <div className="spotlight-group">
+              <h2 className="home-section-title">
+                <Link to="/pdf-tools" style={{ color: 'inherit', textDecoration: 'none' }}>{t('pdfTools.heading')} ›</Link>
+              </h2>
+              <div className="spotlight-cards">
+                <Link className="spotlight-card" to="/pdf-merger">
+                  <span className="spotlight-card-name">{t('pdfTools.pdfMergerName')}</span>
+                  <p className="spotlight-card-desc">{t('pdfTools.pdfMergerDesc')}</p>
+                </Link>
+                <Link className="spotlight-card" to="/pdf-converter">
+                  <span className="spotlight-card-name">{t('pdfTools.pdfConverterName')}</span>
+                  <p className="spotlight-card-desc">{t('pdfTools.pdfConverterDesc')}</p>
+                </Link>
+                <Link className="spotlight-card" to="/pdf-compressor">
+                  <span className="spotlight-card-name">{t('pdfTools.pdfCompressorName')}</span>
+                  <p className="spotlight-card-desc">{t('pdfTools.pdfCompressorDesc')}</p>
+                </Link>
+                <Link className="spotlight-card" to="/pdf-splitter">
+                  <span className="spotlight-card-name">{t('pdfTools.pdfSplitterName')}</span>
+                  <p className="spotlight-card-desc">{t('pdfTools.pdfSplitterDesc')}</p>
+                </Link>
+              </div>
+            </div>
+
+            {/* Video Tools */}
+            <div className="spotlight-group">
+              <h2 className="home-section-title">
+                <Link to="/video-tools" style={{ color: 'inherit', textDecoration: 'none' }}>{t('videoTools.heading')} ›</Link>
+              </h2>
+              <div className="spotlight-cards">
+                <Link className="spotlight-card" to="/screen-recorder">
+                  <span className="spotlight-card-name">{t('videoTools.screenRecorderName')}</span>
+                  <p className="spotlight-card-desc">{t('videoTools.screenRecorderDesc')}</p>
+                </Link>
+                <Link className="spotlight-card" to="/video-to-gif">
+                  <span className="spotlight-card-name">{t('videoTools.videoToGifName')}</span>
+                  <p className="spotlight-card-desc">{t('videoTools.videoToGifDesc')}</p>
+                </Link>
+              </div>
+            </div>
+
             {/* Developer Tools */}
             <div className="spotlight-group">
-              <h2 className="home-section-title">{t('developerTools.heading')}</h2>
+              <h2 className="home-section-title">
+                <Link to="/developer-tools" style={{ color: 'inherit', textDecoration: 'none' }}>{t('developerTools.heading')} ›</Link>
+              </h2>
               <div className="spotlight-cards">
                 <Link className="spotlight-card" to="/json-formatter">
                   <span className="spotlight-card-name">{t('developerTools.jsonFormatterName')}</span>
@@ -105,7 +151,9 @@ function HomePage() {
 
             {/* Image Tools */}
             <div className="spotlight-group">
-              <h2 className="home-section-title">{t('imageTools.heading')}</h2>
+              <h2 className="home-section-title">
+                <Link to="/image-tools" style={{ color: 'inherit', textDecoration: 'none' }}>{t('imageTools.heading')} ›</Link>
+              </h2>
               <div className="spotlight-cards">
                 <Link className="spotlight-card" to="/image-crop">
                   <span className="spotlight-card-name">{t('imageTools.imageCropName')}</span>
