@@ -516,6 +516,30 @@ export function PdfMergerView({
           </div>
         </div>
 
+        {/* Related PDF Tools Section */}
+        <div className="related-tools-section">
+          <h3 className="related-tools-title">{t('guide.relatedTools.heading')}</h3>
+          <p className="related-tools-desc">{t('guide.relatedTools.desc')}</p>
+          <div className="related-tools-grid">
+            <Link to="/pdf-converter" className="related-tool-card">
+              <span className="related-tool-name">{t('guide.relatedTools.converterName')}</span>
+              <span className="related-tool-summary">{t('guide.relatedTools.converterDesc')}</span>
+            </Link>
+            <Link to="/pdf-tools" className="related-tool-card">
+              <span className="related-tool-name">{t('guide.relatedTools.toolsHubName')}</span>
+              <span className="related-tool-summary">{t('guide.relatedTools.toolsHubDesc')}</span>
+            </Link>
+            <Link to="/pdf-compressor" className="related-tool-card">
+              <span className="related-tool-name">{t('guide.relatedTools.compressorName')}</span>
+              <span className="related-tool-summary">{t('guide.relatedTools.compressorDesc')}</span>
+            </Link>
+            <Link to="/pdf-splitter" className="related-tool-card">
+              <span className="related-tool-name">{t('guide.relatedTools.splitterName')}</span>
+              <span className="related-tool-summary">{t('guide.relatedTools.splitterDesc')}</span>
+            </Link>
+          </div>
+        </div>
+
         <div className="merger-guide-footer">
           <p><strong>{t('guide.conclusion.heading')}</strong><br/>{t('guide.conclusion.body')}</p>
           <a className="btn btn-primary" href="/pdf-merger" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/pdf-merger') }}>{t('guide.ctaBtn')}</a>

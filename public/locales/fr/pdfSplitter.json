@@ -268,6 +268,18 @@
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "L'extraction méthodique de pages PDF permet aux professionnels et aux entreprises de scinder de volumineuses archives en fichiers ciblés, agiles et faciles à partager. En combinant l'analyse DOM côté client, la gestion rigoureuse des polices et le recalcul dynamique des tables XRef, profitez d'une division PDF sans concession directement dans votre navigateur.",
+    "relatedTools": {
+      "heading": "Découvrir les outils PDF associés",
+      "desc": "Découvrez d'autres utilitaires PDF gratuits dans le navigateur pour organiser, convertir et gérer vos fichiers :",
+      "converterName": "Convertisseur PDF →",
+      "converterDesc": "Convertissez des documents PDF en images ou extrayez des pages en toute simplicité.",
+      "toolsHubName": "Tous les outils PDF →",
+      "toolsHubDesc": "Découvrez notre suite complète d'utilitaires PDF gratuits basés sur le navigateur.",
+      "compressorName": "Compresseur PDF →",
+      "compressorDesc": "Réduisez la taille du fichier PDF sans compromettre la lisibilité ni la qualité.",
+      "mergerName": "Fusionneur PDF →",
+      "mergerDesc": "Fusionnez plusieurs documents PDF en quelques secondes."
+    },
     "ctaBtn": "👉 Commencer à diviser votre PDF maintenant"
   }
 }

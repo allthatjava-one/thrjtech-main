@@ -496,6 +496,30 @@ export function PdfCompressorView({
                 {t('guide.faq.q9') && <p style={{ marginTop: 8 }}><strong>{t('guide.faq.q9')}</strong><br/>{t('guide.faq.a9')}</p>}
               </div>
 
+              {/* Related PDF Tools Section */}
+              <div className="related-tools-section">
+                <h3 className="related-tools-title">{t('guide.relatedTools.heading')}</h3>
+                <p className="related-tools-desc">{t('guide.relatedTools.desc')}</p>
+                <div className="related-tools-grid">
+                  <Link to="/pdf-converter" className="related-tool-card">
+                    <span className="related-tool-name">{t('guide.relatedTools.converterName')}</span>
+                    <span className="related-tool-summary">{t('guide.relatedTools.converterDesc')}</span>
+                  </Link>
+                  <Link to="/pdf-tools" className="related-tool-card">
+                    <span className="related-tool-name">{t('guide.relatedTools.toolsHubName')}</span>
+                    <span className="related-tool-summary">{t('guide.relatedTools.toolsHubDesc')}</span>
+                  </Link>
+                  <Link to="/pdf-splitter" className="related-tool-card">
+                    <span className="related-tool-name">{t('guide.relatedTools.splitterName')}</span>
+                    <span className="related-tool-summary">{t('guide.relatedTools.splitterDesc')}</span>
+                  </Link>
+                  <Link to="/pdf-merger" className="related-tool-card">
+                    <span className="related-tool-name">{t('guide.relatedTools.mergerName')}</span>
+                    <span className="related-tool-summary">{t('guide.relatedTools.mergerDesc')}</span>
+                  </Link>
+                </div>
+              </div>
+
               <p style={{ marginTop: 10 }}><strong>{t('guide.conclusionTitle')}</strong><br/>
               {t('guide.conclusion')}</p>
 

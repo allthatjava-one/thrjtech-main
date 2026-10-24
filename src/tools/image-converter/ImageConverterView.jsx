@@ -666,6 +666,22 @@ export function ImageConverterView({
           </section>
 
           <p className="ic-conclusion">{t('guide.conclusion', { defaultValue: "Image conversion isn’t just technical — it’s essential for compatibility, performance, and usability. By picking the right format you can avoid upload errors, improve speed, and keep good quality." })}</p>
+
+          {/* Related Tools Section */}
+          <div className="related-tools-section">
+            <h3 className="related-tools-title">{t('guide.relatedDocTools.heading')}</h3>
+            <p className="related-tools-desc">{t('guide.relatedDocTools.desc')}</p>
+            <div className="related-tools-grid">
+              <Link to="/pdf-converter" className="related-tool-card">
+                <span className="related-tool-name">{t('guide.relatedDocTools.converterName')}</span>
+                <span className="related-tool-summary">{t('guide.relatedDocTools.converterDesc')}</span>
+              </Link>
+              <Link to="/pdf-tools" className="related-tool-card">
+                <span className="related-tool-name">{t('guide.relatedDocTools.toolsHubName')}</span>
+                <span className="related-tool-summary">{t('guide.relatedDocTools.toolsHubDesc')}</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

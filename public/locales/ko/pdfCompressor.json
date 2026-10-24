@@ -265,6 +265,18 @@
     },
     "conclusionTitle": "결론",
     "conclusion": "큰 PDF로 인해 속도가 느려질 필요는 없습니다. 적절한 압축 기술을 사용하여 파일을 공유하고, 업로드 제한을 충족하고, 유용성을 희생하지 않고도 성능을 향상시키세요.",
+    "relatedTools": {
+      "heading": "관련 PDF 도구 살펴보기",
+      "desc": "문서를 변환, 정리 또는 분할해야 하나요? 브라우저에서 실행되는 무료 PDF 도구를 사용해 보세요:",
+      "converterName": "PDF 변환기 →",
+      "converterDesc": "PDF 문서를 PNG/JPEG 이미지로 변환하거나 이미지 파일을 PDF로 변환합니다.",
+      "toolsHubName": "전체 PDF 도구 모음 →",
+      "toolsHubDesc": "브라우저에서 실행되는 빠르고 안전한 전체 PDF 유틸리티 모음을 둘러보세요.",
+      "splitterName": "PDF 분할기 →",
+      "splitterDesc": "PDF에서 개별 페이지를 추출하거나 원하는 페이지 범위를 선택하여 분할합니다.",
+      "mergerName": "PDF 합치기 →",
+      "mergerDesc": "여러 PDF 파일을 하나의 깔끔하고 정돈된 문서로 병합합니다."
+    },
     "ctaBtn": "👉 여기에서 PDF를 압축하세요: PDF 압축기 도구"
   }
 }

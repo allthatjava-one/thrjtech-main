@@ -253,6 +253,18 @@
       "heading": "🧾 요약 및 향후 단계",
       "body": "전문가 수준의 정밀도로 PDF 문서를 병합하면 깔끔한 구조 계층, 선명한 벡터 해상도, 완벽한 데이터 프라이버시가 보장됩니다. 기업 재무 보고서 결합부터 학생 포트폴리오 정리까지, 빠르고 안전하게 문서를 결합하세요."
     },
+    "relatedTools": {
+      "heading": "관련 PDF 도구 살펴보기",
+      "desc": "브라우저에서 바로 실행되는 무료 도구들로 PDF 문서를 편리하게 처리하세요:",
+      "converterName": "PDF 변환기 →",
+      "converterDesc": "PDF 파일을 이미지 형식으로 변환하거나 이미지를 PDF로 만듭니다.",
+      "toolsHubName": "전체 PDF 도구 모음 →",
+      "toolsHubDesc": "빠르고 안전한 클라이언트 전용 PDF 유틸리티 전체를 확인하세요.",
+      "compressorName": "PDF 압축기 →",
+      "compressorDesc": "이메일 공유 전 대용량 PDF 문서의 파일 크기를 줄입니다.",
+      "splitterName": "PDF 분할기 →",
+      "splitterDesc": "원하는 페이지 범위를 추출하거나 단일 페이지로 손쉽게 분할합니다."
+    },
     "ctaBtn": "👉 지금 PDF 파일 병합하기"
   }
 }
