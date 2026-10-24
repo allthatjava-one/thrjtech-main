@@ -262,6 +262,14 @@
     "introBullet3": "파일 크기가 너무 큼",
     "introConclusion": "이러한 문제는 일반적으로 이미지 형식이라는 한 가지 문제로 귀결됩니다. 이 가이드에서는 형식이 존재하는 이유, 언제 변환해야 하는지, 어떤 형식을 선택할지, 품질 손실 없이 변환하는 방법을 알아보겠습니다.",
     "asideTitle": "빠른 작업",
-    "asideDesc": "변환할 준비가 되는나요? 바로 도구로 이동하세요."
+    "asideDesc": "변환할 준비가 되는나요? 바로 도구로 이동하세요.",
+    "relatedDocTools": {
+      "heading": "문서나 PDF 변환이 필요하신가요?",
+      "desc": "브라우저에서 바로 사용할 수 있는 무료 PDF 유틸리티로 PDF 문서와 이미지 형식을 손쉽게 상호 변환하세요:",
+      "converterName": "PDF 변환기 →",
+      "converterDesc": "PDF 문서를 PNG/JPEG 이미지로 변환하거나 이미지 파일을 PDF로 변환합니다.",
+      "toolsHubName": "전체 PDF 도구 모음 →",
+      "toolsHubDesc": "브라우저에서 작동하는 빠르고 안전한 전체 PDF 유틸리티 모음을 둘러보세요."
+    }
   }
 }

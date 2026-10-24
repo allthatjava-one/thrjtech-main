@@ -253,6 +253,18 @@
       "heading": "🧾 Summary & Next Steps",
       "body": "Merging PDF documents with professional-grade precision ensures clean structural hierarchy, preserved vector fidelity, and uncompromising data privacy. Whether assembling corporate financial reports or student portfolios, our tool delivers fast, secure, and accurate document consolidation."
     },
+    "relatedTools": {
+      "heading": "Explore Related PDF Tools",
+      "desc": "Process your PDF documents completely in-browser with our other free tools:",
+      "converterName": "PDF Converter →",
+      "converterDesc": "Convert PDF files to image formats or turn images into PDFs.",
+      "toolsHubName": "All PDF Tools Hub →",
+      "toolsHubDesc": "View all our fast, secure, client-side PDF utilities.",
+      "compressorName": "PDF Compressor →",
+      "compressorDesc": "Shrink large PDF documents before sharing via email.",
+      "splitterName": "PDF Splitter →",
+      "splitterDesc": "Extract specific page ranges or split single pages effortlessly."
+    },
     "ctaBtn": "👉 Merge Your PDF Files Now"
   }
 }

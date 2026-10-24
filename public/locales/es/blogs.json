@@ -12,5 +12,27 @@
   "errorArticle": "Error: {{error}}",
   "postNavigation": "Navegación de entradas del blog",
   "prevPostTitled": "< [Newer] {{title}}",
-  "nextPostTitled": "{{title}} [Older] >"
+  "nextPostTitled": "{{title}} [Older] >",
+  "relatedTools": {
+    "pdfHeading": "Herramientas PDF gratuitas en el navegador",
+    "pdfDesc": "Trabaja con documentos PDF de forma segura y privada directamente en tu navegador:",
+    "generalHeading": "Explorar utilidades gratuitas en línea",
+    "generalDesc": "Herramientas rápidas y respetuosas con tu privacidad que funcionan 100% localmente en tu navegador:",
+    "pdfConverterName": "Conversor PDF →",
+    "pdfConverterDesc": "Convierte archivos PDF a imágenes de alta calidad o convierte fotos a PDF.",
+    "pdfToolsName": "Centro de herramientas PDF →",
+    "pdfToolsDesc": "Explora nuestra suite completa de utilidades PDF rápidas y privadas en el navegador.",
+    "pdfCompressorName": "Compresor PDF →",
+    "pdfCompressorDesc": "Reduce el tamaño del archivo PDF sin sacrificar legibilidad ni calidad.",
+    "pdfMergerName": "Fusionador PDF →",
+    "pdfMergerDesc": "Combina varios documentos PDF en cuestión de segundos.",
+    "pdfSplitterName": "Divisor PDF →",
+    "pdfSplitterDesc": "Extrae páginas específicas o divide por rangos personalizados.",
+    "generalPdfConverterDesc": "Convierte documentos PDF a imágenes o crea archivos PDF.",
+    "generalPdfToolsDesc": "Directorio completo de utilidades PDF en el navegador.",
+    "imageConverterName": "Conversor de imágenes →",
+    "imageConverterDesc": "Convierte entre JPG, PNG, WebP, AVIF y más.",
+    "imageToolsName": "Centro de herramientas de imagen →",
+    "imageToolsDesc": "Redimensiona, recorta, rota y añade marcas de agua a imágenes en línea."
+  }
 }

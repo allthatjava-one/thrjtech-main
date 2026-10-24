@@ -255,6 +255,14 @@
     "introBullet3": "File size is too large",
     "introConclusion": "These issues usually come down to one thing: image format. In this guide you’ll learn why formats exist, when to convert them, which format to choose, and how to convert without losing quality.",
     "asideTitle": "Quick Actions",
-    "asideDesc": "Ready to convert? Jump straight to the tool."
+    "asideDesc": "Ready to convert? Jump straight to the tool.",
+    "relatedDocTools": {
+      "heading": "Looking to Convert Documents & PDFs?",
+      "desc": "Easily convert between PDF documents and image formats with our free in-browser PDF utilities:",
+      "converterName": "PDF Converter →",
+      "converterDesc": "Convert PDF documents to PNG/JPEG images or turn image files into PDFs.",
+      "toolsHubName": "All PDF Tools Hub →",
+      "toolsHubDesc": "Browse our full suite of fast, private in-browser PDF utilities."
+    }
   }
 }

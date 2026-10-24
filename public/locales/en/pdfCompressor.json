@@ -265,6 +265,18 @@
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Large PDFs don't have to slow you down. Use proper compression techniques to share files, meet upload limits, and improve performance without sacrificing usability.",
+    "relatedTools": {
+      "heading": "Explore Related PDF Tools",
+      "desc": "Need to convert, organize, or split documents? Try these free in-browser PDF utilities:",
+      "converterName": "PDF Converter →",
+      "converterDesc": "Convert PDF documents to PNG/JPEG images or turn image files into PDFs.",
+      "toolsHubName": "All PDF Tools Hub →",
+      "toolsHubDesc": "Browse our full suite of fast, private in-browser PDF utilities.",
+      "splitterName": "PDF Splitter →",
+      "splitterDesc": "Extract individual pages or select custom page ranges from any PDF.",
+      "mergerName": "PDF Merger →",
+      "mergerDesc": "Combine multiple PDF files into one clean, organized document."
+    },
     "ctaBtn": "👉 Compress your PDF here: PDF Compressor Tool"
   }
 }

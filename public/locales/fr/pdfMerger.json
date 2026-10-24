@@ -253,6 +253,18 @@
       "heading": "🧾 Résumé et étapes suivantes",
       "body": "Fusionner des documents PDF avec une précision de niveau professionnel garantit une hiérarchie structurelle impeccable, une fidélité vectorielle intacte et une confidentialité absolue de vos données. Qu'il s'agisse de compiler des bilans financiers ou des dossiers académiques, notre outil offre une consolidation rapide, sécurisée et fidèle."
     },
+    "relatedTools": {
+      "heading": "Découvrir les outils PDF associés",
+      "desc": "Traitez vos documents PDF entièrement dans votre navigateur grâce à nos autres outils gratuits :",
+      "converterName": "Convertisseur PDF →",
+      "converterDesc": "Convertissez des fichiers PDF en formats d'image ou transformez des images en PDF.",
+      "toolsHubName": "Tous les outils PDF →",
+      "toolsHubDesc": "Découvrez tous nos utilitaires PDF rapides, sécurisés et exécutés côté client.",
+      "compressorName": "Compresseur PDF →",
+      "compressorDesc": "Réduisez les documents PDF volumineux avant de les partager par e-mail.",
+      "splitterName": "Diviseur PDF →",
+      "splitterDesc": "Extrayez des plages de pages spécifiques ou divisez des pages individuelles sans effort."
+    },
     "ctaBtn": "👉 Fusionnez vos fichiers PDF dès maintenant"
   }
 }
