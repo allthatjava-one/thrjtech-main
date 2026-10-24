@@ -16,5 +16,27 @@
   "errorArticle": "오류: {{error}}",
   "postNavigation": "블로그 게시물 탐색",
   "prevPostTitled": "< [Newer] {{title}}",
-  "nextPostTitled": "{{title}} [Older] >"
+  "nextPostTitled": "{{title}} [Older] >",
+  "relatedTools": {
+    "pdfHeading": "브라우저 기반 무료 PDF 도구",
+    "pdfDesc": "파일이 서버로 전송되지 않고 브라우저에서 안전하고 비공개로 PDF를 처리하세요:",
+    "generalHeading": "무료 온라인 유틸리티 둘러보기",
+    "generalDesc": "브라우저에서 100% 로컬로 실행되는 빠르고 안전한 온라인 도구들입니다:",
+    "pdfConverterName": "PDF 변환기 →",
+    "pdfConverterDesc": "PDF 파일을 고품질 이미지로 변환하거나 사진을 PDF로 변환합니다.",
+    "pdfToolsName": "전체 PDF 도구 모음 →",
+    "pdfToolsDesc": "브라우저에서 실행되는 빠르고 안전한 전체 PDF 유틸리티 모음을 확인하세요.",
+    "pdfCompressorName": "PDF 압축기 →",
+    "pdfCompressorDesc": "가독성과 화질 저하 없이 PDF 파일 용량을 줄입니다.",
+    "pdfMergerName": "PDF 합치기 →",
+    "pdfMergerDesc": "여러 PDF 문서를 몇 초 만에 하나로 병합합니다.",
+    "pdfSplitterName": "PDF 분할기 →",
+    "pdfSplitterDesc": "원하는 특정 페이지를 추출하거나 지정한 범위로 분할합니다.",
+    "generalPdfConverterDesc": "PDF 문서와 이미지 파일 간 상호 변환을 지원합니다.",
+    "generalPdfToolsDesc": "브라우저 기반의 모든 PDF 유틸리티 모음입니다.",
+    "imageConverterName": "이미지 변환기 →",
+    "imageConverterDesc": "JPG, PNG, WebP, AVIF 등 다양한 이미지 형식을 변환합니다.",
+    "imageToolsName": "전체 이미지 도구 모음 →",
+    "imageToolsDesc": "이미지 크기 조절, 자르기, 회전, 워터마크 추가를 지원합니다."
+  }
 }

@@ -12,5 +12,27 @@
   "errorArticle": "Erreur : {{error}}",
   "postNavigation": "Navigation des articles du blog",
   "prevPostTitled": "< [Newer] {{title}}",
-  "nextPostTitled": "{{title}} [Older] >"
+  "nextPostTitled": "{{title}} [Older] >",
+  "relatedTools": {
+    "pdfHeading": "Outils PDF gratuits dans le navigateur",
+    "pdfDesc": "Travaillez sur vos documents PDF en toute sécurité et confidentialité directement dans votre navigateur :",
+    "generalHeading": "Découvrez des utilitaires gratuits en ligne",
+    "generalDesc": "Des outils rapides et respectueux de la vie privée qui s'exécutent à 100 % localement dans votre navigateur :",
+    "pdfConverterName": "Convertisseur PDF →",
+    "pdfConverterDesc": "Convertissez des fichiers PDF en images de haute qualité ou transformez des photos en PDF.",
+    "pdfToolsName": "Tous les outils PDF →",
+    "pdfToolsDesc": "Parcourez notre suite complète d'utilitaires PDF rapides et privés dans le navigateur.",
+    "pdfCompressorName": "Compresseur PDF →",
+    "pdfCompressorDesc": "Réduisez la taille des fichiers PDF sans compromettre la lisibilité ou la qualité.",
+    "pdfMergerName": "Fusionneur PDF →",
+    "pdfMergerDesc": "Combinez plusieurs documents PDF en quelques secondes.",
+    "pdfSplitterName": "Diviseur PDF →",
+    "pdfSplitterDesc": "Extrayez des pages spécifiques ou divisez par plages personnalisées.",
+    "generalPdfConverterDesc": "Convertissez des documents PDF en images ou créez des fichiers PDF.",
+    "generalPdfToolsDesc": "Annuaire complet des utilitaires PDF dans le navigateur.",
+    "imageConverterName": "Convertisseur d'images →",
+    "imageConverterDesc": "Convertissez entre JPG, PNG, WebP, AVIF et plus encore.",
+    "imageToolsName": "Tous les outils Image →",
+    "imageToolsDesc": "Redimensionnez, recadrez, pivotez et filigranez des images en ligne."
+  }
 }

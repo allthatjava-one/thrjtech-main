@@ -268,6 +268,18 @@
     },
     "conclusionTitle": "Conclusión",
     "conclusion": "Dominar la extracción estructural de páginas en PDF permite a profesionales y organizaciones descomponer grandes volúmenes documentales en archivos ágiles y funcionales. Gracias al análisis DOM en el cliente, la gestión avanzada de fuentes y el recálculo en tiempo real de tablas XRef, obtenga una división de PDF rápida, segura y sin pérdidas directamente en su navegador.",
+    "relatedTools": {
+      "heading": "Explorar herramientas PDF relacionadas",
+      "desc": "Descubre más utilidades PDF gratuitas en el navegador para organizar, convertir y gestionar tus archivos:",
+      "converterName": "Conversor PDF →",
+      "converterDesc": "Convierte documentos PDF a imágenes o extrae páginas fácilmente.",
+      "toolsHubName": "Centro de herramientas PDF →",
+      "toolsHubDesc": "Explora nuestra suite completa de utilidades PDF gratuitas en el navegador.",
+      "compressorName": "Compresor PDF →",
+      "compressorDesc": "Reduce el tamaño del archivo PDF sin sacrificar legibilidad ni calidad.",
+      "mergerName": "Fusionador PDF →",
+      "mergerDesc": "Combina varios documentos PDF en cuestión de segundos."
+    },
     "ctaBtn": "👉 Comenzar a dividir su PDF ahora"
   }
 }

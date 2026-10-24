@@ -100,6 +100,57 @@ export default function BlogPage() {
               ? <p style={{ color: '#dc2626' }}>{t('errorArticle', { error })}</p>
               : <>
                   <div dangerouslySetInnerHTML={{ __html: content || `<p>${t('loadingArticle')}</p>` }} />
+                  {slug && slug.includes('pdf') ? (
+                    <div className="blog-related-tools">
+                      <h3 className="blog-related-tools-title">{t('relatedTools.pdfHeading')}</h3>
+                      <p className="blog-related-tools-desc">{t('relatedTools.pdfDesc')}</p>
+                      <div className="blog-related-tools-grid">
+                        <Link to="/pdf-converter" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.pdfConverterName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.pdfConverterDesc')}</span>
+                        </Link>
+                        <Link to="/pdf-tools" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.pdfToolsName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.pdfToolsDesc')}</span>
+                        </Link>
+                        <Link to="/pdf-compressor" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.pdfCompressorName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.pdfCompressorDesc')}</span>
+                        </Link>
+                        <Link to="/pdf-merger" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.pdfMergerName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.pdfMergerDesc')}</span>
+                        </Link>
+                        <Link to="/pdf-splitter" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.pdfSplitterName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.pdfSplitterDesc')}</span>
+                        </Link>
+                      </div>
+                    </div>
+                  ) : slug ? (
+                    <div className="blog-related-tools">
+                      <h3 className="blog-related-tools-title">{t('relatedTools.generalHeading')}</h3>
+                      <p className="blog-related-tools-desc">{t('relatedTools.generalDesc')}</p>
+                      <div className="blog-related-tools-grid">
+                        <Link to="/pdf-converter" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.pdfConverterName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.generalPdfConverterDesc')}</span>
+                        </Link>
+                        <Link to="/pdf-tools" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.pdfToolsName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.generalPdfToolsDesc')}</span>
+                        </Link>
+                        <Link to="/image-converter" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.imageConverterName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.imageConverterDesc')}</span>
+                        </Link>
+                        <Link to="/image-tools" className="blog-related-tool-card">
+                          <span className="blog-related-tool-name">{t('relatedTools.imageToolsName')}</span>
+                          <span className="blog-related-tool-desc">{t('relatedTools.imageToolsDesc')}</span>
+                        </Link>
+                      </div>
+                    </div>
+                  ) : null}
                 </>
             }
           </article>

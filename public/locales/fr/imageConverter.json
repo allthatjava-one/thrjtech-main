@@ -255,6 +255,14 @@
     "introBullet3": "La taille du fichier est trop grande",
     "introConclusion": "Ces problèmes se résument généralement à une seule chose : le format de l’image. Dans ce guide, vous apprendrez pourquoi les formats existent, quand les convertir, quel format choisir et comment convertir sans perdre en qualité.",
     "asideTitle": "Actions rapides",
-    "asideDesc": "Prêt à convertir ? Accédez directement à l’outil."
+    "asideDesc": "Prêt à convertir ? Accédez directement à l’outil.",
+    "relatedDocTools": {
+      "heading": "Vous souhaitez convertir des documents et des PDF ?",
+      "desc": "Convertissez facilement des documents PDF et des images grâce à nos utilitaires PDF gratuits dans le navigateur :",
+      "converterName": "Convertisseur PDF →",
+      "converterDesc": "Convertissez des documents PDF en images PNG/JPEG ou transformez des fichiers image en PDF.",
+      "toolsHubName": "Tous les outils PDF →",
+      "toolsHubDesc": "Parcourez notre suite complète d'utilitaires PDF rapides et privés dans le navigateur."
+    }
   }
 }

@@ -265,6 +265,18 @@
     },
     "conclusionTitle": "Conclusion",
     "conclusion": "Les PDF volumineux n'ont pas à vous ralentir. Utilisez des techniques de compression appropriées pour partager des fichiers, respecter les limites de chargement et améliorer les performances sans sacrifier la convivialité.",
+    "relatedTools": {
+      "heading": "Découvrir les outils PDF associés",
+      "desc": "Besoin de convertir, organiser ou diviser des documents ? Essayez ces utilitaires PDF gratuits dans votre navigateur :",
+      "converterName": "Convertisseur PDF →",
+      "converterDesc": "Convertissez des documents PDF en images PNG/JPEG ou transformez des images en PDF.",
+      "toolsHubName": "Tous les outils PDF →",
+      "toolsHubDesc": "Parcourez notre suite complète d'utilitaires PDF rapides et privés dans le navigateur.",
+      "splitterName": "Diviseur PDF →",
+      "splitterDesc": "Extrayez des pages individuelles ou sélectionnez des plages de pages personnalisées de n'importe quel PDF.",
+      "mergerName": "Fusionneur PDF →",
+      "mergerDesc": "Combinez plusieurs fichiers PDF en un seul document clair et organisé."
+    },
     "ctaBtn": "👉 Compressez votre PDF ici : Outil Compresseur PDF"
   }
 }

@@ -265,6 +265,18 @@
     },
     "conclusionTitle": "Conclusión",
     "conclusion": "Los archivos PDF de gran tamaño no tienen por qué ralentizarlo. Utilice técnicas de compresión adecuadas para compartir archivos, cumplir con los límites de carga y mejorar el rendimiento sin sacrificar la usabilidad.",
+    "relatedTools": {
+      "heading": "Explorar herramientas PDF relacionadas",
+      "desc": "¿Necesitas convertir, organizar o dividir documentos? Prueba estas utilidades PDF gratuitas en tu navegador:",
+      "converterName": "Conversor PDF →",
+      "converterDesc": "Convierte documentos PDF a imágenes PNG/JPEG o convierte imágenes a PDF.",
+      "toolsHubName": "Centro de herramientas PDF →",
+      "toolsHubDesc": "Explora nuestra suite completa de utilidades PDF rápidas y privadas en el navegador.",
+      "splitterName": "Divisor PDF →",
+      "splitterDesc": "Extrae páginas individuales o selecciona rangos de páginas personalizados de cualquier PDF.",
+      "mergerName": "Fusionador PDF →",
+      "mergerDesc": "Combina varios archivos PDF en un solo documento organizado y limpio."
+    },
     "ctaBtn": "👉 Comprime tu PDF aquí: Herramienta de compresión de PDF"
   }
 }

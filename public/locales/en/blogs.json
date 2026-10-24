@@ -12,5 +12,27 @@
   "errorArticle": "Error: {{error}}",
   "postNavigation": "Blog post navigation",
   "prevPostTitled": "< [Newer] {{title}}",
-  "nextPostTitled": "{{title}} [Older] >"
+  "nextPostTitled": "{{title}} [Older] >",
+  "relatedTools": {
+    "pdfHeading": "Free In-Browser PDF Tools",
+    "pdfDesc": "Work with PDF documents securely and privately right in your browser:",
+    "generalHeading": "Explore Free Online Utilities",
+    "generalDesc": "Fast, privacy-friendly tools that run 100% locally in your browser:",
+    "pdfConverterName": "PDF Converter →",
+    "pdfConverterDesc": "Convert PDF files to high-quality images or turn photos into PDFs.",
+    "pdfToolsName": "All PDF Tools Hub →",
+    "pdfToolsDesc": "Browse our full suite of fast, private in-browser PDF utilities.",
+    "pdfCompressorName": "PDF Compressor →",
+    "pdfCompressorDesc": "Reduce PDF file size without sacrificing readability or quality.",
+    "pdfMergerName": "PDF Merger →",
+    "pdfMergerDesc": "Combine multiple PDF documents together in seconds.",
+    "pdfSplitterName": "PDF Splitter →",
+    "pdfSplitterDesc": "Extract specific pages or split by custom ranges.",
+    "generalPdfConverterDesc": "Convert PDF documents to images or create PDF files.",
+    "generalPdfToolsDesc": "Complete directory of in-browser PDF utilities.",
+    "imageConverterName": "Image Converter →",
+    "imageConverterDesc": "Convert between JPG, PNG, WebP, AVIF, and more.",
+    "imageToolsName": "Image Tools Hub →",
+    "imageToolsDesc": "Resize, crop, rotate, and watermark images online."
+  }
 }
